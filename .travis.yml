@@ -1,0 +1,13 @@
+notifications:
+  email: false
+
+language: python
+
+cache:
+  - pip
+
+install:
+  - pip install -r requirements.txt
+
+script:
+  - make html
