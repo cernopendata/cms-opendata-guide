@@ -7,6 +7,7 @@
     cmssw
     pos
     analysis
+    workbook
     license
     AUTHORS
 
