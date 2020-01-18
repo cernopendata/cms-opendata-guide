@@ -1,4 +1,0 @@
-Luminosity
-==========
-
-Lumi

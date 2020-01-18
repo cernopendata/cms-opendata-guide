@@ -1,4 +1,0 @@
-Pileup reweighting
-==================
-
-Pileup
