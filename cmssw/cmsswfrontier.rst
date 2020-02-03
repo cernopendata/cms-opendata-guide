@@ -1,7 +1,7 @@
 .. _cmssw-cmsswfrontier:
 
 =======================================
-Frontier Conditions
+Database Conditions
 =======================================
 
 .. warning:: In construction
