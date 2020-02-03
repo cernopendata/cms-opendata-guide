@@ -102,6 +102,15 @@ Getting Started with Data Analysis
     Learn how to determine your systematic uncertaintes
 :doc:`analysis/interpretation`
     How to interpret your results
+    
+Workbook
+===========
+
+.. toctree::
+   :caption: Workbook
+   :hidden: 
+   :name: workbook
+   :maxdepth: 2    
 
 License
 =======
