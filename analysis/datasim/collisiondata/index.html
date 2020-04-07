@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Collision Data - CMS Open Data Guide</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Collision Data", url: "#_top", children: [
+              {title: "Dataset contents", url: "#dataset-contents" },
+              {title: "Data taking and reprocessing", url: "#data-taking-and-reprocessing" },
+              {title: "Data format", url: "#data-format" },
+              {title: "Else (FIXME)", url: "#else-fixme" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../eventgeneration/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../eventgeneration/" class="btn btn-xs btn-link">
+        Event Generation
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../../cmssw/cmsswfrontier/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../../cmssw/cmsswfrontier/" class="btn btn-xs btn-link">
+        Frontier
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="collision-data">Collision Data</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This page is under construction</p>
+</div>
+<p>The CMS collision data is organized in primary datasets (PD). 
+All CMS open data primary datasets can be found with <a href="http://opendata.cern.ch/search?page=1&amp;size=20&amp;type=Dataset&amp;subtype=Collision&amp;experiment=CMS&gt;">this search</a>.</p>
+<p>The dataset name consists of three parts separated by "/", e.g.:</p>
+<p><code>/TauPlusX/Run2011A-12Oct2013-v1/AOD</code></p>
+<p>The first part indicates the primary dataset contents (<code>TauPlusX</code>), the second part is the data-taking era (<code>Run2011A</code>) and reprocessing (<code>12Oct2013</code>), and the last one indicates the data format (<code>AOD</code>).</p>
+<h2 id="dataset-contents">Dataset contents</h2>
+<p>The primary dataset definition is centered around physics objects (SingleMu, Jet, Tau etc). 
+Events triggered by High Level Triggers  (HLT) with a similar physics contents or use 
+are mostly directed in the same PD. <a href="http://opendata.cern.ch/docs/cms-guide-trigger-system">This guide</a> 
+gives an overview of the CMS trigger system. 
+Besides requirements on the physics content, the organisation of the primary 
+datasets has to satisfy constraints related to the data processing and handling, 
+such as the average event rate approximately uniform across the 
+different PDs, and the event rate more than 10 Hz and less than 200 Hz. (relevant?)</p>
+<p>Each CMS collision dataset comes with a brief description of the contents, and 
+the full listing of all possible HLT trigger streams included in the dataset. 
+The instructions how to find the exact definitions and parameters of the 
+HLT trigger definitions can be found in 
+<a href="http://opendata.cern.ch/docs/cms-guide-trigger-system">Guide to the CMS Trigger System</a> under "<em>HLT Trigger Path definitions</em>".</p>
+<p>Since a given event can pass more than one HLT path, it 
+can be included in more than one primary dataset. 
+There's an overall overlap between the PDs of around 25-35% during Run1 and 
+it must be taken into account when combining events from different datasets in an analysis.</p>
+<h2 id="data-taking-and-reprocessing">Data taking and reprocessing</h2>
+<p>One year of data taking is divided in several "eras" indicated as RunA, RunB, etc. 
+According to the CMS data policy, 50% of data is published after the embargo period, 
+completed with the full release within 10 years. Currently available are</p>
+<ul>
+<li>Run2010A and Run2010B</li>
+<li>Run2011A</li>
+<li>Run2012B and Run2012C</li>
+</ul>
+<p>The data are reprocessed several times, and it is the last complete reprocessing available at the time of the release which is made public.</p>
+<h2 id="data-format">Data format</h2>
+<p>The data format in use for Run1 data is Analysis Object Data (AOD). 
+A brief description of data formats can be found in the introductory 
+<a href="http://opendata.cern.ch/docs/about-cms">About CMS</a> under "<em>Primary and simulated datasets</em>".</p>
+<h2 id="else-fixme">Else (FIXME)</h2>
+<p>To consider:</p>
+<ul>
+<li>mention json files for validated runs/LS</li>
+<li>mention condition data and GT</li>
+<li>Integrated luminosity here or in a separate chapter?</li>
+</ul>
+<p>Refs
+G. Franzoni: Dataset definition for CMS operations and physics analyses
+https://cds.cern.ch/record/1976679/files/CR2014_311.pdf</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../eventgeneration/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../eventgeneration/" class="btn btn-xs btn-link">
+        Event Generation
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../../cmssw/cmsswfrontier/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../../cmssw/cmsswfrontier/" class="btn btn-xs btn-link">
+        Frontier
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
