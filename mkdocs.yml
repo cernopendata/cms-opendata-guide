@@ -43,24 +43,8 @@ nav:
     - About: about.md
 
 
-
-# Trying out different themes
-theme: 
+theme:
     name: windmill
-#theme: 
-    #name: ivory
-#theme: 
-    #name: gitbook
-#theme: readthedocs
-#theme:
-#    include_sidebar: false
-#theme:
-    #name: mkdocs
-    #custom_dir: my_theme_customizations/
-    #static_templates:
-        #- sitemap.html
-    #include_sidebar: false
-
 
 markdown_extensions:
     - admonition
