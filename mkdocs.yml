@@ -1,0 +1,50 @@
+site_name: CMS Open Data Guide
+
+nav:
+    - Home: index.md
+    - 'Computing Tools':
+        - 'CERN Open Data Portal': tools/cernportal.md
+        - 'CMS Open Data': tools/cmsopendata.md
+        - 'CMS Twiki': tools/cmstwiki.md
+        - 'ROOT': tools/root.md
+        - 'C++ and Python': tools/cppandpython.md
+        - 'Git': tools/git.md
+        - 'Docker': tools/docker.md
+        - 'Virtual Machines': tools/virtualmachines.md
+    - 'CMSSW':
+        - 'Overview': cmssw/cmsswoverview.md
+        - 'Data Model': cmssw/cmsswdatamodel.md
+        - 'Analyzers': cmssw/cmsswanalyzers.md
+        - 'Configure': cmssw/cmsswconfigure.md
+        - 'Data Analysis': cmssw/cmsswdataanalysis.md
+        - 'Frontier': cmssw/cmsswfrontier.md
+    - 'Analysis':
+        - 'Data and Simulation':
+            - 'Collision Data': analysis/datasim/collisiondata.md
+            - 'Event Generation': analysis/datasim/eventgeneration.md
+            - 'MC Simulations': analysis/datasim/mcsimulations.md
+        - 'Selection':
+            - 'Objects': analysis/selection/objects.md
+            - 'Object ID': analysis/selection/objectid.md
+            - 'Triggers': analysis/selection/triggers.md
+        - 'Luminosity': analysis/luminosity.md
+        - 'Backgrounds':
+            - 'Techniques': analysis/backgrounds/techniques.md
+            - 'QCD Estimation': analysis/backgrounds/qcdestimation.md
+            - 'Upper-limit Calculations': analysis/interpretation/limits.md
+        - 'Systematics':
+            - 'Luminosity Uncertainties': analysis/systematics/lumiuncertain.md
+            - 'MC Uncertainty': analysis/systematics/mcuncertain.md
+            - 'Object Uncertainty': analysis/systematics/objectsuncertain.md
+            - 'Pileup Uncertainty': analysis/systematics/pileupuncertain.md
+        - 'Interpretation':
+            - 'Statistics': analysis/interpretation/stats.md
+    - FAQ: faq.md
+    - About: about.md
+
+
+theme:
+    name: windmill
+
+markdown_extensions:
+    - admonition
