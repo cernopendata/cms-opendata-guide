@@ -7,4 +7,6 @@ All you want to know!
 
 ## How to use this site
 
+Hi everyone! This is a test. 
+
 
