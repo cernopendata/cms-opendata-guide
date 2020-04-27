@@ -6,6 +6,7 @@ nav:
         - 'CERN Open Data Portal': tools/cernportal.md
         - 'CMS Open Data': tools/cmsopendata.md
         - 'CMS Twiki': tools/cmstwiki.md
+        - 'UNIX': tools/unix.md
         - 'ROOT': tools/root.md
         - 'C++ and Python': tools/cppandpython.md
         - 'Git': tools/git.md
@@ -16,8 +17,7 @@ nav:
         - 'Data Model': cmssw/cmsswdatamodel.md
         - 'Analyzers': cmssw/cmsswanalyzers.md
         - 'Configure': cmssw/cmsswconfigure.md
-        - 'Data Analysis': cmssw/cmsswdataanalysis.md
-        - 'Frontier': cmssw/cmsswfrontier.md
+        - 'Conditions Data': cmssw/cmsswconditions.md
     - 'Analysis':
         - 'Data and Simulation':
             - 'Collision Data': analysis/datasim/collisiondata.md
