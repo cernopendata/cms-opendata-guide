@@ -24,13 +24,13 @@ Therefore, the sections at the heart of this Guide should also point to practica
 Everyone is welcome to help buil and/or improve this guide. If you find a bug or want to make a suggestion, please fill out an [issue](https://github.com/cernopendata/cms-opendata-guide/issues). If you would like to contribute, there are two options depending on whether you are already a collaborator of the project or not.
 
 ### If you are a collaborator already
-1. If you found a topic of your interest but there is no associated issue yet in the "To do" board of the open project, please comment on the corresponding checklist and tag one of the coordinators of the project.  That person will then interact with you to create an appropiate issue in the "To do" list so you can follow the rest of the steps.  If there is already one, skip to the next step.
-1. If there is already an open issue, within the "To do" board of an open [project](https://github.com/cernopendata/cms-opendata-guide/projects), that you are interested in working on, you can assign it to yourself and move it to the "In progress" board.
+1. If you found a topic of your interest but there is no associated issue yet in the "To do" board of an open project, please comment on the corresponding checklist and tag one of the coordinators of the project.  The coordinator will then interact with you to create an appropiate issue in the "To do" list so you can follow the rest of the steps below.
+1. If there is already an open issue, within the "To do" board of an open [project](https://github.com/cernopendata/cms-opendata-guide/projects), that you are interested in working on, you can assign it to yourself and move it to the "In progress" board. Remember that you could also move an open issue to the "Discussion" or the "Need info" boards.
 1. Check whether the topic, corresponding to the issue, 
     has already a page in the file that steers the [structure of the guide](https://github.com/cernopendata/cms-opendata-guide/blob/master/mkdocs.yml).   
 1. If there is no such a page, contact one of the coordinators of the project to create it for you or to agree to create it yourself.  You could just make a comment in your issue, tagging a coordinator therein, which will trigger the discussion.
 1. Once the appropiate page exists, you can start writing the relevant information either directly into the repository on the webpage or (preferably) on your own, local github area.  
-   * If working locally, feel free to test it first following the [local testing](#test-locally) instruction below and, when ready, [deploy](#deploy) it automatically.
+   * If working locally, feel free to test it first following the [local testing](#test-locally) instructions below and, when ready, [deploy](#deploy) it automatically.  Please [close the issue](https://github.blog/2013-01-22-closing-issues-via-commit-messages/) when done.
 1. The page you are creating should, in most cases, be accompanied by a workshop tutorial lesson or exercise.  Ideally, the issue the page is addressing should point (if necessary) to the corresponding issue in the [cms-opendata-workshop](https://github.com/cms-opendata-workshop) organization.
 
 

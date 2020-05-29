@@ -21,12 +21,12 @@ nav:
     - 'Analysis':
         - 'Data and Simulation':
             - 'Collision Data': analysis/datasim/collisiondata.md
-            - 'Event Generation': analysis/datasim/eventgeneration.md
             - 'MC Simulations': analysis/datasim/mcsimulations.md
+            - 'Event Generation': analysis/datasim/eventgeneration.md
         - 'Selection':
-            - 'Objects': analysis/selection/objects.md
-            - 'Object ID': analysis/selection/objectid.md
             - 'Triggers': analysis/selection/triggers.md
+            - 'Physics Objects': analysis/selection/objects.md
+            - 'Physics Objects ID': analysis/selection/objectid.md
         - 'Luminosity': analysis/luminosity.md
         - 'Backgrounds':
             - 'Techniques': analysis/backgrounds/techniques.md
