@@ -36,7 +36,7 @@ Everyone is welcome to help buil and/or improve this guide. If you find a bug or
 
 ### If you are not a collaborator yet
 
-Make a direct [pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) or (preferably) [contact us](maito:cms-data-preservation@cern.ch) first.
+Make a direct [pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) or (preferably) [contact us](mailto:cms-data-preservation@cern.ch) first.
 
 
 ## Test locally
