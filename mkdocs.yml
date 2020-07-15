@@ -27,11 +27,12 @@ nav:
             - 'Triggers': analysis/selection/triggers.md
             - 'Physics Objects': analysis/selection/objects.md
             - 'Physics Objects ID': analysis/selection/objectid.md
-        - 'Luminosity': analysis/luminosity.md
+        - 'Luminosity': 
+            - 'Luminosity': analysis/luminosity/lumi.md
         - 'Backgrounds':
             - 'Techniques': analysis/backgrounds/techniques.md
             - 'QCD Estimation': analysis/backgrounds/qcdestimation.md
-            - 'Upper-limit Calculations': analysis/interpretation/limits.md
+            
         - 'Systematics':
             - 'Luminosity Uncertainties': analysis/systematics/lumiuncertain.md
             - 'MC Uncertainty': analysis/systematics/mcuncertain.md
@@ -39,6 +40,7 @@ nav:
             - 'Pileup Uncertainty': analysis/systematics/pileupuncertain.md
         - 'Interpretation':
             - 'Statistics': analysis/interpretation/stats.md
+            - 'Upper-limit Calculations': analysis/interpretation/limits.md 
     - FAQ: faq.md
     - About: about.md
 

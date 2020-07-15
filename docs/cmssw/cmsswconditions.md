@@ -1,6 +1,4 @@
-# Luminosity
+# Conditions
 
 !!! Warning
     This page is under construction
-
-## Sub-heading

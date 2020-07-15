@@ -21,7 +21,7 @@ Therefore, the sections at the heart of this Guide should also point to practica
 
 ## How to contribute
 
-Everyone is welcome to help buil and/or improve this guide. If you find a bug or want to make a suggestion, please fill out an [issue](https://github.com/cernopendata/cms-opendata-guide/issues). If you would like to contribute, there are two options depending on whether you are already a collaborator of the project or not.
+Everyone is welcome to help build and/or improve this guide. If you find a bug or want to make a suggestion, please fill out an [issue](https://github.com/cernopendata/cms-opendata-guide/issues). If you would like to contribute, there are two options depending on whether you are already a collaborator of the project or not.
 
 ### If you are a collaborator already
 1. If you found a topic of your interest but there is no associated issue yet in the "To do" board of an open project, please comment on the corresponding checklist and tag one of the coordinators of the project.  The coordinator will then interact with you to create an appropiate issue in the "To do" list so you can follow the rest of the steps below.
