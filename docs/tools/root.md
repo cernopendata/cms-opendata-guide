@@ -20,7 +20,6 @@ If you don't know where to start, we would recommend
     * Example 2
     * Example 3
 
-
 * Python has become the language of choice for many analysts and most of the examples
   you'll see make use of the PyROOT module, callable from python. You can go through
   a number of the examples [here](https://root.cern.ch/doc/master/group__tutorial__pyroot.html).
@@ -28,5 +27,3 @@ If you don't know where to start, we would recommend
     * Example 1
     * Example 2
     * Example 3
-
-
