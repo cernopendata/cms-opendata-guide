@@ -20,7 +20,7 @@ In practical terms, a virtual machine image is a computer file that has all the 
 
 The most current images for CMS open data usage are described separately in the CERN Open Portal site for [2010](http://opendata.cern.ch/record/250) and [2011/2012](http://opendata.cern.ch/record/252).
 
-!!! Attention   
+!!! Note   
     When installing a CMS virtual machine (following the [instructions](#installation) below), always use the latest image file available for [2010](http://opendata.cern.ch/record/250) or [2011/2012](http://opendata.cern.ch/record/252) data.
 
 ### Installation

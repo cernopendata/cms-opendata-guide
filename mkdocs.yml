@@ -46,7 +46,7 @@ nav:
 
 
 theme:
-    name: readthedocs
+    name: windmill
    
 markdown_extensions:
     - admonition
