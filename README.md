@@ -30,7 +30,10 @@ Everyone is welcome to help build and/or improve this guide. If you find a bug o
     has already a page in the file that steers the [structure of the guide](https://github.com/cernopendata/cms-opendata-guide/blob/master/mkdocs.yml).   
 1. If there is no such a page, contact one of the coordinators of the project to create it for you or to agree to create it yourself.  You could just make a comment in your issue, tagging a coordinator therein, which will trigger the discussion.
 1. Once the appropiate page exists, you can start writing the relevant information either directly into the repository on the webpage or (preferably) on your own, local github area.  
-   * If working locally, feel free to test it first following the [local testing](#test-locally) instructions below and, when ready, [deploy](#deploy) it automatically.  Please [close the issue](https://help.github.com/en/enterprise/2.16/user/github/managing-your-work-on-github/closing-issues-using-keywords#closing-multiple-issues) when done.
+   * If working locally, feel free to test it first following the [local testing](#test-locally) instructions below.
+   * Make sure to check for trailing white spaces.  A simple way to check is by using the `git diff --check` command.
+   * When ready, push to to the master branch to trigger the automatic [deployment](#deploy).
+   * Please [close the issue](https://help.github.com/en/enterprise/2.16/user/github/managing-your-work-on-github/closing-issues-using-keywords#closing-multiple-issues) when done.
 1. The page you are creating should, in most cases, be accompanied by a workshop tutorial lesson or exercise.  Ideally, the issue the page is addressing should point (if necessary) to the corresponding issue in the [cms-opendata-workshop](https://github.com/cms-opendata-workshop) organization.
 
 
