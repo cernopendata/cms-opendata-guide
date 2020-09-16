@@ -1,9 +1,27 @@
 # CMS Open Data Guide
 
-All you want to know!
+!!! Warning
+    This page is under construction
 
-[CERN Open Data Portal](http://opendata.cern.ch/)
+Welcome to the official guide for CMS open data.  This page is still under construction.  We will appreciate your feedback and/or your help building this guide.
 
 ## How to use this site
 
-Hi everyone! This is a test.
+This site is thought as a navigation aid.  The CMS collaboration has built an extensive amount of documentation over the years.  However, given the nature of our rapidly evolving research activities, this documentation is usually scattered around, which makes it difficult to navigate.  The main goal of this guide, therefore, is to facilitate the usage of CMS open/legacy data by providing a structured set of instructions that agglutinate those pieces of information already available in other sites.  In this sense, we do not pretend to copy every little piece of information and/or code, but to help you get to it.
+
+For CMS open data the three main sources of documentation/information are:
+
+- The CMS public [Twiki pages](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WebHome).  Particularly the [workbook](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBook) and the [software guide](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuide) (which is deprecated after Run 1)
+
+    !!! Note
+        When accessing the CMS twiki pages we will usually point you to the historical documentation, i.e., to an earlier revision of the page, contemporary with Run 1 (our latest release of open data).  One can access this historical archive by going to the bottom of any twiki page and clicking on **History**.
+
+- The [CERN CMS Open Portal](http://opendata.cern.ch/search?experiment=CMS) pages.  This portal is not exactly meant to archive documentation.  It is mainly a repository for our open data.  However, it does host important information that is not so easy to find.  This guide will point you to the right pages.
+
+- The [CMSSW code](https://github.com/cms-sw/cmssw).  Although less conventional, exploring the CMSSW code could be a really good source of information.  For instance, having hundreds of trigger bits, if the information from a specific module used in a specific trigger (with which data was taken) was needed, it would be impossible to document that explicitly in some guide. Instead, one can explore the code and easily find out the needed information. We will try to show you how it is done.
+
+## How to contribute or contact us
+
+Please follow [these](https://github.com/cernopendata/cms-opendata-guide) instructions if you would like to contribute.
+
+If you find a bugs or have a suggestions or recommendation, please fill out an [issue](https://github.com/cernopendata/cms-opendata-guide) or [contact us](cms-data-preservation@cern.ch).
