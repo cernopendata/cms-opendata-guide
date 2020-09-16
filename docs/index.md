@@ -3,11 +3,15 @@
 !!! Warning
     This page is under construction
 
-Welcome to the official guide for CMS open data.  This page is still under construction.  We will appreciate your feedback and/or your help building this guide.
+Welcome to the official guide for CMS open data.  This page is still under construction.  We appreciate your feedback and/or your help building this guide.
 
 ## How to use this site
 
-This site is thought as a navigation aid.  The CMS collaboration has built an extensive amount of documentation over the years.  However, given the nature of our rapidly evolving research activities, this documentation is usually scattered around, which makes it difficult to navigate.  The main goal of this guide, therefore, is to facilitate the usage of CMS open/legacy data by providing a structured set of instructions that agglutinate those pieces of information already available in other sites.  In this sense, we do not pretend to copy every little piece of information and/or code, but to help you get to it.
+There are three main tabs to help you navigate the site.  It starts with the **Computing Tools** most likely needed to deal with CMS open data.  Then, there is a little review of **CMSSW**, which is the software used by CMS.  Finally the **Analysis** section guides you through the different steps (in the most general order) that you need to follow for performing a particle physics analysis with CMS open data.
+
+## The site's philosophy
+
+This site is thought as a navigation aid.  The CMS collaboration has built an extensive amount of documentation over the years.  However, given the nature of our rapidly evolving research activities, this documentation is usually scattered around, which makes it difficult to navigate.  The main goal of this guide, therefore, is to facilitate the usage of CMS open/legacy data by providing a structured set of instructions that agglutinate those pieces of information already available in other sites.  In this sense, we do not pretend to copy every little piece of information and/or code, but to help you get to it and find your way around it.
 
 For CMS open data the three main sources of documentation/information are:
 
@@ -24,4 +28,4 @@ For CMS open data the three main sources of documentation/information are:
 
 Please follow [these](https://github.com/cernopendata/cms-opendata-guide) instructions if you would like to contribute.
 
-If you find a bugs or have a suggestions or recommendation, please fill out an [issue](https://github.com/cernopendata/cms-opendata-guide) or [contact us](cms-data-preservation@cern.ch).
+If you find bugs or have suggestions or recommendations to improve this guide, please fill out an [issue](https://github.com/cernopendata/cms-opendata-guide/issues) or [contact us](mailto:cms-data-preservation@cern.ch).
