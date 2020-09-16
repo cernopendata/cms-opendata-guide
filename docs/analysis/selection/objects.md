@@ -3,8 +3,6 @@
 !!! Warning
     This page is under construction
 
-
-
 The CMS is a giant detector that acts like a camera that "photographs" particle collisions, allowing us to interpret their nature.
 
 Certainly we cannot directly observe all the particles created in the collisions because some of them decay very quickly or simply do not interact with our detector.  However, we can infer their presence.  If they decay to other stable particles and interact with the apparatus, they leave signals in the CMS subdetectors. These signals are used to "reconstruct" the decay products; we call these "physics objects".  These objects could be electrons, muons, jets, etc., but also lower level objects like tracks.  For the current releases of open data, we store them in ROOT files following the EDM data model in AOD format.
@@ -25,8 +23,6 @@ In addition to this base class, sometimes it is necessary to invoke other auxili
 In this list we point to different pages that can be used to explore the collections of reconstructed objects and its associated CMSSW classes.
 
 ### Electrons
-
-
 
 ### Photons
 
