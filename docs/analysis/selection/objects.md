@@ -58,6 +58,7 @@ iEvent.getByLabel("muonsFromCosmics", mymuons);
 ~~~
 
 ### From configuration
+
 Alternatively, it would be also possible to retrieve the InputTag name from [configuration](../../../cmssw/cmsswconfigure).  In that case, in your configuration file you would need something like:
 
 ~~~ python
