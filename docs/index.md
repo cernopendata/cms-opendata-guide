@@ -15,10 +15,10 @@ This site is thought as a navigation aid.  The CMS collaboration has built an ex
 
 For CMS open data the three main sources of documentation/information are:
 
-- The CMS public [Twiki pages](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WebHome).  Particularly the [workbook](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBook) and the [software guide](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuide) (which is deprecated after Run 1)
+- The CMS public [Twiki pages](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WebHome).  Particularly the [workbook](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBook) and the [software guide](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuide)
 
     !!! Note
-        When accessing the CMS twiki pages we will usually point you to the historical documentation, i.e., to an earlier revision of the page, contemporary with Run 1 (our latest release of open data).  One can access this historical archive by going to the bottom of any twiki page and clicking on **History**.
+        When accessing the CMS twiki pages we will usually point you to the most recent page.  However, historical Twiki documentation, i.e., earlier revision of the pages, may provide more accurate information for open data that is already a few years old. One can access this historical archive by going to the bottom of any Twiki page, clicking on **History** and exploring the revisions closer to the open data release year.
 
 - The [CERN CMS Open Portal](http://opendata.cern.ch/search?experiment=CMS) pages.  This portal is not exactly meant to archive documentation.  It is mainly a repository for our open data.  However, it does host important information that is not so easy to find.  This guide will point you to the right pages.
 
