@@ -15,7 +15,7 @@ In the [CERN Open Portal](../../../tools/cernportal/) site one can find a more d
 
 As one can see in those guides, these physical objects are usually stored in specific *collections*.  For instance, [muons](http://opendata.cern.ch/docs/cms-physics-objects-2011#muons) are most commonly obtained from the `reco::Muon` collection.  The [AOD Data Format Table](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideAodDataTable) gives a good description of the different collections (or data formats) for the AOD tier.  Unfortunately, the links for the *containers* column got broken after CMSSW was moved to Github.  Those links would have pointed us to the corresponding CMSSW C++ classes associated with those containers.  This is important because one needs to know which CMSSW class matches a given collection of objects to include the headers of those classes in the header of your analyzer code.  But let that not let us down.
 
-![](../../../images/collections.png)
+![DataFormats](../../../images/collections.png)
 
 Fortunately, the names of the collections *containers* actually match the name of its associated CMSSW classes.  These classes (data format classes) live under the [DataFormats](https://github.com/cms-sw/cmssw/tree/master/DataFormats) directory in CMSSW.  If we browse through, we find the `MuonReco` package.   In its `interface` area we find the [DataFormats/MuonReco/interface/Muon.h](https://github.com/cms-sw/cmssw/blob/master/DataFormats/MuonReco/interface/Muon.h) class header, which is the one we would need to incorporate in our analyzer.  This is corroborated by this [Muon Analysis Twiki section](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookMuonAnalysis#Available_information).
 
@@ -41,7 +41,7 @@ In the [Event methods for data access](https://twiki.cern.ch/twiki/bin/view/CMSP
 
 As indicated in that page, all Event data access methods use the `edm::Handle<T>`, where `T` is the C++ type of the requested object, to hold the result of an access.  As an example, during Run 1, the recommended method was the `getByLabel` one.  This method needed an `InputTag`.  This can also be extracted from the [AOD Data Format Table](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideAodDataTable).  The first column indicate the InputTag:
 
-![](../../../images/inputtags.png)
+![InputTags](../../../images/inputtags.png)
 
 Therefore, in the context of this muon example, in the `analyze` method of your [EDAnalyzer](../../../cmssw/cmsswanalyzers/) you should include the following lines:
 
@@ -56,6 +56,7 @@ If you required *cosmic* muons, for some reason, you would need instead:
 Handle<reco::MuonCollection> mymuons;
 iEvent.getByLabel("muonsFromCosmics", mymuons);
 ~~~
+
 ### From configuration
 Alternatively, it would be also possible to retrieve the InputTag name from [configuration](../../../cmssw/cmsswconfigure).  In that case, in your configuration file you would need something like:
 
@@ -77,8 +78,8 @@ Extract it from the ParameterSet in the constructor
 ~~~ c++
 MuonAnalyzer::MuonAnalyzer(const edm::ParameterSet& iConfig)
 {
-  //now do what ever initialization is needed
-	muonInput = iConfig.getParameter<edm::InputTag>("InputCollection");
+//now do what ever initialization is needed
+muonInput = iConfig.getParameter<edm::InputTag>("InputCollection");
 }
 ~~~
 
