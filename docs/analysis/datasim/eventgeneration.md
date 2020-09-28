@@ -9,7 +9,9 @@ Physical event [generation](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkB
 1. **Generation and Simulation:** To simulate beam collisions.
 2. **Triggers:** To simulate the effect of the detectors and electronics.
 3. **Reconstruction:** For the reconstruction of the events in the collisions.
-   
+
+What you will find here:
+
 * [Virtual machines](#virtual-machines) 
 * [Dataset name](#dataset-name)
 * [System details](#system-details)
