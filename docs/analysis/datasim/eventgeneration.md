@@ -1,12 +1,14 @@
 #  Event Generation
 <!-- MarkdownTOC depth=0 -->
 
-!!! Warning This page is under construction
+!!! Warning
+    This page is under construction
 
 Physical event [generation](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookGeneration) and detector simulation are the first steps in producing [Monte Carlo samples](http://opendata.cern.ch/docs/cms-mc-production-overview) suitable for physical analysis. Here we will teach you how to use the CMS datasets in the [CERN Open Data Portal](http://opendata.cern.ch/) and the [CMSSW](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookCMSSWFramework) machinery for the generation of events in simple steps:
+
 1. **Generation and Simulation:** To simulate beam collisions.
-1. **Triggers:** To simulate the effect of the detectors and electronics.
-1. **Reconstruction:** For the reconstruction of the events in the collisions.
+2. **Triggers:** To simulate the effect of the detectors and electronics.
+3. **Reconstruction:** For the reconstruction of the events in the collisions.
    
 * [Virtual machines](#virtual-machines) 
 * [Dataset name](#dataset-name)
