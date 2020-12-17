@@ -1,5 +1,13 @@
+# Project information
 site_name: CMS Open Data Guide
+site_description: 'CMS Open Data Guide'
+site_url: 'https://cms-opendata-guide.web.cern.ch/'
 
+# Repository
+repo_name: 'cms-opendata-guide'
+repo_url: 'https://github.com/cernopendata/cms-opendata-guide'
+
+# Structure
 nav:
     - Home: index.md
     - 'Computing Tools':
@@ -16,14 +24,15 @@ nav:
         - 'Overview': cmssw/cmsswoverview.md
         - 'Data Model': cmssw/cmsswdatamodel.md
         - 'Analyzers': cmssw/cmsswanalyzers.md
-        - 'Configure': cmssw/cmsswconfigure.md
+        - 'Configuration': cmssw/cmsswconfigure.md
         - 'Conditions Data': cmssw/cmsswconditions.md
     - 'Analysis':
         - 'Data and Simulation':
             - 'Collision Data': analysis/datasim/collisiondata.md
-            - 'Event Generation': analysis/datasim/eventgeneration.md
             - 'MC Simulations': analysis/datasim/mcsimulations.md
+            - 'Event Generation': analysis/datasim/eventgeneration.md
         - 'Selection':
+	    - 'Triggers': analysis/selection/triggers.md
             - 'Physics Objects':
 		- 'Common Tools': analysis/selection/objects/tools.md
 		- 'Muons': analysis/selection/objects/muons.md
@@ -31,12 +40,12 @@ nav:
 		- 'Jets': analysis/selection/objects/jets.md
 		- 'Missing ET': analysis/selection/objects/met.md
             - 'Physics Object ID': analysis/selection/objectid.md
-            - 'Triggers': analysis/selection/triggers.md
-        - 'Luminosity': analysis/luminosity.md
+        - 'Luminosity':
+            - 'Luminosity': analysis/luminosity/lumi.md
         - 'Backgrounds':
             - 'Techniques': analysis/backgrounds/techniques.md
             - 'QCD Estimation': analysis/backgrounds/qcdestimation.md
-            - 'Upper-limit Calculations': analysis/interpretation/limits.md
+
         - 'Systematics':
             - 'Luminosity Uncertainties': analysis/systematics/lumiuncertain.md
             - 'MC Uncertainty': analysis/systematics/mcuncertain.md
@@ -47,12 +56,38 @@ nav:
             - 'Pileup Uncertainty': analysis/systematics/pileupuncertain.md
         - 'Interpretation':
             - 'Statistics': analysis/interpretation/stats.md
+            - 'Upper-limit Calculations': analysis/interpretation/limits.md
     - FAQ: faq.md
     - About: about.md
 
-
+# Configuration
 theme:
-    name: windmill
+    name: material
+    palette:
+      scheme: 'default'
+      primary: 'indigo'
+      accent:
+    font:
+      text: 'Lato'
+    icon:
+      repo: 'fontawesome/brands/github'
+    logo: 'images/cmslogo.png'
+    favicon: 'images/favicon.ico'
 
+# Customization
+extra_css:
+  - stylesheets/extra.css
+
+# Extensions
 markdown_extensions:
     - admonition
+    - codehilite:
+        guess_lang: false
+    - toc:
+        permalink: true
+
+# Plugins
+plugins:
+  - search
+  - awesome-pages:
+      collapse_single_pages: false

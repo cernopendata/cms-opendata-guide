@@ -1,0 +1,8 @@
+{
+  "commands-show-output": false,
+  "code-block-style": false,
+  "line-length": false,
+  "no-emphasis-as-heading": false,
+  "no-trailing-punctuation": false,
+  "ul-indent": false
+}
