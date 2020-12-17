@@ -24,8 +24,13 @@ nav:
             - 'Event Generation': analysis/datasim/eventgeneration.md
             - 'MC Simulations': analysis/datasim/mcsimulations.md
         - 'Selection':
-            - 'Objects': analysis/selection/objects.md
-            - 'Object ID': analysis/selection/objectid.md
+            - 'Physics Objects':
+		- 'Common Tools': analysis/selection/objects/tools.md
+		- 'Muons': analysis/selection/objects/muons.md
+		- 'Electrons and Photons': analysis/selection/objects/egamma.md
+		- 'Jets': analysis/selection/objects/jets.md
+		- 'Missing ET': analysis/selection/objects/met.md
+            - 'Physics Object ID': analysis/selection/objectid.md
             - 'Triggers': analysis/selection/triggers.md
         - 'Luminosity': analysis/luminosity.md
         - 'Backgrounds':
@@ -35,7 +40,10 @@ nav:
         - 'Systematics':
             - 'Luminosity Uncertainties': analysis/systematics/lumiuncertain.md
             - 'MC Uncertainty': analysis/systematics/mcuncertain.md
-            - 'Object Uncertainty': analysis/systematics/objectsuncertain.md
+            - 'Physics Object Uncertainty':
+	      	 - 'Lepton/Photon uncertainties': analysis/systematics/objectsuncertain/leptonuncertain.md
+	      	 - 'Jet/MET uncertainties': analysis/systematics/objectsuncertain/jetmetuncertain.md
+	      	 - 'Tagging uncertainties': analysis/systematics/objectsuncertain/btaguncertain.md
             - 'Pileup Uncertainty': analysis/systematics/pileupuncertain.md
         - 'Interpretation':
             - 'Statistics': analysis/interpretation/stats.md
