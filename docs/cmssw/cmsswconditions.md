@@ -12,7 +12,7 @@ However, access to the condition database is necessary, for example, for jet ene
 
 Note that when you need to access the condition database, the first time you run the job on the CMS Open Data VM, it will download the condition data from the `/cvmfs` area. It will take time (an example run of a 10 Mbps line took 45 mins), but it will only happen once as the files will be cached on your VM. The job will not produce any output during this time, but you can check the ongoing processes with the command 'top' and you can monitor the progress of reading the condition data to the local cache with the command 'df'.
 
-**Collision data and Monte Carlo data sets can be found at [http://opendata.cern.ch/docs/cms-guide-for-condition-database](http://opendata.cern.ch/docs/cms-guide-for-condition-database) for years 2010, 2011 and 2012.** 
+**Collision data and Monte Carlo data sets can be found at [http://opendata.cern.ch/docs/cms-guide-for-condition-database](http://opendata.cern.ch/docs/cms-guide-for-condition-database) for years 2010, 2011 and 2012.**
 
 !!! Warning
     This page is under construction
