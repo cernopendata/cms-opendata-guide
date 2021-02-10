@@ -6,18 +6,18 @@ In software terms, an Event starts as a collection of the RAW data from a detect
 
 More and detailed information can be found [here](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookCMSSWFramework#AboutEvents).
 
-#### The CMS Data Hierarchy
+## The CMS Data Hierarchy
+
 CMS Data is arranged into a hierarchy of data tiers. Each physics event is written into each data tier, where the tiers each contain different levels of information about the event. The different tiers each have different uses. The three main data tiers written in CMS are:
+
 1. RAW: full event information from the Tier-0 (i.e. from CERN), containing 'raw' detector information (detector element hits, etc)
    - RAW is not used directly for analysis
 
 2. RECO ("RECOnstructed data"): the output from first-pass processing by the Tier-0. This layer contains reconstructed physics objects, but it's still very detailed.
-    - RECO can be used for analysis, but is too big for frequent or heavy use when CMS has collected a substantial data sample.
-    - [RECO Data Format Table](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideRecoDataTable)
+   - RECO can be used for analysis, but is too big for frequent or heavy use when CMS has collected a substantial data sample.
+   - [RECO Data Format Table](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideRecoDataTable)
 3. AOD ("Analysis Object Data"): this is a "distilled" version of the RECO event information, and is expected to be used for most analyses.
    - AOD provides a trade-off between event size and complexity of the available information to optimize flexibility and speed for analyses.
-    - [AOD Data Format Table](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideAodDataTable)
+   - [AOD Data Format Table](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideAodDataTable)
 
 The data tiers are described in more detail in a dedicated WorkBook chapter on [Data Formats and Tiers](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookDataFormats).
-
-
