@@ -33,7 +33,7 @@ nav:
             - 'Event Generation': analysis/datasim/eventgeneration.md
         - 'Selection':
 	    - 'Triggers': analysis/selection/triggers.md
-            - 'Physics Objects':
+            - 'Physics Objects': analysis/selection/objects.md
 		- 'Common Tools': analysis/selection/objects/tools.md
 		- 'Muons': analysis/selection/objects/muons.md
 		- 'Electrons and Photons': analysis/selection/objects/egamma.md
