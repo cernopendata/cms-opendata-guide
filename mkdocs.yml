@@ -49,6 +49,10 @@ nav:
         - 'Interpretation':
             - 'Statistics': analysis/interpretation/stats.md
             - 'Upper-limit Calculations': analysis/interpretation/limits.md
+        - 'Tag and Probe':
+            - 'Concept': analysis/tagandprobe/concept.md
+            - 'Signal extraction': analysis/tagandprobe/signalextraction.md
+            - 'CMS efficiency': analysis/tagandprobe/cmseficiency.md
     - FAQ: faq.md
     - About: about.md
 
