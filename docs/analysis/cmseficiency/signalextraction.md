@@ -13,15 +13,15 @@ The sideband subtraction method involves choosing sideband and signal regions in
 
 For each event category (i.e. Pass and All), and for a given variable of interest (e.g., the probe pT), two distributions are obtained, one for each region (Signal and Sideband). In order to obtain the variable distribution for the signal only, we proceed by subtracting the Background distribution (Sideband region) from the Signal+Background one (Signal region):
 
-<img width="440px" src="/images/analysis/cmsefficiency/subtraction.svg" alt="Sideband Subtraction equation">
+<img width="440px" src="../../../images/analysis/cmsefficiency/subtraction.svg" alt="Sideband Subtraction equation">
 
 Where the normalization α factor quantifies the quantity of background present in the signal region:
 
-<img width="450px" src="/images/analysis/cmsefficiency/alpha.svg" alt="Alpha factor equation">
+<img width="450px" src="../../../images/analysis/cmsefficiency/alpha.svg" alt="Alpha factor equation">
 
 And for the uncertainty:
 
-<img width="380px" src="/images/analysis/cmsefficiency/subtraction_error.svg" alt="Sideband Subtraction errors equation">
+<img width="380px" src="../../../images/analysis/cmsefficiency/subtraction_error.svg" alt="Sideband Subtraction errors equation">
 
 ## Fitting method
 
