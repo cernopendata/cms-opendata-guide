@@ -35,9 +35,9 @@ nav:
             - 'Triggers': analysis/selection/triggers.md
             - 'Physics Objects': analysis/selection/objects.md
             - 'Physics Objects ID': analysis/selection/objectid.md
-            - 'Efficiency ID studies':
-                - 'Tag and Probe': analysis/selection/efficiencyidstudies/tagandprobe.md
-                - 'Signal extraction': analysis/selection/efficiencyidstudies/signalextraction.md
+            - 'ID Efficiency studies':
+                - 'Tag and Probe': analysis/selection/idefficiencystudies/tagandprobe.md
+                - 'Signal extraction': analysis/selection/idefficiencystudies/signalextraction.md
         - 'Luminosity':
             - 'Luminosity': analysis/luminosity/lumi.md
         - 'Backgrounds':
