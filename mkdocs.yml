@@ -35,6 +35,9 @@ nav:
             - 'Triggers': analysis/selection/triggers.md
             - 'Physics Objects': analysis/selection/objects.md
             - 'Physics Objects ID': analysis/selection/objectid.md
+            - 'Efficiency ID studies':
+                - 'Tag and Probe': analysis/selection/efficiencyidstudies/tagandprobe.md
+                - 'Signal extraction': analysis/selection/efficiencyidstudies/signalextraction.md
         - 'Luminosity':
             - 'Luminosity': analysis/luminosity/lumi.md
         - 'Backgrounds':
@@ -49,9 +52,6 @@ nav:
         - 'Interpretation':
             - 'Statistics': analysis/interpretation/stats.md
             - 'Upper-limit Calculations': analysis/interpretation/limits.md
-        - 'CMS efficiency':
-            - 'Tag and Probe': analysis/cmseficiency/tagandprobe.md
-            - 'Signal extraction': analysis/cmseficiency/signalextraction.md
     - FAQ: faq.md
     - About: about.md
 
