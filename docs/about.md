@@ -10,6 +10,7 @@ This is the offcial guide for CMS open data.  All CMS instructional material is 
 - Tibor Šimko
 - Marco Vidal García
 - Audrius Mecionis
+- Allan Jales
 
 ## Contact
 
