@@ -9,7 +9,7 @@ Detector reconstruction efficiencies are calculated using signal muons, that is,
 
 The sideband subtraction method involves choosing sideband and signal regions in invariant mass distribution for each tag+probe pair. The signal region is selected by finding the ressonance position and defining a region around it. While the signal region contains both signal and background, the sideband region is chosen such as to have only background, with a distance from signal region. A example of those regions selection can be seen below for the J/psi ressonance.
 
-![Efficiency equation](/images/analysis/cmsefficiency/InvariantMass_Jpsi_All_region.svg)
+![Efficiency equation](../../../../images/analysis/cmsefficiency/InvariantMass_Jpsi_All_region.svg)
 
 For each event category (i.e. Pass and All), and for a given variable of interest (e.g., the probe pT), two distributions are obtained, one for each region (Signal and Sideband). In order to obtain the variable distribution for the signal only, we proceed by subtracting the Background distribution (Sideband region) from the Signal+Background one (Signal region):
 
