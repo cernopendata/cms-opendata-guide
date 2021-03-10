@@ -29,4 +29,4 @@ In this method, the signal is extracted not by histogram manipulation but by lik
 
 The fit for each bin allows to statistically discriminate between signal and background. In particular, the fit yields the number of signal events. The efficiency is finally obtained by simply forming the ratio of the signal yield from the fit to the *passing* category by the signal yield from the fit of the inclusive *all* category. This approach is illustrated below.
 
-![Efficiency equation](/images/analysis/cmsefficiency/fitting_method_large.png)
+![Efficiency equation](../../../../images/analysis/cmsefficiency/fitting_method_large.png)
