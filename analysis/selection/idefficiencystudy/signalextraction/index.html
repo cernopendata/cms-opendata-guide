@@ -11,14 +11,14 @@
       
       
       
-        <link rel="canonical" href="https://cms-opendata-guide.web.cern.ch/analysis/selection/idefficiencystudies/tagandprobe/">
+        <link rel="canonical" href="https://cms-opendata-guide.web.cern.ch/analysis/selection/idefficiencystudy/signalextraction/">
       
       <link rel="shortcut icon" href="../../../../images/favicon.ico">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.5">
     
     
       
-        <title>Tag and Probe - CMS Open Data Guide</title>
+        <title>Signal extraction - CMS Open Data Guide</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tag-and-probe" class="md-skip">
+        <a href="#signal-extraction" class="md-skip">
           Skip to content
         </a>
       
@@ -99,7 +99,7 @@
         <div class="md-header-nav__topic">
           <span class="md-ellipsis">
             
-              Tag and Probe
+              Signal extraction
             
           </span>
         </div>
@@ -609,16 +609,28 @@
         <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2-4" type="checkbox" id="nav-4-2-4" checked>
       
       <label class="md-nav__link" for="nav-4-2-4">
-        ID Efficiency studies
+        ID Efficiency study
         <span class="md-nav__icon md-icon"></span>
       </label>
-      <nav class="md-nav" aria-label="ID Efficiency studies" data-md-level="3">
+      <nav class="md-nav" aria-label="ID Efficiency study" data-md-level="3">
         <label class="md-nav__title" for="nav-4-2-4">
           <span class="md-nav__icon md-icon"></span>
-          ID Efficiency studies
+          ID Efficiency study
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tagandprobe/" class="md-nav__link">
+        Tag and Probe
+      </a>
+    </li>
+  
+
           
             
   
@@ -634,12 +646,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Tag and Probe
+          Signal extraction
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Tag and Probe
+        Signal extraction
       </a>
       
         
@@ -656,22 +668,15 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#tag-and-probe-method" class="md-nav__link">
-    Tag and Probe method
+  <a href="#sideband-subtraction-method" class="md-nav__link">
+    Sideband subtraction method
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#cms-efficiency" class="md-nav__link">
-    CMS Efficiency
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cms-muon-identification-and-reconstruction" class="md-nav__link">
-    CMS Muon identification and reconstruction
+  <a href="#fitting-method" class="md-nav__link">
+    Fitting method
   </a>
   
 </li>
@@ -680,18 +685,6 @@
   
 </nav>
       
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../signalextraction/" class="md-nav__link">
-        Signal extraction
-      </a>
     </li>
   
 
@@ -991,22 +984,15 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#tag-and-probe-method" class="md-nav__link">
-    Tag and Probe method
+  <a href="#sideband-subtraction-method" class="md-nav__link">
+    Sideband subtraction method
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#cms-efficiency" class="md-nav__link">
-    CMS Efficiency
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cms-muon-identification-and-reconstruction" class="md-nav__link">
-    CMS Muon identification and reconstruction
+  <a href="#fitting-method" class="md-nav__link">
+    Fitting method
   </a>
   
 </li>
@@ -1023,47 +1009,30 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/cernopendata/cms-opendata-guide/edit/master/docs/analysis/selection/idefficiencystudies/tagandprobe.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/cernopendata/cms-opendata-guide/edit/master/docs/analysis/selection/idefficiencystudy/signalextraction.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="tag-and-probe">Tag and Probe<a class="headerlink" href="#tag-and-probe" title="Permanent link">&para;</a></h1>
+                <h1 id="signal-extraction">Signal Extraction<a class="headerlink" href="#signal-extraction" title="Permanent link">&para;</a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>This page is under construction</p>
 </div>
-<p>The <strong>Tag and Probe</strong> method is an experimental procedure commonly used in particle physics that allows to measure a process’ efficiency directly from data. The procedure provides an unbiased sample of probe objects that can be then used to measure the efficiency of a particular selection criteria.</p>
-<h2 id="tag-and-probe-method">Tag and Probe method<a class="headerlink" href="#tag-and-probe-method" title="Permanent link">&para;</a></h2>
-<p>This method is a data-driven technique and it is based on decays of known ressonances in pair of particles. The decaying muons are labeled according to the following criteria:</p>
-<ul>
-<li><strong>Tag muon</strong>: well identified, triggered muon (tight selection criteria).</li>
-<li><strong>Probe muon</strong>: unbiased set of muon candidates (very loose selection criteria), either passing or failing the criteria for which the eciency is to be measured.</li>
-</ul>
-<p>Tag muon are employed to trigger the presence of a resonance decay while probe muons, paired to tag muons, will be used for getting efficiency due its' unbiased characteristic.</p>
-<h2 id="cms-efficiency">CMS Efficiency<a class="headerlink" href="#cms-efficiency" title="Permanent link">&para;</a></h2>
-<p>The efficiency will be given by the fraction of probe muons that pass a given criteria (in this case, the <a href="#cms-muon-identification-and-reconstruction">Muon ID</a> which is explained below):</p>
-<p><img width="300px" src="../../../../images/analysis/cmsefficiency/efficiency.svg" alt="Efficiency equation"></p>
-<p>The denominator corresponds to the number of resonance candidates (tag+probe pairs) reconstructed in the dataset. The numerator corresponds to the subset for which the probe passes the criteria.</p>
-<h2 id="cms-muon-identification-and-reconstruction">CMS Muon identification and reconstruction<a class="headerlink" href="#cms-muon-identification-and-reconstruction" title="Permanent link">&para;</a></h2>
-<p>In the standard CMS reconstruction for proton-proton collisions, tracks are first reconstructed independently in the inner tracker and in the muon system. Based on these objects, three reconstruction approaches are used:</p>
-<ul>
-<li>
-<p><strong>Tracker Muon</strong> reconstruction:  all tracker tracks with pT &gt; 0.5 GeV/c and total momentum p &gt; 2.5 GeV/c are considered as possible muon candidates, and are extrapolated to the muon system taking into account the magnetic field;</p>
-</li>
-<li>
-<p><strong>Standalone Muon</strong> reconstruction: all tracks of the segments reconstructed in the muon chambers (performed using segments and hits from Drift Tubes in the barrel region, Cathode Strip Chambers and Resistive Plates Chambers in the endcaps) are used to generate “seeds” consisting of position and direction vectors and an estimate of the muon transverse momentum;</p>
-</li>
-<li>
-<p><strong>Global Muon</strong> reconstruction: starts from a Standalone reconstructed muon track and extrapolates its trajectory from the innermost muon station through the coil and both calorimeters to the outer tracker surface.</p>
-</li>
-</ul>
-<p>These are illustrated below:</p>
-<p><img alt="Muons identification" src="/images/analysis/cmsefficiency/muons_id.png" /></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>You can find more details concerning CMS Muon Identification and reconstruction in this paper <a href="https://doi.org/10.1088/1748-0221/7/10/P10002">JINST 7 (2012) P10002</a>.</p>
-</div>
+<p>Detector reconstruction efficiencies are calculated using signal muons, that is, only true candidates decaying to dimuons. This is achieved in this study by extracting signal from  the data by the usage of some methods. Here it is presented two: sideband subtraction and fitting.</p>
+<h2 id="sideband-subtraction-method">Sideband subtraction method<a class="headerlink" href="#sideband-subtraction-method" title="Permanent link">&para;</a></h2>
+<p>The sideband subtraction method involves choosing sideband and signal regions in invariant mass distribution for each tag+probe pair. The signal region is selected by finding the ressonance position and defining a region around it. While the signal region contains both signal and background, the sideband region is chosen such as to have only background, with a distance from signal region. A example of those regions selection can be seen below for the J/psi ressonance.</p>
+<p><img alt="Efficiency equation" src="../../../../images/analysis/cmsefficiency/InvariantMass_Jpsi_All_region.svg" /></p>
+<p>For each event category (i.e. Pass and All), and for a given variable of interest (e.g., the probe pT), two distributions are obtained, one for each region (Signal and Sideband). In order to obtain the variable distribution for the signal only, we proceed by subtracting the Background distribution (Sideband region) from the Signal+Background one (Signal region):</p>
+<p><img width="440px" src="../../../../images/analysis/cmsefficiency/subtraction.svg" alt="Sideband Subtraction equation"></p>
+<p>Where the normalization α factor quantifies the quantity of background present in the signal region:</p>
+<p><img width="450px" src="../../../../images/analysis/cmsefficiency/alpha.svg" alt="Alpha factor equation"></p>
+<p>And for the uncertainty:</p>
+<p><img width="380px" src="../../../../images/analysis/cmsefficiency/subtraction_error.svg" alt="Sideband Subtraction errors equation"></p>
+<h2 id="fitting-method">Fitting method<a class="headerlink" href="#fitting-method" title="Permanent link">&para;</a></h2>
+<p>In this method, the signal is extracted not by histogram manipulation but by likelihood fitting. The procedure is applied after splitting the data in sub-samples, corresponding to bins of the kinematic variable of interest of the probe objects. As such, the efficiency will be measured as a function of that variable. Each sub-sample contains signal and background events; the signal is accessed by fitting the invariant mass spectra</p>
+<p>The fit for each bin allows to statistically discriminate between signal and background. In particular, the fit yields the number of signal events. The efficiency is finally obtained by simply forming the ratio of the signal yield from the fit to the <em>passing</em> category by the signal yield from the fit of the inclusive <em>all</em> category. This approach is illustrated below.</p>
+<p><img alt="Efficiency equation" src="../../../../images/analysis/cmsefficiency/fitting_method_large.png" /></p>
                 
               
               
@@ -1082,7 +1051,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../../objectid/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../tagandprobe/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -1091,19 +1060,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Physics Objects ID
+                Tag and Probe
               </div>
             </div>
           </a>
         
         
-          <a href="../signalextraction/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../../luminosity/lumi/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Signal extraction
+                Luminosity
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
