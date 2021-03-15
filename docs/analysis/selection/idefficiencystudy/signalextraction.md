@@ -1,8 +1,5 @@
 # Signal Extraction
 
-!!! Warning
-    This page is under construction
-
 Detector reconstruction efficiencies are calculated using signal muons, that is, only true candidates decaying to dimuons. This is achieved in this study by extracting signal from  the data by the usage of some methods. Here it is presented two: sideband subtraction and fitting.
 
 ## Sideband subtraction method
