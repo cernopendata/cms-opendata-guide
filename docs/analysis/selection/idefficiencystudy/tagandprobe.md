@@ -31,7 +31,7 @@ In the standard CMS reconstruction for proton-proton collisions, tracks are firs
 
 These are illustrated below:
 
-![Muons identification](/images/analysis/cmsefficiency/muons_id.png)
+![Muons identification](../../../../images/analysis/cmsefficiency/muons_id.png)
 
 !!! Note
 	You can find more details concerning CMS Muon Identification and reconstruction in this paper [JINST 7 (2012) P10002](https://doi.org/10.1088/1748-0221/7/10/P10002).
