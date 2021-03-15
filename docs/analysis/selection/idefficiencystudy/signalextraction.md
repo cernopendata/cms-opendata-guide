@@ -23,6 +23,14 @@ And for the uncertainty:
 
 <img width="380px" src="../../../../images/analysis/cmsefficiency/subtraction_error.svg" alt="Sideband Subtraction errors equation">
 
+Applying those equations we get histograms like this:
+
+![Tracker Muon Probe distribution](../../../../images/analysis/cmsefficiency/Tracker_Probe_Pt_All.svg)
+
+* Solid blue line (Total) = particles in signal region;
+* Dashed blue line (Background) = particles in sideband regions;
+* Solid magenta line (signal) = signal histogram subtracted.
+
 ## Fitting method
 
 In this method, the signal is extracted not by histogram manipulation but by likelihood fitting. The procedure is applied after splitting the data in sub-samples, corresponding to bins of the kinematic variable of interest of the probe objects. As such, the efficiency will be measured as a function of that variable. Each sub-sample contains signal and background events; the signal is accessed by fitting the invariant mass spectra

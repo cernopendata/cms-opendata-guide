@@ -38,6 +38,16 @@ nav:
             - 'ID Efficiency study':
                 - 'Tag and Probe': analysis/selection/idefficiencystudy/tagandprobe.md
                 - 'Signal extraction': analysis/selection/idefficiencystudy/signalextraction.md
+                - 'Reference Guide':
+                    - 'macro': analysis/selection/idefficiencystudy/referenceguide/macro.md
+                    - 'FitFunction class': analysis/selection/idefficiencystudy/referenceguide/FitFunctions.md
+                    - 'SidebandSubtraction class': analysis/selection/idefficiencystudy/referenceguide/SidebandSubtraction.md
+                    - 'InvariantMass class': analysis/selection/idefficiencystudy/referenceguide/InvariantMass.md
+                    - 'MassValues struct': analysis/selection/idefficiencystudy/referenceguide/MassValues.md
+                    - 'Type class': analysis/selection/idefficiencystudy/referenceguide/Type.md
+                    - 'TagProbe class': analysis/selection/idefficiencystudy/referenceguide/TagProbe.md
+                    - 'PtEtaPhi class': analysis/selection/idefficiencystudy/referenceguide/PtEtaPhi.md
+                    - 'PassingFailing class': analysis/selection/idefficiencystudy/referenceguide/PassingFailing.md
         - 'Luminosity':
             - 'Luminosity': analysis/luminosity/lumi.md
         - 'Backgrounds':
