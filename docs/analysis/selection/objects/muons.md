@@ -5,7 +5,13 @@
 The [objects page](../../objects.md) shows you how to access muon collections in CMS, and which header files should be included in your C++ code in order to access all of their class information.
 
 CMS uses the phrase "physics objects" to speak broadly about particles that can be identified via
-signals from the CMS detector. In this page, we will be exploring the muon object. 
+signals from the CMS detector. In this page, we will be exploring the muon object. The collection of reco::Muon objects or muons serves as the primary collection for accessing muon-related information in CMSSW. It contains the information on various types of muons:
+
+*Standalone Muons:The segments reconstructed in the muon chambers of the detector are used to generate "seeds" consisting of position and direction vectors as well as information about the muon transverse momentum. The initial estimates are used as seeds for the track hits in the muon system. This results in reco::Track objects reconstructed in the muon spectrometer known as standalone muons. 
+*Global Muons: For each standalone muon track, a search for tracks matching it among those reconstructed in the inner tracking system us performed and the best matching tracker track is selected. This results in reco::Track objects known as global muons.
+*Tracker Muons: All tracker tracks are considered to be potential muon candidates and in checking this hypothesis by looking for compatible signatures in the calorimeters and in the muon system, tracker tracks are identified and are known as tracker muons.
+*RPC Muons: A match is sought between the extrapolated inner track and hits on the RPC (resistive plate chambers) muon detectors.
+*Calo Muons: A subset of all tracker tracks reconstructed in the event which includes tracks with energy deposition in the calorimeters compatible with those of a minimum-ionizing particle.
 
 ## Setup
 The [PhysObjectExtractorTool](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool)
@@ -30,7 +36,7 @@ In the header of this code, the definitions of the muon classes are included:
 ~~~ 
 
 
-The MuonAnalyzer tool is an EDAnalyzer.
+A full description of the reco::Muon class can be found in Muon.h. The MuonAnalyzer tool is an EDAnalyzer.
 The "analyzeMuons" function of an EDAnalyzer is performed once per event. Muons can be accessed like this:
 
 ~~~ c++

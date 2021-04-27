@@ -2,8 +2,7 @@
 
 The objects page (../../objects.md) shows you how to access muon collections in CMS, and which header files should be included in your C++ code in order to access all of their class information. The class information of tau leptons can similarly be accessed using the tau collections. 
 
-We will be exploring another physics object, the tau object in this page.
-
+We will be exploring another physics object, the tau object in this page. Tau are the only lepton that is heavy enough to decay hadronically. About one third of taus will decay leptonically and are reconstructed and identified in a similar way as is done for muons, but about two-third of the time time taus will decay into hadrons. 
 
 ## Setup
 The [PhysObjectExtractorTool](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool)
@@ -69,13 +68,15 @@ The values for each tau are stored into a vector which will become a branch in a
 
 ![TauTTree](../../../../images/tauttree.png)
 
+Hadronically decaying taus are identified and reconstructed with the hadrons-plus-strips (HPS) algorithm. The biggest issue that this algorithm faces is distinguishing between hadronically decaying taus and QCD multijet processes that prduce quark and gluon jets. These are often misidentified as hadronically decaying taus. To reduce the misidentification background, discriminators are used that take advantage of the lower multiplicity iof hadronically decyaing taus and narrow region in which hadronically decaying tau jets deposit energy.
+
 The CMS Tau object group relies almost entirely on pre-computed algorithms to determine the
 quality of the tau reconstruction and the decay type. Since this object is not stable and has
 several decay modes, different combinations of identification and isolation algorithms are
 used across different analyses. The TWiki page provides a large table of available algorithms.
 
 In contrast to the muon object, tau algorithm results are typically saved in the AOD files
-as their own PFTauDisciminator collections, rather than as part of the tau object class.
+as their own PFTauDiscriminator collections, rather than as part of the tau object class.
 They can be accessed like the other tau IDs which you can always find by referring to the 
 output of `edmDumpEventContent` to find the exact form of the InputTag name. 
 
