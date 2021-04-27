@@ -32,13 +32,14 @@ nav:
             - 'MC Simulations': analysis/datasim/mcsimulations.md
             - 'Event Generation': analysis/datasim/eventgeneration.md
         - 'Selection':
-	    - 'Triggers': analysis/selection/triggers.md
-            - 'Physics Objects': analysis/selection/objects.md
-		- 'Common Tools': analysis/selection/objects/tools.md
-		- 'Muons': analysis/selection/objects/muons.md
-		- 'Electrons and Photons': analysis/selection/objects/egamma.md
-		- 'Jets': analysis/selection/objects/jets.md
-		- 'Missing ET': analysis/selection/objects/met.md
+            - 'Triggers': analysis/selection/triggers.md
+            - 'Physics Objects': analysis/selection/objects.md 
+            - 'Specific Physics Objects':
+                - 'Common Tools': analysis/selection/objects/tools.md
+                - 'Muons': analysis/selection/objects/muons.md
+                - 'Electrons and Photons': analysis/selection/objects/egamma.md
+                - 'Jets': analysis/selection/objects/jets.md
+                - 'Missing ET': analysis/selection/objects/met.md
             - 'Physics Object ID': analysis/selection/objectid.md
         - 'Luminosity':
             - 'Luminosity': analysis/luminosity/lumi.md
@@ -50,9 +51,9 @@ nav:
             - 'Luminosity Uncertainties': analysis/systematics/lumiuncertain.md
             - 'MC Uncertainty': analysis/systematics/mcuncertain.md
             - 'Physics Object Uncertainty':
-	      	 - 'Lepton/Photon uncertainties': analysis/systematics/objectsuncertain/leptonuncertain.md
-	      	 - 'Jet/MET uncertainties': analysis/systematics/objectsuncertain/jetmetuncertain.md
-	      	 - 'Tagging uncertainties': analysis/systematics/objectsuncertain/btaguncertain.md
+                 - 'Lepton/Photon uncertainties': analysis/systematics/objectsuncertain/leptonuncertain.md
+                 - 'Jet/MET uncertainties': analysis/systematics/objectsuncertain/jetmetuncertain.md
+                 - 'Tagging uncertainties': analysis/systematics/objectsuncertain/btaguncertain.md
             - 'Pileup Uncertainty': analysis/systematics/pileupuncertain.md
         - 'Interpretation':
             - 'Statistics': analysis/interpretation/stats.md
