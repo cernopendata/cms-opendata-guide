@@ -4,4 +4,4 @@ All CMS open data is available through [the CERN Open Data portal](http://openda
 
 The CERN Open Data portal contains the data records, environment, software and supplementary material to enable research-level use of open data. It also includes some basic documentation and topical guides. For CMS, this Open data guide complements the information available on the portal.
 
-The access to the data records is either through streaming with the XRootD protocol or direct http download. A command-line tool [cernopendata-client](https://cernopendata-client.readthedocs.io/en/latest/) is also available for data download and inspection.
+The data records are accessed either using XRootD, which allows the data to be streamed, or through direct http download. A command-line tool [cernopendata-client](https://cernopendata-client.readthedocs.io/en/latest/) is also available for data download and inspection.
