@@ -1,0 +1,1746 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="CMS Open Data Guide">
+      
+      
+      
+      
+        <link rel="canonical" href="https://cms-opendata-guide.web.cern.ch/analysis/selection/idefficiencystudy/tutorial/03-sidebandsubtraction/">
+      
+      <link rel="shortcut icon" href="../../../../../images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.5">
+    
+    
+      
+        <title>Sideband Subtraction - CMS Open Data Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.15aa0b43.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.75751829.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700%7C&display=fallback">
+        <style>body,input{font-family:"Lato",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="none">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#signal-extraction-sideband-subtraction-method" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://cms-opendata-guide.web.cern.ch/" title="CMS Open Data Guide" class="md-header-nav__button md-logo" aria-label="CMS Open Data Guide">
+      
+  <img src="../../../../../images/cmslogo.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            CMS Open Data Guide
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Sideband Subtraction
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/cernopendata/cms-opendata-guide/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cms-opendata-guide
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://cms-opendata-guide.web.cern.ch/" title="CMS Open Data Guide" class="md-nav__button md-logo" aria-label="CMS Open Data Guide">
+      
+  <img src="../../../../../images/cmslogo.png" alt="logo">
+
+    </a>
+    CMS Open Data Guide
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/cernopendata/cms-opendata-guide/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cms-opendata-guide
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+      
+      <label class="md-nav__link" for="nav-2">
+        Computing Tools
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Computing Tools" data-md-level="1">
+        <label class="md-nav__title" for="nav-2">
+          <span class="md-nav__icon md-icon"></span>
+          Computing Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tools/cernportal/" class="md-nav__link">
+        CERN Open Data Portal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tools/cmsopendata/" class="md-nav__link">
+        CMS Open Data
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tools/cmstwiki/" class="md-nav__link">
+        CMS Twiki
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tools/unix/" class="md-nav__link">
+        UNIX
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tools/root/" class="md-nav__link">
+        ROOT
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tools/cppandpython/" class="md-nav__link">
+        C++ and Python
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tools/git/" class="md-nav__link">
+        Git
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tools/docker/" class="md-nav__link">
+        Docker
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tools/virtualmachines/" class="md-nav__link">
+        Virtual Machines
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+      
+      <label class="md-nav__link" for="nav-3">
+        CMSSW
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="CMSSW" data-md-level="1">
+        <label class="md-nav__title" for="nav-3">
+          <span class="md-nav__icon md-icon"></span>
+          CMSSW
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cmssw/cmsswoverview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cmssw/cmsswdatamodel/" class="md-nav__link">
+        Data Model
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cmssw/cmsswanalyzers/" class="md-nav__link">
+        Analyzers
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cmssw/cmsswconfigure/" class="md-nav__link">
+        Configuration
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cmssw/cmsswconditions/" class="md-nav__link">
+        Conditions Data
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+      
+      <label class="md-nav__link" for="nav-4">
+        Analysis
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Analysis" data-md-level="1">
+        <label class="md-nav__title" for="nav-4">
+          <span class="md-nav__icon md-icon"></span>
+          Analysis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1" >
+      
+      <label class="md-nav__link" for="nav-4-1">
+        Data and Simulation
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Data and Simulation" data-md-level="2">
+        <label class="md-nav__title" for="nav-4-1">
+          <span class="md-nav__icon md-icon"></span>
+          Data and Simulation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../datasim/collisiondata/" class="md-nav__link">
+        Collision Data
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../datasim/mcsimulations/" class="md-nav__link">
+        MC Simulations
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../datasim/eventgeneration/" class="md-nav__link">
+        Event Generation
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2" checked>
+      
+      <label class="md-nav__link" for="nav-4-2">
+        Selection
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Selection" data-md-level="2">
+        <label class="md-nav__title" for="nav-4-2">
+          <span class="md-nav__icon md-icon"></span>
+          Selection
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../triggers/" class="md-nav__link">
+        Triggers
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../objects/" class="md-nav__link">
+        Physics Objects
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../objectid/" class="md-nav__link">
+        Physics Objects ID
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2-4" type="checkbox" id="nav-4-2-4" checked>
+      
+      <label class="md-nav__link" for="nav-4-2-4">
+        ID Efficiency study
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="ID Efficiency study" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-2-4">
+          <span class="md-nav__icon md-icon"></span>
+          ID Efficiency study
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tagandprobe/" class="md-nav__link">
+        Tag and Probe
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../signalextraction/" class="md-nav__link">
+        Signal extraction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../efficiencytool/" class="md-nav__link">
+        Efficiency Tool
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2-4-4" type="checkbox" id="nav-4-2-4-4" >
+      
+      <label class="md-nav__link" for="nav-4-2-4-4">
+        Reference Guide (SB)
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Reference Guide (SB)" data-md-level="4">
+        <label class="md-nav__title" for="nav-4-2-4-4">
+          <span class="md-nav__icon md-icon"></span>
+          Reference Guide (SB)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sidebandreferenceguide/macro/" class="md-nav__link">
+        The Macro
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sidebandreferenceguide/FitFunctions/" class="md-nav__link">
+        FitFunction class
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sidebandreferenceguide/SidebandSubtraction/" class="md-nav__link">
+        SidebandSubtraction class
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sidebandreferenceguide/InvariantMass/" class="md-nav__link">
+        InvariantMass class
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sidebandreferenceguide/MassValues/" class="md-nav__link">
+        MassValues struct
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sidebandreferenceguide/Type/" class="md-nav__link">
+        Type class
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sidebandreferenceguide/TagProbe/" class="md-nav__link">
+        TagProbe class
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sidebandreferenceguide/PtEtaPhi/" class="md-nav__link">
+        PtEtaPhi class
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sidebandreferenceguide/PassingFailing/" class="md-nav__link">
+        PassingFailing class
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2-4-5" type="checkbox" id="nav-4-2-4-5" >
+      
+      <label class="md-nav__link" for="nav-4-2-4-5">
+        Reference Guide (Fit)
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Reference Guide (Fit)" data-md-level="4">
+        <label class="md-nav__title" for="nav-4-2-4-5">
+          <span class="md-nav__icon md-icon"></span>
+          Reference Guide (Fit)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fittingreferenceguide/readme/" class="md-nav__link">
+        Read me
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fittingreferenceguide/mainfunctions/" class="md-nav__link">
+        Main Functions
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2-4-6" type="checkbox" id="nav-4-2-4-6" checked>
+      
+      <label class="md-nav__link" for="nav-4-2-4-6">
+        Tutorial
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Tutorial" data-md-level="4">
+        <label class="md-nav__title" for="nav-4-2-4-6">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorial
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-fitting/" class="md-nav__link">
+        Fitting
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Sideband Subtraction
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Sideband Subtraction
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#signal-extraction-sideband-subtraction-method" class="md-nav__link">
+    Signal extraction: sideband subtraction method
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-files" class="md-nav__link">
+    Preparing files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-code-for-data" class="md-nav__link">
+    Preparing code for Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#editting-bins" class="md-nav__link">
+    Editting bins
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-code" class="md-nav__link">
+    Running the code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#probe-efficiency-results-for-data" class="md-nav__link">
+    Probe Efficiency results for Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-and-running-the-code-for-simulation" class="md-nav__link">
+    Preparing and running the code for simulation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-comparison/" class="md-nav__link">
+        Comparison
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" >
+      
+      <label class="md-nav__link" for="nav-4-3">
+        Luminosity
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Luminosity" data-md-level="2">
+        <label class="md-nav__title" for="nav-4-3">
+          <span class="md-nav__icon md-icon"></span>
+          Luminosity
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../luminosity/lumi/" class="md-nav__link">
+        Luminosity
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4" >
+      
+      <label class="md-nav__link" for="nav-4-4">
+        Backgrounds
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Backgrounds" data-md-level="2">
+        <label class="md-nav__title" for="nav-4-4">
+          <span class="md-nav__icon md-icon"></span>
+          Backgrounds
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../backgrounds/techniques/" class="md-nav__link">
+        Techniques
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../backgrounds/qcdestimation/" class="md-nav__link">
+        QCD Estimation
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5" >
+      
+      <label class="md-nav__link" for="nav-4-5">
+        Systematics
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Systematics" data-md-level="2">
+        <label class="md-nav__title" for="nav-4-5">
+          <span class="md-nav__icon md-icon"></span>
+          Systematics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../systematics/lumiuncertain/" class="md-nav__link">
+        Luminosity Uncertainties
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../systematics/mcuncertain/" class="md-nav__link">
+        MC Uncertainty
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../systematics/objectsuncertain/" class="md-nav__link">
+        Object Uncertainty
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../systematics/pileupuncertain/" class="md-nav__link">
+        Pileup Uncertainty
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6" >
+      
+      <label class="md-nav__link" for="nav-4-6">
+        Interpretation
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Interpretation" data-md-level="2">
+        <label class="md-nav__title" for="nav-4-6">
+          <span class="md-nav__icon md-icon"></span>
+          Interpretation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../interpretation/stats/" class="md-nav__link">
+        Statistics
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../interpretation/limits/" class="md-nav__link">
+        Upper-limit Calculations
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../about/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#signal-extraction-sideband-subtraction-method" class="md-nav__link">
+    Signal extraction: sideband subtraction method
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-files" class="md-nav__link">
+    Preparing files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-code-for-data" class="md-nav__link">
+    Preparing code for Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#editting-bins" class="md-nav__link">
+    Editting bins
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-code" class="md-nav__link">
+    Running the code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#probe-efficiency-results-for-data" class="md-nav__link">
+    Probe Efficiency results for Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-and-running-the-code-for-simulation" class="md-nav__link">
+    Preparing and running the code for simulation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/cernopendata/cms-opendata-guide/edit/master/docs/analysis/selection/idefficiencystudy/tutorial/03-sidebandsubtraction.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  <h1>Sideband Subtraction</h1>
+                
+                <h3 id="signal-extraction-sideband-subtraction-method">Signal extraction: sideband subtraction method<a class="headerlink" href="#signal-extraction-sideband-subtraction-method" title="Permanent link">&para;</a></h3>
+<p>The reconstruction efficiency is calculated using <strong>only signal muons</strong>. In order to measure the efficiency, we need a way to extract signal from the dataset. You've used the fitting method and now you'll meet the sideband subtraction method.</p>
+<p>This method consists in choosing sideband and signal regions in invariant mass distribution. The sideband regions (shaded in red in the figure) have background particles and the signal region (shared in green in the figure) has background and signal particles.</p>
+<p><img alt="Invariant Mass histogram" src="../../../../../images/analysis/cmsefficiency/tutorial/03/InvariantMass_Tracker_region.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The background corresponds to candidates that do not correspond to the decay of a genuine resonance; for example, the pair is formed by the tag muon associated to an uncorrelated track produced elsewhere in the collision; the corresponding invariant mass has thus a smooth continuous shape, that is extrapolated from the signal regions into the sideband region.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We choose only the ϒ (1S) signal for selecting the signal region; simulation information is further available for this resonance, allowing in the end for a comparison of results, between data and simulation.</p>
+</div>
+<p>For each event category (i.e. Pass and All), and for a given variable of interest (e.g., the probe pT), two distributions are obtained, one for each region (Signal and Sideband). In order to obtain the variable distribution for the signal only, we proceed by subtracting the Background distribution (Sideband region) from the Signal+Background one (Signal region):</p>
+<p><img width="440px" src="../../../../../images/analysis/cmsefficiency/tutorial/03/subtraction.svg" alt="Sideband Subtraction equation"></p>
+<p>Where the normalization α factor quantifies the quantity of background present in the signal region&gt;</p>
+<p><img width="450px" src="../../../../../images/analysis/cmsefficiency/tutorial/03/alpha.svg" alt="Alpha factor equation"></p>
+<p>And for the uncertainty:</p>
+<p><img width="380px" src="../../../../../images/analysis/cmsefficiency/tutorial/03/subtraction_error.svg" alt="Sideband Subtraction errors equation"></p>
+<p>Applying those equations we get histograms like this:</p>
+<p><img alt="Invariant Mass histogram" src="../../../../../images/analysis/cmsefficiency/tutorial/03/Tracker_Probe_Pt_Passing.png" /></p>
+<ul>
+<li>Solid blue line (Total) = particles in signal region;</li>
+<li>Dashed blue line (Background) = particles in sideband regions;</li>
+<li>Solid magenta line (signal) = signal histogram (background subtracted).</li>
+</ul>
+<p>You will see this histogram on this exercise.</p>
+<div class="admonition note">
+<p class="admonition-title">About this code</p>
+<p>More info about this code can be <a href="http://tagandprobe-documentation.web.cern.ch/tagandprobe-documentation/">found here</a>.</p>
+</div>
+<h2 id="preparing-files">Preparing files<a class="headerlink" href="#preparing-files" title="Permanent link">&para;</a></h2>
+<p>First, we need to get the code. Go to folder you have created for this lesson and on your terminal type:</p>
+<div class="highlight"><pre><span></span><code>git clone -b sideband git://github.com/allanjales/efficiency_tagandprobe
+<span class="nb">cd</span> efficiency_tagandprobe
+</code></pre></div>
+<p>To copy the ϒ dataset from real data file to your machine (requires 441 MB), type:</p>
+<div class="highlight"><pre><span></span><code>wget --load-cookies /tmp/cookies.txt <span class="s2">&quot;https://docs.google.com/uc?export=download&amp;confirm=</span><span class="k">$(</span>wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate <span class="s1">&#39;https://docs.google.com/uc?export=download&amp;id=1Fj-rrKts8jSSMdwvOnvux68ydZcKB521&#39;</span> -O- <span class="p">|</span> sed -rn <span class="s1">&#39;s/.*confirm=([0-9A-Za-z_]+).*/\1\n/p&#39;</span><span class="k">)</span><span class="s2">&amp;id=1Fj-rrKts8jSSMdwvOnvux68ydZcKB521&quot;</span> -O Run2011A_MuOnia_Upsilon.root <span class="o">&amp;&amp;</span> rm -rf /tmp/cookies.txt
+</code></pre></div>
+<p>This code downloads the file directly from Google Drive.</p>
+<p>Run this code to download the simulation ntuple for ϒ (requires 66 MB):</p>
+<div class="highlight"><pre><span></span><code>wget --load-cookies /tmp/cookies.txt <span class="s2">&quot;https://docs.google.com/uc?export=download&amp;confirm=</span><span class="k">$(</span>wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate <span class="s1">&#39;https://docs.google.com/uc?export=download&amp;id=1ZzAOOLCKmCz0Q6pVi3AAiYFGKEpP2efM&#39;</span> -O- <span class="p">|</span> sed -rn <span class="s1">&#39;s/.*confirm=([0-9A-Za-z_]+).*/\1\n/p&#39;</span><span class="k">)</span><span class="s2">&amp;id=1ZzAOOLCKmCz0Q6pVi3AAiYFGKEpP2efM&quot;</span> -O Upsilon1SToMuMu_MC_full.root <span class="o">&amp;&amp;</span> rm -rf /tmp/cookies.txt
+</code></pre></div>
+<p>Now, check if everything is ok:</p>
+<div class="highlight"><pre><span></span><code>ls
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>main  README.md  Run2011A_MuOnia_Upsilon.root  Upsilon1SToMuMu_MC_full.root
+</code></pre></div>
+<p>Your <code>efficiency_tagandprobe</code> folder should have these files:</p>
+<p><img alt="Files in efficiency_tagandprobe folder" src="../../../../../images/analysis/cmsefficiency/tutorial/03/files_sideband.png" /></p>
+<h2 id="preparing-code-for-data">Preparing code for Data<a class="headerlink" href="#preparing-code-for-data" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I will teach you to manage the files on the terminal, but you can use a graphical file explorer.</p>
+</div>
+<p>We need to edit some settings. Open <strong>settings.cpp</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> main/config
+ls
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>cuts.h  settings.cpp
+</code></pre></div>
+<p>There are different ways to open this file. You can try to run:</p>
+<div class="highlight"><pre><span></span><code>gedit settings.cpp
+</code></pre></div>
+<p>Or, if you can not use gedit, try nano:</p>
+<div class="highlight"><pre><span></span><code>nano settings.cpp
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">I do not have nano!</p>
+<p>You can try to use <strong>any text editor</strong>, but here is some commands you cant try to use to install it:</p>
+<ul>
+<li>Ubuntu/Debian: <code>sudo apt-get -y install nano</code>.</li>
+<li>RedHat/CentOS/Fedora: <code>sudo yum install nano</code>.</li>
+<li>Mac OS X: <code>nano is installed by default</code>.</li>
+</ul>
+</div>
+<p>We want to calculate <strong>efficiencies of tracker muons</strong>. With the <strong>settings.cpp</strong> file opened, make sure to let the variables like this:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//Canvas drawing</span>
+<span class="kt">bool</span> <span class="n">shouldDrawInvariantMassCanvas</span>       <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">shouldDrawInvariantMassCanvasRegion</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">shouldDrawQuantitiesCanvas</span>          <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">shouldDrawEfficiencyCanvas</span>          <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+
+<span class="c1">//Muon id analyse   </span>
+<span class="kt">bool</span> <span class="n">doTracker</span>    <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">doStandalone</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">doGlobal</span>     <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+</code></pre></div>
+<p>We want to calculate the efficiency using specific files that we downloaded. They name are <code>Run2011A_MuOnia_Upsilon.root</code> and <code>Upsilon1SToMuMu_MC_full.root</code> and are listed in <code>const char *files[]</code>. While <strong>settings.cpp</strong> is open, try to use the variable <code>int useFile</code> to run <code>Run2011A_MuOnia_Upsilon.root</code>.</p>
+<details class="example"><summary>How to do this</summary><p>Make sure <code>useFile</code> is correct:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//List of files</span>
+<span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">files</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;../data_histoall.root&quot;</span><span class="p">,</span>
+                       <span class="s">&quot;../Run2011AMuOnia_mergeNtuple.root&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span>
+                       <span class="s">&quot;../JPsiToMuMu_mergeMCNtuple.root&quot;</span><span class="p">,</span>
+                       <span class="s">&quot;../Run2011A_MuOnia_Upsilon.root&quot;</span><span class="p">,</span>
+                       <span class="s">&quot;../Upsilon1SToMuMu_MC_full.root&quot;</span><span class="p">};</span>
+
+<span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">directoriesToSave</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;../results/result/&quot;</span><span class="p">,</span>
+                                   <span class="s">&quot;../results/Jpsi Run 2011/&quot;</span><span class="p">,</span>
+                                   <span class="s">&quot;../results/Jpsi MC 2020/&quot;</span><span class="p">,</span>
+                                   <span class="s">&quot;../results/Upsilon Run 2011/&quot;</span><span class="p">,</span>
+                                   <span class="s">&quot;../results/Upsilon MC 2020/&quot;</span><span class="p">};</span>
+
+
+<span class="c1">//MAIN OPTIONS</span>
+
+<span class="c1">//Which file of files (variable above) should use</span>
+<span class="kt">int</span> <span class="n">useFile</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</code></pre></div>
+<p>It will tell which configuration the program will use. So, the macro will run with the ntuple in <code>files[useFile]</code> and the results will be stored in <code>directoriesToSave[useFile]</code>.</p>
+<p>the first three files won't be used in this execise.</p>
+</details>
+<div class="admonition note">
+<p class="admonition-title">About code</p>
+<p>Normally we need to set the variables <code>bool isMC</code> and <code>const char* resonance</code>, but at this time it is already done and set automatically for these ntuples' names.</p>
+</div>
+<h2 id="editting-bins">Editting bins<a class="headerlink" href="#editting-bins" title="Permanent link">&para;</a></h2>
+<p>The code allows to define the binning of the kinematic variable, to ensure each bin is sufficiently populated, for increased robustness. To change the binning, locate <strong>PassingFailing.h</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ../classes
+ls
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>FitFunctions.h   MassValues.h      PtEtaPhi.h             TagProbe.h
+InvariantMass.h  PassingFailing.h  SidebandSubtraction.h  Type.h
+</code></pre></div>
+<p>And then Open <strong>PassingFailing.h</strong></p>
+<div class="highlight"><pre><span></span><code>gedit PassingFailing.h
+</code></pre></div>
+<p>Search for the <code>createEfficiencyPlot(...)</code> function. You'll find something like this:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">createHistogram</span><span class="p">(</span><span class="n">TH1D</span><span class="o">*</span> <span class="o">&amp;</span><span class="n">histo</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">histoName</span><span class="p">)</span>
+<span class="p">{...}</span>
+</code></pre></div>
+<p>For each quantity (pT, eta, phi) we used different bins. To change the bins, look inside the <code>createEfficiencyPlot(...)</code> function. In a simpler version, you'll see a structure like this:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//Variable bin for pT</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">quantityName</span><span class="p">,</span> <span class="s">&quot;Pt&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">//Here creates histogram for pT</span>
+<span class="p">}</span>
+
+<span class="c1">//Variable bin for eta</span>
+<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">quantityName</span><span class="p">,</span> <span class="s">&quot;Eta&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">//Here creates histogram for eta</span>
+<span class="p">}</span>
+
+<span class="c1">//Bins for phi</span>
+<span class="k">else</span>
+<span class="p">{</span>
+    <span class="c1">//Here creates histogram for phi</span>
+<span class="p">}</span>
+</code></pre></div>
+<details class="example"><summary>See the whole scructure</summary><p>Don't be scared! Code doens't bite.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//Variable bin for pT</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">quantityName</span><span class="p">,</span> <span class="s">&quot;Pt&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">double</span> <span class="n">xbins</span><span class="p">[</span><span class="mi">10000</span><span class="p">];</span>
+    <span class="n">xbins</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">.0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">nbins</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">binWidth</span> <span class="o">=</span> <span class="mf">1.</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">xbins</span><span class="p">[</span><span class="n">i</span><span class="mi">-1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">xMax</span><span class="o">+</span><span class="n">binWidth</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">xbins</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">xbins</span><span class="p">[</span><span class="n">i</span><span class="mi">-1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">1.</span> <span class="o">?</span> <span class="mf">1.</span> <span class="o">:</span> <span class="n">xbins</span><span class="p">[</span><span class="n">i</span><span class="mi">-1</span><span class="p">]</span> <span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">binWidth</span><span class="p">);</span>
+        <span class="n">nbins</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">histo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TH1D</span><span class="p">(</span><span class="n">hName</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span> <span class="n">hTitle</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span> <span class="n">nbins</span><span class="p">,</span> <span class="n">xbins</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//Variable bin for eta</span>
+<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">quantityName</span><span class="p">,</span> <span class="s">&quot;Eta&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">double</span> <span class="n">xbins</span><span class="p">[</span><span class="mi">10000</span><span class="p">];</span>
+    <span class="n">xbins</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">.5</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">nbins</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">binWidth</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">;</span>
+
+    <span class="c1">//For positive</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">xbins</span><span class="p">[</span><span class="n">i</span><span class="mi">-1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">xMax</span><span class="o">+</span><span class="n">binWidth</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">xbins</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">xbins</span><span class="p">[</span><span class="n">i</span><span class="mi">-1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">1.</span> <span class="o">?</span> <span class="mf">1.</span> <span class="o">:</span> <span class="n">xbins</span><span class="p">[</span><span class="n">i</span><span class="mi">-1</span><span class="p">]</span> <span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">binWidth</span><span class="p">);</span>
+        <span class="n">nbins</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">//Duplicate array and create another</span>
+    <span class="kt">double</span> <span class="n">rxbins</span><span class="p">[</span><span class="n">nbins</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">entry</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">nbins</span><span class="p">;</span> <span class="n">i</span>    <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">rxbins</span><span class="p">[</span><span class="n">entry</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">xbins</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="n">entry</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">rxbins</span><span class="p">[</span><span class="n">entry</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.</span><span class="p">;</span>
+    <span class="n">entry</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">nbins</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">rxbins</span><span class="p">[</span><span class="n">entry</span><span class="p">]</span> <span class="o">=</span> <span class="n">xbins</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="n">entry</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">histo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TH1D</span><span class="p">(</span><span class="n">hName</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span> <span class="n">hTitle</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span> <span class="n">entry</span><span class="mi">-1</span><span class="p">,</span> <span class="n">rxbins</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//Bins for phi </span>
+<span class="k">else</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">quantityUnit</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">yAxisTitleForm</span> <span class="o">+=</span> <span class="s">&quot; / (%1.&quot;</span> <span class="o">+</span> <span class="n">to_string</span><span class="p">(</span><span class="n">decimals</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;f)&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">yAxisTitleForm</span> <span class="o">+=</span> <span class="s">&quot; / (%1.&quot;</span> <span class="o">+</span> <span class="n">to_string</span><span class="p">(</span><span class="n">decimals</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;f &quot;</span> <span class="o">+</span> <span class="n">string</span><span class="p">(</span><span class="n">quantityUnit</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;)&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+ <span class="n">histo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TH1D</span><span class="p">(</span><span class="n">hName</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span> <span class="n">hTitle</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span> <span class="n">nBins</span><span class="p">,</span> <span class="n">xMin</span><span class="p">,</span> <span class="n">xMax</span><span class="p">);</span>
+<span class="p">}</span> 
+</code></pre></div>
+</details>
+<p>The code that creates the histogram bins is located inside the conditionals and is commented. You can edit this code and uncomment to create histogram bins however you want. Instead of using a function to generate the bins, we can also define them manually.</p>
+<p>As we intend to compare the results between data and simulation, but also between the sideband and fitting methods, you are advised to employ the same bin choice. Change your the code to this:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//Variable bin for pT</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">quantityName</span><span class="p">,</span> <span class="s">&quot;Pt&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">double</span> <span class="n">xbins</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">3.4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">4.2</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">,</span> <span class="mf">4.7</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">5.1</span><span class="p">,</span> <span class="mf">5.2</span><span class="p">,</span> <span class="mf">5.4</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">,</span> <span class="mf">5.6</span><span class="p">,</span> <span class="mf">5.7</span><span class="p">,</span> <span class="mf">5.8</span><span class="p">,</span> <span class="mf">5.9</span><span class="p">,</span> <span class="mf">6.2</span><span class="p">,</span> <span class="mf">6.4</span><span class="p">,</span> <span class="mf">6.6</span><span class="p">,</span> <span class="mf">6.8</span><span class="p">,</span> <span class="mf">7.3</span><span class="p">,</span> <span class="mf">9.5</span><span class="p">,</span> <span class="mf">13.0</span><span class="p">,</span> <span class="mf">17.0</span><span class="p">,</span> <span class="mf">40.</span><span class="p">};</span>
+    <span class="kt">int</span> <span class="n">nbins</span> <span class="o">=</span> <span class="mi">23</span><span class="p">;</span>
+
+    <span class="n">histo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TH1D</span><span class="p">(</span><span class="n">hName</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span> <span class="n">hTitle</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span> <span class="n">nbins</span><span class="p">,</span> <span class="n">xbins</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//Variable bin for eta</span>
+<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">quantityName</span><span class="p">,</span> <span class="s">&quot;Eta&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">double</span> <span class="n">xbins</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mf">-2.0</span><span class="p">,</span> <span class="mf">-1.9</span><span class="p">,</span> <span class="mf">-1.8</span><span class="p">,</span> <span class="mf">-1.7</span><span class="p">,</span> <span class="mf">-1.6</span><span class="p">,</span> <span class="mf">-1.5</span><span class="p">,</span> <span class="mf">-1.4</span><span class="p">,</span> <span class="mf">-1.2</span><span class="p">,</span> <span class="mf">-1.0</span><span class="p">,</span> <span class="mf">-0.8</span><span class="p">,</span> <span class="mf">-0.6</span><span class="p">,</span> <span class="mf">-0.4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.4</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">};</span>
+    <span class="kt">int</span> <span class="n">nbins</span> <span class="o">=</span> <span class="mi">22</span><span class="p">;</span>
+
+    <span class="n">histo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TH1D</span><span class="p">(</span><span class="n">hName</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span> <span class="n">hTitle</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span> <span class="n">nbins</span><span class="p">,</span> <span class="n">xbins</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//Bins for phi</span>
+<span class="k">else</span>
+<span class="p">{</span>
+    <span class="kt">double</span> <span class="n">xbins</span><span class="p">[]</span> <span class="o">=</span>  <span class="p">{</span><span class="mi">-3</span><span class="p">,</span> <span class="mf">-2.8</span><span class="p">,</span> <span class="mf">-2.6</span><span class="p">,</span> <span class="mf">-2.4</span><span class="p">,</span> <span class="mf">-2.2</span><span class="p">,</span> <span class="mf">-2.0</span><span class="p">,</span> <span class="mf">-1.8</span><span class="p">,</span> <span class="mf">-1.6</span><span class="p">,</span> <span class="mf">-1.4</span><span class="p">,</span> <span class="mf">-1.2</span><span class="p">,</span> <span class="mf">-1.0</span><span class="p">,</span> <span class="mf">-0.8</span><span class="p">,</span> <span class="mf">-0.6</span><span class="p">,</span> <span class="mf">-0.4</span><span class="p">,</span> <span class="mf">-0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.4</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">,</span> <span class="mf">2.6</span><span class="p">,</span> <span class="mf">2.8</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">};</span>
+    <span class="kt">int</span> <span class="n">nbins</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+
+    <span class="n">histo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TH1D</span><span class="p">(</span><span class="n">hName</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span> <span class="n">hTitle</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span> <span class="n">nbins</span><span class="p">,</span> <span class="n">xbins</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="running-the-code">Running the code<a class="headerlink" href="#running-the-code" title="Permanent link">&para;</a></h2>
+<p>After setting the configurations, it's time to run the code. Go back to the <strong>main</strong> directory and make sure <code>macro.cpp</code> is there.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ..
+ls
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>classes  compare_efficiency.cpp  config  macro.cpp
+</code></pre></div>
+<p>Run the macro.cpp:</p>
+<div class="highlight"><pre><span></span><code>root -l -b -q macro.cpp
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>&quot;../results/Upsilon Run 2011/&quot; directory created OK
+Using &quot;../Run2011A_MuOnia_Upsilon.root&quot; ntuple
+resonance: Upsilon
+Using method 2
+Data analysed = 986100 of 986100
+</code></pre></div>
+<p>In this process, more informations will be printed in terminal while plots will be created on specified (these plots are been saved in a folder). The message below tells you that code has finished running:</p>
+<div class="highlight"><pre><span></span><code>Done. All result files can be found at &quot;../results/Upsilon_Run_2011/&quot;
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Common errors</p>
+<p>If you run the code and your terminal printed some erros like:</p>
+<p><div class="highlight"><pre><span></span><code>Error in &lt;ROOT::Math::Cephes::incbi   : Wrong domain for parameter b (must be     0)
+</code></pre></div>
+{: .error}</p>
+<p>This occurs when the contents of a bin of the pass histogram is greater than the corresponding bin in the total histogram. With sideband subtraction, depending on bins you choose, this can happen and will result in enormous error bars.</p>
+<p>This issue may be avoided by fine-tuning the binning choice. For now, these messages may be ignored.</p>
+</div>
+<h2 id="probe-efficiency-results-for-data">Probe Efficiency results for Data<a class="headerlink" href="#probe-efficiency-results-for-data" title="Permanent link">&para;</a></h2>
+<p>If all went well, your results are going to be like these:</p>
+<p><img alt="Efficiency plot" src="../../../../../images/analysis/cmsefficiency/tutorial/03/sideband_run2011/Efficiency_Tracker_Probe_Pt.png" />
+<img alt="Efficiency plot" src="../../../../../images/analysis/cmsefficiency/tutorial/03/sideband_run2011/Efficiency_Tracker_Probe_Eta.png" />
+<img alt="Efficiency plot" src="../../../../../images/analysis/cmsefficiency/tutorial/03/sideband_run2011/Efficiency_Tracker_Probe_Phi.png" /></p>
+<h2 id="preparing-and-running-the-code-for-simulation">Preparing and running the code for simulation<a class="headerlink" href="#preparing-and-running-the-code-for-simulation" title="Permanent link">&para;</a></h2>
+<details class="example"><summary>Challenge</summary><p>Try to run the same code on the <code>Upsilon1SToMuMu_MC_full.root</code> file we downloaded.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You will need the redo the steps above, setting:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">useFile</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+</code></pre></div>
+<p>in <code>main/config/settings.cpp</code> file.</p>
+</div>
+</details>
+<div class="admonition note">
+<p class="admonition-title">Comparison between real data and simulation</p>
+<p>We'll do this in the last section of this exercise. So the challenge above is mandatory. </p>
+</div>
+<hr />
+<div class="admonition tip">
+<p class="admonition-title">Extra challenge</p>
+<p>If you are looking for an extra exercise, you can try to apply the same logic, changing some variables you saw, in order to get results for the J/ψ nutpple.</p>
+<p>To download the J/ψ real data ntupple (requires 3.3 GB):</p>
+<div class="highlight"><pre><span></span><code>wget --load-cookies /tmp/cookies.txt <span class="s2">&quot;https://docs.google.com/uc?export=download&amp;confirm=</span><span class="k">$(</span>wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate <span class="s1">&#39;https://docs.google.com/uc?export=download&amp;id=16OqVrHIB4wn_5X8GEZ3NxnAycZ2ItemZ&#39;</span> -O- <span class="p">|</span> sed -rn <span class="s1">&#39;s/.*confirm=([0-9A-Za-z_]+).*/\1\n/p&#39;</span><span class="k">)</span><span class="s2">&amp;id=16OqVrHIB4wn_5X8GEZ3NxnAycZ2ItemZ&quot;</span> -O Run2011AMuOnia_mergeNtuple.root <span class="o">&amp;&amp;</span> rm -rf /tmp/cookies.txt
+</code></pre></div>
+<p>To download the J/ψ simulated data ntuple (requires 515 MB):</p>
+<div class="highlight"><pre><span></span><code>wget --load-cookies /tmp/cookies.txt <span class="s2">&quot;https://docs.google.com/uc?export=download&amp;confirm=</span><span class="k">$(</span>wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate <span class="s1">&#39;https://docs.google.com/uc?export=download&amp;id=1dKLJ5RIGrBp5aIJrvOQw5lWLQSHUgEnf&#39;</span> -O- <span class="p">|</span> sed -rn <span class="s1">&#39;s/.*confirm=([0-9A-Za-z_]+).*/\1\n/p&#39;</span><span class="k">)</span><span class="s2">&amp;id=1dKLJ5RIGrBp5aIJrvOQw5lWLQSHUgEnf&quot;</span> -O JPsiToMuMu_mergeMCNtuple.root <span class="o">&amp;&amp;</span> rm -rf /tmp/cookies.txt
+</code></pre></div>
+<p>As this dataset is larger, the code will run slowly. It can take several minutes to be completed depending where the code is been running</p>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../02-fitting/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Fitting
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../04-comparison/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Comparison
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../../../assets/javascripts/vendor.93c04032.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.83e5331e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../../../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../../../../assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

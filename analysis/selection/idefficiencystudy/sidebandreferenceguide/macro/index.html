@@ -1,0 +1,1922 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="CMS Open Data Guide">
+      
+      
+      
+      
+        <link rel="canonical" href="https://cms-opendata-guide.web.cern.ch/analysis/selection/idefficiencystudy/sidebandreferenceguide/macro/">
+      
+      <link rel="shortcut icon" href="../../../../../images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.5">
+    
+    
+      
+        <title>The Macro - CMS Open Data Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.15aa0b43.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.75751829.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700%7C&display=fallback">
+        <style>body,input{font-family:"Lato",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="none">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#macrocpp" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://cms-opendata-guide.web.cern.ch/" title="CMS Open Data Guide" class="md-header-nav__button md-logo" aria-label="CMS Open Data Guide">
+      
+  <img src="../../../../../images/cmslogo.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            CMS Open Data Guide
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              The Macro
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/cernopendata/cms-opendata-guide/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cms-opendata-guide
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://cms-opendata-guide.web.cern.ch/" title="CMS Open Data Guide" class="md-nav__button md-logo" aria-label="CMS Open Data Guide">
+      
+  <img src="../../../../../images/cmslogo.png" alt="logo">
+
+    </a>
+    CMS Open Data Guide
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/cernopendata/cms-opendata-guide/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cms-opendata-guide
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+      
+      <label class="md-nav__link" for="nav-2">
+        Computing Tools
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Computing Tools" data-md-level="1">
+        <label class="md-nav__title" for="nav-2">
+          <span class="md-nav__icon md-icon"></span>
+          Computing Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tools/cernportal/" class="md-nav__link">
+        CERN Open Data Portal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tools/cmsopendata/" class="md-nav__link">
+        CMS Open Data
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tools/cmstwiki/" class="md-nav__link">
+        CMS Twiki
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tools/unix/" class="md-nav__link">
+        UNIX
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tools/root/" class="md-nav__link">
+        ROOT
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tools/cppandpython/" class="md-nav__link">
+        C++ and Python
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tools/git/" class="md-nav__link">
+        Git
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tools/docker/" class="md-nav__link">
+        Docker
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../tools/virtualmachines/" class="md-nav__link">
+        Virtual Machines
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+      
+      <label class="md-nav__link" for="nav-3">
+        CMSSW
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="CMSSW" data-md-level="1">
+        <label class="md-nav__title" for="nav-3">
+          <span class="md-nav__icon md-icon"></span>
+          CMSSW
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cmssw/cmsswoverview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cmssw/cmsswdatamodel/" class="md-nav__link">
+        Data Model
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cmssw/cmsswanalyzers/" class="md-nav__link">
+        Analyzers
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cmssw/cmsswconfigure/" class="md-nav__link">
+        Configuration
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../cmssw/cmsswconditions/" class="md-nav__link">
+        Conditions Data
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+      
+      <label class="md-nav__link" for="nav-4">
+        Analysis
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Analysis" data-md-level="1">
+        <label class="md-nav__title" for="nav-4">
+          <span class="md-nav__icon md-icon"></span>
+          Analysis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1" >
+      
+      <label class="md-nav__link" for="nav-4-1">
+        Data and Simulation
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Data and Simulation" data-md-level="2">
+        <label class="md-nav__title" for="nav-4-1">
+          <span class="md-nav__icon md-icon"></span>
+          Data and Simulation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../datasim/collisiondata/" class="md-nav__link">
+        Collision Data
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../datasim/mcsimulations/" class="md-nav__link">
+        MC Simulations
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../datasim/eventgeneration/" class="md-nav__link">
+        Event Generation
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2" checked>
+      
+      <label class="md-nav__link" for="nav-4-2">
+        Selection
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Selection" data-md-level="2">
+        <label class="md-nav__title" for="nav-4-2">
+          <span class="md-nav__icon md-icon"></span>
+          Selection
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../triggers/" class="md-nav__link">
+        Triggers
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../objects/" class="md-nav__link">
+        Physics Objects
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../objectid/" class="md-nav__link">
+        Physics Objects ID
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2-4" type="checkbox" id="nav-4-2-4" checked>
+      
+      <label class="md-nav__link" for="nav-4-2-4">
+        ID Efficiency study
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="ID Efficiency study" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-2-4">
+          <span class="md-nav__icon md-icon"></span>
+          ID Efficiency study
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tagandprobe/" class="md-nav__link">
+        Tag and Probe
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../signalextraction/" class="md-nav__link">
+        Signal extraction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../efficiencytool/" class="md-nav__link">
+        Efficiency Tool
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2-4-4" type="checkbox" id="nav-4-2-4-4" checked>
+      
+      <label class="md-nav__link" for="nav-4-2-4-4">
+        Reference Guide (SB)
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Reference Guide (SB)" data-md-level="4">
+        <label class="md-nav__title" for="nav-4-2-4-4">
+          <span class="md-nav__icon md-icon"></span>
+          Reference Guide (SB)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          The Macro
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        The Macro
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#about-the-code" class="md-nav__link">
+    About the code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-macrocpp" class="md-nav__link">
+    Before macro.cpp
+  </a>
+  
+    <nav class="md-nav" aria-label="Before macro.cpp">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cutsh" class="md-nav__link">
+    cuts.h
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createhistogramh" class="md-nav__link">
+    createHistogram.h
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#settingscpp" class="md-nav__link">
+    settings.cpp
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-explained-in-parts" class="md-nav__link">
+    Code explained in parts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#results" class="md-nav__link">
+    Results
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FitFunctions/" class="md-nav__link">
+        FitFunction class
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SidebandSubtraction/" class="md-nav__link">
+        SidebandSubtraction class
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../InvariantMass/" class="md-nav__link">
+        InvariantMass class
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MassValues/" class="md-nav__link">
+        MassValues struct
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Type/" class="md-nav__link">
+        Type class
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TagProbe/" class="md-nav__link">
+        TagProbe class
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PtEtaPhi/" class="md-nav__link">
+        PtEtaPhi class
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PassingFailing/" class="md-nav__link">
+        PassingFailing class
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2-4-5" type="checkbox" id="nav-4-2-4-5" >
+      
+      <label class="md-nav__link" for="nav-4-2-4-5">
+        Reference Guide (Fit)
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Reference Guide (Fit)" data-md-level="4">
+        <label class="md-nav__title" for="nav-4-2-4-5">
+          <span class="md-nav__icon md-icon"></span>
+          Reference Guide (Fit)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fittingreferenceguide/readme/" class="md-nav__link">
+        Read me
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fittingreferenceguide/mainfunctions/" class="md-nav__link">
+        Main Functions
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2-4-6" type="checkbox" id="nav-4-2-4-6" >
+      
+      <label class="md-nav__link" for="nav-4-2-4-6">
+        Tutorial
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Tutorial" data-md-level="4">
+        <label class="md-nav__title" for="nav-4-2-4-6">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorial
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/01-introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/02-fitting/" class="md-nav__link">
+        Fitting
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/03-sidebandsubtraction/" class="md-nav__link">
+        Sideband Subtraction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/04-comparison/" class="md-nav__link">
+        Comparison
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" >
+      
+      <label class="md-nav__link" for="nav-4-3">
+        Luminosity
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Luminosity" data-md-level="2">
+        <label class="md-nav__title" for="nav-4-3">
+          <span class="md-nav__icon md-icon"></span>
+          Luminosity
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../luminosity/lumi/" class="md-nav__link">
+        Luminosity
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4" >
+      
+      <label class="md-nav__link" for="nav-4-4">
+        Backgrounds
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Backgrounds" data-md-level="2">
+        <label class="md-nav__title" for="nav-4-4">
+          <span class="md-nav__icon md-icon"></span>
+          Backgrounds
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../backgrounds/techniques/" class="md-nav__link">
+        Techniques
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../backgrounds/qcdestimation/" class="md-nav__link">
+        QCD Estimation
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5" >
+      
+      <label class="md-nav__link" for="nav-4-5">
+        Systematics
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Systematics" data-md-level="2">
+        <label class="md-nav__title" for="nav-4-5">
+          <span class="md-nav__icon md-icon"></span>
+          Systematics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../systematics/lumiuncertain/" class="md-nav__link">
+        Luminosity Uncertainties
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../systematics/mcuncertain/" class="md-nav__link">
+        MC Uncertainty
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../systematics/objectsuncertain/" class="md-nav__link">
+        Object Uncertainty
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../systematics/pileupuncertain/" class="md-nav__link">
+        Pileup Uncertainty
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-6" type="checkbox" id="nav-4-6" >
+      
+      <label class="md-nav__link" for="nav-4-6">
+        Interpretation
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Interpretation" data-md-level="2">
+        <label class="md-nav__title" for="nav-4-6">
+          <span class="md-nav__icon md-icon"></span>
+          Interpretation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../interpretation/stats/" class="md-nav__link">
+        Statistics
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../interpretation/limits/" class="md-nav__link">
+        Upper-limit Calculations
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../about/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#about-the-code" class="md-nav__link">
+    About the code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-macrocpp" class="md-nav__link">
+    Before macro.cpp
+  </a>
+  
+    <nav class="md-nav" aria-label="Before macro.cpp">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cutsh" class="md-nav__link">
+    cuts.h
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createhistogramh" class="md-nav__link">
+    createHistogram.h
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#settingscpp" class="md-nav__link">
+    settings.cpp
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-explained-in-parts" class="md-nav__link">
+    Code explained in parts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#results" class="md-nav__link">
+    Results
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/cernopendata/cms-opendata-guide/edit/master/docs/analysis/selection/idefficiencystudy/sidebandreferenceguide/macro.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="macrocpp">macro.cpp<a class="headerlink" href="#macrocpp" title="Permanent link">&para;</a></h1>
+<p>A macro is a code file create to be interpreted by a program. In this case, ROOT will interpret it.</p>
+<h2 id="about-the-code">About the code<a class="headerlink" href="#about-the-code" title="Permanent link">&para;</a></h2>
+<p><code>macro.cpp</code> is a example how to use Sideband Subtraction to get reconstruction efficiencies for a <em>Tag &amp; Probe</em> ntupple. It analyzes <strong>J/psi</strong> and <strong>Upsilon</strong> reconstruction efficiency for <strong>tracker</strong>, <strong>standalone</strong> and <strong>global</strong> muons. The file is encountered in folder <code>main</code>. Now, I going to talk about what this function do and how it does in the texto below.</p>
+<h2 id="before-macrocpp">Before macro.cpp<a class="headerlink" href="#before-macrocpp" title="Permanent link">&para;</a></h2>
+<p>There are some files in folder <code>config</code> aside of <code>macro.ccp</code>. The sections below explain about them.</p>
+<h3 id="cutsh">cuts.h<a class="headerlink" href="#cutsh" title="Permanent link">&para;</a></h3>
+<hr />
+<p>This is it content:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//This files holds some functions used in macro.cpp for particle selection</span>
+
+<span class="c1">//Return if is a accepted particle or no</span>
+<span class="kt">bool</span> <span class="nf">applyCuts</span><span class="p">(</span><span class="kt">double</span><span class="o">**</span> <span class="n">quantities</span><span class="p">,</span> <span class="kt">int</span><span class="o">**</span> <span class="n">types</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">//Assign variables for easy visualization</span>
+    <span class="kt">double</span> <span class="o">&amp;</span><span class="n">ProbeMuon_Pt</span>            <span class="o">=</span> <span class="o">*</span><span class="n">quantities</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="kt">double</span> <span class="o">&amp;</span><span class="n">ProbeMuon_Eta</span>           <span class="o">=</span> <span class="o">*</span><span class="n">quantities</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="kt">double</span> <span class="o">&amp;</span><span class="n">ProbeMuon_Phi</span>           <span class="o">=</span> <span class="o">*</span><span class="n">quantities</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+    <span class="kt">double</span> <span class="o">&amp;</span><span class="n">TagMuon_Pt</span>              <span class="o">=</span> <span class="o">*</span><span class="n">quantities</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+    <span class="kt">double</span> <span class="o">&amp;</span><span class="n">TagMuon_Eta</span>             <span class="o">=</span> <span class="o">*</span><span class="n">quantities</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+    <span class="kt">double</span> <span class="o">&amp;</span><span class="n">TagMuon_Phi</span>             <span class="o">=</span> <span class="o">*</span><span class="n">quantities</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+    <span class="kt">double</span> <span class="o">&amp;</span><span class="n">InvariantMass</span>           <span class="o">=</span> <span class="o">*</span><span class="n">quantities</span><span class="p">[</span><span class="mi">6</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="o">&amp;</span><span class="n">PassingProbeTrackingMuon</span>   <span class="o">=</span> <span class="o">*</span><span class="n">types</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="o">&amp;</span><span class="n">PassingProbeStandAloneMuon</span> <span class="o">=</span> <span class="o">*</span><span class="n">types</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="o">&amp;</span><span class="n">PassingProbeGlobalMuon</span>     <span class="o">=</span> <span class="o">*</span><span class="n">types</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+
+    <span class="c1">//Apply cuts</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">TagMuon_Pt</span> <span class="o">&gt;=</span> <span class="mf">7.0</span> <span class="o">&amp;&amp;</span> <span class="n">fabs</span><span class="p">(</span><span class="n">TagMuon_Eta</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mf">2.4</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>It stores the function applyCuts(), where return <code>true</code> for allowed pair of particles and <code>false</code> for not allowed.</p>
+<hr />
+<h3 id="createhistogramh">createHistogram.h<a class="headerlink" href="#createhistogramh" title="Permanent link">&para;</a></h3>
+<hr />
+<p>This file is called in PassingFailing.cpp and set quantity histograms bins and create the hitogram. Its default content is shwon bellow:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">createHistogram</span><span class="p">(</span><span class="n">TH1D</span><span class="o">*</span> <span class="o">&amp;</span><span class="n">histo</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">histoName</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">//Set parameters</span>
+    <span class="n">string</span> <span class="n">hName</span>          <span class="o">=</span> <span class="n">string</span><span class="p">(</span><span class="n">particleType</span><span class="p">)</span> <span class="o">+</span> <span class="n">string</span><span class="p">(</span><span class="n">passingOrFailing</span><span class="p">)</span> <span class="o">+</span> <span class="n">string</span><span class="p">(</span><span class="n">tagOrProbe</span><span class="p">)</span> <span class="o">+</span> <span class="n">string</span><span class="p">(</span><span class="n">particleName</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;_&quot;</span> <span class="o">+</span> <span class="n">string</span><span class="p">(</span><span class="n">quantityName</span><span class="p">)</span> <span class="o">+</span> <span class="n">string</span><span class="p">(</span><span class="n">histoName</span><span class="p">);</span>
+    <span class="n">string</span> <span class="n">hTitle</span>         <span class="o">=</span> <span class="n">string</span><span class="p">(</span><span class="n">passingOrFailing</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot; in &quot;</span> <span class="o">+</span> <span class="n">string</span><span class="p">(</span><span class="n">particleType</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="n">string</span><span class="p">(</span><span class="n">tagOrProbe</span><span class="p">);</span>
+    <span class="n">string</span> <span class="n">xAxisTitle</span>     <span class="o">=</span> <span class="n">string</span><span class="p">(</span><span class="n">xAxisName</span><span class="p">);</span>
+    <span class="n">string</span> <span class="n">yAxisTitleForm</span> <span class="o">=</span> <span class="s">&quot;Events&quot;</span><span class="p">;</span>
+
+    <span class="c1">//Add unit if has</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">quantityUnit</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">xAxisTitle</span> <span class="o">+=</span> <span class="s">&quot; [&quot;</span> <span class="o">+</span> <span class="n">string</span><span class="p">(</span><span class="n">quantityUnit</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;]&quot;</span><span class="p">;</span>
+
+    <span class="c1">//Change title is passing</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">passingOrFailing</span><span class="p">,</span> <span class="s">&quot;Passing&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">hTitle</span> <span class="o">=</span> <span class="n">string</span><span class="p">(</span><span class="n">particleType</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="n">string</span><span class="p">(</span><span class="n">particleName</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="n">string</span><span class="p">(</span><span class="n">tagOrProbe</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">passingOrFailing</span><span class="p">,</span> <span class="s">&quot;All&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">hTitle</span> <span class="o">=</span> <span class="s">&quot;All &quot;</span> <span class="o">+</span> <span class="n">string</span><span class="p">(</span><span class="n">particleName</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="n">string</span><span class="p">(</span><span class="n">tagOrProbe</span><span class="p">);</span>
+
+
+    <span class="c1">//Variable bin for pT</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">quantityName</span><span class="p">,</span> <span class="s">&quot;Pt&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">double</span> <span class="n">xbins</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.4</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">,</span> <span class="mf">4.7</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">5.6</span><span class="p">,</span> <span class="mf">5.8</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">,</span> <span class="mf">6.2</span><span class="p">,</span> <span class="mf">6.4</span><span class="p">,</span> <span class="mf">6.6</span><span class="p">,</span> <span class="mf">6.8</span><span class="p">,</span> <span class="mf">7.3</span><span class="p">,</span> <span class="mf">9.5</span><span class="p">,</span> <span class="mf">13.0</span><span class="p">,</span> <span class="mf">17.0</span><span class="p">,</span> <span class="mf">40.</span><span class="p">};</span>
+
+        <span class="kt">int</span> <span class="n">nbins</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">xbins</span><span class="p">)</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">xbins</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">histo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TH1D</span><span class="p">(</span><span class="n">hName</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span> <span class="n">hTitle</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span> <span class="n">nbins</span><span class="p">,</span> <span class="n">xbins</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">//Variable bin for eta</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">quantityName</span><span class="p">,</span> <span class="s">&quot;Eta&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">double</span> <span class="n">xbins</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mf">-2.4</span><span class="p">,</span> <span class="mf">-1.8</span><span class="p">,</span> <span class="mf">-1.4</span><span class="p">,</span> <span class="mf">-1.2</span><span class="p">,</span> <span class="mf">-1.0</span><span class="p">,</span> <span class="mf">-0.8</span><span class="p">,</span> <span class="mf">-0.5</span><span class="p">,</span> <span class="mf">-0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.4</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">};</span>
+
+        <span class="kt">int</span> <span class="n">nbins</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">xbins</span><span class="p">)</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">xbins</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">histo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TH1D</span><span class="p">(</span><span class="n">hName</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span> <span class="n">hTitle</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span> <span class="n">nbins</span><span class="p">,</span> <span class="n">xbins</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">//Bins for phi </span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="kt">double</span> <span class="n">xbins</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mf">-3.0</span><span class="p">,</span> <span class="mf">-1.8</span><span class="p">,</span> <span class="mf">-1.6</span><span class="p">,</span> <span class="mf">-1.2</span><span class="p">,</span> <span class="mf">-1.0</span><span class="p">,</span> <span class="mf">-0.7</span><span class="p">,</span> <span class="mf">-0.4</span><span class="p">,</span> <span class="mf">-0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">};</span>
+
+        <span class="kt">int</span> <span class="n">nbins</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">xbins</span><span class="p">)</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">xbins</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">histo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TH1D</span><span class="p">(</span><span class="n">hName</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span> <span class="n">hTitle</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span> <span class="n">nbins</span><span class="p">,</span> <span class="n">xbins</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">//Edit histogram axis</span>
+    <span class="n">histo</span><span class="o">-&gt;</span><span class="n">GetYaxis</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">SetTitle</span><span class="p">(</span><span class="n">Form</span><span class="p">(</span><span class="n">yAxisTitleForm</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span> <span class="n">histo</span><span class="o">-&gt;</span><span class="n">GetBinWidth</span><span class="p">(</span><span class="mi">0</span><span class="p">)));</span>
+    <span class="n">histo</span><span class="o">-&gt;</span><span class="n">GetXaxis</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">SetTitle</span><span class="p">(</span><span class="n">xAxisTitle</span><span class="p">.</span><span class="n">data</span><span class="p">());</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3 id="settingscpp">settings.cpp<a class="headerlink" href="#settingscpp" title="Permanent link">&para;</a></h3>
+<hr />
+<p>It stores many configurations used in <code>macro.cpp</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//List of files</span>
+<span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">files</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;../data_histoall.root&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;../Run2011AMuOnia_mergeNtuple.root&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;../JPsiToMuMu_mergeMCNtuple.root&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;../Run2011A_MuOnia_Upsilon.root&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;../Upsilon1SToMuMu_MC_full.root&quot;</span><span class="p">};</span>
+
+<span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">directoriesToSave</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;../results/result/&quot;</span><span class="p">,</span>
+                                    <span class="s">&quot;../results/Jpsi_Run_2011/&quot;</span><span class="p">,</span>
+                                    <span class="s">&quot;../results/Jpsi_MC_2020_sbs/&quot;</span><span class="p">,</span>
+                                    <span class="s">&quot;../results/Upsilon_Run_2011/&quot;</span><span class="p">,</span>
+                                    <span class="s">&quot;../results/Upsilon_MC_2020_sbs/&quot;</span><span class="p">};</span>
+
+<span class="c1">//MAIN OPTIONS</span>
+
+<span class="c1">//Which file of files (variable above) should use</span>
+<span class="kt">int</span> <span class="n">useFile</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+
+<span class="c1">//Set the canvasW wtermark</span>
+<span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">canvasWatermark</span> <span class="o">=</span> <span class="s">&quot;#bf{CMS Open Data}&quot;</span><span class="p">;</span>
+
+<span class="c1">//Path where is going to save results </span>
+<span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">directoryToSave</span> <span class="o">=</span> <span class="n">directoriesToSave</span><span class="p">[</span><span class="n">useFile</span><span class="p">];</span>
+<span class="c1">//directoryToSave = &quot;../result/&quot;;</span>
+
+<span class="c1">//Should limit data?</span>
+<span class="kt">long</span> <span class="kt">long</span> <span class="n">limitData</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//0 -&gt; do not limit</span>
+
+<span class="c1">//Canvas drawing</span>
+<span class="kt">bool</span> <span class="n">shouldDrawInvariantMassCanvas</span>          <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">shouldDrawInvariantMassCanvasRegion</span>    <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">shouldDrawQuantitiesCanvas</span>             <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">shouldDrawEfficiencyCanvas</span>             <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+
+<span class="c1">//Muon id anlyse</span>
+<span class="kt">bool</span> <span class="n">doTracker</span>    <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">doStandalone</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">doGlobal</span>     <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+
+<span class="c1">//Muon label anlyse</span>
+<span class="kt">bool</span> <span class="n">doTagMuon</span>   <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">doProbeMuon</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+
+<span class="c1">//ENDED MAIN OPTIONS</span>
+</code></pre></div>
+<hr />
+<p>And then there are more automatically set options:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//Auto detect resonance due file index</span>
+<span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">resonance</span> <span class="o">=</span> <span class="s">&quot;Jpsi&quot;</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">useFile</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">resonance</span> <span class="o">=</span> <span class="s">&quot;Upsilon&quot;</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">useFile</span> <span class="o">==</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">resonance</span> <span class="o">=</span> <span class="s">&quot;Upsilon1S&quot;</span><span class="p">;</span>
+
+
+
+<span class="c1">//Auto detect limit of data</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">limitData</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">directoryToSave</span> <span class="o">=</span> <span class="s">&quot;../partial_result/&quot;</span><span class="p">;</span>
+
+
+
+<span class="c1">//Compatibility adjusts on file read (for data_histoall ntupples)</span>
+<span class="kt">bool</span> <span class="n">needsRetroCompatibility</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">useFile</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">needsRetroCompatibility</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+</code></pre></div>
+<hr />
+<h2 id="code-explained-in-parts">Code explained in parts<a class="headerlink" href="#code-explained-in-parts" title="Permanent link">&para;</a></h2>
+<hr />
+<p><code>macro.cpp</code> is the main file of this program. Its the main code. It is explained in parts below:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//Input files, options are set here!</span>
+<span class="cp">#include</span> <span class="cpf">&quot;config/settings.cpp&quot;</span><span class="cp"></span>
+</code></pre></div>
+<p>It imports configurations about macro.cpp</p>
+<hr />
+<div class="highlight"><pre><span></span><code><span class="c1">//Check if the name of dir is ok</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">string</span><span class="p">(</span><span class="n">directoryToSave</span><span class="p">).</span><span class="n">back</span><span class="p">()</span> <span class="o">!=</span> <span class="n">string</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">))</span>
+<span class="p">{</span>
+    <span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;To avoid errors, please end the result directory with a </span><span class="se">\&quot;</span><span class="s">/</span><span class="se">\&quot;</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">abort</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">//Check if dir exists and create</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">AccessPathName</span><span class="p">(</span><span class="n">directoryToSave</span><span class="p">))</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">mkdir</span><span class="p">(</span><span class="n">directoryToSave</span><span class="p">,</span> <span class="nb">true</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">directoryToSave</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="s"> path could not be found and could not be created ERROR&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+        <span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Try to create manually this folder path&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+        <span class="n">abort</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">directoryToSave</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="s"> directory created OK&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">directoryToSave</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="s"> directory OK&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Check if the <code>directoryToSave</code> (setted in settings.cpp) has a valid name and if exists. If not, the code creates the folder.</p>
+<hr />
+<div class="highlight"><pre><span></span><code><span class="c1">//Compatibility adjusts on file read (for data_histoall ntupples)</span>
+<span class="n">string</span> <span class="n">folderName</span> <span class="o">=</span> <span class="s">&quot;tagandprobe/&quot;</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">needsRetroCompatibility</span><span class="p">)</span>
+    <span class="n">folderName</span> <span class="o">=</span> <span class="s">&quot;demo/&quot;</span><span class="p">;</span>
+
+<span class="c1">//Open and read files</span>
+<span class="n">TFile</span> <span class="o">*</span><span class="n">file0</span>  <span class="o">=</span> <span class="n">TFile</span><span class="o">::</span><span class="n">Open</span><span class="p">(</span><span class="n">files</span><span class="p">[</span><span class="n">useFile</span><span class="p">]);</span>
+<span class="n">TTree</span> <span class="o">*</span><span class="n">TreePC</span> <span class="o">=</span> <span class="p">(</span><span class="n">TTree</span><span class="o">*</span><span class="p">)</span><span class="n">file0</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">((</span><span class="n">folderName</span> <span class="o">+</span> <span class="s">&quot;PlotControl&quot;</span><span class="p">).</span><span class="n">data</span><span class="p">());</span>
+<span class="n">TTree</span> <span class="o">*</span><span class="n">TreeAT</span> <span class="o">=</span> <span class="p">(</span><span class="n">TTree</span><span class="o">*</span><span class="p">)</span><span class="n">file0</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">((</span><span class="n">folderName</span> <span class="o">+</span> <span class="s">&quot;AnalysisTree&quot;</span><span class="p">).</span><span class="n">data</span><span class="p">());</span>
+<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Using </span><span class="se">\&quot;</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">files</span><span class="p">[</span><span class="n">useFile</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="s"> ntupple&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</code></pre></div>
+<p>This part is responsible to open the file and do conversions. The first one file is a bit different of the other ones, so it needs compatibiliy besides its not important anymore and is a obsolete file.</p>
+<hr />
+<div class="highlight"><pre><span></span><code><span class="c1">//Create variables</span>
+<span class="kt">double</span> <span class="n">ProbeMuon_Pt</span><span class="p">;</span>
+<span class="kt">double</span> <span class="n">ProbeMuon_Eta</span><span class="p">;</span>
+<span class="kt">double</span> <span class="n">ProbeMuon_Phi</span><span class="p">;</span>
+<span class="kt">double</span> <span class="n">TagMuon_Pt</span><span class="p">;</span>
+<span class="kt">double</span> <span class="n">TagMuon_Eta</span><span class="p">;</span>
+<span class="kt">double</span> <span class="n">TagMuon_Phi</span><span class="p">;</span>
+<span class="kt">double</span> <span class="n">InvariantMass</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">PassingProbeTrackingMuon</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">PassingProbeStandAloneMuon</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">PassingProbeGlobalMuon</span><span class="p">;</span>
+
+<span class="c1">//Assign variables</span>
+<span class="n">TreePC</span><span class="o">-&gt;</span><span class="n">SetBranchAddress</span><span class="p">(</span><span class="s">&quot;ProbeMuon_Pt&quot;</span><span class="p">,</span>                <span class="o">&amp;</span><span class="n">ProbeMuon_Pt</span><span class="p">);</span>
+<span class="n">TreePC</span><span class="o">-&gt;</span><span class="n">SetBranchAddress</span><span class="p">(</span><span class="s">&quot;ProbeMuon_Eta&quot;</span><span class="p">,</span>               <span class="o">&amp;</span><span class="n">ProbeMuon_Eta</span><span class="p">);</span>
+<span class="n">TreePC</span><span class="o">-&gt;</span><span class="n">SetBranchAddress</span><span class="p">(</span><span class="s">&quot;ProbeMuon_Phi&quot;</span><span class="p">,</span>               <span class="o">&amp;</span><span class="n">ProbeMuon_Phi</span><span class="p">);</span>
+<span class="n">TreePC</span><span class="o">-&gt;</span><span class="n">SetBranchAddress</span><span class="p">(</span><span class="s">&quot;TagMuon_Pt&quot;</span><span class="p">,</span>                  <span class="o">&amp;</span><span class="n">TagMuon_Pt</span><span class="p">);</span>
+<span class="n">TreePC</span><span class="o">-&gt;</span><span class="n">SetBranchAddress</span><span class="p">(</span><span class="s">&quot;TagMuon_Eta&quot;</span><span class="p">,</span>                 <span class="o">&amp;</span><span class="n">TagMuon_Eta</span><span class="p">);</span>
+<span class="n">TreePC</span><span class="o">-&gt;</span><span class="n">SetBranchAddress</span><span class="p">(</span><span class="s">&quot;TagMuon_Phi&quot;</span><span class="p">,</span>                 <span class="o">&amp;</span><span class="n">TagMuon_Phi</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">needsRetroCompatibility</span><span class="p">)</span>
+<span class="n">TreePC</span><span class="o">-&gt;</span><span class="n">SetBranchAddress</span><span class="p">(</span><span class="s">&quot;InvariantMass&quot;</span><span class="p">,</span>               <span class="o">&amp;</span><span class="n">InvariantMass</span><span class="p">);</span>
+<span class="k">else</span>
+<span class="n">TreeAT</span><span class="o">-&gt;</span><span class="n">SetBranchAddress</span><span class="p">(</span><span class="s">&quot;InvariantMass&quot;</span><span class="p">,</span>               <span class="o">&amp;</span><span class="n">InvariantMass</span><span class="p">);</span>
+<span class="n">TreeAT</span><span class="o">-&gt;</span><span class="n">SetBranchAddress</span><span class="p">(</span><span class="s">&quot;PassingProbeTrackingMuon&quot;</span><span class="p">,</span>    <span class="o">&amp;</span><span class="n">PassingProbeTrackingMuon</span><span class="p">);</span>
+<span class="n">TreeAT</span><span class="o">-&gt;</span><span class="n">SetBranchAddress</span><span class="p">(</span><span class="s">&quot;PassingProbeStandAloneMuon&quot;</span><span class="p">,</span>  <span class="o">&amp;</span><span class="n">PassingProbeStandAloneMuon</span><span class="p">);</span>
+<span class="n">TreeAT</span><span class="o">-&gt;</span><span class="n">SetBranchAddress</span><span class="p">(</span><span class="s">&quot;PassingProbeGlobalMuon&quot;</span><span class="p">,</span>      <span class="o">&amp;</span><span class="n">PassingProbeGlobalMuon</span><span class="p">);</span>
+
+<span class="kt">double</span><span class="o">*</span> <span class="n">quantities</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="o">&amp;</span><span class="n">ProbeMuon_Pt</span><span class="p">,</span>
+                        <span class="o">&amp;</span><span class="n">ProbeMuon_Eta</span><span class="p">,</span>
+                        <span class="o">&amp;</span><span class="n">ProbeMuon_Phi</span><span class="p">,</span>
+                        <span class="o">&amp;</span><span class="n">TagMuon_Pt</span><span class="p">,</span>
+                        <span class="o">&amp;</span><span class="n">TagMuon_Eta</span><span class="p">,</span>
+                        <span class="o">&amp;</span><span class="n">TagMuon_Phi</span><span class="p">,</span>
+                        <span class="o">&amp;</span><span class="n">InvariantMass</span><span class="p">,</span>
+    <span class="p">};</span>
+
+<span class="kt">int</span><span class="o">*</span> <span class="n">types</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="o">&amp;</span><span class="n">PassingProbeTrackingMuon</span><span class="p">,</span>
+                <span class="o">&amp;</span><span class="n">PassingProbeStandAloneMuon</span><span class="p">,</span>
+                <span class="o">&amp;</span><span class="n">PassingProbeGlobalMuon</span>
+    <span class="p">};</span>
+</code></pre></div>
+<p>Now variables are created and linked to branches in ntupple. Then a array of these variables are set.</p>
+<hr />
+<div class="highlight"><pre><span></span><code><span class="c1">//Create a object and set configs</span>
+<span class="n">SidebandSubtraction</span> <span class="n">SdS</span><span class="p">{</span><span class="n">resonance</span><span class="p">};</span>
+<span class="n">SdS</span><span class="p">.</span><span class="n">canvasWatermark</span> <span class="o">=</span> <span class="n">canvasWatermark</span><span class="p">;</span>
+<span class="n">SdS</span><span class="p">.</span><span class="n">directoryToSave</span> <span class="o">=</span> <span class="n">directoryToSave</span><span class="p">;</span>
+<span class="n">SdS</span><span class="p">.</span><span class="n">doTracker</span>       <span class="o">=</span> <span class="n">doTracker</span><span class="p">;</span>
+<span class="n">SdS</span><span class="p">.</span><span class="n">doStandalone</span>    <span class="o">=</span> <span class="n">doStandalone</span><span class="p">;</span>
+<span class="n">SdS</span><span class="p">.</span><span class="n">doGlobal</span>        <span class="o">=</span> <span class="n">doGlobal</span><span class="p">;</span>
+<span class="n">SdS</span><span class="p">.</span><span class="n">doTagMuon</span>       <span class="o">=</span> <span class="n">doTagMuon</span><span class="p">;</span>
+<span class="n">SdS</span><span class="p">.</span><span class="n">doProbeMuon</span>     <span class="o">=</span> <span class="n">doProbeMuon</span><span class="p">;</span>
+
+<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;resonance: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">SdS</span><span class="p">.</span><span class="n">resonance</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Using subtraction factor as integral of background fit</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</code></pre></div>
+<p>The macro.cpp now creates the SdS object and assign variables setted in settings.cpp. At this point, it creates all histograms that you will need such as invariant mass histograms and pT, eta, phi histograms.</p>
+<hr />
+<div class="highlight"><pre><span></span><code><span class="c1">//Get data size and set data limit if has</span>
+<span class="kt">long</span> <span class="kt">long</span> <span class="n">numberEntries</span> <span class="o">=</span> <span class="n">TreePC</span><span class="o">-&gt;</span><span class="n">GetEntries</span><span class="p">();</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">limitData</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">limitData</span> <span class="o">&lt;</span> <span class="n">numberEntries</span><span class="p">)</span>
+    <span class="n">numberEntries</span> <span class="o">=</span> <span class="n">limitData</span><span class="p">;</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Data analysed = %lld of %lld</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">numberEntries</span><span class="p">,</span> <span class="n">TreePC</span><span class="o">-&gt;</span><span class="n">GetEntries</span><span class="p">());</span>
+
+<span class="c1">//Prepare for showing progress</span>
+<span class="n">string</span> <span class="n">progressFormat</span> <span class="o">=</span> <span class="s">&quot;Progress: %05.2f%% %0&quot;</span><span class="o">+</span><span class="n">to_string</span><span class="p">(</span><span class="n">strlen</span><span class="p">(</span><span class="n">to_string</span><span class="p">(</span><span class="n">numberEntries</span><span class="p">).</span><span class="n">data</span><span class="p">()))</span><span class="o">+</span><span class="s">&quot;lld/%lld</span><span class="se">\r</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="k">auto</span> <span class="n">lastTime</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">steady_clock</span><span class="o">::</span><span class="n">now</span><span class="p">();</span>
+<span class="k">auto</span> <span class="n">start</span>    <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">steady_clock</span><span class="o">::</span><span class="n">now</span><span class="p">();</span>
+</code></pre></div>
+<p>Now the code are limiting data if you setted and setting a string for progress information while filling histograms.</p>
+<hr />
+<div class="highlight"><pre><span></span><code><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">Filling Invariant Mass Histograms..... (1/2)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+<span class="c1">//Loop between the components</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">numberEntries</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">//Select particle pair</span>
+    <span class="n">TreePC</span><span class="o">-&gt;</span><span class="n">GetEntry</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+    <span class="n">TreeAT</span><span class="o">-&gt;</span><span class="n">GetEntry</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+
+    <span class="c1">//Show progress on screen</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">chrono</span><span class="o">::</span><span class="n">duration_cast</span><span class="o">&lt;</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="o">&gt;</span><span class="p">(</span><span class="n">chrono</span><span class="o">::</span><span class="n">steady_clock</span><span class="o">::</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">lastTime</span><span class="p">).</span><span class="n">count</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">1000</span> <span class="o">||</span> <span class="n">i</span> <span class="o">==</span> <span class="n">numberEntries</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="n">progressFormat</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span> <span class="p">(</span><span class="kt">float</span><span class="p">)(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">numberEntries</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">numberEntries</span><span class="p">);</span>
+        <span class="n">lastTime</span> <span class="o">=</span> <span class="n">chrono</span><span class="o">::</span><span class="n">steady_clock</span><span class="o">::</span><span class="n">now</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="c1">//Fill histograms</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">applyCuts</span><span class="p">(</span><span class="n">quantities</span><span class="p">,</span> <span class="n">types</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="n">SdS</span><span class="p">.</span><span class="n">fillMassHistograms</span><span class="p">(</span><span class="n">quantities</span><span class="p">,</span> <span class="n">types</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">Took &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">chrono</span><span class="o">::</span><span class="n">duration_cast</span><span class="o">&lt;</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="o">&gt;</span><span class="p">(</span><span class="n">chrono</span><span class="o">::</span><span class="n">steady_clock</span><span class="o">::</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="p">).</span><span class="n">count</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; ms</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</code></pre></div>
+<p>This part of the code fill invariant mass histograms. Cuts are applyied in cuts.h.
+At this point, macro.cpp separes in passing and all muons.</p>
+<hr />
+<div class="highlight"><pre><span></span><code><span class="c1">//Do function fit over the histogram</span>
+<span class="n">SdS</span><span class="p">.</span><span class="n">doFit</span><span class="p">();</span>
+
+<span class="c1">//Get values for invariant mass and sigma from plot</span>
+<span class="n">SdS</span><span class="p">.</span><span class="n">updateMassValuesAll</span><span class="p">();</span>
+</code></pre></div>
+<p>After filling mass histograms, it is necessary to apply the fit function.</p>
+<p>After doing fit, <em>updateMassValuesAll()</em> get regions for sideband subtraction mostly based in fitting.</p>
+<hr />
+<div class="highlight"><pre><span></span><code><span class="c1">//-------------------------------------</span>
+<span class="c1">// Generate and save files</span>
+<span class="c1">//-------------------------------------</span>
+
+<span class="c1">//Create file root to store generated files</span>
+<span class="n">TFile</span><span class="o">*</span> <span class="n">generatedFile</span> <span class="o">=</span> <span class="n">TFile</span><span class="o">::</span><span class="n">Open</span><span class="p">((</span><span class="n">string</span><span class="p">(</span><span class="n">directoryToSave</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;generated_hist.root&quot;</span><span class="p">).</span><span class="n">data</span><span class="p">(),</span><span class="s">&quot;RECREATE&quot;</span><span class="p">);</span>
+<span class="n">generatedFile</span><span class="o">-&gt;</span><span class="n">mkdir</span><span class="p">(</span><span class="s">&quot;canvas/&quot;</span><span class="p">);</span>
+<span class="n">generatedFile</span><span class="o">-&gt;</span>   <span class="n">cd</span><span class="p">(</span><span class="s">&quot;canvas/&quot;</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">shouldDrawInvariantMassCanvas</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">bool</span> <span class="n">drawRegions</span>    <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">shouldWrite</span>    <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">shouldSavePNG</span>  <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+
+    <span class="n">SdS</span><span class="p">.</span><span class="n">createMassCanvas</span><span class="p">(</span><span class="n">drawRegions</span><span class="p">,</span> <span class="n">shouldWrite</span><span class="p">,</span> <span class="n">shouldSavePNG</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">shouldDrawInvariantMassCanvasRegion</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">isMC</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">bool</span> <span class="n">drawRegions</span>    <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">shouldWrite</span>    <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">shouldSavePNG</span>  <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+
+    <span class="n">SdS</span><span class="p">.</span><span class="n">createMassCanvas</span><span class="p">(</span><span class="n">drawRegions</span><span class="p">,</span> <span class="n">shouldWrite</span><span class="p">,</span> <span class="n">shouldSavePNG</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Canvas are drawn and saved in the <code>generated_hist.root</code> file and in the folder as <code>.png</code>.</p>
+<hr />
+<div class="highlight"><pre><span></span><code><span class="c1">//Prepare for showing progress</span>
+<span class="n">lastTime</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">steady_clock</span><span class="o">::</span><span class="n">now</span><span class="p">();</span>
+<span class="n">start</span>    <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">steady_clock</span><span class="o">::</span><span class="n">now</span><span class="p">();</span>
+
+<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">Filling Quantities Histograms..... (2/2)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+<span class="c1">//Loop between the components again</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">numberEntries</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">//Select particle pair</span>
+    <span class="n">TreePC</span><span class="o">-&gt;</span><span class="n">GetEntry</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+    <span class="n">TreeAT</span><span class="o">-&gt;</span><span class="n">GetEntry</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+
+    <span class="c1">//Show progress on screen</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">chrono</span><span class="o">::</span><span class="n">duration_cast</span><span class="o">&lt;</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="o">&gt;</span><span class="p">(</span><span class="n">chrono</span><span class="o">::</span><span class="n">steady_clock</span><span class="o">::</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">lastTime</span><span class="p">).</span><span class="n">count</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">1000</span> <span class="o">||</span> <span class="n">i</span> <span class="o">==</span> <span class="n">numberEntries</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="n">progressFormat</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span> <span class="p">(</span><span class="kt">float</span><span class="p">)(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">numberEntries</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">numberEntries</span><span class="p">);</span>
+        <span class="n">lastTime</span> <span class="o">=</span> <span class="n">chrono</span><span class="o">::</span><span class="n">steady_clock</span><span class="o">::</span><span class="n">now</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="c1">//Fill histograms</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">applyCuts</span><span class="p">(</span><span class="n">quantities</span><span class="p">,</span> <span class="n">types</span><span class="p">))</span>
+    <span class="p">{</span>   
+        <span class="n">SdS</span><span class="p">.</span><span class="n">fillQuantitiesHistograms</span><span class="p">(</span><span class="n">quantities</span><span class="p">,</span> <span class="n">types</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">Took &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">chrono</span><span class="o">::</span><span class="n">duration_cast</span><span class="o">&lt;</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="o">&gt;</span><span class="p">(</span><span class="n">chrono</span><span class="o">::</span><span class="n">steady_clock</span><span class="o">::</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="p">).</span><span class="n">count</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; ms</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</code></pre></div>
+<p>At this point of the code, this will separate all histogram in signal + background (signal region) and background (sideband region) due the regions for sideband choosen before.</p>
+<hr />
+<div class="highlight"><pre><span></span><code><span class="c1">//Normalize Histograms for variable binning</span>
+<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="n">SdS</span><span class="p">.</span><span class="n">normalizeHistograms</span><span class="p">();</span>  
+</code></pre></div>
+<p>After folling histograms, as some of them has variable bins, it needs to be normalized. This function does this.</p>
+<hr />
+<div class="highlight"><pre><span></span><code><span class="c1">//For sideband subtraction</span>
+<span class="n">SdS</span><span class="p">.</span><span class="n">subtractSigHistograms</span><span class="p">();</span>
+</code></pre></div>
+<p>Subtract <code>background</code> from <code>signal + background</code> histogram to create signal histogram. This method is what is called <em>sideband subtraction</em>.</p>
+<hr />
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="p">(</span><span class="n">shouldDrawQuantitiesCanvas</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">bool</span> <span class="n">shouldWrite</span>    <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">shouldSavePNG</span>  <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">SdS</span><span class="p">.</span><span class="n">createQuantitiesCanvas</span><span class="p">(</span><span class="n">shouldWrite</span><span class="p">,</span> <span class="n">shouldSavePNG</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The code here draw the canvas for all pT, eta and phi quantities it has. Including <code>background</code>, <code>signal</code> and <code>signal + background</code>.</p>
+<hr />
+<div class="highlight"><pre><span></span><code><span class="c1">//Debug consistency for histograms</span>
+<span class="n">SdS</span><span class="p">.</span><span class="n">consistencyDebugCout</span><span class="p">();</span>
+</code></pre></div>
+<p>This is a checker of how consistent is our result values and print on terminal results. For all histograms this calculations should result 0. For more details about how exactly it works, see <a href="../PassingFailing/#consistencydebugcout">consistencyDebugCout()</a>.</p>
+<hr />
+<div class="highlight"><pre><span></span><code><span class="c1">//Save histograms</span>
+<span class="n">generatedFile</span><span class="o">-&gt;</span><span class="n">mkdir</span><span class="p">(</span><span class="s">&quot;histograms/&quot;</span><span class="p">);</span>
+<span class="n">generatedFile</span><span class="o">-&gt;</span>   <span class="n">cd</span><span class="p">(</span><span class="s">&quot;histograms/&quot;</span><span class="p">);</span>
+
+<span class="c1">//Write quantities histograms on file</span>
+<span class="p">{</span>
+    <span class="kt">bool</span> <span class="n">writehSigBack</span>  <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">writehSig</span>      <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">writehBack</span>     <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+
+    <span class="n">SdS</span><span class="p">.</span><span class="n">writeQuantitiesHistogramsOnFile</span><span class="p">(</span><span class="n">writehSigBack</span><span class="p">,</span> <span class="n">writehSig</span><span class="p">,</span> <span class="n">writehBack</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//Write mass histograms on file</span>
+<span class="p">{</span>
+    <span class="kt">bool</span> <span class="n">writehPass</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">writehAll</span>  <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+
+    <span class="n">SdS</span><span class="p">.</span><span class="n">writeMassHistogramsOnFile</span><span class="p">(</span><span class="n">writehPass</span><span class="p">,</span> <span class="n">writehAll</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>At this point, the code will write all histograms in a folder in the <code>.root</code> generated file. Including mass histograms and quantities histograms.</p>
+<hr />
+<div class="highlight"><pre><span></span><code><span class="c1">//Save plots</span>
+<span class="n">generatedFile</span><span class="o">-&gt;</span><span class="n">mkdir</span><span class="p">(</span><span class="s">&quot;efficiency/plots/&quot;</span><span class="p">);</span>
+<span class="n">generatedFile</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">(</span><span class="s">&quot;efficiency/plots/&quot;</span><span class="p">);</span>
+
+<span class="c1">//Creates efficiency plots</span>
+<span class="p">{</span>
+    <span class="kt">bool</span> <span class="n">shouldWrite</span>    <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+
+    <span class="n">SdS</span><span class="p">.</span><span class="n">createEfficiencyPlot</span><span class="p">(</span><span class="n">shouldWrite</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>It calculates the efficiency of the quantities by using <a href="https://root.cern.ch/doc/master/classTEfficiency.html">TEfficiency</a> class of ROOT. Then saves the plots in another folder inside the <code>.root</code> file.</p>
+<hr />
+<div class="highlight"><pre><span></span><code><span class="c1">//Saves new histograms and canvas in file</span>
+<span class="n">generatedFile</span><span class="o">-&gt;</span><span class="n">mkdir</span><span class="p">(</span><span class="s">&quot;efficiency/canvas/&quot;</span><span class="p">);</span>
+<span class="n">generatedFile</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">(</span><span class="s">&quot;efficiency/canvas/&quot;</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">shouldDrawEfficiencyCanvas</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">bool</span> <span class="n">shouldWrite</span>    <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">shouldSavePNG</span>  <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="n">SdS</span><span class="p">.</span><span class="n">createEfficiencyCanvas</span><span class="p">(</span><span class="n">shouldWrite</span><span class="p">,</span> <span class="n">shouldSavePNG</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//Close files</span>
+<span class="n">generatedFile</span><span class="o">-&gt;</span><span class="n">Close</span><span class="p">();</span>
+
+<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">Done. All result files can be found at </span><span class="se">\&quot;</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">SdS</span><span class="p">.</span><span class="n">directoryToSave</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\&quot;\n\n</span><span class="s">&quot;</span><span class="p">;</span>
+</code></pre></div>
+<p>The end point of this function. It creates a canvas for every efficiency plot calculated above and also saves in the generated file. After this, the task is done.</p>
+<hr />
+<h2 id="results">Results<a class="headerlink" href="#results" title="Permanent link">&para;</a></h2>
+<p>All results are saved in a folder setted in <code>directoryToSave</code> variable. The result contains a file <code>.root</code> with all canvas, histograms and plots aside of <code>.png</code> images of all canvas created.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../../efficiencytool/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Efficiency Tool
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../FitFunctions/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                FitFunction class
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../../../assets/javascripts/vendor.93c04032.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.83e5331e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../../../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../../../../assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
