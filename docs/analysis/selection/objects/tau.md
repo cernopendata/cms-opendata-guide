@@ -1,6 +1,6 @@
 ## Tau leptons
 
-The objects page (../../objects.md) shows you how to access muon collections in CMS, and which header files should be included in your C++ code in order to access all of their class information. The class information of tau leptons can similarly be accessed using the tau collections. 
+The [objects page] (../../objects.md) shows you how to access muon collections in CMS, and which header files should be included in your C++ code in order to access all of their class information. The class information of tau leptons can similarly be accessed using the tau collections. 
 
 We will be exploring another physics object, the tau object in this page. Tau are the only lepton that is heavy enough to decay hadronically. About one third of taus will decay leptonically and are reconstructed and identified in a similar way as is done for muons, but about two-third of the time time taus will decay into hadrons. 
 
