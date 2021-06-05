@@ -1372,9 +1372,9 @@
 <p>More info about this code can be <a href="http://tagandprobe-documentation.web.cern.ch/tagandprobe-documentation/">found here</a>.</p>
 </div>
 <h2 id="preparing-files">Preparing files<a class="headerlink" href="#preparing-files" title="Permanent link">&para;</a></h2>
-<p>First, we need to get the code. Go to folder you have created for this lesson and on your terminal type:</p>
+<p>First, from the root folder of our downloades repository, we need to go sideband subtraction method tutorial:</p>
 <div class="highlight"><pre><span></span><code>git clone -b sideband git://github.com/allanjales/efficiency_tagandprobe
-<span class="nb">cd</span> efficiency_tagandprobe
+<span class="nb">cd</span> efficiency_tools/sideband_subtraction
 </code></pre></div>
 <p>To copy the ϒ dataset from real data file to your machine (requires 441 MB), type:</p>
 <div class="highlight"><pre><span></span><code>wget --load-cookies /tmp/cookies.txt <span class="s2">&quot;https://docs.google.com/uc?export=download&amp;confirm=</span><span class="k">$(</span>wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate <span class="s1">&#39;https://docs.google.com/uc?export=download&amp;id=1Fj-rrKts8jSSMdwvOnvux68ydZcKB521&#39;</span> -O- <span class="p">|</span> sed -rn <span class="s1">&#39;s/.*confirm=([0-9A-Za-z_]+).*/\1\n/p&#39;</span><span class="k">)</span><span class="s2">&amp;id=1Fj-rrKts8jSSMdwvOnvux68ydZcKB521&quot;</span> -O Run2011A_MuOnia_Upsilon.root <span class="o">&amp;&amp;</span> rm -rf /tmp/cookies.txt
