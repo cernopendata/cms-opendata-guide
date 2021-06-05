@@ -39,11 +39,11 @@ You will see this histogram on this exercise.
 
 ## Preparing files
 
-First, we need to get the code. Go to folder you have created for this lesson and on your terminal type:
+First, from the root folder of our downloades repository, we need to go sideband subtraction method tutorial:
 
 ~~~sh
 git clone -b sideband git://github.com/allanjales/efficiency_tagandprobe
-cd efficiency_tagandprobe
+cd efficiency_tools/sideband_subtraction
 ~~~
 
 To copy the ϒ dataset from real data file to your machine (requires 441 MB), type:

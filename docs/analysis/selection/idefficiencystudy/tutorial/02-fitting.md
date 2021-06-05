@@ -10,11 +10,11 @@ Since we will be needing ROOT version greater than 6, then do not forget to set 
 source /cvmfs/sft.cern.ch/lcg/views/LCG_95/x86_64-slc6-gcc8-opt/setup.sh
 ~~~
 
-Clone the repository and go to the tutorial:
+Clone the repository and go to the fitting method tutorial:
 
 ~~~sh
-git clone git://github.com/AthomsG/CMS-tutorial
-cd CMS-tutorial/
+git clone git://github.com/allanjales/TagAndProbe
+cd TagAndProbe/efficiency_tools/fitting
 ~~~
 
 <h3>A brief explanation of this repository</h3>
