@@ -145,9 +145,9 @@ You'll have to make some small adjustments to the code in this section (from lin
 
 ~~~cpp
 /*-----------------------------------I N S E R T    C O D E    H E R E-----------------------------------*/
-//string quantity = "Pt";     double bins[] = {0., 2.0, 3.4, 4.0, 4.4, 4.7, 5.0, 5.6, 5.8, 6.0, 6.2, 6.4, 6.6, 6.8, 7.3, 9.5, 13.0, 17.0, 40.};
+string quantity = "Pt";     double bins[] = {0., 2.0, 3.4, 4.0, 4.4, 4.7, 5.0, 5.6, 5.8, 6.0, 6.2, 6.4, 6.6, 6.8, 7.3, 9.5, 13.0, 17.0, 40.};
 //string quantity = "Eta";    double bins[] = {-2.4, -1.8, -1.4, -1.2, -1.0, -0.8, -0.5, -0.2, 0, 0.2, 0.5, 0.8, 1.0, 1.2, 1.4, 1.8, 2.4};
-string quantity = "Phi";    double bins[] = {-3.0, -1.8, -1.6, -1.2, -1.0, -0.7, -0.4, -0.2, 0, 0.2, 0.4, 0.7, 1.0, 1.2, 1.6, 1.8, 3.0};
+//string quantity = "Phi";    double bins[] = {-3.0, -1.8, -1.6, -1.2, -1.0, -0.7, -0.4, -0.2, 0, 0.2, 0.4, 0.7, 1.0, 1.2, 1.6, 1.8, 3.0};
 int bin_n = sizeof(bins)/sizeof(*bins) - 1;
  /*------------------------------------------------------------------------------------------------------*/
 
@@ -167,13 +167,13 @@ We'll start by choosing the desired bins for the transverse momentum. If you're 
 ??? Example "Bin Suggestion"
     ~~~cpp
     //-- BINS USED TO CALCULATE PT
-    double bins[] = {2, 3.4, 4, 4.2, 4.4, 4.7, 5.0, 5.1, 5.2, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 6.2, 6.4, 6.6, 6.8, 7.3, 9.5, 13.0, 17.0, 40};
+    double bins[] = {0., 2.0, 3.4, 4.0, 4.4, 4.7, 5.0, 5.6, 5.8, 6.0, 6.2, 6.4, 6.6, 6.8, 7.3, 9.5, 13.0, 17.0, 40.};
 
     //-- BINS USED TO CALCULATE PHI
-    double bins[] = {-3, -2.8, -2.6, -2.4, -2.2, -2.0, -1.8, -1.6, -1.4, -1.2, -1.0, -0.8, -0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.5, 0.6, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0};
+    double bins[] = {-2.4, -1.8, -1.4, -1.2, -1.0, -0.8, -0.5, -0.2, 0, 0.2, 0.5, 0.8, 1.0, 1.2, 1.4, 1.8, 2.4};
   
     //-- BINS USED TO CALCULATE ETA
-    double bins[] = {-2.0, -1.9, -1.8, -1.7, -1.6, -1.5, -1.4, -1.2, -1.0, -0.8, -0.6, -0.4, 0, 0.2, 0.4, 0.6, 0.7, 0.95, 1.2, 1.4, 1.5, 1.6, 2.0};
+    double bins[] = {-3.0, -1.8, -1.6, -1.2, -1.0, -0.7, -0.4, -0.2, 0, 0.2, 0.4, 0.7, 1.0, 1.2, 1.6, 1.8, 3.0};
     ~~~
 
 Now that the bins are set, we'll need to define the initial parameters for our fit.
@@ -249,7 +249,7 @@ You won't need to do anything in ``src/DoFit.cpp`` but you can check it out if y
         RooFormulaVar* redeuce = new RooFormulaVar("PPTM", condition.c_str(), RooArgList(quantity));
         RooDataSet *Data_ALL    = new RooDataSet("DATA", "DATA", DataTree, RooArgSet(InvariantMass, MuonID, quantity),*redeuce);
         RooFormulaVar* cutvar = new RooFormulaVar("PPTM", (condition + " && " + MuonID_str + " == 1").c_str() , RooArgList(MuonID, quantity));
-        
+
         RooDataSet *Data_PASSING = new RooDataSet("DATA_PASS", "DATA_PASS", DataTree, RooArgSet(InvariantMass, MuonID, quantity), *cutvar);//
         
         RooDataHist* dh_ALL     = Data_ALL->binnedClone();
@@ -512,11 +512,11 @@ A window like this should have popped up.  If you click on ``Efficiency_Run2011.
 
 If you want, check out the PDF files under the `Fit\ Result/` directory, which contain the fitting results.
 
-Now we must re-run the code, but before that, change ``DataIsMc`` value to **TRUE**. This will generate an efficiency for the simulated data, so that we can compare it with the 2011 run.
+Now we must re-run the code, but before that, change ``DataIsMc`` value to **TRUE**. This will generate an efficiency for the simulated data, so that we can compare it with the 2011 run. Also you will need to change the name of `DoFit_MC_Upsilon.cpp` to `DoFit.cpp` as the file with this name will do the fit.
 
 Check that you have both ```Efficiency_Run2011.root``` and ```Efficiency_MC.root``` files in the following directory `Efficiency Result/Pt`.
 
-If so, now uncomment ``Efficiency.C`` line: 66:
+If so, now uncomment ``Efficiency.C`` line: 69:
 
 ~~~cpp
 //compare_efficiency(quantity, "Efficiency Result/" + quantity + "/Efficiency_MC.root", "Efficiency Result/" + quantity + "/Efficiency_Run2011.root");
@@ -528,11 +528,11 @@ and run the macro again. You should get something like the following result if y
 
 If everything went well and you still have time to go, repeat this process for the two other variables, &eta; and &phi;!
 
-In case you want to change one of the fit results, use the `change_bin.cpp` function commented on line:61.
+In case you want to change one of the fit results, use the `change_bin.cpp` function commented on line:69.
 
 !!! Note "Important note!"
     
-    Don't forget to comment line:68 when repeating the procedure for the other quantities!
+    Don't forget to comment line:69 when repeating the procedure for the other quantities!
     ~~~cpp
     compare_efficiency(quantity, "Efficiency Result/" + quantity + "/Efficiency_MC.root", "Efficiency Result/" + quantity + "/Efficiency_Run2011.root");
     ~~~

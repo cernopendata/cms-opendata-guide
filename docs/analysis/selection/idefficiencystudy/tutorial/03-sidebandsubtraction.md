@@ -208,106 +208,72 @@ else
 
 ??? Example "See the whole scructure"
     
-    Don't be scared! Code doens't bite.
+    Don't be scared! Code does'nt bite.
    
     ~~~cpp
     //Variable bin for pT
     if (strcmp(quantityName, "Pt") == 0)
     {
-    	double xbins[10000];
-    	xbins[0] = .0;
-    	int nbins = 0;
-    	double binWidth = 1.;
-    	for (int i = 1; xbins[i-1] < xMax+binWidth; i++)
-    	{
-    		xbins[i] = xbins[i-1] < 1. ? 1. : xbins[i-1] *(1+binWidth);
-    		nbins++;
-    	}
-    
-    	histo = new TH1D(hName.data(), hTitle.data(), nbins, xbins);
+        double xbins[] = {0., 2.0, 3.4, 4.0, 4.4, 4.7, 5.0, 5.6, 5.8, 6.0, 6.2, 6.4, 6.6, 6.8, 7.3, 9.5, 13.0, 17.0, 40.};
+        
+        int nbins = sizeof(xbins)/sizeof(*xbins) - 1;
+        histo = new TH1D(hName.data(), hTitle.data(), nbins, xbins);
     }
-    
+
     //Variable bin for eta
     else if (strcmp(quantityName, "Eta") == 0)
     {
-    	double xbins[10000];
-    	xbins[0] = .5;
-    	int nbins = 0;
-    	double binWidth = 0.2;
-    
-    	//For positive
-    	for (int i = 1; xbins[i-1] < xMax+binWidth; i++)
-    	{
-    		xbins[i] = xbins[i-1] < 1. ? 1. : xbins[i-1] *(1+binWidth);
-    		nbins++;
-    	}
-    
-    	//Duplicate array and create another
-    	double rxbins[nbins*2+1];
-    	int entry = 0;
-    	for (int i = nbins; i    = 0; i--)
-    	{
-    		rxbins[entry] = -xbins[i];
-    		entry++;
-    	}
-    	rxbins[entry] = 0.;
-    	entry++;
-    	for (int i = 0; i <= nbins; i++)
-    	{
-    		rxbins[entry] = xbins[i];
-    		entry++;
-    	}
-    	
-    	histo = new TH1D(hName.data(), hTitle.data(), entry-1, rxbins);
+        double xbins[] = {-2.4, -1.8, -1.4, -1.2, -1.0, -0.8, -0.5, -0.2, 0, 0.2, 0.5, 0.8, 1.0, 1.2, 1.4, 1.8, 2.4};
+        
+        int nbins = sizeof(xbins)/sizeof(*xbins) - 1;
+        histo = new TH1D(hName.data(), hTitle.data(), nbins, xbins);
     }
-    
+
     //Bins for phi 
     else
     {
-    	if (strcmp(quantityUnit, "") == 0)
-    	{
-    		yAxisTitleForm += " / (%1." + to_string(decimals) + "f)";
-    	}
-    	else
-    	{
-    		yAxisTitleForm += " / (%1." + to_string(decimals) + "f " + string(quantityUnit) + ")";
-    	}
-    
-     histo = new TH1D(hName.data(), hTitle.data(), nBins, xMin, xMax);
-    } 
+        double xbins[] = {-3.0, -1.8, -1.6, -1.2, -1.0, -0.7, -0.4, -0.2, 0, 0.2, 0.4, 0.7, 1.0, 1.2, 1.6, 1.8, 3.0};
+        
+        int nbins = sizeof(xbins)/sizeof(*xbins) - 1;
+        histo = new TH1D(hName.data(), hTitle.data(), nbins, xbins);
+    }
+
+    //Edit histogram axis
+    histo->GetYaxis()->SetTitle(Form(yAxisTitleForm.data(), histo->GetBinWidth(0)));
+    histo->GetXaxis()->SetTitle(xAxisTitle.data());
     ~~~
 
 The code that creates the histogram bins is located inside the conditionals and is commented. You can edit this code and uncomment to create histogram bins however you want. Instead of using a function to generate the bins, we can also define them manually.
 
-As we intend to compare the results between data and simulation, but also between the sideband and fitting methods, you are advised to employ the same bin choice. Change your the code to this:
+As we intend to compare the results between data and simulation, but also between the sideband and fitting methods. You are advised to employ the same bin choice. Garantee your the code uses same bin as the previus this:
 
 ~~~cpp
-//Variable bin for pT
-if (strcmp(quantityName, "Pt") == 0)
-{
-	double xbins[] = {2., 3.4, 4, 4.2, 4.4, 4.7, 5.0, 5.1, 5.2, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 6.2, 6.4, 6.6, 6.8, 7.3, 9.5, 13.0, 17.0, 40.};
-	int nbins = 23;
+    //Variable bin for pT
+    if (strcmp(quantityName, "Pt") == 0)
+    {
+        double xbins[] = {0., 2.0, 3.4, 4.0, 4.4, 4.7, 5.0, 5.6, 5.8, 6.0, 6.2, 6.4, 6.6, 6.8, 7.3, 9.5, 13.0, 17.0, 40.};
+        
+        int nbins = sizeof(xbins)/sizeof(*xbins) - 1;
+        histo = new TH1D(hName.data(), hTitle.data(), nbins, xbins);
+    }
 
-	histo = new TH1D(hName.data(), hTitle.data(), nbins, xbins);
-}
+    //Variable bin for eta
+    else if (strcmp(quantityName, "Eta") == 0)
+    {
+        double xbins[] = {-2.4, -1.8, -1.4, -1.2, -1.0, -0.8, -0.5, -0.2, 0, 0.2, 0.5, 0.8, 1.0, 1.2, 1.4, 1.8, 2.4};
+        
+        int nbins = sizeof(xbins)/sizeof(*xbins) - 1;
+        histo = new TH1D(hName.data(), hTitle.data(), nbins, xbins);
+    }
 
-//Variable bin for eta
-else if (strcmp(quantityName, "Eta") == 0)
-{
-	double xbins[] = {-2.0, -1.9, -1.8, -1.7, -1.6, -1.5, -1.4, -1.2, -1.0, -0.8, -0.6, -0.4, 0, 0.2, 0.4, 0.6, 0.7, 0.95, 1.2, 1.4, 1.5, 1.6, 2.0};
-	int nbins = 22;
-
-	histo = new TH1D(hName.data(), hTitle.data(), nbins, xbins);
-}
-
-//Bins for phi
-else
-{
-	double xbins[] =  {-3, -2.8, -2.6, -2.4, -2.2, -2.0, -1.8, -1.6, -1.4, -1.2, -1.0, -0.8, -0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.5, 0.6, 1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0};
-	int nbins = 30;
-
-	histo = new TH1D(hName.data(), hTitle.data(), nbins, xbins);
-}
+    //Bins for phi 
+    else
+    {
+        double xbins[] = {-3.0, -1.8, -1.6, -1.2, -1.0, -0.7, -0.4, -0.2, 0, 0.2, 0.4, 0.7, 1.0, 1.2, 1.6, 1.8, 3.0};
+        
+        int nbins = sizeof(xbins)/sizeof(*xbins) - 1;
+        histo = new TH1D(hName.data(), hTitle.data(), nbins, xbins);
+    }
 ~~~
 
 ## Running the code
@@ -351,7 +317,6 @@ Done. All result files can be found at "../results/Upsilon_Run_2011/"
     ~~~
     Error in <ROOT::Math::Cephes::incbi   : Wrong domain for parameter b (must be     0)
     ~~~
-    {: .error}
    
     This occurs when the contents of a bin of the pass histogram is greater than the corresponding bin in the total histogram. With sideband subtraction, depending on bins you choose, this can happen and will result in enormous error bars.
    
@@ -361,9 +326,9 @@ Done. All result files can be found at "../results/Upsilon_Run_2011/"
 
 If all went well, your results are going to be like these:
 
-![Efficiency plot](../../../../../images/analysis/cmsefficiency/tutorial/03/sideband_run2011/Efficiency_Tracker_Probe_Pt.png)
-![Efficiency plot](../../../../../images/analysis/cmsefficiency/tutorial/03/sideband_run2011/Efficiency_Tracker_Probe_Eta.png)
-![Efficiency plot](../../../../../images/analysis/cmsefficiency/tutorial/03/sideband_run2011/Efficiency_Tracker_Probe_Phi.png)
+![Efficiency_Tracker_Probe_Pt](../../../../../images/analysis/cmsefficiency/tutorial/03/sideband_run2011/Efficiency_Tracker_Probe_Pt.png)
+![Efficiency_Tracker_Probe_Eta](../../../../../images/analysis/cmsefficiency/tutorial/03/sideband_run2011/Efficiency_Tracker_Probe_Eta.png)
+![Efficiency_Tracker_Probe_Phi](../../../../../images/analysis/cmsefficiency/tutorial/03/sideband_run2011/Efficiency_Tracker_Probe_Phi.png)
 
 ## Preparing and running the code for simulation
 
