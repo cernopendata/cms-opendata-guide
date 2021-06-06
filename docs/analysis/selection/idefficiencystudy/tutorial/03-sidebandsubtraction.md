@@ -26,7 +26,7 @@ And for the uncertainty:
 
 Applying those equations we get histograms like this:
 
-![Invariant Mass histogram](../../../../../images/analysis/cmsefficiency/tutorial/03/Tracker_Probe_Pt_Passing.png)
+![Tracker_Probe_Pt_Passing histogram](../../../../../images/analysis/cmsefficiency/tutorial/03/Tracker_Probe_Pt_Passing.png)
 
 * Solid blue line (Total) = particles in signal region;
 * Dashed blue line (Background) = particles in sideband regions;
