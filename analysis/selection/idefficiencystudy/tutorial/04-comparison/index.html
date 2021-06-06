@@ -1356,11 +1356,11 @@ root [1]
 <div class="highlight"><pre><span></span><code>new TBrowser
 </code></pre></div>
 <p>You should see something like this:</p>
-<p><img alt="Invariant Mass histogram" src="../../../../../images/analysis/cmsefficiency/tutorial/04/prints/tbrowser0.png" /></p>
+<p><img alt="TBrowser" src="../../../../../images/analysis/cmsefficiency/tutorial/04/prints/tbrowser0.png" /></p>
 <p>This is a visual navigator of a <code>.root</code> file. Here you can see the struture of <code>generated_hist.root</code>. Double click the folders to open them and see their content. The Efficiency plots we see are stored in <code>efficiency/plots/</code> folder:</p>
-<p><img alt="Invariant Mass histogram" src="../../../../../images/analysis/cmsefficiency/tutorial/04/prints/tbrowser2.png" /></p>
+<p><img alt="TBrowser showing plots folder" src="../../../../../images/analysis/cmsefficiency/tutorial/04/prints/tbrowser2.png" /></p>
 <p>You can double click each plot to see its content:</p>
-<p><img alt="Invariant Mass histogram" src="../../../../../images/analysis/cmsefficiency/tutorial/04/prints/tbrowser3.png" /></p>
+<p><img alt="TBrowser showing efficiency plot for sideband subtraction method" src="../../../../../images/analysis/cmsefficiency/tutorial/04/prints/tbrowser3.png" /></p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>To close this window, click on terminal and press <kbd>Ctrl + C</kbd>. This command stops any processes happening in the terminal.</p>
@@ -1493,18 +1493,18 @@ You can try to run TBrowser again:</p>
 </code></pre></div>
 </div>
 <p>And as output plots comparsion, you get:</p>
-<p><img alt="Invariant Mass histogram" src="../../../../../images/analysis/cmsefficiency/tutorial/04/omparison_Upsilon_Sideband_Run_vs_MC/Muon_Pt_Tracker_Probe_Efficiency.png" />
-<img alt="Invariant Mass histogram" src="../../../../../images/analysis/cmsefficiency/tutorial/04/Comparison_Upsilon_Sideband_Run_vs_MC/Muon_Eta_Tracker_Probe_Efficiency.png" />
-<img alt="Invariant Mass histogram" src="../../../../../images/analysis/cmsefficiency/tutorial/04/Comparison_Upsilon_Sideband_Run_vs_MC/Muon_Phi_Tracker_Probe_Efficiency.png" /></p>
+<p><img alt="Muon_Pt_Tracker_Probe_Efficiency " src="../../../../../images/analysis/cmsefficiency/tutorial/04/Comparison_Upsilon_Sideband_Run_vs_MC/Muon_Pt_Tracker_Probe_Efficiency.png" />
+<img alt="Muon_Eta_Tracker_Probe_Efficiency" src="../../../../../images/analysis/cmsefficiency/tutorial/04/Comparison_Upsilon_Sideband_Run_vs_MC/Muon_Eta_Tracker_Probe_Efficiency.png" />
+<img alt="Muon_Phi_Tracker_Probe_Efficiency" src="../../../../../images/analysis/cmsefficiency/tutorial/04/Comparison_Upsilon_Sideband_Run_vs_MC/Muon_Phi_Tracker_Probe_Efficiency.png" /></p>
 <p>Now you can type the command below to <strong>quit root</strong> and close all created windows:</p>
 <div class="highlight"><pre><span></span><code>.q
 </code></pre></div>
 <h2 id="how-fitting-method-code-stores-its-files">How fitting method code stores its files<a class="headerlink" href="#how-fitting-method-code-stores-its-files" title="Permanent link">&para;</a></h2>
 <p>To do the next part, first you need to understand how the fitting method code saves its files in a different way to the sideband subtraction method code. Lets look at how they are saved.</p>
 <p>If you look inside <code>CMS-tutorial\Efficiency Result</code> folder, where is stored fitting method results, you will see another folder named <code>trackerMuon</code>. Inside of it you'll see:</p>
-<p><img alt="Invariant Mass histogram" src="../../../../../images/analysis/cmsefficiency/tutorial/04/prints/fitting_tracker.png" /></p>
+<p><img alt="Fitting folder" src="../../../../../images/analysis/cmsefficiency/tutorial/04/prints/fitting_tracker.png" /></p>
 <p>Inside of them, there are two files:</p>
-<p><img alt="Invariant Mass histogram" src="../../../../../images/analysis/cmsefficiency/tutorial/04/prints/fitting_root.png" /></p>
+<p><img alt=".ROOT files" src="../../../../../images/analysis/cmsefficiency/tutorial/04/prints/fitting_root.png" /></p>
 <p>If you go with your terminal to this folder and run this command, you'll see that the result files only have one plot.\</p>
 <div class="highlight"><pre><span></span><code>root -l Efficiency_Run2011.root
 </code></pre></div>
@@ -1517,7 +1517,7 @@ root [1]
 <div class="highlight"><pre><span></span><code><span class="k">new</span> <span class="n">TBrowser</span>
 </code></pre></div>
 <p>It has only one plot, because the others are in different files.</p>
-<p><img alt="Invariant Mass histogram" src="../../../../../images/analysis/cmsefficiency/tutorial/04/prints/fitting_tbrowser.png" /></p>
+<p><img alt="TBrowser showing efficiency plot for fitting method" src="../../../../../images/analysis/cmsefficiency/tutorial/04/prints/fitting_tbrowser.png" /></p>
 <div class="admonition info">
 <p class="admonition-title">Key Point</p>
 <ul>
@@ -1604,9 +1604,9 @@ root [1]
 <div class="highlight"><pre><span></span><code>root -l compare_efficiency.cpp
 </code></pre></div>
 <p>Should get you these results:</p>
-<p><img alt="Invariant Mass histogram" src="../../../../../images/analysis/cmsefficiency/tutorial/04/Comparison_Upsilon_Fitting_Run_vs_MC/Muon_Pt_Tracker_Probe_Efficiency.png" />
-<img alt="Invariant Mass histogram" src="../../../../../images/analysis/cmsefficiency/tutorial/04/Comparison_Upsilon_Fitting_Run_vs_MC/Muon_Eta_Tracker_Probe_Efficiency.png" />
-<img alt="Invariant Mass histogram" src="../../../../../images/analysis/cmsefficiency/tutorial/04/Comparison_Upsilon_Fitting_Run_vs_MC/Muon_Phi_Tracker_Probe_Efficiency.png" /></p>
+<p><img alt="Muon_Pt_Tracker_Probe_Efficiency " src="../../../../../images/analysis/cmsefficiency/tutorial/04/Comparison_Upsilon_Fitting_Run_vs_MC/Muon_Pt_Tracker_Probe_Efficiency.png" />
+<img alt="Muon_Eta_Tracker_Probe_Efficiency" src="../../../../../images/analysis/cmsefficiency/tutorial/04/Comparison_Upsilon_Fitting_Run_vs_MC/Muon_Eta_Tracker_Probe_Efficiency.png" />
+<img alt="Muon_Phi_Tracker_Probe_Efficiency" src="../../../../../images/analysis/cmsefficiency/tutorial/04/Comparison_Upsilon_Fitting_Run_vs_MC/Muon_Phi_Tracker_Probe_Efficiency.png" /></p>
 <p>Now you can type the command below to <strong>quit root</strong> and close all created windows:</p>
 <div class="highlight"><pre><span></span><code>.q
 </code></pre></div>
