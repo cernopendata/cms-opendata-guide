@@ -42,7 +42,6 @@ You will see this histogram on this exercise.
 First, from the root folder of our downloades repository, we need to go sideband subtraction method tutorial:
 
 ~~~sh
-git clone -b sideband git://github.com/allanjales/efficiency_tagandprobe
 cd efficiency_tools/sideband_subtraction
 ~~~
 
