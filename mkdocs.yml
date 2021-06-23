@@ -39,6 +39,11 @@ nav:
                 - 'Tag and Probe': analysis/selection/idefficiencystudy/tagandprobe.md
                 - 'Signal extraction': analysis/selection/idefficiencystudy/signalextraction.md
                 - 'Efficiency Tool': analysis/selection/idefficiencystudy/efficiencytool.md
+                - 'Tutorial':
+                    - 'Introduction':            analysis/selection/idefficiencystudy/tutorial/01-introduction.md
+                    - 'Fitting':                 analysis/selection/idefficiencystudy/tutorial/02-fitting.md
+                    - 'Sideband Subtraction':    analysis/selection/idefficiencystudy/tutorial/03-sidebandsubtraction.md
+                    - 'Comparison':              analysis/selection/idefficiencystudy/tutorial/04-comparison.md
                 - 'Reference Guide (SB)':
                     - 'The Macro':                 analysis/selection/idefficiencystudy/sidebandreferenceguide/macro.md
                     - 'FitFunction class':         analysis/selection/idefficiencystudy/sidebandreferenceguide/FitFunctions.md
@@ -52,11 +57,6 @@ nav:
                 - 'Reference Guide (Fit)':
                     - 'Read me':                  analysis/selection/idefficiencystudy/fittingreferenceguide/readme.md
                     - 'Main Functions':           analysis/selection/idefficiencystudy/fittingreferenceguide/mainfunctions.md
-                - 'Tutorial':
-                    - 'Introduction':            analysis/selection/idefficiencystudy/tutorial/01-introduction.md
-                    - 'Fitting':                 analysis/selection/idefficiencystudy/tutorial/02-fitting.md
-                    - 'Sideband Subtraction':    analysis/selection/idefficiencystudy/tutorial/03-sidebandsubtraction.md
-                    - 'Comparison':              analysis/selection/idefficiencystudy/tutorial/04-comparison.md
         - 'Luminosity':
             - 'Luminosity': analysis/luminosity/lumi.md
         - 'Backgrounds':

@@ -3,7 +3,7 @@
 !!! Warning
     This page is under construction
 
-Welcome to the official guide for CMS open data.  This page is still under construction.  We appreciate your feedback and/or your help building this guide.
+Welcome to the guide for CMS open data.  This guide is brought to you by the CMS open data group, on a best-effort basis. All software and instructions are provided "as is", without warranty of any kind. This is ongoing work and we appreciate your feedback and/or your help building this guide.
 
 ## How to use this site
 
@@ -11,7 +11,7 @@ There are three main tabs to help you navigate the site.  It starts with the **C
 
 ## The site's philosophy
 
-This site is thought as a navigation aid.  The CMS collaboration has built an extensive amount of documentation over the years.  However, given the nature of our rapidly evolving research activities, this documentation is usually scattered around, which makes it difficult to navigate.  The main goal of this guide, therefore, is to facilitate the usage of CMS open/legacy data by providing a structured set of instructions that agglutinate those pieces of information already available in other sites.  In this sense, we do not pretend to copy every little piece of information and/or code, but to help you get to it and find your way around it.
+This site is thought as a navigation aid.  The CMS Collaboration has built an extensive amount of documentation over the years.  However, given the nature of our rapidly evolving research activities, this documentation is usually scattered around, which makes it difficult to navigate.  The main goal of this guide, therefore, is to facilitate the usage of CMS open/legacy data by providing a structured set of instructions that agglutinate those pieces of information already available in other sites.  In this sense, we do not pretend to copy every little piece of information and/or code, but to help you get to it and find your way around it.
 
 For CMS open data the three main sources of documentation/information are:
 
@@ -24,8 +24,15 @@ For CMS open data the three main sources of documentation/information are:
 
 - The [CMSSW code](https://github.com/cms-sw/cmssw).  Although less conventional, exploring the CMSSW code could be a really good source of information.  For instance, having hundreds of trigger bits, if the information from a specific module used in a specific trigger (with which data was taken) was needed, it would be impossible to document that explicitly in some guide. Instead, one can explore the code and easily find out the needed information. We will try to show you how it is done.
 
+## How to get help
+
+The best way to get additional help is to visit our [open data forum][forum].
+
 ## How to contribute or contact us
 
-Please follow [these](https://github.com/cernopendata/cms-opendata-guide) instructions if you would like to contribute.
+Please follow [these](https://github.com/cernopendata/cms-opendata-guide#how-to-contribute) instructions if you would like to contribute.
 
-If you find bugs or have suggestions or recommendations to improve this guide, please fill out an [issue](https://github.com/cernopendata/cms-opendata-guide/issues) or [contact us](mailto:cms-data-preservation@cern.ch).
+If you find bugs or have suggestions or recommendations to improve this guide, please fill out an [issue](https://github.com/cernopendata/cms-opendata-guide/issues) or [contact us][email].
+
+[email]: mailto:cms-dpoa-coordinators@cern.ch
+[forum]: https://opendata-forum.cern.ch/c/cms/6

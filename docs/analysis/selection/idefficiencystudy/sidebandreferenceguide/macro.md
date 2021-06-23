@@ -1,10 +1,46 @@
-# macro.cpp
+# The Macro
 
-A macro is a code file create to be interpreted by a program. In this case, ROOT will interpret it.
+A macro is a code file create to be interpreted by a program. In this case, ROOT program will interpret it. The main code of this tool is in the file `macro.ccp`. In this section what compose this file is explained in details.
 
 ## About the code
 
-`macro.cpp` is a example how to use Sideband Subtraction to get reconstruction efficiencies for a *Tag & Probe* ntupple. It analyzes **J/psi** and **Upsilon** reconstruction efficiency for **tracker**, **standalone** and **global** muons. The file is encountered in folder `main`. Now, I going to talk about what this function do and how it does in the texto below.
+`macro.cpp` is a example how to use Sideband Subtraction to get reconstruction efficiencies for a *Tag & Probe* ntupple. It analyzes **J/psi** and **Upsilon** reconstruction efficiency for **tracker**, **standalone** and **global** muons. The file is encountered in folder `main`. Now, I going to talk about what this function do and how it does in the text below.
+
+## Classes list
+
+There are some classes in Sideband Subtraction Tag And Probe project and they are distributed in these files with same name:
+
+**Static functions**:
+
+* [FitFunctions](FitFunctions.md)
+	* [Primary](FitFunctions.md#primary)
+	* [Merged](FitFunctions.md#merged)
+		* Jpsi
+		* Upsilon
+
+**Classes and struct**:
+
+* [SidebandSubtraction](SidebandSubtraction.md)
+	* [Type](Type.md)
+		* [InvariantMass](InvariantMass.md)
+			* [MassValues](MassValues.md)
+		* [TagProbe](TagProbe.md)
+			* [PtEtaPhi](PtEtaPhi.md)
+				* [PassingFailing](PassingFailing.md)
+
+This format shows what nested classes. Classes or structs below slided at right represents they are nested with the class above it.
+
+## Sideband Subtraction code structure
+
+The diagram below represents the structure of objects in code. At left we have the structure of objects name. At right we have the correspondent class name of objects in these line.
+
+![Main class structure](../../../../images/analysis/cmsefficiency/main_structure.png)
+
+Also in Mass object we have:
+
+![Mass class structure](../../../../images/analysis/cmsefficiency/mass_structure.png)
+
+Notice that all objects in same line shares the same structure.
 
 ## Before macro.cpp
 
