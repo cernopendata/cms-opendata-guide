@@ -124,7 +124,7 @@ int useScheme = 0;
 //Upsilon Fitting  Run vs Upsilon Fitting  MC
 //Upsilon Sideband Run vs Upsilon Fitting  Run
 
-//Muon id anlyse
+//Muon id analyze
 bool doTracker    = true;
 bool doStandalone = true;
 bool doGlobal     = true;
@@ -156,7 +156,7 @@ Also, you will need to change the `useScheme` variable to plot what you want to 
 	//Upsilon Fitting  Run vs Upsilon Fitting  MC
 	//Upsilon Sideband Run vs Upsilon Fitting  Run
 
-	//Muon id anlyse
+	//Muon id analyze
 	bool doTracker    = true;
 	bool doStandalone = false;
 	bool doGlobal     = false;
@@ -275,7 +275,7 @@ int useScheme = 3;
 //Upsilon Fitting  Run vs Upsilon Fitting  MC
 //Upsilon Sideband Run vs Upsilon Fitting  Run
 
-//Muon id anlyse
+//Muon id analyze
 bool doTracker    = true;
 bool doStandalone = false;
 bool doGlobal     = false;
@@ -326,7 +326,7 @@ int useScheme = 4;
 //Upsilon Fitting  Run vs Upsilon Fitting  MC
 //Upsilon Sideband Run vs Upsilon Fitting  Run
 
-//Muon id anlyse
+//Muon id analyze
 bool doTracker    = true;
 bool doStandalone = false;
 bool doGlobal     = false;
