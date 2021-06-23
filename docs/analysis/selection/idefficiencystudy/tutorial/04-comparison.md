@@ -115,9 +115,8 @@ Its easy to prepare it for the sideband subtraction comparison. Our main editing
 
 ~~~cpp
 int useScheme = 0;
-//Upsilon Sideband Run vs Upsilon Sideband MC
-//Upsilon Fitting  Run vs Upsilon Fitting  MC
-//Upsilon Sideband Run vs Upsilon Fitting  Run
+//Jpsi    Sideband Run vs Jpsi    Fitting  Run vs Monte Carlo
+//Upsilon Sideband Run vs Upsilon Fitting  Run vs Monte Carlo
 
 //Root files and paths for Tefficiency objects inside these files
 const char* filePathsEff0[][2] = {
@@ -175,10 +174,9 @@ Everything is uptodate to compare sideband subtraction's results between real da
 	If you deleted the right lines, your code now should be like this:
 
 	~~~cpp
-	int useScheme = 0;
-	//Upsilon Sideband Run vs Upsilon Sideband MC
-	//Upsilon Fitting  Run vs Upsilon Fitting  MC
-	//Upsilon Sideband Run vs Upsilon Fitting  Run
+	int useScheme = 1;
+	//Jpsi    Sideband Run vs Jpsi    Fitting  Run vs Monte Carlo
+	//Upsilon Sideband Run vs Upsilon Fitting  Run vs Monte Carlo
 	 
 	//Root files and paths for Tefficiency objects inside these files
 	const char* filePathsEff0[][2] = {
