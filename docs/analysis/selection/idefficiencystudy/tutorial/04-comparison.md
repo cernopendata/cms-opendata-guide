@@ -114,92 +114,52 @@ gedit compare_efficiency.cpp
 Its easy to prepare it for the sideband subtraction comparison. Our main editing point can be found in this part:
 
 ~~~cpp
+//CONFIGS
+
 int useScheme = 0;
+//Jpsi    Sideband Run vs Jpsi    Sideband MC
+//Jpsi    Fitting  Run vs Jpsi    Fitting  MC
+//Jpsi    Sideband Run vs Jpsi    Fitting  Run
 //Upsilon Sideband Run vs Upsilon Sideband MC
 //Upsilon Fitting  Run vs Upsilon Fitting  MC
 //Upsilon Sideband Run vs Upsilon Fitting  Run
 
-//Root files and paths for Tefficiency objects inside these files
-const char* filePathsEff0[][2] = {
-	{"../results/Upsilon_Run_2011/generated_hist.root", "efficiency/plots/Muon_Pt_Tracker_Probe_Efficiency"},
-	{"../results/Upsilon_Run_2011/generated_hist.root", "efficiency/plots/Muon_Eta_Tracker_Probe_Efficiency"},
-	{"../results/Upsilon_Run_2011/generated_hist.root", "efficiency/plots/Muon_Phi_Tracker_Probe_Efficiency"},
-	{"../results/Upsilon_Run_2011/generated_hist.root", "efficiency/plots/Muon_Pt_Standalone_Probe_Efficiency"},
-	{"../results/Upsilon_Run_2011/generated_hist.root", "efficiency/plots/Muon_Eta_Standalone_Probe_Efficiency"},
-	{"../results/Upsilon_Run_2011/generated_hist.root", "efficiency/plots/Muon_Phi_Standalone_Probe_Efficiency"},
-	{"../results/Upsilon_Run_2011/generated_hist.root", "efficiency/plots/Muon_Pt_Global_Probe_Efficiency"},
-	{"../results/Upsilon_Run_2011/generated_hist.root", "efficiency/plots/Muon_Eta_Global_Probe_Efficiency"},
-	{"../results/Upsilon_Run_2011/generated_hist.root", "efficiency/plots/Muon_Phi_Global_Probe_Efficiency"}
-};
-
-//Root files and paths for Tefficiency objects inside these files
-const char* filePathsEff1[][2] = {
-	{"../results/Upsilon_MC_2020/generated_hist.root", "efficiency/plots/Muon_Pt_Tracker_Probe_Efficiency"},
-	{"../results/Upsilon_MC_2020/generated_hist.root", "efficiency/plots/Muon_Eta_Tracker_Probe_Efficiency"},
-	{"../results/Upsilon_MC_2020/generated_hist.root", "efficiency/plots/Muon_Phi_Tracker_Probe_Efficiency"},
-	{"../results/Upsilon_MC_2020/generated_hist.root", "efficiency/plots/Muon_Pt_Standalone_Probe_Efficiency"},
-	{"../results/Upsilon_MC_2020/generated_hist.root", "efficiency/plots/Muon_Eta_Standalone_Probe_Efficiency"},
-	{"../results/Upsilon_MC_2020/generated_hist.root", "efficiency/plots/Muon_Phi_Standalone_Probe_Efficiency"},
-	{"../results/Upsilon_MC_2020/generated_hist.root", "efficiency/plots/Muon_Pt_Global_Probe_Efficiency"},
-	{"../results/Upsilon_MC_2020/generated_hist.root", "efficiency/plots/Muon_Eta_Global_Probe_Efficiency"},
-	{"../results/Upsilon_MC_2020/generated_hist.root", "efficiency/plots/Muon_Phi_Global_Probe_Efficiency"}
-};
-
-//How comparisons will be saved
-const char* resultNames[] = {
-	"Muon_Pt_Tracker_Probe_Efficiency.png",
-	"Muon_Eta_Tracker_Probe_Efficiency.png",
-	"Muon_Phi_Tracker_Probe_Efficiency.png",
-	"Muon_Pt_Standalone_Probe_Efficiency.png",
-	"Muon_Eta_Standalone_Probe_Efficiency.png",
-	"Muon_Phi_Standalone_Probe_Efficiency.png",
-	"Muon_Pt_Global_Probe_Efficiency.png",
-	"Muon_Eta_Global_Probe_Efficiency.png",
-	"Muon_Phi_Global_Probe_Efficiency.png"
-};
+//Muon id anlyse
+bool doTracker    = true;
+bool doStandalone = true;
+bool doGlobal     = true;
 ~~~
 
 !!! Note
 	In the scope above we see:
 
 	* `int useScheme` represents which comparison you are doing.
-	* `const char* filePathsEff0` is an array with location of the first plots.
-	* `const char* filePathsEff1` is an array with location of the second plots.
-	* `const char resultNames` is an array with names which comparison will be saved.
+	* `bool doTracker` is a variable that allow plots for tracker muons.
+	* `bool doStandalone` is a variable that allow plots for standalone muons.
+	* `bool doGlobal` is a variable that allow plots for global muons.
 
-	Plots in `const char* filePathsEff0[i]` will be compared with plots in `const char* filePathsEff1[i]`. The result will be saved as `const char* resultNames[i]`.
+Everything is up to date to compare sideband subtraction's results between real data and simulations, except it is comparing standalone and global muons. As we are  looking for tracker muons efficiencies only, you should **switch to false variables for Standalone and Global**.
 
-Everything is uptodate to compare sideband subtraction's results between real data and simulations, except it is comparing standalone and global muons. As we are  looking for tracker muons efficiencies only, you should **delete lines with Standalone and Global words**
+Also, you will need to change the `useScheme` variable to plot what you want to plot. As we want to plot **efficiency of real data and simulated data**, the value has to be 3.
 
 ??? Example "See result scructure"
 	If you deleted the right lines, your code now should be like this:
 
 	~~~cpp
-	int useScheme = 0;
+	//CONFIGS
+
+	int useScheme = 3;
+	//Jpsi    Sideband Run vs Jpsi    Sideband MC
+	//Jpsi    Fitting  Run vs Jpsi    Fitting  MC
+	//Jpsi    Sideband Run vs Jpsi    Fitting  Run
 	//Upsilon Sideband Run vs Upsilon Sideband MC
 	//Upsilon Fitting  Run vs Upsilon Fitting  MC
 	//Upsilon Sideband Run vs Upsilon Fitting  Run
-	 
-	//Root files and paths for Tefficiency objects inside these files
-	const char* filePathsEff0[][2] = {
-		{"../results/Upsilon_Run_2011/generated_hist.root", "efficiency/plots/Muon_Pt_Tracker_Probe_Efficiency"},
-		{"../results/Upsilon_Run_2011/generated_hist.root", "efficiency/plots/Muon_Eta_Tracker_Probe_Efficiency"},
-		{"../results/Upsilon_Run_2011/generated_hist.root", "efficiency/plots/Muon_Phi_Tracker_Probe_Efficiency"}
-	};
-	 
-	//Root files and paths for Tefficiency objects inside these files
-	const char* filePathsEff1[][2] = {
-		{"../results/Upsilon_MC_2020/generated_hist.root", "efficiency/plots/Muon_Pt_Tracker_Probe_Efficiency"},
-		{"../results/Upsilon_MC_2020/generated_hist.root", "efficiency/plots/Muon_Eta_Tracker_Probe_Efficiency"},
-		{"../results/Upsilon_MC_2020/generated_hist.root", "efficiency/plots/Muon_Phi_Tracker_Probe_Efficiency"}
-	};
-	 
-	//How comparisons will be saved
-	const char* resultNames[] = {
-		"Muon_Pt_Tracker_Probe_Efficiency.png",
-		"Muon_Eta_Tracker_Probe_Efficiency.png",
-		"Muon_Phi_Tracker_Probe_Efficiency.png"
-	};
+
+	//Muon id anlyse
+	bool doTracker    = true;
+	bool doStandalone = false;
+	bool doGlobal     = false;
 	~~~
 
 	Let your variables like this.
@@ -213,7 +173,7 @@ root -l compare_efficiency.cpp
 If everything went well, the message you'll see in terminal at end of the process is:
 
 ~~~
-Use Scheme: 0
+Use Scheme: 3
 Done. All result files can be found at "../results/Comparison_Upsilon_Sideband_Run_vs_MC/"
 ~~~
 
@@ -305,68 +265,94 @@ gedit compare_efficiency.cpp
 This is how your code should look like now:
 
 ~~~cpp
-int useScheme = 0;
+//CONFIGS
+
+int useScheme = 3;
+//Jpsi    Sideband Run vs Jpsi    Sideband MC
+//Jpsi    Fitting  Run vs Jpsi    Fitting  MC
+//Jpsi    Sideband Run vs Jpsi    Fitting  Run
 //Upsilon Sideband Run vs Upsilon Sideband MC
 //Upsilon Fitting  Run vs Upsilon Fitting  MC
 //Upsilon Sideband Run vs Upsilon Fitting  Run
 
-//Root files and paths for Tefficiency objects inside these files
-const char* filePathsEff0[][2] = {
-	{"../results/Upsilon_Run_2011/generated_hist.root", "efficiency/plots/Muon_Pt_Tracker_Probe_Efficiency"},
-	{"../results/Upsilon_Run_2011/generated_hist.root", "efficiency/plots/Muon_Eta_Tracker_Probe_Efficiency"},
-	{"../results/Upsilon_Run_2011/generated_hist.root", "efficiency/plots/Muon_Phi_Tracker_Probe_Efficiency"}
+//Muon id anlyse
+bool doTracker    = true;
+bool doStandalone = false;
+bool doGlobal     = false;
+
+const char* fit_run_upsilon[][2] = {
+	{"../../fitting/Efficiency Result/Tracker/Pt/Efficiency_Run2011.root",     "Efficiency"},
+	{"../../fitting/Efficiency Result/Tracker/Eta/Efficiency_Run2011.root",    "Efficiency"},
+	{"../../fitting/Efficiency Result/Tracker/Phi/Efficiency_Run2011.root",    "Efficiency"},
+	{"../../fitting/Efficiency Result/Standalone/Pt/Efficiency_Run2011.root",  "Efficiency"},
+	{"../../fitting/Efficiency Result/Standalone/Eta/Efficiency_Run2011.root", "Efficiency"},
+	{"../../fitting/Efficiency Result/Standalone/Phi/Efficiency_Run2011.root", "Efficiency"},
+	{"../../fitting/Efficiency Result/Global/Pt/Efficiency_Run2011.root",      "Efficiency"},
+	{"../../fitting/Efficiency Result/Global/Eta/Efficiency_Run2011.root",     "Efficiency"},
+	{"../../fitting/Efficiency Result/Global/Phi/Efficiency_Run2011.root",     "Efficiency"}
 };
 
-//Root files and paths for Tefficiency objects inside these files
-const char* filePathsEff1[][2] = {
-	{"../results/Upsilon_MC_2020/generated_hist.root", "efficiency/plots/Muon_Pt_Tracker_Probe_Efficiency"},
-	{"../results/Upsilon_MC_2020/generated_hist.root", "efficiency/plots/Muon_Eta_Tracker_Probe_Efficiency"},
-	{"../results/Upsilon_MC_2020/generated_hist.root", "efficiency/plots/Muon_Phi_Tracker_Probe_Efficiency"}
-};
-
-//How comparisons will be saved
-const char* resultNames[] = {
-	"Muon_Pt_Tracker_Probe_Efficiency.png",
-	"Muon_Eta_Tracker_Probe_Efficiency.png",
-	"Muon_Phi_Tracker_Probe_Efficiency.png"
+const char* fit_mc_upsilon[][2] = {
+	{"../../fitting/Efficiency Result/Tracker/Pt/Efficiency_MC.root",     "Efficiency"},
+	{"../../fitting/Efficiency Result/Tracker/Eta/Efficiency_MC.root",    "Efficiency"},
+	{"../../fitting/Efficiency Result/Tracker/Phi/Efficiency_MC.root",    "Efficiency"},
+	{"../../fitting/Efficiency Result/Standalone/Pt/Efficiency_MC.root",  "Efficiency"},
+	{"../../fitting/Efficiency Result/Standalone/Eta/Efficiency_MC.root", "Efficiency"},
+	{"../../fitting/Efficiency Result/Standalone/Phi/Efficiency_MC.root", "Efficiency"},
+	{"../../fitting/Efficiency Result/Global/Pt/Efficiency_MC.root",      "Efficiency"},
+	{"../../fitting/Efficiency Result/Global/Eta/Efficiency_MC.root",     "Efficiency"},
+	{"../../fitting/Efficiency Result/Global/Phi/Efficiency_MC.root",     "Efficiency"}
 };
 ~~~
 
-You have to do three things:
+You have to do two things:
 
 1. Edit `int useScheme` value to current analysis.
 
-1. Change all second item of arrays in `const char* filePathsEff1[]` and `const char* filePathsEff1[]` to `"Efficiency"`, because is the path inside the `.root`file where all plots are stored.
+1. Delete all `Tracker/` of folder from paths in `const char* fit_run_upsilon[][2]` and `const char* fit_mc_upsilon[][2]`.
 
-1. Change all first item of arrays in `const char* filePathsEff1[]` and `const char* filePathsEff1[]` to the location where created file is.
+We need to delete the path `Tracker/` because the fitting code does not separate in Tracker, Standalone and Global Folder atuomatically. So, as we will not do this manually, just remove the folder from path which we will analyze.
 
 In the end of task, your code should be something like this:
 
 ~~~cpp
-int useScheme = 1;
+//CONFIGS
+
+int useScheme = 4;
+//Jpsi    Sideband Run vs Jpsi    Sideband MC
+//Jpsi    Fitting  Run vs Jpsi    Fitting  MC
+//Jpsi    Sideband Run vs Jpsi    Fitting  Run
 //Upsilon Sideband Run vs Upsilon Sideband MC
 //Upsilon Fitting  Run vs Upsilon Fitting  MC
 //Upsilon Sideband Run vs Upsilon Fitting  Run
 
-//Root files and paths for Tefficiency objects inside these files
-const char* filePathsEff0[][2] = {
-	{"../../CMS-tutorial/Efficiency Result/Pt/Efficiency_Run2011.root", "Efficiency"},
-	{"../../CMS-tutorial/Efficiency Result/Eta/Efficiency_Run2011.root", "Efficiency"},
-	{"../../CMS-tutorial/Efficiency Result/Phi/Efficiency_Run2011.root", "Efficiency"}
+//Muon id anlyse
+bool doTracker    = true;
+bool doStandalone = false;
+bool doGlobal     = false;
+
+const char* fit_run_upsilon[][2] = {
+	{"../../fitting/Efficiency Result/Pt/Efficiency_Run2011.root",     "Efficiency"},
+	{"../../fitting/Efficiency Result/Eta/Efficiency_Run2011.root",    "Efficiency"},
+	{"../../fitting/Efficiency Result/Phi/Efficiency_Run2011.root",    "Efficiency"},
+	{"../../fitting/Efficiency Result/Standalone/Pt/Efficiency_Run2011.root",  "Efficiency"},
+	{"../../fitting/Efficiency Result/Standalone/Eta/Efficiency_Run2011.root", "Efficiency"},
+	{"../../fitting/Efficiency Result/Standalone/Phi/Efficiency_Run2011.root", "Efficiency"},
+	{"../../fitting/Efficiency Result/Global/Pt/Efficiency_Run2011.root",      "Efficiency"},
+	{"../../fitting/Efficiency Result/Global/Eta/Efficiency_Run2011.root",     "Efficiency"},
+	{"../../fitting/Efficiency Result/Global/Phi/Efficiency_Run2011.root",     "Efficiency"}
 };
 
-//Root files and paths for Tefficiency objects inside these files
-const char* filePathsEff1[][2] = {
-	{"../../CMS-tutorial/Efficiency Result/Pt//Efficiency_MC.root", "Efficiency"},
-	{"../../CMS-tutorial/Efficiency Result/Eta//Efficiency_MC.root", "Efficiency"},
-	{"../../CMS-tutorial/Efficiency Result/Phi//Efficiency_MC.root", "Efficiency"}
-};
-
-//How comparisons will be saved
-const char* resultNames[] = {
-	"Muon_Pt_Tracker_Probe_Efficiency.png",
-	"Muon_Eta_Tracker_Probe_Efficiency.png",
-	"Muon_Phi_Tracker_Probe_Efficiency.png"
+const char* fit_mc_upsilon[][2] = {
+	{"../../fitting/Efficiency Result/Pt/Efficiency_MC.root",     "Efficiency"},
+	{"../../fitting/Efficiency Result/Eta/Efficiency_MC.root",    "Efficiency"},
+	{"../../fitting/Efficiency Result/Phi/Efficiency_MC.root",    "Efficiency"},
+	{"../../fitting/Efficiency Result/Standalone/Pt/Efficiency_MC.root",  "Efficiency"},
+	{"../../fitting/Efficiency Result/Standalone/Eta/Efficiency_MC.root", "Efficiency"},
+	{"../../fitting/Efficiency Result/Standalone/Phi/Efficiency_MC.root", "Efficiency"},
+	{"../../fitting/Efficiency Result/Global/Pt/Efficiency_MC.root",      "Efficiency"},
+	{"../../fitting/Efficiency Result/Global/Eta/Efficiency_MC.root",     "Efficiency"},
+	{"../../fitting/Efficiency Result/Global/Phi/Efficiency_MC.root",     "Efficiency"}
 };
 ~~~
 
