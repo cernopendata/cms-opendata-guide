@@ -32,6 +32,7 @@ Everyone is welcome to help build and/or improve this guide. If you find a bug o
 1. Once the appropiate page exists, you can start writing the relevant information either directly into the repository on the webpage or (preferably) on your own, local github area.  
    * If working locally, feel free to test it first following the [local testing](#test-locally) instructions below.
    * Make sure to check for missing new lines at EOF and trailing white spaces.  A simple way to check is by using the `git diff` and/or `git diff --check` commands.
+   * Please test locally for style issues by running the command `./run-tests.sh --check-docstyle` (Note that you might need to install [awesome_bot](https://github.com/cernopendata/cms-opendata-guide/blob/eedc8d880729c3ef69ea75c1ea38efa6216a1537/.github/workflows/ci.yml#L41))
    * When ready, push to to the master branch to trigger the automatic [deployment](#deploy).
    * Please [close the issue](https://help.github.com/en/enterprise/2.16/user/github/managing-your-work-on-github/closing-issues-using-keywords#closing-multiple-issues) when done.
 1. The page you are creating should, in most cases, be accompanied by a workshop tutorial lesson or exercise.  Ideally, the issue the page is addressing should point (if necessary) to the corresponding issue in the [cms-opendata-workshop](https://github.com/cms-opendata-workshop) organization.
@@ -39,10 +40,12 @@ Everyone is welcome to help build and/or improve this guide. If you find a bug o
 
 ### If you are not a collaborator yet
 
-Make a direct [pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) or (preferably) [contact us](mailto:cms-data-preservation@cern.ch) first.
+Make a direct [pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) or (preferably) [contact us][email] first.
 
 
 ## Test locally
+
+Make sure you have installed virtualenv and virtualenvwrapper packages.
 
 ```console
 $ mkvirtualenv cms-opendata-guide
@@ -56,3 +59,7 @@ $ firefox http://127.0.0.1:8000
 Documentation site is deployed on [OpenShift](https://openshift.cern.ch/).
 
 Once a new commit is pushed to **master**, OpenShift will automatically trigger a new build with the latest changes.
+
+
+
+[email]: mailto:cms-dpoa-coordinators@cern.ch

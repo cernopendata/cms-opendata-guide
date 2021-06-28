@@ -1,4 +1,5 @@
-#  Event Generation
+# Event Generation
+<!-- markdownlint-disable -->
 <!-- MarkdownTOC depth=0 -->
 
 !!! Warning
@@ -267,3 +268,5 @@ In this [example](https://github.com/cms-opendata-analyses/EventProductionExampl
 ## Example for event generation with 2012 CMSSW machinery
 
 In this [example](https://github.com/cms-opendata-analyses/EventProductionExamplesTool/tree/2012), you will learn how to generate 2012 MC QCD events, which involve the strong interaction between quarks and gluons. Additionally, you will know what are the steps to extract the tracking information of these events.
+
+<!-- markdownlint-restore -->
