@@ -44,10 +44,10 @@ Inevitably, the list of particle flow candidates contains particles that did not
 Jets software classes have the same basic 4-vector methods as the objects discussed in the previous lesson:
 
 ```
-Handle<CaloJetCollection> jets;
-iEvent.getByLabel(InputTag("ak5PFJets"), jets);
+Handle<PFJetCollection> myjets;
+iEvent.getByLabel(InputTag("ak5PFJets"), myjets);
 
-for (reco::PFJetCollection::const_iterator itjet=jets->begin(); itjet!=jets->end(); ++itjet){
+for (reco::PFJetCollection::const_iterator itjet=myjets->begin(); itjet!=myjets->end(); ++itjet){
 jet_e.push_back(itjet->energy());
 jet_pt.push_back(itjet->pt());
 jet_eta.push_back(itjet->eta());
@@ -105,15 +105,15 @@ In JetAnalyzer.cc we access the information from the Combined Secondary Vertex (
 #include "DataFormats/JetReco/interface/PFJet.h"
 #include "DataFormats/BTauReco/interface/JetTag.h"
 
-Handle<PFJetCollection> jets;
-iEvent.getByLabel(InputTag("ak5PFJets"), jets);
+Handle<PFJetCollection> myjets;
+iEvent.getByLabel(InputTag("ak5PFJets"), myjets);
 //define b-tag discriminators handle and get the discriminators
 Handle<JetTagCollection> btags;
 iEvent.getByLabel(InputTag("combinedSecondaryVertexBJetTags"), btags);
 
-for (reco::PFJetCollection::const_iterator itjet=jets->begin(); itjet!=jets->end(); ++itjet){
+for (reco::PFJetCollection::const_iterator itjet=myjets->begin(); itjet!=myjets->end(); ++itjet){
     // from the btag collection get the float (second) from the association to this jet.
-    jet_btag.push_back(btags->operator[](itjet - jets->begin()).second);
+    jet_btag.push_back(btags->operator[](itjet - myjets->begin()).second);
 }
 ```
 
@@ -125,8 +125,8 @@ iEvent.getByLabel(InputTag("trackCountingHighPurBJetTags"), btagsTC);
 iEvent.getByLabel(InputTag("combinedSecondaryVertexMVABJetTags"), btagsMVA);
 
 // inside the jet loop
-jet_btagmva.push_back(btagsMVA->operator[](it - jets->begin()).second);
-jet_btagtc.push_back(btagsTC->operator[](it - jets->begin()).second);
+jet_btagmva.push_back(btagsMVA->operator[](it - myjets->begin()).second);
+jet_btagtc.push_back(btagsTC->operator[](it - myjets->begin()).second);
 ```
 
 The distributions in ttbar events (excluding events with values of -9 where the tagger was not evaluated) are shown below. The track counting discriminant is quite different and ranges 0-30 or so.
@@ -222,6 +222,8 @@ if isData:
     process.ak5.globalTag = cms.untracked.string('FT53_V21A_AN6')
 else:
     process.ak5.globalTag = cms.untracked.string('START53_V27')
+
+process.p = cms.Path(process.ak5)
 ```
 
 Note that this analyzer will need to be run with both `isData = True` and `isData = False` to produce text files for both.
@@ -232,16 +234,27 @@ $ ## edit the file and flip isData
 $ cmsRun configs/jec_cfg.py
 ```
 
-In the [jetanalyzer_cfg.py](https://github.com/npervan/PhysObjectExtractorTool/blob/master/PhysObjectExtractor/python/jetanalyzer_cfg.py) we pass the names of the files to the analyzer:
+In the [poet_cfg.py](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/PhysObjectExtractor/python/poet_cfg.py) we pass the names of the files to the analyzer:
 
 ```
-Code needs to be updated with new filepaths
+JecString = 'START53_V27_'
+if isData: JecString = 'FT53_V21A_AN6_'
+
+process.myjets= cms.EDAnalyzer('JetAnalyzer',
+		               InputCollection = cms.InputTag("ak5PFJets"),
+                               isData = cms.bool(isData),
+                               jecL1Name = cms.FileInPath('PhysObjectExtractorTool/PhysObjectExtractor/JEC/'+JecString+'L1FastJet_AK5PF.txt'), 
+                               jecL2Name = cms.FileInPath('PhysObjectExtractorTool/PhysObjectExtractor/JEC/'+JecString+'L2Relative_AK5PF.txt'),     #Don't forget to run jec_cfg.py
+                               jecL3Name = cms.FileInPath('PhysObjectExtractorTool/PhysObjectExtractor/JEC/'+JecString+'L3Absolute_AK5PF.txt'),     #to get these .txt files :)
+                               jecResName = cms.FileInPath('PhysObjectExtractorTool/PhysObjectExtractor/JEC/'+JecString+'L2L3Residual_AK5PF.txt'),
+                               jecUncName = cms.FileInPath('PhysObjectExtractorTool/PhysObjectExtractor/JEC/'+JecString+'Uncertainty_AK5PF.txt'),
+                               jerResName = cms.FileInPath('PhysObjectExtractorTool/PhysObjectExtractor/JEC/JetResolutionInputAK5PF.txt')
 ```
 
 In the analyzeJets function the correction is evaluated for each jet. The correction depends on the momentum, pseudorapidity, energy, and cone area of the jet, as well as the value of “rho” (the average momentum per area) and number of interactions in the event. The correction is used to scale the momentum of the jet.
 
 ```
-for (reco::PFJetCollection::const_iterator itjet=jets->begin(); itjet!=jets->end(); ++itjet){
+for (reco::PFJetCollection::const_iterator itjet=myjets->begin(); itjet!=myjets->end(); ++itjet){
     reco::Candidate::LorentzVector uncorrJet = itjet->p4();
     jec_->setJetEta( uncorrJet.eta() );
     jec_->setJetPt ( uncorrJet.pt() );
@@ -253,12 +266,6 @@ for (reco::PFJetCollection::const_iterator itjet=jets->begin(); itjet!=jets->end
 
     jet_pt.push_back(itjet->pt());
     corr_jet_pt.push_back(corr*uncorrJet.pt());
-```
-
-When applying JEC on data we also need to apply the L2L3 residual corrections. 
-
-```
-Code needs to be updated
 ```
 
 ##Uncertainties
@@ -290,6 +297,7 @@ for (reco::PFJetCollection::const_iterator itjet=jets->begin(); itjet!=jets->end
     corr_jet_ptUp.push_back(corrUp*uncorrJet.pt());
     corr_jet_ptDown.push_back(corrDown*uncorrJet.pt());
 }
+```
 
 The uncertainties have several sources, shown in the figure below. The L1 (pileup) uncertainty dominates at low momentum, while the L3 (absolute scale) uncertainty takes over for higher momentum jets. All corrections are quite precise for jets located near the center of the CMS barrel region, and the precision drops as pseudorapidity increases and different subdetectors lose coverage.
 
