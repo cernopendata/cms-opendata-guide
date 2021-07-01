@@ -217,7 +217,7 @@ Lastly, using a stochastic smearing method described in [this paper](https://arx
 }
 ```
 	
-##Uncertainity
+## Uncertainity *WIP*
 Once we have done all of that, we can finally enter into `JetAnalyzer.cc` and declare these variables in `EDAnalyzer`.
 
 ```
