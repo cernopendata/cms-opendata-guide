@@ -104,7 +104,7 @@ How these corrections are applied will be shown later.
 
 <!--- JER -------------------------------------------------------------------------------------------------------------------------------------------------------->
 
-## Jet Energy Resolution (JER)
+## Jet Energy Resolution (JER) *WIP*
 ---
 
 **Accesing JER in CMS Software**
