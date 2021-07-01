@@ -1,15 +1,93 @@
 #  Jet Uncertainity
-As you can read in the [Jets Guide](https://github.com/npervan/cms-opendata-guide/blob/master/docs/analysis/selection/objects/jets.md), due to the fact that the CMS detector does not measure jet energies perfectly, corrections are implemented to account for these uncertainties. These two methods are Jet Energy Corrections (JEC) and Jet Energy Resolution (JER), both of which are thoroughly described in the in the [2017 CMS jet algorithm paper](https://arxiv.org/pdf/1607.03663.pdf).
+#Jet Corrections
+
+Unsurprisingly, the CMS detector does not measure jet energies perfectly, nor do simulation and data agree perfectly! The measured energy of jet must be corrected so that it can be related to the true energy of its parent particle. These corrections account for several effects and are factorized so that each effect can be studied independently.
+
+##Correction Levels
+![Corr Levels](https://cms-opendata-workshop.github.io/workshop-lesson-jetmet/assets/img/correctionFlow.PNG)
+
+Particles from additional interactions in nearby bunch crossings of the LHC contribute energy in the calorimeters that must somehow be distinguished from the energy deposits of the main interaction. Extra energy in a jet's cone can make its measured momentum larger than the momentum of the parent particle. The first layer ("L1") of jet energy corrections accounts for pileup by subtracting the average transverse momentum contribution of the pileup interactions to the jet's cone area. This average pileup contribution varies by pseudorapidity and, of course, by the number of interactions in the event.
+
+The second and third layers of corrections ("L2L3") correct the measured momentum to the true momentum as functions of momentum and pseudorapidity, bringing the reconstructed jet in line with the generated jet. These corrections are derived using momentum balancing and missing energy techniques in dijet and Z boson events. One well-measured object (ex: a jet near the center of the detector, a Z boson reconstructed from leptons) is balanced against a jet for which corrections are derived.
+
+All of these corrections are applied to both data and simulation. Data events are then given "residual" corrections to bring data into line with the corrected simulation. A final set of flavor-based corrections are used in certain analyses that are especially sensitive to flavor effects. All of the corrections are described in [this paper](https://arxiv.org/pdf/1107.4277.pdf). The figure below shows the result of the L1+L2+L3 corrections on the jet response.
+
+![Jet Correction Response](https://cms-opendata-workshop.github.io/workshop-lesson-jetmet/assets/img/responseFlow.PNG)
+
 ## Jet Energy Corrections (JEC)
 ---
-The first set of jet corrections are the JEC, which use three layers of corrections ("L1L2L3") that account for differences caused by psuedorapidity and measured transeverse momentum based on differences found between data and MC simulations.  Due to the uncertainity in the corrections, JEC includes both up and down versions of its correction factor.  
+The first set of jet corrections are the JEC, which use three layers of corrections ("L1L2L3") mentioned previously. Due to the uncertainity in the corrections, JEC includes both up and down versions of its correction factor.
 
 
 **Implementing JEC in CMS Software**
 
-JEC is used in [JetAnalyzer.cc](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/PhysObjectExtractor/src/JetAnalyzer.cc) and includes multiple steps in its implementation. 
+##JEC From Text Files
+There are several methods available for applying jet energy corrections to reconstructed jets. We have demonstrated a method to read in the corrections from text files and extract the corrections manually for each jet. The text files can be extracted from the global tag. First, set up sym links to the conditions databases for 2012 data and simulation ([reference instructions](http://opendata.cern.ch/docs/cms-guide-for-condition-database)):
 
-First, we must declare these variables in `EDAnalyzer`. <!---Could elaborate on why we need these specific variables-->
+```
+$ ln -sf /cvmfs/cms-opendata-conddb.cern.ch/FT53_V21A_AN6_FULL FT53_V21A_AN6
+$ ln -sf /cvmfs/cms-opendata-conddb.cern.ch/FT53_V21A_AN6_FULL.db FT53_V21A_AN6_FULL.db
+$ ln -sf /cvmfs/cms-opendata-conddb.cern.ch/FT53_V21A_AN6_FULL FT53_V21A_AN6_FULL
+$ ln -sf /cvmfs/cms-opendata-conddb.cern.ch/START53_V27 START53_V27
+$ ln -sf /cvmfs/cms-opendata-conddb.cern.ch/START53_V27.db START53_V27.db
+$ ls -l   ## make sure you see the full links as written above
+```
+
+We need to produce these text files before running the jet analyzer so the text files are available. So we use a small analyzer to open the database files we just linked:
+
+```
+isData = True
+# connect to global tag                                                                                                               
+if isData:
+    process.GlobalTag.connect = cms.string('sqlite_file:/cvmfs/cms-opendata-conddb.cern.ch/FT53_V21A_AN6_FULL.db')
+    process.GlobalTag.globaltag = 'FT53_V21A_AN6::All'
+else:
+    process.GlobalTag.connect = cms.string('sqlite_file:/cvmfs/cms-opendata-conddb.cern.ch/START53_V27.db')
+    process.GlobalTag.globaltag = 'START53_V27::All'
+
+
+# setup JetCorrectorDBReader                                                                                                          
+process.maxEvents = cms.untracked.PSet(input=cms.untracked.int32(1))
+process.source = cms.Source('EmptySource')
+process.ak5 = cms.EDAnalyzer('JetCorrectorDBReader',
+                             payloadName=cms.untracked.string('AK5PF'),
+                             printScreen=cms.untracked.bool(False),
+                             createTextFile=cms.untracked.bool(True))
+
+if isData:
+    process.ak5.globalTag = cms.untracked.string('FT53_V21A_AN6')
+else:
+    process.ak5.globalTag = cms.untracked.string('START53_V27')
+
+process.p = cms.Path(process.ak5)
+```
+
+Note that this analyzer will need to be run with both `isData = True` and `isData = False` to produce text files for both.
+
+```
+$ cmsRun configs/jec_cfg.py
+$ ## edit the file and flip isData
+$ cmsRun configs/jec_cfg.py
+```
+
+In the [poet_cfg.py](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/PhysObjectExtractor/python/poet_cfg.py) we pass the names of the files to the analyzer:
+
+```
+JecString = 'START53_V27_'
+if isData: JecString = 'FT53_V21A_AN6_'
+
+process.myjets= cms.EDAnalyzer('JetAnalyzer',
+		               InputCollection = cms.InputTag("ak5PFJets"),
+                               isData = cms.bool(isData),
+                               jecL1Name = cms.FileInPath('PhysObjectExtractorTool/PhysObjectExtractor/JEC/'+JecString+'L1FastJet_AK5PF.txt'), 
+                               jecL2Name = cms.FileInPath('PhysObjectExtractorTool/PhysObjectExtractor/JEC/'+JecString+'L2Relative_AK5PF.txt'),     #Don't forget to run jec_cfg.py
+                               jecL3Name = cms.FileInPath('PhysObjectExtractorTool/PhysObjectExtractor/JEC/'+JecString+'L3Absolute_AK5PF.txt'),     #to get these .txt files :)
+                               jecResName = cms.FileInPath('PhysObjectExtractorTool/PhysObjectExtractor/JEC/'+JecString+'L2L3Residual_AK5PF.txt'),
+                               jecUncName = cms.FileInPath('PhysObjectExtractorTool/PhysObjectExtractor/JEC/'+JecString+'Uncertainty_AK5PF.txt'),
+                               jerResName = cms.FileInPath('PhysObjectExtractorTool/PhysObjectExtractor/JEC/JetResolutionInputAK5PF.txt')
+```
+
+Once we have done all of that, we can finally enter into `JetAnalyzer.cc` and declare these variables in `EDAnalyzer`.
 
 ```
 class JetAnalyzer : public edm::EDAnalyzer {
@@ -29,7 +107,7 @@ private:
 }
 ```
 
-Then in the `JetAnaylzer` function, five of these are defined by file paths from [poet_cfg.py](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/PhysObjectExtractor/python/poet_cfg.py), and `jecPayloadNames` is filled with the three correction level parameters before being used to create the factorized jet corrector parameters.
+Then in the `JetAnaylzer` function, five of these are filled with file paths from [poet_cfg.py](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/PhysObjectExtractor/python/poet_cfg.py) we got from the `jec_cfg.py`, and `jecPayloadNames` is filled with the three correction level parameters before being used to create the factorized jet corrector parameters.
 
 ```
 JetAnalyzer::JetAnalyzer(const edm::ParameterSet& iConfig)
@@ -96,14 +174,14 @@ How these corrections are applied will be shown later.
 
 **Accesing JER in CMS Software**
 
-Back in [JetAnalyzer.cc](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/PhysObjectExtractor/src/JetAnalyzer.cc), we have two new variables to declare. *Note: To avoid confusion from the JEC example, `ak5PFCorrector` would be more appropriately named `jer_`, .*
+Back in [JetAnalyzer.cc](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/PhysObjectExtractor/src/JetAnalyzer.cc), we have two new variables to declare.
 
 ```
 class JetAnalyzer : public edm::EDAnalyzer {
 ...
 private:
 std::string              jerResName_;
-boost::shared_ptr<SimpleJetCorrector> ak5PFCorrector;
+boost::shared_ptr<SimpleJetCorrector> jer_;
 ...
 }
 ```
@@ -116,8 +194,8 @@ JetAnalyzer::JetAnalyzer(const edm::ParameterSet& iConfig)
 ...
   jerResName_ = iConfig.getParameter<edm::FileInPath>("jerResName").fullPath(); // JER Resolutions
 ...  
-  JetCorrectorParameters *ak5PFPar = new JetCorrectorParameters(jerResName_);
-  ak5PFCorrector = boost::shared_ptr<SimpleJetCorrector>( new SimpleJetCorrector(*ak5PFPar) );
+  JetCorrectorParameters *jerPar = new JetCorrectorParameters(jerResName_);
+  jer_ = boost::shared_ptr<SimpleJetCorrector>( new SimpleJetCorrector(*jerPar) );
 ...
 }
 ```
@@ -141,7 +219,9 @@ Next, using a flag defined in [poet_cfg.py](https://github.com/cms-legacydata-an
        } 
 ```
 
-Otherwise, we have to perform a few calculations. The three values we need to evaluate `ptscale` are `factors`, which is retrieved from the `factorLookup()` function (shown in the dropdown below), `res`, which is defined using the `SimpleJetCorrector` object defined previously, and `itjet->pt()`, the uncorrected momentum of the iterated jet.
+Otherwise, we have to perform a few calculations. The three values we need to evaluate `ptscale` are `factors`, which is retrieved from the `factorLookup` function (More information about this function is shown in the dropdown below), `res`, which is defined using the `SimpleJetCorrector` object defined previously, and `itjet->pt()`, the uncorrected momentum of the iterated jet.
+
+
 <details><summary>factorLookup</summary>
 
 ```
@@ -182,7 +262,7 @@ JetAnalyzer::factorLookup(float eta) { //used in jet loop for JER factor value
          PTNPU.push_back( itjet->pt() );
          PTNPU.push_back( vertices->size() );
 
-         float res = ak5PFCorrector->correction(feta, PTNPU);
+         float res = jer_->correction(feta, PTNPU);
          ...
 ```
 Lastly, using a stochastic smearing method described in [this paper](https://arxiv.org/pdf/1607.03663.pdf), we evaluate the final JER scale factors we need.
