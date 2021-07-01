@@ -2,7 +2,7 @@
 As you can read in the [Jets Guide](https://github.com/npervan/cms-opendata-guide/blob/master/docs/analysis/selection/objects/jets.md), due to the fact that the CMS detector does not measure jet energies perfectly, corrections are implemented to account for these uncertainties. These two methods are Jet Energy Corrections (JEC) and Jet Energy Resolution (JER), both of which are thoroughly described in the in the [2017 CMS jet algorithm paper](https://arxiv.org/pdf/1607.03663.pdf).
 ## Jet Energy Corrections (JEC)
 ---
-The first set of jet corrections are the JEC, which use three layers of corrections ("L1L2L3") that account for differences caused by psuedorapidity and measured transeverse momentum based on differences found between data and MC simulations.  Due to the uncertainity in the corrections, JEC includes both up and down versions of its scale factor.  
+The first set of jet corrections are the JEC, which use three layers of corrections ("L1L2L3") that account for differences caused by psuedorapidity and measured transeverse momentum based on differences found between data and MC simulations.  Due to the uncertainity in the corrections, JEC includes both up and down versions of its correction factor.  
 
 
 **Implementing JEC in CMS Software**
@@ -53,7 +53,6 @@ JetAnalyzer::JetAnalyzer(const edm::ParameterSet& iConfig)
     vPar.push_back(pars);
   }
 ...
-}
 ```
 Immediately after, we make the actual `FactorizedJetCorrector` and `JetCorrectionUncertainity` objects, which are directely used to calculate the correction factor.
 ```
@@ -61,7 +60,7 @@ Immediately after, we make the actual `FactorizedJetCorrector` and `JetCorrectio
   jec_ = boost::shared_ptr<FactorizedJetCorrector> ( new FactorizedJetCorrector(vPar) );
   jecUnc_ = boost::shared_ptr<JetCorrectionUncertainty>( new JetCorrectionUncertainty(jecUncName_) );
   ...
-}
+} // end of JetAnalyzer
  ```
 In the actual jet loop, after setting the various uncorrected values for the iterated jet, we calculate the correction and correction uncertainity values, called `corr`, `corrUp` and `corrDown`. More about how these are calculated can be found [here](https://arxiv.org/abs/1607.03663).
 ```
@@ -97,7 +96,7 @@ How these corrections are applied will be shown later.
 
 **Accesing JER in CMS Software**
 
-Back to [JetAnalyzer.cc](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/PhysObjectExtractor/src/JetAnalyzer.cc), we have two new variables to declare. Note: To conform to the conventions of jer, `ak5PFCorrector` would be more appropriately named `jer_`.
+Back in [JetAnalyzer.cc](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/PhysObjectExtractor/src/JetAnalyzer.cc), we have two new variables to declare. *Note: To avoid confusion from the JEC example, `ak5PFCorrector` would be more appropriately named `jer_`, .*
 
 ```
 class JetAnalyzer : public edm::EDAnalyzer {
@@ -122,7 +121,86 @@ JetAnalyzer::JetAnalyzer(const edm::ParameterSet& iConfig)
 ...
 }
 ```
+Now in the Jet loop inside of `analyze`, we declare `ptscale`, which will be the eventual scale factor we multiply onto the jet momentum. As well, similar to JEC, we declare `ptscale_down` and `ptscale_up` to account for uncertainties in our calculation.  
+```
+void
+JetAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
+{
+    for (reco::PFJetCollection::const_iterator itjet=myjets->begin(); itjet!=myjets->end(); ++itjet){
+       reco::Candidate::LorentzVector uncorrJet = itjet->p4()
+       ...
+       float ptscale, ptscale_down, ptscale_up;
+       ...
+```
+Next, using a flag defined in [poet_cfg.py](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/PhysObjectExtractor/python/poet_cfg.py), we check if were the jets are from data or from a simulation. If we are using data, we don't have to adjust the resolution, so `ptscale` and the others are set to `1`.
+```
+       if(isData) {
+         ptscale = 1;
+         ptscale_down = 1;
+         ptscale_up = 1;
+       } 
+```
 
+Otherwise, we have to perform a few calculations. The three values we need to evaluate `ptscale` are `factors`, which is retrieved from the `factorLookup()` function (shown in the dropdown below), `res`, which is defined using the `SimpleJetCorrector` object defined previously, and `itjet->pt()`, the uncorrected momentum of the iterated jet.
+<details><summary>factorLookup</summary>
+
+```
+std::vector<float>
+JetAnalyzer::factorLookup(float eta) { //used in jet loop for JER factor value
+  if(eta > 3.2) { //input is > 0
+    return {1.056, .865, 1.247}; // {factor, factor_down, factor_up}
+  }
+  else if(eta > 2.8) {
+    return {1.395, 1.332, 1.468};
+  }
+  else if(eta > 2.3) {
+    return {1.254, 1.192, 1.316};
+  }
+  else if(eta > 1.7) {
+    return {1.208, 1.162, 1.254};
+  }
+  else if(eta > 1.1) {
+    return {1.121, 1.092, 1.15};
+  }
+  else if(eta > .5) {
+    return {1.099, 1.071, 1.127};
+  }
+  else {
+    return {1.079, 1.053, 1.105};
+  }
+}
+```	
+</details>
+
+
+```
+       else {
+         std::vector<float> factors = factorLookup(fabs(itjet->eta())); // returns in order {factor, factor_down, factor_up}
+         std::vector<float> feta;
+         std::vector<float> PTNPU;
+	 feta.push_back( fabs(itjet->eta()) );
+         PTNPU.push_back( itjet->pt() );
+         PTNPU.push_back( vertices->size() );
+
+         float res = ak5PFCorrector->correction(feta, PTNPU);
+         ...
+```
+Lastly, using a stochastic smearing method described in [this paper](https://arxiv.org/pdf/1607.03663.pdf), we evaluate the final JER scale factors we need.
+```
+         TRandom3 JERrand;
+
+         JERrand.SetSeed(abs(static_cast<int>(itjet->phi()*1e4)));
+         ptscale = max(0.0, JERrand.Gaus(itjet->pt(),sqrt(factors[0]*(factors[0]+2))*res*itjet->pt())/itjet->pt());
+
+         JERrand.SetSeed(abs(static_cast<int>(itjet->phi()*1e4)));
+         ptscale_down = max(0.0, JERrand.Gaus(itjet->pt(),sqrt(factors[1]*(factors[1]+2))*res*itjet->pt())/itjet->pt());
+
+         JERrand.SetSeed(abs(static_cast<int>(itjet->phi()*1e4)));
+         ptscale_up = max(0.0, JERrand.Gaus(itjet->pt(),sqrt(factors[2]*(factors[2]+2))*res*itjet->pt())/itjet->pt());
+	 ...
+       }
+}
+```
 ## Applying the Corrections 
 ---
 ##Will be demonstrated using this code (comment, obv)
@@ -133,6 +211,6 @@ corr_jet_pt.push_back(ptscale*corr*uncorrJet.pt());
        corr_jet_ptSmearUp.push_back(ptscale_up*corrUp*uncorrJet.pt());
        corr_jet_ptSmearDown.push_back(ptscale_down*corrUp*uncorrJet.pt())
 ```
-## Putting it all togehter <!---Inviting the reader to take a look at the code with JEC+JER all togehter-->
+## Putting it all together <!---Inviting the reader to take a look at the code with JEC+JER all togehter-->
 !!! Warning
     This page is under construction
