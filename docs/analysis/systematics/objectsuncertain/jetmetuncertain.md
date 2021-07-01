@@ -1,5 +1,5 @@
 #  Jet Uncertainity
-As you should have read in the [Jets Guide](https://github.com/npervan/cms-opendata-guide/blob/master/docs/analysis/selection/objects/jets.md), due to the fact that the CMS detector does not measure jet energies perfectly, corrections are implemented to account for these uncertainties. These two methods are Jet Energy Corrections (JEC) and Jet Energy Resolution (JER), both of which are thoroughly described [here](https://arxiv.org/pdf/1607.03663.pdf).
+As you can read in the [Jets Guide](https://github.com/npervan/cms-opendata-guide/blob/master/docs/analysis/selection/objects/jets.md), due to the fact that the CMS detector does not measure jet energies perfectly, corrections are implemented to account for these uncertainties. These two methods are Jet Energy Corrections (JEC) and Jet Energy Resolution (JER), both of which are thoroughly described in the in the [2017 CMS jet algorithm paper](https://arxiv.org/pdf/1607.03663.pdf).
 ## Jet Energy Corrections (JEC)
 ---
 The first set of jet corrections are the JEC, which use three layers of corrections ("L1L2L3") that account for differences caused by psuedorapidity and measured transeverse momentum based on differences found between data and MC simulations.  Due to the uncertainity in the corrections, JEC includes both up and down versions of its scale factor.  
@@ -9,7 +9,7 @@ The first set of jet corrections are the JEC, which use three layers of correcti
 
 JEC is used in [JetAnalyzer.cc](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/PhysObjectExtractor/src/JetAnalyzer.cc) and includes multiple steps in its implementation. 
 
-First, we must declare these variables in EDAnalyzer. <!---Could elaborate on why we need these specific variables-->
+First, we must declare these variables in `EDAnalyzer`. <!---Could elaborate on why we need these specific variables-->
 
 ```
 class JetAnalyzer : public edm::EDAnalyzer {
@@ -29,7 +29,7 @@ private:
 }
 ```
 
-Then in the JetAnaylzer function, five of these are defined by file paths from [poet_cfg.py](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/PhysObjectExtractor/python/poet_cfg.py), and `jecPayloadNames` is filled with the three correction level parameters before being used to create the factorized jet corrector parameters.
+Then in the `JetAnaylzer` function, five of these are defined by file paths from [poet_cfg.py](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/PhysObjectExtractor/python/poet_cfg.py), and `jecPayloadNames` is filled with the three correction level parameters before being used to create the factorized jet corrector parameters.
 
 ```
 JetAnalyzer::JetAnalyzer(const edm::ParameterSet& iConfig)
@@ -97,6 +97,32 @@ How these corrections are applied will be shown later.
 
 **Accesing JER in CMS Software**
 
+Back to [JetAnalyzer.cc](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/PhysObjectExtractor/src/JetAnalyzer.cc), we have two new variables to declare. Note: To conform to the conventions of jer, `ak5PFCorrector` would be more appropriately named `jer_`.
+
+```
+class JetAnalyzer : public edm::EDAnalyzer {
+...
+private:
+std::string              jerResName_;
+boost::shared_ptr<SimpleJetCorrector> ak5PFCorrector;
+...
+}
+```
+
+Similar to JEC, inside of `JetAnalyzer` we have to retrive the file paths to the jet resolution parameters as defined in [poet_cfg.py](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/PhysObjectExtractor/python/poet_cfg.py), then create the `SimpleJetCorrector` object, which will be used next.
+
+```
+JetAnalyzer::JetAnalyzer(const edm::ParameterSet& iConfig)
+{
+...
+  jerResName_ = iConfig.getParameter<edm::FileInPath>("jerResName").fullPath(); // JER Resolutions
+...  
+  JetCorrectorParameters *ak5PFPar = new JetCorrectorParameters(jerResName_);
+  ak5PFCorrector = boost::shared_ptr<SimpleJetCorrector>( new SimpleJetCorrector(*ak5PFPar) );
+...
+}
+```
+
 ## Applying the Corrections 
 ---
 ##Will be demonstrated using this code (comment, obv)
@@ -107,5 +133,6 @@ corr_jet_pt.push_back(ptscale*corr*uncorrJet.pt());
        corr_jet_ptSmearUp.push_back(ptscale_up*corrUp*uncorrJet.pt());
        corr_jet_ptSmearDown.push_back(ptscale_down*corrUp*uncorrJet.pt())
 ```
+## Putting it all togehter <!---Inviting the reader to take a look at the code with JEC+JER all togehter-->
 !!! Warning
     This page is under construction
