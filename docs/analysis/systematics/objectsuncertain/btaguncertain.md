@@ -11,6 +11,14 @@ Scale factors to increase or decrease the number of b-tagged jets in simulation 
 -[Data file for the CSV algorithm](https://twiki.cern.ch/twiki/pub/CMSPublic/BtagRecommendation2011OpenData/CSV.csv)
 -[Examples of application methods](https://twiki.cern.ch/twiki/bin/view/CMSPublic/BtagRecommendation2011OpenData#Methods_to_Apply_b_Tagging_Effic)
 
+### Data file for the CSV algorithm
+[This file](https://twiki.cern.ch/twiki/pub/CMSPublic/BtagRecommendation2011OpenData/CSV.csv) contains a lot of useful information for calculating scale factors. 
+
+
+## Calculating Efficiencies 
+
+
+## Implementation in POET
 
 
 
