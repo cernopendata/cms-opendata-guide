@@ -56,7 +56,7 @@ jet_mass.push_back(itjet->mass());
 }
 ```
 
-##Jet ID
+## Jet ID
 
 Particle-flow jets are not immune to noise in the detector, and jets used in analyses should be filtered to remove noise jets. CMS has defined a [Jet ID](http://cdsweb.cern.ch/record/1279362) with criteria for good jets:
 
@@ -75,7 +75,7 @@ if (itjet->pt > jet_min_pt && itjet->chargedHadronEnergyFraction() > 0 && itjet-
 
 ```
 
-##B Tagging Algorithms
+## B Tagging Algorithms
 
 Jet reconstruction and identification is an important part of the analyses at the LHC. A jet may contain the hadronization products of any quark or gluon, or possibly the decay products of more massive particles such as W or Higgs bosons. Several b tagging” algorithms exist to identify jets from the hadronization of b quarks, which have unique properties that distinguish them from light quark or gluon jets.
 
@@ -98,42 +98,36 @@ Tagging algorithms are Algorithms that are used for b-tagging:
 These algorithms produce a single, real number (often the output of an MVA) called a b tagging “discriminator” for each jet. The more positive the discriminator value, the more likely it is that this jet contained b hadrons.
 
 
-##Accessing Tagging Information
-In JetAnalyzer.cc we access the information from the Combined Secondary Vertex (CSV) b tagging algorithm and associate discriminator values with the jets. The CSV values are stored in a separate collection in the AOD files called a JetTagCollection, which is effectively a vector of associations between jet references and float values (such as a b-tagging discriminator).
+## Accessing Tagging Information
+
+In PatJetAnalyzer.cc we access the information from the Combined Secondary Vertex (CSV) b tagging algorithm and associate discriminator values with the jets. The CSV values are stored in a separate collection in the POET files called a JetTagCollection, which is effectively a vector of associations between jet references and float values (such as a b-tagging discriminator).
 
 ```
-#include "DataFormats/JetReco/interface/PFJet.h"
-#include "DataFormats/BTauReco/interface/JetTag.h"
+#include "DataFormats/PatCandidates/interface/Jet.h"
 
 Handle<PFJetCollection> myjets;
 iEvent.getByLabel(InputTag("ak5PFJets"), myjets);
 //define b-tag discriminators handle and get the discriminators
-Handle<JetTagCollection> btags;
-iEvent.getByLabel(InputTag("combinedSecondaryVertexBJetTags"), btags);
 
-for (reco::PFJetCollection::const_iterator itjet=myjets->begin(); itjet!=myjets->end(); ++itjet){
+ for (std::vector<pat::Jet>::const_iterator itjet=myjets->begin(); itjet!=myjets->end(); ++itjet){
     // from the btag collection get the float (second) from the association to this jet.
-    jet_btag.push_back(btags->operator[](itjet - myjets->begin()).second);
+    jet_btag.push_back(itjet->bDiscriminator("combinedSecondaryVertexBJetTags"));
 }
 ```
 
 You can use the command edmDumpEventContent to investiate other b tagging algorithms available as edm::AssociationVector types. This is an example opening the collections for two alternate taggers--the MVA version of CSV and the high purity track counting tagger, which was the most common tagger in 2011:
 
 ```
-Handle<JetTagCollection> btagsMVA, btagsTC;
-iEvent.getByLabel(InputTag("trackCountingHighPurBJetTags"), btagsTC);
-iEvent.getByLabel(InputTag("combinedSecondaryVertexMVABJetTags"), btagsMVA);
-
 // inside the jet loop
-jet_btagmva.push_back(btagsMVA->operator[](it - myjets->begin()).second);
-jet_btagtc.push_back(btagsTC->operator[](it - myjets->begin()).second);
+jet_btagheb.push_back(itjet->bDiscriminator("simpleSecondaryVertexHighEffBJetTags"));
+jet_btagtc.push_back(itjet->bDiscriminator("trackCountingHighEffBJetTags"));
 ```
 
 The distributions in ttbar events (excluding events with values of -9 where the tagger was not evaluated) are shown below. The track counting discriminant is quite different and ranges 0-30 or so.
 
 ![tagger_dist](https://cms-opendata-workshop.github.io/workshop-lesson-jetmet/assets/img/btagComp.png) 
 
-##Working Points
+## Working Points
 
 A jet is considered "b tagged" if the discriminator value exceeds some threshold. Different thresholds will have different efficiencies for identifying true b quark jets and for mis-tagging light quark jets. As we saw for muons and other objects, a "loose" working point will allow the highest mis-tagging rate, while a "tight" working point will sacrifice some correct-tag efficiency to reduce mis-tagging. The [CSV algorithm has working points](https://twiki.cern.ch/twiki/bin/view/CMSPublic/BtagRecommendation2011OpenData) defined based on mis-tagging rate:
 
@@ -145,10 +139,10 @@ We can count the number  of "Medium CSV" b-tagged jets by summing up the number 
 
 ```
 value_jet_nCSVM = 0;
-for (reco::PFJetCollection::const_iterator itjet=jets->begin(); itjet!=jets->end(); ++itjet){
+ for (std::vector<pat::Jet>::const_iterator itjet=myjets->begin(); itjet!=myjets->end(); ++itjet){
     // skipping bits
-    value_jet_btag[value_jet_n] = btags->operator[](it - jets->begin()).second
-    if (value_jet_btag[value_jet_n] > 0.679) value_jet_nCSVM++;
+    jet_btag.push_back(itjet->bDiscriminator("combinedSecondaryVertexBJetTags"));
+    if (jet_btag.at(value_jet_n) > 0.679) value_jet_nCSVM++;
 }
 ```
 
