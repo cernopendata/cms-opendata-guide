@@ -78,7 +78,7 @@ if (jet_btag.at(value_jet_n) > 0.679)
 ````
 This section first finds which type of jet it is (b = 5, c = 4, and light = anything else) and then gets the efficiency for the respected jet as well as calculates its scale factor. It also calculates its up and down quarked scale factors. Once this is done, the calculation part of the if statement can be calculated.
 ```
-    MC *= eff;
+          MC *= eff;
 	  btagWeight *= SF * eff;
 	  btagWeightUp *= SFu * eff;
 	  btagWeightDn *= SFd * eff;
