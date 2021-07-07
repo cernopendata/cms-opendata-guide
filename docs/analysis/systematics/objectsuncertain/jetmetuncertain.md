@@ -1,5 +1,4 @@
-#  Jet Uncertainity
-#Jet Corrections
+#  Jet Uncertainty
 
 Unsurprisingly, the CMS detector does not measure jet energies perfectly, nor do simulation and data agree perfectly! The measured energy of jet must be corrected so that it can be related to the true energy of its parent particle. These corrections account for several effects and are factorized so that each effect can be studied independently.
 
@@ -23,7 +22,7 @@ All of these corrections are applied to both data and simulation. Data events ar
 
 **Implementing JEC in CMS Software**
 
-##JEC From Text Files
+## JEC From Text Files
 
 There are several methods available for applying jet energy corrections to reconstructed jets. We have demonstrated a method to read in the corrections from text files and extract the corrections manually for each jet. In order to produce these text files, we have to run [jec_cfg.py](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/PhysObjectExtractor/JEC/jec_cfg.py).
 
@@ -68,13 +67,23 @@ $ cmsRun jec_cfg.py
 $ #edit the file and flip isData
 $ cmsRun jec_cfg.py
 ```
+
+## Applying JEC Correction
+
 JEC begins in [poet_cfg.py](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/PhysObjectExtractor/python/poet_cfg.py), where we apply jet energy corrections and Type-1 MET corrections on PAT jets, which are a popular object format in CMS that stands for "Physics Analysis Toolkit". To do this we will load the global tag and databases directly in the configuration file and use the ‘addJetCollection’ process to create a collection of pat::jets.
 
-*Note: An additional JEC Uncertainity text file is needed for the `PatJetAnalyzer`. We will go over uncertainity later.*
+*Note: The JEC Uncertainty text file is needed for the manually created correction uncertainties created inside of the analyzer. Uncertainty will be covered later.*
 
 ```
 if doPat:
  ...
+ # Choose which jet correction levels to apply
+	jetcorrlabels = ['L1FastJet','L2Relative','L3Absolute']
+	if isData:
+		# For data we need to remove generator-level matching processes
+		runOnData(process, ['Jets','METs'], "", None, [])
+		jetcorrlabels.append('L2L3Residual')
+
  # Set up the new jet collection
  process.ak5PFJets.doAreaFastjet = True
  addPfMET(process, 'PF')
@@ -98,6 +107,7 @@ if doPat:
                                )
  ...
 ```
+
 Now we can go into [PatJetAnalyzer.cc](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/PhysObjectExtractor/src/PatJetAnalyzer.cc), where in the Jet loop in `analyzeJets`, the correction has already automatically been corrected for each jet. We then save a uncorrected version of the jet as `uncorrJet`.
 
 ```
@@ -105,8 +115,6 @@ for (std::vector<pat::Jet>::const_iterator itjet=myjets->begin(); itjet!=myjets-
      pat::Jet uncorrJet = itjet->correctedJet(0);     
      ...
 ```
-How these corrections are applied will be shown later.
-
 <!--- JER -------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 ## Jet Energy Resolution (JER)
@@ -134,6 +142,7 @@ Next we calculate `ptscale` using one of two methods:
 
 2. A hybrid smearing method, which is used otherwise, described in section 8 of the [2017 CMS jet algorithm paper](https://arxiv.org/pdf/1607.03663.pdf), which also includes more information about JEC in general.
 
+*Note: Also mentioned previously was the fact that JER is applied after JEC, meaning the pT that is used various times in the evaluations (e.g `PTNPU.push_back( itjet->pt() );`) is the JEC corrected momentum, rather than the uncorrected one.*
 ```
 void
 JetAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
@@ -178,98 +187,151 @@ JetAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
       }
 ```
 
-## Uncertainity *WIP*
+## Jet Correction Uncertainty 
+An important factor we have to keep in mind when applying both JEC and JER are the statistical uncertainities. These uncertainties have several sources, shown in the figure below. The L1 (pileup) uncertainty dominates at low momentum, while the L3 (absolute scale) uncertainty takes over for higher momentum jets. All corrections are quite precise for jets located near the center of the CMS barrel region, and the precision drops as pseudorapidity increases and different subdetectors lose coverage.
 
-Once we have done all of that, we can finally enter into `JetAnalyzer.cc` and declare these variables in `EDAnalyzer`.
+![JEC uncertainty](https://cms-opendata-workshop.github.io/workshop-lesson-jetmet/assets/img/uncertainties.PNG)
 
-```
-class JetAnalyzer : public edm::EDAnalyzer {
-...
-private:
- // ----------member data ---------------------------    
-  // jec variables
-  std::vector<std::string> jecPayloadNames_;
-  std::string              jecL1_;
-  std::string              jecL2_;
-  std::string              jecL3_;
-  std::string              jecRes_;
-  std::string              jecUncName_;
-  boost::shared_ptr<JetCorrectionUncertainty> jecUnc_;
-  boost::shared_ptr<FactorizedJetCorrector> jec_;
-...
-}
-```
+These uncertainties are accounted for by including an "up" and "down" version of our correction factor. 
 
-Then in the `JetAnaylzer` function, five of these are filled with file paths from [poet_cfg.py](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/PhysObjectExtractor/python/poet_cfg.py) we got from the `jec_cfg.py`, and `jecPayloadNames` is filled with the three correction level parameters before being used to create the factorized jet corrector parameters.
+**JEC Uncertainty**
+
+While the JEC corrected momentum can be accessed automatically through the jet object (e.g. `itjet->pt()`), the "up" and "down" versions must be calculated manually.
+
+Here in the jet loop, the `corrUp` and `corrDown` variables are created in part using `jetUnc_->getUncertainty()` (This object is created from the a text file which was briefly mentioned during the JEC initialization in `poet_cfg.py` of the *Implementing JEC in CMS Software* section). In order to access the `getUncertainty` function, we use a JEC uncertainty object, in this case called `jecUnc_`, where we input information about the jet, like its psuedorapidity and momentum.
 
 ```
-JetAnalyzer::JetAnalyzer(const edm::ParameterSet& iConfig)
-{
-...
-  jecL1_ = iConfig.getParameter<edm::FileInPath>("jecL1Name").fullPath(); // JEC level payloads                     
-  jecL2_ = iConfig.getParameter<edm::FileInPath>("jecL2Name").fullPath(); // JEC level payloads                     
-  jecL3_ = iConfig.getParameter<edm::FileInPath>("jecL3Name").fullPath(); // JEC level payloads                     
-  jecRes_= iConfig.getParameter<edm::FileInPath>("jecResName").fullPath();
-  jecUncName_ = iConfig.getParameter<edm::FileInPath>("jecUncName").fullPath(); // JEC uncertainties                        
+for (std::vector<pat::Jet>::const_iterator itjet=myjets->begin(); itjet!=myjets->end(); ++itjet){
+      ...
+      double corrUp = 1.0;
+      double corrDown = 1.0;
+      jecUnc_->setJetEta( itjet->eta() );
+      jecUnc_->setJetPt( itjet->pt() );
+      corrUp = (1 + fabs(jecUnc_->getUncertainty(1)));
+      jecUnc_->setJetEta( itjet->eta() );
+      jecUnc_->setJetPt( itjet->pt() );
+      corrDown = (1 - fabs(jecUnc_->getUncertainty(-1)));
+      ...
+```
 
-  //Get the factorized jet corrector parameters.
-  jecPayloadNames_.push_back(jecL1_);
-  jecPayloadNames_.push_back(jecL2_);
-  jecPayloadNames_.push_back(jecL3_);
-  if( isData == true ) jecPayloadNames_.push_back(jecRes_);
-  std::vector<JetCorrectorParameters> vPar;
-  for ( std::vector<std::string>::const_iterator payloadBegin = jecPayloadNames_.begin(),
-	  payloadEnd = jecPayloadNames_.end(), ipayload = payloadBegin; ipayload != payloadEnd; ++ipayload ) {
-    JetCorrectorParameters pars(*ipayload);
-    vPar.push_back(pars);
-  }
-...
+**JER Uncertainty** 
+
+Just how `ptscale` was manually calculated on genJets using this line:
 ```
-	
-## Jet Correction Uncertainties 
----
-##Will be demonstrated using this code (comment, obv)
+ptscale = max(0.0, (reco_pt + deltapt) / reco_pt);
 ```
-corr_jet_pt.push_back(ptscale*corr*uncorrJet.pt());
-       corr_jet_ptUp.push_back(corrUp*uncorrJet.pt());
-       corr_jet_ptDown.push_back(corrDown*uncorrJet.pt());
-       corr_jet_ptSmearUp.push_back(ptscale_up*corrUp*uncorrJet.pt());
-       corr_jet_ptSmearDown.push_back(ptscale_down*corrUp*uncorrJet.pt())
+We calculate the JER uncertainty like so:
+```
+ptscale_up = max(0.0, (reco_pt + deltapt_up) / reco_pt);
+ptscale_down = max(0.0, (reco_pt + deltapt_down) / reco_pt);
+```
+Otherwise for non-genJets,
+```
+JERrand.SetSeed(abs(static_cast<int>(itjet->phi()*1e4)));
+ptscale_down = max(0.0, JERrand.Gaus(pt,sqrt(factors[1]*(factors[1]+2))*res*pt)/pt);
+	  
+JERrand.SetSeed(abs(static_cast<int>(itjet->phi()*1e4)));
+ptscale_up = max(0.0, JERrand.Gaus(pt,sqrt(factors[2]*(factors[2]+2))*res*pt)/pt);
+```
+
+## Storing the corrections
+The final step in actualizing the jet corrections occurs after the JEC/JER calculations, where we fill the five momentum vectors for each jet. 
+ * `corr_jet_pt` is the JEC + JER corrected pT
+ * `corr_jet_ptUp` and `corr_jet_ptDown` are the ("up" and "down" versions of the JEC) + JER corrected pT
+ * `corr_jet_ptSmearUp` and `corr_jet_ptSmearDown` are the JEC + (smeared "up" and "down" versions of the JER) corrected pT
+```
+corr_jet_pt.push_back(ptscale*itjet->pt());
+corr_jet_ptUp.push_back(ptscale*corrUp*itjet->pt());
+corr_jet_ptDown.push_back(ptscale*corrDown*itjet->pt());
+corr_jet_ptSmearUp.push_back(ptscale_up*itjet->pt());
+corr_jet_ptSmearDown.push_back(ptscale_down*itjet->pt()); 
 ```
 ## Putting it all together <!---Inviting the reader to take a look at the code with JEC+JER all togehter-->
-!!! Warning
-    This page is under construction
+Inside of the dropdown is the full jet loop, comprised of the storing of the uncorrected jet object, creation of JEC uncertainty, JER corrections + uncertainty, and storing of the corrected momentum.
     
-<!--- keeping this here just in case
-
-
-<details><summary>factorLookup</summary>
+<details><summary>Full Jet Loop</summary>
 
 ```
-std::vector<float>
-JetAnalyzer::factorLookup(float eta) { //used in jet loop for JER factor value
-  if(eta > 3.2) { //input is > 0
-    return {1.056, .865, 1.247}; // {factor, factor_down, factor_up}
-  }
-  else if(eta > 2.8) {
-    return {1.395, 1.332, 1.468};
-  }
-  else if(eta > 2.3) {
-    return {1.254, 1.192, 1.316};
-  }
-  else if(eta > 1.7) {
-    return {1.208, 1.162, 1.254};
-  }
-  else if(eta > 1.1) {
-    return {1.121, 1.092, 1.15};
-  }
-  else if(eta > .5) {
-    return {1.099, 1.071, 1.127};
-  }
-  else {
-    return {1.079, 1.053, 1.105};
-  }
+for (std::vector<pat::Jet>::const_iterator itjet=myjets->begin(); itjet!=myjets->end(); ++itjet){
+      pat::Jet uncorrJet = itjet->correctedJet(0);     
+      
+      double corrUp = 1.0;
+      double corrDown = 1.0;
+      jecUnc_->setJetEta( itjet->eta() );
+      jecUnc_->setJetPt( itjet->pt() );
+      corrUp = (1 + fabs(jecUnc_->getUncertainty(1)));
+      jecUnc_->setJetEta( itjet->eta() );
+      jecUnc_->setJetPt( itjet->pt() );
+      corrDown = (1 - fabs(jecUnc_->getUncertainty(-1)));
+      
+      ptscale = 1;
+      ptscale_down = 1;
+      ptscale_up = 1;
+      res = 1;
+      if(!isData) {
+	std::vector<float> factors = factorLookup(fabs(itjet->eta())); // returns in order {factor, factor_down, factor_up}
+	std::vector<float> feta;
+	std::vector<float> PTNPU;
+	feta.push_back( fabs(itjet->eta()) );
+	PTNPU.push_back( itjet->pt() );
+	PTNPU.push_back( vertices->size() );
+	
+	res = jer_->correction(feta, PTNPU);
+	float pt = itjet->pt();
+	
+	const reco::GenJet *genJet = itjet->genJet();
+	bool smeared = false;
+	if(genJet){
+	  double deltaPt = fabs(genJet->pt() - pt);
+	  double deltaR = reco::deltaR(genJet->p4(),itjet->p4());
+	  if ((deltaR < 0.2) && deltaPt <= 3*pt*res){
+	    double gen_pt = genJet->pt();
+	    double reco_pt = pt;
+	    double deltapt = (reco_pt - gen_pt) * factors[0];
+	    double deltapt_down = (reco_pt - gen_pt) * factors[1];
+	    double deltapt_up = (reco_pt - gen_pt) * factors[2];
+	    ptscale = max(0.0, (reco_pt + deltapt) / reco_pt);
+	    ptscale_up = max(0.0, (reco_pt + deltapt_up) / reco_pt);
+	    ptscale_down = max(0.0, (reco_pt + deltapt_down) / reco_pt);
+	    smeared = true;
+	  }
+	} 
+	if (!smeared && factors[0]>0) {
+	  TRandom3 JERrand;
+	  
+	  JERrand.SetSeed(abs(static_cast<int>(itjet->phi()*1e4)));
+	  ptscale = max(0.0, JERrand.Gaus(pt,sqrt(factors[0]*(factors[0]+2))*res*pt)/pt);
+	  
+	  JERrand.SetSeed(abs(static_cast<int>(itjet->phi()*1e4)));
+	  ptscale_down = max(0.0, JERrand.Gaus(pt,sqrt(factors[1]*(factors[1]+2))*res*pt)/pt);
+	  
+	  JERrand.SetSeed(abs(static_cast<int>(itjet->phi()*1e4)));
+	  ptscale_up = max(0.0, JERrand.Gaus(pt,sqrt(factors[2]*(factors[2]+2))*res*pt)/pt);
+	}
+      }
+      
+      if( ptscale*itjet->pt() <= min_pt) continue;
+      
+      jet_pt.push_back(uncorrJet.pt());
+      jet_eta.push_back(itjet->eta());
+      jet_phi.push_back(itjet->phi());
+      jet_ch.push_back(itjet->charge());
+      jet_mass.push_back(uncorrJet.mass());
+      jet_btag.push_back(itjet->bDiscriminator("combinedSecondaryVertexBJetTags"));
+      corr_jet_pt.push_back(ptscale*itjet->pt());
+      corr_jet_ptUp.push_back(ptscale*corrUp*itjet->pt());
+      corr_jet_ptDown.push_back(ptscale*corrDown*itjet->pt());
+      corr_jet_ptSmearUp.push_back(ptscale_up*itjet->pt());
+      corr_jet_ptSmearDown.push_back(ptscale_down*itjet->pt()); 
+      corr_jet_mass.push_back(itjet->mass());
+      corr_jet_e.push_back(itjet->energy());
+      corr_jet_px.push_back(itjet->px());
+      corr_jet_py.push_back(itjet->py());
+      corr_jet_pz.push_back(itjet->pz());
+      ...
 }
 ```	
 </details>
--->
+
+!!! Warning
+    This page is under construction
