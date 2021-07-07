@@ -89,7 +89,7 @@ PatJetAnalyzer::getBtagEfficiency(double pt){
 #### Access Scale Factors
 
 [The data file](https://twiki.cern.ch/twiki/pub/CMSPublic/BtagRecommendation2011OpenData/CSV.csv) provided by the CMS b tagging group contains the scale factor functions for all types of jets. Some important titles to give more context to are as follows: 
-- OperatingPoint - This is the light (0), medium (1), or tight (2) cut of the light flavored jet.
+- OperatingPoint - This is the light (0), medium (1), or tight (2) cut of the flavored jet.
 - formula - This is the equation for calculating the scale factor, where x is the momentum of the jet.
 - jetFlavor - b = 0, c = 1, udsg = 2.
 
@@ -105,7 +105,7 @@ PatJetAnalyzer::getBorCtagSF(double pt, double eta){
   return 0.92955*((1.+(0.0589629*pt))/(1.+(0.0568063*pt)));
 }
 ```
-More useful information about scale factors can be found here [here](https://twiki.cern.ch/twiki/bin/view/CMSPublic/BtagRecommendation2011OpenData#Data_MC_Scale_Factors).
+Look at this twiki for [additional information scale factors](https://twiki.cern.ch/twiki/bin/view/CMSPublic/BtagRecommendation2011OpenData#Data_MC_Scale_Factors).
 
 ### Calculating Weights
 Once these are updated to their desired state, weight calculating can happen! In the analyzers in the for loop is where the weight calculating occurs. The first part of the calculating that is important is
@@ -114,36 +114,36 @@ if (jet_btag.at(value_jet_n) > 0.679)
 `. This check to see whether or not the jet made the medium cut that we were looking for. If it did, we go into the part of the calculating that looks like this:
 ````
   if(abs(hadronFlavour) == 5){
-	    eff = getBtagEfficiency(corrpt);
-	    SF = getBorCtagSF(corrpt, jet_eta.at(value_jet_n));
-	    SFu = SF + uncertaintyForBTagSF(corrpt, jet_eta.at(value_jet_n));
-	    SFd = SF - uncertaintyForBTagSF(corrpt, jet_eta.at(value_jet_n));
-	  } else if(abs(hadronFlavour) == 4){
-	    eff = getCtagEfficiency(corrpt);
-	    SF = getBorCtagSF(corrpt, jet_eta.at(value_jet_n));
-	    SFu = SF + (2 * uncertaintyForBTagSF(corrpt, jet_eta.at(value_jet_n)));
-	    SFd = SF - (2 * uncertaintyForBTagSF(corrpt, jet_eta.at(value_jet_n)));
-	  } else {
-	    eff = getLFtagEfficiency(corrpt);
-	    SF = getLFtagSF(corrpt, jet_eta.at(value_jet_n));
-	    SFu = SF + ( uncertaintyForLFTagSF(corrpt, jet_eta.at(value_jet_n)));
-	    SFd = SF - ( uncertaintyForLFTagSF(corrpt, jet_eta.at(value_jet_n)));
-	  }
+  	eff = getBtagEfficiency(corrpt);
+	SF = getBorCtagSF(corrpt, jet_eta.at(value_jet_n));
+	SFu = SF + uncertaintyForBTagSF(corrpt, jet_eta.at(value_jet_n));
+	SFd = SF - uncertaintyForBTagSF(corrpt, jet_eta.at(value_jet_n));
+  } else if(abs(hadronFlavour) == 4){
+	eff = getCtagEfficiency(corrpt);
+	SF = getBorCtagSF(corrpt, jet_eta.at(value_jet_n));
+	SFu = SF + (2 * uncertaintyForBTagSF(corrpt, jet_eta.at(value_jet_n)));
+	SFd = SF - (2 * uncertaintyForBTagSF(corrpt, jet_eta.at(value_jet_n)));
+  } else {
+	eff = getLFtagEfficiency(corrpt);
+	SF = getLFtagSF(corrpt, jet_eta.at(value_jet_n));
+	SFu = SF + ( uncertaintyForLFTagSF(corrpt, jet_eta.at(value_jet_n)));
+	SFd = SF - ( uncertaintyForLFTagSF(corrpt, jet_eta.at(value_jet_n)));
+  }
 ````
 This section first finds which type of jet it is (b = 5, c = 4, and light = anything else) and then gets the efficiency for the respected jet as well as calculates its scale factor. It also calculates its up and down quarked scale factors of the jet. Once this is done, the calculation part of the if statement can be calculated.
 ```
-          MC *= eff;
-	  btagWeight *= SF * eff;
-	  btagWeightUp *= SFu * eff;
-	  btagWeightDn *= SFd * eff;
+ MC *= eff;
+ btagWeight *= SF * eff;
+ btagWeightUp *= SFu * eff;
+ btagWeightDn *= SFd * eff;
 ```
 A similar process with a little bit different end calculation is done in the else statement of the very first if statement if the jet did not meet the medium cut. 
 
 Once the for loop has finished, a final calculation for the event weights is done.
 ```
-    btagWeight = (btagWeight/MC);
-    btagWeightUp = (btagWeightUp/MC);
-    btagWeightDn = (btagWeightDn/MC);
+btagWeight = (btagWeight/MC);
+btagWeightUp = (btagWeightUp/MC);
+btagWeightDn = (btagWeightDn/MC);
 ```
 
 NOTE: There are many ways to go about calculating event weights. This [link](https://twiki.cern.ch/twiki/bin/view/CMSPublic/BtagRecommendation2011OpenData#Methods_to_Apply_b_Tagging_Effic) shows a couple of the ways to calculate the event weights. In POET, method 1a is the method of event calculating used.
