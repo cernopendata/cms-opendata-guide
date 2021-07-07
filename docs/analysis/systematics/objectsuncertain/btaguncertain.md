@@ -66,7 +66,7 @@ root plotBeff.c
 ```
 The graph and output should appear through root. An example of what the graph should look like is this:
 
-![Output Graph](https://cms-opendata-guide.github.io/docs/images/c1.pdf)
+![Output Graph](https://cms-opendata-guide/docs/images/c1.pdf)
 
 
 #### Access Efficiencies
