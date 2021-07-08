@@ -159,8 +159,8 @@ We show distributions of the number CSV b jets at the medium working point in Dr
 ##Data and Simulation Differences
 When training a tagging algorithm, it is highly probable that the efficiencies for tagging different quark flavors as b jets will vary between simulation and data. These differences must be measured and corrected for using "scale factors" constructed from ratios of the efficiencies from different sources. The figures below show examples of the b and light quark efficiencies and scale factors as a function of jet momentum [read more](https://twiki.cern.ch/twiki/bin/view/CMSPublic/PhysicsResultsBTV13001). Corrections must be applied to make the b-tagging performance match between data and simulation. Read more about these corrections and their uncertainties [on this page](https://cms-opendata-guide/docs/analysis/systematics/objectsuncertain/btaguncertain.md). 
 
+<<<<<<< HEAD
 When training a tagging algorithm, it is highly probable that the efficiencies for tagging different quark flavors as b jets will vary between simulation and data. These differences must be measured and corrected for using "scale factors" constructed from ratios of the efficiencies from different sources. The figures below show examples of the b and light quark efficiencies and scale factors as a function of jet momentum [read more](https://twiki.cern.ch/twiki/bin/view/CMSPublic/PhysicsResultsBTV13001)
 
 !!! Warning
     This page is under construction
-
