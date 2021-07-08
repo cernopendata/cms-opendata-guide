@@ -170,7 +170,7 @@ PatJetAnalyzer::uncertaintyForBTagSF( double pt, double eta){
 ```
 #### Storing Final Weights
 Also from the "Calculating Weights" section, there are 3 final variables that are used to store the final event weights that were calculated: 
-`btagWeight `, `btagWeightUp` , and `btagWeightDn`. When the file has completed running, you can run root with your output file and look up these 3 names to access the data calculated from your run. Here is an example of these variables accessed in root (Normal - Black, Up - Red, Down - Blue): 
+`btagWeight`, `btagWeightUp` , and `btagWeightDn`. When the file has completed running, you can run root with your output file and look up these 3 names to access the data calculated from your run. Here is an example of these variables accessed in root (Normal - Black, Up - Red, Down - Blue): 
 
 ![Example](../../../images/Canvas_1.png)
 
