@@ -12,32 +12,23 @@ Scale factors to increase or decrease the number of b-tagged jets in simulation 
 ### Applying Scale Factors
 
 #### Calculating Efficiencies
-The [BTagging folder](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/tree/master/BTagging) of PhysObjectExtractorTool ([POET](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool)) is used for calculating the efficiency for tagging each flavor of jet as a b quark, as a function of the jet momentum with the file [WeightAnalyzer.cc](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/BTagging/src/WeightAnalyzerBEff.cc). The purpose of this file is to set up jet momentum histograms for numerators and denominators of efficiency histograms as defined above. The code loops through the jets, checks their flavor, checks their btagging discriminator to see if it passes tight, medium and or loose cut, and then fills the histograms according to that information. These historgrams are then stored in an output file.
+The [BTagging folder](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/tree/master/BTagging) of PhysObjectExtractorTool ([POET](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool)) is used for calculating the efficiency for tagging each flavor of jet as a b quark, as a function of the jet momentum with the file [WeightAnalyzer.cc](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/BTagging/src/WeightAnalyzerBEff.cc). The purpose of this file is to set up jet momentum histograms for numerators and denominators of efficiency histograms as defined above. The code loops through the jets, checks their flavor, checks their btagging discriminator to see if it passes tight, medium and or loose cut, and then fills the histograms according to that information. 
+
+```
+    double disc = it->bDiscriminator(discriminatorStr);
+    int hadronFlavor = it->partonFlavour();
+    
+    if( abs(hadronFlavor)==5 ){
+      BEff_Dptbins_b->Fill(pt,weight);      
+      if( disc >= discriminatorValueT) BEffTight_Nptbins_b->Fill(pt,weight);
+      if( disc >= discriminatorValueM) BEffMed_Nptbins_b->Fill(pt,weight);
+      if( disc >= discriminatorValueL) BEffLoose_Nptbins_b->Fill(pt,weight);
+    } else if( abs(hadronFlavor)==4 ){
+      ...
+```
+These historgrams are then stored in an output file.
+
 Input, output, and other parameters can be changed in the [config file](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/BTagging/python/befficiency_patjets_cfg.py).
-
-In [WeightAnalyzer.cc](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/BTagging/src/WeightAnalyzerBEff.cc), there is a spot to input custom jet momentum bins that looks like this:
-```
-double ptbinsB[10] = {0, 15, 30, 50, 70, 100, 150, 200, 500, 1000};
-```
-where a bin's momentums span from 0 to 15, 15 to 30, etc.
-
-#### Updating Momentum Bin Code
-After your jet momentum bin update, you need to update the actual code that produces the histogram. Continuing this example, there are a total of 9 momentum bins from the numbers given in, ptbinsB. In the histogram producing code, there is a 9 indicating the number of bins:
-```
-  BEff_Dptbins_b    = fs->make<TH1D>("BEff_Dptbins_b   ","",9,ptbinsB); BEff_Dptbins_b->Sumw2();
-  BEff_Dptbins_c    = fs->make<TH1D>("BEff_Dptbins_c   ","",9,ptbinsB); BEff_Dptbins_c->Sumw2();
-  BEff_Dptbins_udsg = fs->make<TH1D>("BEff_Dptbins_udsg","",9,ptbinsB); BEff_Dptbins_udsg->Sumw2();
-  BEffTight_Nptbins_b      = fs->make<TH1D>("BEffTight_Nptbins_b     ","",9,ptbinsB); BEffTight_Nptbins_b->Sumw2();
-  BEffTight_Nptbins_c      = fs->make<TH1D>("BEffTight_Nptbins_c     ","",9,ptbinsB); BEffTight_Nptbins_c->Sumw2();
-  BEffTight_Nptbins_udsg   = fs->make<TH1D>("BEffTight_Nptbins_udsg  ","",9,ptbinsB); BEffTight_Nptbins_udsg->Sumw2();
-  BEffMed_Nptbins_b      = fs->make<TH1D>("BEffMed_Nptbins_b     ","",9,ptbinsB); BEffMed_Nptbins_b->Sumw2();
-  BEffMed_Nptbins_c      = fs->make<TH1D>("BEffMed_Nptbins_c     ","",9,ptbinsB); BEffMed_Nptbins_c->Sumw2();
-  BEffMed_Nptbins_udsg   = fs->make<TH1D>("BEffMed_Nptbins_udsg  ","",9,ptbinsB); BEffMed_Nptbins_udsg->Sumw2();
-  BEffLoose_Nptbins_b      = fs->make<TH1D>("BEffLoose_Nptbins_b     ","",9,ptbinsB); BEffLoose_Nptbins_b->Sumw2();
-  BEffLoose_Nptbins_c      = fs->make<TH1D>("BEffLoose_Nptbins_c     ","",9,ptbinsB); BEffLoose_Nptbins_c->Sumw2();
-  BEffLoose_Nptbins_udsg   = fs->make<TH1D>("BEffLoose_Nptbins_udsg  ","",9,ptbinsB); BEffLoose_Nptbins_udsg->Sumw2();
-  ```
-Where the number 9 is now, this number will need to be updated to your number of bins.
 
 After this, you can save, exit, and compile, and then move onto the [config file](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/BTagging/python/befficiency_patjets_cfg.py). You will put the file(s) which you wish to run efficiencies on here:
 ```
@@ -46,29 +37,30 @@ process.source = cms.Source("PoolSource",
         fileNames = cms.untracked.vstring(
         'root://eospublic.cern.ch//eos/opendata/cms/MonteCarlo2012/Summer12_DR53X/TTbar_8TeV-Madspin_aMCatNLO-herwig/AODSIM/PU_S10_START53_V19-v2/00000/04FCA1D5-E74C-E311-92CE-002590A887F0.root'))
 ```
-and change the name of whatever you wish your output file to be called here:
-```
-process.TFileService = cms.Service(
-    "TFileService", fileName=cms.string("flavortagefficiencies.root"))
-```
 Once this is complete, you can run the [config file](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/BTagging/python/befficiency_patjets_cfg.py) for your efficiencies. 
 
 #### Run Complete
-Once your run is complete, in the 'BTagging' folder there should be a file called [plotBeff.C](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/BTagging/plotBeff.C). This file is set up to show you a histogram of your efficiencies that were calculated in the jet momentum bins, as well as, write the same efficiencies that you calculated in those bins in a numerical form. To run this code, update your output file name here:
-```
-void plotBeff(){
-
-  TFile *_file0 = TFile::Open("flavortagefficiencies.root"); // your file name goes here "Hadd2016.root"
-```
-Save, exit, then open this file in root like such: 
+Once your run is complete, in the 'BTagging' folder there should be a file called [plotBeff.C](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/BTagging/plotBeff.C). This file is set up to do the numerator and denomenator divisions (as defined earlier), show you a histogram of your efficiencies from those calculations, and write the same efficiencies that you calculated in a numerical form. To run this code open this file in root like such: 
 ```
 root plotBeff.c
 ```
-The graph and output should appear through root. An example of what the graph should look like is this:
+The histogram and output should appear through root. An example of what the histogram should look like is this:
 
-![Output Graph](https://cms-opendata-guide/docs/images/c1.pdf)
+![Output Histogram](../../../images/c1.png)
 
+###### If Needed: Updating Momentum Bin Code
+<sub> In [WeightAnalyzer.cc](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/BTagging/src/WeightAnalyzerBEff.cc), there is a spot to input custom jet momentum bins that looks like this: </sub>
+```
+double ptbinsB[10] = {0, 15, 30, 50, 70, 100, 150, 200, 500, 1000};
+```
+<sub> where a bin's momentums span from 0 to 15, 15 to 30, etc. </sub>
 
+<sub> After your jet momentum bin update, you need to update the actual code that produces the histogram. Continuing this example, there are a total of 9 momentum bins from the numbers given in, ptbinsB. In the histogram producing code, there is a 9 indicating the number of bins: </sub>
+```
+  BEff_Dptbins_b    = fs->make<TH1D>("BEff_Dptbins_b   ","",9,ptbinsB); BEff_Dptbins_b->Sumw2();
+```
+<sub> Where the number 9 is now, this number will need to be updated to your number of bins. </sub>	
+	
 #### Access Efficiencies
 Once you have your efficiencies, you can then put them in to the [3 look up functions](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/PhysObjectExtractor/src/PatJetAnalyzer.cc#L199-L242) that have been implemented in PatJetAnalyzer for storing efficiencies. Here, for example, is the b tag efficiencies function which returns efficiency given a jet momentum:
 ```
@@ -178,7 +170,9 @@ PatJetAnalyzer::uncertaintyForBTagSF( double pt, double eta){
 ```
 #### Storing Final Weights
 Also from the "Calculating Weights" section, there are 3 final variables that are used to store the final event weights that were calculated: 
-`btagWeight `, `btagWeightUp` , and `btagWeightDn`. When the file has completed running, you can run root with your output file and look up these 3 names to access the data calculated from your run. 
+`btagWeight `, `btagWeightUp` , and `btagWeightDn`. When the file has completed running, you can run root with your output file and look up these 3 names to access the data calculated from your run. Here is an example of these variables accessed in root: 
+
+![Example](../../../images/Canvas_1.png)
 
 
 
