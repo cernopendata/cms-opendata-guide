@@ -20,9 +20,9 @@ All of these corrections are applied to both data and simulation. Data events ar
 
 ![Jet Correction Response](https://cms-opendata-workshop.github.io/workshop-lesson-jetmet/assets/img/responseFlow.PNG)
 
-**Implementing JEC in CMS Software**
+### Implementing JEC in CMS Software
 
-## JEC From Text Files
+**JEC From Text Files**
 
 There are several methods available for applying jet energy corrections to reconstructed jets. We have demonstrated a method to read in the corrections from text files and extract the corrections manually for each jet. In order to produce these text files, we have to run [jec_cfg.py](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/PhysObjectExtractor/JEC/jec_cfg.py).
 
@@ -108,7 +108,7 @@ if doPat:
  ...
 ```
 
-Now we can go into [PatJetAnalyzer.cc](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/PhysObjectExtractor/src/PatJetAnalyzer.cc), where in the Jet loop in `analyzeJets`, the correction has already automatically been corrected for each jet. We then save a uncorrected version of the jet as `uncorrJet`.
+Now we can go into [PatJetAnalyzer.cc](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/PhysObjectExtractor/src/PatJetAnalyzer.cc), where in the jet loop of `analyzeJets`, the correction has already automatically been corrected for each jet. We then save a uncorrected version of the jet as `uncorrJet`.
 
 ```
 for (std::vector<pat::Jet>::const_iterator itjet=myjets->begin(); itjet!=myjets->end(); ++itjet){
@@ -132,7 +132,7 @@ process.myjets= cms.EDAnalyzer('PatJetAnalyzer',
 				       jerResName = cms.FileInPath('PhysObjectExtractorTool/PhysObjectExtractor/JEC/JetResolutionInputAK5PF.txt')         
 				       )
 ```
-Back in the jet loop inside of, we define `ptscale`, the eventual scale factor we multiply onto the jet momentum. 
+Back inside the jet loop, we define `ptscale`, the eventual scale factor multiplied onto the jet momentum. 
 
 *Note: As mentioned previously, if we are running `PatJetAnalyzer.cc` on data, we do not want to affect to the resolution, so we initialize it as `1`.*
 
@@ -147,6 +147,7 @@ Next we calculate `ptscale` using one of two methods:
 void
 JetAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
 {
+    ...
     for (std::vector<pat::Jet>::const_iterator itjet=myjets->begin(); itjet!=myjets->end(); ++itjet){     
       ...
       ptscale = 1;
@@ -332,6 +333,3 @@ for (std::vector<pat::Jet>::const_iterator itjet=myjets->begin(); itjet!=myjets-
 }
 ```	
 </details>
-
-!!! Warning
-    This page is under construction
