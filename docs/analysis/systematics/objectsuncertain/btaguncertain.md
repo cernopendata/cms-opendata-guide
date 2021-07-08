@@ -12,14 +12,14 @@ Scale factors to increase or decrease the number of b-tagged jets in simulation 
 ### Applying Scale Factors
 
 #### Calculating Efficiencies
-The [BTagging folder](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/tree/master/BTagging) of PhysObjectExtractorTool ([POET](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool)) is used for calculating the efficiency for tagging each flavor of jet as a b quark, as a function of the jet momentum with the file [WeightAnalyzer.cc](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/BTagging/src/WeightAnalyzerBEff.cc). The purpose of this file is to set up jet momentum histograms for numerators and denominators of efficiency histograms as defined above. The code loops through the jets, checks their flavor, checks their btagging pass/fail for 3 working points, and then fills the histograms according to that information. These historgrams are then stored in an output file.
+The [BTagging folder](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/tree/master/BTagging) of PhysObjectExtractorTool ([POET](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool)) is used for calculating the efficiency for tagging each flavor of jet as a b quark, as a function of the jet momentum with the file [WeightAnalyzer.cc](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/BTagging/src/WeightAnalyzerBEff.cc). The purpose of this file is to set up jet momentum histograms for numerators and denominators of efficiency histograms as defined above. The code loops through the jets, checks their flavor, checks their btagging discriminator to see if it passes tight, medium and or loose cut, and then fills the histograms according to that information. These historgrams are then stored in an output file.
 Input, output, and other parameters can be changed in the [config file](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/BTagging/python/befficiency_patjets_cfg.py).
 
 In [WeightAnalyzer.cc](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/BTagging/src/WeightAnalyzerBEff.cc), there is a spot to input custom jet momentum bins that looks like this:
 ```
 double ptbinsB[10] = {0, 15, 30, 50, 70, 100, 150, 200, 500, 1000};
 ```
-where a bin's momentums spans from 0 to 15, 15 to 30, etc.
+where a bin's momentums span from 0 to 15, 15 to 30, etc.
 
 #### Updating Momentum Bin Code
 After your jet momentum bin update, you need to update the actual code that produces the histogram. Continuing this example, there are a total of 9 momentum bins from the numbers given in, ptbinsB. In the histogram producing code, there is a 9 indicating the number of bins:
@@ -54,7 +54,7 @@ process.TFileService = cms.Service(
 Once this is complete, you can run the [config file](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/BTagging/python/befficiency_patjets_cfg.py) for your efficiencies. 
 
 #### Run Complete
-Once your run is complete, in the 'BTagging' branch there should be a file called [plotBeff.C](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/BTagging/plotBeff.C). This file is set up to show you a histogram of your efficiencies that were calculated in jet mopmentum bins, as well as, write output of your efficiencies that you calculated in those bins. To run this code, updated your output file name here:
+Once your run is complete, in the 'BTagging' folder there should be a file called [plotBeff.C](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/BTagging/plotBeff.C). This file is set up to show you a histogram of your efficiencies that were calculated in the jet momentum bins, as well as, write the same efficiencies that you calculated in those bins in a numerical form. To run this code, update your output file name here:
 ```
 void plotBeff(){
 
@@ -93,7 +93,7 @@ PatJetAnalyzer::getBtagEfficiency(double pt){
 - formula - This is the equation for calculating the scale factor, where x is the momentum of the jet.
 - jetFlavor - b = 0, c = 1, udsg = 2.
 
-Sorting Columns and creating filters with the .csv file can make accessing and finding sepcific scale factor equations. For example, filtering the OperatingPoint column to only show "1" will give you only medium cut jet information. Other useful information about the .csv file can be found [here](https://twiki.cern.ch/twiki/bin/view/CMSPublic/BTagCalibration).
+Sorting Columns and creating filters with the .csv file can make accessing and finding sepcific scale factor equations easier. For example, filtering the OperatingPoint column to only show the number 1 will give you only medium cut jet information. Other useful information about the .csv file can be found [here](https://twiki.cern.ch/twiki/bin/view/CMSPublic/BTagCalibration).
 
 The scale factor equations from the folumla column have been implemented in POET! In PatJetAnalyzer there are 2 functions, one for b and c flavored jets and one for light flavored jets, that return the scale factor of the jet depending on the momentum of the jet. Below is the b and c tag function.
 ```
@@ -105,13 +105,13 @@ PatJetAnalyzer::getBorCtagSF(double pt, double eta){
   return 0.92955*((1.+(0.0589629*pt))/(1.+(0.0568063*pt)));
 }
 ```
-Look at this twiki for [additional information scale factors](https://twiki.cern.ch/twiki/bin/view/CMSPublic/BtagRecommendation2011OpenData#Data_MC_Scale_Factors).
+Look at this twiki for [additional information about scale factors](https://twiki.cern.ch/twiki/bin/view/CMSPublic/BtagRecommendation2011OpenData#Data_MC_Scale_Factors).
 
 ### Calculating Weights
-Once these are updated to their desired state, weight calculating can happen! In the analyzers in the for loop is where the weight calculating occurs. The first part of the calculating that is important is
+Once these functions are updated to their desired states, weight calculating can happen! The first thing to check for when event weight calculating is this:
 `
 if (jet_btag.at(value_jet_n) > 0.679)
-`. This check to see whether or not the jet made the medium cut that we were looking for. If it did, we go into the part of the calculating that looks like this:
+`. This check is to see whether or not the jet distminator makes the cut we want our jets to make. In this case, we want our jets to make the medium cut (.679). If a jet makes the cut, there are then a couple more checks to be made:
 ````
   if(abs(hadronFlavour) == 5){
   	eff = getBtagEfficiency(corrpt);
@@ -130,30 +130,31 @@ if (jet_btag.at(value_jet_n) > 0.679)
 	SFd = SF - ( uncertaintyForLFTagSF(corrpt, jet_eta.at(value_jet_n)));
   }
 ````
-This section first finds which type of jet it is (b = 5, c = 4, and light = anything else) and then gets the efficiency for the respected jet as well as calculates its scale factor. It also calculates its up and down quarked scale factors of the jet. Once this is done, the calculation part of the if statement can be calculated.
+This section first finds which flavor of jet it is (b = 5, c = 4, and light = anything else) and then gets the efficiency for the respected jet, as well as calculates its scale factor. It also calculates its up and down quarked scale factors of the jet. Once these checks and calculations are complete, the following calulations can occur:
 ```
  MC *= eff;
  btagWeight *= SF * eff;
  btagWeightUp *= SFu * eff;
  btagWeightDn *= SFd * eff;
 ```
-A similar process with a little bit different end calculation is done in the else statement of the very first if statement if the jet did not meet the medium cut. 
+These calculations are the probability of a given configuration of jets in MC simulation (`MC`) and data (`btagWeight`, `btagWeightUp`, and `btagWeightDn`).
+The same process with a little bit different probability calculating is done if the jet did not meet the desired cut. 
 
-Once the for loop has finished, a final calculation for the event weights is done.
+Once these checks have finished for every jet you are looking at, a final calculation for the event weights is done.
 ```
 btagWeight = (btagWeight/MC);
 btagWeightUp = (btagWeightUp/MC);
 btagWeightDn = (btagWeightDn/MC);
 ```
 
-NOTE: There are many ways to go about calculating event weights. This [link](https://twiki.cern.ch/twiki/bin/view/CMSPublic/BtagRecommendation2011OpenData#Methods_to_Apply_b_Tagging_Effic) shows a couple of the ways to calculate the event weights. In POET, method 1a is the method of event calculating used.
+NOTE: There are many ways to go about calculating event weights. This [link](https://twiki.cern.ch/twiki/bin/view/CMSPublic/BtagRecommendation2011OpenData#Methods_to_Apply_b_Tagging_Effic) shows a couple of the different ways. In POET, method 1a is the method used.
 
 ### Uncertainties
-As we just saw in the calculating weights section above ,there are uncertainties that need to be considered. These uncertainties are actually already taken into account in the .csv file. When looking at the scale factor equation, there should be a main equation followed by either an addition or subtraction of a number which is the uncertainty.
-#### Uncertainties for each flavor
-In POET, there are 2 functions for the uncertainty, one for the b tag uncertainty and one for the light flavor tag uncertainty. The reason that there is not one specifically for c tagged jets is because c tagged jet's uncertainty is two times that of the b tagged jet's uncertainty so you can simply multiply the b tag uncertainty call by two as seen here `SFu = SF + (2 * uncertaintyForBTagSF(corrpt, jet_eta.at(value_jet_n)));`
+As we just saw in the "Calculating Weights" section above, there are uncertainties that need to be considered. These uncertainties are actually already taken into account in the .csv file. When looking at the scale factor equation, there should be a main equation followed by either an addition or subtraction of a number, which is the uncertainty.
+#### Uncertainties for Each Flavor
+In POET, there are 2 functions for the uncertainty, one for the b tag uncertainty and one for the light flavor tag uncertainty. The reason that there is not one specifically for c tagged jets is because c tagged jet's uncertainty is two times that of the b tagged jet's uncertainty, so you can simply multiply the b tag uncertainty call by two, as seen here: `SFu = SF + (2 * uncertaintyForBTagSF(corrpt, jet_eta.at(value_jet_n)));`
 
-Here is what the b tag uncertainty function looks like:
+Here is what the b tag uncertainty function looks like, which returns the uncertainty given a jet momentum:
 ```
 double
 PatJetAnalyzer::uncertaintyForBTagSF( double pt, double eta){
@@ -175,7 +176,9 @@ PatJetAnalyzer::uncertaintyForBTagSF( double pt, double eta){
   else return 0.066886;
 }
 ```
-#### Storing uncertainties
+#### Storing Final Weights
+Also from the "Calculating Weights" section, there are 3 final variables that are used to store the final event weights that were calculated: 
+`btagWeight `, `btagWeightUp` , and `btagWeightDn`. When the file has completed running, you can run root with your output file and look up these 3 names to access the data calculated from your run. 
 
 
 
