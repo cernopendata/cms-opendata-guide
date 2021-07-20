@@ -49,6 +49,8 @@ nav:
         - 'Interpretation':
             - 'Statistics': analysis/interpretation/stats.md
             - 'Upper-limit Calculations': analysis/interpretation/limits.md
+    - 'Workshops':
+        - '2021 Workshop': workshops/workshop_2021.md
     - FAQ: faq.md
     - About: about.md
 
