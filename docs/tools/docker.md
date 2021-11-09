@@ -15,4 +15,8 @@ may want to check out this
 [Introduction to Docker](https://awesome-workshop.github.io/intro-to-docker/),
 from Matthew Feickert.
 
-You can also jump right in with a tutorial on [running CMS analysis code using Docker](http://opendata.cern.ch/docs/cms-guide-docker).
+You can find the list of Docker container images available for CMS open data
+in [the guide page for CMS open data containers](http://opendata.cern.ch/docs/cms-guide-docker)
+on the CERN Open data portal.
+You can also jump right in with the most recent tutorial on
+[the CMS open data containers](https://cms-opendata-workshop.github.io/workshop2021-lesson-docker/).
