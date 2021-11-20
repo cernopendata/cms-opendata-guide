@@ -33,7 +33,7 @@ Everyone is welcome to help build and/or improve this guide. If you find a bug o
    * If working locally, feel free to test it first following the [local testing](#test-locally) instructions below.
    * Make sure to check for missing new lines at EOF and trailing white spaces.  A simple way to check is by using the `git diff` and/or `git diff --check` commands.
    * Please test locally for style issues by running the command `./run-tests.sh --check-docstyle` (Note that you might need to install [awesome_bot](https://github.com/cernopendata/cms-opendata-guide/blob/eedc8d880729c3ef69ea75c1ea38efa6216a1537/.github/workflows/ci.yml#L41))
-   * When ready, push to to the master branch to trigger the automatic [deployment](#deploy).
+   * When ready, push to the master branch to trigger the automatic [deployment](#deploy).
    * Please [close the issue](https://help.github.com/en/enterprise/2.16/user/github/managing-your-work-on-github/closing-issues-using-keywords#closing-multiple-issues) when done.
 1. The page you are creating should, in most cases, be accompanied by a workshop tutorial lesson or exercise.  Ideally, the issue the page is addressing should point (if necessary) to the corresponding issue in the [cms-opendata-workshop](https://github.com/cms-opendata-workshop) organization.
 
@@ -45,7 +45,11 @@ Make a direct [pull request](https://help.github.com/en/github/collaborating-wit
 
 ## Test locally
 
-Make sure you have installed virtualenv and virtualenvwrapper packages.
+Make sure you have installed the [virtualenv](https://virtualenv.pypa.io/en/latest/installation.html) and  and [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/install.html) packages. Be sure to source the included virtualenvwrapper.sh script, or add it to your path in your .bashrc.
+
+Once you have the virtualenvwrapper installed, you can list your virtual environments using ```workon```. If this is your first virtual environment, the output will be empty. After installing one, you will be able to choose it from the list.
+
+You can create a virtual environment called cms-data-guide, install dependencies via pip, start up a mkdocs server, and then open a local browser by:
 
 ```console
 $ mkvirtualenv cms-opendata-guide
@@ -54,6 +58,7 @@ $ mkdocs serve
 $ firefox http://127.0.0.1:8000
 ```
 
+You can run local tests by `./run-tests.sh`. Testing requires a ruby installation. You will also need to install the ruby gem awesome_bot by `gem install awesome_bot`
 ## Deploy
 
 Documentation site is deployed on [OpenShift](https://openshift.cern.ch/).
