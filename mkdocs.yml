@@ -77,6 +77,9 @@ markdown_extensions:
         guess_lang: false
     - toc:
         permalink: true
+    - pymdownx.superfences
+    - pymdownx.tabbed:
+        alternate_style: true
 
 # Plugins
 plugins:
