@@ -14,7 +14,7 @@ It is the primary toolkit for many experimental analysis and while you are
 free to analyze these datasets however you like, some familiarity with
 ROOT will serve you well when accessing the data.
 
-To get started analyzing data with ROOT and C++, start with [C++ and ROOT](https://cms-opendata-workshop.github.io/workshop2021-lesson-preexercise-cpp-and-root/).
+To get started analyzing data with ROOT and C++, start with [C++ and ROOT](https://cms-opendata-workshop.github.io/workshop2021-lesson-preexercise-cpp-and-root/). A ROOT installation comes with the virtual machine and/or docker installation pointed to in this guide.
 
 To learn more about ROOT, see the [ROOT Manual](https://root.cern/manual/basics/).
 
