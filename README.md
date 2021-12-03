@@ -45,9 +45,19 @@ Make a direct [pull request](https://help.github.com/en/github/collaborating-wit
 
 ## Test locally
 
-Make sure you have installed the [virtualenv](https://virtualenv.pypa.io/en/latest/installation.html) and  and [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/install.html) packages. Be sure to source the included virtualenvwrapper.sh script, or add it to your path in your .bashrc.
+Make sure you have installed the [virtualenv](https://virtualenv.pypa.io/en/latest/installation.html) and [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/install.html) packages. Be sure to source the included virtualenvwrapper.sh script, or add it to your path in your .bashrc. For example, if virtualenvwrapper.sh was installed in /usr/local/bin, then you could type 
 
-Once you have the virtualenvwrapper installed, you can list your virtual environments using ```workon```. If this is your first virtual environment, the output will be empty. After installing one, you will be able to choose it from the list.
+```console
+$ source /usr/local/bin/virtualenvwrapper.sh
+```
+
+Once you have the virtualenvwrapper installed, you can list your virtual environments by typing ```workon```
+
+If this is your first virtual environment, when you type ```workon```, the output will be empty. But, after installing one (as you will below), you will be able to choose it from the list. For example if you create a virtual environment called cms-opendata-guide, you can work in that environment by typing 
+
+``` console
+$ workon cms-opendata-guide
+```
 
 You can create a virtual environment called cms-data-guide, install dependencies via pip, start up a mkdocs server, and then open a local browser by:
 
@@ -58,7 +68,7 @@ $ mkdocs serve
 $ firefox http://127.0.0.1:8000
 ```
 
-You can run local tests by `./run-tests.sh`. Testing requires a ruby installation. You will also need to install the ruby gem awesome_bot by `gem install awesome_bot`
+You can run local tests by `./run-tests.sh`. Testing requires a ruby installation. You will also need to install the ruby gem awesome_bot by `gem install awesome_bot` and make sure that gem in accessible on your path.
 ## Deploy
 
 Documentation site is deployed on [OpenShift](https://openshift.cern.ch/).
