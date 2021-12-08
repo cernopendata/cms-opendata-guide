@@ -59,21 +59,26 @@ The histogram and output should appear through root. An example of what the hist
 
 ##### If Needed: Updating Momentum Bin Code
 
+<!-- markdownlint-disable -->
 <sub> In [WeightAnalyzer.cc](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/BTagging/src/WeightAnalyzerBEff.cc), there is a spot to input custom jet momentum bins that looks like this: </sub>
+<!-- markdownlint-restore -->
 
 ``` cpp
 double ptbinsB[10] = {0, 15, 30, 50, 70, 100, 150, 200, 500, 1000};
 ```
-
+<!-- markdownlint-disable -->
 <sub> where a bin's momentums span from 0 to 15, 15 to 30, etc. </sub>
 
 <sub> After your jet momentum bin update, you need to update the actual code that produces the histogram. Continuing this example, there are a total of 9 momentum bins from the numbers given in, ptbinsB. In the histogram producing code, there is a 9 indicating the number of bins: </sub>
+<!-- markdownlint-restore -->
 
 ``` cpp
   BEff_Dptbins_b    = fs->make<TH1D>("BEff_Dptbins_b   ","",9,ptbinsB); BEff_Dptbins_b->Sumw2();
 ```
 
+<!-- markdownlint-disable -->
 <sub> Where the number 9 is now, this number will need to be updated to your number of bins. </sub>
+<!-- markdownlint-restore -->
 
 #### Access Efficiencies
 
