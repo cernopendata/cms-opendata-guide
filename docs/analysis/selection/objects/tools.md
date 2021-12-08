@@ -1,5 +1,4 @@
-#  Common tools for physics objects
-
+# Common tools for physics objects
 
 All CMS physics objects allow you to access important kinematic quantities in a
 common way. All objects have associated energy-momentum vectors, typically
@@ -40,7 +39,6 @@ for (auto mu = mymuons->begin(); mu != mymuons->end(); mu++) {
 
 These and other basic kinematic methods are [define here in CMSSW](https://github.com/cms-sw/cmssw/blob/CMSSW_5_3_X/DataFormats/Candidate/interface/LeafCandidate.h).
 
-
 ## Track access functions
 
 Many objects are also connected to tracks from the CMS tracking detectors. Information from
@@ -56,7 +54,7 @@ Often, the most pertinent information about an object (such as a muon) to access
 associated track is its **impact parameter** with respect to the primary interaction vertex.
 Since muons can also be tracked through the muon detectors, we first check if the track is
 well-defined, and then access impact parameters in the xy-plane (`dxy` or `d0`) and along
-the beam axis (`dz`), as well as their respective uncertainties. 
+the beam axis (`dz`), as well as their respective uncertainties.
 
 ~~~
 if (trk.isNonnull()) {
@@ -66,6 +64,7 @@ if (trk.isNonnull()) {
    value_mu_dzErr[value_mu_n] = trk->dzError();
 }
 ~~~
+
 {: .language-cpp}
 
 >## Challenge: electron track properties
@@ -77,11 +76,14 @@ if (trk.isNonnull()) {
 > ~~~
 > auto trk = it->gsfTrack(); // electron track
 > ~~~
+>
 >{: .language-cpp}
 >
 >> ## Solution:
+
 >> Again, add information in three places:
 >> Declarations:
+>>
 >>~~~
 >>int value_el_charge[max_el];
 >>float value_el_dxy[max_el];
@@ -89,8 +91,10 @@ if (trk.isNonnull()) {
 >>float value_el_dz[max_el];
 >>float value_el_dzErr[max_el];
 >>~~~
+>>
 >>{: .language-cpp}
 >> Branches:
+>>
 >>~~~
 >>tree->Branch("Electron_charge", value_el_charge, "Electron_charge[nElectron]/I");
 >>tree->Branch("Electron_dxy", value_el_dxy, "Electron_dxy[nElectron]/F");
@@ -98,8 +102,10 @@ if (trk.isNonnull()) {
 >>tree->Branch("Electron_dz", value_el_dz, "Electron_dz[nElectron]/F");
 >>tree->Branch("Electron_dzErr", value_el_dzErr, "Electron_dzErr[nElectron]/F");
 >>~~~
+>>
 >>{: .language-cpp}
 >> And access values in the electron loop. The format is identical to the muon loop!
+>>
 >>~~~
 >>value_el_charge[value_el_n] = it->charge();
 >>
@@ -109,8 +115,9 @@ if (trk.isNonnull()) {
 >>value_el_dxyErr[value_el_n] = trk->d0Error();
 >>value_el_dzErr[value_el_n] = trk->dzError();
 >>~~~
+>>
 >>{: .language-cpp}
->{: .solution} 
+>{: .solution}
 {: .challenge}
 
 ## Matching to generated particles
@@ -146,10 +153,11 @@ int findBestMatch(T& gens, reco::Candidate::LorentzVector& p4) {
   return idx; # return the index of the match
 }
 ~~~
+
 {: .language-cpp}
 
 The other utility functions are similar, but correct for generated particles that
-decay to neutrinos, which would affect the "visible" 4-vector. 
+decay to neutrinos, which would affect the "visible" 4-vector.
 
 In the AOD2NanoAOD tool, muons are matched only to "interesting" generated particles, which
 are all the leptons and photons (PDG ID 11, 13, 15, 22). Their generator status must be 1,
@@ -169,31 +177,32 @@ if (!isData){
 
       // if a match was found, save the generated particle's information
       if (idx != -1) {
-      	 auto g = interestingGenParticles.begin() + idx;
+        auto g = interestingGenParticles.begin() + idx;
 
-	 // another example of common 4-vector access functions!
+  // another example of common 4-vector access functions!
          value_gen_pt[value_gen_n] = g->pt();
          value_gen_eta[value_gen_n] = g->eta();
          value_gen_phi[value_gen_n] = g->phi();
          value_gen_mass[value_gen_n] = g->mass();
 
-	 // gen particles also have ID and status from the generator
+  // gen particles also have ID and status from the generator
          value_gen_pdgid[value_gen_n] = g->pdgId();
          value_gen_status[value_gen_n] = g->status();
 
-	 // save the index of the matched gen particle
+  // save the index of the matched gen particle
          value_mu_genpartidx[p - selectedMuons.begin()] = value_gen_n;
          value_gen_n++;
       }
    }
 }
 ~~~
+
 {: .language-cpp}
 
 >## Challenge: electron matching
 >
 >Match selected electrons to the interesting generated particles.
->Compile your code and run over the simulation test file. Using the 
+>Compile your code and run over the simulation test file. Using the
 >ROOT TBrowser, look at some histograms of the branches you've added to the tree throughout this
 >episode.
 >
@@ -203,11 +212,14 @@ if (!isData){
 > $ root -l output.root
 > [0] TBrowser b
 > ~~~
+>
 >{: .language-bash}
 >
 >> ## Solution:
+
 >>The structure for this matching exercise is identical to the muon matching segment. Loop over selected electrons,
 >> use the findBestVisibleMatch function to match it to an "interesting" particle and then to a jet.
+>>
 >>~~~
 >>// Match electrons with gen particles and jets
 >>for (auto p = selectedElectrons.begin(); p != selectedElectrons.end(); p++) {
@@ -230,10 +242,10 @@ if (!isData){
 >>  value_el_jetidx[p - selectedElectrons.begin()] = findBestMatch(selectedJets, p4);
 >>}
 >>~~~
+>>
 >>{: .language-cpp}
->{: .solution} 
+>{: .solution}
 {: .challenge}
-
 
 !!! Warning
     This page is under construction

@@ -1,8 +1,9 @@
-#  Jet Uncertainty
+# Jet Uncertainty
 
 Unsurprisingly, the CMS detector does not measure jet energies perfectly, nor do simulation and data agree perfectly! The measured energy of jet must be corrected so that it can be related to the true energy of its parent particle. These corrections account for several effects and are factorized so that each effect can be studied independently.
 
 ## Jet Energy Corrections (JEC)
+
 ---
 **What is JEC?**
 
@@ -60,7 +61,9 @@ else:
 
 process.p = cms.Path(process.ak5)
 ```
+
 Note that this analyzer will need to be run with both `isData = True` and `isData = False` to produce text files for both.
+
 ```
 $ cd JEC
 $ cmsRun jec_cfg.py
@@ -78,29 +81,29 @@ JEC begins in [poet_cfg.py](https://github.com/cms-legacydata-analyses/PhysObjec
 if doPat:
  ...
  # Choose which jet correction levels to apply
-	jetcorrlabels = ['L1FastJet','L2Relative','L3Absolute']
-	if isData:
-		# For data we need to remove generator-level matching processes
-		runOnData(process, ['Jets','METs'], "", None, [])
-		jetcorrlabels.append('L2L3Residual')
+ jetcorrlabels = ['L1FastJet','L2Relative','L3Absolute']
+ if isData:
+  # For data we need to remove generator-level matching processes
+  runOnData(process, ['Jets','METs'], "", None, [])
+  jetcorrlabels.append('L2L3Residual')
 
  # Set up the new jet collection
  process.ak5PFJets.doAreaFastjet = True
  addPfMET(process, 'PF')
  
  addJetCollection(process,cms.InputTag('ak5PFJets'),
- 		 'AK5', 'PFCorr',
-		 doJTA        = True,
-		 doBTagging   = True,
-		 jetCorrLabel = ('AK5PF', cms.vstring(jetcorrlabels)),
-		 doType1MET   = True,
-		 doL1Cleaning = True,
-		 doL1Counters = False,
-		 doJetID      = True,
-		 jetIdLabel   = "ak5",
-		 )
+    'AK5', 'PFCorr',
+   doJTA        = True,
+   doBTagging   = True,
+   jetCorrLabel = ('AK5PF', cms.vstring(jetcorrlabels)),
+   doType1MET   = True,
+   doL1Cleaning = True,
+   doL1Counters = False,
+   doJetID      = True,
+   jetIdLabel   = "ak5",
+   )
  process.myjets= cms.EDAnalyzer('PatJetAnalyzer',
-				   InputCollection = cms.InputTag("selectedPatJetsAK5PFCorr"),
+       InputCollection = cms.InputTag("selectedPatJetsAK5PFCorr"),
                                    isData = cms.bool(isData),
                                    jecUncName = cms.FileInPath('PhysObjectExtractorTool/PhysObjectExtractor/JEC/'+JecString+'Uncertainty_AK5PF.txt'), 
                                    jerResName = cms.FileInPath('PhysObjectExtractorTool/PhysObjectExtractor/JEC/JetResolutionInputAK5PF.txt')         
@@ -118,21 +121,24 @@ for (std::vector<pat::Jet>::const_iterator itjet=myjets->begin(); itjet!=myjets-
 <!--- JER -------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 ## Jet Energy Resolution (JER)
+
 ---
 **What is JER?**
 
-Jet Energy Resolution (JER) corrections are applied after JEC on strictly MC simulations. Unlike JEC, which adjusts for the mean of the response distribution, JER adjusts the width of the distribution. This is because MC simulations tend to be more sharply peaked and less broad than the same distribution in data, therefore we have to increase the resolution based on the effects of pileup, jet size and jet flavor. 
+Jet Energy Resolution (JER) corrections are applied after JEC on strictly MC simulations. Unlike JEC, which adjusts for the mean of the response distribution, JER adjusts the width of the distribution. This is because MC simulations tend to be more sharply peaked and less broad than the same distribution in data, therefore we have to increase the resolution based on the effects of pileup, jet size and jet flavor.
 
 **Accesing JER in CMS Software**
 
 Unlike JEC, the majority of JER is done inside of `PatJetAnalyzer.cc`, but we do have to import the file path to the text file containing a jet resolution factor table from the JEC directory in `poet_cfg.py`.
+
 ```
 process.myjets= cms.EDAnalyzer('PatJetAnalyzer',
-				       ... 
-				       jerResName = cms.FileInPath('PhysObjectExtractorTool/PhysObjectExtractor/JEC/JetResolutionInputAK5PF.txt')         
-				       )
+           ... 
+           jerResName = cms.FileInPath('PhysObjectExtractorTool/PhysObjectExtractor/JEC/JetResolutionInputAK5PF.txt')         
+           )
 ```
-Back inside the jet loop, we define `ptscale`, the eventual scale factor multiplied onto the jet momentum. 
+
+Back inside the jet loop, we define `ptscale`, the eventual scale factor multiplied onto the jet momentum.
 
 *Note: As mentioned previously, if we are running `PatJetAnalyzer.cc` on data, we do not want to affect to the resolution, so we initialize it as `1`.*
 
@@ -143,6 +149,7 @@ Next we calculate `ptscale` using one of two methods:
 2. A hybrid smearing method, which is used otherwise, described in section 8 of the [2017 CMS jet algorithm paper](https://arxiv.org/pdf/1607.03663.pdf), which also includes more information about JEC in general.
 
 *Note: Also mentioned previously was the fact that JER is applied after JEC, meaning the pT that is used various times in the evaluations (e.g `PTNPU.push_back( itjet->pt() );`) is the JEC corrected momentum, rather than the uncorrected one.*
+
 ```
 void
 JetAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
@@ -153,47 +160,48 @@ JetAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
       ptscale = 1;
       res = 1;
       if(!isData) {
-	std::vector<float> factors = factorLookup(fabs(itjet->eta())); // returns in order {factor, factor_down, factor_up}
-	std::vector<float> feta;
-	std::vector<float> PTNPU;
-	feta.push_back( fabs(itjet->eta()) );
-	PTNPU.push_back( itjet->pt() );
-	PTNPU.push_back( vertices->size() );
-	
-	res = jer_->correction(feta, PTNPU);
-	float pt = itjet->pt();
-	
-	const reco::GenJet *genJet = itjet->genJet();
-	bool smeared = false;
-	if(genJet){
-	  double deltaPt = fabs(genJet->pt() - pt);
-	  double deltaR = reco::deltaR(genJet->p4(),itjet->p4());
-	  if ((deltaR < 0.2) && deltaPt <= 3*pt*res){
-	    double gen_pt = genJet->pt();
-	    double reco_pt = pt;
-	    double deltapt = (reco_pt - gen_pt) * factors[0];
-	    double deltapt_down = (reco_pt - gen_pt) * factors[1];
-	    double deltapt_up = (reco_pt - gen_pt) * factors[2];
-	    ptscale = max(0.0, (reco_pt + deltapt) / reco_pt);
-	    ...
-	    smeared = true;
-	  }
-	} 
-	if (!smeared && factors[0]>0) {
-	  TRandom3 JERrand;
-	  
-	  JERrand.SetSeed(abs(static_cast<int>(itjet->phi()*1e4)));
-	  ptscale = max(0.0, JERrand.Gaus(pt,sqrt(factors[0]*(factors[0]+2))*res*pt)/pt);
-	  ...
+ std::vector<float> factors = factorLookup(fabs(itjet->eta())); // returns in order {factor, factor_down, factor_up}
+ std::vector<float> feta;
+ std::vector<float> PTNPU;
+ feta.push_back( fabs(itjet->eta()) );
+ PTNPU.push_back( itjet->pt() );
+ PTNPU.push_back( vertices->size() );
+ 
+ res = jer_->correction(feta, PTNPU);
+ float pt = itjet->pt();
+ 
+ const reco::GenJet *genJet = itjet->genJet();
+ bool smeared = false;
+ if(genJet){
+   double deltaPt = fabs(genJet->pt() - pt);
+   double deltaR = reco::deltaR(genJet->p4(),itjet->p4());
+   if ((deltaR < 0.2) && deltaPt <= 3*pt*res){
+     double gen_pt = genJet->pt();
+     double reco_pt = pt;
+     double deltapt = (reco_pt - gen_pt) * factors[0];
+     double deltapt_down = (reco_pt - gen_pt) * factors[1];
+     double deltapt_up = (reco_pt - gen_pt) * factors[2];
+     ptscale = max(0.0, (reco_pt + deltapt) / reco_pt);
+     ...
+     smeared = true;
+   }
+ } 
+ if (!smeared && factors[0]>0) {
+   TRandom3 JERrand;
+   
+   JERrand.SetSeed(abs(static_cast<int>(itjet->phi()*1e4)));
+   ptscale = max(0.0, JERrand.Gaus(pt,sqrt(factors[0]*(factors[0]+2))*res*pt)/pt);
+   ...
       }
 ```
 
-## Jet Correction Uncertainty 
+## Jet Correction Uncertainty
+
 An important factor we have to keep in mind when applying both JEC and JER are the statistical uncertainities. These uncertainties have several sources, shown in the figure below. The L1 (pileup) uncertainty dominates at low momentum, while the L3 (absolute scale) uncertainty takes over for higher momentum jets. All corrections are quite precise for jets located near the center of the CMS barrel region, and the precision drops as pseudorapidity increases and different subdetectors lose coverage.
 
 ![JEC uncertainty](https://cms-opendata-workshop.github.io/workshop-lesson-jetmet/assets/img/uncertainties.PNG)
 
-These uncertainties are accounted for by including an "up" and "down" version of our correction factor. 
+These uncertainties are accounted for by including an "up" and "down" version of our correction factor.
 
 **JEC Uncertainty**
 
@@ -215,31 +223,39 @@ for (std::vector<pat::Jet>::const_iterator itjet=myjets->begin(); itjet!=myjets-
       ...
 ```
 
-**JER Uncertainty** 
+**JER Uncertainty**
 
 Just how `ptscale` was manually calculated on genJets using this line:
+
 ```
 ptscale = max(0.0, (reco_pt + deltapt) / reco_pt);
 ```
+
 We calculate the JER uncertainty like so:
+
 ```
 ptscale_up = max(0.0, (reco_pt + deltapt_up) / reco_pt);
 ptscale_down = max(0.0, (reco_pt + deltapt_down) / reco_pt);
 ```
+
 Otherwise for non-genJets,
+
 ```
 JERrand.SetSeed(abs(static_cast<int>(itjet->phi()*1e4)));
 ptscale_down = max(0.0, JERrand.Gaus(pt,sqrt(factors[1]*(factors[1]+2))*res*pt)/pt);
-	  
+   
 JERrand.SetSeed(abs(static_cast<int>(itjet->phi()*1e4)));
 ptscale_up = max(0.0, JERrand.Gaus(pt,sqrt(factors[2]*(factors[2]+2))*res*pt)/pt);
 ```
 
 ## Storing the corrections
-The final step in actualizing the jet corrections occurs after the JEC/JER calculations, where we fill the five momentum vectors for each jet. 
+
+The final step in actualizing the jet corrections occurs after the JEC/JER calculations, where we fill the five momentum vectors for each jet.
+
  * `corr_jet_pt` is the JEC + JER corrected pT
  * `corr_jet_ptUp` and `corr_jet_ptDown` are the ("up" and "down" versions of the JEC) + JER corrected pT
  * `corr_jet_ptSmearUp` and `corr_jet_ptSmearDown` are the JEC + (smeared "up" and "down" versions of the JER) corrected pT
+
 ```
 corr_jet_pt.push_back(ptscale*itjet->pt());
 corr_jet_ptUp.push_back(ptscale*corrUp*itjet->pt());
@@ -247,9 +263,11 @@ corr_jet_ptDown.push_back(ptscale*corrDown*itjet->pt());
 corr_jet_ptSmearUp.push_back(ptscale_up*itjet->pt());
 corr_jet_ptSmearDown.push_back(ptscale_down*itjet->pt()); 
 ```
+
 ## Putting it all together <!---Inviting the reader to take a look at the code with JEC+JER all togehter-->
+
 Inside of the dropdown is the full jet loop, comprised of the storing of the uncorrected jet object, creation of JEC uncertainty, JER corrections + uncertainty, and storing of the corrected momentum.
-    
+
 <details><summary>Full Jet Loop</summary>
 
 ```
@@ -270,45 +288,45 @@ for (std::vector<pat::Jet>::const_iterator itjet=myjets->begin(); itjet!=myjets-
       ptscale_up = 1;
       res = 1;
       if(!isData) {
-	std::vector<float> factors = factorLookup(fabs(itjet->eta())); // returns in order {factor, factor_down, factor_up}
-	std::vector<float> feta;
-	std::vector<float> PTNPU;
-	feta.push_back( fabs(itjet->eta()) );
-	PTNPU.push_back( itjet->pt() );
-	PTNPU.push_back( vertices->size() );
-	
-	res = jer_->correction(feta, PTNPU);
-	float pt = itjet->pt();
-	
-	const reco::GenJet *genJet = itjet->genJet();
-	bool smeared = false;
-	if(genJet){
-	  double deltaPt = fabs(genJet->pt() - pt);
-	  double deltaR = reco::deltaR(genJet->p4(),itjet->p4());
-	  if ((deltaR < 0.2) && deltaPt <= 3*pt*res){
-	    double gen_pt = genJet->pt();
-	    double reco_pt = pt;
-	    double deltapt = (reco_pt - gen_pt) * factors[0];
-	    double deltapt_down = (reco_pt - gen_pt) * factors[1];
-	    double deltapt_up = (reco_pt - gen_pt) * factors[2];
-	    ptscale = max(0.0, (reco_pt + deltapt) / reco_pt);
-	    ptscale_up = max(0.0, (reco_pt + deltapt_up) / reco_pt);
-	    ptscale_down = max(0.0, (reco_pt + deltapt_down) / reco_pt);
-	    smeared = true;
-	  }
-	} 
-	if (!smeared && factors[0]>0) {
-	  TRandom3 JERrand;
-	  
-	  JERrand.SetSeed(abs(static_cast<int>(itjet->phi()*1e4)));
-	  ptscale = max(0.0, JERrand.Gaus(pt,sqrt(factors[0]*(factors[0]+2))*res*pt)/pt);
-	  
-	  JERrand.SetSeed(abs(static_cast<int>(itjet->phi()*1e4)));
-	  ptscale_down = max(0.0, JERrand.Gaus(pt,sqrt(factors[1]*(factors[1]+2))*res*pt)/pt);
-	  
-	  JERrand.SetSeed(abs(static_cast<int>(itjet->phi()*1e4)));
-	  ptscale_up = max(0.0, JERrand.Gaus(pt,sqrt(factors[2]*(factors[2]+2))*res*pt)/pt);
-	}
+ std::vector<float> factors = factorLookup(fabs(itjet->eta())); // returns in order {factor, factor_down, factor_up}
+ std::vector<float> feta;
+ std::vector<float> PTNPU;
+ feta.push_back( fabs(itjet->eta()) );
+ PTNPU.push_back( itjet->pt() );
+ PTNPU.push_back( vertices->size() );
+ 
+ res = jer_->correction(feta, PTNPU);
+ float pt = itjet->pt();
+ 
+ const reco::GenJet *genJet = itjet->genJet();
+ bool smeared = false;
+ if(genJet){
+   double deltaPt = fabs(genJet->pt() - pt);
+   double deltaR = reco::deltaR(genJet->p4(),itjet->p4());
+   if ((deltaR < 0.2) && deltaPt <= 3*pt*res){
+     double gen_pt = genJet->pt();
+     double reco_pt = pt;
+     double deltapt = (reco_pt - gen_pt) * factors[0];
+     double deltapt_down = (reco_pt - gen_pt) * factors[1];
+     double deltapt_up = (reco_pt - gen_pt) * factors[2];
+     ptscale = max(0.0, (reco_pt + deltapt) / reco_pt);
+     ptscale_up = max(0.0, (reco_pt + deltapt_up) / reco_pt);
+     ptscale_down = max(0.0, (reco_pt + deltapt_down) / reco_pt);
+     smeared = true;
+   }
+ } 
+ if (!smeared && factors[0]>0) {
+   TRandom3 JERrand;
+   
+   JERrand.SetSeed(abs(static_cast<int>(itjet->phi()*1e4)));
+   ptscale = max(0.0, JERrand.Gaus(pt,sqrt(factors[0]*(factors[0]+2))*res*pt)/pt);
+   
+   JERrand.SetSeed(abs(static_cast<int>(itjet->phi()*1e4)));
+   ptscale_down = max(0.0, JERrand.Gaus(pt,sqrt(factors[1]*(factors[1]+2))*res*pt)/pt);
+   
+   JERrand.SetSeed(abs(static_cast<int>(itjet->phi()*1e4)));
+   ptscale_up = max(0.0, JERrand.Gaus(pt,sqrt(factors[2]*(factors[2]+2))*res*pt)/pt);
+ }
       }
       
       if( ptscale*itjet->pt() <= min_pt) continue;
@@ -331,5 +349,6 @@ for (std::vector<pat::Jet>::const_iterator itjet=myjets->begin(); itjet!=myjets-
       corr_jet_pz.push_back(itjet->pz());
       ...
 }
-```	
+``` 
+
 </details>
