@@ -17,7 +17,7 @@ Scale factors to increase or decrease the number of b-tagged jets in simulation 
 
 The [BTagging folder](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/tree/master/BTagging) of PhysObjectExtractorTool ([POET](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool)) is used for calculating the efficiency for tagging each flavor of jet as a b quark, as a function of the jet momentum with the file [WeightAnalyzer.cc](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/BTagging/src/WeightAnalyzerBEff.cc). The purpose of this file is to set up jet momentum histograms for numerators and denominators of efficiency histograms as defined above. The code loops through the jets, checks their flavor, checks their btagging discriminator to see if it passes tight, medium and or loose cut, and then fills the histograms according to that information.
 
-```
+``` cpp
     double disc = it->bDiscriminator(discriminatorStr);
     int hadronFlavor = it->partonFlavour();
     
@@ -36,7 +36,7 @@ Input, output, and other parameters can be changed in the [config file](https://
 
 After this, you can save, exit, and compile, and then move onto the [config file](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/BTagging/python/befficiency_patjets_cfg.py). You will put the file(s) which you wish to run efficiencies on here:
 
-```
+``` cpp
 ##### ------- This is a test file
 process.source = cms.Source("PoolSource",
         fileNames = cms.untracked.vstring(
@@ -49,7 +49,7 @@ Once this is complete, you can run the [config file](https://github.com/cms-lega
 
 Once your run is complete, in the 'BTagging' folder there should be a file called [plotBeff.C](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/BTagging/plotBeff.C). This file is set up to do the numerator and denomenator divisions (as defined earlier), show you a histogram of your efficiencies from those calculations, and write the same efficiencies that you calculated in a numerical form. To run this code open this file in root like such:
 
-```
+``` cpp
 root plotBeff.c
 ```
 
@@ -57,11 +57,11 @@ The histogram and output should appear through root. An example of what the hist
 
 ![Output Histogram](../../../images/c1.png)
 
-###### If Needed: Updating Momentum Bin Code
+##### If Needed: Updating Momentum Bin Code
 
 <sub> In [WeightAnalyzer.cc](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/BTagging/src/WeightAnalyzerBEff.cc), there is a spot to input custom jet momentum bins that looks like this: </sub>
 
-```
+``` cpp
 double ptbinsB[10] = {0, 15, 30, 50, 70, 100, 150, 200, 500, 1000};
 ```
 
@@ -69,17 +69,17 @@ double ptbinsB[10] = {0, 15, 30, 50, 70, 100, 150, 200, 500, 1000};
 
 <sub> After your jet momentum bin update, you need to update the actual code that produces the histogram. Continuing this example, there are a total of 9 momentum bins from the numbers given in, ptbinsB. In the histogram producing code, there is a 9 indicating the number of bins: </sub>
 
-```
+``` cpp
   BEff_Dptbins_b    = fs->make<TH1D>("BEff_Dptbins_b   ","",9,ptbinsB); BEff_Dptbins_b->Sumw2();
 ```
 
-<sub> Where the number 9 is now, this number will need to be updated to your number of bins. </sub> 
- 
+<sub> Where the number 9 is now, this number will need to be updated to your number of bins. </sub>
+
 #### Access Efficiencies
 
 Once you have your efficiencies, you can then put them in to the [3 look up functions](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/PhysObjectExtractor/src/PatJetAnalyzer.cc#L199-L242) that have been implemented in PatJetAnalyzer for storing efficiencies. Here, for example, is the b tag efficiencies function which returns efficiency given a jet momentum:
 
-```
+``` cpp
 double
 PatJetAnalyzer::getBtagEfficiency(double pt){
   if(pt < 25) return 0.263407;
@@ -106,7 +106,7 @@ Sorting Columns and creating filters with the .csv file can make accessing and f
 
 The scale factor equations from the folumla column have been implemented in POET! In PatJetAnalyzer there are 2 functions, one for b and c flavored jets and one for light flavored jets, that return the scale factor of the jet depending on the momentum of the jet. Below is the b and c tag function.
 
-```
+``` cpp
 double
 PatJetAnalyzer::getBorCtagSF(double pt, double eta){
   if (pt > 670.) pt = 670;
@@ -125,7 +125,7 @@ Once these functions are updated to their desired states, weight calculating can
 if (jet_btag.at(value_jet_n) > 0.679)
 `. This check is to see whether or not the jet distminator makes the cut we want our jets to make. In this case, we want our jets to make the medium cut (.679). If a jet makes the cut, there are then a couple more checks to be made:
 
-````
+```` cpp
   if(abs(hadronFlavour) == 5){
    eff = getBtagEfficiency(corrpt);
  SF = getBorCtagSF(corrpt, jet_eta.at(value_jet_n));
@@ -146,7 +146,7 @@ if (jet_btag.at(value_jet_n) > 0.679)
 
 This section first finds which flavor of jet it is (b = 5, c = 4, and light = anything else) and then gets the efficiency for the respected jet, as well as calculates its scale factor. It also calculates its up and down quarked scale factors of the jet. Once these checks and calculations are complete, the following calulations can occur:
 
-```
+``` cpp
  MC *= eff;
  btagWeight *= SF * eff;
  btagWeightUp *= SFu * eff;
@@ -158,7 +158,7 @@ The same process with a little bit different probability calculating is done if 
 
 Once these checks have finished for every jet you are looking at, a final calculation for the event weights is done.
 
-```
+``` cpp
 btagWeight = (btagWeight/MC);
 btagWeightUp = (btagWeightUp/MC);
 btagWeightDn = (btagWeightDn/MC);
@@ -176,7 +176,7 @@ In POET, there are 2 functions for the uncertainty, one for the b tag uncertaint
 
 Here is what the b tag uncertainty function looks like, which returns the uncertainty given a jet momentum:
 
-```
+```cpp
 double
 PatJetAnalyzer::uncertaintyForBTagSF( double pt, double eta){
   if(fabs(eta) > 2.4 or pt<20.) return 0;

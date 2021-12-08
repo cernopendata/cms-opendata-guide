@@ -27,7 +27,7 @@ All of these corrections are applied to both data and simulation. Data events ar
 
 There are several methods available for applying jet energy corrections to reconstructed jets. We have demonstrated a method to read in the corrections from text files and extract the corrections manually for each jet. In order to produce these text files, we have to run [jec_cfg.py](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/PhysObjectExtractor/JEC/jec_cfg.py).
 
-```
+``` python
 isData = False
 #if len(sys.argv) > 1: isData = bool(eval(sys.argv[1]))
 #print 'Writing JEC text files. isData = ',isData
@@ -64,7 +64,7 @@ process.p = cms.Path(process.ak5)
 
 Note that this analyzer will need to be run with both `isData = True` and `isData = False` to produce text files for both.
 
-```
+```console
 $ cd JEC
 $ cmsRun jec_cfg.py
 $ #edit the file and flip isData
@@ -77,7 +77,7 @@ JEC begins in [poet_cfg.py](https://github.com/cms-legacydata-analyses/PhysObjec
 
 *Note: The JEC Uncertainty text file is needed for the manually created correction uncertainties created inside of the analyzer. Uncertainty will be covered later.*
 
-```
+``` python
 if doPat:
  ...
  # Choose which jet correction levels to apply
@@ -113,11 +113,12 @@ if doPat:
 
 Now we can go into [PatJetAnalyzer.cc](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/PhysObjectExtractor/src/PatJetAnalyzer.cc), where in the jet loop of `analyzeJets`, the correction has already automatically been corrected for each jet. We then save a uncorrected version of the jet as `uncorrJet`.
 
-```
+``` cpp
 for (std::vector<pat::Jet>::const_iterator itjet=myjets->begin(); itjet!=myjets->end(); ++itjet){
      pat::Jet uncorrJet = itjet->correctedJet(0);     
      ...
 ```
+
 <!--- JER -------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 ## Jet Energy Resolution (JER)
@@ -131,7 +132,7 @@ Jet Energy Resolution (JER) corrections are applied after JEC on strictly MC sim
 
 Unlike JEC, the majority of JER is done inside of `PatJetAnalyzer.cc`, but we do have to import the file path to the text file containing a jet resolution factor table from the JEC directory in `poet_cfg.py`.
 
-```
+``` python
 process.myjets= cms.EDAnalyzer('PatJetAnalyzer',
            ... 
            jerResName = cms.FileInPath('PhysObjectExtractorTool/PhysObjectExtractor/JEC/JetResolutionInputAK5PF.txt')         
@@ -150,7 +151,7 @@ Next we calculate `ptscale` using one of two methods:
 
 *Note: Also mentioned previously was the fact that JER is applied after JEC, meaning the pT that is used various times in the evaluations (e.g `PTNPU.push_back( itjet->pt() );`) is the JEC corrected momentum, rather than the uncorrected one.*
 
-```
+``` cpp
 void
 JetAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
 {
@@ -209,7 +210,7 @@ While the JEC corrected momentum can be accessed automatically through the jet o
 
 Here in the jet loop, the `corrUp` and `corrDown` variables are created in part using `jetUnc_->getUncertainty()` (This object is created from the a text file which was briefly mentioned during the JEC initialization in `poet_cfg.py` of the *Implementing JEC in CMS Software* section). In order to access the `getUncertainty` function, we use a JEC uncertainty object, in this case called `jecUnc_`, where we input information about the jet, like its psuedorapidity and momentum.
 
-```
+``` cpp
 for (std::vector<pat::Jet>::const_iterator itjet=myjets->begin(); itjet!=myjets->end(); ++itjet){
       ...
       double corrUp = 1.0;
@@ -227,20 +228,20 @@ for (std::vector<pat::Jet>::const_iterator itjet=myjets->begin(); itjet!=myjets-
 
 Just how `ptscale` was manually calculated on genJets using this line:
 
-```
+``` cpp
 ptscale = max(0.0, (reco_pt + deltapt) / reco_pt);
 ```
 
 We calculate the JER uncertainty like so:
 
-```
+``` cpp
 ptscale_up = max(0.0, (reco_pt + deltapt_up) / reco_pt);
 ptscale_down = max(0.0, (reco_pt + deltapt_down) / reco_pt);
 ```
 
 Otherwise for non-genJets,
 
-```
+``` cpp
 JERrand.SetSeed(abs(static_cast<int>(itjet->phi()*1e4)));
 ptscale_down = max(0.0, JERrand.Gaus(pt,sqrt(factors[1]*(factors[1]+2))*res*pt)/pt);
    
@@ -256,7 +257,7 @@ The final step in actualizing the jet corrections occurs after the JEC/JER calcu
  * `corr_jet_ptUp` and `corr_jet_ptDown` are the ("up" and "down" versions of the JEC) + JER corrected pT
  * `corr_jet_ptSmearUp` and `corr_jet_ptSmearDown` are the JEC + (smeared "up" and "down" versions of the JER) corrected pT
 
-```
+``` cpp
 corr_jet_pt.push_back(ptscale*itjet->pt());
 corr_jet_ptUp.push_back(ptscale*corrUp*itjet->pt());
 corr_jet_ptDown.push_back(ptscale*corrDown*itjet->pt());
@@ -270,7 +271,7 @@ Inside of the dropdown is the full jet loop, comprised of the storing of the unc
 
 <details><summary>Full Jet Loop</summary>
 
-```
+``` cpp
 for (std::vector<pat::Jet>::const_iterator itjet=myjets->begin(); itjet!=myjets->end(); ++itjet){
       pat::Jet uncorrJet = itjet->correctedJet(0);     
       
@@ -349,6 +350,6 @@ for (std::vector<pat::Jet>::const_iterator itjet=myjets->begin(); itjet!=myjets-
       corr_jet_pz.push_back(itjet->pz());
       ...
 }
-``` 
+```
 
 </details>

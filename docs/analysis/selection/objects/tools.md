@@ -56,69 +56,53 @@ Since muons can also be tracked through the muon detectors, we first check if th
 well-defined, and then access impact parameters in the xy-plane (`dxy` or `d0`) and along
 the beam axis (`dz`), as well as their respective uncertainties.
 
-~~~
+``` cpp
+
 if (trk.isNonnull()) {
    value_mu_dxy[value_mu_n] = trk->dxy(pv);
    value_mu_dz[value_mu_n] = trk->dz(pv);
    value_mu_dxyErr[value_mu_n] = trk->d0Error();
    value_mu_dzErr[value_mu_n] = trk->dzError();
 }
-~~~
+```
 
-{: .language-cpp}
+## Challenge: electron track properties
 
->## Challenge: electron track properties
->
-> Access and store the electron's charge and track impact parameter values, following
-> the examples set for muons. Electron tracks are found using the Gaussian-sum filter
-> method, which influences the member function name to access the track:
->
-> ~~~
-> auto trk = it->gsfTrack(); // electron track
-> ~~~
->
->{: .language-cpp}
->
->> ## Solution:
+Access and store the electron's charge and track impact parameter values, following the examples set for muons. Electron tracks are found using the Gaussian-sum filter method, which influences the member function name to access the track:
 
->> Again, add information in three places:
->> Declarations:
->>
->>~~~
->>int value_el_charge[max_el];
->>float value_el_dxy[max_el];
->>float value_el_dxyErr[max_el];
->>float value_el_dz[max_el];
->>float value_el_dzErr[max_el];
->>~~~
->>
->>{: .language-cpp}
->> Branches:
->>
->>~~~
->>tree->Branch("Electron_charge", value_el_charge, "Electron_charge[nElectron]/I");
->>tree->Branch("Electron_dxy", value_el_dxy, "Electron_dxy[nElectron]/F");
->>tree->Branch("Electron_dxyErr", value_el_dxyErr, "Electron_dxyErr[nElectron]/F");
->>tree->Branch("Electron_dz", value_el_dz, "Electron_dz[nElectron]/F");
->>tree->Branch("Electron_dzErr", value_el_dzErr, "Electron_dzErr[nElectron]/F");
->>~~~
->>
->>{: .language-cpp}
->> And access values in the electron loop. The format is identical to the muon loop!
->>
->>~~~
->>value_el_charge[value_el_n] = it->charge();
->>
->>auto trk = it->gsfTrack();
->>value_el_dxy[value_el_n] = trk->dxy(pv);
->>value_el_dz[value_el_n] = trk->dz(pv);
->>value_el_dxyErr[value_el_n] = trk->d0Error();
->>value_el_dzErr[value_el_n] = trk->dzError();
->>~~~
->>
->>{: .language-cpp}
->{: .solution}
-{: .challenge}
+``` cpp
+auto trk = it->gsfTrack(); // electron track
+```
+
+## Solution:
+
+Again, add information in three places:
+
+Declarations:
+
+``` cpp
+int value_el_charge[max_el];
+float value_el_dxy[max_el];
+float value_el_dxyErr[max_el];
+float value_el_dz[max_el];
+float value_el_dzErr[max_el];
+
+tree->Branch("Electron_charge", value_el_charge, "Electron_charge[nElectron]/I");
+tree->Branch("Electron_dxy", value_el_dxy, "Electron_dxy[nElectron]/F");
+tree->Branch("Electron_dxyErr", value_el_dxyErr, "Electron_dxyErr[nElectron]/F");
+tree->Branch("Electron_dz", value_el_dz, "Electron_dz[nElectron]/F");
+tree->Branch("Electron_dzErr", value_el_dzErr, "Electron_dzErr[nElectron]/F");
+
+And access values in the electron loop. The format is identical to the muon loop!
+
+value_el_charge[value_el_n] = it->charge();
+
+auto trk = it->gsfTrack();
+value_el_dxy[value_el_n] = trk->dxy(pv);
+value_el_dz[value_el_n] = trk->dz(pv);
+value_el_dxyErr[value_el_n] = trk->d0Error();
+value_el_dzErr[value_el_n] = trk->dzError();
+```
 
 ## Matching to generated particles
 
@@ -132,7 +116,7 @@ generated particles (with an automated type `T`) and the 4-vector of a physics
 object. It uses angular separation to find the closest generated particle to the
 reconstructed particle:
 
-~~~
+``` cpp
 template <typename T>
 int findBestMatch(T& gens, reco::Candidate::LorentzVector& p4) {
 
@@ -152,9 +136,7 @@ int findBestMatch(T& gens, reco::Candidate::LorentzVector& p4) {
   }
   return idx; # return the index of the match
 }
-~~~
-
-{: .language-cpp}
+```
 
 The other utility functions are similar, but correct for generated particles that
 decay to neutrinos, which would affect the "visible" 4-vector.
@@ -163,7 +145,7 @@ In the AOD2NanoAOD tool, muons are matched only to "interesting" generated parti
 are all the leptons and photons (PDG ID 11, 13, 15, 22). Their generator status must be 1,
 indicating a final-state particle after any radiation chain.
 
-~~~
+``` cpp
 if (!isData){
    value_gen_n = 0;
    
@@ -195,32 +177,27 @@ if (!isData){
       }
    }
 }
-~~~
+```
 
-{: .language-cpp}
+## Challenge: electron matching
 
->## Challenge: electron matching
->
->Match selected electrons to the interesting generated particles.
->Compile your code and run over the simulation test file. Using the
->ROOT TBrowser, look at some histograms of the branches you've added to the tree throughout this
->episode.
->
-> ~~~
-> $ scram b
-> $ cmsRun configs/simulation_cfg.py
-> $ root -l output.root
-> [0] TBrowser b
-> ~~~
->
->{: .language-bash}
->
->> ## Solution:
+Match selected electrons to the interesting generated particles.
+Compile your code and run over the simulation test file. Using the
+ROOT TBrowser, look at some histograms of the branches you've added to the tree throughout this
+episode.
 
->>The structure for this matching exercise is identical to the muon matching segment. Loop over selected electrons,
->> use the findBestVisibleMatch function to match it to an "interesting" particle and then to a jet.
->>
->>~~~
+``` console
+$ scram b
+$ cmsRun configs/simulation_cfg.py
+$ root -l output.root
+[0] TBrowser b
+```
+
+## Solution
+
+The structure for this matching exercise is identical to the muon matching segment. Loop over selected electrons, use the findBestVisibleMatch function to match it to an "interesting" particle and then to a jet.
+
+``` cpp
 >>// Match electrons with gen particles and jets
 >>for (auto p = selectedElectrons.begin(); p != selectedElectrons.end(); p++) {
 >>  // Gen particle matching
@@ -241,11 +218,8 @@ if (!isData){
 >>  // Jet matching
 >>  value_el_jetidx[p - selectedElectrons.begin()] = findBestMatch(selectedJets, p4);
 >>}
->>~~~
->>
->>{: .language-cpp}
->{: .solution}
-{: .challenge}
+
+```
 
 !!! Warning
     This page is under construction
