@@ -14,10 +14,11 @@ Smallest statistics are needed for full understanding and efficiency measurement
 It is simple to cleanly separate the e-ID, isolation and conversion rejection pieces
 The selection has been tuned in order to get a set of cuts with maximum background rejection for a given efficiency.
 
-'''
 ELECTRONS
- // Electrons
-  Handle<GsfElectronCollection> electrons;
+
+``` cpp
+
+  Handle <GsfElectronCollection> electrons;
   iEvent.getByLabel(InputTag("gsfElectrons"), electrons);
   edm::Handle<reco::ConversionCollection> hConversions;
   iEvent.getByLabel("allConversions", hConversions);
@@ -105,8 +106,11 @@ ELECTRONS
     }
   }
 
+```
+
 PHOTONS
-  // Photons
+
+``` cpp
   Handle<PhotonCollection> photons;
   iEvent.getByLabel(InputTag("photons"), photons);
   Handle<double> rhoHandle;
@@ -209,4 +213,5 @@ double corrPFPhIso = max(it->photonIso() - rhoIso* Ph_AEff, 0.);
       value_ph_n++;
     }
   }
-'''
+
+```
