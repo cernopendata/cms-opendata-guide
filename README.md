@@ -69,6 +69,16 @@ $ firefox http://127.0.0.1:8000
 ```
 
 You can run local tests by `./run-tests.sh`. Testing requires a ruby installation. You will also need to install the ruby gem awesome_bot by `gem install awesome_bot` and make sure that gem in accessible on your path.
+
+### Note on markdown
+
+Markdownlint is used to check your markdown. However, it does not allow inline HTML. To temporarily allow it, you can wrap your inline HTML as follows:
+``` console
+<!-- markdownlint-disable -->
+write your inline HTML code here
+<!-- markdownlint-restore -->
+```
+
 ## Deploy
 
 Documentation site is deployed on [OpenShift](https://openshift.cern.ch/).
