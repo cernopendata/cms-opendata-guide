@@ -6,7 +6,7 @@
 
 In [MetAnalyzer.cc](https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/PhysObjectExtractor/src/MetAnalyzer.cc) we open the particle flow MET module and extract the magnitude and angle of the MET, the sum of all energy in the detector, and variables related to the “significance” of the MET. Note that MET quantities have a single value for the entire event, unlike the objects studied previously.
 
-```
+``` cpp
 Handle<PFMETCollection> met;
 iEvent.getByLabel(InputTag("pfMet"), met);
 

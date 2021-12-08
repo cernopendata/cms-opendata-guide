@@ -39,7 +39,8 @@ Inevitably, the list of particle flow candidates contains particles that did not
 
 Jets software classes have the same basic 4-vector methods as the objects discussed in the previous lesson:
 
-```
+``` cpp
+
 Handle<PFJetCollection> myjets;
 iEvent.getByLabel(InputTag("ak5PFJets"), myjets);
 
@@ -50,6 +51,7 @@ jet_eta.push_back(itjet->eta());
 jet_phi.push_back(itjet->phi()); 
 jet_mass.push_back(itjet->mass());
 }
+
 ```
 
 ## Jet ID
@@ -62,7 +64,7 @@ These criteria demonstrate how particle-flow jets combine information across sub
 
 You can use the [cms-sw github repository](https://github.com/cms-sw/cmssw/tree/CMSSW_5_3_X/DataFormats/JetReco/) to see what methods are available for PFJets. We can implement a jet ID to reject jets that do not pass so that these jets are not stored in any of the tree branches. This code show an implementation of Jet ID cuts while also applying a minimum momentum threshold.
 
-```
+``` cpp
 for (reco::PFJetCollection::const_iterator itjet=jets->begin(); itjet!=jets->end(); ++itjet){
 if (itjet->pt > jet_min_pt && itjet->chargedHadronEnergyFraction() > 0 && itjet->neutralHadronEnergyFraction() < 1.0 &&
     itjet->electronEnergyFraction() < 1.0 && itjet->photonEnergyFraction() < 1.0){
@@ -97,7 +99,8 @@ These algorithms produce a single, real number (often the output of an MVA) call
 
 In PatJetAnalyzer.cc we access the information from the Combined Secondary Vertex (CSV) b tagging algorithm and associate discriminator values with the jets. The CSV values are stored in a separate collection in the POET files called a JetTagCollection, which is effectively a vector of associations between jet references and float values (such as a b-tagging discriminator).
 
-```
+``` cpp
+
 #include "DataFormats/PatCandidates/interface/Jet.h"
 
 Handle<PFJetCollection> myjets;
@@ -108,11 +111,13 @@ iEvent.getByLabel(InputTag("ak5PFJets"), myjets);
     // from the btag collection get the float (second) from the association to this jet.
     jet_btag.push_back(itjet->bDiscriminator("combinedSecondaryVertexBJetTags"));
 }
+
 ```
 
 You can use the command edmDumpEventContent to investiate other b tagging algorithms available as edm::AssociationVector types. This is an example opening the collections for two alternate taggers--the MVA version of CSV and the high purity track counting tagger, which was the most common tagger in 2011:
 
-```
+``` cpp
+
 // inside the jet loop
 jet_btagheb.push_back(itjet->bDiscriminator("simpleSecondaryVertexHighEffBJetTags"));
 jet_btagtc.push_back(itjet->bDiscriminator("trackCountingHighEffBJetTags"));
@@ -132,13 +137,15 @@ A jet is considered "b tagged" if the discriminator value exceeds some threshold
 
 We can count the number  of "Medium CSV" b-tagged jets by summing up the number of jets with discriminant values greater than 0.679. After adding a variable declaration and branch we can sum up the counter:
 
-```
+``` cpp
+
 value_jet_nCSVM = 0;
  for (std::vector<pat::Jet>::const_iterator itjet=myjets->begin(); itjet!=myjets->end(); ++itjet){
     // skipping bits
     jet_btag.push_back(itjet->bDiscriminator("combinedSecondaryVertexBJetTags"));
     if (jet_btag.at(value_jet_n) > 0.679) value_jet_nCSVM++;
 }
+
 ```
 
 We show distributions of the number CSV b jets at the medium working point in Drell-Yan events and top pair events. As expected there are significantly more b jets in the top pair sample.
