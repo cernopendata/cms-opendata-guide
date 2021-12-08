@@ -269,7 +269,9 @@ corr_jet_ptSmearDown.push_back(ptscale_down*itjet->pt());
 
 Inside of the dropdown is the full jet loop, comprised of the storing of the uncorrected jet object, creation of JEC uncertainty, JER corrections + uncertainty, and storing of the corrected momentum.
 
+<!-- markdownlint-disable -->
 <details><summary>Full Jet Loop</summary>
+<!-- markdownlint-restore -->
 
 ``` cpp
 for (std::vector<pat::Jet>::const_iterator itjet=myjets->begin(); itjet!=myjets->end(); ++itjet){
