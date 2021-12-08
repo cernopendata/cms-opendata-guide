@@ -1,7 +1,7 @@
-#  Jets
-
+# Jets
 
 ## What are jets?
+
 ---
 
 Jets are spatially-grouped collections of long-lived particles that are produced when a quark or gluon hadronizes. The kinetmatic properties of jets resemble that of the initial partons that produced them. In the CMS language, jets are made up of many particles, with the following predictable energy composition:
@@ -12,9 +12,8 @@ Jets are spatially-grouped collections of long-lived particles that are produced
 
 Jets are very messy! Hadronization and the subsequent decays of unstable hadrons can produce 100s of particles near each other in the CMS detector. Hence these particles are rarely analyzed individually. How can we determine which particle candidates should be included in each jet?
 
-
-
 ## Clustering
+
 ---
 
 Jets can be clustered using a variety of different inputs from the CMS detector. "CaloJets" use only calorimeter energy deposits. "GenJets" use generated particles from a simulation. But by far the most common are "PFJets", from **particle flow candidates.**
@@ -29,15 +28,12 @@ The momentum power (-2) used by the anti-kt algorithm means that higher-momentum
 
 ![jet_depo](https://cms-opendata-workshop.github.io/workshop-lesson-jetmet/assets/img/antikt.png)
 
-
-
 ## Pileup
+
 Inevitably, the list of particle flow candidates contains particles that did not originate from the primary interaction point. CMS experiences multiple simultaneous collisions, called "pileup", during each "bunch crossing" of the LHC, so particles from multiple collisions coexist in the detector. There are various methods to remove their contributions from jets:
 
 - Charged hadron subtraction [CHS](http://cms-results.web.cern.ch/cms-results/public-results/preliminary-results/JME-14-001/index.html): all charged hadron candidates are associated with a track. If the track is not associated with the primary vertex, that charged hadron can be removed from the list. CHS is limited to the region of the detector covered by the inner tracker. The pileup contribution to neutral hadrons has to be removed mathematically which will be discussed later.
 - PileUp Per Particle Identification (PUPPI, available in Run 2): CHS is applied, and then all remaining particles are weighted based on their likelihood of arising from pileup. This method is more stable and performant in high pileup scenarios such as the upcoming HL-LHC era.
-
-
 
 ## Accessing Jets in CMS Software
 
@@ -51,7 +47,7 @@ for (reco::PFJetCollection::const_iterator itjet=myjets->begin(); itjet!=myjets-
 jet_e.push_back(itjet->energy());
 jet_pt.push_back(itjet->pt());
 jet_eta.push_back(itjet->eta());
-jet_phi.push_back(itjet->phi());	
+jet_phi.push_back(itjet->phi()); 
 jet_mass.push_back(itjet->mass());
 }
 ```
@@ -64,8 +60,8 @@ Particle-flow jets are not immune to noise in the detector, and jets used in ana
 
 These criteria demonstrate how particle-flow jets combine information across subdetectors. Jets will typically have energy from electrons and photons, but those fractions of the total energy should be less than one. Similarly, jets should have some energy from charged hadrons if they overlap the inner tracker, and all the energy should not come from neutral hadrons. A mixture of energy sources is expected for genuine jets. All of these energy fractions (and more) can be accessed from the jet objects.
 
-
 You can use the [cms-sw github repository](https://github.com/cms-sw/cmssw/tree/CMSSW_5_3_X/DataFormats/JetReco/) to see what methods are available for PFJets. We can implement a jet ID to reject jets that do not pass so that these jets are not stored in any of the tree branches. This code show an implementation of Jet ID cuts while also applying a minimum momentum threshold.
+
 ```
 for (reco::PFJetCollection::const_iterator itjet=jets->begin(); itjet!=jets->end(); ++itjet){
 if (itjet->pt > jet_min_pt && itjet->chargedHadronEnergyFraction() > 0 && itjet->neutralHadronEnergyFraction() < 1.0 &&
@@ -97,7 +93,6 @@ Tagging algorithms are Algorithms that are used for b-tagging:
 
 These algorithms produce a single, real number (often the output of an MVA) called a b tagging “discriminator” for each jet. The more positive the discriminator value, the more likely it is that this jet contained b hadrons.
 
-
 ## Accessing Tagging Information
 
 In PatJetAnalyzer.cc we access the information from the Combined Secondary Vertex (CSV) b tagging algorithm and associate discriminator values with the jets. The CSV values are stored in a separate collection in the POET files called a JetTagCollection, which is effectively a vector of associations between jet references and float values (such as a b-tagging discriminator).
@@ -125,7 +120,7 @@ jet_btagtc.push_back(itjet->bDiscriminator("trackCountingHighEffBJetTags"));
 
 The distributions in ttbar events (excluding events with values of -9 where the tagger was not evaluated) are shown below. The track counting discriminant is quite different and ranges 0-30 or so.
 
-![tagger_dist](https://cms-opendata-workshop.github.io/workshop-lesson-jetmet/assets/img/btagComp.png) 
+![tagger_dist](https://cms-opendata-workshop.github.io/workshop-lesson-jetmet/assets/img/btagComp.png)
 
 ## Working Points
 
@@ -150,9 +145,9 @@ We show distributions of the number CSV b jets at the medium working point in Dr
 
 ![CSV_dist](https://cms-opendata-workshop.github.io/workshop-lesson-jetmet/assets/img/btagCount.png)
 
-
 ## Data and Simulation Differences
-When training a tagging algorithm, it is highly probable that the efficiencies for tagging different quark flavors as b jets will vary between simulation and data. These differences must be measured and corrected for using "scale factors" constructed from ratios of the efficiencies from different sources. The figures below show examples of the b and light quark efficiencies and scale factors as a function of jet momentum [read more](https://twiki.cern.ch/twiki/bin/view/CMSPublic/PhysicsResultsBTV13001). Corrections must be applied to make the b-tagging performance match between data and simulation. Read more about these corrections and their uncertainties [on this page](https://cms-opendata-guide/docs/analysis/systematics/objectsuncertain/btaguncertain.md). 
+
+When training a tagging algorithm, it is highly probable that the efficiencies for tagging different quark flavors as b jets will vary between simulation and data. These differences must be measured and corrected for using "scale factors" constructed from ratios of the efficiencies from different sources. The figures below show examples of the b and light quark efficiencies and scale factors as a function of jet momentum [read more](https://twiki.cern.ch/twiki/bin/view/CMSPublic/PhysicsResultsBTV13001). Corrections must be applied to make the b-tagging performance match between data and simulation. Read more about these corrections and their uncertainties [on this page](https://cms-opendata-guide/docs/analysis/systematics/objectsuncertain/btaguncertain.md).
 
 When training a tagging algorithm, it is highly probable that the efficiencies for tagging different quark flavors as b jets will vary between simulation and data. These differences must be measured and corrected for using "scale factors" constructed from ratios of the efficiencies from different sources. The figures below show examples of the b and light quark efficiencies and scale factors as a function of jet momentum [read more](https://twiki.cern.ch/twiki/bin/view/CMSPublic/PhysicsResultsBTV13001)
 

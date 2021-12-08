@@ -1,14 +1,10 @@
-#  Muons
+# Muons
 
 The Physics Objects page shows you how to access muon collections in CMS, and which header files should be included in your C++ code in order to access all of their class information. On the Common Tools page you can find instructions to access all the basic kinematic information about any physics object.
 
 ## Muon detector information
 
 ## Muon corrections
-
-
-
-
 
 !!! Warning
     This page is under construction

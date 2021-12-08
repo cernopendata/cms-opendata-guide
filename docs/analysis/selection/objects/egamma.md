@@ -1,4 +1,4 @@
-#  Objects
+# Objects
 
 !!! Warning
     This page is under construction
@@ -31,7 +31,6 @@ ELECTRONS
   for (auto it = electrons->begin(); it != electrons->end(); it++) {
     if (it->pt() > el_min_pt) {
       selectedElectrons.emplace_back(*it);
-
 
       value_el_cutbasedid[value_el_n] = it->passingCutBasedPreselection();
       value_el_pfid[value_el_n] = it->passingPflowPreselection();
@@ -69,43 +68,42 @@ ELECTRONS
       if ( abs(it->eta()) <= 1.479 ) {   
       if ( abs(it->deltaEtaSuperClusterTrackAtVtx())<.007 && abs(it->deltaPhiSuperClusterTrackAtVtx())<.15 && 
            it->sigmaIetaIeta()<.01 && it->hadronicOverEm()<.12 && 
-	        abs(trk->dxy(pv))<.02 && abs(trk->dz(pv))<.2 && 
-		     missing_hits<=1 && pfIso<.15 && passelectronveto==true &&
-		          abs(1/it->ecalEnergy()-1/(it->ecalEnergy()/it->eSuperClusterOverP()))<.05 ){
-			    
+         abs(trk->dxy(pv))<.02 && abs(trk->dz(pv))<.2 && 
+       missing_hits<=1 && pfIso<.15 && passelectronveto==true &&
+            abs(1/it->ecalEnergy()-1/(it->ecalEnergy()/it->eSuperClusterOverP()))<.05 ){
+       
           value_el_isLoose[value_el_n] = true;
-	    
-	      if ( abs(it->deltaEtaSuperClusterTrackAtVtx())<.004 && abs(it->deltaPhiSuperClusterTrackAtVtx())<.06 && abs(trk->dz(pv))<.1 ){
-	          value_el_isMedium[value_el_n] = true;
-		      
-		          if (abs(it->deltaPhiSuperClusterTrackAtVtx())<.03 && missing_hits<=0 && pfIso<.10 ){
-			        value_el_isTight[value_el_n] = true;
-				    }
-				      }
-				      }
+     
+       if ( abs(it->deltaEtaSuperClusterTrackAtVtx())<.004 && abs(it->deltaPhiSuperClusterTrackAtVtx())<.06 && abs(trk->dz(pv))<.1 ){
+           value_el_isMedium[value_el_n] = true;
+        
+            if (abs(it->deltaPhiSuperClusterTrackAtVtx())<.03 && missing_hits<=0 && pfIso<.10 ){
+           value_el_isTight[value_el_n] = true;
+        }
+          }
+          }
       }
       else if ( abs(it->eta()) > 1.479 && abs(it->eta()) < 2.5 ) {
         if ( abs(it->deltaEtaSuperClusterTrackAtVtx())<.009 && abs(it->deltaPhiSuperClusterTrackAtVtx())<.1 && 
-	     it->sigmaIetaIeta()<.03 && it->hadronicOverEm()<.1 && 
-	          abs(trk->dxy(pv))<.02 && abs(trk->dz(pv))<.2 && 
-		       missing_hits<=1 && pfIso<.15 && passelectronveto==true &&
+      it->sigmaIetaIeta()<.03 && it->hadronicOverEm()<.1 && 
+           abs(trk->dxy(pv))<.02 && abs(trk->dz(pv))<.2 && 
+         missing_hits<=1 && pfIso<.15 && passelectronveto==true &&
              abs(1/it->ecalEnergy()-1/(it->ecalEnergy()/it->eSuperClusterOverP()))<.05) {
-	       
+        
           value_el_isLoose[value_el_n] = true;
-	    
-	      if ( abs(it->deltaEtaSuperClusterTrackAtVtx())<.007 && abs(it->deltaPhiSuperClusterTrackAtVtx())<.03 && abs(trk->dz(pv))<.1 ){
-	          value_el_isMedium[value_el_n] = true;
-		      
-		          if ( abs(it->deltaEtaSuperClusterTrackAtVtx())<.005 && abs(it->deltaPhiSuperClusterTrackAtVtx())<.02 && missing_hits<=0 && pfIso<.10 ){
-			        value_el_isTight[value_el_n] = true;
-				    }
-				      }
+     
+       if ( abs(it->deltaEtaSuperClusterTrackAtVtx())<.007 && abs(it->deltaPhiSuperClusterTrackAtVtx())<.03 && abs(trk->dz(pv))<.1 ){
+           value_el_isMedium[value_el_n] = true;
+        
+            if ( abs(it->deltaEtaSuperClusterTrackAtVtx())<.005 && abs(it->deltaPhiSuperClusterTrackAtVtx())<.02 && missing_hits<=0 && pfIso<.10 ){
+           value_el_isTight[value_el_n] = true;
+        }
+          }
         }
       }
       value_el_n++;
     }
   }
-
 
 PHOTONS
   // Photons
@@ -130,34 +128,34 @@ PHOTONS
       }
       else if(fabs(scEta) >2.3) {
         CH_AEff = 0.020;
-	NH_AEff = 0.039;
+ NH_AEff = 0.039;
         Ph_AEff = 0.260;
-      } 
+      }
       else if(fabs(scEta) >2.2) {
         CH_AEff = 0.016;
-	NH_AEff = 0.024;
+ NH_AEff = 0.024;
         Ph_AEff = 0.262;
-      } 
+      }
       else if(fabs(scEta) >2.0) {
         CH_AEff = 0.012;
-	NH_AEff = 0.015;
+ NH_AEff = 0.015;
         Ph_AEff = 0.216;
-      } 
+      }
       else if(fabs(scEta) >1.479) {
         CH_AEff = 0.014;
-	NH_AEff = 0.039;
+ NH_AEff = 0.039;
         Ph_AEff = 0.112;
-      } 
+      }
       else if(fabs(scEta) >0.1) {
         CH_AEff = 0.010;
-	NH_AEff = 0.057;
+ NH_AEff = 0.057;
         Ph_AEff = 0.130;
-      } 
+      }
       else {
         CH_AEff = 0.012;
-	NH_AEff = 0.030;
+ NH_AEff = 0.030;
         Ph_AEff = 0.148;
-      } 
+      }
             selectedPhotons.emplace_back(*it);
       value_ph_pt[value_ph_n] = it->pt();
       value_ph_eta[value_ph_n] = it->eta();
@@ -173,40 +171,40 @@ PHOTONS
       value_ph_sigIetaIeta[value_ph_n] = it->sigmaIetaIeta();
       value_ph_chargedHadronIso[value_ph_n] = it->chargedHadronIso();
       value_ph_neutralHadronIso[value_ph_n] = it->neutralHadronIso();
-      value_ph_photonIso[value_ph_n] = it->photonIso();      
+      value_ph_photonIso[value_ph_n] = it->photonIso();
       double corrPFCHIso = max(it->chargedHadronIso() - rhoIso * CH_AEff, 0.);
-      double corrPFNHIso = max(it->neutralHadronIso() - rhoIso * NH_AEff, 0.);
-      double corrPFPhIso = max(it->photonIso() - rhoIso * Ph_AEff, 0.);
+      double corrPFNHIso = max(it->neutralHadronIso() - rhoIso *NH_AEff, 0.);
+double corrPFPhIso = max(it->photonIso() - rhoIso* Ph_AEff, 0.);
       value_ph_isTight[value_ph_n] = false;
       value_ph_isMedium[value_ph_n] = false;
       value_ph_isLoose[value_ph_n] = false;
       if ( it->eta() <= 1.479 ){
-      if ( it->hadTowOverEm()<.05 && it->sigmaIetaIeta()<.012 && 
-           corrPFCHIso<2.6 && corrPFNHIso<(3.5+.04*it->pt()) && 
-	        corrPFPhIso<(1.3+.005*it->pt()) && passelectronveto==true) {
+      if ( it->hadTowOverEm()<.05 && it->sigmaIetaIeta()<.012 &&
+           corrPFCHIso<2.6 && corrPFNHIso<(3.5+.04*it->pt()) &&
+         corrPFPhIso<(1.3+.005*it->pt()) && passelectronveto==true) {
           value_ph_isLoose[value_ph_n] = true;
 
-	    if ( it->sigmaIetaIeta()<.011 && corrPFCHIso<1.5 && corrPFNHIso<(1.0+.04*it->pt()) && corrPFPhIso<(.7+.005*it->pt())){
-	        value_ph_isMedium[value_ph_n] = true;
+     if ( it->sigmaIetaIeta()<.011 && corrPFCHIso<1.5 && corrPFNHIso<(1.0+.04*it->pt()) && corrPFPhIso<(.7+.005*it->pt())){
+         value_ph_isMedium[value_ph_n] = true;
 
-		    if ( corrPFCHIso<.7 && corrPFNHIso<(.4+.04*it->pt()) && corrPFPhIso<(.5+0.005*it->pt()) ){
-		          value_ph_isTight[value_ph_n] = true;
-			      }
-			        }
-				}
+      if ( corrPFCHIso<.7 && corrPFNHIso<(.4+.04*it->pt()) && corrPFPhIso<(.5+0.005*it->pt()) ){
+            value_ph_isTight[value_ph_n] = true;
+         }
+           }
+    }
       }
       else if ( it->eta() > 1.479 && it->eta() < 2.5 ) {
       if ( it->hadTowOverEm()<.05 && it->sigmaIetaIeta()<.034 && corrPFCHIso<2.3 && corrPFNHIso<(2.9+.04*it->pt()) && passelectronveto==true ){
           value_ph_isLoose[value_ph_n] = true;
-	    
-	      if ( it->sigmaIetaIeta()<.033 && corrPFCHIso<1.2 && corrPFNHIso<(1.5+.04*it->pt()) && corrPFPhIso<(1.0+.005*it->pt())) {
-	          value_ph_isMedium[value_ph_n] = true;
+     
+       if ( it->sigmaIetaIeta()<.033 && corrPFCHIso<1.2 && corrPFNHIso<(1.5+.04*it->pt()) && corrPFPhIso<(1.0+.005*it->pt())) {
+           value_ph_isMedium[value_ph_n] = true;
 
-		      if ( it->sigmaIetaIeta()<0.031 && corrPFCHIso<0.5){
-		            value_ph_isTight[value_ph_n] = true;
-			        }
-				  }
-				  }
+        if ( it->sigmaIetaIeta()<0.031 && corrPFCHIso<0.5){
+              value_ph_isTight[value_ph_n] = true;
+           }
+      }
+      }
       }
       value_ph_n++;
     }

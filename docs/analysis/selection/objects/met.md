@@ -1,6 +1,4 @@
-#  MET
-
-
+# MET
 
 ## What is MET?
 
@@ -26,12 +24,6 @@ value_met_covyy = cov[1][1];
 MET significance can be a useful tool: it describes the likelihood that the MET arose from noise or mismeasurement in the detector as opposed to a neutrino or similar non-interacting particle. The four-vectors of the other physics objects along with their uncertainties are required to compute the significance of the MET signature. MET that is directed nearly (anti)colinnear with a physics object is likely to arise from mismeasurement and should not have a large significance.
 
 The difference between the Drell-Yan events with primarily fake MET and the top pair events with primarily genuine MET can be seen by drawing MET_pt or by drawing MET_significance. In both distributions the Drell-Yan events have smaller values than the top pair events.
-
-
-
-
-
-
 
 !!! Warning
     This page is under construction
