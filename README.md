@@ -51,6 +51,12 @@ Make sure you have installed the [virtualenv](https://virtualenv.pypa.io/en/late
 $ source /usr/local/bin/virtualenvwrapper.sh
 ```
 
+You may need to set the variable VIRTUALENVWRAPPER_PYTHON to your python path (verify it with `which python` or `which python3`) with:
+
+```console
+$ export VIRTUALENVWRAPPER_PYTHON='/usr/bin/python3'
+```
+
 Once you have the virtualenvwrapper installed, you can list your virtual environments by typing ```workon```
 
 If this is your first virtual environment, when you type ```workon```, the output will be empty. But, after installing one (as you will below), you will be able to choose it from the list. For example if you create a virtual environment called cms-opendata-guide, you can work in that environment by typing 
@@ -68,7 +74,9 @@ $ mkdocs serve
 $ firefox http://127.0.0.1:8000
 ```
 
-You can run local tests by `./run-tests.sh`. Testing requires a ruby installation. You will also need to install the ruby gem awesome_bot by `gem install awesome_bot` and make sure that gem in accessible on your path.
+You can run local tests by `./run-tests.sh`. Testing requires [a ruby installation](https://www.ruby-lang.org/en/documentation/installation/). You will also need to install the ruby gem awesome_bot by `gem install awesome_bot` and make sure that gem in accessible on your path.
+
+You can exit from the virtual environment with `deactivate`.
 
 ### Note on markdown
 
