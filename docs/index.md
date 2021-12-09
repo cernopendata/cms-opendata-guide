@@ -1,7 +1,7 @@
 # CMS Open Data Guide
 
 !!! Warning
-    This page is under construction
+    This guide is under construction
 
 Welcome to the guide for CMS open data.  This guide is brought to you by the CMS open data group, on a best-effort basis. All software and instructions are provided "as is", without warranty of any kind. This is ongoing work and we appreciate your feedback and/or your help building this guide.
 
