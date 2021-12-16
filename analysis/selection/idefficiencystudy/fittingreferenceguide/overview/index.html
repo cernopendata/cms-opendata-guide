@@ -11,14 +11,14 @@
       
       
       
-        <link rel="canonical" href="https://cms-opendata-guide.web.cern.ch/analysis/selection/idefficiencystudy/fittingreferenceguide/mainfunctions/">
+        <link rel="canonical" href="https://cms-opendata-guide.web.cern.ch/analysis/selection/idefficiencystudy/fittingreferenceguide/overview/">
       
       <link rel="icon" href="../../../../../images/favicon.ico">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
     
     
       
-        <title>Main Functions - CMS Open Data Guide</title>
+        <title>Overview - CMS Open Data Guide</title>
       
     
     
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#main-functions" class="md-skip">
+        <a href="#overview-of-fitting-method" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Main Functions
+              Overview
             
           </span>
         </div>
@@ -881,18 +881,6 @@
             
   
   
-  
-    <li class="md-nav__item">
-      <a href="../readme/" class="md-nav__link">
-        Read me
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
     
   
   
@@ -905,12 +893,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Main Functions
+          Overview
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Main Functions
+        Overview
       </a>
       
         
@@ -928,44 +916,171 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#get_conditions" class="md-nav__link">
-    get_conditions(...)
+  <a href="#fitting-method-folder-structure" class="md-nav__link">
+    Fitting method folder structure
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#dofit" class="md-nav__link">
-    doFit(...)
+  <a href="#main-files" class="md-nav__link">
+    Main files
+  </a>
+  
+    <nav class="md-nav" aria-label="Main files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simplify_datacpp" class="md-nav__link">
+    📄 simplify_data.cpp
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#mcyield" class="md-nav__link">
-    McYield(...)
+        
+          <li class="md-nav__item">
+  <a href="#efficiencycpp" class="md-nav__link">
+    📄 efficiency.cpp
+  </a>
+  
+    <nav class="md-nav" aria-label="📄 efficiency.cpp">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#choosing-ressonance" class="md-nav__link">
+    Choosing ressonance
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#make_hist" class="md-nav__link">
-    make_hist(...)
+        
+          <li class="md-nav__item">
+  <a href="#important-variables" class="md-nav__link">
+    Important variables
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#get_efficiency" class="md-nav__link">
-    get_efficiency(...)
+        
+          <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    Output
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#change_bin" class="md-nav__link">
-    change_bin(...)
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loop_over_efficienciescpp" class="md-nav__link">
+    📄 loop_over_efficiencies.cpp
   </a>
+  
+    <nav class="md-nav" aria-label="📄 loop_over_efficiencies.cpp">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#important-variables_1" class="md-nav__link">
+    Important variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set_settings" class="md-nav__link">
+    set_settings(...)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loop_settings" class="md-nav__link">
+    loop_settings()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loop_muon_id" class="md-nav__link">
+    loop_muon_id()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loop_over_efficiencies" class="md-nav__link">
+    loop_over_efficiencies()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plot_sys_efficiencycpp" class="md-nav__link">
+    📄 plot_sys_efficiency.cpp
+  </a>
+  
+    <nav class="md-nav" aria-label="📄 plot_sys_efficiency.cpp">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#important-variables_2" class="md-nav__link">
+    Important variables
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overplot_efficienciescpp" class="md-nav__link">
+    📄 overplot_efficiencies.cpp
+  </a>
+  
+    <nav class="md-nav" aria-label="📄 overplot_efficiencies.cpp">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#important-variables_3" class="md-nav__link">
+    Important variables
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plot_sys_efficiency_2dcpp" class="md-nav__link">
+    📄 plot_sys_efficiency_2d.cpp
+  </a>
+  
+    <nav class="md-nav" aria-label="📄 plot_sys_efficiency_2d.cpp">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#important-variables_4" class="md-nav__link">
+    Important variables
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -973,6 +1088,18 @@
   
 </nav>
       
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../src_files/" class="md-nav__link">
+        Src files
+      </a>
     </li>
   
 
@@ -1273,44 +1400,171 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#get_conditions" class="md-nav__link">
-    get_conditions(...)
+  <a href="#fitting-method-folder-structure" class="md-nav__link">
+    Fitting method folder structure
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#dofit" class="md-nav__link">
-    doFit(...)
+  <a href="#main-files" class="md-nav__link">
+    Main files
+  </a>
+  
+    <nav class="md-nav" aria-label="Main files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simplify_datacpp" class="md-nav__link">
+    📄 simplify_data.cpp
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#mcyield" class="md-nav__link">
-    McYield(...)
+        
+          <li class="md-nav__item">
+  <a href="#efficiencycpp" class="md-nav__link">
+    📄 efficiency.cpp
+  </a>
+  
+    <nav class="md-nav" aria-label="📄 efficiency.cpp">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#choosing-ressonance" class="md-nav__link">
+    Choosing ressonance
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#make_hist" class="md-nav__link">
-    make_hist(...)
+        
+          <li class="md-nav__item">
+  <a href="#important-variables" class="md-nav__link">
+    Important variables
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#get_efficiency" class="md-nav__link">
-    get_efficiency(...)
+        
+          <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    Output
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#change_bin" class="md-nav__link">
-    change_bin(...)
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loop_over_efficienciescpp" class="md-nav__link">
+    📄 loop_over_efficiencies.cpp
   </a>
+  
+    <nav class="md-nav" aria-label="📄 loop_over_efficiencies.cpp">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#important-variables_1" class="md-nav__link">
+    Important variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set_settings" class="md-nav__link">
+    set_settings(...)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loop_settings" class="md-nav__link">
+    loop_settings()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loop_muon_id" class="md-nav__link">
+    loop_muon_id()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loop_over_efficiencies" class="md-nav__link">
+    loop_over_efficiencies()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plot_sys_efficiencycpp" class="md-nav__link">
+    📄 plot_sys_efficiency.cpp
+  </a>
+  
+    <nav class="md-nav" aria-label="📄 plot_sys_efficiency.cpp">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#important-variables_2" class="md-nav__link">
+    Important variables
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overplot_efficienciescpp" class="md-nav__link">
+    📄 overplot_efficiencies.cpp
+  </a>
+  
+    <nav class="md-nav" aria-label="📄 overplot_efficiencies.cpp">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#important-variables_3" class="md-nav__link">
+    Important variables
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plot_sys_efficiency_2dcpp" class="md-nav__link">
+    📄 plot_sys_efficiency_2d.cpp
+  </a>
+  
+    <nav class="md-nav" aria-label="📄 plot_sys_efficiency_2d.cpp">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#important-variables_4" class="md-nav__link">
+    Important variables
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1326,42 +1580,267 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/cernopendata/cms-opendata-guide/edit/master/docs/analysis/selection/idefficiencystudy/fittingreferenceguide/mainfunctions.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/cernopendata/cms-opendata-guide/edit/master/docs/analysis/selection/idefficiencystudy/fittingreferenceguide/overview.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="main-functions">Main Functions<a class="headerlink" href="#main-functions" title="Permanent link">&para;</a></h1>
-<h2 id="get_conditions">get_conditions(...)<a class="headerlink" href="#get_conditions" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="n">string</span><span class="o">*</span> <span class="n">get_conditions</span><span class="p">(</span><span class="kt">int</span> <span class="n">bin_n</span><span class="p">,</span> <span class="kt">double</span><span class="o">*</span> <span class="n">bins</span><span class="p">,</span> <span class="n">string</span> <span class="n">quantity</span><span class="p">)</span>
+                <h1 id="overview-of-fitting-method">Overview of fitting method<a class="headerlink" href="#overview-of-fitting-method" title="Permanent link">&para;</a></h1>
+<p>The fitting method folder is structured in folders and main files. Main files are those ones that are used to run the most important codes. Below is a list of folders presented in this method and the files encontered here.</p>
+<h2 id="fitting-method-folder-structure">Fitting method folder structure<a class="headerlink" href="#fitting-method-folder-structure" title="Permanent link">&para;</a></h2>
+<p>The folders contained in fitting method are described below.</p>
+<table>
+<thead>
+<tr>
+<th>Folder</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>📂 DATA</td>
+<td>Where <code>.root</code> with data should be placed for measuring efficiency</td>
+</tr>
+<tr>
+<td>📂 src</td>
+<td>Where important files related to main code are keeped</td>
+</tr>
+<tr>
+<td>└ 📂 dofits</td>
+<td>Here it keeps files that are responsible to do the fitting over invariant masses histograms</td>
+</tr>
+<tr>
+<td>📂 tests</td>
+<td>Some teste made during the development of this tool</td>
+</tr>
+<tr>
+<td>📂 results</td>
+<td>This folder stores the results output and it is created when any code finnish running</td>
+</tr>
+</tbody>
+</table>
+<h2 id="main-files">Main files<a class="headerlink" href="#main-files" title="Permanent link">&para;</a></h2>
+<p>There are six main files in the fitting method. For simple results like the ones obtained in <strong>sideband subtraction method</strong> the file used is efficiency.cpp.</p>
+<p>Main files are explained below.</p>
+<h3 id="simplify_datacpp">📄 simplify_data.cpp<a class="headerlink" href="#simplify_datacpp" title="Permanent link">&para;</a></h3>
+<p>The <code>simplify_data.cpp</code> file, as the name sugest, simplify a DATA file obtained from this Tag and Probe tool. It is necessary to simplify due RooFit limitations where fitting method codes here used are based on.</p>
+<p>There are two lines responsable for input and output file:</p>
+<div class="highlight"><pre><span></span><code><span class="n">TFile</span> <span class="o">*</span><span class="n">file0</span>  <span class="o">=</span> <span class="n">TFile</span><span class="o">::</span><span class="n">Open</span><span class="p">(</span><span class="s">&quot;INPUT_FILE_PATH.root&quot;</span><span class="p">);</span>
 </code></pre></div>
-Outputs <code>conditions</code> that specifie the cuts to be applied to the dataset.</p>
-<h2 id="dofit">doFit(...)<a class="headerlink" href="#dofit" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="o">*</span> <span class="n">doFit</span><span class="p">(</span><span class="n">string</span> <span class="n">condition</span><span class="p">,</span> <span class="n">string</span> <span class="n">MuonID_str</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">save</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">)</span> <span class="c1">// RETURNS ARRAY WITH [yield_all, yield_pass, err_all, err_pass]</span>
+<div class="highlight"><pre><span></span><code><span class="n">TFile</span> <span class="o">*</span><span class="n">fileIO</span> <span class="o">=</span> <span class="n">TFile</span><span class="o">::</span><span class="n">Open</span><span class="p">(</span><span class="s">&quot;OUTPUT_FILE_PATH.root&quot;</span><span class="p">,</span><span class="s">&quot;RECREATE&quot;</span><span class="p">);</span>
 </code></pre></div>
-Function that handles the fitting. Has as an input a string <code>condition</code> that specifies the cut to be applied to the dataset (The location to the <code>.root</code>is set inside the function).
-string <code>MuonID_str</code> specifies the Muon ID that we want to study. </p>
-<h2 id="mcyield">McYield(...)<a class="headerlink" href="#mcyield" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="o">*</span> <span class="n">McYield</span><span class="p">(</span><span class="n">string</span> <span class="n">condition</span><span class="p">)</span>
+<p>Every user should run this code firstly to simplify <code>.root</code> files on fitting method.</p>
+<h3 id="efficiencycpp">📄 efficiency.cpp<a class="headerlink" href="#efficiencycpp" title="Permanent link">&para;</a></h3>
+<p>This file is responsible to measure the efficiency simple by fitting method as described in this <a href="../../signalextraction/#fitting-method">fitting method</a> section.</p>
+<h4 id="choosing-ressonance">Choosing ressonance<a class="headerlink" href="#choosing-ressonance" title="Permanent link">&para;</a></h4>
+<p>Here it include the file that is responsible to fit the ressonance and return the yield obtained with error.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//Change if you need</span>
+<span class="cp">#include</span> <span class="cpf">&quot;src/dofits/DoFit_Jpsi_Run.h&quot;</span><span class="cp"></span>
 </code></pre></div>
-Returns number yield of Monte Carlo data (data is only signal).</p>
-<h2 id="make_hist">make_hist(...)<a class="headerlink" href="#make_hist" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="n">TH1F</span><span class="o">*</span> <span class="n">make_hist</span><span class="p">(</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="kt">double</span><span class="o">**</span> <span class="n">values</span><span class="p">,</span> <span class="kt">int</span> <span class="n">qnt</span><span class="p">,</span> <span class="kt">int</span> <span class="n">bin_n</span><span class="p">,</span> <span class="n">Double_t</span><span class="o">*</span> <span class="n">binning</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">IsDataMc</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">DRAW</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">)</span>
+<p>By default out tool keeps all ressonance fit in the folder <code>src/dofits</code>. There are some example there for specific ressonances and fits.</p>
+<h4 id="important-variables">Important variables<a class="headerlink" href="#important-variables" title="Permanent link">&para;</a></h4>
+<p>There are two main parameters to control this code.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//Which Muon Id do you want to study?</span>
+<span class="n">string</span> <span class="n">MuonId</span>   <span class="o">=</span> <span class="s">&quot;trackerMuon&quot;</span><span class="p">;</span>
 </code></pre></div>
-Generates <strong>TH1F</strong>* histograms direclty from <code>values</code> which stores <code>doFit</code>'s outputs. <code>qnt</code> specifies if the histogram stores data from All muons or from Probe muons.</p>
-<h2 id="get_efficiency">get_efficiency(...)<a class="headerlink" href="#get_efficiency" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="n">TEfficiency</span><span class="o">*</span> <span class="n">get_efficiency</span><span class="p">(</span><span class="n">TH1F</span><span class="o">*</span> <span class="n">ALL</span><span class="p">,</span> <span class="n">TH1F</span><span class="o">*</span> <span class="n">PASS</span><span class="p">)</span>
+<p>The <code>string MuonId</code> supports <code>"trackerMuon"</code>, <code>"standaloneMuon"</code> and <code>"globalMuon"</code> values.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//Which quantity do you want to use?</span>
+<span class="n">string</span> <span class="n">quantity</span> <span class="o">=</span> <span class="s">&quot;Pt&quot;</span><span class="p">;</span>     <span class="kt">double</span> <span class="n">bins</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.4</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">,</span> <span class="mf">4.7</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">5.6</span><span class="p">,</span> <span class="mf">5.8</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">,</span> <span class="mf">6.2</span><span class="p">,</span> <span class="mf">6.4</span><span class="p">,</span> <span class="mf">6.6</span><span class="p">,</span> <span class="mf">6.8</span><span class="p">,</span> <span class="mf">7.3</span><span class="p">,</span> <span class="mf">9.5</span><span class="p">,</span> <span class="mf">13.0</span><span class="p">,</span> <span class="mf">17.0</span><span class="p">,</span> <span class="mf">40.</span><span class="p">};</span>
 </code></pre></div>
-Function used to calculate the efficiency.</p>
-<h2 id="change_bin">change_bin(...)<a class="headerlink" href="#change_bin" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">change_bin</span><span class="p">(</span><span class="n">string</span> <span class="n">condition</span><span class="p">,</span> <span class="n">string</span> <span class="n">hist_file</span> <span class="o">=</span> <span class="s">&quot;Histograms_Run2011.root&quot;</span><span class="p">)</span>
+<p><code>string quantity</code> supports <code>"Pt"</code>, <code>"Eta"</code> and <code>"Phi"</code> values.</p>
+<p><code>double bins[]</code> is used to set histogram bins limits. In the example above, the first bin is [0., 2.), the second is [2., 4.) and so on.</p>
+<h4 id="output">Output<a class="headerlink" href="#output" title="Permanent link">&para;</a></h4>
+<p>There are two output folders in this file by default. They are defined in those lines of code:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//Path where is going to save results png for every bin </span>
+<span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">path_bins_fit_folder</span> <span class="o">=</span> <span class="s">&quot;results/bins_fit/efficiency/&quot;</span><span class="p">;</span>
 </code></pre></div>
-Once the Macro <code>Efficiency.C</code>finishes running, sometimes we are left with poor fit results (sometimes the results are terrible on a specific bin!). This functions allows changes on a specific bin. It is recommended to change the initial conditions of the fitting parameters, on the <code>doFit</code>function.</p>
-<h1 id="auxiliary-functions">Auxiliary Functions<a class="headerlink" href="#auxiliary-functions" title="Permanent link">&para;</a></h1>
-<h2 id="get_ttree_from_ntupple">get_TTree_from_ntupple(...)<a class="headerlink" href="#get_ttree_from_ntupple" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">get_TTree_from_ntupple</span><span class="p">()</span>
+<p><code>path_bins_fit_folder</code> refers to the path where each individual fit of bins will be stored as <code>.png</code>. In this folder you can find every fit made in this method.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//Path where is going to save efficiency </span>
+<span class="n">string</span> <span class="n">directoryToSave</span> <span class="o">=</span> <span class="n">string</span><span class="p">(</span><span class="s">&quot;results/efficiencies/efficiency/&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">output_folder_name</span> <span class="o">+</span> <span class="n">string</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">);</span>
 </code></pre></div>
-This function merges two seperate <code>TTree</code> files into one.</p>
+<p>The <code>directoryToSave</code> stores the path to save the efficiency result. It is saved as a <code>.root</code> file containing passing and total histograms as well the efficiency result histogram.</p>
+<p>Informations about the output is printed at end of running.</p>
+<h3 id="loop_over_efficienciescpp">📄 loop_over_efficiencies.cpp<a class="headerlink" href="#loop_over_efficienciescpp" title="Permanent link">&para;</a></h3>
+<p>The purpose of this code is rerun the <code>efficiency.cpp</code> for differents configurations. This code is not recommended for systematic calculations indeed and it was firstly created for systematic studies only.</p>
+<h4 id="important-variables_1">Important variables<a class="headerlink" href="#important-variables_1" title="Permanent link">&para;</a></h4>
+<p>The importants variables to keep in mind are listed below</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>double</td>
+<td>default_min</td>
+<td>the minimum invariant mass window postion</td>
+</tr>
+<tr>
+<td>double</td>
+<td>default_max</td>
+<td>the maximum invariant mass window postion</td>
+</tr>
+<tr>
+<td>bool</td>
+<td>should_loop_muon_id</td>
+<td>if true, it loops over all muons id (tracking, standalone, global)</td>
+</tr>
+<tr>
+<td>bool</td>
+<td>should_loop_settings</td>
+<td>if true, it loops over all settings presented in set_settings() function</td>
+</tr>
+<tr>
+<td>int</td>
+<td>setting</td>
+<td>if should_loop_settings is false, it uses only this setting number</td>
+</tr>
+<tr>
+<td>bool</td>
+<td>exactly</td>
+<td>This only affect the name of output plots inside <code>.root</code>. Its recommended to keep it set to false</td>
+</tr>
+</tbody>
+</table>
+<h4 id="set_settings">set_settings(...)<a class="headerlink" href="#set_settings" title="Permanent link">&para;</a></h4>
+<p>It is one of four functions presented in this code. Its is called by:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">set_settings</span><span class="p">(</span><span class="kt">int</span> <span class="n">index</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">exactly</span> <span class="o">=</span> <span class="nb">false</span><span class="p">)</span>
+</code></pre></div>
+<p>Inside this function are preset settings that this file runs over. Each setting is associated with a number here named as <em>index</em>. This function is responsible to set the <em>index</em> configuration to the efficiency for running the <code>efficiency.cpp</code> file.</p>
+<h4 id="loop_settings">loop_settings()<a class="headerlink" href="#loop_settings" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">loop_settings</span><span class="p">()</span>
+</code></pre></div>
+<p>If <code>should_loop_muon_id</code> is true, this function is called. It loops over all muon ids: tracking, standalone, global.</p>
+<h4 id="loop_muon_id">loop_muon_id()<a class="headerlink" href="#loop_muon_id" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">loop_muon_id</span><span class="p">()</span>
+</code></pre></div>
+<p>If <code>should_loop_settings</code> is true, this function is called. It loops over all settings preset in <code>set_settings(...)</code> function.</p>
+<h4 id="loop_over_efficiencies">loop_over_efficiencies()<a class="headerlink" href="#loop_over_efficiencies" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">loop_over_efficiencies</span><span class="p">()</span>
+</code></pre></div>
+<p>It is the main function of this file. It is the function which calls every other function when it is needed.</p>
+<h3 id="plot_sys_efficiencycpp">📄 plot_sys_efficiency.cpp<a class="headerlink" href="#plot_sys_efficiencycpp" title="Permanent link">&para;</a></h3>
+<p>The <code>plot_sys_efficiency.cpp</code> code creates a single <code>.root</code> with variations made. Unlike the previous code, the <code>loop_over_efficiencies.cpp</code>, that makes each source of uncertainty be in a separate .root, this one puts all of them in a single <code>.root</code>. This code has been further optimized than his precursor and also as a differential it already calculates the systematic uncertainty. Below it is specified main variables used in this code.</p>
+<h4 id="important-variables_2">Important variables<a class="headerlink" href="#important-variables_2" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">//Which Muon Id do you want to study?</span>
+<span class="n">string</span> <span class="n">MuonId</span>   <span class="o">=</span> <span class="s">&quot;trackerMuon&quot;</span><span class="p">;</span>
+</code></pre></div>
+<p>The <code>string MuonId</code> supports <code>"trackerMuon"</code>, <code>"standaloneMuon"</code> and <code>"globalMuon"</code> values.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//Which quantity do you want to use?</span>
+<span class="n">string</span> <span class="n">quantity</span> <span class="o">=</span> <span class="s">&quot;Pt&quot;</span><span class="p">;</span>     <span class="kt">double</span> <span class="n">bins</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.4</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">,</span> <span class="mf">4.7</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">5.6</span><span class="p">,</span> <span class="mf">5.8</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">,</span> <span class="mf">6.2</span><span class="p">,</span> <span class="mf">6.4</span><span class="p">,</span> <span class="mf">6.6</span><span class="p">,</span> <span class="mf">6.8</span><span class="p">,</span> <span class="mf">7.3</span><span class="p">,</span> <span class="mf">9.5</span><span class="p">,</span> <span class="mf">13.0</span><span class="p">,</span> <span class="mf">17.0</span><span class="p">,</span> <span class="mf">40.</span><span class="p">};</span>
+</code></pre></div>
+<p><code>string quantity</code> supports <code>"Pt"</code>, <code>"Eta"</code> and <code>"Phi"</code> values.</p>
+<p><code>double bins[]</code> is used to set histogram bins limits. In the example above, the first bin is [0., 2.), the second is [2., 4.) and so on.</p>
+<p>Inside <code>plot_sys_efficiency()</code>, there is some useful variables too:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>path_bins_fit_folder</td>
+<td>Stores the path to the output folder where <code>.png</code> of fit for each bin made will be</td>
+</tr>
+<tr>
+<td>string</td>
+<td>directoryToSave</td>
+<td>Stores the path to output file</td>
+</tr>
+</tbody>
+</table>
+<h3 id="overplot_efficienciescpp">📄 overplot_efficiencies.cpp<a class="headerlink" href="#overplot_efficienciescpp" title="Permanent link">&para;</a></h3>
+<p>The <code>overplot_efficiencies.cpp</code> code will take the results of the previous topic and make a single graph containing all its variations and will output a <code>.png</code> containing the graph.</p>
+<h4 id="important-variables_3">Important variables<a class="headerlink" href="#important-variables_3" title="Permanent link">&para;</a></h4>
+<p>All main variables are in <code>overplot_efficiencies()</code></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>const char*</td>
+<td>input_folder_name</td>
+<td>Stores the path to input folder where <code>.root</code> is</td>
+</tr>
+<tr>
+<td>const char*</td>
+<td>output_folder_name</td>
+<td>Stores the path to output folder</td>
+</tr>
+<tr>
+<td>string</td>
+<td>MuonId</td>
+<td>It accepts values of <code>"trackerMuon"</code>, <code>"standaloneMuon"</code> and <code>"globalMuon"</code></td>
+</tr>
+<tr>
+<td>string</td>
+<td>quantity</td>
+<td>It accepts values of <code>"Pt"</code>, <code>"Eta"</code> and <code>"Phi"</code></td>
+</tr>
+</tbody>
+</table>
+<p>Remeber when selecting MuonId and quantity to run <code>plot_sys_efficiency.cpp</code> before with same configurations.</p>
+<h3 id="plot_sys_efficiency_2dcpp">📄 plot_sys_efficiency_2d.cpp<a class="headerlink" href="#plot_sys_efficiency_2dcpp" title="Permanent link">&para;</a></h3>
+<p>In order to calculate systematic uncertainties in 2D, it was necessary to create another code: the <code>plot_sys_efficiency_2d.cpp</code>. It has a <code>.root</code> output containing the efficiency histograms that can be viewed through the <code>new TBrowser</code> on root command.</p>
+<h4 id="important-variables_4">Important variables<a class="headerlink" href="#important-variables_4" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>MuonId</td>
+<td>It accepts values of <code>"trackerMuon"</code>, <code>"standaloneMuon"</code> and <code>"globalMuon"</code></td>
+</tr>
+<tr>
+<td>string</td>
+<td>xquantity</td>
+<td>It accepts values of <code>"Pt"</code>, <code>"Eta"</code> and <code>"Phi"</code> for horizontal axis</td>
+</tr>
+<tr>
+<td>double[]</td>
+<td>xbins</td>
+<td>is used to set histogram bins limits for horizontal axis</td>
+</tr>
+<tr>
+<td>string</td>
+<td>yquantity</td>
+<td>It accepts values of <code>"Pt"</code>, <code>"Eta"</code> and <code>"Phi"</code> for vertical axis</td>
+</tr>
+<tr>
+<td>double[]</td>
+<td>ybins</td>
+<td>is used to set histogram bins limits for vertical axis</td>
+</tr>
+<tr>
+<td>string</td>
+<td>path_bins_fit_folder</td>
+<td>Stores the path folder where is going to save fit results png for every bin</td>
+</tr>
+<tr>
+<td>const char*</td>
+<td>output_folder_name</td>
+<td>Stores the path to output folder where is going to save the 2D efficiency result</td>
+</tr>
+</tbody>
+</table>
                 
               
               
@@ -1380,7 +1859,7 @@ This function merges two seperate <code>TTree</code> files into one.</p>
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../readme/" class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../../sidebandreferenceguide/PassingFailing/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1389,19 +1868,19 @@ This function merges two seperate <code>TTree</code> files into one.</p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              Read me
+              PassingFailing class
             </div>
           </div>
         </a>
       
       
-        <a href="../../../../luminosity/lumi/" class="md-footer__link md-footer__link--next" rel="next">
+        <a href="../src_files/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Luminosity
+              Src files
             </div>
           </div>
           <div class="md-footer__button md-icon">
