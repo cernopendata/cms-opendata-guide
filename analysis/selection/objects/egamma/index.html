@@ -1,0 +1,1833 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="CMS Open Data Guide">
+      
+      
+      
+        <link rel="canonical" href="https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/egamma/">
+      
+      <link rel="icon" href="../../../../images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.3">
+    
+    
+      
+        <title>Electrons and Photons - CMS Open Data Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.edf004c2.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700%7C&display=fallback">
+        <style>:root{--md-text-font:"Lato";--md-code-font:""}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#objects" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="CMS Open Data Guide" class="md-header__button md-logo" aria-label="CMS Open Data Guide" data-md-component="logo">
+      
+  <img src="../../../../images/cmslogo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CMS Open Data Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Electrons and Photons
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/cernopendata/cms-opendata-guide/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cms-opendata-guide
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="CMS Open Data Guide" class="md-nav__button md-logo" aria-label="CMS Open Data Guide" data-md-component="logo">
+      
+  <img src="../../../../images/cmslogo.png" alt="logo">
+
+    </a>
+    CMS Open Data Guide
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/cernopendata/cms-opendata-guide/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cms-opendata-guide
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Computing Tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Computing Tools" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Computing Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/cernportal/" class="md-nav__link">
+        CERN Open Data Portal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/cmsopendata/" class="md-nav__link">
+        CMS Open Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/cmstwiki/" class="md-nav__link">
+        CMS Twiki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/unix/" class="md-nav__link">
+        UNIX
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/root/" class="md-nav__link">
+        ROOT
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/cppandpython/" class="md-nav__link">
+        C++ and Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git/" class="md-nav__link">
+        Git
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/docker/" class="md-nav__link">
+        Docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/virtualmachines/" class="md-nav__link">
+        Virtual Machines
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          CMSSW
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="CMSSW" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          CMSSW
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cmssw/cmsswoverview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cmssw/cmsswdatamodel/" class="md-nav__link">
+        Data Model
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cmssw/cmsswanalyzers/" class="md-nav__link">
+        Analyzers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cmssw/cmsswconfigure/" class="md-nav__link">
+        Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cmssw/cmsswconditions/" class="md-nav__link">
+        Conditions Data
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Analysis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Analysis" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Analysis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          Data and Simulation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data and Simulation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Data and Simulation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../datasim/collisiondata/" class="md-nav__link">
+        Collision Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../datasim/mcsimulations/" class="md-nav__link">
+        MC Simulations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../datasim/eventgeneration/" class="md-nav__link">
+        Event Generation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          Selection
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Selection" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Selection
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../triggers/" class="md-nav__link">
+        Triggers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Physics Objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_3" type="checkbox" id="__nav_4_2_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_3">
+          Specific Physics Objects
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Specific Physics Objects" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Specific Physics Objects
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tools/" class="md-nav__link">
+        Common Tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../muons/" class="md-nav__link">
+        Muons
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Electrons and Photons
+      </a>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jets/" class="md-nav__link">
+        Jets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../met/" class="md-nav__link">
+        Missing ET
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../objectid/" class="md-nav__link">
+        Physics Object ID
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_5" type="checkbox" id="__nav_4_2_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_5">
+          ID Efficiency study
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ID Efficiency study" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          ID Efficiency study
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../idefficiencystudy/tagandprobe/" class="md-nav__link">
+        Tag and Probe
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../idefficiencystudy/signalextraction/" class="md-nav__link">
+        Signal extraction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../idefficiencystudy/efficiencytool/" class="md-nav__link">
+        Efficiency Tool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_5_4" type="checkbox" id="__nav_4_2_5_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_5_4">
+          Tutorial
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tutorial" data-md-level="4">
+        <label class="md-nav__title" for="__nav_4_2_5_4">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorial
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../idefficiencystudy/tutorial/01-introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../idefficiencystudy/tutorial/02-fitting/" class="md-nav__link">
+        Fitting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../idefficiencystudy/tutorial/03-sidebandsubtraction/" class="md-nav__link">
+        Sideband Subtraction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../idefficiencystudy/tutorial/04-comparison/" class="md-nav__link">
+        Comparison
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_5_5" type="checkbox" id="__nav_4_2_5_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_5_5">
+          Reference Guide (SB)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reference Guide (SB)" data-md-level="4">
+        <label class="md-nav__title" for="__nav_4_2_5_5">
+          <span class="md-nav__icon md-icon"></span>
+          Reference Guide (SB)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../idefficiencystudy/sidebandreferenceguide/macro/" class="md-nav__link">
+        The Macro
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../idefficiencystudy/sidebandreferenceguide/FitFunctions/" class="md-nav__link">
+        FitFunction class
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../idefficiencystudy/sidebandreferenceguide/SidebandSubtraction/" class="md-nav__link">
+        SidebandSubtraction class
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../idefficiencystudy/sidebandreferenceguide/InvariantMass/" class="md-nav__link">
+        InvariantMass class
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../idefficiencystudy/sidebandreferenceguide/MassValues/" class="md-nav__link">
+        MassValues struct
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../idefficiencystudy/sidebandreferenceguide/Type/" class="md-nav__link">
+        Type class
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../idefficiencystudy/sidebandreferenceguide/TagProbe/" class="md-nav__link">
+        TagProbe class
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../idefficiencystudy/sidebandreferenceguide/PtEtaPhi/" class="md-nav__link">
+        PtEtaPhi class
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../idefficiencystudy/sidebandreferenceguide/PassingFailing/" class="md-nav__link">
+        PassingFailing class
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_5_6" type="checkbox" id="__nav_4_2_5_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_5_6">
+          Reference Guide (Fit)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reference Guide (Fit)" data-md-level="4">
+        <label class="md-nav__title" for="__nav_4_2_5_6">
+          <span class="md-nav__icon md-icon"></span>
+          Reference Guide (Fit)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../idefficiencystudy/fittingreferenceguide/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../idefficiencystudy/fittingreferenceguide/src_files/" class="md-nav__link">
+        Src files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3">
+          Luminosity
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Luminosity" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Luminosity
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../luminosity/lumi/" class="md-nav__link">
+        Luminosity
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_4">
+          Backgrounds
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Backgrounds" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          Backgrounds
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../backgrounds/techniques/" class="md-nav__link">
+        Techniques
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../backgrounds/qcdestimation/" class="md-nav__link">
+        QCD Estimation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5">
+          Systematics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Systematics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          Systematics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../systematics/lumiuncertain/" class="md-nav__link">
+        Luminosity Uncertainties
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../systematics/mcuncertain/" class="md-nav__link">
+        MC Uncertainty
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5_3" type="checkbox" id="__nav_4_5_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5_3">
+          Physics Object Uncertainty
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Physics Object Uncertainty" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          Physics Object Uncertainty
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../systematics/objectsuncertain/leptonuncertain/" class="md-nav__link">
+        Lepton/Photon uncertainties
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../systematics/objectsuncertain/jetmetuncertain/" class="md-nav__link">
+        Jet/MET uncertainties
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../systematics/objectsuncertain/btaguncertain/" class="md-nav__link">
+        Tagging uncertainties
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../systematics/pileupuncertain/" class="md-nav__link">
+        Pileup Uncertainty
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_6" type="checkbox" id="__nav_4_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_6">
+          Interpretation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Interpretation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_6">
+          <span class="md-nav__icon md-icon"></span>
+          Interpretation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../interpretation/stats/" class="md-nav__link">
+        Statistics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../interpretation/limits/" class="md-nav__link">
+        Upper-limit Calculations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../about/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/cernopendata/cms-opendata-guide/edit/master/docs/analysis/selection/objects/egamma.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="objects">Objects<a class="headerlink" href="#objects" title="Permanent link">&para;</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This page is under construction</p>
+</div>
+<p>This twiki contains information on electron selection intended to be used with 2010 data. The selection is based on cuts on a small number of variables. Different thresholds are used for electrons found in the ECAL barrel and the ECAL endcap. Electron selection variables may be categorized in 3 groups:
+e-ID variables (shower shape, track cluster matching etc)
+isolation variables
+conversion rejection variables
+The sets of cuts given here are obtained by tuning all cuts together, but the sets of cuts on each of the 3 groups of variables may be used alone quite effectively. The fake rate, and fake sources, vary with ET, and for any set of cuts, rejection power and efficiency vary with ET. However, sets of cuts optimized for ET&gt;25 GeV are near optimal for the interval 100&gt;ET&gt;20 GeV, and can usefully be employed down to 15 GeV. Ultimately the most performant selection should be obtained using multi-variate techniques, likelihood fits etc. Prior to that cut-based selections can provide a useful tool to understand the data and make comparison with MC. The advantages of "Simple Cuts" are:</p>
+<p>Cut inversion (used in many data driven signal extraction and background subtraction methodologies) is simple
+Smallest statistics are needed for full understanding and efficiency measurement
+It is simple to cleanly separate the e-ID, isolation and conversion rejection pieces
+The selection has been tuned in order to get a set of cuts with maximum background rejection for a given efficiency.</p>
+<p>ELECTRONS</p>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="n">Handle</span><span class="w"> </span><span class="o">&lt;</span><span class="n">GsfElectronCollection</span><span class="o">&gt;</span><span class="w"> </span><span class="n">electrons</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">iEvent</span><span class="p">.</span><span class="n">getByLabel</span><span class="p">(</span><span class="n">InputTag</span><span class="p">(</span><span class="s">&quot;gsfElectrons&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">electrons</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">edm</span><span class="o">::</span><span class="n">Handle</span><span class="o">&lt;</span><span class="n">reco</span><span class="o">::</span><span class="n">ConversionCollection</span><span class="o">&gt;</span><span class="w"> </span><span class="n">hConversions</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">iEvent</span><span class="p">.</span><span class="n">getByLabel</span><span class="p">(</span><span class="s">&quot;allConversions&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">hConversions</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">edm</span><span class="o">::</span><span class="n">Handle</span><span class="o">&lt;</span><span class="n">reco</span><span class="o">::</span><span class="n">BeamSpot</span><span class="o">&gt;</span><span class="w"> </span><span class="n">bsHandle</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">iEvent</span><span class="p">.</span><span class="n">getByLabel</span><span class="p">(</span><span class="s">&quot;offlineBeamSpot&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">bsHandle</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="n">reco</span><span class="o">::</span><span class="n">BeamSpot</span><span class="w"> </span><span class="o">&amp;</span><span class="n">beamspot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">bsHandle</span><span class="p">.</span><span class="n">product</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">value_el_n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">el_min_pt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">GsfElectron</span><span class="o">&gt;</span><span class="w"> </span><span class="n">selectedElectrons</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">electrons</span><span class="o">-&gt;</span><span class="n">begin</span><span class="p">();</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">electrons</span><span class="o">-&gt;</span><span class="n">end</span><span class="p">();</span><span class="w"> </span><span class="n">it</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">el_min_pt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">selectedElectrons</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="o">*</span><span class="n">it</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">      </span><span class="n">value_el_cutbasedid</span><span class="p">[</span><span class="n">value_el_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">passingCutBasedPreselection</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_el_pfid</span><span class="p">[</span><span class="n">value_el_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">passingPflowPreselection</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="c1">//added for cut based id</span>
+<span class="w">      </span><span class="n">value_el_sigIetaIeta</span><span class="p">[</span><span class="n">value_el_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">sigmaIetaIeta</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_el_hOverEm</span><span class="p">[</span><span class="n">value_el_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">hadronicOverEm</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_el_fbrem</span><span class="p">[</span><span class="n">value_el_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">fbrem</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_el_eOverP</span><span class="p">[</span><span class="n">value_el_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">eSuperClusterOverP</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_el_dEtaIn</span><span class="p">[</span><span class="n">value_el_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">deltaEtaSuperClusterTrackAtVtx</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_el_dPhiIn</span><span class="p">[</span><span class="n">value_el_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">deltaPhiSuperClusterTrackAtVtx</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_el_ecalE</span><span class="p">[</span><span class="n">value_el_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">ecalEnergy</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="c1">//value_el_pIn[value_el_n] = it-&gt;trackMomentumAtVtx().p(); //Does not compile: &#39;math::XYZVectorF&#39; has no member named &#39;p&#39;</span>
+<span class="w">      </span><span class="n">value_el_pIn</span><span class="p">[</span><span class="n">value_el_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">ecalEnergy</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">eSuperClusterOverP</span><span class="p">()</span><span class="w"> </span><span class="p">);</span><span class="w"> </span><span class="c1">//same as above line according to twiki</span>
+<span class="w">      </span><span class="n">value_el_dr03TkSumPt</span><span class="p">[</span><span class="n">value_el_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">dr03TkSumPt</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_el_dr03EcalRecHitSumEt</span><span class="p">[</span><span class="n">value_el_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">dr03EcalRecHitSumEt</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_el_dr03HcalTowerSumEt</span><span class="p">[</span><span class="n">value_el_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">dr03HcalTowerSumEt</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_el_expectedHits</span><span class="p">[</span><span class="n">value_el_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">gsfTrack</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">trackerExpectedHitsInner</span><span class="p">().</span><span class="n">numberOfHits</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="kt">int</span><span class="w"> </span><span class="n">missing_hits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">gsfTrack</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">trackerExpectedHitsInner</span><span class="p">().</span><span class="n">numberOfHits</span><span class="p">()</span><span class="o">-</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">gsfTrack</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">hitPattern</span><span class="p">().</span><span class="n">numberOfHits</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="kt">bool</span><span class="w"> </span><span class="n">passelectronveto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="n">ConversionTools</span><span class="o">::</span><span class="n">hasMatchedConversion</span><span class="p">(</span><span class="o">*</span><span class="n">it</span><span class="p">,</span><span class="w"> </span><span class="n">hConversions</span><span class="p">,</span><span class="w"> </span><span class="n">beamspot</span><span class="p">.</span><span class="n">position</span><span class="p">());</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">passingPflowPreselection</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">iso03</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">pfIsolationVariables</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">value_el_pfreliso03all</span><span class="p">[</span><span class="n">value_el_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">            </span><span class="p">(</span><span class="n">iso03</span><span class="p">.</span><span class="n">chargedHadronIso</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">iso03</span><span class="p">.</span><span class="n">neutralHadronIso</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">iso03</span><span class="p">.</span><span class="n">photonIso</span><span class="p">)</span><span class="o">/</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">value_el_pfreliso03all</span><span class="p">[</span><span class="n">value_el_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-999</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="kt">float</span><span class="w"> </span><span class="n">pfIso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value_el_pfreliso03all</span><span class="p">[</span><span class="n">value_el_n</span><span class="p">];</span><span class="w"></span>
+<span class="w">      </span><span class="k">auto</span><span class="w"> </span><span class="n">trk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">gsfTrack</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">value_el_jetidx</span><span class="p">[</span><span class="n">value_el_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_el_genpartidx</span><span class="p">[</span><span class="n">value_el_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_el_isLoose</span><span class="p">[</span><span class="n">value_el_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_el_isMedium</span><span class="p">[</span><span class="n">value_el_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_el_isTight</span><span class="p">[</span><span class="n">value_el_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">eta</span><span class="p">())</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">1.479</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">   </span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">deltaEtaSuperClusterTrackAtVtx</span><span class="p">())</span><span class="o">&lt;</span><span class="mf">.007</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">deltaPhiSuperClusterTrackAtVtx</span><span class="p">())</span><span class="o">&lt;</span><span class="mf">.15</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>
+<span class="w">           </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">sigmaIetaIeta</span><span class="p">()</span><span class="o">&lt;</span><span class="mf">.01</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">hadronicOverEm</span><span class="p">()</span><span class="o">&lt;</span><span class="mf">.12</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>
+<span class="w">         </span><span class="n">abs</span><span class="p">(</span><span class="n">trk</span><span class="o">-&gt;</span><span class="n">dxy</span><span class="p">(</span><span class="n">pv</span><span class="p">))</span><span class="o">&lt;</span><span class="mf">.02</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">trk</span><span class="o">-&gt;</span><span class="n">dz</span><span class="p">(</span><span class="n">pv</span><span class="p">))</span><span class="o">&lt;</span><span class="mf">.2</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>
+<span class="w">       </span><span class="n">missing_hits</span><span class="o">&lt;=</span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">pfIso</span><span class="o">&lt;</span><span class="mf">.15</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">passelectronveto</span><span class="o">==</span><span class="nb">true</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"></span>
+<span class="w">            </span><span class="n">abs</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">ecalEnergy</span><span class="p">()</span><span class="mi">-1</span><span class="o">/</span><span class="p">(</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">ecalEnergy</span><span class="p">()</span><span class="o">/</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">eSuperClusterOverP</span><span class="p">()))</span><span class="o">&lt;</span><span class="mf">.05</span><span class="w"> </span><span class="p">){</span><span class="w"></span>
+
+<span class="w">          </span><span class="n">value_el_isLoose</span><span class="p">[</span><span class="n">value_el_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">       </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">deltaEtaSuperClusterTrackAtVtx</span><span class="p">())</span><span class="o">&lt;</span><span class="mf">.004</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">deltaPhiSuperClusterTrackAtVtx</span><span class="p">())</span><span class="o">&lt;</span><span class="mf">.06</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">trk</span><span class="o">-&gt;</span><span class="n">dz</span><span class="p">(</span><span class="n">pv</span><span class="p">))</span><span class="o">&lt;</span><span class="mf">.1</span><span class="w"> </span><span class="p">){</span><span class="w"></span>
+<span class="w">           </span><span class="n">value_el_isMedium</span><span class="p">[</span><span class="n">value_el_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">deltaPhiSuperClusterTrackAtVtx</span><span class="p">())</span><span class="o">&lt;</span><span class="mf">.03</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">missing_hits</span><span class="o">&lt;=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">pfIso</span><span class="o">&lt;</span><span class="mf">.10</span><span class="w"> </span><span class="p">){</span><span class="w"></span>
+<span class="w">           </span><span class="n">value_el_isTight</span><span class="p">[</span><span class="n">value_el_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">          </span><span class="p">}</span><span class="w"></span>
+<span class="w">          </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">eta</span><span class="p">())</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">1.479</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">eta</span><span class="p">())</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">2.5</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">deltaEtaSuperClusterTrackAtVtx</span><span class="p">())</span><span class="o">&lt;</span><span class="mf">.009</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">deltaPhiSuperClusterTrackAtVtx</span><span class="p">())</span><span class="o">&lt;</span><span class="mf">.1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>
+<span class="w">      </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">sigmaIetaIeta</span><span class="p">()</span><span class="o">&lt;</span><span class="mf">.03</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">hadronicOverEm</span><span class="p">()</span><span class="o">&lt;</span><span class="mf">.1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>
+<span class="w">           </span><span class="n">abs</span><span class="p">(</span><span class="n">trk</span><span class="o">-&gt;</span><span class="n">dxy</span><span class="p">(</span><span class="n">pv</span><span class="p">))</span><span class="o">&lt;</span><span class="mf">.02</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">trk</span><span class="o">-&gt;</span><span class="n">dz</span><span class="p">(</span><span class="n">pv</span><span class="p">))</span><span class="o">&lt;</span><span class="mf">.2</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>
+<span class="w">         </span><span class="n">missing_hits</span><span class="o">&lt;=</span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">pfIso</span><span class="o">&lt;</span><span class="mf">.15</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">passelectronveto</span><span class="o">==</span><span class="nb">true</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"></span>
+<span class="w">             </span><span class="n">abs</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">ecalEnergy</span><span class="p">()</span><span class="mi">-1</span><span class="o">/</span><span class="p">(</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">ecalEnergy</span><span class="p">()</span><span class="o">/</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">eSuperClusterOverP</span><span class="p">()))</span><span class="o">&lt;</span><span class="mf">.05</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">          </span><span class="n">value_el_isLoose</span><span class="p">[</span><span class="n">value_el_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">       </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">deltaEtaSuperClusterTrackAtVtx</span><span class="p">())</span><span class="o">&lt;</span><span class="mf">.007</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">deltaPhiSuperClusterTrackAtVtx</span><span class="p">())</span><span class="o">&lt;</span><span class="mf">.03</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">trk</span><span class="o">-&gt;</span><span class="n">dz</span><span class="p">(</span><span class="n">pv</span><span class="p">))</span><span class="o">&lt;</span><span class="mf">.1</span><span class="w"> </span><span class="p">){</span><span class="w"></span>
+<span class="w">           </span><span class="n">value_el_isMedium</span><span class="p">[</span><span class="n">value_el_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">deltaEtaSuperClusterTrackAtVtx</span><span class="p">())</span><span class="o">&lt;</span><span class="mf">.005</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">deltaPhiSuperClusterTrackAtVtx</span><span class="p">())</span><span class="o">&lt;</span><span class="mf">.02</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">missing_hits</span><span class="o">&lt;=</span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">pfIso</span><span class="o">&lt;</span><span class="mf">.10</span><span class="w"> </span><span class="p">){</span><span class="w"></span>
+<span class="w">           </span><span class="n">value_el_isTight</span><span class="p">[</span><span class="n">value_el_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">          </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_el_n</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>PHOTONS</p>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="n">Handle</span><span class="o">&lt;</span><span class="n">PhotonCollection</span><span class="o">&gt;</span><span class="w"> </span><span class="n">photons</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">iEvent</span><span class="p">.</span><span class="n">getByLabel</span><span class="p">(</span><span class="n">InputTag</span><span class="p">(</span><span class="s">&quot;photons&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">photons</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">Handle</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">rhoHandle</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">iEvent</span><span class="p">.</span><span class="n">getByLabel</span><span class="p">(</span><span class="n">InputTag</span><span class="p">(</span><span class="s">&quot;fixedGridRhoAll&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">rhoHandle</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">rhoIso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">rhoHandle</span><span class="p">.</span><span class="n">product</span><span class="p">()),</span><span class="w"> </span><span class="mf">0.0</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">value_ph_n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">ph_min_pt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Photon</span><span class="o">&gt;</span><span class="w"> </span><span class="n">selectedPhotons</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">photons</span><span class="o">-&gt;</span><span class="n">begin</span><span class="p">();</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">photons</span><span class="o">-&gt;</span><span class="n">end</span><span class="p">();</span><span class="w"> </span><span class="n">it</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">ph_min_pt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="kt">bool</span><span class="w"> </span><span class="n">passelectronveto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="n">ConversionTools</span><span class="o">::</span><span class="n">hasMatchedPromptElectron</span><span class="p">(</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">superCluster</span><span class="p">(),</span><span class="w"> </span><span class="n">electrons</span><span class="p">,</span><span class="w"> </span><span class="n">hConversions</span><span class="p">,</span><span class="w"> </span><span class="n">beamspot</span><span class="p">.</span><span class="n">position</span><span class="p">());</span><span class="w"></span>
+<span class="w">      </span><span class="kt">double</span><span class="w"> </span><span class="n">scEta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">it</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">superCluster</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">eta</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="kt">double</span><span class="w"> </span><span class="n">CH_AEff</span><span class="p">,</span><span class="w"> </span><span class="n">NH_AEff</span><span class="p">,</span><span class="w"> </span><span class="n">Ph_AEff</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="n">fabs</span><span class="p">(</span><span class="n">scEta</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="mf">2.4</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">CH_AEff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.012</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">NH_AEff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.072</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">Ph_AEff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.266</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">fabs</span><span class="p">(</span><span class="n">scEta</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="mf">2.3</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">CH_AEff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.020</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="n">NH_AEff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.039</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">Ph_AEff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.260</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">fabs</span><span class="p">(</span><span class="n">scEta</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="mf">2.2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">CH_AEff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.016</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="n">NH_AEff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.024</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">Ph_AEff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.262</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">fabs</span><span class="p">(</span><span class="n">scEta</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="mf">2.0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">CH_AEff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.012</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="n">NH_AEff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.015</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">Ph_AEff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.216</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">fabs</span><span class="p">(</span><span class="n">scEta</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="mf">1.479</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">CH_AEff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.014</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="n">NH_AEff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.039</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">Ph_AEff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.112</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">fabs</span><span class="p">(</span><span class="n">scEta</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="mf">0.1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">CH_AEff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.010</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="n">NH_AEff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.057</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">Ph_AEff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.130</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">CH_AEff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.012</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="n">NH_AEff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.030</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">Ph_AEff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.148</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="n">selectedPhotons</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="o">*</span><span class="n">it</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_ph_pt</span><span class="p">[</span><span class="n">value_ph_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_ph_eta</span><span class="p">[</span><span class="n">value_ph_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">eta</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_ph_phi</span><span class="p">[</span><span class="n">value_ph_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">phi</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_ph_charge</span><span class="p">[</span><span class="n">value_ph_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">charge</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_ph_mass</span><span class="p">[</span><span class="n">value_ph_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">mass</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_ph_pfreliso03all</span><span class="p">[</span><span class="n">value_ph_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">ecalRecHitSumEtConeDR03</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_ph_jetidx</span><span class="p">[</span><span class="n">value_ph_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_ph_genpartidx</span><span class="p">[</span><span class="n">value_ph_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="c1">//added for cut based id</span>
+<span class="w">      </span><span class="c1">//value_ph_passelectronveto[max_ph];</span>
+<span class="w">      </span><span class="n">value_ph_hOverEm</span><span class="p">[</span><span class="n">value_ph_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">hadTowOverEm</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_ph_sigIetaIeta</span><span class="p">[</span><span class="n">value_ph_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">sigmaIetaIeta</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_ph_chargedHadronIso</span><span class="p">[</span><span class="n">value_ph_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">chargedHadronIso</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_ph_neutralHadronIso</span><span class="p">[</span><span class="n">value_ph_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">neutralHadronIso</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_ph_photonIso</span><span class="p">[</span><span class="n">value_ph_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">photonIso</span><span class="p">();</span><span class="w"></span>
+<span class="w">      </span><span class="kt">double</span><span class="w"> </span><span class="n">corrPFCHIso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">chargedHadronIso</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">rhoIso</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">CH_AEff</span><span class="p">,</span><span class="w"> </span><span class="mf">0.</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="kt">double</span><span class="w"> </span><span class="n">corrPFNHIso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">neutralHadronIso</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">rhoIso</span><span class="w"> </span><span class="o">*</span><span class="n">NH_AEff</span><span class="p">,</span><span class="w"> </span><span class="mf">0.</span><span class="p">);</span><span class="w"></span>
+<span class="kt">double</span><span class="w"> </span><span class="n">corrPFPhIso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">photonIso</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">rhoIso</span><span class="o">*</span><span class="w"> </span><span class="n">Ph_AEff</span><span class="p">,</span><span class="w"> </span><span class="mf">0.</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_ph_isTight</span><span class="p">[</span><span class="n">value_ph_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_ph_isMedium</span><span class="p">[</span><span class="n">value_ph_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_ph_isLoose</span><span class="p">[</span><span class="n">value_ph_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">eta</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">1.479</span><span class="w"> </span><span class="p">){</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">hadTowOverEm</span><span class="p">()</span><span class="o">&lt;</span><span class="mf">.05</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">sigmaIetaIeta</span><span class="p">()</span><span class="o">&lt;</span><span class="mf">.012</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"></span>
+<span class="w">           </span><span class="n">corrPFCHIso</span><span class="o">&lt;</span><span class="mf">2.6</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">corrPFNHIso</span><span class="o">&lt;</span><span class="p">(</span><span class="mf">3.5</span><span class="o">+</span><span class="mf">.04</span><span class="o">*</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">())</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"></span>
+<span class="w">         </span><span class="n">corrPFPhIso</span><span class="o">&lt;</span><span class="p">(</span><span class="mf">1.3</span><span class="o">+</span><span class="mf">.005</span><span class="o">*</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">())</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">passelectronveto</span><span class="o">==</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="n">value_ph_isLoose</span><span class="p">[</span><span class="n">value_ph_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">     </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">sigmaIetaIeta</span><span class="p">()</span><span class="o">&lt;</span><span class="mf">.011</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">corrPFCHIso</span><span class="o">&lt;</span><span class="mf">1.5</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">corrPFNHIso</span><span class="o">&lt;</span><span class="p">(</span><span class="mf">1.0</span><span class="o">+</span><span class="mf">.04</span><span class="o">*</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">())</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">corrPFPhIso</span><span class="o">&lt;</span><span class="p">(</span><span class="mf">.7</span><span class="o">+</span><span class="mf">.005</span><span class="o">*</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">())){</span><span class="w"></span>
+<span class="w">         </span><span class="n">value_ph_isMedium</span><span class="p">[</span><span class="n">value_ph_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">corrPFCHIso</span><span class="o">&lt;</span><span class="mf">.7</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">corrPFNHIso</span><span class="o">&lt;</span><span class="p">(</span><span class="mf">.4</span><span class="o">+</span><span class="mf">.04</span><span class="o">*</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">())</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">corrPFPhIso</span><span class="o">&lt;</span><span class="p">(</span><span class="mf">.5</span><span class="o">+</span><span class="mf">0.005</span><span class="o">*</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">())</span><span class="w"> </span><span class="p">){</span><span class="w"></span>
+<span class="w">            </span><span class="n">value_ph_isTight</span><span class="p">[</span><span class="n">value_ph_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">         </span><span class="p">}</span><span class="w"></span>
+<span class="w">           </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">eta</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">1.479</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">eta</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">2.5</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">hadTowOverEm</span><span class="p">()</span><span class="o">&lt;</span><span class="mf">.05</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">sigmaIetaIeta</span><span class="p">()</span><span class="o">&lt;</span><span class="mf">.034</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">corrPFCHIso</span><span class="o">&lt;</span><span class="mf">2.3</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">corrPFNHIso</span><span class="o">&lt;</span><span class="p">(</span><span class="mf">2.9</span><span class="o">+</span><span class="mf">.04</span><span class="o">*</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">())</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">passelectronveto</span><span class="o">==</span><span class="nb">true</span><span class="w"> </span><span class="p">){</span><span class="w"></span>
+<span class="w">          </span><span class="n">value_ph_isLoose</span><span class="p">[</span><span class="n">value_ph_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">       </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">sigmaIetaIeta</span><span class="p">()</span><span class="o">&lt;</span><span class="mf">.033</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">corrPFCHIso</span><span class="o">&lt;</span><span class="mf">1.2</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">corrPFNHIso</span><span class="o">&lt;</span><span class="p">(</span><span class="mf">1.5</span><span class="o">+</span><span class="mf">.04</span><span class="o">*</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">())</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">corrPFPhIso</span><span class="o">&lt;</span><span class="p">(</span><span class="mf">1.0</span><span class="o">+</span><span class="mf">.005</span><span class="o">*</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">           </span><span class="n">value_ph_isMedium</span><span class="p">[</span><span class="n">value_ph_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">sigmaIetaIeta</span><span class="p">()</span><span class="o">&lt;</span><span class="mf">0.031</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">corrPFCHIso</span><span class="o">&lt;</span><span class="mf">0.5</span><span class="p">){</span><span class="w"></span>
+<span class="w">              </span><span class="n">value_ph_isTight</span><span class="p">[</span><span class="n">value_ph_n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">           </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="n">value_ph_n</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../muons/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Muons" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Muons
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../jets/" class="md-footer__link md-footer__link--next" aria-label="Next: Jets" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Jets
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.0bbba5b5.min.js"}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.e1a181d9.min.js"></script>
+      
+    
+  </body>
+</html>

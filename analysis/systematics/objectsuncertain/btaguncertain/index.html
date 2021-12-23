@@ -1,0 +1,2016 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="CMS Open Data Guide">
+      
+      
+      
+        <link rel="canonical" href="https://cms-opendata-guide.web.cern.ch/analysis/systematics/objectsuncertain/btaguncertain/">
+      
+      <link rel="icon" href="../../../../images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.3">
+    
+    
+      
+        <title>Tagging uncertainties - CMS Open Data Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.edf004c2.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700%7C&display=fallback">
+        <style>:root{--md-text-font:"Lato";--md-code-font:""}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#b-tag-uncertainty" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="CMS Open Data Guide" class="md-header__button md-logo" aria-label="CMS Open Data Guide" data-md-component="logo">
+      
+  <img src="../../../../images/cmslogo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CMS Open Data Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tagging uncertainties
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/cernopendata/cms-opendata-guide/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cms-opendata-guide
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="CMS Open Data Guide" class="md-nav__button md-logo" aria-label="CMS Open Data Guide" data-md-component="logo">
+      
+  <img src="../../../../images/cmslogo.png" alt="logo">
+
+    </a>
+    CMS Open Data Guide
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/cernopendata/cms-opendata-guide/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cms-opendata-guide
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Computing Tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Computing Tools" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Computing Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/cernportal/" class="md-nav__link">
+        CERN Open Data Portal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/cmsopendata/" class="md-nav__link">
+        CMS Open Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/cmstwiki/" class="md-nav__link">
+        CMS Twiki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/unix/" class="md-nav__link">
+        UNIX
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/root/" class="md-nav__link">
+        ROOT
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/cppandpython/" class="md-nav__link">
+        C++ and Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git/" class="md-nav__link">
+        Git
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/docker/" class="md-nav__link">
+        Docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/virtualmachines/" class="md-nav__link">
+        Virtual Machines
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          CMSSW
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="CMSSW" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          CMSSW
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cmssw/cmsswoverview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cmssw/cmsswdatamodel/" class="md-nav__link">
+        Data Model
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cmssw/cmsswanalyzers/" class="md-nav__link">
+        Analyzers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cmssw/cmsswconfigure/" class="md-nav__link">
+        Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cmssw/cmsswconditions/" class="md-nav__link">
+        Conditions Data
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Analysis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Analysis" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Analysis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          Data and Simulation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data and Simulation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Data and Simulation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../datasim/collisiondata/" class="md-nav__link">
+        Collision Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../datasim/mcsimulations/" class="md-nav__link">
+        MC Simulations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../datasim/eventgeneration/" class="md-nav__link">
+        Event Generation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          Selection
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Selection" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Selection
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/triggers/" class="md-nav__link">
+        Triggers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/objects/" class="md-nav__link">
+        Physics Objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_3" type="checkbox" id="__nav_4_2_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_3">
+          Specific Physics Objects
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Specific Physics Objects" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Specific Physics Objects
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/objects/tools/" class="md-nav__link">
+        Common Tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/objects/muons/" class="md-nav__link">
+        Muons
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/objects/egamma/" class="md-nav__link">
+        Electrons and Photons
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/objects/jets/" class="md-nav__link">
+        Jets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/objects/met/" class="md-nav__link">
+        Missing ET
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/objectid/" class="md-nav__link">
+        Physics Object ID
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_5" type="checkbox" id="__nav_4_2_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_5">
+          ID Efficiency study
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ID Efficiency study" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          ID Efficiency study
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/tagandprobe/" class="md-nav__link">
+        Tag and Probe
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/signalextraction/" class="md-nav__link">
+        Signal extraction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/efficiencytool/" class="md-nav__link">
+        Efficiency Tool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_5_4" type="checkbox" id="__nav_4_2_5_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_5_4">
+          Tutorial
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tutorial" data-md-level="4">
+        <label class="md-nav__title" for="__nav_4_2_5_4">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorial
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/tutorial/01-introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/tutorial/02-fitting/" class="md-nav__link">
+        Fitting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/tutorial/03-sidebandsubtraction/" class="md-nav__link">
+        Sideband Subtraction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/tutorial/04-comparison/" class="md-nav__link">
+        Comparison
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_5_5" type="checkbox" id="__nav_4_2_5_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_5_5">
+          Reference Guide (SB)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reference Guide (SB)" data-md-level="4">
+        <label class="md-nav__title" for="__nav_4_2_5_5">
+          <span class="md-nav__icon md-icon"></span>
+          Reference Guide (SB)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/sidebandreferenceguide/macro/" class="md-nav__link">
+        The Macro
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/sidebandreferenceguide/FitFunctions/" class="md-nav__link">
+        FitFunction class
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/sidebandreferenceguide/SidebandSubtraction/" class="md-nav__link">
+        SidebandSubtraction class
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/sidebandreferenceguide/InvariantMass/" class="md-nav__link">
+        InvariantMass class
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/sidebandreferenceguide/MassValues/" class="md-nav__link">
+        MassValues struct
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/sidebandreferenceguide/Type/" class="md-nav__link">
+        Type class
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/sidebandreferenceguide/TagProbe/" class="md-nav__link">
+        TagProbe class
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/sidebandreferenceguide/PtEtaPhi/" class="md-nav__link">
+        PtEtaPhi class
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/sidebandreferenceguide/PassingFailing/" class="md-nav__link">
+        PassingFailing class
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_5_6" type="checkbox" id="__nav_4_2_5_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_5_6">
+          Reference Guide (Fit)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reference Guide (Fit)" data-md-level="4">
+        <label class="md-nav__title" for="__nav_4_2_5_6">
+          <span class="md-nav__icon md-icon"></span>
+          Reference Guide (Fit)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/fittingreferenceguide/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/fittingreferenceguide/src_files/" class="md-nav__link">
+        Src files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3">
+          Luminosity
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Luminosity" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Luminosity
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../luminosity/lumi/" class="md-nav__link">
+        Luminosity
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_4">
+          Backgrounds
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Backgrounds" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          Backgrounds
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../backgrounds/techniques/" class="md-nav__link">
+        Techniques
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../backgrounds/qcdestimation/" class="md-nav__link">
+        QCD Estimation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5">
+          Systematics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Systematics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          Systematics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lumiuncertain/" class="md-nav__link">
+        Luminosity Uncertainties
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mcuncertain/" class="md-nav__link">
+        MC Uncertainty
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5_3" type="checkbox" id="__nav_4_5_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5_3">
+          Physics Object Uncertainty
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Physics Object Uncertainty" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          Physics Object Uncertainty
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../leptonuncertain/" class="md-nav__link">
+        Lepton/Photon uncertainties
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jetmetuncertain/" class="md-nav__link">
+        Jet/MET uncertainties
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Tagging uncertainties
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Tagging uncertainties
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scale-factors" class="md-nav__link">
+    Scale Factors
+  </a>
+  
+    <nav class="md-nav" aria-label="Scale Factors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#applying-scale-factors" class="md-nav__link">
+    Applying Scale Factors
+  </a>
+  
+    <nav class="md-nav" aria-label="Applying Scale Factors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#calculating-efficiencies" class="md-nav__link">
+    Calculating Efficiencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-complete" class="md-nav__link">
+    Run Complete
+  </a>
+  
+    <nav class="md-nav" aria-label="Run Complete">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#if-needed-updating-momentum-bin-code" class="md-nav__link">
+    If Needed: Updating Momentum Bin Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-efficiencies" class="md-nav__link">
+    Access Efficiencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-scale-factors" class="md-nav__link">
+    Access Scale Factors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calculating-weights" class="md-nav__link">
+    Calculating Weights
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uncertainties" class="md-nav__link">
+    Uncertainties
+  </a>
+  
+    <nav class="md-nav" aria-label="Uncertainties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uncertainties-for-each-flavor" class="md-nav__link">
+    Uncertainties for Each Flavor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storing-final-weights" class="md-nav__link">
+    Storing Final Weights
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pileupuncertain/" class="md-nav__link">
+        Pileup Uncertainty
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_6" type="checkbox" id="__nav_4_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_6">
+          Interpretation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Interpretation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_6">
+          <span class="md-nav__icon md-icon"></span>
+          Interpretation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../interpretation/stats/" class="md-nav__link">
+        Statistics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../interpretation/limits/" class="md-nav__link">
+        Upper-limit Calculations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../about/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scale-factors" class="md-nav__link">
+    Scale Factors
+  </a>
+  
+    <nav class="md-nav" aria-label="Scale Factors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#applying-scale-factors" class="md-nav__link">
+    Applying Scale Factors
+  </a>
+  
+    <nav class="md-nav" aria-label="Applying Scale Factors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#calculating-efficiencies" class="md-nav__link">
+    Calculating Efficiencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-complete" class="md-nav__link">
+    Run Complete
+  </a>
+  
+    <nav class="md-nav" aria-label="Run Complete">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#if-needed-updating-momentum-bin-code" class="md-nav__link">
+    If Needed: Updating Momentum Bin Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-efficiencies" class="md-nav__link">
+    Access Efficiencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-scale-factors" class="md-nav__link">
+    Access Scale Factors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calculating-weights" class="md-nav__link">
+    Calculating Weights
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uncertainties" class="md-nav__link">
+    Uncertainties
+  </a>
+  
+    <nav class="md-nav" aria-label="Uncertainties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uncertainties-for-each-flavor" class="md-nav__link">
+    Uncertainties for Each Flavor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storing-final-weights" class="md-nav__link">
+    Storing Final Weights
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/cernopendata/cms-opendata-guide/edit/master/docs/analysis/systematics/objectsuncertain/btaguncertain.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="b-tag-uncertainty">B Tag Uncertainty<a class="headerlink" href="#b-tag-uncertainty" title="Permanent link">&para;</a></h1>
+<h2 id="scale-factors">Scale Factors<a class="headerlink" href="#scale-factors" title="Permanent link">&para;</a></h2>
+<p>In simulation,</p>
+<ul>
+<li>Efficiency for tagging b quarks as b jets: the number of "real b jets" (jets spatially matched to generator-level b hadrons) tagged as b jets divided by the number of real b jets.</li>
+<li>Efficiency for mis-tagging c or light quarks as b jets: real c/light jets tagged as b jets divided by real c/light jets.</li>
+</ul>
+<p>These values are typically computed as functions of the momentum or pseudorapidity of the jet. The "real" flavor of the jet is accessed most simply by creating pat::Jet objects instead of reco::Jet objects.</p>
+<p>Scale factors to increase or decrease the number of b-tagged jets in simulation can be applied in a number of ways, but typically involve weighting simulation events based on the efficiencies and scale factors relevant to each jet in the event. Scale factors for the CSV algorithm are available for Open Data and involve extracting functions from a comma-separated-values file. The main documentation for b tagging and scale factors can be found <a href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/BtagRecommendation2011OpenData">in the b tagging recommendation twiki</a>.</p>
+<h3 id="applying-scale-factors">Applying Scale Factors<a class="headerlink" href="#applying-scale-factors" title="Permanent link">&para;</a></h3>
+<h4 id="calculating-efficiencies">Calculating Efficiencies<a class="headerlink" href="#calculating-efficiencies" title="Permanent link">&para;</a></h4>
+<p>The <a href="https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/tree/master/BTagging">BTagging folder</a> of PhysObjectExtractorTool (<a href="https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool">POET</a>) is used for calculating the efficiency for tagging each flavor of jet as a b quark, as a function of the jet momentum with the file <a href="https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/BTagging/src/WeightAnalyzerBEff.cc">WeightAnalyzer.cc</a>. The purpose of this file is to set up jet momentum histograms for numerators and denominators of efficiency histograms as defined above. The code loops through the jets, checks their flavor, checks their btagging discriminator to see if it passes tight, medium and or loose cut, and then fills the histograms according to that information.</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">disc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">bDiscriminator</span><span class="p">(</span><span class="n">discriminatorStr</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">hadronFlavor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">partonFlavour</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">hadronFlavor</span><span class="p">)</span><span class="o">==</span><span class="mi">5</span><span class="w"> </span><span class="p">){</span><span class="w"></span>
+<span class="w">      </span><span class="n">BEff_Dptbins_b</span><span class="o">-&gt;</span><span class="n">Fill</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span><span class="n">weight</span><span class="p">);</span><span class="w">      </span>
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">disc</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">discriminatorValueT</span><span class="p">)</span><span class="w"> </span><span class="n">BEffTight_Nptbins_b</span><span class="o">-&gt;</span><span class="n">Fill</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span><span class="n">weight</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">disc</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">discriminatorValueM</span><span class="p">)</span><span class="w"> </span><span class="n">BEffMed_Nptbins_b</span><span class="o">-&gt;</span><span class="n">Fill</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span><span class="n">weight</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">disc</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">discriminatorValueL</span><span class="p">)</span><span class="w"> </span><span class="n">BEffLoose_Nptbins_b</span><span class="o">-&gt;</span><span class="n">Fill</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span><span class="n">weight</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">hadronFlavor</span><span class="p">)</span><span class="o">==</span><span class="mi">4</span><span class="w"> </span><span class="p">){</span><span class="w"></span>
+<span class="w">      </span><span class="p">...</span><span class="w"></span>
+</code></pre></div>
+<p>These historgrams are then stored in an output file.</p>
+<p>Input, output, and other parameters can be changed in the <a href="https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/BTagging/python/befficiency_patjets_cfg.py">config file</a>.</p>
+<p>After this, you can save, exit, and compile, and then move onto the <a href="https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/BTagging/python/befficiency_patjets_cfg.py">config file</a>. You will put the file(s) which you wish to run efficiencies on here:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">##### ------- This is a test file</span>
+<span class="n">process</span><span class="p">.</span><span class="n">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cms</span><span class="p">.</span><span class="n">Source</span><span class="p">(</span><span class="s">&quot;PoolSource&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">fileNames</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cms</span><span class="p">.</span><span class="n">untracked</span><span class="p">.</span><span class="n">vstring</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="err">&#39;</span><span class="nl">root</span><span class="p">:</span><span class="c1">//eospublic.cern.ch//eos/opendata/cms/MonteCarlo2012/Summer12_DR53X/TTbar_8TeV-Madspin_aMCatNLO-herwig/AODSIM/PU_S10_START53_V19-v2/00000/04FCA1D5-E74C-E311-92CE-002590A887F0.root&#39;))</span>
+</code></pre></div>
+<p>Once this is complete, you can run the <a href="https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/BTagging/python/befficiency_patjets_cfg.py">config file</a> for your efficiencies.</p>
+<h4 id="run-complete">Run Complete<a class="headerlink" href="#run-complete" title="Permanent link">&para;</a></h4>
+<p>Once your run is complete, in the 'BTagging' folder there should be a file called <a href="https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/BTagging/plotBeff.C">plotBeff.C</a>. This file is set up to do the numerator and denomenator divisions (as defined earlier), show you a histogram of your efficiencies from those calculations, and write the same efficiencies that you calculated in a numerical form. To run this code open this file in root like such:</p>
+<div class="highlight"><pre><span></span><code><span class="n">root</span><span class="w"> </span><span class="n">plotBeff</span><span class="p">.</span><span class="n">c</span><span class="w"></span>
+</code></pre></div>
+<p>The histogram and output should appear through root. An example of what the histogram should look like is this:</p>
+<p><img alt="Output Histogram" src="../../../../images/c1.png" /></p>
+<h5 id="if-needed-updating-momentum-bin-code">If Needed: Updating Momentum Bin Code<a class="headerlink" href="#if-needed-updating-momentum-bin-code" title="Permanent link">&para;</a></h5>
+<!-- markdownlint-disable -->
+<p><sub> In <a href="https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/BTagging/src/WeightAnalyzerBEff.cc">WeightAnalyzer.cc</a>, there is a spot to input custom jet momentum bins that looks like this: </sub></p>
+<!-- markdownlint-restore -->
+
+<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">ptbinsB</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">70</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">};</span><span class="w"></span>
+</code></pre></div>
+<!-- markdownlint-disable -->
+<p><sub> where a bin's momentums span from 0 to 15, 15 to 30, etc. </sub></p>
+<p><sub> After your jet momentum bin update, you need to update the actual code that produces the histogram. Continuing this example, there are a total of 9 momentum bins from the numbers given in, ptbinsB. In the histogram producing code, there is a 9 indicating the number of bins: </sub></p>
+<!-- markdownlint-restore -->
+
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="n">BEff_Dptbins_b</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">fs</span><span class="o">-&gt;</span><span class="n">make</span><span class="o">&lt;</span><span class="n">TH1D</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;BEff_Dptbins_b   &quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="n">ptbinsB</span><span class="p">);</span><span class="w"> </span><span class="n">BEff_Dptbins_b</span><span class="o">-&gt;</span><span class="n">Sumw2</span><span class="p">();</span><span class="w"></span>
+</code></pre></div>
+<!-- markdownlint-disable -->
+<p><sub> Where the number 9 is now, this number will need to be updated to your number of bins. </sub></p>
+<!-- markdownlint-restore -->
+
+<h4 id="access-efficiencies">Access Efficiencies<a class="headerlink" href="#access-efficiencies" title="Permanent link">&para;</a></h4>
+<p>Once you have your efficiencies, you can then put them in to the <a href="https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/PhysObjectExtractor/src/PatJetAnalyzer.cc#L199-L242">3 look up functions</a> that have been implemented in PatJetAnalyzer for storing efficiencies. Here, for example, is the b tag efficiencies function which returns efficiency given a jet momentum:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"></span>
+<span class="nf">PatJetAnalyzer::getBtagEfficiency</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">pt</span><span class="p">){</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">pt</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">25</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">0.263407</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">pt</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">0.548796</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">pt</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">75</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">0.656801</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">pt</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">0.689167</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">pt</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">125</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">0.697911</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">pt</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">150</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">0.700187</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">pt</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">200</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">0.679236</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">pt</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">400</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">0.625296</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">0.394916</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h4 id="access-scale-factors">Access Scale Factors<a class="headerlink" href="#access-scale-factors" title="Permanent link">&para;</a></h4>
+<p><a href="https://twiki.cern.ch/twiki/pub/CMSPublic/BtagRecommendation2011OpenData/CSV.csv">The data file</a> provided by the CMS b tagging group contains the scale factor functions for all types of jets. Some important titles to give more context to are as follows:</p>
+<ul>
+<li>OperatingPoint - This is the light (0), medium (1), or tight (2) cut of the flavored jet.</li>
+<li>formula - This is the equation for calculating the scale factor, where x is the momentum of the jet.</li>
+<li>jetFlavor - b = 0, c = 1, udsg = 2.</li>
+</ul>
+<p>Sorting Columns and creating filters with the .csv file can make accessing and finding sepcific scale factor equations easier. For example, filtering the OperatingPoint column to only show the number 1 will give you only medium cut jet information. Other useful information about the .csv file can be found <a href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/BTagCalibration">here</a>.</p>
+<p>The scale factor equations from the folumla column have been implemented in POET! In PatJetAnalyzer there are 2 functions, one for b and c flavored jets and one for light flavored jets, that return the scale factor of the jet depending on the momentum of the jet. Below is the b and c tag function.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"></span>
+<span class="nf">PatJetAnalyzer::getBorCtagSF</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">pt</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">eta</span><span class="p">){</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pt</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">670.</span><span class="p">)</span><span class="w"> </span><span class="n">pt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">670</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">fabs</span><span class="p">(</span><span class="n">eta</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">2.4</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="n">pt</span><span class="o">&lt;</span><span class="mf">20.</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">1.0</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mf">0.92955</span><span class="o">*</span><span class="p">((</span><span class="mf">1.</span><span class="o">+</span><span class="p">(</span><span class="mf">0.0589629</span><span class="o">*</span><span class="n">pt</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mf">1.</span><span class="o">+</span><span class="p">(</span><span class="mf">0.0568063</span><span class="o">*</span><span class="n">pt</span><span class="p">)));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>Look at this twiki for <a href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/BtagRecommendation2011OpenData#Data_MC_Scale_Factors">additional information about scale factors</a>.</p>
+<h3 id="calculating-weights">Calculating Weights<a class="headerlink" href="#calculating-weights" title="Permanent link">&para;</a></h3>
+<p>Once these functions are updated to their desired states, weight calculating can happen! The first thing to check for when event weight calculating is this:
+<code>if (jet_btag.at(value_jet_n) &gt; 0.679)</code>. This check is to see whether or not the jet distminator makes the cut we want our jets to make. In this case, we want our jets to make the medium cut (.679). If a jet makes the cut, there are then a couple more checks to be made:</p>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">hadronFlavour</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">5</span><span class="p">){</span><span class="w"></span>
+<span class="w">   </span><span class="n">eff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getBtagEfficiency</span><span class="p">(</span><span class="n">corrpt</span><span class="p">);</span><span class="w"></span>
+<span class="w"> </span><span class="n">SF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getBorCtagSF</span><span class="p">(</span><span class="n">corrpt</span><span class="p">,</span><span class="w"> </span><span class="n">jet_eta</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">value_jet_n</span><span class="p">));</span><span class="w"></span>
+<span class="w"> </span><span class="n">SFu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SF</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">uncertaintyForBTagSF</span><span class="p">(</span><span class="n">corrpt</span><span class="p">,</span><span class="w"> </span><span class="n">jet_eta</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">value_jet_n</span><span class="p">));</span><span class="w"></span>
+<span class="w"> </span><span class="n">SFd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SF</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">uncertaintyForBTagSF</span><span class="p">(</span><span class="n">corrpt</span><span class="p">,</span><span class="w"> </span><span class="n">jet_eta</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">value_jet_n</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">hadronFlavour</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">4</span><span class="p">){</span><span class="w"></span>
+<span class="w"> </span><span class="n">eff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getCtagEfficiency</span><span class="p">(</span><span class="n">corrpt</span><span class="p">);</span><span class="w"></span>
+<span class="w"> </span><span class="n">SF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getBorCtagSF</span><span class="p">(</span><span class="n">corrpt</span><span class="p">,</span><span class="w"> </span><span class="n">jet_eta</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">value_jet_n</span><span class="p">));</span><span class="w"></span>
+<span class="w"> </span><span class="n">SFu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SF</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">uncertaintyForBTagSF</span><span class="p">(</span><span class="n">corrpt</span><span class="p">,</span><span class="w"> </span><span class="n">jet_eta</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">value_jet_n</span><span class="p">)));</span><span class="w"></span>
+<span class="w"> </span><span class="n">SFd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SF</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">uncertaintyForBTagSF</span><span class="p">(</span><span class="n">corrpt</span><span class="p">,</span><span class="w"> </span><span class="n">jet_eta</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">value_jet_n</span><span class="p">)));</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="n">eff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getLFtagEfficiency</span><span class="p">(</span><span class="n">corrpt</span><span class="p">);</span><span class="w"></span>
+<span class="w"> </span><span class="n">SF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getLFtagSF</span><span class="p">(</span><span class="n">corrpt</span><span class="p">,</span><span class="w"> </span><span class="n">jet_eta</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">value_jet_n</span><span class="p">));</span><span class="w"></span>
+<span class="w"> </span><span class="n">SFu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SF</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">uncertaintyForLFTagSF</span><span class="p">(</span><span class="n">corrpt</span><span class="p">,</span><span class="w"> </span><span class="n">jet_eta</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">value_jet_n</span><span class="p">)));</span><span class="w"></span>
+<span class="w"> </span><span class="n">SFd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SF</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">uncertaintyForLFTagSF</span><span class="p">(</span><span class="n">corrpt</span><span class="p">,</span><span class="w"> </span><span class="n">jet_eta</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">value_jet_n</span><span class="p">)));</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>This section first finds which flavor of jet it is (b = 5, c = 4, and light = anything else) and then gets the efficiency for the respected jet, as well as calculates its scale factor. It also calculates its up and down quarked scale factors of the jet. Once these checks and calculations are complete, the following calulations can occur:</p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="n">MC</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="n">eff</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="n">btagWeight</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="n">SF</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">eff</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="n">btagWeightUp</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="n">SFu</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">eff</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="n">btagWeightDn</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="n">SFd</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">eff</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+<p>These calculations are the probability of a given configuration of jets in MC simulation (<code>MC</code>) and data (<code>btagWeight</code>, <code>btagWeightUp</code>, and <code>btagWeightDn</code>).
+The same process with a little bit different probability calculating is done if the jet did not meet the desired cut.</p>
+<p>Once these checks have finished for every jet you are looking at, a final calculation for the event weights is done.</p>
+<div class="highlight"><pre><span></span><code><span class="n">btagWeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">btagWeight</span><span class="o">/</span><span class="n">MC</span><span class="p">);</span><span class="w"></span>
+<span class="n">btagWeightUp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">btagWeightUp</span><span class="o">/</span><span class="n">MC</span><span class="p">);</span><span class="w"></span>
+<span class="n">btagWeightDn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">btagWeightDn</span><span class="o">/</span><span class="n">MC</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p>NOTE: There are many ways to go about calculating event weights. This <a href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/BtagRecommendation2011OpenData#Methods_to_Apply_b_Tagging_Effic">link</a> shows a couple of the different ways. In POET, method 1a is the method used.</p>
+<h3 id="uncertainties">Uncertainties<a class="headerlink" href="#uncertainties" title="Permanent link">&para;</a></h3>
+<p>As we just saw in the "Calculating Weights" section above, there are uncertainties that need to be considered. These uncertainties are actually already taken into account in the .csv file. When looking at the scale factor equation, there should be a main equation followed by either an addition or subtraction of a number, which is the uncertainty.</p>
+<h4 id="uncertainties-for-each-flavor">Uncertainties for Each Flavor<a class="headerlink" href="#uncertainties-for-each-flavor" title="Permanent link">&para;</a></h4>
+<p>In POET, there are 2 functions for the uncertainty, one for the b tag uncertainty and one for the light flavor tag uncertainty. The reason that there is not one specifically for c tagged jets is because c tagged jet's uncertainty is two times that of the b tagged jet's uncertainty, so you can simply multiply the b tag uncertainty call by two, as seen here: <code>SFu = SF + (2 * uncertaintyForBTagSF(corrpt, jet_eta.at(value_jet_n)));</code></p>
+<p>Here is what the b tag uncertainty function looks like, which returns the uncertainty given a jet momentum:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"></span>
+<span class="nf">PatJetAnalyzer::uncertaintyForBTagSF</span><span class="p">(</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">pt</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">eta</span><span class="p">){</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">fabs</span><span class="p">(</span><span class="n">eta</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">2.4</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="n">pt</span><span class="o">&lt;</span><span class="mf">20.</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">pt</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">0.0466655</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">pt</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">40</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">0.0203547</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">pt</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">0.0187707</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">pt</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">60</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">0.0250719</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">pt</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">70</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">0.023081</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">pt</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">80</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">0.0183273</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">pt</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">0.0256502</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">pt</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">120</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">0.0189555</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">pt</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">160</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">0.0236561</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">pt</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">210</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">0.0307624</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">pt</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">260</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">0.0387889</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">pt</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">320</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">0.0443912</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">pt</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">400</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">0.0693573</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">pt</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">500</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">0.0650147</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">0.066886</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h4 id="storing-final-weights">Storing Final Weights<a class="headerlink" href="#storing-final-weights" title="Permanent link">&para;</a></h4>
+<p>Also from the "Calculating Weights" section, there are 3 final variables that are used to store the final event weights that were calculated:
+<code>btagWeight</code>, <code>btagWeightUp</code> , and <code>btagWeightDn</code>. When the file has completed running, you can run root with your output file and look up these 3 names to access the data calculated from your run. Here is an example of these variables accessed in root (Normal - Black, Up - Red, Down - Blue):</p>
+<p><img alt="Example" src="../../../../images/Canvas_1.png" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This page is under construction</p>
+</div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../jetmetuncertain/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Jet/MET uncertainties" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Jet/MET uncertainties
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../pileupuncertain/" class="md-footer__link md-footer__link--next" aria-label="Next: Pileup Uncertainty" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Pileup Uncertainty
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.0bbba5b5.min.js"}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.e1a181d9.min.js"></script>
+      
+    
+  </body>
+</html>

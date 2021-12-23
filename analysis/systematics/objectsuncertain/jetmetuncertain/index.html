@@ -1,0 +1,2064 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="CMS Open Data Guide">
+      
+      
+      
+        <link rel="canonical" href="https://cms-opendata-guide.web.cern.ch/analysis/systematics/objectsuncertain/jetmetuncertain/">
+      
+      <link rel="icon" href="../../../../images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.3">
+    
+    
+      
+        <title>Jet/MET uncertainties - CMS Open Data Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.edf004c2.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700%7C&display=fallback">
+        <style>:root{--md-text-font:"Lato";--md-code-font:""}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#jet-uncertainty" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="CMS Open Data Guide" class="md-header__button md-logo" aria-label="CMS Open Data Guide" data-md-component="logo">
+      
+  <img src="../../../../images/cmslogo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CMS Open Data Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Jet/MET uncertainties
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/cernopendata/cms-opendata-guide/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cms-opendata-guide
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="CMS Open Data Guide" class="md-nav__button md-logo" aria-label="CMS Open Data Guide" data-md-component="logo">
+      
+  <img src="../../../../images/cmslogo.png" alt="logo">
+
+    </a>
+    CMS Open Data Guide
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/cernopendata/cms-opendata-guide/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cms-opendata-guide
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Computing Tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Computing Tools" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Computing Tools
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/cernportal/" class="md-nav__link">
+        CERN Open Data Portal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/cmsopendata/" class="md-nav__link">
+        CMS Open Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/cmstwiki/" class="md-nav__link">
+        CMS Twiki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/unix/" class="md-nav__link">
+        UNIX
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/root/" class="md-nav__link">
+        ROOT
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/cppandpython/" class="md-nav__link">
+        C++ and Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/git/" class="md-nav__link">
+        Git
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/docker/" class="md-nav__link">
+        Docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tools/virtualmachines/" class="md-nav__link">
+        Virtual Machines
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          CMSSW
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="CMSSW" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          CMSSW
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cmssw/cmsswoverview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cmssw/cmsswdatamodel/" class="md-nav__link">
+        Data Model
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cmssw/cmsswanalyzers/" class="md-nav__link">
+        Analyzers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cmssw/cmsswconfigure/" class="md-nav__link">
+        Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cmssw/cmsswconditions/" class="md-nav__link">
+        Conditions Data
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Analysis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Analysis" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Analysis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          Data and Simulation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data and Simulation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Data and Simulation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../datasim/collisiondata/" class="md-nav__link">
+        Collision Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../datasim/mcsimulations/" class="md-nav__link">
+        MC Simulations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../datasim/eventgeneration/" class="md-nav__link">
+        Event Generation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          Selection
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Selection" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Selection
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/triggers/" class="md-nav__link">
+        Triggers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/objects/" class="md-nav__link">
+        Physics Objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_3" type="checkbox" id="__nav_4_2_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_3">
+          Specific Physics Objects
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Specific Physics Objects" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Specific Physics Objects
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/objects/tools/" class="md-nav__link">
+        Common Tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/objects/muons/" class="md-nav__link">
+        Muons
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/objects/egamma/" class="md-nav__link">
+        Electrons and Photons
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/objects/jets/" class="md-nav__link">
+        Jets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/objects/met/" class="md-nav__link">
+        Missing ET
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/objectid/" class="md-nav__link">
+        Physics Object ID
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_5" type="checkbox" id="__nav_4_2_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_5">
+          ID Efficiency study
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ID Efficiency study" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          ID Efficiency study
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/tagandprobe/" class="md-nav__link">
+        Tag and Probe
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/signalextraction/" class="md-nav__link">
+        Signal extraction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/efficiencytool/" class="md-nav__link">
+        Efficiency Tool
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_5_4" type="checkbox" id="__nav_4_2_5_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_5_4">
+          Tutorial
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tutorial" data-md-level="4">
+        <label class="md-nav__title" for="__nav_4_2_5_4">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorial
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/tutorial/01-introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/tutorial/02-fitting/" class="md-nav__link">
+        Fitting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/tutorial/03-sidebandsubtraction/" class="md-nav__link">
+        Sideband Subtraction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/tutorial/04-comparison/" class="md-nav__link">
+        Comparison
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_5_5" type="checkbox" id="__nav_4_2_5_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_5_5">
+          Reference Guide (SB)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reference Guide (SB)" data-md-level="4">
+        <label class="md-nav__title" for="__nav_4_2_5_5">
+          <span class="md-nav__icon md-icon"></span>
+          Reference Guide (SB)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/sidebandreferenceguide/macro/" class="md-nav__link">
+        The Macro
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/sidebandreferenceguide/FitFunctions/" class="md-nav__link">
+        FitFunction class
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/sidebandreferenceguide/SidebandSubtraction/" class="md-nav__link">
+        SidebandSubtraction class
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/sidebandreferenceguide/InvariantMass/" class="md-nav__link">
+        InvariantMass class
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/sidebandreferenceguide/MassValues/" class="md-nav__link">
+        MassValues struct
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/sidebandreferenceguide/Type/" class="md-nav__link">
+        Type class
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/sidebandreferenceguide/TagProbe/" class="md-nav__link">
+        TagProbe class
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/sidebandreferenceguide/PtEtaPhi/" class="md-nav__link">
+        PtEtaPhi class
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/sidebandreferenceguide/PassingFailing/" class="md-nav__link">
+        PassingFailing class
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_5_6" type="checkbox" id="__nav_4_2_5_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_5_6">
+          Reference Guide (Fit)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reference Guide (Fit)" data-md-level="4">
+        <label class="md-nav__title" for="__nav_4_2_5_6">
+          <span class="md-nav__icon md-icon"></span>
+          Reference Guide (Fit)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/fittingreferenceguide/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../selection/idefficiencystudy/fittingreferenceguide/src_files/" class="md-nav__link">
+        Src files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3">
+          Luminosity
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Luminosity" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Luminosity
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../luminosity/lumi/" class="md-nav__link">
+        Luminosity
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_4">
+          Backgrounds
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Backgrounds" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          Backgrounds
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../backgrounds/techniques/" class="md-nav__link">
+        Techniques
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../backgrounds/qcdestimation/" class="md-nav__link">
+        QCD Estimation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5">
+          Systematics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Systematics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          Systematics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lumiuncertain/" class="md-nav__link">
+        Luminosity Uncertainties
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mcuncertain/" class="md-nav__link">
+        MC Uncertainty
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5_3" type="checkbox" id="__nav_4_5_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5_3">
+          Physics Object Uncertainty
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Physics Object Uncertainty" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          Physics Object Uncertainty
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../leptonuncertain/" class="md-nav__link">
+        Lepton/Photon uncertainties
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Jet/MET uncertainties
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Jet/MET uncertainties
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#jet-energy-corrections-jec" class="md-nav__link">
+    Jet Energy Corrections (JEC)
+  </a>
+  
+    <nav class="md-nav" aria-label="Jet Energy Corrections (JEC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implementing-jec-in-cms-software" class="md-nav__link">
+    Implementing JEC in CMS Software
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#applying-jec-correction" class="md-nav__link">
+    Applying JEC Correction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jet-energy-resolution-jer" class="md-nav__link">
+    Jet Energy Resolution (JER)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jet-correction-uncertainty" class="md-nav__link">
+    Jet Correction Uncertainty
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storing-the-corrections" class="md-nav__link">
+    Storing the corrections
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-all-together" class="md-nav__link">
+    Putting it all together 
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../btaguncertain/" class="md-nav__link">
+        Tagging uncertainties
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pileupuncertain/" class="md-nav__link">
+        Pileup Uncertainty
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_6" type="checkbox" id="__nav_4_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_6">
+          Interpretation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Interpretation" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_6">
+          <span class="md-nav__icon md-icon"></span>
+          Interpretation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../interpretation/stats/" class="md-nav__link">
+        Statistics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../interpretation/limits/" class="md-nav__link">
+        Upper-limit Calculations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../about/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#jet-energy-corrections-jec" class="md-nav__link">
+    Jet Energy Corrections (JEC)
+  </a>
+  
+    <nav class="md-nav" aria-label="Jet Energy Corrections (JEC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implementing-jec-in-cms-software" class="md-nav__link">
+    Implementing JEC in CMS Software
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#applying-jec-correction" class="md-nav__link">
+    Applying JEC Correction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jet-energy-resolution-jer" class="md-nav__link">
+    Jet Energy Resolution (JER)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jet-correction-uncertainty" class="md-nav__link">
+    Jet Correction Uncertainty
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storing-the-corrections" class="md-nav__link">
+    Storing the corrections
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-all-together" class="md-nav__link">
+    Putting it all together 
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/cernopendata/cms-opendata-guide/edit/master/docs/analysis/systematics/objectsuncertain/jetmetuncertain.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="jet-uncertainty">Jet Uncertainty<a class="headerlink" href="#jet-uncertainty" title="Permanent link">&para;</a></h1>
+<p>Unsurprisingly, the CMS detector does not measure jet energies perfectly, nor do simulation and data agree perfectly! The measured energy of jet must be corrected so that it can be related to the true energy of its parent particle. These corrections account for several effects and are factorized so that each effect can be studied independently.</p>
+<h2 id="jet-energy-corrections-jec">Jet Energy Corrections (JEC)<a class="headerlink" href="#jet-energy-corrections-jec" title="Permanent link">&para;</a></h2>
+<hr />
+<p><strong>What is JEC?</strong></p>
+<p>JEC is the first set of corrections applied on jets that adjust the mean of the response distribution in a series of correction levels.</p>
+<p><strong>Correction Levels</strong></p>
+<p><img alt="Corr Levels" src="https://cms-opendata-workshop.github.io/workshop-lesson-jetmet/assets/img/correctionFlow.PNG" /></p>
+<p>Particles from additional interactions in nearby bunch crossings of the LHC contribute energy in the calorimeters that must somehow be distinguished from the energy deposits of the main interaction. Extra energy in a jet's cone can make its measured momentum larger than the momentum of the parent particle. The first layer ("L1") of jet energy corrections accounts for pileup by subtracting the average transverse momentum contribution of the pileup interactions to the jet's cone area. This average pileup contribution varies by pseudorapidity and, of course, by the number of interactions in the event.</p>
+<p>The second and third layers of corrections ("L2L3") correct the measured momentum to the true momentum as functions of momentum and pseudorapidity, bringing the reconstructed jet in line with the generated jet. These corrections are derived using momentum balancing and missing energy techniques in dijet and Z boson events. One well-measured object (ex: a jet near the center of the detector, a Z boson reconstructed from leptons) is balanced against a jet for which corrections are derived.</p>
+<p>All of these corrections are applied to both data and simulation. Data events are then given "residual" corrections to bring data into line with the corrected simulation. A final set of flavor-based corrections are used in certain analyses that are especially sensitive to flavor effects. All of the corrections are described in <a href="https://arxiv.org/pdf/1107.4277.pdf">this paper</a>. The figure below shows the result of the L1+L2+L3 corrections on the jet response.</p>
+<p><img alt="Jet Correction Response" src="https://cms-opendata-workshop.github.io/workshop-lesson-jetmet/assets/img/responseFlow.PNG" /></p>
+<h3 id="implementing-jec-in-cms-software">Implementing JEC in CMS Software<a class="headerlink" href="#implementing-jec-in-cms-software" title="Permanent link">&para;</a></h3>
+<p><strong>JEC From Text Files</strong></p>
+<p>There are several methods available for applying jet energy corrections to reconstructed jets. We have demonstrated a method to read in the corrections from text files and extract the corrections manually for each jet. In order to produce these text files, we have to run <a href="https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/PhysObjectExtractor/JEC/jec_cfg.py">jec_cfg.py</a>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">isData</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="c1">#if len(sys.argv) &gt; 1: isData = bool(eval(sys.argv[1]))</span>
+<span class="c1">#print &#39;Writing JEC text files. isData = &#39;,isData</span>
+
+<span class="c1"># CMS process initialization</span>
+<span class="n">process</span> <span class="o">=</span> <span class="n">cms</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="s1">&#39;jecprocess&#39;</span><span class="p">)</span>
+<span class="n">process</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;Configuration.StandardSequences.Services_cff&#39;</span><span class="p">)</span>
+<span class="n">process</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;Configuration.StandardSequences.FrontierConditions_GlobalTag_cff&#39;</span><span class="p">)</span>
+
+<span class="c1"># connect to global tag</span>
+<span class="k">if</span> <span class="n">isData</span><span class="p">:</span>
+<span class="c1">#    process.GlobalTag.connect = cms.string(&#39;sqlite_file:/cvmfs/cms-opendata-conddb.cern.ch/FT53_V21A_AN6_FULL.db&#39;)</span>
+    <span class="n">process</span><span class="o">.</span><span class="n">GlobalTag</span><span class="o">.</span><span class="n">globaltag</span> <span class="o">=</span> <span class="s1">&#39;FT53_V21A_AN6::All&#39;</span>
+<span class="k">else</span><span class="p">:</span>
+<span class="c1">#    process.GlobalTag.connect = cms.string(&#39;sqlite_file:/cvmfs/cms-opendata-conddb.cern.ch/START53_V27.db&#39;)</span>
+    <span class="n">process</span><span class="o">.</span><span class="n">GlobalTag</span><span class="o">.</span><span class="n">globaltag</span> <span class="o">=</span> <span class="s1">&#39;START53_V27::All&#39;</span>
+
+
+<span class="c1"># setup JetCorrectorDBReader </span>
+<span class="n">process</span><span class="o">.</span><span class="n">maxEvents</span> <span class="o">=</span> <span class="n">cms</span><span class="o">.</span><span class="n">untracked</span><span class="o">.</span><span class="n">PSet</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="n">cms</span><span class="o">.</span><span class="n">untracked</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">process</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">cms</span><span class="o">.</span><span class="n">Source</span><span class="p">(</span><span class="s1">&#39;EmptySource&#39;</span><span class="p">)</span>
+<span class="n">process</span><span class="o">.</span><span class="n">ak5</span> <span class="o">=</span> <span class="n">cms</span><span class="o">.</span><span class="n">EDAnalyzer</span><span class="p">(</span><span class="s1">&#39;JetCorrectorDBReader&#39;</span><span class="p">,</span> 
+                             <span class="n">payloadName</span><span class="o">=</span><span class="n">cms</span><span class="o">.</span><span class="n">untracked</span><span class="o">.</span><span class="n">string</span><span class="p">(</span><span class="s1">&#39;AK5PF&#39;</span><span class="p">),</span>
+                             <span class="n">printScreen</span><span class="o">=</span><span class="n">cms</span><span class="o">.</span><span class="n">untracked</span><span class="o">.</span><span class="n">bool</span><span class="p">(</span><span class="kc">False</span><span class="p">),</span>
+                             <span class="n">createTextFile</span><span class="o">=</span><span class="n">cms</span><span class="o">.</span><span class="n">untracked</span><span class="o">.</span><span class="n">bool</span><span class="p">(</span><span class="kc">True</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="n">isData</span><span class="p">:</span>
+    <span class="n">process</span><span class="o">.</span><span class="n">ak5</span><span class="o">.</span><span class="n">globalTag</span> <span class="o">=</span> <span class="n">cms</span><span class="o">.</span><span class="n">untracked</span><span class="o">.</span><span class="n">string</span><span class="p">(</span><span class="s1">&#39;FT53_V21A_AN6&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">process</span><span class="o">.</span><span class="n">ak5</span><span class="o">.</span><span class="n">globalTag</span> <span class="o">=</span> <span class="n">cms</span><span class="o">.</span><span class="n">untracked</span><span class="o">.</span><span class="n">string</span><span class="p">(</span><span class="s1">&#39;START53_V27&#39;</span><span class="p">)</span>
+
+<span class="n">process</span><span class="o">.</span><span class="n">p</span> <span class="o">=</span> <span class="n">cms</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">process</span><span class="o">.</span><span class="n">ak5</span><span class="p">)</span>
+</code></pre></div>
+<p>Note that this analyzer will need to be run with both <code>isData = True</code> and <code>isData = False</code> to produce text files for both.</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span><span class="nb">cd</span> JEC
+<span class="gp">$ </span>cmsRun jec_cfg.py
+<span class="gp">$ </span><span class="c1">#edit the file and flip isData</span>
+<span class="gp">$ </span>cmsRun jec_cfg.py
+</code></pre></div>
+<h2 id="applying-jec-correction">Applying JEC Correction<a class="headerlink" href="#applying-jec-correction" title="Permanent link">&para;</a></h2>
+<p>JEC begins in <a href="https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/PhysObjectExtractor/python/poet_cfg.py">poet_cfg.py</a>, where we apply jet energy corrections and Type-1 MET corrections on PAT jets, which are a popular object format in CMS that stands for "Physics Analysis Toolkit". To do this we will load the global tag and databases directly in the configuration file and use the ‘addJetCollection’ process to create a collection of pat::jets.</p>
+<p><em>Note: The JEC Uncertainty text file is needed for the manually created correction uncertainties created inside of the analyzer. Uncertainty will be covered later.</em></p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">doPat</span><span class="p">:</span>
+ <span class="o">...</span>
+ <span class="c1"># Choose which jet correction levels to apply</span>
+ <span class="n">jetcorrlabels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;L1FastJet&#39;</span><span class="p">,</span><span class="s1">&#39;L2Relative&#39;</span><span class="p">,</span><span class="s1">&#39;L3Absolute&#39;</span><span class="p">]</span>
+ <span class="k">if</span> <span class="n">isData</span><span class="p">:</span>
+  <span class="c1"># For data we need to remove generator-level matching processes</span>
+  <span class="n">runOnData</span><span class="p">(</span><span class="n">process</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Jets&#39;</span><span class="p">,</span><span class="s1">&#39;METs&#39;</span><span class="p">],</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">[])</span>
+  <span class="n">jetcorrlabels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;L2L3Residual&#39;</span><span class="p">)</span>
+
+ <span class="c1"># Set up the new jet collection</span>
+ <span class="n">process</span><span class="o">.</span><span class="n">ak5PFJets</span><span class="o">.</span><span class="n">doAreaFastjet</span> <span class="o">=</span> <span class="kc">True</span>
+ <span class="n">addPfMET</span><span class="p">(</span><span class="n">process</span><span class="p">,</span> <span class="s1">&#39;PF&#39;</span><span class="p">)</span>
+
+ <span class="n">addJetCollection</span><span class="p">(</span><span class="n">process</span><span class="p">,</span><span class="n">cms</span><span class="o">.</span><span class="n">InputTag</span><span class="p">(</span><span class="s1">&#39;ak5PFJets&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;AK5&#39;</span><span class="p">,</span> <span class="s1">&#39;PFCorr&#39;</span><span class="p">,</span>
+   <span class="n">doJTA</span>        <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+   <span class="n">doBTagging</span>   <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+   <span class="n">jetCorrLabel</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;AK5PF&#39;</span><span class="p">,</span> <span class="n">cms</span><span class="o">.</span><span class="n">vstring</span><span class="p">(</span><span class="n">jetcorrlabels</span><span class="p">)),</span>
+   <span class="n">doType1MET</span>   <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+   <span class="n">doL1Cleaning</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+   <span class="n">doL1Counters</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+   <span class="n">doJetID</span>      <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+   <span class="n">jetIdLabel</span>   <span class="o">=</span> <span class="s2">&quot;ak5&quot;</span><span class="p">,</span>
+   <span class="p">)</span>
+ <span class="n">process</span><span class="o">.</span><span class="n">myjets</span><span class="o">=</span> <span class="n">cms</span><span class="o">.</span><span class="n">EDAnalyzer</span><span class="p">(</span><span class="s1">&#39;PatJetAnalyzer&#39;</span><span class="p">,</span>
+       <span class="n">InputCollection</span> <span class="o">=</span> <span class="n">cms</span><span class="o">.</span><span class="n">InputTag</span><span class="p">(</span><span class="s2">&quot;selectedPatJetsAK5PFCorr&quot;</span><span class="p">),</span>
+                                   <span class="n">isData</span> <span class="o">=</span> <span class="n">cms</span><span class="o">.</span><span class="n">bool</span><span class="p">(</span><span class="n">isData</span><span class="p">),</span>
+                                   <span class="n">jecUncName</span> <span class="o">=</span> <span class="n">cms</span><span class="o">.</span><span class="n">FileInPath</span><span class="p">(</span><span class="s1">&#39;PhysObjectExtractorTool/PhysObjectExtractor/JEC/&#39;</span><span class="o">+</span><span class="n">JecString</span><span class="o">+</span><span class="s1">&#39;Uncertainty_AK5PF.txt&#39;</span><span class="p">),</span> 
+                                   <span class="n">jerResName</span> <span class="o">=</span> <span class="n">cms</span><span class="o">.</span><span class="n">FileInPath</span><span class="p">(</span><span class="s1">&#39;PhysObjectExtractorTool/PhysObjectExtractor/JEC/JetResolutionInputAK5PF.txt&#39;</span><span class="p">)</span>         
+                               <span class="p">)</span>
+ <span class="o">...</span>
+</code></pre></div>
+<p>Now we can go into <a href="https://github.com/cms-legacydata-analyses/PhysObjectExtractorTool/blob/master/PhysObjectExtractor/src/PatJetAnalyzer.cc">PatJetAnalyzer.cc</a>, where in the jet loop of <code>analyzeJets</code>, the correction has already automatically been corrected for each jet. We then save a uncorrected version of the jet as <code>uncorrJet</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pat</span><span class="o">::</span><span class="n">Jet</span><span class="o">&gt;::</span><span class="n">const_iterator</span><span class="w"> </span><span class="n">itjet</span><span class="o">=</span><span class="n">myjets</span><span class="o">-&gt;</span><span class="n">begin</span><span class="p">();</span><span class="w"> </span><span class="n">itjet</span><span class="o">!=</span><span class="n">myjets</span><span class="o">-&gt;</span><span class="n">end</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">itjet</span><span class="p">){</span><span class="w"></span>
+<span class="w">     </span><span class="n">pat</span><span class="o">::</span><span class="n">Jet</span><span class="w"> </span><span class="n">uncorrJet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">correctedJet</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w">     </span>
+<span class="w">     </span><span class="p">...</span><span class="w"></span>
+</code></pre></div>
+<!--- JER -------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<h2 id="jet-energy-resolution-jer">Jet Energy Resolution (JER)<a class="headerlink" href="#jet-energy-resolution-jer" title="Permanent link">&para;</a></h2>
+<hr />
+<p><strong>What is JER?</strong></p>
+<p>Jet Energy Resolution (JER) corrections are applied after JEC on strictly MC simulations. Unlike JEC, which adjusts for the mean of the response distribution, JER adjusts the width of the distribution. This is because MC simulations tend to be more sharply peaked and less broad than the same distribution in data, therefore we have to increase the resolution based on the effects of pileup, jet size and jet flavor.</p>
+<p><strong>Accesing JER in CMS Software</strong></p>
+<p>Unlike JEC, the majority of JER is done inside of <code>PatJetAnalyzer.cc</code>, but we do have to import the file path to the text file containing a jet resolution factor table from the JEC directory in <code>poet_cfg.py</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">process</span><span class="o">.</span><span class="n">myjets</span><span class="o">=</span> <span class="n">cms</span><span class="o">.</span><span class="n">EDAnalyzer</span><span class="p">(</span><span class="s1">&#39;PatJetAnalyzer&#39;</span><span class="p">,</span>
+           <span class="o">...</span> 
+           <span class="n">jerResName</span> <span class="o">=</span> <span class="n">cms</span><span class="o">.</span><span class="n">FileInPath</span><span class="p">(</span><span class="s1">&#39;PhysObjectExtractorTool/PhysObjectExtractor/JEC/JetResolutionInputAK5PF.txt&#39;</span><span class="p">)</span>         
+           <span class="p">)</span>
+</code></pre></div>
+<p>Back inside the jet loop, we define <code>ptscale</code>, the eventual scale factor multiplied onto the jet momentum.</p>
+<p><em>Note: As mentioned previously, if we are running <code>PatJetAnalyzer.cc</code> on data, we do not want to affect to the resolution, so we initialize it as <code>1</code>.</em></p>
+<p>Next we calculate <code>ptscale</code> using one of two methods:</p>
+<ol>
+<li>
+<p>A stochastic smearing method, which is used on generator-level jets (<code>genJet</code>), described by equation 4.11 in <a href="https://oaktrust.library.tamu.edu/handle/1969.1/173472">this dissertation</a>.</p>
+</li>
+<li>
+<p>A hybrid smearing method, which is used otherwise, described in section 8 of the <a href="https://arxiv.org/pdf/1607.03663.pdf">2017 CMS jet algorithm paper</a>, which also includes more information about JEC in general.</p>
+</li>
+</ol>
+<p><em>Note: Also mentioned previously was the fact that JER is applied after JEC, meaning the pT that is used various times in the evaluations (e.g <code>PTNPU.push_back( itjet-&gt;pt() );</code>) is the JEC corrected momentum, rather than the uncorrected one.</em></p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"></span>
+<span class="nf">JetAnalyzer::analyze</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">edm</span><span class="o">::</span><span class="n">Event</span><span class="o">&amp;</span><span class="w"> </span><span class="n">iEvent</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">edm</span><span class="o">::</span><span class="n">EventSetup</span><span class="o">&amp;</span><span class="w"> </span><span class="n">iSetup</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">...</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pat</span><span class="o">::</span><span class="n">Jet</span><span class="o">&gt;::</span><span class="n">const_iterator</span><span class="w"> </span><span class="n">itjet</span><span class="o">=</span><span class="n">myjets</span><span class="o">-&gt;</span><span class="n">begin</span><span class="p">();</span><span class="w"> </span><span class="n">itjet</span><span class="o">!=</span><span class="n">myjets</span><span class="o">-&gt;</span><span class="n">end</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">itjet</span><span class="p">){</span><span class="w">     </span>
+<span class="w">      </span><span class="p">...</span><span class="w"></span>
+<span class="w">      </span><span class="n">ptscale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">isData</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">factors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factorLookup</span><span class="p">(</span><span class="n">fabs</span><span class="p">(</span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">eta</span><span class="p">()));</span><span class="w"> </span><span class="c1">// returns in order {factor, factor_down, factor_up}</span>
+<span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">feta</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">PTNPU</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="n">feta</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="w"> </span><span class="n">fabs</span><span class="p">(</span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">eta</span><span class="p">())</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w"> </span><span class="n">PTNPU</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="w"> </span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">()</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w"> </span><span class="n">PTNPU</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="w"> </span><span class="n">vertices</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jer_</span><span class="o">-&gt;</span><span class="n">correction</span><span class="p">(</span><span class="n">feta</span><span class="p">,</span><span class="w"> </span><span class="n">PTNPU</span><span class="p">);</span><span class="w"></span>
+<span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">pt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">();</span><span class="w"></span>
+
+<span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">reco</span><span class="o">::</span><span class="n">GenJet</span><span class="w"> </span><span class="o">*</span><span class="n">genJet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">genJet</span><span class="p">();</span><span class="w"></span>
+<span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">smeared</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">genJet</span><span class="p">){</span><span class="w"></span>
+<span class="w">   </span><span class="kt">double</span><span class="w"> </span><span class="n">deltaPt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fabs</span><span class="p">(</span><span class="n">genJet</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">pt</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="kt">double</span><span class="w"> </span><span class="n">deltaR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reco</span><span class="o">::</span><span class="n">deltaR</span><span class="p">(</span><span class="n">genJet</span><span class="o">-&gt;</span><span class="n">p4</span><span class="p">(),</span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">p4</span><span class="p">());</span><span class="w"></span>
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">deltaR</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0.2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">deltaPt</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">3</span><span class="o">*</span><span class="n">pt</span><span class="o">*</span><span class="n">res</span><span class="p">){</span><span class="w"></span>
+<span class="w">     </span><span class="kt">double</span><span class="w"> </span><span class="n">gen_pt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">genJet</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">();</span><span class="w"></span>
+<span class="w">     </span><span class="kt">double</span><span class="w"> </span><span class="n">reco_pt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pt</span><span class="p">;</span><span class="w"></span>
+<span class="w">     </span><span class="kt">double</span><span class="w"> </span><span class="n">deltapt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">reco_pt</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">gen_pt</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">factors</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w"></span>
+<span class="w">     </span><span class="kt">double</span><span class="w"> </span><span class="n">deltapt_down</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">reco_pt</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">gen_pt</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">factors</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span><span class="w"></span>
+<span class="w">     </span><span class="kt">double</span><span class="w"> </span><span class="n">deltapt_up</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">reco_pt</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">gen_pt</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">factors</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span><span class="w"></span>
+<span class="w">     </span><span class="n">ptscale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">reco_pt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">deltapt</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">reco_pt</span><span class="p">);</span><span class="w"></span>
+<span class="w">     </span><span class="p">...</span><span class="w"></span>
+<span class="w">     </span><span class="n">smeared</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="w"> </span><span class="p">}</span><span class="w"> </span>
+<span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">smeared</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">factors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">TRandom3</span><span class="w"> </span><span class="n">JERrand</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">JERrand</span><span class="p">.</span><span class="n">SetSeed</span><span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">phi</span><span class="p">()</span><span class="o">*</span><span class="mf">1e4</span><span class="p">)));</span><span class="w"></span>
+<span class="w">   </span><span class="n">ptscale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="n">JERrand</span><span class="p">.</span><span class="n">Gaus</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span><span class="n">sqrt</span><span class="p">(</span><span class="n">factors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">factors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span><span class="n">res</span><span class="o">*</span><span class="n">pt</span><span class="p">)</span><span class="o">/</span><span class="n">pt</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="p">...</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h2 id="jet-correction-uncertainty">Jet Correction Uncertainty<a class="headerlink" href="#jet-correction-uncertainty" title="Permanent link">&para;</a></h2>
+<p>An important factor we have to keep in mind when applying both JEC and JER are the statistical uncertainities. These uncertainties have several sources, shown in the figure below. The L1 (pileup) uncertainty dominates at low momentum, while the L3 (absolute scale) uncertainty takes over for higher momentum jets. All corrections are quite precise for jets located near the center of the CMS barrel region, and the precision drops as pseudorapidity increases and different subdetectors lose coverage.</p>
+<p><img alt="JEC uncertainty" src="https://cms-opendata-workshop.github.io/workshop-lesson-jetmet/assets/img/uncertainties.PNG" /></p>
+<p>These uncertainties are accounted for by including an "up" and "down" version of our correction factor.</p>
+<p><strong>JEC Uncertainty</strong></p>
+<p>While the JEC corrected momentum can be accessed automatically through the jet object (e.g. <code>itjet-&gt;pt()</code>), the "up" and "down" versions must be calculated manually.</p>
+<p>Here in the jet loop, the <code>corrUp</code> and <code>corrDown</code> variables are created in part using <code>jetUnc_-&gt;getUncertainty()</code> (This object is created from the a text file which was briefly mentioned during the JEC initialization in <code>poet_cfg.py</code> of the <em>Implementing JEC in CMS Software</em> section). In order to access the <code>getUncertainty</code> function, we use a JEC uncertainty object, in this case called <code>jecUnc_</code>, where we input information about the jet, like its psuedorapidity and momentum.</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pat</span><span class="o">::</span><span class="n">Jet</span><span class="o">&gt;::</span><span class="n">const_iterator</span><span class="w"> </span><span class="n">itjet</span><span class="o">=</span><span class="n">myjets</span><span class="o">-&gt;</span><span class="n">begin</span><span class="p">();</span><span class="w"> </span><span class="n">itjet</span><span class="o">!=</span><span class="n">myjets</span><span class="o">-&gt;</span><span class="n">end</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">itjet</span><span class="p">){</span><span class="w"></span>
+<span class="w">      </span><span class="p">...</span><span class="w"></span>
+<span class="w">      </span><span class="kt">double</span><span class="w"> </span><span class="n">corrUp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="kt">double</span><span class="w"> </span><span class="n">corrDown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">jecUnc_</span><span class="o">-&gt;</span><span class="n">setJetEta</span><span class="p">(</span><span class="w"> </span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">eta</span><span class="p">()</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">jecUnc_</span><span class="o">-&gt;</span><span class="n">setJetPt</span><span class="p">(</span><span class="w"> </span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">()</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">corrUp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fabs</span><span class="p">(</span><span class="n">jecUnc_</span><span class="o">-&gt;</span><span class="n">getUncertainty</span><span class="p">(</span><span class="mi">1</span><span class="p">)));</span><span class="w"></span>
+<span class="w">      </span><span class="n">jecUnc_</span><span class="o">-&gt;</span><span class="n">setJetEta</span><span class="p">(</span><span class="w"> </span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">eta</span><span class="p">()</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">jecUnc_</span><span class="o">-&gt;</span><span class="n">setJetPt</span><span class="p">(</span><span class="w"> </span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">()</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">corrDown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">fabs</span><span class="p">(</span><span class="n">jecUnc_</span><span class="o">-&gt;</span><span class="n">getUncertainty</span><span class="p">(</span><span class="mi">-1</span><span class="p">)));</span><span class="w"></span>
+<span class="w">      </span><span class="p">...</span><span class="w"></span>
+</code></pre></div>
+<p><strong>JER Uncertainty</strong></p>
+<p>Just how <code>ptscale</code> was manually calculated on genJets using this line:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ptscale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">reco_pt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">deltapt</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">reco_pt</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p>We calculate the JER uncertainty like so:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ptscale_up</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">reco_pt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">deltapt_up</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">reco_pt</span><span class="p">);</span><span class="w"></span>
+<span class="n">ptscale_down</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">reco_pt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">deltapt_down</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">reco_pt</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p>Otherwise for non-genJets,</p>
+<div class="highlight"><pre><span></span><code><span class="n">JERrand</span><span class="p">.</span><span class="n">SetSeed</span><span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">phi</span><span class="p">()</span><span class="o">*</span><span class="mf">1e4</span><span class="p">)));</span><span class="w"></span>
+<span class="n">ptscale_down</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="n">JERrand</span><span class="p">.</span><span class="n">Gaus</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span><span class="n">sqrt</span><span class="p">(</span><span class="n">factors</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">factors</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span><span class="n">res</span><span class="o">*</span><span class="n">pt</span><span class="p">)</span><span class="o">/</span><span class="n">pt</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">JERrand</span><span class="p">.</span><span class="n">SetSeed</span><span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">phi</span><span class="p">()</span><span class="o">*</span><span class="mf">1e4</span><span class="p">)));</span><span class="w"></span>
+<span class="n">ptscale_up</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="n">JERrand</span><span class="p">.</span><span class="n">Gaus</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span><span class="n">sqrt</span><span class="p">(</span><span class="n">factors</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">factors</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span><span class="n">res</span><span class="o">*</span><span class="n">pt</span><span class="p">)</span><span class="o">/</span><span class="n">pt</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<h2 id="storing-the-corrections">Storing the corrections<a class="headerlink" href="#storing-the-corrections" title="Permanent link">&para;</a></h2>
+<p>The final step in actualizing the jet corrections occurs after the JEC/JER calculations, where we fill the five momentum vectors for each jet.</p>
+<ul>
+<li><code>corr_jet_pt</code> is the JEC + JER corrected pT</li>
+<li><code>corr_jet_ptUp</code> and <code>corr_jet_ptDown</code> are the ("up" and "down" versions of the JEC) + JER corrected pT</li>
+<li><code>corr_jet_ptSmearUp</code> and <code>corr_jet_ptSmearDown</code> are the JEC + (smeared "up" and "down" versions of the JER) corrected pT</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">corr_jet_pt</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">ptscale</span><span class="o">*</span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">());</span><span class="w"></span>
+<span class="n">corr_jet_ptUp</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">ptscale</span><span class="o">*</span><span class="n">corrUp</span><span class="o">*</span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">());</span><span class="w"></span>
+<span class="n">corr_jet_ptDown</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">ptscale</span><span class="o">*</span><span class="n">corrDown</span><span class="o">*</span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">());</span><span class="w"></span>
+<span class="n">corr_jet_ptSmearUp</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">ptscale_up</span><span class="o">*</span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">());</span><span class="w"></span>
+<span class="n">corr_jet_ptSmearDown</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">ptscale_down</span><span class="o">*</span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">());</span><span class="w"> </span>
+</code></pre></div>
+<h2 id="putting-it-all-together">Putting it all together <!---Inviting the reader to take a look at the code with JEC+JER all togehter--><a class="headerlink" href="#putting-it-all-together" title="Permanent link">&para;</a></h2>
+<p>Inside of the dropdown is the full jet loop, comprised of the storing of the uncorrected jet object, creation of JEC uncertainty, JER corrections + uncertainty, and storing of the corrected momentum.</p>
+<!-- markdownlint-disable -->
+<details><summary>Full Jet Loop</summary>
+<!-- markdownlint-restore -->
+
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pat</span><span class="o">::</span><span class="n">Jet</span><span class="o">&gt;::</span><span class="n">const_iterator</span><span class="w"> </span><span class="n">itjet</span><span class="o">=</span><span class="n">myjets</span><span class="o">-&gt;</span><span class="n">begin</span><span class="p">();</span><span class="w"> </span><span class="n">itjet</span><span class="o">!=</span><span class="n">myjets</span><span class="o">-&gt;</span><span class="n">end</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">itjet</span><span class="p">){</span><span class="w"></span>
+<span class="w">      </span><span class="n">pat</span><span class="o">::</span><span class="n">Jet</span><span class="w"> </span><span class="n">uncorrJet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">correctedJet</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w">     </span>
+
+<span class="w">      </span><span class="kt">double</span><span class="w"> </span><span class="n">corrUp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="kt">double</span><span class="w"> </span><span class="n">corrDown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">jecUnc_</span><span class="o">-&gt;</span><span class="n">setJetEta</span><span class="p">(</span><span class="w"> </span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">eta</span><span class="p">()</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">jecUnc_</span><span class="o">-&gt;</span><span class="n">setJetPt</span><span class="p">(</span><span class="w"> </span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">()</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">corrUp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fabs</span><span class="p">(</span><span class="n">jecUnc_</span><span class="o">-&gt;</span><span class="n">getUncertainty</span><span class="p">(</span><span class="mi">1</span><span class="p">)));</span><span class="w"></span>
+<span class="w">      </span><span class="n">jecUnc_</span><span class="o">-&gt;</span><span class="n">setJetEta</span><span class="p">(</span><span class="w"> </span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">eta</span><span class="p">()</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">jecUnc_</span><span class="o">-&gt;</span><span class="n">setJetPt</span><span class="p">(</span><span class="w"> </span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">()</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">corrDown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">fabs</span><span class="p">(</span><span class="n">jecUnc_</span><span class="o">-&gt;</span><span class="n">getUncertainty</span><span class="p">(</span><span class="mi">-1</span><span class="p">)));</span><span class="w"></span>
+
+<span class="w">      </span><span class="n">ptscale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">ptscale_down</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">ptscale_up</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">isData</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">factors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factorLookup</span><span class="p">(</span><span class="n">fabs</span><span class="p">(</span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">eta</span><span class="p">()));</span><span class="w"> </span><span class="c1">// returns in order {factor, factor_down, factor_up}</span>
+<span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">feta</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">PTNPU</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="n">feta</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="w"> </span><span class="n">fabs</span><span class="p">(</span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">eta</span><span class="p">())</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w"> </span><span class="n">PTNPU</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="w"> </span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">()</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w"> </span><span class="n">PTNPU</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="w"> </span><span class="n">vertices</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jer_</span><span class="o">-&gt;</span><span class="n">correction</span><span class="p">(</span><span class="n">feta</span><span class="p">,</span><span class="w"> </span><span class="n">PTNPU</span><span class="p">);</span><span class="w"></span>
+<span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">pt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">();</span><span class="w"></span>
+
+<span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">reco</span><span class="o">::</span><span class="n">GenJet</span><span class="w"> </span><span class="o">*</span><span class="n">genJet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">genJet</span><span class="p">();</span><span class="w"></span>
+<span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">smeared</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">genJet</span><span class="p">){</span><span class="w"></span>
+<span class="w">   </span><span class="kt">double</span><span class="w"> </span><span class="n">deltaPt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fabs</span><span class="p">(</span><span class="n">genJet</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">pt</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="kt">double</span><span class="w"> </span><span class="n">deltaR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reco</span><span class="o">::</span><span class="n">deltaR</span><span class="p">(</span><span class="n">genJet</span><span class="o">-&gt;</span><span class="n">p4</span><span class="p">(),</span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">p4</span><span class="p">());</span><span class="w"></span>
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">deltaR</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0.2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">deltaPt</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">3</span><span class="o">*</span><span class="n">pt</span><span class="o">*</span><span class="n">res</span><span class="p">){</span><span class="w"></span>
+<span class="w">     </span><span class="kt">double</span><span class="w"> </span><span class="n">gen_pt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">genJet</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">();</span><span class="w"></span>
+<span class="w">     </span><span class="kt">double</span><span class="w"> </span><span class="n">reco_pt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pt</span><span class="p">;</span><span class="w"></span>
+<span class="w">     </span><span class="kt">double</span><span class="w"> </span><span class="n">deltapt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">reco_pt</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">gen_pt</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">factors</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w"></span>
+<span class="w">     </span><span class="kt">double</span><span class="w"> </span><span class="n">deltapt_down</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">reco_pt</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">gen_pt</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">factors</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span><span class="w"></span>
+<span class="w">     </span><span class="kt">double</span><span class="w"> </span><span class="n">deltapt_up</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">reco_pt</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">gen_pt</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">factors</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span><span class="w"></span>
+<span class="w">     </span><span class="n">ptscale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">reco_pt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">deltapt</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">reco_pt</span><span class="p">);</span><span class="w"></span>
+<span class="w">     </span><span class="n">ptscale_up</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">reco_pt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">deltapt_up</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">reco_pt</span><span class="p">);</span><span class="w"></span>
+<span class="w">     </span><span class="n">ptscale_down</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">reco_pt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">deltapt_down</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">reco_pt</span><span class="p">);</span><span class="w"></span>
+<span class="w">     </span><span class="n">smeared</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="w"> </span><span class="p">}</span><span class="w"> </span>
+<span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">smeared</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">factors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">TRandom3</span><span class="w"> </span><span class="n">JERrand</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">JERrand</span><span class="p">.</span><span class="n">SetSeed</span><span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">phi</span><span class="p">()</span><span class="o">*</span><span class="mf">1e4</span><span class="p">)));</span><span class="w"></span>
+<span class="w">   </span><span class="n">ptscale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="n">JERrand</span><span class="p">.</span><span class="n">Gaus</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span><span class="n">sqrt</span><span class="p">(</span><span class="n">factors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">factors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span><span class="n">res</span><span class="o">*</span><span class="n">pt</span><span class="p">)</span><span class="o">/</span><span class="n">pt</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">JERrand</span><span class="p">.</span><span class="n">SetSeed</span><span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">phi</span><span class="p">()</span><span class="o">*</span><span class="mf">1e4</span><span class="p">)));</span><span class="w"></span>
+<span class="w">   </span><span class="n">ptscale_down</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="n">JERrand</span><span class="p">.</span><span class="n">Gaus</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span><span class="n">sqrt</span><span class="p">(</span><span class="n">factors</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">factors</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span><span class="n">res</span><span class="o">*</span><span class="n">pt</span><span class="p">)</span><span class="o">/</span><span class="n">pt</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="n">JERrand</span><span class="p">.</span><span class="n">SetSeed</span><span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">phi</span><span class="p">()</span><span class="o">*</span><span class="mf">1e4</span><span class="p">)));</span><span class="w"></span>
+<span class="w">   </span><span class="n">ptscale_up</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="n">JERrand</span><span class="p">.</span><span class="n">Gaus</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span><span class="n">sqrt</span><span class="p">(</span><span class="n">factors</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">factors</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span><span class="n">res</span><span class="o">*</span><span class="n">pt</span><span class="p">)</span><span class="o">/</span><span class="n">pt</span><span class="p">);</span><span class="w"></span>
+<span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">ptscale</span><span class="o">*</span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">min_pt</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">      </span><span class="n">jet_pt</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">uncorrJet</span><span class="p">.</span><span class="n">pt</span><span class="p">());</span><span class="w"></span>
+<span class="w">      </span><span class="n">jet_eta</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">eta</span><span class="p">());</span><span class="w"></span>
+<span class="w">      </span><span class="n">jet_phi</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">phi</span><span class="p">());</span><span class="w"></span>
+<span class="w">      </span><span class="n">jet_ch</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">charge</span><span class="p">());</span><span class="w"></span>
+<span class="w">      </span><span class="n">jet_mass</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">uncorrJet</span><span class="p">.</span><span class="n">mass</span><span class="p">());</span><span class="w"></span>
+<span class="w">      </span><span class="n">jet_btag</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">bDiscriminator</span><span class="p">(</span><span class="s">&quot;combinedSecondaryVertexBJetTags&quot;</span><span class="p">));</span><span class="w"></span>
+<span class="w">      </span><span class="n">corr_jet_pt</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">ptscale</span><span class="o">*</span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">());</span><span class="w"></span>
+<span class="w">      </span><span class="n">corr_jet_ptUp</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">ptscale</span><span class="o">*</span><span class="n">corrUp</span><span class="o">*</span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">());</span><span class="w"></span>
+<span class="w">      </span><span class="n">corr_jet_ptDown</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">ptscale</span><span class="o">*</span><span class="n">corrDown</span><span class="o">*</span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">());</span><span class="w"></span>
+<span class="w">      </span><span class="n">corr_jet_ptSmearUp</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">ptscale_up</span><span class="o">*</span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">());</span><span class="w"></span>
+<span class="w">      </span><span class="n">corr_jet_ptSmearDown</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">ptscale_down</span><span class="o">*</span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">pt</span><span class="p">());</span><span class="w"> </span>
+<span class="w">      </span><span class="n">corr_jet_mass</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">mass</span><span class="p">());</span><span class="w"></span>
+<span class="w">      </span><span class="n">corr_jet_e</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">energy</span><span class="p">());</span><span class="w"></span>
+<span class="w">      </span><span class="n">corr_jet_px</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">px</span><span class="p">());</span><span class="w"></span>
+<span class="w">      </span><span class="n">corr_jet_py</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">py</span><span class="p">());</span><span class="w"></span>
+<span class="w">      </span><span class="n">corr_jet_pz</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">itjet</span><span class="o">-&gt;</span><span class="n">pz</span><span class="p">());</span><span class="w"></span>
+<span class="w">      </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+
+</details>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../leptonuncertain/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Lepton/Photon uncertainties" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Lepton/Photon uncertainties
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../btaguncertain/" class="md-footer__link md-footer__link--next" aria-label="Next: Tagging uncertainties" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Tagging uncertainties
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.0bbba5b5.min.js"}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.e1a181d9.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -10,11 +10,10 @@
       
       
       
-      
         <link rel="canonical" href="https://cms-opendata-guide.web.cern.ch/analysis/selection/idefficiencystudy/tutorial/02-fitting/">
       
       <link rel="icon" href="../../../../../images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.3">
     
     
       
@@ -22,10 +21,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.e35208c4.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.edf004c2.min.css">
       
         
-        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.ef6f36e2.min.css">
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.e6a45f82.min.css">
         
           
           
@@ -39,15 +38,16 @@
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700%7C&display=fallback">
-        <style>:root{--md-text-font-family:"Lato";--md-code-font-family:""}</style>
+        <style>:root{--md-text-font:"Lato";--md-code-font:""}</style>
       
-    
     
     
       <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
     
+    <script>__md_scope=new URL("../../../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
+
     
     
   </head>
@@ -61,7 +61,6 @@
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="none">
   
     
-    <script>function __prefix(e){return new URL("../../../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -78,7 +77,10 @@
       
     </div>
     
-      <header class="md-header" data-md-component="header">
+    
+      
+
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../../../../.." title="CMS Open Data Guide" class="md-header__button md-logo" aria-label="CMS Open Data Guide" data-md-component="logo">
       
@@ -110,19 +112,22 @@
       <label class="md-header__button md-icon" for="__search">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
       </label>
-      
-<div class="md-search" data-md-component="search" role="dialog">
+      <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
       </label>
-      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-      </button>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
@@ -139,8 +144,7 @@
     
     
       <div class="md-header__source">
-        
-<a href="https://github.com/cernopendata/cms-opendata-guide/" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/cernopendata/cms-opendata-guide/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
@@ -152,11 +156,14 @@
       </div>
     
   </nav>
+  
 </header>
     
     <div class="md-container" data-md-component="container">
       
       
+        
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -181,8 +188,7 @@
   </label>
   
     <div class="md-nav__source">
-      
-<a href="https://github.com/cernopendata/cms-opendata-guide/" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/cernopendata/cms-opendata-guide/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
@@ -223,10 +229,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
       
-      <label class="md-nav__link" for="__nav_2">
-        Computing Tools
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Computing Tools
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Computing Tools" data-md-level="1">
         <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
@@ -235,6 +245,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -245,8 +256,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -257,8 +270,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -269,8 +284,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -281,8 +298,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -293,8 +312,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -305,8 +326,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -317,8 +340,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -329,8 +354,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -341,6 +368,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -361,10 +389,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
-      <label class="md-nav__link" for="__nav_3">
-        CMSSW
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          CMSSW
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="CMSSW" data-md-level="1">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
@@ -373,6 +405,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -383,8 +416,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -395,8 +430,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -407,8 +444,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -419,8 +458,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -431,6 +472,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -453,10 +495,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
-      <label class="md-nav__link" for="__nav_4">
-        Analysis
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Analysis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Analysis" data-md-level="1">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
@@ -465,6 +511,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -474,10 +521,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" >
       
-      <label class="md-nav__link" for="__nav_4_1">
-        Data and Simulation
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          Data and Simulation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Data and Simulation" data-md-level="2">
         <label class="md-nav__title" for="__nav_4_1">
           <span class="md-nav__icon md-icon"></span>
@@ -486,6 +537,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -496,8 +548,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -508,8 +562,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -520,14 +576,17 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
     
@@ -539,10 +598,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" checked>
       
-      <label class="md-nav__link" for="__nav_4_2">
-        Selection
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          Selection
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Selection" data-md-level="2">
         <label class="md-nav__title" for="__nav_4_2">
           <span class="md-nav__icon md-icon"></span>
@@ -551,6 +614,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -561,8 +625,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -573,20 +639,127 @@
     </li>
   
 
+            
           
             
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_3" type="checkbox" id="__nav_4_2_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_3">
+          Specific Physics Objects
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Specific Physics Objects" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Specific Physics Objects
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../objects/tools/" class="md-nav__link">
+        Common Tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../objects/muons/" class="md-nav__link">
+        Muons
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../objects/egamma/" class="md-nav__link">
+        Electrons and Photons
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../objects/jets/" class="md-nav__link">
+        Jets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../objects/met/" class="md-nav__link">
+        Missing ET
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
   
   
   
     <li class="md-nav__item">
       <a href="../../../objectid/" class="md-nav__link">
-        Physics Objects ID
+        Physics Object ID
       </a>
     </li>
   
 
+            
           
             
+              
   
   
     
@@ -596,20 +769,25 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_4" type="checkbox" id="__nav_4_2_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_5" type="checkbox" id="__nav_4_2_5" checked>
       
-      <label class="md-nav__link" for="__nav_4_2_4">
-        ID Efficiency study
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_5">
+          ID Efficiency study
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="ID Efficiency study" data-md-level="3">
-        <label class="md-nav__title" for="__nav_4_2_4">
+        <label class="md-nav__title" for="__nav_4_2_5">
           <span class="md-nav__icon md-icon"></span>
           ID Efficiency study
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -620,8 +798,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -632,8 +812,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -644,8 +826,10 @@
     </li>
   
 
+            
           
             
+              
   
   
     
@@ -655,20 +839,25 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_4_4" type="checkbox" id="__nav_4_2_4_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_5_4" type="checkbox" id="__nav_4_2_5_4" checked>
       
-      <label class="md-nav__link" for="__nav_4_2_4_4">
-        Tutorial
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_5_4">
+          Tutorial
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Tutorial" data-md-level="4">
-        <label class="md-nav__title" for="__nav_4_2_4_4">
+        <label class="md-nav__title" for="__nav_4_2_5_4">
           <span class="md-nav__icon md-icon"></span>
           Tutorial
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -679,8 +868,10 @@
     </li>
   
 
+            
           
             
+              
   
   
     
@@ -702,6 +893,7 @@
       </a>
       
         
+
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
@@ -741,8 +933,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -753,8 +947,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -765,14 +961,17 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -780,20 +979,25 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_4_5" type="checkbox" id="__nav_4_2_4_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_5_5" type="checkbox" id="__nav_4_2_5_5" >
       
-      <label class="md-nav__link" for="__nav_4_2_4_5">
-        Reference Guide (SB)
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_5_5">
+          Reference Guide (SB)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Reference Guide (SB)" data-md-level="4">
-        <label class="md-nav__title" for="__nav_4_2_4_5">
+        <label class="md-nav__title" for="__nav_4_2_5_5">
           <span class="md-nav__icon md-icon"></span>
           Reference Guide (SB)
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -804,8 +1008,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -816,8 +1022,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -828,8 +1036,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -840,8 +1050,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -852,8 +1064,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -864,8 +1078,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -876,8 +1092,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -888,8 +1106,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -900,14 +1120,17 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -915,20 +1138,25 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_4_6" type="checkbox" id="__nav_4_2_4_6" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_5_6" type="checkbox" id="__nav_4_2_5_6" >
       
-      <label class="md-nav__link" for="__nav_4_2_4_6">
-        Reference Guide (Fit)
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2_5_6">
+          Reference Guide (Fit)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Reference Guide (Fit)" data-md-level="4">
-        <label class="md-nav__title" for="__nav_4_2_4_6">
+        <label class="md-nav__title" for="__nav_4_2_5_6">
           <span class="md-nav__icon md-icon"></span>
           Reference Guide (Fit)
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -939,8 +1167,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -951,26 +1181,31 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -980,10 +1215,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
       
-      <label class="md-nav__link" for="__nav_4_3">
-        Luminosity
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3">
+          Luminosity
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Luminosity" data-md-level="2">
         <label class="md-nav__title" for="__nav_4_3">
           <span class="md-nav__icon md-icon"></span>
@@ -992,6 +1231,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1002,14 +1242,17 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1019,10 +1262,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
       
-      <label class="md-nav__link" for="__nav_4_4">
-        Backgrounds
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_4">
+          Backgrounds
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Backgrounds" data-md-level="2">
         <label class="md-nav__title" for="__nav_4_4">
           <span class="md-nav__icon md-icon"></span>
@@ -1031,6 +1278,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1041,8 +1289,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1053,14 +1303,17 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1070,10 +1323,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" >
       
-      <label class="md-nav__link" for="__nav_4_5">
-        Systematics
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5">
+          Systematics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Systematics" data-md-level="2">
         <label class="md-nav__title" for="__nav_4_5">
           <span class="md-nav__icon md-icon"></span>
@@ -1082,6 +1339,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1092,8 +1350,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1104,20 +1364,85 @@
     </li>
   
 
+            
           
             
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5_3" type="checkbox" id="__nav_4_5_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5_3">
+          Physics Object Uncertainty
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Physics Object Uncertainty" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          Physics Object Uncertainty
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
   
   
   
     <li class="md-nav__item">
-      <a href="../../../../systematics/objectsuncertain/" class="md-nav__link">
-        Object Uncertainty
+      <a href="../../../../systematics/objectsuncertain/leptonuncertain/" class="md-nav__link">
+        Lepton/Photon uncertainties
       </a>
     </li>
   
 
+            
           
             
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../systematics/objectsuncertain/jetmetuncertain/" class="md-nav__link">
+        Jet/MET uncertainties
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../systematics/objectsuncertain/btaguncertain/" class="md-nav__link">
+        Tagging uncertainties
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
   
   
   
@@ -1128,14 +1453,17 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1145,10 +1473,14 @@
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_6" type="checkbox" id="__nav_4_6" >
       
-      <label class="md-nav__link" for="__nav_4_6">
-        Interpretation
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_6">
+          Interpretation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <nav class="md-nav" aria-label="Interpretation" data-md-level="2">
         <label class="md-nav__title" for="__nav_4_6">
           <span class="md-nav__icon md-icon"></span>
@@ -1157,6 +1489,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -1167,8 +1500,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -1179,12 +1514,14 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -1234,6 +1571,7 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
+
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
@@ -1278,14 +1616,14 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/cernopendata/cms-opendata-guide/edit/master/docs/analysis/selection/idefficiencystudy/tutorial/02-fitting.md" title="Edit this page" class="md-content__button md-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
-                  </a>
-                
-                
-                  <h1>Fitting</h1>
-                
-                <h2 id="setting-it-up">Setting it up<a class="headerlink" href="#setting-it-up" title="Permanent link">&para;</a></h2>
+<a href="https://github.com/cernopendata/cms-opendata-guide/edit/master/docs/analysis/selection/idefficiencystudy/tutorial/02-fitting.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+  <h1>Fitting</h1>
+
+<h2 id="setting-it-up">Setting it up<a class="headerlink" href="#setting-it-up" title="Permanent link">&para;</a></h2>
 <p>In order to run this exercise you do not really need to be in a CMSSW area.  It would be actually better if you worked outside your usual CMSSW_5_3_32 environment.  So, if, for instance, you are working with the Docker container, instead of working on <code>/home/cmsusr/CMSSW_5_3_32/src</code> you could work on any directory you can create at the <code>/home/cmsusr</code> level.  Alternatively, you could work directly on your own host machine if you managed to install ROOT on it.</p>
 <p>For this example we assume you will be working in either the Docker container or the virtual machine.  </p>
 <p>Since we will be needing ROOT version greater than 6, then do not forget to set it up from LCG (as you learned in the ROOT pre-exercise) by doing:</p>
@@ -1297,7 +1635,7 @@
 </code></pre></div>
 <h3>A brief explanation of this repository</h3>
 <p>In this repository, you are only required to make changes to the <code>Efficiency.C</code> macro. These changes are highlighted as such:</p>
-<div class="highlight"><pre><span></span><code><span class="cm">/*-----------------------------------I N S E R T    C O D E    H E R E-----------------------------------*/</span>
+<div class="highlight"><pre><span></span><code><span class="cm">/*-----------------------------------I N S E R T    C O D E    H E R E-----------------------------------*/</span><span class="w"></span>
 </code></pre></div>
 <p>So when you see this comment, know that it's your turn to code!
 If you don't, the macro won't run and the following errors are to be expected:</p>
@@ -1354,7 +1692,7 @@ U(TFile *) 0x7fe2f34ca270
 <p>In the following plots, remember that the units of the x axis are in GeV/c.</p>
 </div>
 <p>Now, before we start fitting the invariant mass it's important to look at it's shape first. To visualize our data's invariant mass, do (within ROOT):</p>
-<div class="highlight"><pre><span></span><code><span class="n">root</span> <span class="p">[]</span> <span class="n">UPSILON_DATA</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;InvariantMass&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">root</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="n">UPSILON_DATA</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;InvariantMass&quot;</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p><img width="1000px" src="../../../../../images/analysis/cmsefficiency/tutorial/02/InvariantMass.png"></p>
 <p>If you got the previous result, we're ready to go.</p>
@@ -1370,11 +1708,11 @@ U(TFile *) 0x7fe2f34ca270
 | ProbeMuon_Eta |
 | ProbeMuon_Phi|</p>
 <p>We'll start by calculating the efficiency as a function of p<sub>T</sub>.  It is useful to have an idea of the distribution of the quantity we want to study. In order to do this, we’ll repeat the steps previously used to plot the invariant mass, but now for the <code>ProbeMuon_Pt</code> variable.</p>
-<div class="highlight"><pre><span></span><code><span class="n">root</span> <span class="p">[]</span> <span class="n">UPSILON_DATA</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;ProbeMuon_Pt&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">root</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="n">UPSILON_DATA</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;ProbeMuon_Pt&quot;</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p><img width="500px" src="../../../../../images/analysis/cmsefficiency/tutorial/02/total.png"></p>
 <p>Hmm.. seems like our domain is larger than we need it to be. To fix this, we can apply a constraint to our plot. Try:</p>
-<div class="highlight"><pre><span></span><code><span class="n">root</span> <span class="p">[]</span> <span class="n">UPSILON_DATA</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;ProbeMuon_Pt&quot;</span><span class="p">,</span> <span class="s">&quot;ProbeMuon_Pt &lt; 20&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">root</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="n">UPSILON_DATA</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;ProbeMuon_Pt&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ProbeMuon_Pt &lt; 20&quot;</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p><img width="1000px" src="../../../../../images/analysis/cmsefficiency/tutorial/02/zoom.png"></p>
 <p>Exit ROOT and get back to the main area:</p>
@@ -1383,32 +1721,32 @@ U(TFile *) 0x7fe2f34ca270
 </code></pre></div>
 <p>Now that you're acquainted with the data, open the  <code>Efficiency.C</code> file.
 You'll have to make some small adjustments to the code in this section (from line:19 to line:34):</p>
-<div class="highlight"><pre><span></span><code><span class="cm">/*-----------------------------------I N S E R T    C O D E    H E R E-----------------------------------*/</span>
-<span class="n">string</span> <span class="n">quantity</span> <span class="o">=</span> <span class="s">&quot;Pt&quot;</span><span class="p">;</span>     <span class="kt">double</span> <span class="n">bins</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.4</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">,</span> <span class="mf">4.7</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">5.6</span><span class="p">,</span> <span class="mf">5.8</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">,</span> <span class="mf">6.2</span><span class="p">,</span> <span class="mf">6.4</span><span class="p">,</span> <span class="mf">6.6</span><span class="p">,</span> <span class="mf">6.8</span><span class="p">,</span> <span class="mf">7.3</span><span class="p">,</span> <span class="mf">9.5</span><span class="p">,</span> <span class="mf">13.0</span><span class="p">,</span> <span class="mf">17.0</span><span class="p">,</span> <span class="mf">40.</span><span class="p">};</span>
+<div class="highlight"><pre><span></span><code><span class="cm">/*-----------------------------------I N S E R T    C O D E    H E R E-----------------------------------*/</span><span class="w"></span>
+<span class="n">string</span><span class="w"> </span><span class="n">quantity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Pt&quot;</span><span class="p">;</span><span class="w">     </span><span class="kt">double</span><span class="w"> </span><span class="n">bins</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">0.</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.4</span><span class="p">,</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span><span class="w"> </span><span class="mf">4.4</span><span class="p">,</span><span class="w"> </span><span class="mf">4.7</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w"> </span><span class="mf">5.6</span><span class="p">,</span><span class="w"> </span><span class="mf">5.8</span><span class="p">,</span><span class="w"> </span><span class="mf">6.0</span><span class="p">,</span><span class="w"> </span><span class="mf">6.2</span><span class="p">,</span><span class="w"> </span><span class="mf">6.4</span><span class="p">,</span><span class="w"> </span><span class="mf">6.6</span><span class="p">,</span><span class="w"> </span><span class="mf">6.8</span><span class="p">,</span><span class="w"> </span><span class="mf">7.3</span><span class="p">,</span><span class="w"> </span><span class="mf">9.5</span><span class="p">,</span><span class="w"> </span><span class="mf">13.0</span><span class="p">,</span><span class="w"> </span><span class="mf">17.0</span><span class="p">,</span><span class="w"> </span><span class="mf">40.</span><span class="p">};</span><span class="w"></span>
 <span class="c1">//string quantity = &quot;Eta&quot;;    double bins[] = {-2.4, -1.8, -1.4, -1.2, -1.0, -0.8, -0.5, -0.2, 0, 0.2, 0.5, 0.8, 1.0, 1.2, 1.4, 1.8, 2.4};</span>
 <span class="c1">//string quantity = &quot;Phi&quot;;    double bins[] = {-3.0, -1.8, -1.6, -1.2, -1.0, -0.7, -0.4, -0.2, 0, 0.2, 0.4, 0.7, 1.0, 1.2, 1.6, 1.8, 3.0};</span>
-<span class="kt">int</span> <span class="n">bin_n</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">bins</span><span class="p">)</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">bins</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
- <span class="cm">/*------------------------------------------------------------------------------------------------------*/</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">bin_n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">bins</span><span class="p">)</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">bins</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w"> </span><span class="cm">/*------------------------------------------------------------------------------------------------------*/</span><span class="w"></span>
 
 
 <span class="c1">//Now we must choose initial conditions in order to fit our data</span>
-<span class="kt">double</span> <span class="o">*</span><span class="n">init_conditions</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
-<span class="cm">/*-----------------------------------I N S E R T    C O D E    H E R E-----------------------------------*/</span>
-<span class="n">init_conditions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="cm">/*peak1*/</span><span class="p">;</span>
-<span class="n">init_conditions</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="cm">/*peak2*/</span><span class="p">;</span>
-<span class="n">init_conditions</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="cm">/*peak3*/</span><span class="p">;</span>
-<span class="n">init_conditions</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="cm">/*sigma*/</span><span class="p">;</span>
-<span class="cm">/*------------------------------------------------------------------------------------------------------*/</span>
+<span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">init_conditions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">double</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span><span class="w"></span>
+<span class="cm">/*-----------------------------------I N S E R T    C O D E    H E R E-----------------------------------*/</span><span class="w"></span>
+<span class="n">init_conditions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="cm">/*peak1*/</span><span class="p">;</span><span class="w"></span>
+<span class="n">init_conditions</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="cm">/*peak2*/</span><span class="p">;</span><span class="w"></span>
+<span class="n">init_conditions</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="cm">/*peak3*/</span><span class="p">;</span><span class="w"></span>
+<span class="n">init_conditions</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="cm">/*sigma*/</span><span class="p">;</span><span class="w"></span>
+<span class="cm">/*------------------------------------------------------------------------------------------------------*/</span><span class="w"></span>
 </code></pre></div>
 <p>We'll start by choosing the desired bins for the transverse momentum. If you're feeling brave, choose appropriate bins for our fit remembering that we need a fair amount of data in each bin (more events mean a better fit!). If not, we've left  a suggestion that you can paste onto the <code>Efficiency.C</code> file. Start with the p<sub>T</sub> variable.</p>
 <details class="example"><summary>Bin Suggestion</summary><div class="highlight"><pre><span></span><code><span class="c1">//-- BINS USED TO CALCULATE PT</span>
-<span class="kt">double</span> <span class="n">bins</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.4</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">,</span> <span class="mf">4.7</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">5.6</span><span class="p">,</span> <span class="mf">5.8</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">,</span> <span class="mf">6.2</span><span class="p">,</span> <span class="mf">6.4</span><span class="p">,</span> <span class="mf">6.6</span><span class="p">,</span> <span class="mf">6.8</span><span class="p">,</span> <span class="mf">7.3</span><span class="p">,</span> <span class="mf">9.5</span><span class="p">,</span> <span class="mf">13.0</span><span class="p">,</span> <span class="mf">17.0</span><span class="p">,</span> <span class="mf">40.</span><span class="p">};</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">bins</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">0.</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.4</span><span class="p">,</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span><span class="w"> </span><span class="mf">4.4</span><span class="p">,</span><span class="w"> </span><span class="mf">4.7</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w"> </span><span class="mf">5.6</span><span class="p">,</span><span class="w"> </span><span class="mf">5.8</span><span class="p">,</span><span class="w"> </span><span class="mf">6.0</span><span class="p">,</span><span class="w"> </span><span class="mf">6.2</span><span class="p">,</span><span class="w"> </span><span class="mf">6.4</span><span class="p">,</span><span class="w"> </span><span class="mf">6.6</span><span class="p">,</span><span class="w"> </span><span class="mf">6.8</span><span class="p">,</span><span class="w"> </span><span class="mf">7.3</span><span class="p">,</span><span class="w"> </span><span class="mf">9.5</span><span class="p">,</span><span class="w"> </span><span class="mf">13.0</span><span class="p">,</span><span class="w"> </span><span class="mf">17.0</span><span class="p">,</span><span class="w"> </span><span class="mf">40.</span><span class="p">};</span><span class="w"></span>
 
 <span class="c1">//-- BINS USED TO CALCULATE PHI</span>
-<span class="kt">double</span> <span class="n">bins</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mf">-2.4</span><span class="p">,</span> <span class="mf">-1.8</span><span class="p">,</span> <span class="mf">-1.4</span><span class="p">,</span> <span class="mf">-1.2</span><span class="p">,</span> <span class="mf">-1.0</span><span class="p">,</span> <span class="mf">-0.8</span><span class="p">,</span> <span class="mf">-0.5</span><span class="p">,</span> <span class="mf">-0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.4</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">};</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">bins</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">-2.4</span><span class="p">,</span><span class="w"> </span><span class="mf">-1.8</span><span class="p">,</span><span class="w"> </span><span class="mf">-1.4</span><span class="p">,</span><span class="w"> </span><span class="mf">-1.2</span><span class="p">,</span><span class="w"> </span><span class="mf">-1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">-0.8</span><span class="p">,</span><span class="w"> </span><span class="mf">-0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">-0.2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.2</span><span class="p">,</span><span class="w"> </span><span class="mf">1.4</span><span class="p">,</span><span class="w"> </span><span class="mf">1.8</span><span class="p">,</span><span class="w"> </span><span class="mf">2.4</span><span class="p">};</span><span class="w"></span>
 
 <span class="c1">//-- BINS USED TO CALCULATE ETA</span>
-<span class="kt">double</span> <span class="n">bins</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mf">-3.0</span><span class="p">,</span> <span class="mf">-1.8</span><span class="p">,</span> <span class="mf">-1.6</span><span class="p">,</span> <span class="mf">-1.2</span><span class="p">,</span> <span class="mf">-1.0</span><span class="p">,</span> <span class="mf">-0.7</span><span class="p">,</span> <span class="mf">-0.4</span><span class="p">,</span> <span class="mf">-0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">};</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">bins</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">-3.0</span><span class="p">,</span><span class="w"> </span><span class="mf">-1.8</span><span class="p">,</span><span class="w"> </span><span class="mf">-1.6</span><span class="p">,</span><span class="w"> </span><span class="mf">-1.2</span><span class="p">,</span><span class="w"> </span><span class="mf">-1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">-0.7</span><span class="p">,</span><span class="w"> </span><span class="mf">-0.4</span><span class="p">,</span><span class="w"> </span><span class="mf">-0.2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.4</span><span class="p">,</span><span class="w"> </span><span class="mf">0.7</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.2</span><span class="p">,</span><span class="w"> </span><span class="mf">1.6</span><span class="p">,</span><span class="w"> </span><span class="mf">1.8</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0</span><span class="p">};</span><span class="w"></span>
 </code></pre></div>
 </details>
 <p>Now that the bins are set, we'll need to define the initial parameters for our fit.
@@ -1416,10 +1754,10 @@ You can try to get a good 1st approximation from the plot of the invariant mass 
 <p><img width="1000px" src="../../../../../images/analysis/cmsefficiency/tutorial/02/init_conditions.png"></p>
 <p>or use the suggested values</p>
 <details class="example"><summary>Suggestion for the Initial Values</summary><p>Try the following initial values:</p>
-<div class="highlight"><pre><span></span><code><span class="n">init_conditions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">9.46030</span><span class="p">;</span>
-<span class="n">init_conditions</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">10.02326</span><span class="p">;</span>
-<span class="n">init_conditions</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">10.3552</span><span class="p">;</span>
-<span class="n">init_conditions</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.08</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="n">init_conditions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">9.46030</span><span class="p">;</span><span class="w"></span>
+<span class="n">init_conditions</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10.02326</span><span class="p">;</span><span class="w"></span>
+<span class="n">init_conditions</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10.3552</span><span class="p">;</span><span class="w"></span>
+<span class="n">init_conditions</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.08</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 </details>
 <p>We are now ready to execute the fits!</p>
@@ -1430,261 +1768,261 @@ You can try to get a good 1st approximation from the plot of the invariant mass 
 <details class="example"><summary>Check out <code>src/DoFit.cpp</code></summary><p>The code here is presented in smaller "digestible" chunks, so it's easier to understand.</p>
 <p>We begin by linking our dataset to a usable object ( the <a href="https://root.cern.ch/doc/v612/classTTree.html"><strong>TTree</strong></a> ) and by creating a <a href="https://root.cern.ch/doc/master/classTCanvas.html"><strong>TCanvas</strong></a> to store the fit plots.</p>
 <p>we then define a few <a href="https://root.cern.ch/doc/master/classRooRealVar.html"><strong>RooRealVar</strong></a> and <a href="https://root.cern.ch/doc/master/classRooFormulaVar.html"><strong>RooFormulaVar</strong></a> objects will be used to select the bin associated to the <strong>string</strong> <code>condition</code> (i.e. "ProbeMuon_Pt      10 &amp;&amp; ProbeMuon_Pt &lt; 10"). After spliting the original dataset, the resulting two <a href="https://root.cern.ch/doc/master/classRooDataSet.html"><strong>RooDataSet</strong></a> are used to create two binned <a href="https://root.cern.ch/doc/master/classRooDataHist.html"><strong>RooDataHist</strong></a> in which we'll perform the fits.</p>
-<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="o">*</span> <span class="nf">doFit</span><span class="p">(</span><span class="n">string</span> <span class="n">condition</span><span class="p">,</span> <span class="n">string</span> <span class="n">MuonID_str</span><span class="p">,</span> <span class="n">string</span> <span class="n">quant</span><span class="p">,</span> <span class="kt">double</span><span class="o">*</span> <span class="n">init_conditions</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">save</span> <span class="o">=</span> <span class="nb">true</span><span class="p">)</span> <span class="c1">// RETURNS ARRAY WITH [yield_all, yield_pass, err_all, err_pass]    -&gt;   OUTPUT ARRAY</span>
-<span class="p">{</span>
-    <span class="n">string</span> <span class="n">MuonID_file</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">MuonID_str</span> <span class="o">==</span> <span class="s">&quot;PassingProbeTrackingMuon&quot;</span><span class="p">)</span>
-        <span class="n">MuonID_file</span> <span class="o">=</span> <span class="s">&quot;trackerMuon&quot;</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">MuonID_str</span> <span class="o">==</span> <span class="s">&quot;PassingProbeStandAloneMuon&quot;</span><span class="p">)</span>
-        <span class="n">MuonID_file</span> <span class="o">=</span> <span class="s">&quot;standaloneMuon&quot;</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">MuonID_str</span> <span class="o">==</span> <span class="s">&quot;PassingProbeGlobalMuon&quot;</span><span class="p">)</span>
-        <span class="n">MuonID_file</span> <span class="o">=</span> <span class="s">&quot;globalMuon&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="o">*</span><span class="w"> </span><span class="nf">doFit</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">condition</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">MuonID_str</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">quant</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">*</span><span class="w"> </span><span class="n">init_conditions</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">save</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="c1">// RETURNS ARRAY WITH [yield_all, yield_pass, err_all, err_pass]    -&gt;   OUTPUT ARRAY</span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">MuonID_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">MuonID_str</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;PassingProbeTrackingMuon&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">MuonID_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;trackerMuon&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">MuonID_str</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;PassingProbeStandAloneMuon&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">MuonID_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;standaloneMuon&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">MuonID_str</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;PassingProbeGlobalMuon&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">MuonID_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;globalMuon&quot;</span><span class="p">;</span><span class="w"></span>
 
-    <span class="n">TFile</span> <span class="o">*</span><span class="n">file0</span>       <span class="o">=</span> <span class="n">TFile</span><span class="o">::</span><span class="n">Open</span><span class="p">((</span><span class="s">&quot;DATA/Upsilon/&quot;</span> <span class="o">+</span> <span class="n">MuonID_file</span> <span class="o">+</span> <span class="s">&quot;/T&amp;P_UPSILON_DATA_MC.root&quot;</span><span class="p">).</span><span class="n">c_str</span><span class="p">());</span>
-    <span class="n">TTree</span> <span class="o">*</span><span class="n">DataTree</span>    <span class="o">=</span> <span class="p">(</span><span class="n">TTree</span><span class="o">*</span><span class="p">)</span><span class="n">file0</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">((</span><span class="s">&quot;UPSILON_DATA&quot;</span><span class="p">));</span>
+<span class="w">    </span><span class="n">TFile</span><span class="w"> </span><span class="o">*</span><span class="n">file0</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">TFile</span><span class="o">::</span><span class="n">Open</span><span class="p">((</span><span class="s">&quot;DATA/Upsilon/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">MuonID_file</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;/T&amp;P_UPSILON_DATA_MC.root&quot;</span><span class="p">).</span><span class="n">c_str</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="n">TTree</span><span class="w"> </span><span class="o">*</span><span class="n">DataTree</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">TTree</span><span class="o">*</span><span class="p">)</span><span class="n">file0</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">((</span><span class="s">&quot;UPSILON_DATA&quot;</span><span class="p">));</span><span class="w"></span>
 
-    <span class="kt">double</span> <span class="n">_mmin</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span>  <span class="kt">double</span> <span class="n">_mmax</span> <span class="o">=</span> <span class="mf">10.8</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">_mmin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9</span><span class="p">;</span><span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">_mmax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10.8</span><span class="p">;</span><span class="w"></span>
 
-    <span class="n">RooRealVar</span> <span class="n">MuonID</span><span class="p">(</span><span class="n">MuonID_str</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span> <span class="n">MuonID_str</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">//Muon_Id</span>
+<span class="w">    </span><span class="n">RooRealVar</span><span class="w"> </span><span class="n">MuonID</span><span class="p">(</span><span class="n">MuonID_str</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="n">MuonID_str</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c1">//Muon_Id</span>
 
-    <span class="n">RooRealVar</span> <span class="n">InvariantMass</span><span class="p">(</span><span class="s">&quot;InvariantMass&quot;</span><span class="p">,</span> <span class="s">&quot;InvariantMass&quot;</span><span class="p">,</span> <span class="n">_mmin</span><span class="p">,</span> <span class="n">_mmax</span><span class="p">);</span>
+<span class="w">    </span><span class="n">RooRealVar</span><span class="w"> </span><span class="n">InvariantMass</span><span class="p">(</span><span class="s">&quot;InvariantMass&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;InvariantMass&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">_mmin</span><span class="p">,</span><span class="w"> </span><span class="n">_mmax</span><span class="p">);</span><span class="w"></span>
 
-    <span class="kt">double</span><span class="o">*</span> <span class="n">limits</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">quant</span> <span class="o">==</span> <span class="s">&quot;Pt&quot;</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">limits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="n">limits</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">40</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">quant</span> <span class="o">==</span> <span class="s">&quot;Eta&quot;</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">limits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">-3</span><span class="p">;</span>
-        <span class="n">limits</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">quant</span> <span class="o">==</span> <span class="s">&quot;Phi&quot;</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">limits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">-2</span><span class="p">;</span>
-        <span class="n">limits</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="n">RooRealVar</span> <span class="n">quantity</span><span class="p">((</span><span class="s">&quot;ProbeMuon_&quot;</span> <span class="o">+</span> <span class="n">quant</span><span class="p">).</span><span class="n">c_str</span><span class="p">(),</span> <span class="p">(</span><span class="s">&quot;ProbeMuon_&quot;</span> <span class="o">+</span> <span class="n">quant</span><span class="p">).</span><span class="n">c_str</span><span class="p">(),</span> <span class="n">limits</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">limits</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="w">    </span><span class="kt">double</span><span class="o">*</span><span class="w"> </span><span class="n">limits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">double</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">quant</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Pt&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">limits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">limits</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">quant</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Eta&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">limits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-3</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">limits</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">quant</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Phi&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">limits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-2</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">limits</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">RooRealVar</span><span class="w"> </span><span class="n">quantity</span><span class="p">((</span><span class="s">&quot;ProbeMuon_&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">quant</span><span class="p">).</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;ProbeMuon_&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">quant</span><span class="p">).</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="n">limits</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">limits</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span><span class="w"></span>
 
-    <span class="n">RooFormulaVar</span><span class="o">*</span> <span class="n">redeuce</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RooFormulaVar</span><span class="p">(</span><span class="s">&quot;PPTM&quot;</span><span class="p">,</span> <span class="n">condition</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span> <span class="n">RooArgList</span><span class="p">(</span><span class="n">quantity</span><span class="p">));</span>
-    <span class="n">RooDataSet</span> <span class="o">*</span><span class="n">Data_ALL</span>    <span class="o">=</span> <span class="k">new</span> <span class="n">RooDataSet</span><span class="p">(</span><span class="s">&quot;DATA&quot;</span><span class="p">,</span> <span class="s">&quot;DATA&quot;</span><span class="p">,</span> <span class="n">DataTree</span><span class="p">,</span> <span class="n">RooArgSet</span><span class="p">(</span><span class="n">InvariantMass</span><span class="p">,</span> <span class="n">MuonID</span><span class="p">,</span> <span class="n">quantity</span><span class="p">),</span><span class="o">*</span><span class="n">redeuce</span><span class="p">);</span>
-    <span class="n">RooFormulaVar</span><span class="o">*</span> <span class="n">cutvar</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RooFormulaVar</span><span class="p">(</span><span class="s">&quot;PPTM&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">condition</span> <span class="o">+</span> <span class="s">&quot; &amp;&amp; &quot;</span> <span class="o">+</span> <span class="n">MuonID_str</span> <span class="o">+</span> <span class="s">&quot; == 1&quot;</span><span class="p">).</span><span class="n">c_str</span><span class="p">()</span> <span class="p">,</span> <span class="n">RooArgList</span><span class="p">(</span><span class="n">MuonID</span><span class="p">,</span> <span class="n">quantity</span><span class="p">));</span>
+<span class="w">    </span><span class="n">RooFormulaVar</span><span class="o">*</span><span class="w"> </span><span class="n">redeuce</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RooFormulaVar</span><span class="p">(</span><span class="s">&quot;PPTM&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">condition</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="n">RooArgList</span><span class="p">(</span><span class="n">quantity</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">RooDataSet</span><span class="w"> </span><span class="o">*</span><span class="n">Data_ALL</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RooDataSet</span><span class="p">(</span><span class="s">&quot;DATA&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DATA&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DataTree</span><span class="p">,</span><span class="w"> </span><span class="n">RooArgSet</span><span class="p">(</span><span class="n">InvariantMass</span><span class="p">,</span><span class="w"> </span><span class="n">MuonID</span><span class="p">,</span><span class="w"> </span><span class="n">quantity</span><span class="p">),</span><span class="o">*</span><span class="n">redeuce</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">RooFormulaVar</span><span class="o">*</span><span class="w"> </span><span class="n">cutvar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RooFormulaVar</span><span class="p">(</span><span class="s">&quot;PPTM&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">condition</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; &amp;&amp; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">MuonID_str</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; == 1&quot;</span><span class="p">).</span><span class="n">c_str</span><span class="p">()</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">RooArgList</span><span class="p">(</span><span class="n">MuonID</span><span class="p">,</span><span class="w"> </span><span class="n">quantity</span><span class="p">));</span><span class="w"></span>
 
-    <span class="n">RooDataSet</span> <span class="o">*</span><span class="n">Data_PASSING</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RooDataSet</span><span class="p">(</span><span class="s">&quot;DATA_PASS&quot;</span><span class="p">,</span> <span class="s">&quot;DATA_PASS&quot;</span><span class="p">,</span> <span class="n">DataTree</span><span class="p">,</span> <span class="n">RooArgSet</span><span class="p">(</span><span class="n">InvariantMass</span><span class="p">,</span> <span class="n">MuonID</span><span class="p">,</span> <span class="n">quantity</span><span class="p">),</span> <span class="o">*</span><span class="n">cutvar</span><span class="p">);</span><span class="c1">//</span>
+<span class="w">    </span><span class="n">RooDataSet</span><span class="w"> </span><span class="o">*</span><span class="n">Data_PASSING</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RooDataSet</span><span class="p">(</span><span class="s">&quot;DATA_PASS&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DATA_PASS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DataTree</span><span class="p">,</span><span class="w"> </span><span class="n">RooArgSet</span><span class="p">(</span><span class="n">InvariantMass</span><span class="p">,</span><span class="w"> </span><span class="n">MuonID</span><span class="p">,</span><span class="w"> </span><span class="n">quantity</span><span class="p">),</span><span class="w"> </span><span class="o">*</span><span class="n">cutvar</span><span class="p">);</span><span class="c1">//</span>
 
-    <span class="n">RooDataHist</span><span class="o">*</span> <span class="n">dh_ALL</span>     <span class="o">=</span> <span class="n">Data_ALL</span><span class="o">-&gt;</span><span class="n">binnedClone</span><span class="p">();</span>
-    <span class="n">RooDataHist</span><span class="o">*</span> <span class="n">dh_PASSING</span> <span class="o">=</span> <span class="n">Data_PASSING</span><span class="o">-&gt;</span><span class="n">binnedClone</span><span class="p">();</span>
+<span class="w">    </span><span class="n">RooDataHist</span><span class="o">*</span><span class="w"> </span><span class="n">dh_ALL</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">Data_ALL</span><span class="o">-&gt;</span><span class="n">binnedClone</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">RooDataHist</span><span class="o">*</span><span class="w"> </span><span class="n">dh_PASSING</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Data_PASSING</span><span class="o">-&gt;</span><span class="n">binnedClone</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 <p>We then create the variables used as parameters in the fit. <strong>a0</strong> and <strong>a1</strong> used in the Chebychev polynomial (<a href="https://root.cern.ch/doc/master/classRooChebychev.html"><strong>RooChebychev</strong></a>, for the background
 and <strong>sigma</strong>, <strong>mean1</strong>,  <strong>mean2</strong>,  <strong>mean3</strong> used on the <a href="https://root.cern.ch/doc/master/classRooCBShape.html"><strong>RooCBShape</strong></a> and <a href="https://root.cern.ch/doc/master/classRooGaussian.html"><strong>RooGaussian</strong></a> for the signal. <strong>frac1</strong> and <strong>frac2</strong> are used as normalization values.</p>
 <p>For the yields of the fits, we defined the <strong>n_signal</strong> and <strong>n_background</strong> pairs.</p>
-<div class="highlight"><pre><span></span><code>    <span class="c1">// BACKGROUND VARIABLES</span>
-    <span class="n">RooRealVar</span> <span class="nf">a0</span><span class="p">(</span><span class="s">&quot;a0&quot;</span><span class="p">,</span> <span class="s">&quot;a0&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">-10</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
-    <span class="n">RooRealVar</span> <span class="nf">a1</span><span class="p">(</span><span class="s">&quot;a1&quot;</span><span class="p">,</span> <span class="s">&quot;a1&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">-10</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="c1">// BACKGROUND VARIABLES</span>
+<span class="w">    </span><span class="n">RooRealVar</span><span class="w"> </span><span class="nf">a0</span><span class="p">(</span><span class="s">&quot;a0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;a0&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">-10</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">RooRealVar</span><span class="w"> </span><span class="nf">a1</span><span class="p">(</span><span class="s">&quot;a1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;a1&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">-10</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span><span class="w"></span>
 
-    <span class="c1">// BACKGROUND FUNCTION</span>
-    <span class="n">RooChebychev</span> <span class="nf">background</span><span class="p">(</span><span class="s">&quot;background&quot;</span><span class="p">,</span><span class="s">&quot;background&quot;</span><span class="p">,</span> <span class="n">InvariantMass</span><span class="p">,</span> <span class="n">RooArgList</span><span class="p">(</span><span class="n">a0</span><span class="p">,</span><span class="n">a1</span><span class="p">));</span>
+<span class="w">    </span><span class="c1">// BACKGROUND FUNCTION</span>
+<span class="w">    </span><span class="n">RooChebychev</span><span class="w"> </span><span class="nf">background</span><span class="p">(</span><span class="s">&quot;background&quot;</span><span class="p">,</span><span class="s">&quot;background&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">InvariantMass</span><span class="p">,</span><span class="w"> </span><span class="n">RooArgList</span><span class="p">(</span><span class="n">a0</span><span class="p">,</span><span class="n">a1</span><span class="p">));</span><span class="w"></span>
 
-    <span class="c1">// GAUSSIAN VARIABLES</span>
-    <span class="n">RooRealVar</span> <span class="nf">sigma</span><span class="p">(</span><span class="s">&quot;sigma&quot;</span><span class="p">,</span><span class="s">&quot;sigma&quot;</span><span class="p">,</span><span class="n">init_conditions</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>
-    <span class="n">RooRealVar</span> <span class="nf">mean1</span><span class="p">(</span><span class="s">&quot;mean1&quot;</span><span class="p">,</span><span class="s">&quot;mean1&quot;</span><span class="p">,</span><span class="n">init_conditions</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
-    <span class="n">RooRealVar</span> <span class="nf">mean2</span><span class="p">(</span><span class="s">&quot;mean2&quot;</span><span class="p">,</span><span class="s">&quot;mean2&quot;</span><span class="p">,</span><span class="n">init_conditions</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
-    <span class="n">RooRealVar</span> <span class="nf">mean3</span><span class="p">(</span><span class="s">&quot;mean3&quot;</span><span class="p">,</span><span class="s">&quot;mean3&quot;</span><span class="p">,</span><span class="n">init_conditions</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
-    <span class="c1">// CRYSTAL BALL VARIABLES</span>
-    <span class="n">RooRealVar</span> <span class="nf">alpha</span><span class="p">(</span><span class="s">&quot;alpha&quot;</span><span class="p">,</span><span class="s">&quot;alpha&quot;</span><span class="p">,</span> <span class="mf">1.4384e+00</span><span class="p">);</span>
-    <span class="n">RooRealVar</span> <span class="nf">n</span><span class="p">(</span><span class="s">&quot;n&quot;</span><span class="p">,</span> <span class="s">&quot;n&quot;</span><span class="p">,</span> <span class="mf">1.6474e+01</span><span class="p">);</span>
-    <span class="c1">// FIT FUNCTIONS</span>
-    <span class="n">RooCBShape</span>  <span class="nf">gaussian1</span><span class="p">(</span><span class="s">&quot;signal1&quot;</span><span class="p">,</span><span class="s">&quot;signal1&quot;</span><span class="p">,</span><span class="n">InvariantMass</span><span class="p">,</span><span class="n">mean1</span><span class="p">,</span><span class="n">sigma</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
-    <span class="n">RooGaussian</span> <span class="nf">gaussian2</span><span class="p">(</span><span class="s">&quot;signal2&quot;</span><span class="p">,</span><span class="s">&quot;signal2&quot;</span><span class="p">,</span><span class="n">InvariantMass</span><span class="p">,</span><span class="n">mean2</span><span class="p">,</span><span class="n">sigma</span><span class="p">);</span>
-    <span class="n">RooGaussian</span> <span class="nf">gaussian3</span><span class="p">(</span><span class="s">&quot;signal3&quot;</span><span class="p">,</span><span class="s">&quot;signal3&quot;</span><span class="p">,</span><span class="n">InvariantMass</span><span class="p">,</span><span class="n">mean3</span><span class="p">,</span><span class="n">sigma</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// GAUSSIAN VARIABLES</span>
+<span class="w">    </span><span class="n">RooRealVar</span><span class="w"> </span><span class="nf">sigma</span><span class="p">(</span><span class="s">&quot;sigma&quot;</span><span class="p">,</span><span class="s">&quot;sigma&quot;</span><span class="p">,</span><span class="n">init_conditions</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span><span class="w"></span>
+<span class="w">    </span><span class="n">RooRealVar</span><span class="w"> </span><span class="nf">mean1</span><span class="p">(</span><span class="s">&quot;mean1&quot;</span><span class="p">,</span><span class="s">&quot;mean1&quot;</span><span class="p">,</span><span class="n">init_conditions</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span><span class="w"></span>
+<span class="w">    </span><span class="n">RooRealVar</span><span class="w"> </span><span class="nf">mean2</span><span class="p">(</span><span class="s">&quot;mean2&quot;</span><span class="p">,</span><span class="s">&quot;mean2&quot;</span><span class="p">,</span><span class="n">init_conditions</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span><span class="w"></span>
+<span class="w">    </span><span class="n">RooRealVar</span><span class="w"> </span><span class="nf">mean3</span><span class="p">(</span><span class="s">&quot;mean3&quot;</span><span class="p">,</span><span class="s">&quot;mean3&quot;</span><span class="p">,</span><span class="n">init_conditions</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// CRYSTAL BALL VARIABLES</span>
+<span class="w">    </span><span class="n">RooRealVar</span><span class="w"> </span><span class="nf">alpha</span><span class="p">(</span><span class="s">&quot;alpha&quot;</span><span class="p">,</span><span class="s">&quot;alpha&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">1.4384e+00</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">RooRealVar</span><span class="w"> </span><span class="nf">n</span><span class="p">(</span><span class="s">&quot;n&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;n&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">1.6474e+01</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// FIT FUNCTIONS</span>
+<span class="w">    </span><span class="n">RooCBShape</span><span class="w">  </span><span class="nf">gaussian1</span><span class="p">(</span><span class="s">&quot;signal1&quot;</span><span class="p">,</span><span class="s">&quot;signal1&quot;</span><span class="p">,</span><span class="n">InvariantMass</span><span class="p">,</span><span class="n">mean1</span><span class="p">,</span><span class="n">sigma</span><span class="p">,</span><span class="w"> </span><span class="n">alpha</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">RooGaussian</span><span class="w"> </span><span class="nf">gaussian2</span><span class="p">(</span><span class="s">&quot;signal2&quot;</span><span class="p">,</span><span class="s">&quot;signal2&quot;</span><span class="p">,</span><span class="n">InvariantMass</span><span class="p">,</span><span class="n">mean2</span><span class="p">,</span><span class="n">sigma</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">RooGaussian</span><span class="w"> </span><span class="nf">gaussian3</span><span class="p">(</span><span class="s">&quot;signal3&quot;</span><span class="p">,</span><span class="s">&quot;signal3&quot;</span><span class="p">,</span><span class="n">InvariantMass</span><span class="p">,</span><span class="n">mean3</span><span class="p">,</span><span class="n">sigma</span><span class="p">);</span><span class="w"></span>
 
-    <span class="kt">double</span> <span class="n">n_signal_initial1</span> <span class="o">=</span><span class="p">(</span><span class="n">Data_ALL</span><span class="o">-&gt;</span><span class="n">sumEntries</span><span class="p">(</span><span class="n">TString</span><span class="o">::</span><span class="n">Format</span><span class="p">(</span><span class="s">&quot;abs(InvariantMass-%g)&lt;0.015&quot;</span><span class="p">,</span><span class="n">init_conditions</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span><span class="o">-</span><span class="n">Data_ALL</span><span class="o">-&gt;</span><span class="n">sumEntries</span><span class="p">(</span><span class="n">TString</span><span class="o">::</span><span class="n">Format</span><span class="p">(</span><span class="s">&quot;abs(InvariantMass-%g)&lt;0.030&amp;&amp;abs(InvariantMass-%g)&gt;.015&quot;</span><span class="p">,</span><span class="n">init_conditions</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">init_conditions</span><span class="p">[</span><span class="mi">1</span><span class="p">])))</span> <span class="o">/</span> <span class="n">Data_ALL</span><span class="o">-&gt;</span><span class="n">sumEntries</span><span class="p">();</span>
-    <span class="kt">double</span> <span class="n">n_signal_initial2</span> <span class="o">=</span><span class="p">(</span><span class="n">Data_ALL</span><span class="o">-&gt;</span><span class="n">sumEntries</span><span class="p">(</span><span class="n">TString</span><span class="o">::</span><span class="n">Format</span><span class="p">(</span><span class="s">&quot;abs(InvariantMass-%g)&lt;0.015&quot;</span><span class="p">,</span><span class="n">init_conditions</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span><span class="o">-</span><span class="n">Data_ALL</span><span class="o">-&gt;</span><span class="n">sumEntries</span><span class="p">(</span><span class="n">TString</span><span class="o">::</span><span class="n">Format</span><span class="p">(</span><span class="s">&quot;abs(InvariantMass-%g)&lt;0.030&amp;&amp;abs(InvariantMass-%g)&gt;.015&quot;</span><span class="p">,</span><span class="n">init_conditions</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">init_conditions</span><span class="p">[</span><span class="mi">2</span><span class="p">])))</span> <span class="o">/</span> <span class="n">Data_ALL</span><span class="o">-&gt;</span><span class="n">sumEntries</span><span class="p">();</span>
-    <span class="kt">double</span> <span class="n">n_signal_initial3</span> <span class="o">=</span><span class="p">(</span><span class="n">Data_ALL</span><span class="o">-&gt;</span><span class="n">sumEntries</span><span class="p">(</span><span class="n">TString</span><span class="o">::</span><span class="n">Format</span><span class="p">(</span><span class="s">&quot;abs(InvariantMass-%g)&lt;0.015&quot;</span><span class="p">,</span><span class="n">init_conditions</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span><span class="o">-</span><span class="n">Data_ALL</span><span class="o">-&gt;</span><span class="n">sumEntries</span><span class="p">(</span><span class="n">TString</span><span class="o">::</span><span class="n">Format</span><span class="p">(</span><span class="s">&quot;abs(InvariantMass-%g)&lt;0.030&amp;&amp;abs(InvariantMass-%g)&gt;.015&quot;</span><span class="p">,</span><span class="n">init_conditions</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="n">init_conditions</span><span class="p">[</span><span class="mi">3</span><span class="p">])))</span> <span class="o">/</span> <span class="n">Data_ALL</span><span class="o">-&gt;</span><span class="n">sumEntries</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">n_signal_initial1</span><span class="w"> </span><span class="o">=</span><span class="p">(</span><span class="n">Data_ALL</span><span class="o">-&gt;</span><span class="n">sumEntries</span><span class="p">(</span><span class="n">TString</span><span class="o">::</span><span class="n">Format</span><span class="p">(</span><span class="s">&quot;abs(InvariantMass-%g)&lt;0.015&quot;</span><span class="p">,</span><span class="n">init_conditions</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span><span class="o">-</span><span class="n">Data_ALL</span><span class="o">-&gt;</span><span class="n">sumEntries</span><span class="p">(</span><span class="n">TString</span><span class="o">::</span><span class="n">Format</span><span class="p">(</span><span class="s">&quot;abs(InvariantMass-%g)&lt;0.030&amp;&amp;abs(InvariantMass-%g)&gt;.015&quot;</span><span class="p">,</span><span class="n">init_conditions</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">init_conditions</span><span class="p">[</span><span class="mi">1</span><span class="p">])))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Data_ALL</span><span class="o">-&gt;</span><span class="n">sumEntries</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">n_signal_initial2</span><span class="w"> </span><span class="o">=</span><span class="p">(</span><span class="n">Data_ALL</span><span class="o">-&gt;</span><span class="n">sumEntries</span><span class="p">(</span><span class="n">TString</span><span class="o">::</span><span class="n">Format</span><span class="p">(</span><span class="s">&quot;abs(InvariantMass-%g)&lt;0.015&quot;</span><span class="p">,</span><span class="n">init_conditions</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span><span class="o">-</span><span class="n">Data_ALL</span><span class="o">-&gt;</span><span class="n">sumEntries</span><span class="p">(</span><span class="n">TString</span><span class="o">::</span><span class="n">Format</span><span class="p">(</span><span class="s">&quot;abs(InvariantMass-%g)&lt;0.030&amp;&amp;abs(InvariantMass-%g)&gt;.015&quot;</span><span class="p">,</span><span class="n">init_conditions</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">init_conditions</span><span class="p">[</span><span class="mi">2</span><span class="p">])))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Data_ALL</span><span class="o">-&gt;</span><span class="n">sumEntries</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">n_signal_initial3</span><span class="w"> </span><span class="o">=</span><span class="p">(</span><span class="n">Data_ALL</span><span class="o">-&gt;</span><span class="n">sumEntries</span><span class="p">(</span><span class="n">TString</span><span class="o">::</span><span class="n">Format</span><span class="p">(</span><span class="s">&quot;abs(InvariantMass-%g)&lt;0.015&quot;</span><span class="p">,</span><span class="n">init_conditions</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span><span class="o">-</span><span class="n">Data_ALL</span><span class="o">-&gt;</span><span class="n">sumEntries</span><span class="p">(</span><span class="n">TString</span><span class="o">::</span><span class="n">Format</span><span class="p">(</span><span class="s">&quot;abs(InvariantMass-%g)&lt;0.030&amp;&amp;abs(InvariantMass-%g)&gt;.015&quot;</span><span class="p">,</span><span class="n">init_conditions</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="n">init_conditions</span><span class="p">[</span><span class="mi">3</span><span class="p">])))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Data_ALL</span><span class="o">-&gt;</span><span class="n">sumEntries</span><span class="p">();</span><span class="w"></span>
 
-    <span class="kt">double</span> <span class="n">n_signal_initial_total</span> <span class="o">=</span> <span class="n">n_signal_initial1</span> <span class="o">+</span> <span class="n">n_signal_initial2</span> <span class="o">+</span> <span class="n">n_signal_initial3</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">n_signal_initial_total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n_signal_initial1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">n_signal_initial2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">n_signal_initial3</span><span class="p">;</span><span class="w"></span>
 
-    <span class="n">RooRealVar</span> <span class="nf">frac1</span><span class="p">(</span><span class="s">&quot;frac1&quot;</span><span class="p">,</span><span class="s">&quot;frac1&quot;</span><span class="p">,</span><span class="mf">7.1345e-01</span><span class="p">);</span>
-    <span class="n">RooRealVar</span> <span class="nf">frac2</span><span class="p">(</span><span class="s">&quot;frac2&quot;</span><span class="p">,</span><span class="s">&quot;frac2&quot;</span><span class="p">,</span><span class="mf">1.9309e-01</span><span class="p">);</span>
+<span class="w">    </span><span class="n">RooRealVar</span><span class="w"> </span><span class="nf">frac1</span><span class="p">(</span><span class="s">&quot;frac1&quot;</span><span class="p">,</span><span class="s">&quot;frac1&quot;</span><span class="p">,</span><span class="mf">7.1345e-01</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">RooRealVar</span><span class="w"> </span><span class="nf">frac2</span><span class="p">(</span><span class="s">&quot;frac2&quot;</span><span class="p">,</span><span class="s">&quot;frac2&quot;</span><span class="p">,</span><span class="mf">1.9309e-01</span><span class="p">);</span><span class="w"></span>
 
-    <span class="n">RooAddPdf</span><span class="o">*</span> <span class="n">signal</span><span class="p">;</span>
+<span class="w">    </span><span class="n">RooAddPdf</span><span class="o">*</span><span class="w"> </span><span class="n">signal</span><span class="p">;</span><span class="w"></span>
 
-    <span class="n">signal</span>      <span class="o">=</span> <span class="k">new</span> <span class="n">RooAddPdf</span><span class="p">(</span><span class="s">&quot;signal&quot;</span><span class="p">,</span> <span class="s">&quot;signal&quot;</span><span class="p">,</span> <span class="n">RooArgList</span><span class="p">(</span><span class="n">gaussian1</span><span class="p">,</span> <span class="n">gaussian2</span><span class="p">,</span><span class="n">gaussian3</span><span class="p">),</span> <span class="n">RooArgList</span><span class="p">(</span><span class="n">frac1</span><span class="p">,</span> <span class="n">frac2</span><span class="p">));</span>
-    <span class="kt">double</span> <span class="n">n_back_initial</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">-</span> <span class="n">n_signal_initial1</span> <span class="o">-</span> <span class="n">n_signal_initial2</span> <span class="o">-</span><span class="n">n_signal_initial3</span><span class="p">;</span>
+<span class="w">    </span><span class="n">signal</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RooAddPdf</span><span class="p">(</span><span class="s">&quot;signal&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;signal&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">RooArgList</span><span class="p">(</span><span class="n">gaussian1</span><span class="p">,</span><span class="w"> </span><span class="n">gaussian2</span><span class="p">,</span><span class="n">gaussian3</span><span class="p">),</span><span class="w"> </span><span class="n">RooArgList</span><span class="p">(</span><span class="n">frac1</span><span class="p">,</span><span class="w"> </span><span class="n">frac2</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">n_back_initial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">n_signal_initial1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">n_signal_initial2</span><span class="w"> </span><span class="o">-</span><span class="n">n_signal_initial3</span><span class="p">;</span><span class="w"></span>
 
-    <span class="n">RooRealVar</span> <span class="nf">n_signal_total</span><span class="p">(</span><span class="s">&quot;n_signal_total&quot;</span><span class="p">,</span><span class="s">&quot;n_signal_total&quot;</span><span class="p">,</span><span class="n">n_signal_initial_total</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="n">Data_ALL</span><span class="o">-&gt;</span><span class="n">sumEntries</span><span class="p">());</span>
-    <span class="n">RooRealVar</span> <span class="nf">n_signal_total_pass</span><span class="p">(</span><span class="s">&quot;n_signal_total_pass&quot;</span><span class="p">,</span><span class="s">&quot;n_signal_total_pass&quot;</span><span class="p">,</span><span class="n">n_signal_initial_total</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="n">Data_PASSING</span><span class="o">-&gt;</span><span class="n">sumEntries</span><span class="p">());</span>
+<span class="w">    </span><span class="n">RooRealVar</span><span class="w"> </span><span class="nf">n_signal_total</span><span class="p">(</span><span class="s">&quot;n_signal_total&quot;</span><span class="p">,</span><span class="s">&quot;n_signal_total&quot;</span><span class="p">,</span><span class="n">n_signal_initial_total</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="n">Data_ALL</span><span class="o">-&gt;</span><span class="n">sumEntries</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="n">RooRealVar</span><span class="w"> </span><span class="nf">n_signal_total_pass</span><span class="p">(</span><span class="s">&quot;n_signal_total_pass&quot;</span><span class="p">,</span><span class="s">&quot;n_signal_total_pass&quot;</span><span class="p">,</span><span class="n">n_signal_initial_total</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="n">Data_PASSING</span><span class="o">-&gt;</span><span class="n">sumEntries</span><span class="p">());</span><span class="w"></span>
 </code></pre></div>
 <p>After defining the individual <a href="https://en.wikipedia.org/wiki/Probability_density_function"><em>pdfs</em> </a> that will be used in the fit, we add them together to make our model with the signal and background. We then combine the data onto a <a href="https://root.cern.ch/doc/master/classRooSimultaneous.html"><strong>RooSimultaneous</strong></a> so that we can execute a simultaneous fit with the <a href="https://root.cern.ch/doc/master/classRooAbsPdf.html#af43c48c044f954b0e0e9d4fe38347551"><strong>fitTo</strong></a> method. The fit result is then stored.</p>
-<div class="highlight"><pre><span></span><code>    <span class="n">RooRealVar</span> <span class="nf">n_back</span><span class="p">(</span><span class="s">&quot;n_back&quot;</span><span class="p">,</span><span class="s">&quot;n_back&quot;</span><span class="p">,</span><span class="n">n_back_initial</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="n">Data_ALL</span><span class="o">-&gt;</span><span class="n">sumEntries</span><span class="p">());</span>
-    <span class="n">RooRealVar</span> <span class="nf">n_back_pass</span><span class="p">(</span><span class="s">&quot;n_back_pass&quot;</span><span class="p">,</span><span class="s">&quot;n_back_pass&quot;</span><span class="p">,</span><span class="n">n_back_initial</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="n">Data_PASSING</span><span class="o">-&gt;</span><span class="n">sumEntries</span><span class="p">());</span>
-    <span class="n">RooAddPdf</span><span class="o">*</span> <span class="n">model</span><span class="p">;</span>
-    <span class="n">RooAddPdf</span><span class="o">*</span> <span class="n">model_pass</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="n">RooRealVar</span><span class="w"> </span><span class="nf">n_back</span><span class="p">(</span><span class="s">&quot;n_back&quot;</span><span class="p">,</span><span class="s">&quot;n_back&quot;</span><span class="p">,</span><span class="n">n_back_initial</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="n">Data_ALL</span><span class="o">-&gt;</span><span class="n">sumEntries</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="n">RooRealVar</span><span class="w"> </span><span class="nf">n_back_pass</span><span class="p">(</span><span class="s">&quot;n_back_pass&quot;</span><span class="p">,</span><span class="s">&quot;n_back_pass&quot;</span><span class="p">,</span><span class="n">n_back_initial</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="n">Data_PASSING</span><span class="o">-&gt;</span><span class="n">sumEntries</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="n">RooAddPdf</span><span class="o">*</span><span class="w"> </span><span class="n">model</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">RooAddPdf</span><span class="o">*</span><span class="w"> </span><span class="n">model_pass</span><span class="p">;</span><span class="w"></span>
 
-    <span class="n">model</span>      <span class="o">=</span> <span class="k">new</span> <span class="n">RooAddPdf</span><span class="p">(</span><span class="s">&quot;model&quot;</span><span class="p">,</span><span class="s">&quot;model&quot;</span><span class="p">,</span> <span class="n">RooArgList</span><span class="p">(</span><span class="o">*</span><span class="n">signal</span><span class="p">,</span> <span class="n">background</span><span class="p">),</span><span class="n">RooArgList</span><span class="p">(</span><span class="n">n_signal_total</span><span class="p">,</span> <span class="n">n_back</span><span class="p">));</span>
-    <span class="n">model_pass</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RooAddPdf</span><span class="p">(</span><span class="s">&quot;model_pass&quot;</span><span class="p">,</span> <span class="s">&quot;model_pass&quot;</span><span class="p">,</span> <span class="n">RooArgList</span><span class="p">(</span><span class="o">*</span><span class="n">signal</span><span class="p">,</span> <span class="n">background</span><span class="p">),</span><span class="n">RooArgList</span><span class="p">(</span><span class="n">n_signal_total_pass</span><span class="p">,</span> <span class="n">n_back_pass</span><span class="p">));</span>
+<span class="w">    </span><span class="n">model</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RooAddPdf</span><span class="p">(</span><span class="s">&quot;model&quot;</span><span class="p">,</span><span class="s">&quot;model&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">RooArgList</span><span class="p">(</span><span class="o">*</span><span class="n">signal</span><span class="p">,</span><span class="w"> </span><span class="n">background</span><span class="p">),</span><span class="n">RooArgList</span><span class="p">(</span><span class="n">n_signal_total</span><span class="p">,</span><span class="w"> </span><span class="n">n_back</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">model_pass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RooAddPdf</span><span class="p">(</span><span class="s">&quot;model_pass&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;model_pass&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">RooArgList</span><span class="p">(</span><span class="o">*</span><span class="n">signal</span><span class="p">,</span><span class="w"> </span><span class="n">background</span><span class="p">),</span><span class="n">RooArgList</span><span class="p">(</span><span class="n">n_signal_total_pass</span><span class="p">,</span><span class="w"> </span><span class="n">n_back_pass</span><span class="p">));</span><span class="w"></span>
 
-    <span class="c1">// SIMULTANEOUS FIT</span>
-    <span class="n">RooCategory</span> <span class="nf">sample</span><span class="p">(</span><span class="s">&quot;sample&quot;</span><span class="p">,</span><span class="s">&quot;sample&quot;</span><span class="p">)</span> <span class="p">;</span>
-    <span class="n">sample</span><span class="p">.</span><span class="n">defineType</span><span class="p">(</span><span class="s">&quot;All&quot;</span><span class="p">)</span> <span class="p">;</span>
-    <span class="n">sample</span><span class="p">.</span><span class="n">defineType</span><span class="p">(</span><span class="s">&quot;PASSING&quot;</span><span class="p">)</span> <span class="p">;</span>
+<span class="w">    </span><span class="c1">// SIMULTANEOUS FIT</span>
+<span class="w">    </span><span class="n">RooCategory</span><span class="w"> </span><span class="nf">sample</span><span class="p">(</span><span class="s">&quot;sample&quot;</span><span class="p">,</span><span class="s">&quot;sample&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">sample</span><span class="p">.</span><span class="n">defineType</span><span class="p">(</span><span class="s">&quot;All&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">sample</span><span class="p">.</span><span class="n">defineType</span><span class="p">(</span><span class="s">&quot;PASSING&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
 
-    <span class="n">RooDataHist</span> <span class="nf">combData</span><span class="p">(</span><span class="s">&quot;combData&quot;</span><span class="p">,</span><span class="s">&quot;combined data&quot;</span><span class="p">,</span><span class="n">InvariantMass</span><span class="p">,</span><span class="n">Index</span><span class="p">(</span><span class="n">sample</span><span class="p">),</span><span class="n">Import</span><span class="p">(</span><span class="s">&quot;ALL&quot;</span><span class="p">,</span><span class="o">*</span><span class="n">dh_ALL</span><span class="p">),</span><span class="n">Import</span><span class="p">(</span><span class="s">&quot;PASSING&quot;</span><span class="p">,</span><span class="o">*</span><span class="n">dh_PASSING</span><span class="p">));</span>
+<span class="w">    </span><span class="n">RooDataHist</span><span class="w"> </span><span class="nf">combData</span><span class="p">(</span><span class="s">&quot;combData&quot;</span><span class="p">,</span><span class="s">&quot;combined data&quot;</span><span class="p">,</span><span class="n">InvariantMass</span><span class="p">,</span><span class="n">Index</span><span class="p">(</span><span class="n">sample</span><span class="p">),</span><span class="n">Import</span><span class="p">(</span><span class="s">&quot;ALL&quot;</span><span class="p">,</span><span class="o">*</span><span class="n">dh_ALL</span><span class="p">),</span><span class="n">Import</span><span class="p">(</span><span class="s">&quot;PASSING&quot;</span><span class="p">,</span><span class="o">*</span><span class="n">dh_PASSING</span><span class="p">));</span><span class="w"></span>
 
-    <span class="n">RooSimultaneous</span> <span class="nf">simPdf</span><span class="p">(</span><span class="s">&quot;simPdf&quot;</span><span class="p">,</span><span class="s">&quot;simultaneous pdf&quot;</span><span class="p">,</span><span class="n">sample</span><span class="p">)</span> <span class="p">;</span>
+<span class="w">    </span><span class="n">RooSimultaneous</span><span class="w"> </span><span class="nf">simPdf</span><span class="p">(</span><span class="s">&quot;simPdf&quot;</span><span class="p">,</span><span class="s">&quot;simultaneous pdf&quot;</span><span class="p">,</span><span class="n">sample</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
 
-    <span class="n">simPdf</span><span class="p">.</span><span class="n">addPdf</span><span class="p">(</span><span class="o">*</span><span class="n">model</span><span class="p">,</span><span class="s">&quot;ALL&quot;</span><span class="p">);</span>
-    <span class="n">simPdf</span><span class="p">.</span><span class="n">addPdf</span><span class="p">(</span><span class="o">*</span><span class="n">model_pass</span><span class="p">,</span><span class="s">&quot;PASSING&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">simPdf</span><span class="p">.</span><span class="n">addPdf</span><span class="p">(</span><span class="o">*</span><span class="n">model</span><span class="p">,</span><span class="s">&quot;ALL&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">simPdf</span><span class="p">.</span><span class="n">addPdf</span><span class="p">(</span><span class="o">*</span><span class="n">model_pass</span><span class="p">,</span><span class="s">&quot;PASSING&quot;</span><span class="p">);</span><span class="w"></span>
 
-    <span class="n">RooFitResult</span><span class="o">*</span> <span class="n">fitres</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RooFitResult</span><span class="p">;</span>
-    <span class="n">fitres</span> <span class="o">=</span> <span class="n">simPdf</span><span class="p">.</span><span class="n">fitTo</span><span class="p">(</span><span class="n">combData</span><span class="p">,</span> <span class="n">RooFit</span><span class="o">::</span><span class="n">Save</span><span class="p">());</span>
+<span class="w">    </span><span class="n">RooFitResult</span><span class="o">*</span><span class="w"> </span><span class="n">fitres</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RooFitResult</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">fitres</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">simPdf</span><span class="p">.</span><span class="n">fitTo</span><span class="p">(</span><span class="n">combData</span><span class="p">,</span><span class="w"> </span><span class="n">RooFit</span><span class="o">::</span><span class="n">Save</span><span class="p">());</span><span class="w"></span>
 
-    <span class="c1">// OUTPUT ARRAY</span>
-    <span class="kt">double</span><span class="o">*</span> <span class="n">output</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+<span class="w">    </span><span class="c1">// OUTPUT ARRAY</span>
+<span class="w">    </span><span class="kt">double</span><span class="o">*</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">double</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span><span class="w"></span>
 
-    <span class="n">RooRealVar</span><span class="o">*</span> <span class="n">yield_ALL</span> <span class="o">=</span> <span class="p">(</span><span class="n">RooRealVar</span><span class="o">*</span><span class="p">)</span> <span class="n">fitres</span><span class="o">-&gt;</span><span class="n">floatParsFinal</span><span class="p">().</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;n_signal_total&quot;</span><span class="p">);</span>
-    <span class="n">RooRealVar</span><span class="o">*</span> <span class="n">yield_PASS</span> <span class="o">=</span> <span class="p">(</span><span class="n">RooRealVar</span><span class="o">*</span><span class="p">)</span> <span class="n">fitres</span><span class="o">-&gt;</span><span class="n">floatParsFinal</span><span class="p">().</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;n_signal_total_pass&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">RooRealVar</span><span class="o">*</span><span class="w"> </span><span class="n">yield_ALL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">RooRealVar</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">fitres</span><span class="o">-&gt;</span><span class="n">floatParsFinal</span><span class="p">().</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;n_signal_total&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">RooRealVar</span><span class="o">*</span><span class="w"> </span><span class="n">yield_PASS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">RooRealVar</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">fitres</span><span class="o">-&gt;</span><span class="n">floatParsFinal</span><span class="p">().</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;n_signal_total_pass&quot;</span><span class="p">);</span><span class="w"></span>
 
-    <span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">yield_ALL</span><span class="o">-&gt;</span><span class="n">getVal</span><span class="p">();</span>
-    <span class="n">output</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">yield_PASS</span><span class="o">-&gt;</span><span class="n">getVal</span><span class="p">();</span>
+<span class="w">    </span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yield_ALL</span><span class="o">-&gt;</span><span class="n">getVal</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">output</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yield_PASS</span><span class="o">-&gt;</span><span class="n">getVal</span><span class="p">();</span><span class="w"></span>
 
-    <span class="n">output</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">yield_ALL</span><span class="o">-&gt;</span><span class="n">getError</span><span class="p">();</span>
-    <span class="n">output</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">yield_PASS</span><span class="o">-&gt;</span><span class="n">getError</span><span class="p">();</span>
+<span class="w">    </span><span class="n">output</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yield_ALL</span><span class="o">-&gt;</span><span class="n">getError</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">output</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yield_PASS</span><span class="o">-&gt;</span><span class="n">getError</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 <p>The rest of the code has to do with the plotting of the fit and with memory management.</p>
-<div class="highlight"><pre><span></span><code>    <span class="n">frame</span><span class="o">-&gt;</span><span class="n">SetTitle</span><span class="p">(</span><span class="s">&quot;ALL&quot;</span><span class="p">);</span>
-    <span class="n">frame</span><span class="o">-&gt;</span><span class="n">SetXTitle</span><span class="p">(</span><span class="s">&quot;#mu^{+}#mu^{-} invariant mass [GeV/c^{2}]&quot;</span><span class="p">);</span>
-    <span class="n">Data_ALL</span><span class="o">-&gt;</span><span class="n">plotOn</span><span class="p">(</span><span class="n">frame</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="n">frame</span><span class="o">-&gt;</span><span class="n">SetTitle</span><span class="p">(</span><span class="s">&quot;ALL&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">frame</span><span class="o">-&gt;</span><span class="n">SetXTitle</span><span class="p">(</span><span class="s">&quot;#mu^{+}#mu^{-} invariant mass [GeV/c^{2}]&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">Data_ALL</span><span class="o">-&gt;</span><span class="n">plotOn</span><span class="p">(</span><span class="n">frame</span><span class="p">);</span><span class="w"></span>
 
-    <span class="n">model</span><span class="o">-&gt;</span><span class="n">plotOn</span><span class="p">(</span><span class="n">frame</span><span class="p">);</span>
-    <span class="n">model</span><span class="o">-&gt;</span><span class="n">plotOn</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span><span class="n">RooFit</span><span class="o">::</span><span class="n">Components</span><span class="p">(</span><span class="s">&quot;signal1&quot;</span><span class="p">),</span><span class="n">RooFit</span><span class="o">::</span><span class="n">LineStyle</span><span class="p">(</span><span class="n">kDashed</span><span class="p">),</span><span class="n">RooFit</span><span class="o">::</span><span class="n">LineColor</span><span class="p">(</span><span class="n">kGreen</span><span class="p">));</span>
-    <span class="n">model</span><span class="o">-&gt;</span><span class="n">plotOn</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span><span class="n">RooFit</span><span class="o">::</span><span class="n">Components</span><span class="p">(</span><span class="s">&quot;signal2&quot;</span><span class="p">),</span><span class="n">RooFit</span><span class="o">::</span><span class="n">LineStyle</span><span class="p">(</span><span class="n">kDashed</span><span class="p">),</span><span class="n">RooFit</span><span class="o">::</span><span class="n">LineColor</span><span class="p">(</span><span class="n">kMagenta</span> <span class="o">-</span> <span class="mi">5</span><span class="p">));</span>
-    <span class="n">model</span><span class="o">-&gt;</span><span class="n">plotOn</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span><span class="n">RooFit</span><span class="o">::</span><span class="n">Components</span><span class="p">(</span><span class="s">&quot;signal3&quot;</span><span class="p">),</span><span class="n">RooFit</span><span class="o">::</span><span class="n">LineStyle</span><span class="p">(</span><span class="n">kDashed</span><span class="p">),</span><span class="n">RooFit</span><span class="o">::</span><span class="n">LineColor</span><span class="p">(</span><span class="n">kOrange</span><span class="p">));</span>
-    <span class="n">model</span><span class="o">-&gt;</span><span class="n">plotOn</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span><span class="n">RooFit</span><span class="o">::</span><span class="n">Components</span><span class="p">(</span><span class="s">&quot;background&quot;</span><span class="p">),</span><span class="n">RooFit</span><span class="o">::</span><span class="n">LineStyle</span><span class="p">(</span><span class="n">kDashed</span><span class="p">),</span><span class="n">RooFit</span><span class="o">::</span><span class="n">LineColor</span><span class="p">(</span><span class="n">kRed</span><span class="p">));</span>
+<span class="w">    </span><span class="n">model</span><span class="o">-&gt;</span><span class="n">plotOn</span><span class="p">(</span><span class="n">frame</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">model</span><span class="o">-&gt;</span><span class="n">plotOn</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span><span class="n">RooFit</span><span class="o">::</span><span class="n">Components</span><span class="p">(</span><span class="s">&quot;signal1&quot;</span><span class="p">),</span><span class="n">RooFit</span><span class="o">::</span><span class="n">LineStyle</span><span class="p">(</span><span class="n">kDashed</span><span class="p">),</span><span class="n">RooFit</span><span class="o">::</span><span class="n">LineColor</span><span class="p">(</span><span class="n">kGreen</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">model</span><span class="o">-&gt;</span><span class="n">plotOn</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span><span class="n">RooFit</span><span class="o">::</span><span class="n">Components</span><span class="p">(</span><span class="s">&quot;signal2&quot;</span><span class="p">),</span><span class="n">RooFit</span><span class="o">::</span><span class="n">LineStyle</span><span class="p">(</span><span class="n">kDashed</span><span class="p">),</span><span class="n">RooFit</span><span class="o">::</span><span class="n">LineColor</span><span class="p">(</span><span class="n">kMagenta</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">5</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">model</span><span class="o">-&gt;</span><span class="n">plotOn</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span><span class="n">RooFit</span><span class="o">::</span><span class="n">Components</span><span class="p">(</span><span class="s">&quot;signal3&quot;</span><span class="p">),</span><span class="n">RooFit</span><span class="o">::</span><span class="n">LineStyle</span><span class="p">(</span><span class="n">kDashed</span><span class="p">),</span><span class="n">RooFit</span><span class="o">::</span><span class="n">LineColor</span><span class="p">(</span><span class="n">kOrange</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">model</span><span class="o">-&gt;</span><span class="n">plotOn</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span><span class="n">RooFit</span><span class="o">::</span><span class="n">Components</span><span class="p">(</span><span class="s">&quot;background&quot;</span><span class="p">),</span><span class="n">RooFit</span><span class="o">::</span><span class="n">LineStyle</span><span class="p">(</span><span class="n">kDashed</span><span class="p">),</span><span class="n">RooFit</span><span class="o">::</span><span class="n">LineColor</span><span class="p">(</span><span class="n">kRed</span><span class="p">));</span><span class="w"></span>
 
-    <span class="n">c_all</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">();</span>
-    <span class="n">frame</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">c_all</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">frame</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span><span class="w"></span>
 
-    <span class="n">RooPlot</span> <span class="o">*</span><span class="n">frame_pass</span> <span class="o">=</span> <span class="n">InvariantMass</span><span class="p">.</span><span class="n">frame</span><span class="p">(</span><span class="n">RooFit</span><span class="o">::</span><span class="n">Title</span><span class="p">(</span><span class="s">&quot;Invariant Mass&quot;</span><span class="p">));</span>
+<span class="w">    </span><span class="n">RooPlot</span><span class="w"> </span><span class="o">*</span><span class="n">frame_pass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">InvariantMass</span><span class="p">.</span><span class="n">frame</span><span class="p">(</span><span class="n">RooFit</span><span class="o">::</span><span class="n">Title</span><span class="p">(</span><span class="s">&quot;Invariant Mass&quot;</span><span class="p">));</span><span class="w"></span>
 
-    <span class="n">c_pass</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">();</span>
+<span class="w">    </span><span class="n">c_pass</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">();</span><span class="w"></span>
 
-    <span class="n">frame_pass</span><span class="o">-&gt;</span><span class="n">SetTitle</span><span class="p">(</span><span class="s">&quot;PASSING&quot;</span><span class="p">);</span>
-    <span class="n">frame_pass</span><span class="o">-&gt;</span><span class="n">SetXTitle</span><span class="p">(</span><span class="s">&quot;#mu^{+}#mu^{-} invariant mass [GeV/c^{2}]&quot;</span><span class="p">);</span>
-    <span class="n">Data_PASSING</span><span class="o">-&gt;</span><span class="n">plotOn</span><span class="p">(</span><span class="n">frame_pass</span><span class="p">);</span>
+<span class="w">    </span><span class="n">frame_pass</span><span class="o">-&gt;</span><span class="n">SetTitle</span><span class="p">(</span><span class="s">&quot;PASSING&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">frame_pass</span><span class="o">-&gt;</span><span class="n">SetXTitle</span><span class="p">(</span><span class="s">&quot;#mu^{+}#mu^{-} invariant mass [GeV/c^{2}]&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">Data_PASSING</span><span class="o">-&gt;</span><span class="n">plotOn</span><span class="p">(</span><span class="n">frame_pass</span><span class="p">);</span><span class="w"></span>
 
-    <span class="n">model_pass</span><span class="o">-&gt;</span><span class="n">plotOn</span><span class="p">(</span><span class="n">frame_pass</span><span class="p">);</span>
-    <span class="n">model_pass</span><span class="o">-&gt;</span><span class="n">plotOn</span><span class="p">(</span><span class="n">frame_pass</span><span class="p">,</span><span class="n">RooFit</span><span class="o">::</span><span class="n">Components</span><span class="p">(</span><span class="s">&quot;signal1&quot;</span><span class="p">),</span><span class="n">RooFit</span><span class="o">::</span><span class="n">LineStyle</span><span class="p">(</span><span class="n">kDashed</span><span class="p">),</span><span class="n">RooFit</span><span class="o">::</span><span class="n">LineColor</span><span class="p">(</span><span class="n">kGreen</span><span class="p">));</span>
-    <span class="n">model_pass</span><span class="o">-&gt;</span><span class="n">plotOn</span><span class="p">(</span><span class="n">frame_pass</span><span class="p">,</span><span class="n">RooFit</span><span class="o">::</span><span class="n">Components</span><span class="p">(</span><span class="s">&quot;signal2&quot;</span><span class="p">),</span><span class="n">RooFit</span><span class="o">::</span><span class="n">LineStyle</span><span class="p">(</span><span class="n">kDashed</span><span class="p">),</span><span class="n">RooFit</span><span class="o">::</span><span class="n">LineColor</span><span class="p">(</span><span class="n">kMagenta</span> <span class="o">-</span> <span class="mi">5</span><span class="p">));</span>
-    <span class="n">model_pass</span><span class="o">-&gt;</span><span class="n">plotOn</span><span class="p">(</span><span class="n">frame_pass</span><span class="p">,</span><span class="n">RooFit</span><span class="o">::</span><span class="n">Components</span><span class="p">(</span><span class="s">&quot;signal3&quot;</span><span class="p">),</span><span class="n">RooFit</span><span class="o">::</span><span class="n">LineStyle</span><span class="p">(</span><span class="n">kDashed</span><span class="p">),</span><span class="n">RooFit</span><span class="o">::</span><span class="n">LineColor</span><span class="p">(</span><span class="n">kOrange</span><span class="p">));</span>
-    <span class="n">model_pass</span><span class="o">-&gt;</span><span class="n">plotOn</span><span class="p">(</span><span class="n">frame_pass</span><span class="p">,</span><span class="n">RooFit</span><span class="o">::</span><span class="n">Components</span><span class="p">(</span><span class="s">&quot;background&quot;</span><span class="p">),</span><span class="n">RooFit</span><span class="o">::</span><span class="n">LineStyle</span><span class="p">(</span><span class="n">kDashed</span><span class="p">),</span><span class="n">RooFit</span><span class="o">::</span><span class="n">LineColor</span><span class="p">(</span><span class="n">kRed</span><span class="p">));</span>
+<span class="w">    </span><span class="n">model_pass</span><span class="o">-&gt;</span><span class="n">plotOn</span><span class="p">(</span><span class="n">frame_pass</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">model_pass</span><span class="o">-&gt;</span><span class="n">plotOn</span><span class="p">(</span><span class="n">frame_pass</span><span class="p">,</span><span class="n">RooFit</span><span class="o">::</span><span class="n">Components</span><span class="p">(</span><span class="s">&quot;signal1&quot;</span><span class="p">),</span><span class="n">RooFit</span><span class="o">::</span><span class="n">LineStyle</span><span class="p">(</span><span class="n">kDashed</span><span class="p">),</span><span class="n">RooFit</span><span class="o">::</span><span class="n">LineColor</span><span class="p">(</span><span class="n">kGreen</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">model_pass</span><span class="o">-&gt;</span><span class="n">plotOn</span><span class="p">(</span><span class="n">frame_pass</span><span class="p">,</span><span class="n">RooFit</span><span class="o">::</span><span class="n">Components</span><span class="p">(</span><span class="s">&quot;signal2&quot;</span><span class="p">),</span><span class="n">RooFit</span><span class="o">::</span><span class="n">LineStyle</span><span class="p">(</span><span class="n">kDashed</span><span class="p">),</span><span class="n">RooFit</span><span class="o">::</span><span class="n">LineColor</span><span class="p">(</span><span class="n">kMagenta</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">5</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">model_pass</span><span class="o">-&gt;</span><span class="n">plotOn</span><span class="p">(</span><span class="n">frame_pass</span><span class="p">,</span><span class="n">RooFit</span><span class="o">::</span><span class="n">Components</span><span class="p">(</span><span class="s">&quot;signal3&quot;</span><span class="p">),</span><span class="n">RooFit</span><span class="o">::</span><span class="n">LineStyle</span><span class="p">(</span><span class="n">kDashed</span><span class="p">),</span><span class="n">RooFit</span><span class="o">::</span><span class="n">LineColor</span><span class="p">(</span><span class="n">kOrange</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">model_pass</span><span class="o">-&gt;</span><span class="n">plotOn</span><span class="p">(</span><span class="n">frame_pass</span><span class="p">,</span><span class="n">RooFit</span><span class="o">::</span><span class="n">Components</span><span class="p">(</span><span class="s">&quot;background&quot;</span><span class="p">),</span><span class="n">RooFit</span><span class="o">::</span><span class="n">LineStyle</span><span class="p">(</span><span class="n">kDashed</span><span class="p">),</span><span class="n">RooFit</span><span class="o">::</span><span class="n">LineColor</span><span class="p">(</span><span class="n">kRed</span><span class="p">));</span><span class="w"></span>
 
-    <span class="n">frame_pass</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">();</span>
+<span class="w">    </span><span class="n">frame_pass</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">();</span><span class="w"></span>
 
-    <span class="k">if</span><span class="p">(</span><span class="n">save</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">c_pass</span><span class="o">-&gt;</span><span class="n">SaveAs</span><span class="p">((</span><span class="s">&quot;Fit Result/&quot;</span> <span class="o">+</span> <span class="n">condition</span> <span class="o">+</span> <span class="s">&quot;_ALL.pdf&quot;</span><span class="p">).</span><span class="n">c_str</span><span class="p">());</span>
-        <span class="n">c_all</span><span class="o">-&gt;</span><span class="n">SaveAs</span> <span class="p">((</span><span class="s">&quot;Fit Result/&quot;</span> <span class="o">+</span> <span class="n">condition</span> <span class="o">+</span> <span class="s">&quot;_PASS.pdf&quot;</span><span class="p">).</span><span class="n">c_str</span><span class="p">());</span>
-    <span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">save</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">c_pass</span><span class="o">-&gt;</span><span class="n">SaveAs</span><span class="p">((</span><span class="s">&quot;Fit Result/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">condition</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;_ALL.pdf&quot;</span><span class="p">).</span><span class="n">c_str</span><span class="p">());</span><span class="w"></span>
+<span class="w">        </span><span class="n">c_all</span><span class="o">-&gt;</span><span class="n">SaveAs</span><span class="w"> </span><span class="p">((</span><span class="s">&quot;Fit Result/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">condition</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;_PASS.pdf&quot;</span><span class="p">).</span><span class="n">c_str</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-    <span class="c1">// DELETING ALLOCATED MEMORY</span>
-    <span class="k">delete</span><span class="p">[]</span> <span class="n">limits</span><span class="p">;</span>
-    <span class="c1">//</span>
-    <span class="k">delete</span> <span class="n">file0</span><span class="p">;</span>
-    <span class="c1">//</span>
-    <span class="k">delete</span> <span class="n">Data_ALL</span><span class="p">;</span>
-    <span class="k">delete</span> <span class="n">Data_PASSING</span><span class="p">;</span>
-    <span class="c1">//</span>
-    <span class="k">delete</span> <span class="n">dh_ALL</span><span class="p">;</span>
-    <span class="k">delete</span> <span class="n">dh_PASSING</span><span class="p">;</span>
-    <span class="c1">//</span>
-    <span class="k">delete</span> <span class="n">cutvar</span><span class="p">;</span>
-    <span class="k">delete</span> <span class="n">redeuce</span><span class="p">;</span>
-    <span class="c1">//</span>
-    <span class="k">delete</span> <span class="n">signal</span><span class="p">;</span>
-    <span class="c1">//</span>
-    <span class="k">delete</span> <span class="n">c_all</span><span class="p">;</span>
-    <span class="k">delete</span> <span class="n">c_pass</span><span class="p">;</span>
-    <span class="c1">//</span>
-    <span class="k">delete</span> <span class="n">model</span><span class="p">;</span>
-    <span class="k">delete</span> <span class="n">model_pass</span><span class="p">;</span>
-    <span class="k">delete</span> <span class="n">fitres</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// DELETING ALLOCATED MEMORY</span>
+<span class="w">    </span><span class="k">delete</span><span class="p">[]</span><span class="w"> </span><span class="n">limits</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="c1">//</span>
+<span class="w">    </span><span class="k">delete</span><span class="w"> </span><span class="n">file0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="c1">//</span>
+<span class="w">    </span><span class="k">delete</span><span class="w"> </span><span class="n">Data_ALL</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">delete</span><span class="w"> </span><span class="n">Data_PASSING</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="c1">//</span>
+<span class="w">    </span><span class="k">delete</span><span class="w"> </span><span class="n">dh_ALL</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">delete</span><span class="w"> </span><span class="n">dh_PASSING</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="c1">//</span>
+<span class="w">    </span><span class="k">delete</span><span class="w"> </span><span class="n">cutvar</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">delete</span><span class="w"> </span><span class="n">redeuce</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="c1">//</span>
+<span class="w">    </span><span class="k">delete</span><span class="w"> </span><span class="n">signal</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="c1">//</span>
+<span class="w">    </span><span class="k">delete</span><span class="w"> </span><span class="n">c_all</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">delete</span><span class="w"> </span><span class="n">c_pass</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="c1">//</span>
+<span class="w">    </span><span class="k">delete</span><span class="w"> </span><span class="n">model</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">delete</span><span class="w"> </span><span class="n">model_pass</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">delete</span><span class="w"> </span><span class="n">fitres</span><span class="p">;</span><span class="w"></span>
 
-    <span class="k">return</span> <span class="n">output</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">output</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </details>
 <p>The fitting and storing of the fit output of each bin is achieved by the following loop in the <code>Efficiency.C</code> code.</p>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">bin_n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">DataIsMC</span><span class="p">)</span>
-        <span class="n">yields_n_errs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">McYield</span><span class="p">(</span><span class="n">conditions</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">quantity</span><span class="p">);</span>
-    <span class="k">else</span>
-        <span class="n">yields_n_errs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">doFit</span><span class="p">(</span><span class="n">conditions</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">MuonId</span><span class="p">,</span> <span class="n">quantity</span><span class="p">,</span> <span class="n">init_conditions</span><span class="p">);</span>
-        <span class="c1">//doFit returns: [yield_all, yield_pass, err_all, err_pass]</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">bin_n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DataIsMC</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="n">yields_n_errs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">McYield</span><span class="p">(</span><span class="n">conditions</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">quantity</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"></span>
+<span class="w">        </span><span class="n">yields_n_errs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">doFit</span><span class="p">(</span><span class="n">conditions</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">MuonId</span><span class="p">,</span><span class="w"> </span><span class="n">quantity</span><span class="p">,</span><span class="w"> </span><span class="n">init_conditions</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="c1">//doFit returns: [yield_all, yield_pass, err_all, err_pass]</span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>The <code>McYield()</code> function (<code>src/McYield.cpp</code>) has the same output as <code>doFit()</code> and has to do with Monte Carlo dataset, which only contains signal for the 1S peak.</p>
 <p>To get the efficiency plot, we used the <a href="https://root.cern.ch/doc/master/classTEfficiency.html">TEfficiency</a> class from ROOT.
 You'll see that in order to create a <code>TEfficiency</code> object, one of the <a href="https://root.cern.ch/doc/master/classTEfficiency.html#aa0e99b4161745fd3bee0ae5c0f58880e">constructors</a> requires two <code>TH1</code> objects, i.e., two histograms. One with <em>all</em> the probes and one with the <em>passing</em> probes.</p>
 <p>The creation of these <code>TH1</code> objects is taken care of by the <code>src/make_hist.cpp</code> code.</p>
-<details class="example"><summary>Check out <code>src/make_hist.cpp</code></summary><div class="highlight"><pre><span></span><code><span class="n">TH1F</span><span class="o">*</span> <span class="nf">make_hist</span><span class="p">(</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="kt">double</span><span class="o">**</span> <span class="n">values</span><span class="p">,</span> <span class="kt">int</span> <span class="n">qnt</span><span class="p">,</span> <span class="kt">int</span> <span class="n">bin_n</span><span class="p">,</span> <span class="n">Double_t</span><span class="o">*</span> <span class="n">binning</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">IsDataMc</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">DRAW</span> <span class="o">=</span> <span class="nb">false</span><span class="p">)</span>
-<span class="p">{</span>
-   <span class="c1">//AddBinContent</span>
-   <span class="c1">//HISTOGRAM NEEDS TO HAVE VARIABLE BINS</span>
+<details class="example"><summary>Check out <code>src/make_hist.cpp</code></summary><div class="highlight"><pre><span></span><code><span class="n">TH1F</span><span class="o">*</span><span class="w"> </span><span class="nf">make_hist</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">**</span><span class="w"> </span><span class="n">values</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">qnt</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">bin_n</span><span class="p">,</span><span class="w"> </span><span class="n">Double_t</span><span class="o">*</span><span class="w"> </span><span class="n">binning</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">IsDataMc</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">DRAW</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="c1">//AddBinContent</span>
+<span class="w">   </span><span class="c1">//HISTOGRAM NEEDS TO HAVE VARIABLE BINS</span>
 
-   <span class="n">TH1F</span><span class="o">*</span> <span class="n">hist</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TH1F</span><span class="p">(</span><span class="n">name</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span> <span class="n">name</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span> <span class="n">bin_n</span><span class="p">,</span> <span class="n">binning</span><span class="p">);</span>
+<span class="w">   </span><span class="n">TH1F</span><span class="o">*</span><span class="w"> </span><span class="n">hist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TH1F</span><span class="p">(</span><span class="n">name</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="n">name</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="n">bin_n</span><span class="p">,</span><span class="w"> </span><span class="n">binning</span><span class="p">);</span><span class="w"></span>
 
-   <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">bin_n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-   <span class="p">{</span>
-       <span class="n">hist</span><span class="o">-</span>   <span class="n">SetBinContent</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">qnt</span><span class="p">]);</span>
-       <span class="k">if</span> <span class="p">(</span><span class="n">IsDataMc</span> <span class="o">==</span> <span class="nb">false</span><span class="p">)</span>
-           <span class="n">hist</span><span class="o">-</span>   <span class="n">SetBinError</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">qnt</span><span class="o">+</span><span class="mi">2</span><span class="p">]);</span>
-   <span class="p">}</span>
-   <span class="k">if</span> <span class="p">(</span><span class="n">DRAW</span><span class="p">)</span>
-   <span class="p">{</span>
-       <span class="n">TCanvas</span><span class="o">*</span> <span class="n">xperiment</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TCanvas</span><span class="p">;</span>
-       <span class="n">xperiment</span><span class="o">-</span>   <span class="n">cd</span><span class="p">();</span>
-       <span class="n">hist</span><span class="o">-</span>   <span class="n">Draw</span><span class="p">();</span>
-   <span class="p">}</span>
-   <span class="k">return</span> <span class="n">hist</span><span class="p">;</span>
-<span class="p">}</span>   
+<span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">bin_n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="p">{</span><span class="w"></span>
+<span class="w">       </span><span class="n">hist</span><span class="o">-</span><span class="w">   </span><span class="n">SetBinContent</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">qnt</span><span class="p">]);</span><span class="w"></span>
+<span class="w">       </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IsDataMc</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span><span class="w"></span>
+<span class="w">           </span><span class="n">hist</span><span class="o">-</span><span class="w">   </span><span class="n">SetBinError</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">qnt</span><span class="o">+</span><span class="mi">2</span><span class="p">]);</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DRAW</span><span class="p">)</span><span class="w"></span>
+<span class="w">   </span><span class="p">{</span><span class="w"></span>
+<span class="w">       </span><span class="n">TCanvas</span><span class="o">*</span><span class="w"> </span><span class="n">xperiment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TCanvas</span><span class="p">;</span><span class="w"></span>
+<span class="w">       </span><span class="n">xperiment</span><span class="o">-</span><span class="w">   </span><span class="n">cd</span><span class="p">();</span><span class="w"></span>
+<span class="w">       </span><span class="n">hist</span><span class="o">-</span><span class="w">   </span><span class="n">Draw</span><span class="p">();</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">hist</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w">   </span>
 </code></pre></div>
 </details>
 <p>To plot the efficiency we used the <code>src/get_efficiency.cpp</code> function.</p>
-<details class="example"><summary>Check out <code>get_efficiency.cpp</code></summary><div class="highlight"><pre><span></span><code><span class="n">TEfficiency</span><span class="o">*</span> <span class="nf">get_efficiency</span><span class="p">(</span><span class="n">TH1F</span><span class="o">*</span> <span class="n">ALL</span><span class="p">,</span> <span class="n">TH1F</span><span class="o">*</span> <span class="n">PASS</span><span class="p">,</span> <span class="n">string</span> <span class="n">quantity</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">DataIsMc</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">(</span><span class="s">&quot;Efficiency Result&quot;</span><span class="p">);</span>
-    <span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">(</span><span class="n">quantity</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+<details class="example"><summary>Check out <code>get_efficiency.cpp</code></summary><div class="highlight"><pre><span></span><code><span class="n">TEfficiency</span><span class="o">*</span><span class="w"> </span><span class="nf">get_efficiency</span><span class="p">(</span><span class="n">TH1F</span><span class="o">*</span><span class="w"> </span><span class="n">ALL</span><span class="p">,</span><span class="w"> </span><span class="n">TH1F</span><span class="o">*</span><span class="w"> </span><span class="n">PASS</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">quantity</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">DataIsMc</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">(</span><span class="s">&quot;Efficiency Result&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">(</span><span class="n">quantity</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span><span class="w"></span>
 
-    <span class="n">string</span><span class="o">*</span> <span class="n">file_name</span> <span class="o">=</span> <span class="k">new</span> <span class="n">string</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
-    <span class="n">file_name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;Efficiency_Run2011.root&quot;</span><span class="p">;</span>
-    <span class="n">file_name</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;Efficiency_MC.root&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">string</span><span class="o">*</span><span class="w"> </span><span class="n">file_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span><span class="w"></span>
+<span class="w">    </span><span class="n">file_name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Efficiency_Run2011.root&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">file_name</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Efficiency_MC.root&quot;</span><span class="p">;</span><span class="w"></span>
 
-    <span class="n">TFile</span><span class="o">*</span> <span class="n">pFile</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TFile</span><span class="p">(</span><span class="n">file_name</span><span class="p">[</span><span class="n">DataIsMc</span><span class="p">].</span><span class="n">c_str</span><span class="p">(),</span><span class="s">&quot;recreate&quot;</span><span class="p">);</span>
-    <span class="n">TEfficiency</span><span class="o">*</span> <span class="n">pEff</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TEfficiency</span><span class="p">();</span>
-    <span class="n">pEff</span><span class="o">-&gt;</span><span class="n">SetName</span><span class="p">(</span><span class="s">&quot;Efficiency&quot;</span><span class="p">);</span>
-    <span class="n">pEff</span><span class="o">-&gt;</span><span class="n">SetPassedHistogram</span><span class="p">(</span><span class="o">*</span><span class="n">PASS</span><span class="p">,</span> <span class="s">&quot;f&quot;</span><span class="p">);</span>
-    <span class="n">pEff</span><span class="o">-&gt;</span><span class="n">SetTotalHistogram</span> <span class="p">(</span><span class="o">*</span><span class="n">ALL</span><span class="p">,</span><span class="s">&quot;f&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">TFile</span><span class="o">*</span><span class="w"> </span><span class="n">pFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TFile</span><span class="p">(</span><span class="n">file_name</span><span class="p">[</span><span class="n">DataIsMc</span><span class="p">].</span><span class="n">c_str</span><span class="p">(),</span><span class="s">&quot;recreate&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">TEfficiency</span><span class="o">*</span><span class="w"> </span><span class="n">pEff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TEfficiency</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">pEff</span><span class="o">-&gt;</span><span class="n">SetName</span><span class="p">(</span><span class="s">&quot;Efficiency&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">pEff</span><span class="o">-&gt;</span><span class="n">SetPassedHistogram</span><span class="p">(</span><span class="o">*</span><span class="n">PASS</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;f&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">pEff</span><span class="o">-&gt;</span><span class="n">SetTotalHistogram</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">ALL</span><span class="p">,</span><span class="s">&quot;f&quot;</span><span class="p">);</span><span class="w"></span>
 
-    <span class="n">pEff</span><span class="o">-&gt;</span><span class="n">SetDirectory</span><span class="p">(</span><span class="n">gDirectory</span><span class="p">);</span>
-    <span class="n">pFile</span><span class="o">-&gt;</span><span class="n">Write</span><span class="p">();</span>
+<span class="w">    </span><span class="n">pEff</span><span class="o">-&gt;</span><span class="n">SetDirectory</span><span class="p">(</span><span class="n">gDirectory</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">pFile</span><span class="o">-&gt;</span><span class="n">Write</span><span class="p">();</span><span class="w"></span>
 
-    <span class="n">TCanvas</span><span class="o">*</span> <span class="n">oi</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TCanvas</span><span class="p">();</span>
-    <span class="n">oi</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">();</span>
-    <span class="n">pEff</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">();</span>
+<span class="w">    </span><span class="n">TCanvas</span><span class="o">*</span><span class="w"> </span><span class="n">oi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TCanvas</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">oi</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">pEff</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">();</span><span class="w"></span>
 
-    <span class="n">gPad</span><span class="o">-&gt;</span><span class="n">Update</span><span class="p">();</span>
+<span class="w">    </span><span class="n">gPad</span><span class="o">-&gt;</span><span class="n">Update</span><span class="p">();</span><span class="w"></span>
 
-    <span class="k">auto</span> <span class="n">graph</span> <span class="o">=</span> <span class="n">pEff</span><span class="o">-&gt;</span><span class="n">GetPaintedGraph</span><span class="p">();</span>
-    <span class="n">graph</span><span class="o">-&gt;</span><span class="n">SetMinimum</span><span class="p">(</span><span class="mf">0.8</span><span class="p">);</span>
-    <span class="n">graph</span><span class="o">-&gt;</span><span class="n">SetMaximum</span><span class="p">(</span><span class="mf">1.2</span><span class="p">);</span>
-    <span class="n">gPad</span><span class="o">-&gt;</span><span class="n">Update</span><span class="p">();</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">graph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pEff</span><span class="o">-&gt;</span><span class="n">GetPaintedGraph</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">graph</span><span class="o">-&gt;</span><span class="n">SetMinimum</span><span class="p">(</span><span class="mf">0.8</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">graph</span><span class="o">-&gt;</span><span class="n">SetMaximum</span><span class="p">(</span><span class="mf">1.2</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">gPad</span><span class="o">-&gt;</span><span class="n">Update</span><span class="p">();</span><span class="w"></span>
 
-    <span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">(</span><span class="s">&quot;../..&quot;</span><span class="p">);</span>
-    <span class="k">delete</span><span class="p">[]</span> <span class="n">file_name</span><span class="p">;</span>
+<span class="w">    </span><span class="n">gSystem</span><span class="o">-&gt;</span><span class="n">cd</span><span class="p">(</span><span class="s">&quot;../..&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">delete</span><span class="p">[]</span><span class="w"> </span><span class="n">file_name</span><span class="p">;</span><span class="w"></span>
 
-    <span class="k">return</span> <span class="n">pEff</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">pEff</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </details>
 <p>Note that we load all these functions in the <code>src</code> area directly in header of the <code>Efficiency.C</code> code.</p>
@@ -1711,7 +2049,7 @@ new TBrowser
 <div class="admonition note">
 <p class="admonition-title">Important note!</p>
 <p>Don't forget to comment line:69 when repeating the procedure for the other quantities!
-<div class="highlight"><pre><span></span><code><span class="n">compare_efficiency</span><span class="p">(</span><span class="n">quantity</span><span class="p">,</span> <span class="s">&quot;Efficiency Result/&quot;</span> <span class="o">+</span> <span class="n">quantity</span> <span class="o">+</span> <span class="s">&quot;/Efficiency_MC.root&quot;</span><span class="p">,</span> <span class="s">&quot;Efficiency Result/&quot;</span> <span class="o">+</span> <span class="n">quantity</span> <span class="o">+</span> <span class="s">&quot;/Efficiency_Run2011.root&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="n">compare_efficiency</span><span class="p">(</span><span class="n">quantity</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Efficiency Result/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">quantity</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;/Efficiency_MC.root&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Efficiency Result/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">quantity</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;/Efficiency_Run2011.root&quot;</span><span class="p">);</span><span class="w"></span>
 </code></pre></div></p>
 </div>
 <div class="admonition tip">
@@ -1720,11 +2058,6 @@ new TBrowser
 You'll have to change the <code>DoFit.cpp</code> function since J/ψ's only peak is made up of a Crystall ball and a Gaussian curve.
 Good luck!</p>
 </div>
-                
-              
-              
-                
-
 
               
             </article>
@@ -1733,12 +2066,12 @@ Good luck!</p>
         
       </main>
       
-        
-<footer class="md-footer">
+        <footer class="md-footer">
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../01-introduction/" class="md-footer__link md-footer__link--prev" rel="prev">
+        
+        <a href="../01-introduction/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Introduction" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1753,7 +2086,8 @@ Good luck!</p>
         </a>
       
       
-        <a href="../03-sidebandsubtraction/" class="md-footer__link md-footer__link--next" rel="next">
+        
+        <a href="../03-sidebandsubtraction/" class="md-footer__link md-footer__link--next" aria-label="Next: Sideband Subtraction" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
@@ -1771,14 +2105,15 @@ Good luck!</p>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-        Made with
-        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs
-        </a>
-        
-      </div>
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
       
     </div>
   </div>
@@ -1788,10 +2123,10 @@ Good luck!</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../../../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../../assets/javascripts/workers/search.0bbba5b5.min.js"}</script>
     
     
-      <script src="../../../../../assets/javascripts/bundle.4ea5477f.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.e1a181d9.min.js"></script>
       
     
   </body>
