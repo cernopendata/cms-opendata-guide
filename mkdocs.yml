@@ -55,8 +55,8 @@ nav:
                     - 'PtEtaPhi class':            analysis/selection/idefficiencystudy/sidebandreferenceguide/PtEtaPhi.md
                     - 'PassingFailing class':      analysis/selection/idefficiencystudy/sidebandreferenceguide/PassingFailing.md
                 - 'Reference Guide (Fit)':
-                    - 'Read me':                  analysis/selection/idefficiencystudy/fittingreferenceguide/readme.md
-                    - 'Main Functions':           analysis/selection/idefficiencystudy/fittingreferenceguide/mainfunctions.md
+                    - 'Overview':                  analysis/selection/idefficiencystudy/fittingreferenceguide/overview.md
+                    - 'Src files':                 analysis/selection/idefficiencystudy/fittingreferenceguide/src_files.md
         - 'Luminosity':
             - 'Luminosity': analysis/luminosity/lumi.md
         - 'Backgrounds':
