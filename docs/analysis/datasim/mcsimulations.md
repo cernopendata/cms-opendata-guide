@@ -1,12 +1,9 @@
 # Monte Carlo Simulations
 
-!!! Warning
-    This page is under construction
-
 A set of simulated data (Monte Carlo - MC) corresponding to the collision data
 is made available. All directly available MC datasets can be found with
 [this search](http://opendata.cern.ch/search?page=1&size=20&type=Dataset&subtype=Simulated&experiment=CMS).
-Furthermore, large amount of MC, thought to be of less frequent use, is available on demand
+For 2012 data taking, large amount of MC, thought to be of less frequent use, is available on demand
 and included in [search results](http://opendata.cern.ch/search?page=1&size=20&type=Dataset&experiment=CMS&subtype=Simulated&ondemand=True)
 if "*include on-demand datasets*" option is selected.
 
@@ -39,6 +36,6 @@ briefly describes the steps in the MC production chain.
 
 ## Data format
 
-The data format in use for Run1 MC data is Analysis Object Data (AODSIM).
+The data format in use for Run1 MC data is Analysis Object Data (AODSIM). Starting from Run2, a slimmer version of this format called MINIAODSIM is used.
 A brief description of data formats can be found in the
 introductory [About CMS](http://opendata.cern.ch/docs/about-cms) under "*Primary and simulated datasets*".

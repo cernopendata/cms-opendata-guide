@@ -34,8 +34,13 @@ nav:
         - 'Selection':
             - 'Triggers': analysis/selection/triggers.md
             - 'Physics Objects': analysis/selection/objects.md
-            - 'Physics Objects ID': analysis/selection/objectid.md
-            - 'ID Efficiency study':
+            - 'Specific Physics Objects':
+                - 'Common Tools': analysis/selection/objects/tools.md
+                - 'Muons': analysis/selection/objects/muons.md
+                - 'Electrons and Photons': analysis/selection/objects/egamma.md
+                - 'Jets': analysis/selection/objects/jets.md
+                - 'Missing ET': analysis/selection/objects/met.md
+            - 'Physics Object ID': analysis/selection/objectid.md
                 - 'Tag and Probe': analysis/selection/idefficiencystudy/tagandprobe.md
                 - 'Signal extraction': analysis/selection/idefficiencystudy/signalextraction.md
                 - 'Efficiency Tool': analysis/selection/idefficiencystudy/efficiencytool.md
@@ -66,7 +71,10 @@ nav:
         - 'Systematics':
             - 'Luminosity Uncertainties': analysis/systematics/lumiuncertain.md
             - 'MC Uncertainty': analysis/systematics/mcuncertain.md
-            - 'Object Uncertainty': analysis/systematics/objectsuncertain.md
+            - 'Physics Object Uncertainty':
+                 - 'Lepton/Photon uncertainties': analysis/systematics/objectsuncertain/leptonuncertain.md
+                 - 'Jet/MET uncertainties': analysis/systematics/objectsuncertain/jetmetuncertain.md
+                 - 'Tagging uncertainties': analysis/systematics/objectsuncertain/btaguncertain.md
             - 'Pileup Uncertainty': analysis/systematics/pileupuncertain.md
         - 'Interpretation':
             - 'Statistics': analysis/interpretation/stats.md
@@ -101,6 +109,9 @@ markdown_extensions:
         guess_lang: false
     - toc:
         permalink: true
+    - pymdownx.superfences
+    - pymdownx.tabbed:
+        alternate_style: true
 
 # Plugins
 plugins:
