@@ -1,6 +1,6 @@
 ## What is the tag and probe method?
 
-The **tag and probe** method is a **data-driven technique** for measuring particle detection efficiencies. It is based on the decays of known resonances (e.g. J/ψ, ϒ and Z) to pairs of the particles being studied. In this exercise, these particles are muons, and the ϒ(1S) resonance is nominally used.
+The **tag and probe** method is a **data-driven technique** for measuring particle detection efficiencies. It is based on the decays of known resonances (e.g. J/ψ, ϒ and Z) to pairs of the particles being studied. In this exercise, these particles are muons, and the J/ψ resonance is nominally used.
 
 The determination of the detector efficiency is a critical ingredient in any physics measurement. It accounts for the particles that were produced in the collision but escaped detection (did not reach the detector elements, were missed by the reconstructions algorithms, etc). It can be in general estimated using simulations, but simulations need to be calibrated with data. The T&P method here described provides a useful and elegant mechanism for extracting efficiencies **directly from data!**.
 
@@ -19,7 +19,7 @@ The efficiency is given by the fraction of probe muons that pass a given criteri
 
 The denominator corresponds to the number of resonance candidates (tag+probe pairs) reconstructed in the dataset. The numerator corresponds to the subset for which the probe passes the criteria.
 
-The tag+probe invariant mass distribution is used to select only signal, that is, only true Y(1S) candidates decaying to dimuons. This is achieved in this exercise by the usage of two methods: **fitting** and **side-band-subtraction**.
+The tag+probe invariant mass distribution is used to select only signal, that is, only true J/ψ candidates decaying to dimuons. This is achieved in this exercise by the usage of two methods: **fitting** and **side-band-subtraction**.
 
 ## CMS Muon identification and reconstruction
 

@@ -50,6 +50,7 @@ nav:
                     - 'Fitting':                 analysis/selection/idefficiencystudy/tutorial/02-fitting.md
                     - 'Sideband Subtraction':    analysis/selection/idefficiencystudy/tutorial/03-sidebandsubtraction.md
                     - 'Comparison':              analysis/selection/idefficiencystudy/tutorial/04-comparison.md
+                    - 'Systematic':              analysis/selection/idefficiencystudy/tutorial/05-systematic.md
                 - 'Reference Guide (SB)':
                     - 'The Macro':                 analysis/selection/idefficiencystudy/sidebandreferenceguide/macro.md
                     - 'FitFunction class':         analysis/selection/idefficiencystudy/sidebandreferenceguide/FitFunctions.md
