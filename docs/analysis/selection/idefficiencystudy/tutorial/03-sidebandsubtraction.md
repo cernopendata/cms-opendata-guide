@@ -1,6 +1,6 @@
 # Sideband
 
-### Signal extraction: sideband subtraction method
+## Signal extraction: sideband subtraction method
 
 The reconstruction efficiency is calculated using **only signal muons**. In order to measure the efficiency, we need a way to extract signal from the dataset. You've used the fitting method and now you'll meet the sideband subtraction method.
 
@@ -209,7 +209,7 @@ else
 
 ??? Example "See the whole scructure"
     Don't be scared! Code does'nt bite.
-    
+
     ```cpp
     //Variable bin for pT
     if (strcmp(quantityName, "Pt") == 0)
@@ -312,7 +312,7 @@ Done. All result files can be found at "../results/Upsilon_Run_2011/"
 
 !!! Note "Common errors"
     If you run the code and your terminal printed some erros like:
-    
+
     ```plaintext
     Error in <ROOT::Math::Cephes::incbi   : Wrong domain for parameter b (must be     0)
     ```

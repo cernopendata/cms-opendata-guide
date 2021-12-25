@@ -429,36 +429,37 @@ The creation of these `TH1` objects is taken care of by the ``src/make_hist.cpp`
     ```cpp
     TH1F* make_hist(string name, double** values, int qnt, int bin_n, Double_t* binning, bool IsDataMc, bool DRAW = false)
     {
-       //AddBinContent
-       //HISTOGRAM NEEDS TO HAVE VARIABLE BINS
-      
-       TH1F* hist = new TH1F(name.c_str(), name.c_str(), bin_n, binning);
+        //AddBinContent
+        //HISTOGRAM NEEDS TO HAVE VARIABLE BINS
 
-       for (int i = 0; i < bin_n; i++)
-       {
-           hist-   SetBinContent(i, values[i][qnt]);
-           if (IsDataMc == false)
-               hist-   SetBinError(i, values[i][qnt+2]);
-       }
-       if (DRAW)
-       {
-           TCanvas* xperiment = new TCanvas;
-           xperiment-   cd();
-           hist-   Draw();
-       }
-       return hist;
+        TH1F* hist = new TH1F(name.c_str(), name.c_str(), bin_n, binning);
+
+        for (int i = 0; i < bin_n; i++)
+        {
+            hist-   SetBinContent(i, values[i][qnt]);
+            if (IsDataMc == false)
+                hist->SetBinError(i, values[i][qnt+2]);
+        }
+        if (DRAW)
+        {
+            TCanvas* xperiment = new TCanvas;
+            xperiment-   cd();
+            hist-   Draw();
+        }
+        return hist;
     }   
     ```
 
 To plot the efficiency we used the ``src/get_efficiency.cpp`` function.
 
 ??? Example "Check out `get_efficiency.cpp`"
+    
     ```cpp
     TEfficiency* get_efficiency(TH1F* ALL, TH1F* PASS, string quantity, bool DataIsMc)
     {
         gSystem->cd("Efficiency Result");
         gSystem->cd(quantity.c_str());
-        
+
         string* file_name = new string[2];
         file_name[0] = "Efficiency_Run2011.root";
         file_name[1] = "Efficiency_MC.root";

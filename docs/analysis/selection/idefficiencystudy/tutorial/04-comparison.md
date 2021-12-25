@@ -380,7 +380,7 @@ Now you can type the command below to **quit root** and close all created window
 !!! Tip "Challenge"
     Using what you did before, try to mix them and plot a comparison **between real data for sideband method and real data** for sthe fitting method and get an analysis.
     Notice that:
-    
+
     * Real data = Run 2011
     * Simulations = Monte Carlo = MC
    
