@@ -1,4 +1,6 @@
-### Signal extraction: sideband subtraction method
+# Sideband Subtraction
+
+## Signal extraction: sideband subtraction method
 
 The reconstruction efficiency is calculated using **only signal muons**. In order to measure the efficiency, we need a way to extract signal from the dataset. You've used the fitting method and now you'll meet the sideband subtraction method.
 
@@ -14,15 +16,15 @@ This method consists in choosing sideband and signal regions in invariant mass d
 
 For each event category (i.e. Pass and All), and for a given variable of interest (e.g., the probe pT), two distributions are obtained, one for each region (Signal and Sideband). In order to obtain the variable distribution for the signal only, we proceed by subtracting the Background distribution (Sideband region) from the Signal+Background one (Signal region):
 
-<img width="440px" src="../../../../../images/analysis/cmsefficiency/tutorial/03/subtraction.svg" alt="Sideband Subtraction equation">
+![Sideband Subtraction equation](../../../../../images/analysis/cmsefficiency/tutorial/03/subtraction.svg)
 
 Where the normalization α factor quantifies the quantity of background present in the signal region>
 
-<img width="450px" src="../../../../../images/analysis/cmsefficiency/tutorial/03/alpha.svg" alt="Alpha factor equation">
+![Alpha factor equation](../../../../../images/analysis/cmsefficiency/tutorial/03/alpha.svg")
 
 And for the uncertainty:
 
-<img width="380px" src="../../../../../images/analysis/cmsefficiency/tutorial/03/subtraction_error.svg" alt="Sideband Subtraction errors equation">
+![Sideband Subtraction errors equation](../../../../../images/analysis/cmsefficiency/tutorial/03/subtraction_error.svg)
 
 Applying those equations we get histograms like this:
 
@@ -41,33 +43,33 @@ You will see this histogram on this exercise.
 
 First, from the root folder of our downloades repository, we need to go sideband subtraction method tutorial:
 
-~~~sh
+```sh
 cd efficiency_tools/sideband_subtraction
-~~~
+```
 
 To copy the ϒ dataset from real data file to your machine (requires 441 MB), type:
 
-~~~sh
+```sh
 wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1Fj-rrKts8jSSMdwvOnvux68ydZcKB521' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1Fj-rrKts8jSSMdwvOnvux68ydZcKB521" -O Run2011A_MuOnia_Upsilon.root && rm -rf /tmp/cookies.txt
-~~~
+```
 
 This code downloads the file directly from Google Drive.
 
 Run this code to download the simulation ntuple for ϒ (requires 66 MB):
 
-~~~sh
+```sh
 wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1ZzAOOLCKmCz0Q6pVi3AAiYFGKEpP2efM' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1ZzAOOLCKmCz0Q6pVi3AAiYFGKEpP2efM" -O Upsilon1SToMuMu_MC_full.root && rm -rf /tmp/cookies.txt
-~~~
+```
 
 Now, check if everything is ok:
 
-~~~sh
+```sh
 ls
-~~~
+```
 
-~~~
+```plaintext
 main  README.md  Run2011A_MuOnia_Upsilon.root  Upsilon1SToMuMu_MC_full.root
-~~~
+```
 
 Your `efficiency_tagandprobe` folder should have these files:
 
@@ -80,29 +82,28 @@ Your `efficiency_tagandprobe` folder should have these files:
 
 We need to edit some settings. Open **settings.cpp**:
 
-~~~sh
+```sh
 cd main/config
 ls
-~~~
+```
 
-~~~
+```plaintext
 cuts.h  settings.cpp
-~~~
+```
 
 There are different ways to open this file. You can try to run:
 
-~~~sh
+```sh
 gedit settings.cpp
-~~~
+```
 
 Or, if you can not use gedit, try nano:
 
-~~~sh
+```sh
 nano settings.cpp
-~~~
+```
 
 !!! Note "I do not have nano!"
-
     You can try to use **any text editor**, but here is some commands you cant try to use to install it:
 
     * Ubuntu/Debian: `sudo apt-get -y install nano`.
@@ -111,7 +112,7 @@ nano settings.cpp
 
 We want to calculate **efficiencies of tracker muons**. With the **settings.cpp** file opened, make sure to let the variables like this:
 
-~~~cpp
+```cpp
 //Canvas drawing
 bool shouldDrawInvariantMassCanvas       = true;
 bool shouldDrawInvariantMassCanvasRegion = true;
@@ -122,14 +123,14 @@ bool shouldDrawEfficiencyCanvas          = true;
 bool doTracker    = true;
 bool doStandalone = false;
 bool doGlobal     = false;
-~~~
+```
 
 We want to calculate the efficiency using specific files that we downloaded. They name are `Run2011A_MuOnia_Upsilon.root` and `Upsilon1SToMuMu_MC_full.root` and are listed in `const char *files[]`. While **settings.cpp** is open, try to use the variable `int useFile` to run `Run2011A_MuOnia_Upsilon.root`.
 
 ??? Example "How to do this"
     Make sure `useFile` is correct:
    
-    ~~~cpp
+    ```cpp
     //List of files
     const char *files[] = {"../data_histoall.root",
                            "../Run2011AMuOnia_mergeNtuple.root",""
@@ -148,7 +149,7 @@ We want to calculate the efficiency using specific files that we downloaded. The
     
     //Which file of files (variable above) should use
     int useFile = 3;
-    ~~~
+    ```
    
     It will tell which configuration the program will use. So, the macro will run with the ntuple in `files[useFile]` and the results will be stored in `directoriesToSave[useFile]`.
    
@@ -161,32 +162,32 @@ We want to calculate the efficiency using specific files that we downloaded. The
 
 The code allows to define the binning of the kinematic variable, to ensure each bin is sufficiently populated, for increased robustness. To change the binning, locate **PassingFailing.h**
 
-~~~sh
+```sh
 cd ../classes
 ls
-~~~
+```
 
-~~~
+```
 FitFunctions.h   MassValues.h      PtEtaPhi.h             TagProbe.h
 InvariantMass.h  PassingFailing.h  SidebandSubtraction.h  Type.h
-~~~
+```
 
 And then Open **PassingFailing.h**
 
-~~~sh
+```sh
 gedit PassingFailing.h
-~~~
+```
 
 Search for the `createEfficiencyPlot(...)` function. You'll find something like this:
 
-~~~cpp
+```cpp
 void createHistogram(TH1D* &histo, const char* histoName)
 {...}
-~~~
+```
 
 For each quantity (pT, eta, phi) we used different bins. To change the bins, look inside the `createEfficiencyPlot(...)` function. In a simpler version, you'll see a structure like this:
 
-~~~cpp
+```cpp
 //Variable bin for pT
 if (strcmp(quantityName, "Pt") == 0)
 {
@@ -204,13 +205,12 @@ else
 {
     //Here creates histogram for phi
 }
-~~~
+```
 
 ??? Example "See the whole scructure"
-    
     Don't be scared! Code does'nt bite.
    
-    ~~~cpp
+    ```cpp
     //Variable bin for pT
     if (strcmp(quantityName, "Pt") == 0)
     {
@@ -241,13 +241,13 @@ else
     //Edit histogram axis
     histo->GetYaxis()->SetTitle(Form(yAxisTitleForm.data(), histo->GetBinWidth(0)));
     histo->GetXaxis()->SetTitle(xAxisTitle.data());
-    ~~~
+    ```
 
 The code that creates the histogram bins is located inside the conditionals and is commented. You can edit this code and uncomment to create histogram bins however you want. Instead of using a function to generate the bins, we can also define them manually.
 
 As we intend to compare the results between data and simulation, but also between the sideband and fitting methods. You are advised to employ the same bin choice. Garantee your the code uses same bin as the previus this:
 
-~~~cpp
+```cpp
     //Variable bin for pT
     if (strcmp(quantityName, "Pt") == 0)
     {
@@ -274,49 +274,48 @@ As we intend to compare the results between data and simulation, but also betwee
         int nbins = sizeof(xbins)/sizeof(*xbins) - 1;
         histo = new TH1D(hName.data(), hTitle.data(), nbins, xbins);
     }
-~~~
+```
 
 ## Running the code
 
 After setting the configurations, it's time to run the code. Go back to the **main** directory and make sure `macro.cpp` is there.
 
-~~~sh
+```sh
 cd ..
 ls
-~~~
+```
 
-~~~
+```plaintext
 classes  compare_efficiency.cpp  config  macro.cpp
-~~~
+```
 
 Run the macro.cpp:
 
-~~~sh
+```sh
 root -l -b -q macro.cpp
-~~~
+```
 
-~~~
+```plaintext
 "../results/Upsilon Run 2011/" directory created OK
 Using "../Run2011A_MuOnia_Upsilon.root" ntuple
 resonance: Upsilon
 Using method 2
 Data analysed = 986100 of 986100
-~~~
+```
 
 In this process, more informations will be printed in terminal while plots will be created on specified (these plots are been saved in a folder). The message below tells you that code has finished running:
 
-~~~
+```plaintext
 Done. All result files can be found at "../results/Upsilon_Run_2011/"
 
-~~~
+```
 
 !!! Note "Common errors"
-   
     If you run the code and your terminal printed some erros like:
    
-    ~~~
+    ```plaintext
     Error in <ROOT::Math::Cephes::incbi   : Wrong domain for parameter b (must be     0)
-    ~~~
+    ```
    
     This occurs when the contents of a bin of the pass histogram is greater than the corresponding bin in the total histogram. With sideband subtraction, depending on bins you choose, this can happen and will result in enormous error bars.
    
@@ -336,11 +335,12 @@ If all went well, your results are going to be like these:
     Try to run the same code on the `Upsilon1SToMuMu_MC_full.root` file we downloaded.
 
     !!! Tip
+
         You will need the redo the steps above, setting:
         
-        ~~~cpp
+        ```cpp
         int useFile = 4;
-        ~~~
+        ```
 
         in `main/config/settings.cpp` file.
 
@@ -354,14 +354,14 @@ If all went well, your results are going to be like these:
     
     To download the J/ψ real data ntupple (requires 3.3 GB):
    
-    ~~~sh
+    ```sh
     wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=16OqVrHIB4wn_5X8GEZ3NxnAycZ2ItemZ' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=16OqVrHIB4wn_5X8GEZ3NxnAycZ2ItemZ" -O Run2011AMuOnia_mergeNtuple.root && rm -rf /tmp/cookies.txt
-    ~~~
+    ```
    
     To download the J/ψ simulated data ntuple (requires 515 MB):
    
-    ~~~sh
+    ```sh
     wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1dKLJ5RIGrBp5aIJrvOQw5lWLQSHUgEnf' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1dKLJ5RIGrBp5aIJrvOQw5lWLQSHUgEnf" -O JPsiToMuMu_mergeMCNtuple.root && rm -rf /tmp/cookies.txt
-    ~~~
+    ```
    
     As this dataset is larger, the code will run slowly. It can take several minutes to be completed depending where the code is been running

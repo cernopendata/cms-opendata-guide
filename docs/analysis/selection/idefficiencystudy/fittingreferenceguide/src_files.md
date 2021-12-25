@@ -51,7 +51,7 @@ Same function idea as `TEfficiency* get_efficiency_2D(...)`, but it creates a `T
 TH1D* make_TH1D(string name, double** values, int index, double* bins, int nbins, string quantity = "", bool draw = false)
 ```
 
-Creates **TH1D*** histogram direclty from `values` which stores `doFit`'s outputs. 
+Creates **TH1D*** histogram direclty from `values` which stores `doFit`'s outputs.
 
 * `int index` is related with the information above: `0` means all histogram and `1` means pass histogram. Choose the number due the histogram you are looking to make.
 * `double* bins` is used to set histogram bins limits.

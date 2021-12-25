@@ -33,7 +33,7 @@ Summary
 
 Details
 
-* `const char* resonance = "Jpsi"` 
+* `const char* resonance = "Jpsi"`
     * Supports values `"Jpsi"`, `"Upsilon"` or `"Upsilon(1S)"`.
 * `const char* particleName = "Muon"`
     * Stores the particle name for titles.

@@ -15,7 +15,7 @@ Tag muon are employed to trigger the presence of a resonance decay while probe m
 
 The efficiency will be given by the fraction of probe muons that pass a given criteria (in this case, the [Muon ID](#cms-muon-identification-and-reconstruction) which is explained below):
 
-<img width="300px" src="../../../../images/analysis/cmsefficiency/efficiency.svg" alt="Efficiency equation">
+![Efficiency equation](../../../../images/analysis/cmsefficiency/efficiency.svg)
 
 The denominator corresponds to the number of resonance candidates (tag+probe pairs) reconstructed in the dataset. The numerator corresponds to the subset for which the probe passes the criteria.
 

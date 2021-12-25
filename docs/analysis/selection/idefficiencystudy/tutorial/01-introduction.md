@@ -1,3 +1,5 @@
+# Introduction
+
 ## What is the tag and probe method?
 
 The **tag and probe** method is a **data-driven technique** for measuring particle detection efficiencies. It is based on the decays of known resonances (e.g. J/ψ, ϒ and Z) to pairs of the particles being studied. In this exercise, these particles are muons, and the ϒ(1S) resonance is nominally used.
@@ -15,7 +17,7 @@ The resonance, used to calculate the efficiencies, decays to a pair of particles
 
 The efficiency is given by the fraction of probe muons that pass a given criteria (in this case, the **Muon ID** which we explain [below](#cms-muon-identification-reconstruction)):
 
-<img width="300px" src="../../../../../images/analysis/cmsefficiency/efficiency.svg" alt="Efficiency equation">
+![Efficiency equation](../../../../../images/analysis/cmsefficiency/efficiency.svg)
 
 The denominator corresponds to the number of resonance candidates (tag+probe pairs) reconstructed in the dataset. The numerator corresponds to the subset for which the probe passes the criteria.
 

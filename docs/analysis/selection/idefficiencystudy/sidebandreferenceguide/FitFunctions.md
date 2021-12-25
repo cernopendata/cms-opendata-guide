@@ -16,7 +16,7 @@ This class is holding primary fit functions for histograms.
 
 * double [CrystalBall(...)](#crystalball)
 
-### Functions details
+**Functions details**
 
 #### Gaus(...)
 
@@ -25,7 +25,6 @@ static double Gaus(double *x, double *par)
 ```
 
 Parameters:
-
 
 ```cpp
 par = [height, position, sigma]
@@ -39,7 +38,6 @@ static double Pol1(double *x, double *par)
 
 Parameters:
 
-
 ```cpp
 par = [b, a]
 ```
@@ -52,7 +50,6 @@ static double Pol3(double *x, double *par)
 
 Parameters:
 
-
 ```cpp
 par = [d, c, b, a]
 ```
@@ -64,7 +61,6 @@ static double Exp(double *x, double *par)
 ```
 
 Parameters:
-
 
 ```cpp
 par = [height, width]
@@ -100,7 +96,7 @@ This class holds merged fit functions for histograms.
 
 * double [Upsilon::InvariantMass()](#upsiloninvariantmass)
 
-### Functions details
+**Functions details**
 
 #### Jpsi::Signal_InvariantMass(...)
 

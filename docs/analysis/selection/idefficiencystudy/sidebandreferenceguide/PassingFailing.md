@@ -2,7 +2,7 @@
 
 Holds histograms of passing and all particle quantities.
 
-### Constructor details
+## Constructor details
 
 ```cpp
 PassingFailing(
@@ -45,7 +45,7 @@ PassingFailing(
 }
 ```
 
-### Private variable details
+## Private variable details
 
 Summary
 
@@ -69,9 +69,9 @@ Summary
 
 All variables here are reference for public variables in mother class: [PtEtaPhi class](PtEtaPhi.md).
 
-### Private Functions details
+## Private Functions details
 
-#### createHistogram()
+### createHistogram()
 
 ```cpp
 void createHistogram()
@@ -79,7 +79,7 @@ void createHistogram()
 
 Create quantity histogram.
 
-#### fillAfter()
+### fillAfter()
 
 ```cpp
 string fillAfter(string text,
@@ -89,7 +89,7 @@ string fillAfter(string text,
 
 Fill blank space of a string. It is used in consistencyDebugCout().
 
-### Public variable details
+## Public variable details
 
 Summary
 
@@ -111,9 +111,9 @@ Details
 * `TH1D* hBack`
     * Stores the histogram for particles in sideband region.
 
-### Public Functions details
+## Public Functions details
 
-#### consistencyDebugCout()
+### consistencyDebugCout()
 
 ```cpp
 void consistencyDebugCout()
@@ -125,7 +125,7 @@ It is result for this equation: N<small>total</small> - (alpha * N<small>backgro
 
 Where: alpha = yield of background particles signal region / yield of background particles sideband region
 
-#### createQuantitiesCanvas(...)
+### createQuantitiesCanvas(...)
 
 ```cpp
 TCanvas* createQuantitiesCanvas(bool shouldWrite = false,
@@ -134,7 +134,7 @@ TCanvas* createQuantitiesCanvas(bool shouldWrite = false,
 
 Create canvas for all quantities after subtractSigHistograms().
 
-#### fillQuantitiesHistograms(...)
+### fillQuantitiesHistograms(...)
 
 ```cpp
 void fillQuantitiesHistograms(double& InvariantMass,
@@ -143,7 +143,7 @@ void fillQuantitiesHistograms(double& InvariantMass,
 
 Automatically fill all quantities histograms. Needs to be called in a loop over all dataset.
 
-#### normalizeHistograms()
+### normalizeHistograms()
 
 ```cpp
 void normalizeHistograms()
@@ -151,7 +151,7 @@ void normalizeHistograms()
 
 Normalize quantities histograms of variable bin after filling it.
 
-#### PassFailObj()
+### PassFailObj()
 
 ```cpp
 MassValues* PassFailObj()
@@ -159,7 +159,7 @@ MassValues* PassFailObj()
 
 Get the MassValue object of corresponding MassValue object.
 
-#### subtractSigHistogram()
+### subtractSigHistogram()
 
 ```cpp
 void subtractSigHistogram()
@@ -167,7 +167,7 @@ void subtractSigHistogram()
 
 Apply sideband subtraction over histograms.
 
-#### writeQuantitiesHistogramsOnFile(...)
+### writeQuantitiesHistogramsOnFile(...)
 
 ```cpp
 void writeQuantitiesHistogramsOnFile(bool hSigBack,

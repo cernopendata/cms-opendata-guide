@@ -1,38 +1,39 @@
-## How sideband subtraction method code stores its files
+# Comparison
 
+## How sideband subtraction method code stores its files
 
 the Sideband subtraction code saves every efficiency plot in `efficiency/plots/` folder inside a single `generated_hist.root` file. Lets check it!
 
 You're probably on the `main` directory. Lets go back a directory.
 
-~~~sh
+```sh
 cd ..
 ls
-~~~
+```
 
-~~~
+```plaintext
 main  README.md  results  Run2011A_MuOnia_Upsilon.root  Upsilon1SToMuMu_MC_full.root
-~~~
+```
 
 A folder named `results` showed up on this folder. Lets go check its content.
 
-~~~sh
+```sh
 cd results
 ls
-~~~
+```
 
-~~~
+```plaintext
 Comparison_Upsilon_Sideband_Run_vs_MC  Upsilon_MC_2020  Upsilon_Run_2011
-~~~
+```
 
 If you did every step of the sideband subtraction on this page lesson, these results should match with the results on your pc. Access one of those folders (except comparison).
 
-~~~sh
+```sh
 cd Upsilon_Run_2011
 ls
-~~~
+```
 
-~~~
+```plaintext
 Efficiency_Tracker_Probe_Eta.png  Tracker_Probe_Phi_All.png
 Efficiency_Tracker_Probe_Phi.png  Tracker_Probe_Phi_Passing.png
 Efficiency_Tracker_Probe_Pt.png   Tracker_Probe_Pt_All.png
@@ -44,28 +45,28 @@ InvariantMass_Tracker.png         Tracker_Tag_Phi_Passing.png
 InvariantMass_Tracker_region.png  Tracker_Tag_Pt_All.png
 Tracker_Probe_Eta_All.png         Tracker_Tag_Pt_Passing.png
 Tracker_Probe_Eta_Passing.png
-~~~
+```
 
 Here, all the output plots you saw when running the sideband subtraction method are stored as a `.png`. Aside from them, there's a `generated_hist.root` that stores the efficiency in a way that we can manipulate it after. This file is needed to run the comparison between efficiencies for the sideband subtraction method. Lets look inside of this file.
 
 Run this command to open `generated_hist.root` with ROOT:
 
-~~~sh
+```sh
 root -l generated_hist.root
-~~~
+```
 
-~~~
+```plaintext
 root [0] 
 Attaching file generated_hist.root as _file0...
 (TFile *) 0x55dca0f04c50
 root [1]
-~~~
+```
 
 Lets check its content. Type on terminal:
 
-~~~sh
+```sh
 new TBrowser
-~~~
+```
 
 You should see something like this:
 
@@ -96,24 +97,24 @@ We'll get back to this on the discussion below.
 
 Head back to the `main` folder. Inside of it there is a code for the efficiency plot comparison. Lets check it out.
 
-~~~sh
+```sh
 cd main
 ls
-~~~
+```
 
-~~~
+```plaintext
 classes  compare_efficiency.cpp  config  macro.cpp
-~~~
+```
 
 There is it. Now lets open it.
 
-~~~sh
+```sh
 gedit compare_efficiency.cpp
-~~~
+```
 
 Its easy to prepare it for the sideband subtraction comparison. Our main editing point can be found in this part:
 
-~~~cpp
+```cpp
 //CONFIGS
 
 int useScheme = 0;
@@ -128,7 +129,7 @@ int useScheme = 0;
 bool doTracker    = true;
 bool doStandalone = true;
 bool doGlobal     = true;
-~~~
+```
 
 !!! Note
     In the scope above we see:
@@ -145,7 +146,7 @@ Also, you will need to change the `useScheme` variable to plot what you want to 
 ??? Example "See result scructure"
     If you deleted the right lines, your code now should be like this:
 
-    ~~~cpp
+    ```cpp
     //CONFIGS
 
     int useScheme = 3;
@@ -160,38 +161,38 @@ Also, you will need to change the `useScheme` variable to plot what you want to 
     bool doTracker    = true;
     bool doStandalone = false;
     bool doGlobal     = false;
-    ~~~
+    ```
 
     Let your variables like this.
 
 Now you need to run the code. To do this, save the file and type on your terminal:
 
-~~~sh
+```sh
 root -l compare_efficiency.cpp
-~~~
+```
 
 If everything went well, the message you'll see in terminal at end of the process is:
 
-~~~
+```plaintext
 Use Scheme: 3
 Done. All result files can be found at "../results/Comparison_Upsilon_Sideband_Run_vs_MC/"
-~~~
+```
 
 !!! Note
     The command above to run the code will display three new windows on your screen with comparison plots. You can avoid them by running straight the **command below**. 
    
-    ~~~cpp
+    ```cpp
     root -l -b -q compare_efficiency.cpp
-    ~~~
+    ```
    
     In this case, to check it results you are going to need go for result folder (printed on code run) and check images there by yourself.
     You can try to run TBrowser again:
    
-    ~~~cpp
+    ```cpp
     cd [FOLDER_PATH]
     root -l
     new TBrowser
-    ~~~
+    ```
 
 And as output plots comparsion, you get:
 
@@ -201,9 +202,9 @@ And as output plots comparsion, you get:
 
 Now you can type the command below to **quit root** and close all created windows:
 
-~~~sh
+```sh
 .q
-~~~
+```
 
 ## How fitting method code stores its files
 
@@ -219,22 +220,22 @@ Inside of them, there are two files:
 
 If you go with your terminal to this folder and run this command, you'll see that the result files only have one plot.\
 
-~~~sh
+```sh
 root -l Efficiency_Run2011.root
-~~~
+```
 
-~~~
+```
 root [0] 
 Attaching file Efficiency_Run2011.root as _file0...
 (TFile *) 0x55f7152a8970
 root [1]
-~~~
+```
 
 Now lets look at its content. Type on terminal:
 
-~~~cpp
+```cpp
 new TBrowser
-~~~
+```
 
 It has only one plot, because the others are in different files.
 
@@ -247,24 +248,24 @@ It has only one plot, because the others are in different files.
 
 Go back to the `main` folder.
 
-~~~cpp
+```cpp
 cd main
 ls
-~~~
+```
 
-~~~
+```plaintext
 classes  compare_efficiency.cpp  config  macro.cpp
-~~~
+```
 
 Open **compare_efficiency.cpp** again
 
-~~~sh
+```sh
 gedit compare_efficiency.cpp
-~~~
+```
 
 This is how your code should look like now:
 
-~~~cpp
+```cpp
 //CONFIGS
 
 int useScheme = 3;
@@ -303,7 +304,7 @@ const char* fit_mc_upsilon[][2] = {
     {"../../fitting/Efficiency Result/Global/Eta/Efficiency_MC.root",     "Efficiency"},
     {"../../fitting/Efficiency Result/Global/Phi/Efficiency_MC.root",     "Efficiency"}
 };
-~~~
+```
 
 You have to do two things:
 
@@ -315,7 +316,7 @@ We need to delete the path `Tracker/` because the fitting code does not separate
 
 In the end of task, your code should be something like this:
 
-~~~cpp
+```cpp
 //CONFIGS
 
 int useScheme = 4;
@@ -354,13 +355,13 @@ const char* fit_mc_upsilon[][2] = {
     {"../../fitting/Efficiency Result/Global/Eta/Efficiency_MC.root",     "Efficiency"},
     {"../../fitting/Efficiency Result/Global/Phi/Efficiency_MC.root",     "Efficiency"}
 };
-~~~
+```
 
 Doing this and running the program with:
 
-~~~sh
+```sh
 root -l compare_efficiency.cpp
-~~~
+```
 
 Should get you these results:
 
@@ -370,9 +371,9 @@ Should get you these results:
 
 Now you can type the command below to **quit root** and close all created windows:
 
-~~~sh
+```sh
 .q
-~~~
+```
 
 ## Comparison results between data from the sideband and data from the fitting method
 

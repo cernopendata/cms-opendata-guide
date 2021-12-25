@@ -1,3 +1,5 @@
+# Fitting
+
 ## Setting it up
 
 In order to run this exercise you do not really need to be in a CMSSW area.  It would be actually better if you worked outside your usual CMSSW_5_3_32 environment.  So, if, for instance, you are working with the Docker container, instead of working on `/home/cmsusr/CMSSW_5_3_32/src` you could work on any directory you can create at the `/home/cmsusr` level.  Alternatively, you could work directly on your own host machine if you managed to install ROOT on it.
@@ -6,29 +8,30 @@ For this example we assume you will be working in either the Docker container or
 
 Since we will be needing ROOT version greater than 6, then do not forget to set it up from LCG (as you learned in the ROOT pre-exercise) by doing:
 
-~~~sh
+```sh
 source /cvmfs/sft.cern.ch/lcg/views/LCG_95/x86_64-slc6-gcc8-opt/setup.sh
-~~~
+```
 
 Clone the repository and go to the fitting method tutorial:
 
-~~~sh
+```sh
 git clone git://github.com/allanjales/TagAndProbe
 cd TagAndProbe/efficiency_tools/fitting
-~~~
+```
 
-<h3>A brief explanation of this repository</h3>
+## A brief explanation of this repository
+
 In this repository, you are only required to make changes to the ``Efficiency.C`` macro. These changes are highlighted as such:
 
-~~~cpp
+```cpp
 /*-----------------------------------I N S E R T    C O D E    H E R E-----------------------------------*/
-~~~
+```
 
 So when you see this comment, know that it's your turn to code!
 If you don't, the macro won't run and the following errors are to be expected:
 
 !!! Danger "Error"
-    ~~~
+    ```plaintext
     In file included from input_line_11:1:
     /Users/thomasgaehtgens/Desktop/CMS-tutorial/Efficiency.C:13:23: error: expected expression
         bool DataIsMC   = ... ;
@@ -56,7 +59,7 @@ If you don't, the macro won't run and the following errors are to be expected:
                                       ^
     /Users/thomasgaehtgens/Desktop/CMS-tutorial/Efficiency.C:36:35: error: expected expression
         init_conditions[3] = /*sigma*/;
-    ~~~
+    ```
 
 ## The Fitting Method
 
@@ -72,21 +75,21 @@ The fit, which is made in a different space (the invariant mass space) allows to
 
 At the end of the day, then, you will have to make these fits for each bin in the range of interest.
 
-<img width="1200px" src="../../../../../images/analysis/cmsefficiency/fitting_method_large.png">
+![Fitting method scheme](../../../../../images/analysis/cmsefficiency/fitting_method_large.png)
 
 Let's start exploring our dataset. From the cloned directory, type:
 
-~~~sh
+```sh
 cd DATA/Upsilon/trackerMuon/
 root -l T\&P_UPSILON_DATA.root
-~~~
+```
 
 If everything's right, you should get something like:
 
-~~~
+```plaintext
 Attaching file T&P_UPSILON_DATA.root as _file0...
 U(TFile *) 0x7fe2f34ca270
-~~~
+```
 
 Of course, you can explore this file, if you want, using all the tools you learn in the ROOT pre-exercise.  This file contains ntuples that were obtained using procedures similar to the ones you have been learning in this workshop.
 
@@ -99,8 +102,7 @@ Now, before we start fitting the invariant mass it's important to look at it's s
 root [] UPSILON_DATA->Draw("InvariantMass")
 ```
 
-
-<img width="1000px" src="../../../../../images/analysis/cmsefficiency/tutorial/02/InvariantMass.png">
+![Invariant Mass histogram from the data analysed](../../../../../images/analysis/cmsefficiency/tutorial/02/InvariantMass.png)
 
 If you got the previous result, we're ready to go.
 
@@ -123,7 +125,7 @@ We'll start by calculating the efficiency as a function of p<sub>T</sub>.  It is
 root [] UPSILON_DATA->Draw("ProbeMuon_Pt")
 ```
 
-<img width="500px" src="../../../../../images/analysis/cmsefficiency/tutorial/02/total.png">
+![pT plot of data in linear scale](../../../../../images/analysis/cmsefficiency/tutorial/02/total.png)
 
 Hmm.. seems like our domain is larger than we need it to be. To fix this, we can apply a constraint to our plot. Try:
 
@@ -131,7 +133,7 @@ Hmm.. seems like our domain is larger than we need it to be. To fix this, we can
 root [] UPSILON_DATA->Draw("ProbeMuon_Pt", "ProbeMuon_Pt < 20")
 ```
 
-<img width="1000px" src="../../../../../images/analysis/cmsefficiency/tutorial/02/zoom.png">
+![pT plot of data in log scale](../../../../../images/analysis/cmsefficiency/tutorial/02/zoom.png)
 
 Exit ROOT and get back to the main area:
 
@@ -143,7 +145,7 @@ cd ../../../
 Now that you're acquainted with the data, open the  `Efficiency.C` file.
 You'll have to make some small adjustments to the code in this section (from line:19 to line:34):
 
-~~~cpp
+```cpp
 /*-----------------------------------I N S E R T    C O D E    H E R E-----------------------------------*/
 string quantity = "Pt";     double bins[] = {0., 2.0, 3.4, 4.0, 4.4, 4.7, 5.0, 5.6, 5.8, 6.0, 6.2, 6.4, 6.6, 6.8, 7.3, 9.5, 13.0, 17.0, 40.};
 //string quantity = "Eta";    double bins[] = {-2.4, -1.8, -1.4, -1.2, -1.0, -0.8, -0.5, -0.2, 0, 0.2, 0.5, 0.8, 1.0, 1.2, 1.4, 1.8, 2.4};
@@ -160,12 +162,12 @@ init_conditions[1] = /*peak2*/;
 init_conditions[2] = /*peak3*/;
 init_conditions[3] = /*sigma*/;
 /*------------------------------------------------------------------------------------------------------*/
-~~~
+```
 
 We'll start by choosing the desired bins for the transverse momentum. If you're feeling brave, choose appropriate bins for our fit remembering that we need a fair amount of data in each bin (more events mean a better fit!). If not, we've left  a suggestion that you can paste onto the `Efficiency.C` file. Start with the p<sub>T</sub> variable.
 
 ??? Example "Bin Suggestion"
-    ~~~cpp
+    ```cpp
     //-- BINS USED TO CALCULATE PT
     double bins[] = {0., 2.0, 3.4, 4.0, 4.4, 4.7, 5.0, 5.6, 5.8, 6.0, 6.2, 6.4, 6.6, 6.8, 7.3, 9.5, 13.0, 17.0, 40.};
 
@@ -174,24 +176,24 @@ We'll start by choosing the desired bins for the transverse momentum. If you're 
   
     //-- BINS USED TO CALCULATE ETA
     double bins[] = {-3.0, -1.8, -1.6, -1.2, -1.0, -0.7, -0.4, -0.2, 0, 0.2, 0.4, 0.7, 1.0, 1.2, 1.6, 1.8, 3.0};
-    ~~~
+    ```
 
 Now that the bins are set, we'll need to define the initial parameters for our fit.
 You can try to get a good 1st approximation from the plot of the invariant mass that we got before:
 
-<img width="1000px" src="../../../../../images/analysis/cmsefficiency/tutorial/02/init_conditions.png">
+![Invariant mass showing peaks for Upsilon resonances in analysed data](../../../../../images/analysis/cmsefficiency/tutorial/02/init_conditions.png)
 
 or use the suggested values
 
 ??? Example "Suggestion for the Initial Values"
     Try the following initial values:
-   
-    ~~~cpp
+
+    ```cpp
     init_conditions[0] = 9.46030;
     init_conditions[1] = 10.02326;
     init_conditions[2] = 10.3552;
     init_conditions[3] = 0.08;
-    ~~~
+    ```
 
 We are now ready to execute the fits!
 
@@ -199,10 +201,9 @@ We are now ready to execute the fits!
 
 We execute a simultaneous fit using a Gaussian curve and a Crystall Ball function for the fist peak (1S) and a gaussian for the remaining peaks. For the background we use a Chebychev polynomial. The function used, `doFit()`, is implemented in the source file `src/DoFit.cpp` and it was based on the [RooFit](https://root.cern.ch/doc/master/group__Roofit.html) library.
 
-You can find generic tutorials for this library [_here_](https://root.cern.ch/doc/master/group__tutorial__roofit.html).  If you’re starting with **RooFit** you may also find [_this one_ ](https://indico.scc.kit.edu/event/31/contributions/1864/attachments/1105/1550/lukas_hehn_kseta-workshop_introduction-to-RooFit.pdf) particularly useful.
+You can find generic tutorials for this library [_here_](https://root.cern.ch/doc/master/group__tutorial__roofit.html).  If you’re starting with **RooFit** you may also find [_this one_](https://indico.scc.kit.edu/event/31/contributions/1864/attachments/1105/1550/lukas_hehn_kseta-workshop_introduction-to-RooFit.pdf) particularly useful.
 
 You won't need to do anything in ``src/DoFit.cpp`` but you can check it out if you're curious.
-
 
 ??? Example "Check out `src/DoFit.cpp`"
     The code here is presented in smaller "digestible" chunks, so it's easier to understand.
@@ -211,7 +212,7 @@ You won't need to do anything in ``src/DoFit.cpp`` but you can check it out if y
     
     we then define a few [**RooRealVar**](https://root.cern.ch/doc/master/classRooRealVar.html) and [**RooFormulaVar**](https://root.cern.ch/doc/master/classRooFormulaVar.html) objects will be used to select the bin associated to the **string** ```condition``` (i.e. "ProbeMuon_Pt      10 && ProbeMuon_Pt < 10"). After spliting the original dataset, the resulting two [**RooDataSet**](https://root.cern.ch/doc/master/classRooDataSet.html) are used to create two binned [**RooDataHist**](https://root.cern.ch/doc/master/classRooDataHist.html) in which we'll perform the fits.
     
-    ~~~cpp
+    ```cpp
     double* doFit(string condition, string MuonID_str, string quant, double* init_conditions, bool save = true) // RETURNS ARRAY WITH [yield_all, yield_pass, err_all, err_pass]    ->   OUTPUT ARRAY
     {
         string MuonID_file = "";
@@ -254,14 +255,14 @@ You won't need to do anything in ``src/DoFit.cpp`` but you can check it out if y
         
         RooDataHist* dh_ALL     = Data_ALL->binnedClone();
         RooDataHist* dh_PASSING = Data_PASSING->binnedClone();
-    ~~~
+    ```
     
     We then create the variables used as parameters in the fit. **a0** and **a1** used in the Chebychev polynomial ([**RooChebychev**](https://root.cern.ch/doc/master/classRooChebychev.html), for the background
     and **sigma**, **mean1**,  **mean2**,  **mean3** used on the [**RooCBShape**](https://root.cern.ch/doc/master/classRooCBShape.html) and [**RooGaussian**](https://root.cern.ch/doc/master/classRooGaussian.html) for the signal. **frac1** and **frac2** are used as normalization values.
     
     For the yields of the fits, we defined the **n_signal** and **n_background** pairs.
     
-    ~~~cpp
+    ```cpp
         // BACKGROUND VARIABLES
         RooRealVar a0("a0", "a0", 0, -10, 10);
         RooRealVar a1("a1", "a1", 0, -10, 10);
@@ -298,11 +299,11 @@ You won't need to do anything in ``src/DoFit.cpp`` but you can check it out if y
         
         RooRealVar n_signal_total("n_signal_total","n_signal_total",n_signal_initial_total,0.,Data_ALL->sumEntries());
         RooRealVar n_signal_total_pass("n_signal_total_pass","n_signal_total_pass",n_signal_initial_total,0.,Data_PASSING->sumEntries());
-    ~~~
+    ```
     
     After defining the individual [_pdfs_ ](https://en.wikipedia.org/wiki/Probability_density_function) that will be used in the fit, we add them together to make our model with the signal and background. We then combine the data onto a [**RooSimultaneous**](https://root.cern.ch/doc/master/classRooSimultaneous.html) so that we can execute a simultaneous fit with the [**fitTo**](https://root.cern.ch/doc/master/classRooAbsPdf.html#af43c48c044f954b0e0e9d4fe38347551) method. The fit result is then stored.
     
-    ~~~cpp
+    ```cpp
         RooRealVar n_back("n_back","n_back",n_back_initial,0.,Data_ALL->sumEntries());
         RooRealVar n_back_pass("n_back_pass","n_back_pass",n_back_initial,0.,Data_PASSING->sumEntries());
         RooAddPdf* model;
@@ -337,11 +338,11 @@ You won't need to do anything in ``src/DoFit.cpp`` but you can check it out if y
         
         output[2] = yield_ALL->getError();
         output[3] = yield_PASS->getError();
-    ~~~
+    ```
 
     The rest of the code has to do with the plotting of the fit and with memory management.
     
-    ~~~cpp
+    ```cpp
         frame->SetTitle("ALL");
         frame->SetXTitle("#mu^{+}#mu^{-} invariant mass [GeV/c^{2}]");
         Data_ALL->plotOn(frame);
@@ -403,11 +404,11 @@ You won't need to do anything in ``src/DoFit.cpp`` but you can check it out if y
         return output;
     }
     }
-    ~~~
+    ```
 
 The fitting and storing of the fit output of each bin is achieved by the following loop in the `Efficiency.C` code.
 
-~~~cpp
+```cpp
 for (int i = 0; i < bin_n; i++)
 {
     if (DataIsMC)
@@ -416,7 +417,7 @@ for (int i = 0; i < bin_n; i++)
         yields_n_errs[i] = doFit(conditions[i], MuonId, quantity, init_conditions);
         //doFit returns: [yield_all, yield_pass, err_all, err_pass]
 }
-~~~
+```
 
 The `McYield()` function (`src/McYield.cpp`) has the same output as `doFit()` and has to do with Monte Carlo dataset, which only contains signal for the 1S peak.
 
@@ -426,14 +427,14 @@ You'll see that in order to create a ``TEfficiency`` object, one of the [constru
 The creation of these `TH1` objects is taken care of by the ``src/make_hist.cpp`` code.
 
 ??? Example "Check out `src/make_hist.cpp`"
-    ~~~cpp
+    ```cpp
     TH1F* make_hist(string name, double** values, int qnt, int bin_n, Double_t* binning, bool IsDataMc, bool DRAW = false)
     {
        //AddBinContent
        //HISTOGRAM NEEDS TO HAVE VARIABLE BINS
       
        TH1F* hist = new TH1F(name.c_str(), name.c_str(), bin_n, binning);
-   
+    
        for (int i = 0; i < bin_n; i++)
        {
            hist-   SetBinContent(i, values[i][qnt]);
@@ -448,12 +449,12 @@ The creation of these `TH1` objects is taken care of by the ``src/make_hist.cpp`
        }
        return hist;
     }   
-    ~~~
+    ```
 
 To plot the efficiency we used the ``src/get_efficiency.cpp`` function.
 
 ??? Example "Check out `get_efficiency.cpp`"
-    ~~~cpp
+    ```cpp
     TEfficiency* get_efficiency(TH1F* ALL, TH1F* PASS, string quantity, bool DataIsMc)
     {
         gSystem->cd("Efficiency Result");
@@ -488,25 +489,25 @@ To plot the efficiency we used the ``src/get_efficiency.cpp`` function.
         
         return pEff;
     }
-    ~~~
+    ```
 
 Note that we load all these functions in the `src` area directly in header of the `Efficiency.C` code.
 
 Now that you understand what the ``Efficiency.C`` macro does, run your code with in a batch mode (`-b`) and with a quit-when-done switch (`-q`):
 
-~~~sh
+```sh
 root -q -b Efficiency.C
-~~~
+```
 
 When the execution finishes, you should have 2 new files. One on your working directory: `Histograms.root`, and another one `Efficiency_Run2011.root` located at `/Efficiency Result/Pt`.  The second contains the efficiency we calculated! the first file is used to redo any unusable fits.
 To open ``Efficiency_Run2011.root``, on your working directory type:
 
-~~~sh
+```sh
 root -l
 new TBrowser
-~~~
+```
 
-<img width="700px" src="../../../../../images/analysis/cmsefficiency/tutorial/02/TBrowser_efficiency.png">
+![TBrowser interface](../../../../../images/analysis/cmsefficiency/tutorial/02/TBrowser_efficiency.png)
 
 A window like this should have popped up.  If you click on ``Efficiency_Run2011.root``, a plot will show up with the efficiency value for each bin!
 
@@ -518,26 +519,27 @@ Check that you have both ```Efficiency_Run2011.root``` and ```Efficiency_MC.root
 
 If so, now uncomment ``Efficiency.C`` line: 69:
 
-~~~cpp
+```cpp
 //compare_efficiency(quantity, "Efficiency Result/" + quantity + "/Efficiency_MC.root", "Efficiency Result/" + quantity + "/Efficiency_Run2011.root");
-~~~
+```
 
 and run the macro again. You should get something like the following result if you inspect the image at `Comparison\ Run2011\ vs\ MC/Efficiency.png`.
 
-<img width="1000px" src="../../../../../images/analysis/cmsefficiency/tutorial/02/Efficiency_thomas.png">
+![Efficiency get with fitting method code](../../../../../images/analysis/cmsefficiency/tutorial/02/Efficiency_thomas.png)
 
 If everything went well and you still have time to go, repeat this process for the two other variables, &eta; and &phi;!
 
 In case you want to change one of the fit results, use the `change_bin.cpp` function commented on line:69.
 
 !!! Note "Important note!"
-    
     Don't forget to comment line:69 when repeating the procedure for the other quantities!
-    ~~~cpp
+
+    ```cpp
     compare_efficiency(quantity, "Efficiency Result/" + quantity + "/Efficiency_MC.root", "Efficiency Result/" + quantity + "/Efficiency_Run2011.root");
-    ~~~
+    ```
 
 !!! Tip "Extra challenge"
     Fancy some more work? Download [this](https://drive.google.com/drive/folders/1YytJ7iTVYToUZemYIDLqr13wTjIYGERP?usp=sharing) J/ψ dataset and try out the new methods you just learned!
+
     You'll have to change the `DoFit.cpp` function since J/ψ's only peak is made up of a Crystall ball and a Gaussian curve.
     Good luck!
