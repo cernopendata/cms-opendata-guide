@@ -453,7 +453,7 @@ The creation of these `TH1` objects is taken care of by the ``src/make_hist.cpp`
 To plot the efficiency we used the ``src/get_efficiency.cpp`` function.
 
 ??? Example "Check out `get_efficiency.cpp`"
-    
+
     ```cpp
     TEfficiency* get_efficiency(TH1F* ALL, TH1F* PASS, string quantity, bool DataIsMc)
     {
