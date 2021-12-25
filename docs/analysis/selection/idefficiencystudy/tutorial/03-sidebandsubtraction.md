@@ -1,6 +1,6 @@
-# Sideband Subtraction
+# Sideband
 
-## Signal extraction: sideband subtraction method
+### Signal extraction: sideband subtraction method
 
 The reconstruction efficiency is calculated using **only signal muons**. In order to measure the efficiency, we need a way to extract signal from the dataset. You've used the fitting method and now you'll meet the sideband subtraction method.
 
@@ -129,7 +129,7 @@ We want to calculate the efficiency using specific files that we downloaded. The
 
 ??? Example "How to do this"
     Make sure `useFile` is correct:
-   
+
     ```cpp
     //List of files
     const char *files[] = {"../data_histoall.root",
@@ -167,7 +167,7 @@ cd ../classes
 ls
 ```
 
-```
+```plaintext
 FitFunctions.h   MassValues.h      PtEtaPhi.h             TagProbe.h
 InvariantMass.h  PassingFailing.h  SidebandSubtraction.h  Type.h
 ```
@@ -209,7 +209,7 @@ else
 
 ??? Example "See the whole scructure"
     Don't be scared! Code does'nt bite.
-   
+    
     ```cpp
     //Variable bin for pT
     if (strcmp(quantityName, "Pt") == 0)
@@ -312,7 +312,7 @@ Done. All result files can be found at "../results/Upsilon_Run_2011/"
 
 !!! Note "Common errors"
     If you run the code and your terminal printed some erros like:
-   
+    
     ```plaintext
     Error in <ROOT::Math::Cephes::incbi   : Wrong domain for parameter b (must be     0)
     ```
@@ -345,23 +345,23 @@ If all went well, your results are going to be like these:
         in `main/config/settings.cpp` file.
 
 !!! Note "Comparison between real data and simulation"
-    We'll do this in the last section of this exercise. So the challenge above is mandatory. 
+    We'll do this in the last section of this exercise. So the challenge above is mandatory.
 
 ---
 
 !!! Tip "Extra challenge"
     If you are looking for an extra exercise, you can try to apply the same logic, changing some variables you saw, in order to get results for the J/ψ nutpple.
-    
+
     To download the J/ψ real data ntupple (requires 3.3 GB):
-   
+
     ```sh
     wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=16OqVrHIB4wn_5X8GEZ3NxnAycZ2ItemZ' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=16OqVrHIB4wn_5X8GEZ3NxnAycZ2ItemZ" -O Run2011AMuOnia_mergeNtuple.root && rm -rf /tmp/cookies.txt
     ```
-   
+
     To download the J/ψ simulated data ntuple (requires 515 MB):
-   
+
     ```sh
     wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1dKLJ5RIGrBp5aIJrvOQw5lWLQSHUgEnf' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1dKLJ5RIGrBp5aIJrvOQw5lWLQSHUgEnf" -O JPsiToMuMu_mergeMCNtuple.root && rm -rf /tmp/cookies.txt
     ```
-   
+
     As this dataset is larger, the code will run slowly. It can take several minutes to be completed depending where the code is been running

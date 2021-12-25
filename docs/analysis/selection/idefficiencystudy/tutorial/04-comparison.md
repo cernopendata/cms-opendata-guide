@@ -81,9 +81,9 @@ You can double click each plot to see its content:
 ![TBrowser showing efficiency plot for sideband subtraction method](../../../../../images/analysis/cmsefficiency/tutorial/04/prints/tbrowser3.png)
 
 !!! Tip
-    To close this window, click on terminal and press <kbd>Ctrl + C</kbd>. This command stops any processes happening in the terminal.
+    To close this window, click on terminal and press `Ctrl` + `C`. This command stops any processes happening in the terminal.
 
-!!! Info "Key Point" 
+!!! Info "Key Point"
     * As you see, the `.root` file has a path inside and the efficiencies plots have paths inside them as well!
 
 ## Comparison results between real data and simulations for sideband method
@@ -179,8 +179,8 @@ Done. All result files can be found at "../results/Comparison_Upsilon_Sideband_R
 ```
 
 !!! Note
-    The command above to run the code will display three new windows on your screen with comparison plots. You can avoid them by running straight the **command below**. 
-   
+    The command above to run the code will display three new windows on your screen with comparison plots. You can avoid them by running straight the **command below**.
+
     ```cpp
     root -l -b -q compare_efficiency.cpp
     ```
@@ -224,7 +224,7 @@ If you go with your terminal to this folder and run this command, you'll see tha
 root -l Efficiency_Run2011.root
 ```
 
-```
+```plaintext
 root [0] 
 Attaching file Efficiency_Run2011.root as _file0...
 (TFile *) 0x55f7152a8970
@@ -380,7 +380,7 @@ Now you can type the command below to **quit root** and close all created window
 !!! Tip "Challenge"
     Using what you did before, try to mix them and plot a comparison **between real data for sideband method and real data** for sthe fitting method and get an analysis.
     Notice that:
-   
+    
     * Real data = Run 2011
     * Simulations = Monte Carlo = MC
    
@@ -395,7 +395,7 @@ Now you can type the command below to **quit root** and close all created window
 
 ??? Example "Extra - recreate ntuples"
     If you are looking go far than this workshop, you can try to recreate those ntuples we used here. Try to get results from a J/ψ decaying in dimuons ntuple @7 TeV. The code used to create them can be [found here](https://github.com/sandrofonseca/TagAndProbe).
-    
+
     Concerning the datasets used to produce these extra exercises, you can find them in these links below:
     
     * [Real data (2011 legacy)](http://opendata.cern.ch/record/27)

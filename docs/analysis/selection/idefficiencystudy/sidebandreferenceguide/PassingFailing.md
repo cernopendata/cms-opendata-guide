@@ -121,7 +121,9 @@ void consistencyDebugCout()
 
 Print on terminal the consistency check after subtractSigHistogram().
 
-It is result for this equation: N<small>total</small> - (alpha * N<small>background</small> + N<small>signal</small>)
+It is result for this equation:
+
+![N_{total} - (\alpha N_{background} + N_{signal})](../../../../images/analysis/cmsefficiency/sidebandreferenceguide/consistencyDebugCout.svg)
 
 Where: alpha = yield of background particles signal region / yield of background particles sideband region
 

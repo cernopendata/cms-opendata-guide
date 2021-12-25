@@ -58,8 +58,7 @@ If you don't, the macro won't run and the following errors are to be expected:
         init_conditions[2] = /*peak3*/;
                                       ^
     /Users/thomasgaehtgens/Desktop/CMS-tutorial/Efficiency.C:36:35: error: expected expression
-        init_conditions[3] = /*sigma*/;
-    ```
+        init_conditions[3] = /*sigma*/;```
 
 ## The Fitting Method
 
@@ -67,9 +66,9 @@ First, a brief explanation of the method we’ll be studying.
 
 It consists on fitting the invariant mass of the tag & probe pairs, in the two categories: passing probes, and all probes.  I.e., for the unbiased leg of the decay, one can apply a selection criteria (a set of cuts) and determine whether the object passes those criteria or not.
 
-The procedure is applied after splitting the data in bins of a kinematic variable of the probe object (e.g. the traverse momentum, p<sub>T</sub>); as such, the efficiency will be measured as a function of that quantity for each of the bins.
+The procedure is applied after splitting the data in bins of a kinematic variable of the probe object (e.g. the traverse momentum, pT); as such, the efficiency will be measured as a function of that quantity for each of the bins.
 
-So, in the picture below, on the left, let's imagine that the p<sub>T</sub> bin we are selecting is the one marked in red.  But, of course, in that bin (like in the rest) you will have true &upsih; decays as well as muon pairs from other processes (maybe QCD, for instance).  The true decays would make up our *signal*, whereas the other events will be considered the *background*.
+So, in the picture below, on the left, let's imagine that the pT bin we are selecting is the one marked in red.  But, of course, in that bin (like in the rest) you will have true &upsih; decays as well as muon pairs from other processes (maybe QCD, for instance).  The true decays would make up our *signal*, whereas the other events will be considered the *background*.
 
 The fit, which is made in a different space (the invariant mass space) allows to statistically discriminate between signal and background. To compute the efficiency we simply divide the signal yield from the fits to the `passing` category by the signal yield from the fit of the `inclusive` (All) category. This approach is depicted in the middle and right-hand plots of the image below.
 
@@ -106,7 +105,7 @@ root [] UPSILON_DATA->Draw("InvariantMass")
 
 If you got the previous result, we're ready to go.
 
-The dataset used in this exercise has been collected by the CMS experiment, in proton-proton collisions at the LHC. It contains 986100 entries (muon pair candidates) with an associated invariant mass. For each candidate, the transverse momentum (p<sub>T</sub>), rapidity(&eta;) and azimuthal angle (&phi;) are stored, along with a binary flag `PassingProbeTrackingMuon`, which is 1 in case the corresponding probe satisfied the tracker muon selection criteria and 0 in case it doesn't.
+The dataset used in this exercise has been collected by the CMS experiment, in proton-proton collisions at the LHC. It contains 986100 entries (muon pair candidates) with an associated invariant mass. For each candidate, the transverse momentum (pT), rapidity(&eta;) and azimuthal angle (&phi;) are stored, along with a binary flag `PassingProbeTrackingMuon`, which is 1 in case the corresponding probe satisfied the tracker muon selection criteria and 0 in case it doesn't.
 
 !!! Note
     Note that it does not really matter what kind of selection criteria these ntuples were created with.  The procedure would be the same.  You can create your own, similar ntuples with the criteria that you need to study.
@@ -119,7 +118,7 @@ As you may have seen, after exploring the content of the root file, the UPSILON_
 | ProbeMuon_Eta |
 | ProbeMuon_Phi|
 
-We'll start by calculating the efficiency as a function of p<sub>T</sub>.  It is useful to have an idea of the distribution of the quantity we want to study. In order to do this, we’ll repeat the steps previously used to plot the invariant mass, but now for the `ProbeMuon_Pt` variable.
+We'll start by calculating the efficiency as a function of pT.  It is useful to have an idea of the distribution of the quantity we want to study. In order to do this, we’ll repeat the steps previously used to plot the invariant mass, but now for the `ProbeMuon_Pt` variable.
 
 ```cpp
 root [] UPSILON_DATA->Draw("ProbeMuon_Pt")
@@ -164,7 +163,7 @@ init_conditions[3] = /*sigma*/;
 /*------------------------------------------------------------------------------------------------------*/
 ```
 
-We'll start by choosing the desired bins for the transverse momentum. If you're feeling brave, choose appropriate bins for our fit remembering that we need a fair amount of data in each bin (more events mean a better fit!). If not, we've left  a suggestion that you can paste onto the `Efficiency.C` file. Start with the p<sub>T</sub> variable.
+We'll start by choosing the desired bins for the transverse momentum. If you're feeling brave, choose appropriate bins for our fit remembering that we need a fair amount of data in each bin (more events mean a better fit!). If not, we've left  a suggestion that you can paste onto the `Efficiency.C` file. Start with the pT variable.
 
 ??? Example "Bin Suggestion"
     ```cpp
@@ -207,10 +206,10 @@ You won't need to do anything in ``src/DoFit.cpp`` but you can check it out if y
 
 ??? Example "Check out `src/DoFit.cpp`"
     The code here is presented in smaller "digestible" chunks, so it's easier to understand.
-    
+
     We begin by linking our dataset to a usable object ( the [**TTree**](https://root.cern.ch/doc/v612/classTTree.html) ) and by creating a [**TCanvas**](https://root.cern.ch/doc/master/classTCanvas.html) to store the fit plots.
     
-    we then define a few [**RooRealVar**](https://root.cern.ch/doc/master/classRooRealVar.html) and [**RooFormulaVar**](https://root.cern.ch/doc/master/classRooFormulaVar.html) objects will be used to select the bin associated to the **string** ```condition``` (i.e. "ProbeMuon_Pt      10 && ProbeMuon_Pt < 10"). After spliting the original dataset, the resulting two [**RooDataSet**](https://root.cern.ch/doc/master/classRooDataSet.html) are used to create two binned [**RooDataHist**](https://root.cern.ch/doc/master/classRooDataHist.html) in which we'll perform the fits.
+    we then define a few [**RooRealVar**](https://root.cern.ch/doc/master/classRooRealVar.html) and [**RooFormulaVar**](https://root.cern.ch/doc/master/classRooFormulaVar.html) objects will be used to select the bin associated to the **string** `condition` (i.e. `"ProbeMuon_Pt      10 && ProbeMuon_Pt < 10"`). After spliting the original dataset, the resulting two [**RooDataSet**](https://root.cern.ch/doc/master/classRooDataSet.html) are used to create two binned [**RooDataHist**](https://root.cern.ch/doc/master/classRooDataHist.html) in which we'll perform the fits.
     
     ```cpp
     double* doFit(string condition, string MuonID_str, string quant, double* init_conditions, bool save = true) // RETURNS ARRAY WITH [yield_all, yield_pass, err_all, err_pass]    ->   OUTPUT ARRAY
@@ -434,7 +433,7 @@ The creation of these `TH1` objects is taken care of by the ``src/make_hist.cpp`
        //HISTOGRAM NEEDS TO HAVE VARIABLE BINS
       
        TH1F* hist = new TH1F(name.c_str(), name.c_str(), bin_n, binning);
-    
+
        for (int i = 0; i < bin_n; i++)
        {
            hist-   SetBinContent(i, values[i][qnt]);
