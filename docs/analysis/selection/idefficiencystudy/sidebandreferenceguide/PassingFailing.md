@@ -6,42 +6,42 @@ Holds histograms of passing and all particle quantities.
 
 ```cpp
 PassingFailing(
-	const char*& resonance,
-	const char*& particleName,
-	const char*& canvasWatermark,
-	const char*& directoryToSave,
- 	const char*& particleType,
- 	InvariantMass& ObjMass,
- 	const char*& tagOrProbe,
-	const char*  passingOrFailing,
-	const char*& quantityName,
-	const char*& xAxisName,
-	const char*& quantityUnit,
-	const char*& extendedQuantityName,
-	double& 	 xMin,
-	double& 	 xMax,
-	int&    	 nBins,
-	int&    	 decimals)
-	  : resonance(resonance),
-		particleName(particleName),
-	    canvasWatermark(canvasWatermark),
-	    directoryToSave(directoryToSave),
-		particleType(particleType),
-	    ObjMass(ObjMass),
-		tagOrProbe(tagOrProbe),
-		passingOrFailing(passingOrFailing),
-		quantityName(quantityName),
-		xAxisName(xAxisName),
-		quantityUnit(quantityUnit),
-		extendedQuantityName(extendedQuantityName),
-		nBins(nBins),
-		xMin(xMin),
-		xMax(xMax),
-		decimals(decimals)
+    const char*& resonance,
+    const char*& particleName,
+    const char*& canvasWatermark,
+    const char*& directoryToSave,
+    const char*& particleType,
+    InvariantMass& ObjMass,
+    const char*& tagOrProbe,
+    const char*  passingOrFailing,
+    const char*& quantityName,
+    const char*& xAxisName,
+    const char*& quantityUnit,
+    const char*& extendedQuantityName,
+    double&      xMin,
+    double&      xMax,
+    int&         nBins,
+    int&         decimals)
+      : resonance(resonance),
+        particleName(particleName),
+        canvasWatermark(canvasWatermark),
+        directoryToSave(directoryToSave),
+        particleType(particleType),
+        ObjMass(ObjMass),
+        tagOrProbe(tagOrProbe),
+        passingOrFailing(passingOrFailing),
+        quantityName(quantityName),
+        xAxisName(xAxisName),
+        quantityUnit(quantityUnit),
+        extendedQuantityName(extendedQuantityName),
+        nBins(nBins),
+        xMin(xMin),
+        xMax(xMax),
+        decimals(decimals)
 {
-	createHistogram(hSigBack, "SigBack");
-	createHistogram(hSig, 	  "Sig");
-	createHistogram(hBack, 	  "Back");
+    createHistogram(hSigBack, "SigBack");
+    createHistogram(hSig,     "Sig");
+    createHistogram(hBack,    "Back");
 }
 ```
 
@@ -84,8 +84,8 @@ Create quantity histogram.
 
 ```cpp
 string fillAfter(string text,
-				char fillWith,
-				int targetLength)
+                char fillWith,
+                int targetLength)
 ```
 
 Fill blank space of a string. It is used in consistencyDebugCout().
@@ -98,20 +98,20 @@ Summary
 |--------------|----------------------|---------------|
 | const char*  | passingOrFailing     | NULL          |
 | TH1D*        | hSigBack             | NULL          |
-| TH1D*        | hSig         		  | NULL          |
-| TH1D*        | hBack         	      | NULL          |
+| TH1D*        | hSig                 | NULL          |
+| TH1D*        | hBack                | NULL          |
 
 <br>
 Details
 
 * `const char* passingOrFailing`
-	* Set if it is "Passing" or "All" object.
+    * Set if it is "Passing" or "All" object.
 * `TH1D* hSigBack`
-	* Stores the histogram for particles in signal region.
+    * Stores the histogram for particles in signal region.
 * `TH1D* hSig`
-	* Stores the subtracted histogram.
+    * Stores the subtracted histogram.
 * `TH1D* hBack`
-	* Stores the histogram for particles in sideband region.
+    * Stores the histogram for particles in sideband region.
 
 ### Public Functions details
 
@@ -131,7 +131,7 @@ Where: alpha = yield of background particles signal region / yield of background
 
 ```cpp
 TCanvas* createQuantitiesCanvas(bool shouldWrite = false,
-							bool shouldSavePNG = false)
+                            bool shouldSavePNG = false)
 ```
 
 Create canvas for all quantities after subtractSigHistograms().
@@ -140,7 +140,7 @@ Create canvas for all quantities after subtractSigHistograms().
 
 ```cpp
 void fillQuantitiesHistograms(double& InvariantMass,
-							int& isPassing)
+                            int& isPassing)
 ```
 
 Automatically fill all quantities histograms. Needs to be called in a loop over all dataset.
@@ -173,8 +173,8 @@ Apply sideband subtraction over histograms.
 
 ```cpp
 void writeQuantitiesHistogramsOnFile(bool hSigBack,
-									bool hSig,
-									bool hBack)
+                                    bool hSig,
+                                    bool hBack)
 ```
 
 Write quantity histograms in a root file. Just need to call this function and all quantities histograms will be written. It needs to be called after subtractSigHistograms().

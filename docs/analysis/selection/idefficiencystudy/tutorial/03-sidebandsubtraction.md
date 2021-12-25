@@ -7,10 +7,10 @@ This method consists in choosing sideband and signal regions in invariant mass d
 ![Invariant Mass histogram](../../../../../images/analysis/cmsefficiency/tutorial/03/InvariantMass_Tracker_region.png)
 
 !!! Note
-	The background corresponds to candidates that do not correspond to the decay of a genuine resonance; for example, the pair is formed by the tag muon associated to an uncorrelated track produced elsewhere in the collision; the corresponding invariant mass has thus a smooth continuous shape, that is extrapolated from the signal regions into the sideband region.
+    The background corresponds to candidates that do not correspond to the decay of a genuine resonance; for example, the pair is formed by the tag muon associated to an uncorrelated track produced elsewhere in the collision; the corresponding invariant mass has thus a smooth continuous shape, that is extrapolated from the signal regions into the sideband region.
 
 !!! Note
-	We choose only the ϒ (1S) signal for selecting the signal region; simulation information is further available for this resonance, allowing in the end for a comparison of results, between data and simulation.
+    We choose only the ϒ (1S) signal for selecting the signal region; simulation information is further available for this resonance, allowing in the end for a comparison of results, between data and simulation.
 
 For each event category (i.e. Pass and All), and for a given variable of interest (e.g., the probe pT), two distributions are obtained, one for each region (Signal and Sideband). In order to obtain the variable distribution for the signal only, we proceed by subtracting the Background distribution (Sideband region) from the Signal+Background one (Signal region):
 
@@ -35,7 +35,7 @@ Applying those equations we get histograms like this:
 You will see this histogram on this exercise.
 
 !!! Note "About this code"
-	More info about this code can be [found here](http://tagandprobe-documentation.web.cern.ch/tagandprobe-documentation/).
+    More info about this code can be [found here](http://tagandprobe-documentation.web.cern.ch/tagandprobe-documentation/).
 
 ## Preparing files
 
@@ -76,7 +76,7 @@ Your `efficiency_tagandprobe` folder should have these files:
 ## Preparing code for Data
 
 !!! Note
-	I will teach you to manage the files on the terminal, but you can use a graphical file explorer.
+    I will teach you to manage the files on the terminal, but you can use a graphical file explorer.
 
 We need to edit some settings. Open **settings.cpp**:
 
@@ -118,7 +118,7 @@ bool shouldDrawInvariantMassCanvasRegion = true;
 bool shouldDrawQuantitiesCanvas          = true;
 bool shouldDrawEfficiencyCanvas          = true;
 
-//Muon id analyse	
+//Muon id analyse   
 bool doTracker    = true;
 bool doStandalone = false;
 bool doGlobal     = false;
@@ -155,7 +155,7 @@ We want to calculate the efficiency using specific files that we downloaded. The
     the first three files won't be used in this execise.
 
 !!! Note "About code"
-	Normally we need to set the variables `bool isMC` and `const char* resonance`, but at this time it is already done and set automatically for these ntuples' names.
+    Normally we need to set the variables `bool isMC` and `const char* resonance`, but at this time it is already done and set automatically for these ntuples' names.
 
 ## Editting bins
 
@@ -190,19 +190,19 @@ For each quantity (pT, eta, phi) we used different bins. To change the bins, loo
 //Variable bin for pT
 if (strcmp(quantityName, "Pt") == 0)
 {
-	//Here creates histogram for pT
+    //Here creates histogram for pT
 }
 
 //Variable bin for eta
 else if (strcmp(quantityName, "Eta") == 0)
 {
-	//Here creates histogram for eta
+    //Here creates histogram for eta
 }
 
 //Bins for phi
 else
 {
-	//Here creates histogram for phi
+    //Here creates histogram for phi
 }
 ~~~
 
@@ -333,19 +333,19 @@ If all went well, your results are going to be like these:
 ## Preparing and running the code for simulation
 
 ??? Example "Challenge"
-	Try to run the same code on the `Upsilon1SToMuMu_MC_full.root` file we downloaded.
+    Try to run the same code on the `Upsilon1SToMuMu_MC_full.root` file we downloaded.
 
-	!!! Tip
-		You will need the redo the steps above, setting:
-		
-		~~~cpp
-		int useFile = 4;
-		~~~
+    !!! Tip
+        You will need the redo the steps above, setting:
+        
+        ~~~cpp
+        int useFile = 4;
+        ~~~
 
- 		in `main/config/settings.cpp` file.
+        in `main/config/settings.cpp` file.
 
 !!! Note "Comparison between real data and simulation"
-	We'll do this in the last section of this exercise. So the challenge above is mandatory. 
+    We'll do this in the last section of this exercise. So the challenge above is mandatory. 
 
 ---
 

@@ -28,8 +28,8 @@ Summary
 
 ```cpp
 TBox* createTBox(double Ymax,
-				int index = 0,
-				double Ymin = 0.)
+                int index = 0,
+                double Ymin = 0.)
 ```
 
 Return TBox of sideband or signal region.

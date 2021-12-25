@@ -6,40 +6,40 @@ Holds [MassValues struct](MassValues.md).
 
 ```cpp
 InvariantMass(
-	const char*& resonance,
-	const char*& particleName,
-	const char*& canvasWatermark,
-	const char*& directoryToSave,
- 	const char*& particleType)
-	  : resonance(resonance),
-	    particleName(particleName),
-	    canvasWatermark(canvasWatermark),
-	    directoryToSave(directoryToSave),
-	    particleType(particleType)
+    const char*& resonance,
+    const char*& particleName,
+    const char*& canvasWatermark,
+    const char*& directoryToSave,
+    const char*& particleType)
+      : resonance(resonance),
+        particleName(particleName),
+        canvasWatermark(canvasWatermark),
+        directoryToSave(directoryToSave),
+        particleType(particleType)
 {
-	if (strcmp(resonance, "Jpsi") == 0)
-	{
-		xMin  = 2.9;
-		xMax  = 3.3;
-		nBins = 160;
-	}
+    if (strcmp(resonance, "Jpsi") == 0)
+    {
+        xMin  = 2.9;
+        xMax  = 3.3;
+        nBins = 160;
+    }
 
-	if (strcmp(resonance, "Upsilon") == 0)
-	{
-		xMin  = 8.7;
-		xMax  = 11.;
-		nBins = 60;
-	}
+    if (strcmp(resonance, "Upsilon") == 0)
+    {
+        xMin  = 8.7;
+        xMax  = 11.;
+        nBins = 60;
+    }
 
-	if (strcmp(resonance, "Upsilon1S") == 0)
-	{
-		xMin  = 8.7;
-		xMax  = 11.;
-		nBins = 60;
-	}
+    if (strcmp(resonance, "Upsilon1S") == 0)
+    {
+        xMin  = 8.7;
+        xMax  = 11.;
+        nBins = 60;
+    }
 
-	createMassHistogram(Pass.hMass, "Passing");
-	createMassHistogram(All. hMass, "All");
+    createMassHistogram(Pass.hMass, "Passing");
+    createMassHistogram(All. hMass, "All");
 }
 ```
 
@@ -64,7 +64,7 @@ All variables here are reference for public variables in mother class: [Type cla
 
 ```cpp
 void createMassHistogram(TH1D* &hMass,
-						const char* PassingOrFailing)
+                        const char* PassingOrFailing)
 ```
 
 Create invariant mass histogram with a specific title. The argument `hMass` is a pointer where the histogram shall be stored.
@@ -73,10 +73,10 @@ Create invariant mass histogram with a specific title. The argument `hMass` is a
 
 ```cpp
 void drawCanvasQuarter(TCanvas* &canvas,
-					bool drawRegions,
-					int quarter,
-					MassValues* ObjMassValues,
-					int color = kBlue)
+                    bool drawRegions,
+                    int quarter,
+                    MassValues* ObjMassValues,
+                    int color = kBlue)
 ```
 
 Draw a quarter of whole canvas with invariant mass histogram pointed.
@@ -97,9 +97,9 @@ Summary
 Constructed objects
 
 * `MassValues Pass`
-	* Stores information about passing mass histograms.
+    * Stores information about passing mass histograms.
 * `MassValues All`
-	* Stores information about passing mass histograms.
+    * Stores information about passing mass histograms.
 
 ### Public Functions details
 
@@ -107,8 +107,8 @@ Constructed objects
 
 ```cpp
 TCanvas* createMassCanvas(bool drawRegions = false,
-						bool shouldWrite = false,
-						bool shouldSavePNG = false)
+                        bool shouldWrite = false,
+                        bool shouldSavePNG = false)
 ```
 
 Create canvas for invariant mass (passing and all muons).
@@ -117,9 +117,9 @@ Create canvas for invariant mass (passing and all muons).
 
 ```cpp
 void defineMassHistogramNumbers(int nBins,
-								double xMin,
-								double xMax,
-								int decimals = 3)
+                                double xMin,
+                                double xMax,
+                                int decimals = 3)
 ```
 
 Redefine number parameters of mass histograms in Mass object.
@@ -136,7 +136,7 @@ Apply a fit over invariant mass in MassValues objects.
 
 ```cpp
 void fillMassHistograms(double** quantities,
-						int** types)
+                        int** types)
 ```
 
 Automatically fill masses histograms. Needs to be called in a loop over all dataset.
@@ -153,7 +153,7 @@ After fill invariant mass histogram, you need to set signal regions and sideband
 
 ```cpp
 void updateMassValuesFor(MassValues* ObjMassValues,
-						bool isAll = false)
+                        bool isAll = false)
 ```
 
 After fill invariant mass histograms, you need to set signal regions and sideband regions. This function will set it for you.
@@ -162,7 +162,7 @@ After fill invariant mass histograms, you need to set signal regions and sideban
 
 ```cpp
 void writeMassHistogramsOnFile(bool writehPass,
-							bool writehAll)
+                            bool writehAll)
 ```
 
 Write all mass canvas histograms in a root file. Just need to call this function and all mass histograms will be written.

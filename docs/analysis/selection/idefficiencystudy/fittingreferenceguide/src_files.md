@@ -5,7 +5,7 @@ In this section there is a brief explanation for each file in `src/` folder. In 
 ## 📄 create_TH2D.h
 ```cpp
 TH2D* create_TH2D(const char* name, const char* title, string xquantity, string yquantity, int nbinsx, int nbinsy,
-	double* xbins, double* ybins)
+    double* xbins, double* ybins)
 ```
 Create a empty TH2D histogram according `xquantity` and `yquantity` variables. these varibles supports `"Pt"`, `"Eta"` and `"Phi"` values.
 

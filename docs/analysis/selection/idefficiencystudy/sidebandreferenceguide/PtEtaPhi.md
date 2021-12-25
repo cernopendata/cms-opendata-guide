@@ -6,36 +6,36 @@ Holds [PassingFailing class](PassingFailing.md).
 
 ```cpp
 PtEtaPhi(
-	const char*& resonance,
-	const char*& particleName,
-	const char*& canvasWatermark,
-	const char*& directoryToSave,
- 	const char*& particleType,
- 	InvariantMass& ObjMass,
- 	const char*& tagOrProbe,
-	const char*  quantityName,
-	const char*  xAxisName,
-	const char*  quantityUnit,
-	const char*  extendedQuantityName,
-	int	    	 nBins,
-	double	 	 xMin,
-	double	 	 xMax,
-	int	    	 decimals = 3)
-	  : resonance(resonance),
-	    particleName(particleName),
-	    canvasWatermark(canvasWatermark),
-	    directoryToSave(directoryToSave),
-	    particleType(particleType),
-	    ObjMass(ObjMass),
-	    tagOrProbe(tagOrProbe),
-		quantityName(quantityName),
-		xAxisName(xAxisName),
-		quantityUnit(quantityUnit),
-		extendedQuantityName(extendedQuantityName),
-		nBins(nBins),
-		xMin(xMin),
-		xMax(xMax),
-		decimals(decimals)
+    const char*& resonance,
+    const char*& particleName,
+    const char*& canvasWatermark,
+    const char*& directoryToSave,
+    const char*& particleType,
+    InvariantMass& ObjMass,
+    const char*& tagOrProbe,
+    const char*  quantityName,
+    const char*  xAxisName,
+    const char*  quantityUnit,
+    const char*  extendedQuantityName,
+    int          nBins,
+    double       xMin,
+    double       xMax,
+    int          decimals = 3)
+      : resonance(resonance),
+        particleName(particleName),
+        canvasWatermark(canvasWatermark),
+        directoryToSave(directoryToSave),
+        particleType(particleType),
+        ObjMass(ObjMass),
+        tagOrProbe(tagOrProbe),
+        quantityName(quantityName),
+        xAxisName(xAxisName),
+        quantityUnit(quantityUnit),
+        extendedQuantityName(extendedQuantityName),
+        nBins(nBins),
+        xMin(xMin),
+        xMax(xMax),
+        decimals(decimals)
 {}
 ```
 
@@ -70,36 +70,36 @@ Summary
 | double       | xMax                 | 0.            |
 | int          | nBins                | 0             |
 | int          | decimals             | 3             |
-| TEfficiency* | pEff 	              | NULL          |
+| TEfficiency* | pEff                 | NULL          |
 
 <br>
 Details
 
 * `const char* quantityName`
-	* Stores the quantity name. E.g.: "pT".
+    * Stores the quantity name. E.g.: "pT".
 * `const char* extendedQuantityName`
-	* Stores the extended quantity name. E.g.: "Transversal Momentum".
+    * Stores the extended quantity name. E.g.: "Transversal Momentum".
 * `const char* quantityUnit`
-	* Stores the quantity unit. E.g.: "GeV/c".
+    * Stores the quantity unit. E.g.: "GeV/c".
 * `const char* xAxisName`
-	* Stores the quantity name for histogram horizontal axis in LaTeX form. E.g.: "p_{t}".
+    * Stores the quantity name for histogram horizontal axis in LaTeX form. E.g.: "p_{t}".
 * `int nBins`
-	* Stores the number of bins in histograms.
+    * Stores the number of bins in histograms.
 * `int decimals = 3`
-	* Number of decimals showed in bin width on histogram vertical axis.
+    * Number of decimals showed in bin width on histogram vertical axis.
 * `double xMin`
-	* Lower horizontal value of histogram.
+    * Lower horizontal value of histogram.
 * `double xMax`
-	* Higher horizontal value of histogram.
+    * Higher horizontal value of histogram.
 * `TEfficiency* pEff`
-	* Stores the efficiency plot.
+    * Stores the efficiency plot.
 
 Constructed objects
 
 * `PassingFailing Pass`
-	* Stores all informations about invariant masses, including fit and histograms.
+    * Stores all informations about invariant masses, including fit and histograms.
 * `PassingFailing All`
-	* Stores all informations about tag muons, incuding quantities histograms and efficiencies.
+    * Stores all informations about tag muons, incuding quantities histograms and efficiencies.
 
 ### Public Functions details
 
@@ -115,7 +115,7 @@ Print on terminal the consistency check after subtractSigHistograms().
 
 ```cpp
 void createEfficiencyCanvas(bool shouldWrite = false,
-							bool shouldSavePNG = false)
+                            bool shouldSavePNG = false)
 ```
 
 Create canvas for all efficiencies calculated. It need to be called after createEfficiencyPlot(...).
@@ -132,7 +132,7 @@ Create a TEfficiency object with calculated efficiency. It needs do be called af
 
 ```cpp
 TCanvas* createQuantitiesCanvas(bool shouldWrite = false,
-							bool shouldSavePNG = false)
+                            bool shouldSavePNG = false)
 ```
 
 Create canvas for all quantities after subtractSigHistograms().
@@ -141,8 +141,8 @@ Create canvas for all quantities after subtractSigHistograms().
 
 ```cpp
 void fillQuantitiesHistograms(double& quantity,
-							double& InvariantMass,
-							int& isPassing)
+                            double& InvariantMass,
+                            int& isPassing)
 ```
 
 Automatically fill all quantities histograms. Needs to be called in a loop over all dataset.
@@ -167,8 +167,8 @@ Apply sideband subtraction over all histograms.
 
 ```cpp
 void writeQuantitiesHistogramsOnFile(bool hSigBack,
-									bool hSig,
-									bool hBack)
+                                    bool hSig,
+                                    bool hBack)
 ```
 
 Write all quantities histograms in a root file. Just need to call this function and all quantities histograms will be written. It needs to be called after subtractSigHistograms().

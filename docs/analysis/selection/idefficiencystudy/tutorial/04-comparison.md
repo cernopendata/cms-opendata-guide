@@ -80,10 +80,10 @@ You can double click each plot to see its content:
 ![TBrowser showing efficiency plot for sideband subtraction method](../../../../../images/analysis/cmsefficiency/tutorial/04/prints/tbrowser3.png)
 
 !!! Tip
-	To close this window, click on terminal and press <kbd>Ctrl + C</kbd>. This command stops any processes happening in the terminal.
+    To close this window, click on terminal and press <kbd>Ctrl + C</kbd>. This command stops any processes happening in the terminal.
 
 !!! Info "Key Point" 
-	* As you see, the `.root` file has a path inside and the efficiencies plots have paths inside them as well!
+    * As you see, the `.root` file has a path inside and the efficiencies plots have paths inside them as well!
 
 ## Comparison results between real data and simulations for sideband method
 
@@ -131,38 +131,38 @@ bool doGlobal     = true;
 ~~~
 
 !!! Note
-	In the scope above we see:
+    In the scope above we see:
 
-	* `int useScheme` represents which comparison you are doing.
-	* `bool doTracker` is a variable that allow plots for tracker muons.
-	* `bool doStandalone` is a variable that allow plots for standalone muons.
-	* `bool doGlobal` is a variable that allow plots for global muons.
+    * `int useScheme` represents which comparison you are doing.
+    * `bool doTracker` is a variable that allow plots for tracker muons.
+    * `bool doStandalone` is a variable that allow plots for standalone muons.
+    * `bool doGlobal` is a variable that allow plots for global muons.
 
 Everything is up to date to compare sideband subtraction's results between real data and simulations, except it is comparing standalone and global muons. As we are  looking for tracker muons efficiencies only, you should **switch to false variables for Standalone and Global**.
 
 Also, you will need to change the `useScheme` variable to plot what you want to plot. As we want to plot **efficiency of real data and simulated data**, the value has to be 3.
 
 ??? Example "See result scructure"
-	If you deleted the right lines, your code now should be like this:
+    If you deleted the right lines, your code now should be like this:
 
-	~~~cpp
-	//CONFIGS
+    ~~~cpp
+    //CONFIGS
 
-	int useScheme = 3;
-	//Jpsi    Sideband Run vs Jpsi    Sideband MC
-	//Jpsi    Fitting  Run vs Jpsi    Fitting  MC
-	//Jpsi    Sideband Run vs Jpsi    Fitting  Run
-	//Upsilon Sideband Run vs Upsilon Sideband MC
-	//Upsilon Fitting  Run vs Upsilon Fitting  MC
-	//Upsilon Sideband Run vs Upsilon Fitting  Run
+    int useScheme = 3;
+    //Jpsi    Sideband Run vs Jpsi    Sideband MC
+    //Jpsi    Fitting  Run vs Jpsi    Fitting  MC
+    //Jpsi    Sideband Run vs Jpsi    Fitting  Run
+    //Upsilon Sideband Run vs Upsilon Sideband MC
+    //Upsilon Fitting  Run vs Upsilon Fitting  MC
+    //Upsilon Sideband Run vs Upsilon Fitting  Run
 
-	//Muon id analyze
-	bool doTracker    = true;
-	bool doStandalone = false;
-	bool doGlobal     = false;
-	~~~
+    //Muon id analyze
+    bool doTracker    = true;
+    bool doStandalone = false;
+    bool doGlobal     = false;
+    ~~~
 
-	Let your variables like this.
+    Let your variables like this.
 
 Now you need to run the code. To do this, save the file and type on your terminal:
 
@@ -178,20 +178,20 @@ Done. All result files can be found at "../results/Comparison_Upsilon_Sideband_R
 ~~~
 
 !!! Note
-	The command above to run the code will display three new windows on your screen with comparison plots. You can avoid them by running straight the **command below**. 
+    The command above to run the code will display three new windows on your screen with comparison plots. You can avoid them by running straight the **command below**. 
    
-	~~~cpp
-	root -l -b -q compare_efficiency.cpp
-	~~~
+    ~~~cpp
+    root -l -b -q compare_efficiency.cpp
+    ~~~
    
-	In this case, to check it results you are going to need go for result folder (printed on code run) and check images there by yourself.
-	You can try to run TBrowser again:
+    In this case, to check it results you are going to need go for result folder (printed on code run) and check images there by yourself.
+    You can try to run TBrowser again:
    
-	~~~cpp
-	cd [FOLDER_PATH]
-	root -l
-	new TBrowser
-	~~~
+    ~~~cpp
+    cd [FOLDER_PATH]
+    root -l
+    new TBrowser
+    ~~~
 
 And as output plots comparsion, you get:
 
@@ -241,7 +241,7 @@ It has only one plot, because the others are in different files.
 ![TBrowser showing efficiency plot for fitting method](../../../../../images/analysis/cmsefficiency/tutorial/04/prints/fitting_tbrowser.png)
 
 !!! Info "Key Point"
-	* There is a `.root` file for each efficiency plot created with the fitting method.
+    * There is a `.root` file for each efficiency plot created with the fitting method.
 
 ## Comparison results between real data and simulations for fitting method
 
@@ -281,27 +281,27 @@ bool doStandalone = false;
 bool doGlobal     = false;
 
 const char* fit_run_upsilon[][2] = {
-	{"../../fitting/Efficiency Result/Tracker/Pt/Efficiency_Run2011.root",     "Efficiency"},
-	{"../../fitting/Efficiency Result/Tracker/Eta/Efficiency_Run2011.root",    "Efficiency"},
-	{"../../fitting/Efficiency Result/Tracker/Phi/Efficiency_Run2011.root",    "Efficiency"},
-	{"../../fitting/Efficiency Result/Standalone/Pt/Efficiency_Run2011.root",  "Efficiency"},
-	{"../../fitting/Efficiency Result/Standalone/Eta/Efficiency_Run2011.root", "Efficiency"},
-	{"../../fitting/Efficiency Result/Standalone/Phi/Efficiency_Run2011.root", "Efficiency"},
-	{"../../fitting/Efficiency Result/Global/Pt/Efficiency_Run2011.root",      "Efficiency"},
-	{"../../fitting/Efficiency Result/Global/Eta/Efficiency_Run2011.root",     "Efficiency"},
-	{"../../fitting/Efficiency Result/Global/Phi/Efficiency_Run2011.root",     "Efficiency"}
+    {"../../fitting/Efficiency Result/Tracker/Pt/Efficiency_Run2011.root",     "Efficiency"},
+    {"../../fitting/Efficiency Result/Tracker/Eta/Efficiency_Run2011.root",    "Efficiency"},
+    {"../../fitting/Efficiency Result/Tracker/Phi/Efficiency_Run2011.root",    "Efficiency"},
+    {"../../fitting/Efficiency Result/Standalone/Pt/Efficiency_Run2011.root",  "Efficiency"},
+    {"../../fitting/Efficiency Result/Standalone/Eta/Efficiency_Run2011.root", "Efficiency"},
+    {"../../fitting/Efficiency Result/Standalone/Phi/Efficiency_Run2011.root", "Efficiency"},
+    {"../../fitting/Efficiency Result/Global/Pt/Efficiency_Run2011.root",      "Efficiency"},
+    {"../../fitting/Efficiency Result/Global/Eta/Efficiency_Run2011.root",     "Efficiency"},
+    {"../../fitting/Efficiency Result/Global/Phi/Efficiency_Run2011.root",     "Efficiency"}
 };
 
 const char* fit_mc_upsilon[][2] = {
-	{"../../fitting/Efficiency Result/Tracker/Pt/Efficiency_MC.root",     "Efficiency"},
-	{"../../fitting/Efficiency Result/Tracker/Eta/Efficiency_MC.root",    "Efficiency"},
-	{"../../fitting/Efficiency Result/Tracker/Phi/Efficiency_MC.root",    "Efficiency"},
-	{"../../fitting/Efficiency Result/Standalone/Pt/Efficiency_MC.root",  "Efficiency"},
-	{"../../fitting/Efficiency Result/Standalone/Eta/Efficiency_MC.root", "Efficiency"},
-	{"../../fitting/Efficiency Result/Standalone/Phi/Efficiency_MC.root", "Efficiency"},
-	{"../../fitting/Efficiency Result/Global/Pt/Efficiency_MC.root",      "Efficiency"},
-	{"../../fitting/Efficiency Result/Global/Eta/Efficiency_MC.root",     "Efficiency"},
-	{"../../fitting/Efficiency Result/Global/Phi/Efficiency_MC.root",     "Efficiency"}
+    {"../../fitting/Efficiency Result/Tracker/Pt/Efficiency_MC.root",     "Efficiency"},
+    {"../../fitting/Efficiency Result/Tracker/Eta/Efficiency_MC.root",    "Efficiency"},
+    {"../../fitting/Efficiency Result/Tracker/Phi/Efficiency_MC.root",    "Efficiency"},
+    {"../../fitting/Efficiency Result/Standalone/Pt/Efficiency_MC.root",  "Efficiency"},
+    {"../../fitting/Efficiency Result/Standalone/Eta/Efficiency_MC.root", "Efficiency"},
+    {"../../fitting/Efficiency Result/Standalone/Phi/Efficiency_MC.root", "Efficiency"},
+    {"../../fitting/Efficiency Result/Global/Pt/Efficiency_MC.root",      "Efficiency"},
+    {"../../fitting/Efficiency Result/Global/Eta/Efficiency_MC.root",     "Efficiency"},
+    {"../../fitting/Efficiency Result/Global/Phi/Efficiency_MC.root",     "Efficiency"}
 };
 ~~~
 
@@ -332,27 +332,27 @@ bool doStandalone = false;
 bool doGlobal     = false;
 
 const char* fit_run_upsilon[][2] = {
-	{"../../fitting/Efficiency Result/Pt/Efficiency_Run2011.root",     "Efficiency"},
-	{"../../fitting/Efficiency Result/Eta/Efficiency_Run2011.root",    "Efficiency"},
-	{"../../fitting/Efficiency Result/Phi/Efficiency_Run2011.root",    "Efficiency"},
-	{"../../fitting/Efficiency Result/Standalone/Pt/Efficiency_Run2011.root",  "Efficiency"},
-	{"../../fitting/Efficiency Result/Standalone/Eta/Efficiency_Run2011.root", "Efficiency"},
-	{"../../fitting/Efficiency Result/Standalone/Phi/Efficiency_Run2011.root", "Efficiency"},
-	{"../../fitting/Efficiency Result/Global/Pt/Efficiency_Run2011.root",      "Efficiency"},
-	{"../../fitting/Efficiency Result/Global/Eta/Efficiency_Run2011.root",     "Efficiency"},
-	{"../../fitting/Efficiency Result/Global/Phi/Efficiency_Run2011.root",     "Efficiency"}
+    {"../../fitting/Efficiency Result/Pt/Efficiency_Run2011.root",     "Efficiency"},
+    {"../../fitting/Efficiency Result/Eta/Efficiency_Run2011.root",    "Efficiency"},
+    {"../../fitting/Efficiency Result/Phi/Efficiency_Run2011.root",    "Efficiency"},
+    {"../../fitting/Efficiency Result/Standalone/Pt/Efficiency_Run2011.root",  "Efficiency"},
+    {"../../fitting/Efficiency Result/Standalone/Eta/Efficiency_Run2011.root", "Efficiency"},
+    {"../../fitting/Efficiency Result/Standalone/Phi/Efficiency_Run2011.root", "Efficiency"},
+    {"../../fitting/Efficiency Result/Global/Pt/Efficiency_Run2011.root",      "Efficiency"},
+    {"../../fitting/Efficiency Result/Global/Eta/Efficiency_Run2011.root",     "Efficiency"},
+    {"../../fitting/Efficiency Result/Global/Phi/Efficiency_Run2011.root",     "Efficiency"}
 };
 
 const char* fit_mc_upsilon[][2] = {
-	{"../../fitting/Efficiency Result/Pt/Efficiency_MC.root",     "Efficiency"},
-	{"../../fitting/Efficiency Result/Eta/Efficiency_MC.root",    "Efficiency"},
-	{"../../fitting/Efficiency Result/Phi/Efficiency_MC.root",    "Efficiency"},
-	{"../../fitting/Efficiency Result/Standalone/Pt/Efficiency_MC.root",  "Efficiency"},
-	{"../../fitting/Efficiency Result/Standalone/Eta/Efficiency_MC.root", "Efficiency"},
-	{"../../fitting/Efficiency Result/Standalone/Phi/Efficiency_MC.root", "Efficiency"},
-	{"../../fitting/Efficiency Result/Global/Pt/Efficiency_MC.root",      "Efficiency"},
-	{"../../fitting/Efficiency Result/Global/Eta/Efficiency_MC.root",     "Efficiency"},
-	{"../../fitting/Efficiency Result/Global/Phi/Efficiency_MC.root",     "Efficiency"}
+    {"../../fitting/Efficiency Result/Pt/Efficiency_MC.root",     "Efficiency"},
+    {"../../fitting/Efficiency Result/Eta/Efficiency_MC.root",    "Efficiency"},
+    {"../../fitting/Efficiency Result/Phi/Efficiency_MC.root",    "Efficiency"},
+    {"../../fitting/Efficiency Result/Standalone/Pt/Efficiency_MC.root",  "Efficiency"},
+    {"../../fitting/Efficiency Result/Standalone/Eta/Efficiency_MC.root", "Efficiency"},
+    {"../../fitting/Efficiency Result/Standalone/Phi/Efficiency_MC.root", "Efficiency"},
+    {"../../fitting/Efficiency Result/Global/Pt/Efficiency_MC.root",      "Efficiency"},
+    {"../../fitting/Efficiency Result/Global/Eta/Efficiency_MC.root",     "Efficiency"},
+    {"../../fitting/Efficiency Result/Global/Phi/Efficiency_MC.root",     "Efficiency"}
 };
 ~~~
 
@@ -377,28 +377,28 @@ Now you can type the command below to **quit root** and close all created window
 ## Comparison results between data from the sideband and data from the fitting method
 
 !!! Tip "Challenge"
-	Using what you did before, try to mix them and plot a comparison **between real data for sideband method and real data** for sthe fitting method and get an analysis.
-	Notice that:
+    Using what you did before, try to mix them and plot a comparison **between real data for sideband method and real data** for sthe fitting method and get an analysis.
+    Notice that:
    
-	* Real data = Run 2011
-	* Simulations = Monte Carlo = MC
+    * Real data = Run 2011
+    * Simulations = Monte Carlo = MC
    
-	Tip: you just need to change what you saw in this page to do this comparison.
+    Tip: you just need to change what you saw in this page to do this comparison.
 
 ---
 
 !!! Tip "Extra challenge"
-	As you did with the last 2 extras challenges, try to redo this exercise comparing results between challenges.
+    As you did with the last 2 extras challenges, try to redo this exercise comparing results between challenges.
 
 ---
 
 ??? Example "Extra - recreate ntuples"
-	If you are looking go far than this workshop, you can try to recreate those ntuples we used here. Try to get results from a J/ψ decaying in dimuons ntuple @7 TeV. The code used to create them can be [found here](https://github.com/sandrofonseca/TagAndProbe).
-	
-	Concerning the datasets used to produce these extra exercises, you can find them in these links below:
-	
-	* [Real data (2011 legacy)](http://opendata.cern.ch/record/27)
-	* [ϒ Monte Carlo simulations](http://opendata.cern.ch/record/1522)
-	* [J/ψ Monte Carlo simulations](http://opendata.cern.ch/record/1335)
+    If you are looking go far than this workshop, you can try to recreate those ntuples we used here. Try to get results from a J/ψ decaying in dimuons ntuple @7 TeV. The code used to create them can be [found here](https://github.com/sandrofonseca/TagAndProbe).
+    
+    Concerning the datasets used to produce these extra exercises, you can find them in these links below:
+    
+    * [Real data (2011 legacy)](http://opendata.cern.ch/record/27)
+    * [ϒ Monte Carlo simulations](http://opendata.cern.ch/record/1522)
+    * [J/ψ Monte Carlo simulations](http://opendata.cern.ch/record/1335)
    
-	This is work in progress adapted from CMS official code to create CMS Open Data Tag and Probe ntuples.
+    This is work in progress adapted from CMS official code to create CMS Open Data Tag and Probe ntuples.

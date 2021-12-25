@@ -6,20 +6,20 @@ Holds [TagProbe class](TagProbe.md) and [InvariantMass class](InvariantMass.md).
 
 ```cpp
 TagProbe(
-	const char*& resonance,
-	const char*& particleName,
-	const char*& canvasWatermark,
-	const char*& directoryToSave,
- 	const char*& particleType,
- 	InvariantMass& ObjMass,
- 	const char*  tagOrProbe)
-	  : resonance(resonance),
-	    particleName(particleName),
-	    canvasWatermark(canvasWatermark),
-	    directoryToSave(directoryToSave),
-	    particleType(particleType),
-	    ObjMass(ObjMass),
-	    tagOrProbe(tagOrProbe)
+    const char*& resonance,
+    const char*& particleName,
+    const char*& canvasWatermark,
+    const char*& directoryToSave,
+    const char*& particleType,
+    InvariantMass& ObjMass,
+    const char*  tagOrProbe)
+      : resonance(resonance),
+        particleName(particleName),
+        canvasWatermark(canvasWatermark),
+        directoryToSave(directoryToSave),
+        particleType(particleType),
+        ObjMass(ObjMass),
+        tagOrProbe(tagOrProbe)
 {}
 ```
 
@@ -51,16 +51,16 @@ Summary
 Details
 
 * `const char* tagOrProbe = NULL`
-	* Set if it is "Tag" or "Probe" object
+    * Set if it is "Tag" or "Probe" object
 
 Constructed objects
 
 * `PtEtaPhi Pt`
-	* Transversal momentum histograms.
+    * Transversal momentum histograms.
 * `PtEtaPhi Eta`
-	* Pseudorapidity histograms.
+    * Pseudorapidity histograms.
 * `PtEtaPhi Phi`
-	* Azimutal angle histograms.
+    * Azimutal angle histograms.
 
 ### Public Functions details
 
@@ -76,7 +76,7 @@ Print on terminal the consistency check after subtractSigHistograms().
 
 ```cpp
 void createEfficiencyCanvas(bool shouldWrite = false,
-							bool shouldSavePNG = false)
+                            bool shouldSavePNG = false)
 ```
 
 Create canvas for all efficiencies calculated. It need to be called after createEfficiencyPlot(...).
@@ -93,7 +93,7 @@ Create a TEfficiency object with calculated efficiency. It needs do be called af
 
 ```cpp
 void createQuantitiesCanvas(bool shouldWrite = false,
-							bool shouldSavePNG = false)
+                            bool shouldSavePNG = false)
 ```
 
 Create canvas for all quantities after subtractSigHistograms().
@@ -102,8 +102,8 @@ Create canvas for all quantities after subtractSigHistograms().
 
 ```cpp
 void fillQuantitiesHistograms(double** quantities,
-							double& InvariantMass,
-							int& isPassing)
+                            double& InvariantMass,
+                            int& isPassing)
 ```
 
 Automatically fill all quantities histograms. Needs to be called in a loop over all dataset.
@@ -128,8 +128,8 @@ Apply sideband subtraction over all histograms.
 
 ```cpp
 void writeQuantitiesHistogramsOnFile(bool hSigBack,
-									bool hSig,
-									bool hBack)
+                                    bool hSig,
+                                    bool hBack)
 ```
 
 Write all quantities histograms in a root file. Just need to call this function and all quantities histograms will be written. It needs to be called after subtractSigHistograms().
