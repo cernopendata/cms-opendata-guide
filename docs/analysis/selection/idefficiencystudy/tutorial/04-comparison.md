@@ -178,20 +178,20 @@ Done. All result files can be found at "../results/Comparison_Upsilon_Sideband_R
 ~~~
 
 !!! Note
-    The command above to run the code will display three new windows on your screen with comparison plots. You can avoid them by running straight the **command below**. 
+	The command above to run the code will display three new windows on your screen with comparison plots. You can avoid them by running straight the **command below**. 
    
-    ~~~cpp
-    root -l -b -q compare_efficiency.cpp
-    ~~~
+	~~~cpp
+	root -l -b -q compare_efficiency.cpp
+	~~~
    
-    In this case, to check it results you are going to need go for result folder (printed on code run) and check images there by yourself.
-    You can try to run TBrowser again:
+	In this case, to check it results you are going to need go for result folder (printed on code run) and check images there by yourself.
+	You can try to run TBrowser again:
    
-    ~~~cpp
-    cd [FOLDER_PATH]
-    root -l
-    new TBrowser
-    ~~~
+	~~~cpp
+	cd [FOLDER_PATH]
+	root -l
+	new TBrowser
+	~~~
 
 And as output plots comparsion, you get:
 
@@ -377,28 +377,28 @@ Now you can type the command below to **quit root** and close all created window
 ## Comparison results between data from the sideband and data from the fitting method
 
 !!! Tip "Challenge"
-    Using what you did before, try to mix them and plot a comparison **between real data for sideband method and real data** for sthe fitting method and get an analysis.
-    Notice that:
+	Using what you did before, try to mix them and plot a comparison **between real data for sideband method and real data** for sthe fitting method and get an analysis.
+	Notice that:
    
-    * Real data = Run 2011
-    * Simulations = Monte Carlo = MC
+	* Real data = Run 2011
+	* Simulations = Monte Carlo = MC
    
-    Tip: you just need to change what you saw in this page to do this comparison.
+	Tip: you just need to change what you saw in this page to do this comparison.
 
 ---
 
 !!! Tip "Extra challenge"
-    As you did with the last 2 extras challenges, try to redo this exercise comparing results between challenges.
+	As you did with the last 2 extras challenges, try to redo this exercise comparing results between challenges.
 
 ---
 
 ??? Example "Extra - recreate ntuples"
-    If you are looking go far than this workshop, you can try to recreate those ntuples we used here. Try to get results from a J/ψ decaying in dimuons ntuple @7 TeV. The code used to create them can be [found here](https://github.com/sandrofonseca/TagAndProbe).
-    
-    Concerning the datasets used to produce these extra exercises, you can find them in these links below:
+	If you are looking go far than this workshop, you can try to recreate those ntuples we used here. Try to get results from a J/ψ decaying in dimuons ntuple @7 TeV. The code used to create them can be [found here](https://github.com/sandrofonseca/TagAndProbe).
+	
+	Concerning the datasets used to produce these extra exercises, you can find them in these links below:
+	
+	* [Real data (2011 legacy)](http://opendata.cern.ch/record/27)
+	* [ϒ Monte Carlo simulations](http://opendata.cern.ch/record/1522)
+	* [J/ψ Monte Carlo simulations](http://opendata.cern.ch/record/1335)
    
-    * [Real data (2011 legacy)](http://opendata.cern.ch/record/27)
-    * [ϒ Monte Carlo simulations](http://opendata.cern.ch/record/1522)
-    * [J/ψ Monte Carlo simulations](http://opendata.cern.ch/record/1335)
-   
-    This is work in progress adapted from CMS official code to create CMS Open Data Tag and Probe ntuples.
+	This is work in progress adapted from CMS official code to create CMS Open Data Tag and Probe ntuples.
