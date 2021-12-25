@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#how-sideband-subtraction-method-code-stores-its-files" class="md-skip">
+        <a href="#comparison" class="md-skip">
           Skip to content
         </a>
       
@@ -896,6 +896,8 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           Comparison
@@ -911,6 +913,8 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
+  
+    
   
   
     <label class="md-nav__title" for="__toc">
@@ -1576,6 +1580,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1635,8 +1641,7 @@
 </a>
 
 
-  <h1>Comparison</h1>
-
+<h1 id="comparison">Comparison<a class="headerlink" href="#comparison" title="Permanent link">&para;</a></h1>
 <h2 id="how-sideband-subtraction-method-code-stores-its-files">How sideband subtraction method code stores its files<a class="headerlink" href="#how-sideband-subtraction-method-code-stores-its-files" title="Permanent link">&para;</a></h2>
 <p>the Sideband subtraction code saves every efficiency plot in <code>efficiency/plots/</code> folder inside a single <code>generated_hist.root</code> file. Lets check it!</p>
 <p>You're probably on the <code>main</code> directory. Lets go back a directory.</p>
@@ -1687,7 +1692,7 @@ root [1]
 <p><img alt="TBrowser showing efficiency plot for sideband subtraction method" src="../../../../../images/analysis/cmsefficiency/tutorial/04/prints/tbrowser3.png" /></p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>To close this window, click on terminal and press <kbd>Ctrl + C</kbd>. This command stops any processes happening in the terminal.</p>
+<p>To close this window, click on terminal and press <code>Ctrl</code> + <code>C</code>. This command stops any processes happening in the terminal.</p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Key Point</p>
@@ -1766,7 +1771,7 @@ Done. All result files can be found at &quot;../results/Comparison_Upsilon_Sideb
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The command above to run the code will display three new windows on your screen with comparison plots. You can avoid them by running straight the <strong>command below</strong>. </p>
+<p>The command above to run the code will display three new windows on your screen with comparison plots. You can avoid them by running straight the <strong>command below</strong>.</p>
 <div class="highlight"><pre><span></span><code><span class="n">root</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="o">-</span><span class="n">b</span><span class="w"> </span><span class="o">-</span><span class="n">q</span><span class="w"> </span><span class="n">compare_efficiency</span><span class="p">.</span><span class="n">cpp</span><span class="w"></span>
 </code></pre></div>
 <p>In this case, to check it results you are going to need go for result folder (printed on code run) and check images there by yourself.

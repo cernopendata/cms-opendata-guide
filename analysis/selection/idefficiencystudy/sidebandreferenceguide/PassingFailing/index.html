@@ -1793,7 +1793,7 @@
 
 <h1 id="class-passingfailing">class PassingFailing<a class="headerlink" href="#class-passingfailing" title="Permanent link">&para;</a></h1>
 <p>Holds histograms of passing and all particle quantities.</p>
-<h3 id="constructor-details">Constructor details<a class="headerlink" href="#constructor-details" title="Permanent link">&para;</a></h3>
+<h2 id="constructor-details">Constructor details<a class="headerlink" href="#constructor-details" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="n">PassingFailing</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*&amp;</span><span class="w"> </span><span class="n">resonance</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*&amp;</span><span class="w"> </span><span class="n">particleName</span><span class="p">,</span><span class="w"></span>
@@ -1833,7 +1833,7 @@
 <span class="w">    </span><span class="n">createHistogram</span><span class="p">(</span><span class="n">hBack</span><span class="p">,</span><span class="w">    </span><span class="s">&quot;Back&quot;</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
-<h3 id="private-variable-details">Private variable details<a class="headerlink" href="#private-variable-details" title="Permanent link">&para;</a></h3>
+<h2 id="private-variable-details">Private variable details<a class="headerlink" href="#private-variable-details" title="Permanent link">&para;</a></h2>
 <p>Summary</p>
 <table>
 <thead>
@@ -1905,20 +1905,19 @@
 </tr>
 </tbody>
 </table>
-<p><br>
-All variables here are reference for public variables in mother class: <a href="../PtEtaPhi/">PtEtaPhi class</a>.</p>
-<h3 id="private-functions-details">Private Functions details<a class="headerlink" href="#private-functions-details" title="Permanent link">&para;</a></h3>
-<h4 id="createhistogram">createHistogram()<a class="headerlink" href="#createhistogram" title="Permanent link">&para;</a></h4>
+<p>All variables here are reference for public variables in mother class: <a href="../PtEtaPhi/">PtEtaPhi class</a>.</p>
+<h2 id="private-functions-details">Private Functions details<a class="headerlink" href="#private-functions-details" title="Permanent link">&para;</a></h2>
+<h3 id="createhistogram">createHistogram()<a class="headerlink" href="#createhistogram" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">createHistogram</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 <p>Create quantity histogram.</p>
-<h4 id="fillafter">fillAfter()<a class="headerlink" href="#fillafter" title="Permanent link">&para;</a></h4>
+<h3 id="fillafter">fillAfter()<a class="headerlink" href="#fillafter" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">string</span><span class="w"> </span><span class="n">fillAfter</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">text</span><span class="p">,</span><span class="w"></span>
 <span class="w">                </span><span class="kt">char</span><span class="w"> </span><span class="n">fillWith</span><span class="p">,</span><span class="w"></span>
 <span class="w">                </span><span class="kt">int</span><span class="w"> </span><span class="n">targetLength</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>Fill blank space of a string. It is used in consistencyDebugCout().</p>
-<h3 id="public-variable-details">Public variable details<a class="headerlink" href="#public-variable-details" title="Permanent link">&para;</a></h3>
+<h2 id="public-variable-details">Public variable details<a class="headerlink" href="#public-variable-details" title="Permanent link">&para;</a></h2>
 <p>Summary</p>
 <table>
 <thead>
@@ -1951,8 +1950,7 @@ All variables here are reference for public variables in mother class: <a href="
 </tr>
 </tbody>
 </table>
-<p><br>
-Details</p>
+<p>Details</p>
 <ul>
 <li><code>const char* passingOrFailing</code><ul>
 <li>Set if it is "Passing" or "All" object.</li>
@@ -1971,36 +1969,37 @@ Details</p>
 </ul>
 </li>
 </ul>
-<h3 id="public-functions-details">Public Functions details<a class="headerlink" href="#public-functions-details" title="Permanent link">&para;</a></h3>
-<h4 id="consistencydebugcout">consistencyDebugCout()<a class="headerlink" href="#consistencydebugcout" title="Permanent link">&para;</a></h4>
+<h2 id="public-functions-details">Public Functions details<a class="headerlink" href="#public-functions-details" title="Permanent link">&para;</a></h2>
+<h3 id="consistencydebugcout">consistencyDebugCout()<a class="headerlink" href="#consistencydebugcout" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">consistencyDebugCout</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 <p>Print on terminal the consistency check after subtractSigHistogram().</p>
-<p>It is result for this equation: N<small>total</small> - (alpha * N<small>background</small> + N<small>signal</small>)</p>
+<p>It is result for this equation:</p>
+<p><img alt="N_{total} - (\alpha N_{background} + N_{signal})" src="../../../../../images/analysis/cmsefficiency/sidebandreferenceguide/consistencyDebugCout.svg" /></p>
 <p>Where: alpha = yield of background particles signal region / yield of background particles sideband region</p>
-<h4 id="createquantitiescanvas">createQuantitiesCanvas(...)<a class="headerlink" href="#createquantitiescanvas" title="Permanent link">&para;</a></h4>
+<h3 id="createquantitiescanvas">createQuantitiesCanvas(...)<a class="headerlink" href="#createquantitiescanvas" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">TCanvas</span><span class="o">*</span><span class="w"> </span><span class="n">createQuantitiesCanvas</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">shouldWrite</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"></span>
 <span class="w">                            </span><span class="kt">bool</span><span class="w"> </span><span class="n">shouldSavePNG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>Create canvas for all quantities after subtractSigHistograms().</p>
-<h4 id="fillquantitieshistograms">fillQuantitiesHistograms(...)<a class="headerlink" href="#fillquantitieshistograms" title="Permanent link">&para;</a></h4>
+<h3 id="fillquantitieshistograms">fillQuantitiesHistograms(...)<a class="headerlink" href="#fillquantitieshistograms" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">fillQuantitiesHistograms</span><span class="p">(</span><span class="kt">double</span><span class="o">&amp;</span><span class="w"> </span><span class="n">InvariantMass</span><span class="p">,</span><span class="w"></span>
 <span class="w">                            </span><span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">isPassing</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>Automatically fill all quantities histograms. Needs to be called in a loop over all dataset.</p>
-<h4 id="normalizehistograms">normalizeHistograms()<a class="headerlink" href="#normalizehistograms" title="Permanent link">&para;</a></h4>
+<h3 id="normalizehistograms">normalizeHistograms()<a class="headerlink" href="#normalizehistograms" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">normalizeHistograms</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 <p>Normalize quantities histograms of variable bin after filling it.</p>
-<h4 id="passfailobj">PassFailObj()<a class="headerlink" href="#passfailobj" title="Permanent link">&para;</a></h4>
+<h3 id="passfailobj">PassFailObj()<a class="headerlink" href="#passfailobj" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">MassValues</span><span class="o">*</span><span class="w"> </span><span class="n">PassFailObj</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 <p>Get the MassValue object of corresponding MassValue object.</p>
-<h4 id="subtractsighistogram">subtractSigHistogram()<a class="headerlink" href="#subtractsighistogram" title="Permanent link">&para;</a></h4>
+<h3 id="subtractsighistogram">subtractSigHistogram()<a class="headerlink" href="#subtractsighistogram" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">subtractSigHistogram</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 <p>Apply sideband subtraction over histograms.</p>
-<h4 id="writequantitieshistogramsonfile">writeQuantitiesHistogramsOnFile(...)<a class="headerlink" href="#writequantitieshistogramsonfile" title="Permanent link">&para;</a></h4>
+<h3 id="writequantitieshistogramsonfile">writeQuantitiesHistogramsOnFile(...)<a class="headerlink" href="#writequantitieshistogramsonfile" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">writeQuantitiesHistogramsOnFile</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">hSigBack</span><span class="p">,</span><span class="w"></span>
 <span class="w">                                    </span><span class="kt">bool</span><span class="w"> </span><span class="n">hSig</span><span class="p">,</span><span class="w"></span>
 <span class="w">                                    </span><span class="kt">bool</span><span class="w"> </span><span class="n">hBack</span><span class="p">)</span><span class="w"></span>

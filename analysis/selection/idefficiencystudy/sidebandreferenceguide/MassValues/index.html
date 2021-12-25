@@ -1711,7 +1711,7 @@
 
 <h1 id="struct-massvalues">struct MassValues<a class="headerlink" href="#struct-massvalues" title="Permanent link">&para;</a></h1>
 <p>Holds informations about passing or all particles fit.</p>
-<h3 id="public-variable-details">Public variable details<a class="headerlink" href="#public-variable-details" title="Permanent link">&para;</a></h3>
+<h2 id="public-variable-details">Public variable details<a class="headerlink" href="#public-variable-details" title="Permanent link">&para;</a></h2>
 <p>Summary</p>
 <table>
 <thead>
@@ -1779,9 +1779,8 @@
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<h3 id="public-functions-details">Public Functions details<a class="headerlink" href="#public-functions-details" title="Permanent link">&para;</a></h3>
-<h4 id="createtbox">createTBox(...)<a class="headerlink" href="#createtbox" title="Permanent link">&para;</a></h4>
+<h2 id="public-functions-details">Public Functions details<a class="headerlink" href="#public-functions-details" title="Permanent link">&para;</a></h2>
+<h3 id="createtbox">createTBox(...)<a class="headerlink" href="#createtbox" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">TBox</span><span class="o">*</span><span class="w"> </span><span class="n">createTBox</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">Ymax</span><span class="p">,</span><span class="w"></span>
 <span class="w">                </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
 <span class="w">                </span><span class="kt">double</span><span class="w"> </span><span class="n">Ymin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.</span><span class="p">)</span><span class="w"></span>
@@ -1792,27 +1791,27 @@
 <li>if  <code>index =  0</code> return TBox representing signal region.</li>
 <li>if  <code>index =  1</code> return TBox representing right sideband region.</li>
 </ul>
-<h4 id="dofitjpsi">doFitJpsi()<a class="headerlink" href="#dofitjpsi" title="Permanent link">&para;</a></h4>
+<h3 id="dofitjpsi">doFitJpsi()<a class="headerlink" href="#dofitjpsi" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">doFitJpsi</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 <p>Do fit for J/psi resonance.</p>
-<h4 id="dofitupsilon">doFitUpsilon()<a class="headerlink" href="#dofitupsilon" title="Permanent link">&para;</a></h4>
+<h3 id="dofitupsilon">doFitUpsilon()<a class="headerlink" href="#dofitupsilon" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">doFitUpsilon</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 <p>Do fit for Upsilon resonance with 3 resonances peaks (1S, 2S, 3S).</p>
-<h4 id="dofitupsilon1s">doFitUpsilon1S()<a class="headerlink" href="#dofitupsilon1s" title="Permanent link">&para;</a></h4>
+<h3 id="dofitupsilon1s">doFitUpsilon1S()<a class="headerlink" href="#dofitupsilon1s" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">doFitUpsilon1S</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 <p>Do fit for Upsilon (1S) resonance.</p>
-<h4 id="isinsidebandregion">isInSidebandRegion(...)<a class="headerlink" href="#isinsidebandregion" title="Permanent link">&para;</a></h4>
+<h3 id="isinsidebandregion">isInSidebandRegion(...)<a class="headerlink" href="#isinsidebandregion" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">isInSidebandRegion</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">InvariantMass</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>Check if InvariantMass is in sideband region.</p>
-<h4 id="isinsignalregion">isInSignalRegion(...)<a class="headerlink" href="#isinsignalregion" title="Permanent link">&para;</a></h4>
+<h3 id="isinsignalregion">isInSignalRegion(...)<a class="headerlink" href="#isinsignalregion" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">isInSignalRegion</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">InvariantMass</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>Check if InvariantMass is in signal region.</p>
-<h4 id="subtractionfactor">subtractionFactor()<a class="headerlink" href="#subtractionfactor" title="Permanent link">&para;</a></h4>
+<h3 id="subtractionfactor">subtractionFactor()<a class="headerlink" href="#subtractionfactor" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">subtractionFactor</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 <p>Get the subtraction factor calculated by the ratio between yield of background particles in signal region by yield of background particles in sideband region. This yield is get by the integral of function stored in fitBackground variable.</p>

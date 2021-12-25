@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#what-is-the-tag-and-probe-method" class="md-skip">
+        <a href="#introduction" class="md-skip">
           Skip to content
         </a>
       
@@ -854,6 +854,8 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           Introduction
@@ -869,6 +871,8 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
+  
+    
   
   
     <label class="md-nav__title" for="__toc">
@@ -1569,6 +1573,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1621,8 +1627,7 @@
 </a>
 
 
-  <h1>Introduction</h1>
-
+<h1 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h1>
 <h2 id="what-is-the-tag-and-probe-method">What is the tag and probe method?<a class="headerlink" href="#what-is-the-tag-and-probe-method" title="Permanent link">&para;</a></h2>
 <p>The <strong>tag and probe</strong> method is a <strong>data-driven technique</strong> for measuring particle detection efficiencies. It is based on the decays of known resonances (e.g. J/ψ, ϒ and Z) to pairs of the particles being studied. In this exercise, these particles are muons, and the ϒ(1S) resonance is nominally used.</p>
 <p>The determination of the detector efficiency is a critical ingredient in any physics measurement. It accounts for the particles that were produced in the collision but escaped detection (did not reach the detector elements, were missed by the reconstructions algorithms, etc). It can be in general estimated using simulations, but simulations need to be calibrated with data. The T&amp;P method here described provides a useful and elegant mechanism for extracting efficiencies <strong>directly from data!</strong>.</p>
@@ -1634,7 +1639,7 @@
 </ul>
 <h2 id="how-do-we-calculate-the-efficiency">How do we calculate the efficiency?<a class="headerlink" href="#how-do-we-calculate-the-efficiency" title="Permanent link">&para;</a></h2>
 <p>The efficiency is given by the fraction of probe muons that pass a given criteria (in this case, the <strong>Muon ID</strong> which we explain <a href="#cms-muon-identification-reconstruction">below</a>):</p>
-<p><img width="300px" src="../../../../../images/analysis/cmsefficiency/efficiency.svg" alt="Efficiency equation"></p>
+<p><img alt="Efficiency equation" src="../../../../../images/analysis/cmsefficiency/efficiency.svg" /></p>
 <p>The denominator corresponds to the number of resonance candidates (tag+probe pairs) reconstructed in the dataset. The numerator corresponds to the subset for which the probe passes the criteria.</p>
 <p>The tag+probe invariant mass distribution is used to select only signal, that is, only true Y(1S) candidates decaying to dimuons. This is achieved in this exercise by the usage of two methods: <strong>fitting</strong> and <strong>side-band-subtraction</strong>.</p>
 <h2 id="cms-muon-identification-and-reconstruction">CMS Muon identification and reconstruction<a class="headerlink" href="#cms-muon-identification-and-reconstruction" title="Permanent link">&para;</a></h2>

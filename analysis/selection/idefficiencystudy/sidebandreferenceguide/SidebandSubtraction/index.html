@@ -1823,7 +1823,7 @@
 
 <h1 id="class-sidebandsubtraction">class SidebandSubtraction<a class="headerlink" href="#class-sidebandsubtraction" title="Permanent link">&para;</a></h1>
 <p>Holds <a href="../Type/">Type class</a>. This is the mother class.</p>
-<h3 id="constructor-details">Constructor details<a class="headerlink" href="#constructor-details" title="Permanent link">&para;</a></h3>
+<h2 id="constructor-details">Constructor details<a class="headerlink" href="#constructor-details" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="n">SidebandSubtraction</span><span class="p">()</span><span class="w"></span>
 <span class="p">{}</span><span class="w"></span>
 </code></pre></div>
@@ -1831,7 +1831,7 @@
 <span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">resonance</span><span class="p">(</span><span class="n">resonance</span><span class="p">)</span><span class="w"></span>
 <span class="p">{}</span><span class="w"></span>
 </code></pre></div>
-<h3 id="public-variable-details">Public variable details<a class="headerlink" href="#public-variable-details" title="Permanent link">&para;</a></h3>
+<h2 id="public-variable-details">Public variable details<a class="headerlink" href="#public-variable-details" title="Permanent link">&para;</a></h2>
 <p>Summary</p>
 <table>
 <thead>
@@ -1889,10 +1889,9 @@
 </tr>
 </tbody>
 </table>
-<p><br>
-Details</p>
+<p>Details</p>
 <ul>
-<li><code>const char* resonance = "Jpsi"</code> <ul>
+<li><code>const char* resonance = "Jpsi"</code><ul>
 <li>Supports values <code>"Jpsi"</code>, <code>"Upsilon"</code> or <code>"Upsilon(1S)"</code>.</li>
 </ul>
 </li>
@@ -1936,70 +1935,70 @@ Details</p>
 </ul>
 </li>
 </ul>
-<h3 id="public-functions-details">Public Functions details<a class="headerlink" href="#public-functions-details" title="Permanent link">&para;</a></h3>
-<h4 id="consistencydebugcout">consistencyDebugCout()<a class="headerlink" href="#consistencydebugcout" title="Permanent link">&para;</a></h4>
+<h2 id="public-functions-details">Public Functions details<a class="headerlink" href="#public-functions-details" title="Permanent link">&para;</a></h2>
+<h3 id="consistencydebugcout">consistencyDebugCout()<a class="headerlink" href="#consistencydebugcout" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">consistencyDebugCout</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 <p>Print on terminal the consistency check after subtractSigHistograms().</p>
-<h4 id="createefficiencycanvas">createEfficiencyCanvas(...)<a class="headerlink" href="#createefficiencycanvas" title="Permanent link">&para;</a></h4>
+<h3 id="createefficiencycanvas">createEfficiencyCanvas(...)<a class="headerlink" href="#createefficiencycanvas" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">createEfficiencyCanvas</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">shouldWrite</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"></span>
 <span class="w">                            </span><span class="kt">bool</span><span class="w"> </span><span class="n">shouldSavePNG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>Create canvas for all efficiencies calculated. It need to be called after createEfficiencyPlot(...).</p>
-<h4 id="createefficiencyplot">createEfficiencyPlot(...)<a class="headerlink" href="#createefficiencyplot" title="Permanent link">&para;</a></h4>
+<h3 id="createefficiencyplot">createEfficiencyPlot(...)<a class="headerlink" href="#createefficiencyplot" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">createEfficiencyPlot</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">shouldWrite</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>Create a TEfficiency object with calculated efficiency. It needs do be called after subtractSigHistograms().</p>
-<h4 id="createmasscanvas">createMassCanvas(...)<a class="headerlink" href="#createmasscanvas" title="Permanent link">&para;</a></h4>
+<h3 id="createmasscanvas">createMassCanvas(...)<a class="headerlink" href="#createmasscanvas" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">createMassCanvas</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">drawRegions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"></span>
 <span class="w">                    </span><span class="kt">bool</span><span class="w"> </span><span class="n">shouldWrite</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"></span>
 <span class="w">                    </span><span class="kt">bool</span><span class="w"> </span><span class="n">shouldSavePNG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>Create canvas for all invariant mass (passing and all muons).</p>
-<h4 id="createquantitiescanvas">createQuantitiesCanvas(...)<a class="headerlink" href="#createquantitiescanvas" title="Permanent link">&para;</a></h4>
+<h3 id="createquantitiescanvas">createQuantitiesCanvas(...)<a class="headerlink" href="#createquantitiescanvas" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">createQuantitiesCanvas</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">shouldWrite</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"></span>
 <span class="w">                            </span><span class="kt">bool</span><span class="w"> </span><span class="n">shouldSavePNG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>Create canvas for all quantities after subtractSigHistograms().</p>
-<h4 id="definemasshistogramnumbers">defineMassHistogramNumbers()<a class="headerlink" href="#definemasshistogramnumbers" title="Permanent link">&para;</a></h4>
+<h3 id="definemasshistogramnumbers">defineMassHistogramNumbers()<a class="headerlink" href="#definemasshistogramnumbers" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">defineMassHistogramNumbers</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">nBins</span><span class="p">,</span><span class="w"></span>
 <span class="w">                                </span><span class="kt">double</span><span class="w"> </span><span class="n">xMin</span><span class="p">,</span><span class="w"></span>
 <span class="w">                                </span><span class="kt">double</span><span class="w"> </span><span class="n">xMax</span><span class="p">,</span><span class="w"></span>
 <span class="w">                                </span><span class="kt">int</span><span class="w"> </span><span class="n">decimals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>Redefine number parameters of all mass histograms.</p>
-<h4 id="dofit">doFit()<a class="headerlink" href="#dofit" title="Permanent link">&para;</a></h4>
+<h3 id="dofit">doFit()<a class="headerlink" href="#dofit" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">doFit</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 <p>Apply a fit over all invariant mass stored.</p>
-<h4 id="fillmasshistograms">fillMassHistograms(...)<a class="headerlink" href="#fillmasshistograms" title="Permanent link">&para;</a></h4>
+<h3 id="fillmasshistograms">fillMassHistograms(...)<a class="headerlink" href="#fillmasshistograms" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">fillMassHistograms</span><span class="p">(</span><span class="kt">double</span><span class="o">**</span><span class="w"> </span><span class="n">quantities</span><span class="p">,</span><span class="w"></span>
 <span class="w">                        </span><span class="kt">int</span><span class="o">**</span><span class="w"> </span><span class="n">types</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>Automatically fill all masses histograms. Needs to be called in a loop over all dataset.</p>
-<h4 id="fillquantitieshistograms">fillQuantitiesHistograms(...)<a class="headerlink" href="#fillquantitieshistograms" title="Permanent link">&para;</a></h4>
+<h3 id="fillquantitieshistograms">fillQuantitiesHistograms(...)<a class="headerlink" href="#fillquantitieshistograms" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">fillQuantitiesHistograms</span><span class="p">(</span><span class="kt">double</span><span class="o">**</span><span class="w"> </span><span class="n">quantities</span><span class="p">,</span><span class="w"></span>
 <span class="w">                            </span><span class="kt">int</span><span class="o">**</span><span class="w"> </span><span class="n">types</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>Automatically fill all quantities histograms. Needs to be called in a loop over all dataset.</p>
-<h4 id="normalizehistograms">normalizeHistograms()<a class="headerlink" href="#normalizehistograms" title="Permanent link">&para;</a></h4>
+<h3 id="normalizehistograms">normalizeHistograms()<a class="headerlink" href="#normalizehistograms" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">normalizeHistograms</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 <p>Normalize quantities histograms of variable bin after filling it.</p>
-<h4 id="subtractsighistograms">subtractSigHistograms()<a class="headerlink" href="#subtractsighistograms" title="Permanent link">&para;</a></h4>
+<h3 id="subtractsighistograms">subtractSigHistograms()<a class="headerlink" href="#subtractsighistograms" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">subtractSigHistograms</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 <p>Apply sideband subtraction over all histograms.</p>
-<h4 id="updatemassvaluesall">updateMassValuesAll()<a class="headerlink" href="#updatemassvaluesall" title="Permanent link">&para;</a></h4>
+<h3 id="updatemassvaluesall">updateMassValuesAll()<a class="headerlink" href="#updatemassvaluesall" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">updateMassValuesAll</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 <p>After fill invariant mass histograms, you need to set signal regions and sideband regions. This function will set it for you.</p>
-<h4 id="writemasshistogramsonfile">writeMassHistogramsOnFile(...)<a class="headerlink" href="#writemasshistogramsonfile" title="Permanent link">&para;</a></h4>
+<h3 id="writemasshistogramsonfile">writeMassHistogramsOnFile(...)<a class="headerlink" href="#writemasshistogramsonfile" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">writeMassHistogramsOnFile</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">writehPass</span><span class="p">,</span><span class="w"></span>
 <span class="w">                            </span><span class="kt">bool</span><span class="w"> </span><span class="n">writehAll</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>Write all mass canvas histograms in a root file. Just need to call this function and all mass histograms will be written.</p>
-<h4 id="writequantitieshistogramsonfile">writeQuantitiesHistogramsOnFile(...)<a class="headerlink" href="#writequantitieshistogramsonfile" title="Permanent link">&para;</a></h4>
+<h3 id="writequantitieshistogramsonfile">writeQuantitiesHistogramsOnFile(...)<a class="headerlink" href="#writequantitieshistogramsonfile" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">writeQuantitiesHistogramsOnFile</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">hSigBack</span><span class="p">,</span><span class="w"></span>
 <span class="w">                                    </span><span class="kt">bool</span><span class="w"> </span><span class="n">hSig</span><span class="p">,</span><span class="w"></span>
 <span class="w">                                    </span><span class="kt">bool</span><span class="w"> </span><span class="n">hBack</span><span class="p">)</span><span class="w"></span>

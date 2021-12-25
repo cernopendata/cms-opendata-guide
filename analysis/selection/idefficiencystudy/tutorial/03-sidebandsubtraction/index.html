@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#signal-extraction-sideband-subtraction-method" class="md-skip">
+        <a href="#sideband" class="md-skip">
           Skip to content
         </a>
       
@@ -882,6 +882,8 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           Sideband Subtraction
@@ -897,6 +899,8 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
+  
+    
   
   
     <label class="md-nav__title" for="__toc">
@@ -1590,6 +1594,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1663,9 +1669,8 @@
 </a>
 
 
-  <h1>Sideband Subtraction</h1>
-
-<h3 id="signal-extraction-sideband-subtraction-method">Signal extraction: sideband subtraction method<a class="headerlink" href="#signal-extraction-sideband-subtraction-method" title="Permanent link">&para;</a></h3>
+<h1 id="sideband">Sideband<a class="headerlink" href="#sideband" title="Permanent link">&para;</a></h1>
+<h2 id="signal-extraction-sideband-subtraction-method">Signal extraction: sideband subtraction method<a class="headerlink" href="#signal-extraction-sideband-subtraction-method" title="Permanent link">&para;</a></h2>
 <p>The reconstruction efficiency is calculated using <strong>only signal muons</strong>. In order to measure the efficiency, we need a way to extract signal from the dataset. You've used the fitting method and now you'll meet the sideband subtraction method.</p>
 <p>This method consists in choosing sideband and signal regions in invariant mass distribution. The sideband regions (shaded in red in the figure) have background particles and the signal region (shared in green in the figure) has background and signal particles.</p>
 <p><img alt="Invariant Mass histogram" src="../../../../../images/analysis/cmsefficiency/tutorial/03/InvariantMass_Tracker_region.png" /></p>
@@ -1678,11 +1683,11 @@
 <p>We choose only the ϒ (1S) signal for selecting the signal region; simulation information is further available for this resonance, allowing in the end for a comparison of results, between data and simulation.</p>
 </div>
 <p>For each event category (i.e. Pass and All), and for a given variable of interest (e.g., the probe pT), two distributions are obtained, one for each region (Signal and Sideband). In order to obtain the variable distribution for the signal only, we proceed by subtracting the Background distribution (Sideband region) from the Signal+Background one (Signal region):</p>
-<p><img width="440px" src="../../../../../images/analysis/cmsefficiency/tutorial/03/subtraction.svg" alt="Sideband Subtraction equation"></p>
+<p><img alt="Sideband Subtraction equation" src="../../../../../images/analysis/cmsefficiency/tutorial/03/subtraction.svg" /></p>
 <p>Where the normalization α factor quantifies the quantity of background present in the signal region&gt;</p>
-<p><img width="450px" src="../../../../../images/analysis/cmsefficiency/tutorial/03/alpha.svg" alt="Alpha factor equation"></p>
+<p><img alt="Alpha factor equation" src="../../../../../images/analysis/cmsefficiency/tutorial/03/alpha.svg&quot;" /></p>
 <p>And for the uncertainty:</p>
-<p><img width="380px" src="../../../../../images/analysis/cmsefficiency/tutorial/03/subtraction_error.svg" alt="Sideband Subtraction errors equation"></p>
+<p><img alt="Sideband Subtraction errors equation" src="../../../../../images/analysis/cmsefficiency/tutorial/03/subtraction_error.svg" /></p>
 <p>Applying those equations we get histograms like this:</p>
 <p><img alt="Tracker_Probe_Pt_Passing histogram" src="../../../../../images/analysis/cmsefficiency/tutorial/03/Tracker_Probe_Pt_Passing.png" /></p>
 <ul>
@@ -1919,7 +1924,7 @@ Data analysed = 986100 of 986100
 </details>
 <div class="admonition note">
 <p class="admonition-title">Comparison between real data and simulation</p>
-<p>We'll do this in the last section of this exercise. So the challenge above is mandatory. </p>
+<p>We'll do this in the last section of this exercise. So the challenge above is mandatory.</p>
 </div>
 <hr />
 <div class="admonition tip">
