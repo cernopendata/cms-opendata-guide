@@ -2,7 +2,7 @@
 
 Holds [MassValues struct](MassValues.md).
 
-### Constructor details
+## Constructor details
 
 ```cpp
 InvariantMass(
@@ -43,7 +43,7 @@ InvariantMass(
 }
 ```
 
-### Private variable details
+## Private variable details
 
 Summary
 
@@ -55,12 +55,11 @@ Summary
 | const char*&   | directoryToSave      |
 | const char*&   | particleType         |
 
-<br>
 All variables here are reference for public variables in mother class: [Type class](Type.md)
 
-### Private Functions details
+## Private Functions details
 
-#### createMassHistogram(...)
+### createMassHistogram(...)
 
 ```cpp
 void createMassHistogram(TH1D* &hMass,
@@ -69,7 +68,7 @@ void createMassHistogram(TH1D* &hMass,
 
 Create invariant mass histogram with a specific title. The argument `hMass` is a pointer where the histogram shall be stored.
 
-#### drawCanvasQuarter(...)
+### drawCanvasQuarter(...)
 
 ```cpp
 void drawCanvasQuarter(TCanvas* &canvas,
@@ -81,7 +80,7 @@ void drawCanvasQuarter(TCanvas* &canvas,
 
 Draw a quarter of whole canvas with invariant mass histogram pointed.
 
-### Public variable details
+## Public variable details
 
 Summary
 
@@ -92,18 +91,16 @@ Summary
 | int          | nBins                | 0             |
 | int          | decimals             | 3             |
 
-<br>
-
-Constructed objects
+**Constructed objects**
 
 * `MassValues Pass`
     * Stores information about passing mass histograms.
 * `MassValues All`
     * Stores information about passing mass histograms.
 
-### Public Functions details
+## Public Functions details
 
-#### createMassCanvas(...)
+### createMassCanvas(...)
 
 ```cpp
 TCanvas* createMassCanvas(bool drawRegions = false,
@@ -113,7 +110,7 @@ TCanvas* createMassCanvas(bool drawRegions = false,
 
 Create canvas for invariant mass (passing and all muons).
 
-#### defineMassHistogramNumbers()
+### defineMassHistogramNumbers()
 
 ```cpp
 void defineMassHistogramNumbers(int nBins,
@@ -124,7 +121,7 @@ void defineMassHistogramNumbers(int nBins,
 
 Redefine number parameters of mass histograms in Mass object.
 
-#### doFit()
+### doFit()
 
 ```cpp
 void doFit()
@@ -132,7 +129,7 @@ void doFit()
 
 Apply a fit over invariant mass in MassValues objects.
 
-#### fillMassHistograms(...)
+### fillMassHistograms(...)
 
 ```cpp
 void fillMassHistograms(double** quantities,
@@ -141,7 +138,7 @@ void fillMassHistograms(double** quantities,
 
 Automatically fill masses histograms. Needs to be called in a loop over all dataset.
 
-#### updateMassValuesAll()
+### updateMassValuesAll()
 
 ```cpp
 void updateMassValuesAll()
@@ -149,7 +146,7 @@ void updateMassValuesAll()
 
 After fill invariant mass histogram, you need to set signal regions and sideband regions. This function will set it for you.
 
-#### updateMassValuesAll(...)
+### updateMassValuesAll(...)
 
 ```cpp
 void updateMassValuesFor(MassValues* ObjMassValues,
@@ -158,7 +155,7 @@ void updateMassValuesFor(MassValues* ObjMassValues,
 
 After fill invariant mass histograms, you need to set signal regions and sideband regions. This function will set it for you.
 
-#### writeMassHistogramsOnFile(...)
+### writeMassHistogramsOnFile(...)
 
 ```cpp
 void writeMassHistogramsOnFile(bool writehPass,

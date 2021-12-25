@@ -2,13 +2,11 @@
 
 This class hold all fit functions for histograms.
 
-
-
 ## class FitFunctions::Primary
 
 This class is holding primary fit functions for histograms.
 
-### Content list
+**Content list**
 
 * double [Gaus(...)](#gaus)
 
@@ -84,14 +82,11 @@ Parameters:
 par = [alpha, n, mean, sigma, yield]
 ```
 
-
-
-
 ## class FitFunctions::Merged
 
 This class holds merged fit functions for histograms.
 
-### Content list
+**Content list**
 
 * double [Jpsi::Signal_InvariantMass()](#jpsisignal_invariantmass)
 

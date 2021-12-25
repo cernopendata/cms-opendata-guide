@@ -2,7 +2,7 @@
 
 Holds [TagProbe class](TagProbe.md) and [InvariantMass class](InvariantMass.md).
 
-### Constructor details
+## Constructor details
 
 ```cpp
 TagProbe(
@@ -23,7 +23,7 @@ TagProbe(
 {}
 ```
 
-### Private variable details
+## Private variable details
 
 Summary
 
@@ -36,10 +36,9 @@ Summary
 | const char*&   | particleType    |
 | InvariantMass& | ObjMass         |
 
-<br>
 All variables here are reference for public variables in mother class: [Type class](Type.md)
 
-### Public variable details
+## Public variable details
 
 Summary
 
@@ -47,7 +46,6 @@ Summary
 |-------------|--------------|---------------|
 | const char* | tagOrProbe   | NULL          |
 
-<br>
 Details
 
 * `const char* tagOrProbe = NULL`
@@ -62,9 +60,9 @@ Constructed objects
 * `PtEtaPhi Phi`
     * Azimutal angle histograms.
 
-### Public Functions details
+## Public Functions details
 
-#### consistencyDebugCout()
+### consistencyDebugCout()
 
 ```cpp
 void consistencyDebugCout()
@@ -72,7 +70,7 @@ void consistencyDebugCout()
 
 Print on terminal the consistency check after subtractSigHistograms().
 
-#### createEfficiencyCanvas(...)
+### createEfficiencyCanvas(...)
 
 ```cpp
 void createEfficiencyCanvas(bool shouldWrite = false,
@@ -81,7 +79,7 @@ void createEfficiencyCanvas(bool shouldWrite = false,
 
 Create canvas for all efficiencies calculated. It need to be called after createEfficiencyPlot(...).
 
-#### createEfficiencyPlot(...)
+### createEfficiencyPlot(...)
 
 ```cpp
 void createEfficiencyPlot(bool shouldWrite = false)
@@ -89,7 +87,7 @@ void createEfficiencyPlot(bool shouldWrite = false)
 
 Create a TEfficiency object with calculated efficiency. It needs do be called after subtractSigHistograms().
 
-#### createQuantitiesCanvas(...)
+### createQuantitiesCanvas(...)
 
 ```cpp
 void createQuantitiesCanvas(bool shouldWrite = false,
@@ -98,7 +96,7 @@ void createQuantitiesCanvas(bool shouldWrite = false,
 
 Create canvas for all quantities after subtractSigHistograms().
 
-#### fillQuantitiesHistograms(...)
+### fillQuantitiesHistograms(...)
 
 ```cpp
 void fillQuantitiesHistograms(double** quantities,
@@ -108,7 +106,7 @@ void fillQuantitiesHistograms(double** quantities,
 
 Automatically fill all quantities histograms. Needs to be called in a loop over all dataset.
 
-#### normalizeHistograms()
+### normalizeHistograms()
 
 ```cpp
 void normalizeHistograms()
@@ -116,7 +114,7 @@ void normalizeHistograms()
 
 Normalize quantities histograms of variable bin after filling it.
 
-#### subtractSigHistograms()
+### subtractSigHistograms()
 
 ```cpp
 void subtractSigHistograms()
@@ -124,7 +122,7 @@ void subtractSigHistograms()
 
 Apply sideband subtraction over all histograms.
 
-#### writeQuantitiesHistogramsOnFile(...)
+### writeQuantitiesHistogramsOnFile(...)
 
 ```cpp
 void writeQuantitiesHistogramsOnFile(bool hSigBack,

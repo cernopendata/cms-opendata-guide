@@ -67,7 +67,6 @@ Summary
 | int&           | nBins                |
 | int&           | decimals             |
 
-<br>
 All variables here are reference for public variables in mother class: [PtEtaPhi class](PtEtaPhi.md).
 
 ### Private Functions details
@@ -101,7 +100,6 @@ Summary
 | TH1D*        | hSig                 | NULL          |
 | TH1D*        | hBack                | NULL          |
 
-<br>
 Details
 
 * `const char* passingOrFailing`

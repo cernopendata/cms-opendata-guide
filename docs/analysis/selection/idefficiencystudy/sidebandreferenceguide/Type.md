@@ -2,7 +2,7 @@
 
 Holds [TagProbe class](TagProbe.md) and [InvariantMass class](InvariantMass.md).
 
-### Constructor details
+## Constructor details
 
 ```cpp
     Type(
@@ -23,7 +23,7 @@ Holds [TagProbe class](TagProbe.md) and [InvariantMass class](InvariantMass.md).
     {}
 ```
 
-### Private variable details
+## Private variable details
 
 Summary
 
@@ -36,10 +36,9 @@ Summary
 | const char*& | canvasWatermark |
 | const char*& | directoryToSave |
 
-<br>
 All variables here are reference for public variables in mother class: [SidebandSubtraction class](SidebandSubtraction.md).
 
-### Public variable details
+## Public variable details
 
 Summary
 
@@ -47,7 +46,6 @@ Summary
 |-------------|--------------|---------------|
 | const char* | particleType | NULL          |
 
-<br>
 Details
 
 * `const char* particleType = NULL`
@@ -62,9 +60,9 @@ Constructed objects
 * `TagProbe Probe`
     * Stores all informations about probe muons, incuding quantities histograms and efficiencies.
 
-### Public Functions details
+## Public Functions details
 
-#### consistencyDebugCout()
+### consistencyDebugCout()
 
 ```cpp
 void consistencyDebugCout()
@@ -72,7 +70,7 @@ void consistencyDebugCout()
 
 Print on terminal the consistency check after subtractSigHistograms().
 
-#### createEfficiencyCanvas(...)
+### createEfficiencyCanvas(...)
 
 ```cpp
 void createEfficiencyCanvas(bool shouldWrite = false,
@@ -81,7 +79,7 @@ void createEfficiencyCanvas(bool shouldWrite = false,
 
 Create canvas for all efficiencies calculated. It need to be called after createEfficiencyPlot(...).
 
-#### createEfficiencyPlot(...)
+### createEfficiencyPlot(...)
 
 ```cpp
 void createEfficiencyPlot(bool shouldWrite = false)
@@ -89,7 +87,7 @@ void createEfficiencyPlot(bool shouldWrite = false)
 
 Create a TEfficiency object with calculated efficiency. It needs do be called after subtractSigHistograms().
 
-#### createMassCanvas(...)
+### createMassCanvas(...)
 
 ```cpp
 void createMassCanvas(bool drawRegions = false,
@@ -99,7 +97,7 @@ void createMassCanvas(bool drawRegions = false,
 
 Create canvas for all invariant mass (passing and all muons).
 
-#### createQuantitiesCanvas(...)
+### createQuantitiesCanvas(...)
 
 ```cpp
 void createQuantitiesCanvas(bool shouldWrite = false,
@@ -108,7 +106,7 @@ void createQuantitiesCanvas(bool shouldWrite = false,
 
 Create canvas for all quantities after subtractSigHistograms().
 
-#### defineMassHistogramNumbers()
+### defineMassHistogramNumbers()
 
 ```cpp
 void defineMassHistogramNumbers(int nBins,
@@ -119,7 +117,7 @@ void defineMassHistogramNumbers(int nBins,
 
 Redefine number parameters of mass histograms in Mass object.
 
-#### doFit()
+### doFit()
 
 ```cpp
 void doFit()
@@ -127,7 +125,7 @@ void doFit()
 
 Apply a fit over invariant mass in Mass object.
 
-#### fillMassHistograms(...)
+### fillMassHistograms(...)
 
 ```cpp
 void fillMassHistograms(double& InvariantMass,
@@ -136,7 +134,7 @@ void fillMassHistograms(double& InvariantMass,
 
 Automatically fill all masses histograms. Needs to be called in a loop over all dataset.
 
-#### fillQuantitiesHistograms(...)
+### fillQuantitiesHistograms(...)
 
 ```cpp
 void fillQuantitiesHistograms(double** quantities,
@@ -145,7 +143,7 @@ void fillQuantitiesHistograms(double** quantities,
 
 Automatically fill all quantities histograms. Needs to be called in a loop over all dataset.
 
-#### normalizeHistograms()
+### normalizeHistograms()
 
 ```cpp
 void normalizeHistograms()
@@ -153,7 +151,7 @@ void normalizeHistograms()
 
 Normalize quantities histograms of variable bin after filling it.
 
-#### subtractSigHistograms()
+### subtractSigHistograms()
 
 ```cpp
 void subtractSigHistograms()
@@ -161,7 +159,7 @@ void subtractSigHistograms()
 
 Apply sideband subtraction over all histograms.
 
-#### updateMassValuesAll()
+### updateMassValuesAll()
 
 ```cpp
 void updateMassValuesAll()
@@ -169,7 +167,7 @@ void updateMassValuesAll()
 
 After fill invariant mass histograms, you need to set signal regions and sideband regions. This function will set it for you.
 
-#### writeMassHistogramsOnFile(...)
+### writeMassHistogramsOnFile(...)
 
 ```cpp
 void writeMassHistogramsOnFile(bool writehPass,
@@ -178,7 +176,7 @@ void writeMassHistogramsOnFile(bool writehPass,
 
 Write all mass canvas histograms in a root file. Just need to call this function and all mass histograms will be written.
 
-#### writeQuantitiesHistogramsOnFile(...)
+### writeQuantitiesHistogramsOnFile(...)
 
 ```cpp
 void writeQuantitiesHistogramsOnFile(bool hSigBack,

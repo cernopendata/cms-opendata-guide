@@ -20,8 +20,6 @@ There are six main files in the fitting method. For simple results like the ones
 
 Main files are explained below.
 
-
-
 ### 📄 simplify_data.cpp
 
 The `simplify_data.cpp` file, as the name sugest, simplify a DATA file obtained from this Tag and Probe tool. It is necessary to simplify due RooFit limitations where fitting method codes here used are based on.
@@ -38,8 +36,6 @@ TFile *fileIO = TFile::Open("OUTPUT_FILE_PATH.root","RECREATE");
 
 Every user should run this code firstly to simplify `.root` files on fitting method.
 
-
-
 ### 📄 efficiency.cpp
 
 This file is responsible to measure the efficiency simple by fitting method as described in this [fitting method](../signalextraction.md#fitting-method) section.
@@ -54,8 +50,6 @@ Here it include the file that is responsible to fit the ressonance and return th
 ```
 
 By default out tool keeps all ressonance fit in the folder `src/dofits`. There are some example there for specific ressonances and fits.
-
-#### Important variables
 
 There are two main parameters to control this code.
 
@@ -95,13 +89,9 @@ The `directoryToSave` stores the path to save the efficiency result. It is saved
 
 Informations about the output is printed at end of running.
 
-
-
 ### 📄 loop_over_efficiencies.cpp
 
 The purpose of this code is rerun the `efficiency.cpp` for differents configurations. This code is not recommended for systematic calculations indeed and it was firstly created for systematic studies only.
-
-#### Important variables
 
 The importants variables to keep in mind are listed below
 
@@ -148,13 +138,9 @@ void loop_over_efficiencies()
 
 It is the main function of this file. It is the function which calls every other function when it is needed.
 
-
-
 ### 📄 plot_sys_efficiency.cpp
 
 The `plot_sys_efficiency.cpp` code creates a single `.root` with variations made. Unlike the previous code, the `loop_over_efficiencies.cpp`, that makes each source of uncertainty be in a separate .root, this one puts all of them in a single `.root`. This code has been further optimized than his precursor and also as a differential it already calculates the systematic uncertainty. Below it is specified main variables used in this code.
-
-#### Important variables
 
 ```cpp
 //Which Muon Id do you want to study?
@@ -179,14 +165,11 @@ Inside `plot_sys_efficiency()`, there is some useful variables too:
 | string | path_bins_fit_folder | Stores the path to the output folder where `.png` of fit for each bin made will be |
 | string | directoryToSave      | Stores the path to output file |
 
-
 ### 📄 overplot_efficiencies.cpp
 
 The `overplot_efficiencies.cpp` code will take the results of the previous topic and make a single graph containing all its variations and will output a `.png` containing the graph.
 
-#### Important variables
-
-All main variables are in `overplot_efficiencies()`
+All main variables in this file are in `overplot_efficiencies()` function
 
 | Type        | Name                 | Purpose  |
 |-------------|----------------------|----------|
@@ -197,12 +180,11 @@ All main variables are in `overplot_efficiencies()`
 
 Remeber when selecting MuonId and quantity to run `plot_sys_efficiency.cpp` before with same configurations.
 
-
 ### 📄 plot_sys_efficiency_2d.cpp
 
 In order to calculate systematic uncertainties in 2D, it was necessary to create another code: the `plot_sys_efficiency_2d.cpp`. It has a `.root` output containing the efficiency histograms that can be viewed through the `new TBrowser` on root command.
 
-#### Important variables
+The variables in this file is shown below:
 
 | Type        | Name                 | Purpose  |
 |-------------|----------------------|----------|

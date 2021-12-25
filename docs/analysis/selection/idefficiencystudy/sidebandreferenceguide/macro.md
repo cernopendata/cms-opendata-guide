@@ -52,7 +52,7 @@ There are some files in folder `config` aside of `macro.ccp`. The sections below
 
 This is it content:
 
-```cpp  
+```cpp
 //This files holds some functions used in macro.cpp for particle selection
 
 //Return if is a accepted particle or no
@@ -241,7 +241,7 @@ It imports configurations about macro.cpp
 
 ---
 
-```cpp  
+```cpp
 //Check if the name of dir is ok
 if (string(directoryToSave).back() != string("/"))
 {
@@ -289,7 +289,7 @@ cout << "Using \"" << files[useFile] << "\" ntupple" << endl;
 This part is responsible to open the file and do conversions. The first one file is a bit different of the other ones, so it needs compatibiliy besides its not important anymore and is a obsolete file.
 
 ---
-    
+
 ```cpp
 //Create variables
 double ProbeMuon_Pt;
