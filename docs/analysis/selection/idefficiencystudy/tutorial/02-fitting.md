@@ -289,7 +289,6 @@ compare_efficiency(quantity, "results/efficiencies/efficiency/Jpsi_Run_2011/Pt_g
 So your code should look like this.
 
 ```cpp
-
 //Change if you need
 //#include "src/dofits/DoFit_Jpsi_Run.h"
 #include "src/dofits/DoFit_Jpsi_MC.h"
