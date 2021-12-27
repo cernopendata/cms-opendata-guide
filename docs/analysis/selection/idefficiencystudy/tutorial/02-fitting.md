@@ -4,7 +4,7 @@
 
 In order to run this exercise you do not really need to be in a CMSSW area.  It would be actually better if you worked outside your usual CMSSW_5_3_32 environment.  So, if, for instance, you are working with the Docker container, instead of working on `/home/cmsusr/CMSSW_5_3_32/src` you could work on any directory you can create at the `/home/cmsusr` level.  Alternatively, you could work directly on your own host machine if you managed to install ROOT on it.
 
-For this example we assume you will be working in either the Docker container or the virtual machine.  
+For this example we assume you will be working in either the Docker container or the virtual machine.
 
 Since we will be needing ROOT version greater than 6, then do not forget to set it up from LCG (as you learned in the ROOT pre-exercise) by doing:
 
@@ -122,16 +122,16 @@ The fitting and storing of the fit output of each bin is achieved by the followi
 
 ```cpp
 int nbins = sizeof(bins)/sizeof(*bins) - 1;
-	double** yields_n_errs = new double*[nbins];
-	for (int i = 0; i < nbins; i++)
-	{
-		//Creates conditions
-		string conditions = string(    "ProbeMuon_" + quantity + ">=" + to_string(bins[i]  ));
-		conditions +=       string(" && ProbeMuon_" + quantity + "< " + to_string(bins[i+1]));
+    double** yields_n_errs = new double*[nbins];
+    for (int i = 0; i < nbins; i++)
+    {
+        //Creates conditions
+        string conditions = string(    "ProbeMuon_" + quantity + ">=" + to_string(bins[i]  ));
+        conditions +=       string(" && ProbeMuon_" + quantity + "< " + to_string(bins[i+1]));
 
-		//Stores [yield_all, yield_pass, err_all, err_pass]
-		yields_n_errs[i] = doFit(conditions, MuonId, path_bins_fit_folder);
-	}
+        //Stores [yield_all, yield_pass, err_all, err_pass]
+        yields_n_errs[i] = doFit(conditions, MuonId, path_bins_fit_folder);
+    }
 ```
 
 To get the efficiency plot, we used the [TEfficiency](https://root.cern.ch/doc/master/classTEfficiency.html) class from ROOT.
@@ -142,35 +142,35 @@ The creation of these `TH1` objects is taken care of by the ``src/make_TH1D.h`` 
 ??? Example "Check out `src/make_TH1D.h`"
 
     ```cpp
-    TH1D* make_TH1D(string name, double** values, int index, double* bins, int 	nbins, string quantity = "", bool draw = false)
-	{
-	//AddBinContent
-	//HISTOGRAM NEEDS TO HAVE VARIABLE BINS
-   
-	TH1D* hist = new TH1D(name.c_str(), name.c_str(), nbins, bins);
+    TH1D* make_TH1D(string name, double** values, int index, double* bins, int  nbins, string quantity = "", bool draw = false)
+    {
+    //AddBinContent
+    //HISTOGRAM NEEDS TO HAVE VARIABLE BINS
 
-	hist->GetYaxis()->SetTitle("Events");
-	if      (quantity == "Pt" ) hist->GetXaxis()->SetTitle("p_{T} 	[GeV/c]");
-	else if (quantity == "Eta") hist->GetXaxis()->SetTitle("#eta");
-	else if (quantity == "Phi") hist->GetXaxis()->SetTitle("rad");
+    TH1D* hist = new TH1D(name.c_str(), name.c_str(), nbins, bins);
 
-	for (int i = 0; i < nbins; i++)
-	{
-		hist->SetBinContent(i+1, values[i][index]);
-		hist->SetBinError(i+1, values[i][index+2]);
-		//cout << i << " -> (" << hist->GetBinLowEdge(i+1) << "," << 	hist->GetBinLowEdge(i+1)+hist->GetBinWidth(i+1) << ") == " << 		hist->GetBinContent(i+1) << "\n";
-	}
+    hist->GetYaxis()->SetTitle("Events");
+    if      (quantity == "Pt" ) hist->GetXaxis()->SetTitle("p_{T}   [GeV/c]");
+    else if (quantity == "Eta") hist->GetXaxis()->SetTitle("#eta");
+    else if (quantity == "Phi") hist->GetXaxis()->SetTitle("rad");
 
-	if (draw)
-	{
-		TCanvas* xperiment = new TCanvas;
-		xperiment->cd();
-		hist->Draw();
-	}
+    for (int i = 0; i < nbins; i++)
+    {
+        hist->SetBinContent(i+1, values[i][index]);
+        hist->SetBinError(i+1, values[i][index+2]);
+        //cout << i << " -> (" << hist->GetBinLowEdge(i+1) << "," <<    hist->GetBinLowEdge(i+1)+hist->GetBinWidth(i+1) << ") == " <<       hist->GetBinContent(i+1) << "\n";
+    }
 
-	return hist;
-	}
-    }   
+    if (draw)
+    {
+        TCanvas* xperiment = new TCanvas;
+        xperiment->cd();
+        hist->Draw();
+    }
+
+    return hist;
+    }
+    }
     ```
 
 To plot the efficiency we used the ``src/get_efficiency.h`` function.
@@ -178,54 +178,54 @@ To plot the efficiency we used the ``src/get_efficiency.h`` function.
 ??? Example "Check out `get_efficiency.h`"
 
     ```cpp
-	TEfficiency* get_efficiency(TH1D* all, TH1D* pass, string quantity, 		string MuonId, string prefix_name = "", bool shouldWrite = false)
-	{
-	//Copy histograms to change axis titles later
-	TH1D* pass_copy = (TH1D*)pass->Clone();
-	TH1D* all_copy  = (TH1D*)all ->Clone();
+    TEfficiency* get_efficiency(TH1D* all, TH1D* pass, string quantity,         string MuonId, string prefix_name = "", bool shouldWrite = false)
+    {
+    //Copy histograms to change axis titles later
+    TH1D* pass_copy = (TH1D*)pass->Clone();
+    TH1D* all_copy  = (TH1D*)all ->Clone();
 
-	pass_copy->GetYaxis()->SetTitle("Efficiency");
-	all_copy ->GetYaxis()->SetTitle("Efficiency");
-	
-	TEfficiency* pEff = new TEfficiency();
-	pEff->SetPassedHistogram(*pass_copy, "f");
-	pEff->SetTotalHistogram (*all_copy,  "f");
+    pass_copy->GetYaxis()->SetTitle("Efficiency");
+    all_copy ->GetYaxis()->SetTitle("Efficiency");
 
-	delete all_copy;
-	delete pass_copy;
+    TEfficiency* pEff = new TEfficiency();
+    pEff->SetPassedHistogram(*pass_copy, "f");
+    pEff->SetTotalHistogram (*all_copy,  "f");
 
-	//Set plot config
-	if (prefix_name != "")
-	{
-		pEff->SetName(string(MuonId + "_" + quantity + "_" + 		prefix_name + "_Efficiency").c_str());
-		pEff->SetTitle(string("Efficiency for " + MuonId + " " + 		quantity + " (" + prefix_name + ")").c_str());
-	}
-	else
-	{
-		pEff->SetName(string(MuonId + "_" + quantity + 	"_Efficiency").c_str());
-		pEff->SetTitle(string("Efficiency for " + MuonId + " " + 		quantity).c_str());
-	}
+    delete all_copy;
+    delete pass_copy;
 
-	pEff->SetLineColor(kBlack);
-	pEff->SetMarkerStyle(21);
-	pEff->SetMarkerSize(0.5);
-	pEff->SetMarkerColor(kBlack);
-	
-	if (shouldWrite)
-		pEff->Write();
-	
-	TCanvas* oi = new TCanvas();
-	oi->cd();
-	pEff->Draw();
-	
-	gPad->Update();
-	auto graph = pEff->GetPaintedGraph();
-	graph->SetMinimum(0.8);
-	graph->SetMaximum(1.2);
-	gPad->Update();
-	
-	return pEff;
-	}
+    //Set plot config
+    if (prefix_name != "")
+    {
+        pEff->SetName(string(MuonId + "_" + quantity + "_" +        prefix_name + "_Efficiency").c_str());
+        pEff->SetTitle(string("Efficiency for " + MuonId + " " +        quantity + " (" + prefix_name + ")").c_str());
+    }
+    else
+    {
+        pEff->SetName(string(MuonId + "_" + quantity +  "_Efficiency").c_str());
+        pEff->SetTitle(string("Efficiency for " + MuonId + " " +        quantity).c_str());
+    }
+
+    pEff->SetLineColor(kBlack);
+    pEff->SetMarkerStyle(21);
+    pEff->SetMarkerSize(0.5);
+    pEff->SetMarkerColor(kBlack);
+
+    if (shouldWrite)
+        pEff->Write();
+
+    TCanvas* oi = new TCanvas();
+    oi->cd();
+    pEff->Draw();
+
+    gPad->Update();
+    auto graph = pEff->GetPaintedGraph();
+    graph->SetMinimum(0.8);
+    graph->SetMaximum(1.2);
+    gPad->Update();
+
+    return pEff;
+    }
     ```
 
 Note that we load all these functions in the `src` area directly in header of the `efficiency.cpp` code.
@@ -233,9 +233,9 @@ Note that we load all these functions in the `src` area directly in header of th
 Before we run the code you have first to uncomment this line in the `efficiency.cpp` code so it looks like this.
 
 ```cpp
-	//Create efficiencies
-	generatedFile->   cd("/");
-	get_efficiency(yield_all, yield_pass, quantity, MuonId, "", true);
+    //Create efficiencies
+    generatedFile->   cd("/");
+    get_efficiency(yield_all, yield_pass, quantity, MuonId, "", true);
 ```
 
 Now that you understand what the ``efficiency.cpp`` macro does, run your code without flashing the scream('-l'), with a batch mode (`-b`) and with a quit-when-done switch (`-q`):
@@ -311,11 +311,11 @@ string quantity = "Pt";     double bins[] = {0., 2.0, 3.4, 4.0, 4.4, 4.7, 5.0, 5
 void efficiency()
 {
 
-	compare_efficiency(quantity, "results/efficiencies/efficiency/Jpsi_Run_2011/Pt_globalMuon.root", "results/efficiencies/efficiency/Jpsi_MC_2020/Pt_globalMuon.root");
-	
-	//Path where is going to save results png for every bin 
-	const char* path_bins_fit_folder = "results/bins_fit/efficiency/";
-	create_folder(path_bins_fit_folder, true);
+    compare_efficiency(quantity, "results/efficiencies/efficiency/Jpsi_Run_2011/Pt_globalMuon.root", "results/efficiencies/efficiency/Jpsi_MC_2020/Pt_globalMuon.root");
+
+    //Path where is going to save results png for every bin
+    const char* path_bins_fit_folder = "results/bins_fit/efficiency/";
+    create_folder(path_bins_fit_folder, true);
 ```
 
 If you want you can comment everything below the compare_efficiency(be cafefull not to comment the last "}")
