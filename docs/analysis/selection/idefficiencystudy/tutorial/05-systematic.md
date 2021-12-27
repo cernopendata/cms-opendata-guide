@@ -1,6 +1,7 @@
 # Systematic
 
 ## Setting it up
+
 If you have done the fitting tutorial you already have done this part so you may go directly to "Generating uncertanties"
 Clone this repository and go to the fitting folder.
 
@@ -17,13 +18,13 @@ https://cernbox.cern.ch/index.php/s/lqHEasYWJpOZsfq
 
 ## Data simplifying
 
-In order to run this code, use this command to simplify the data so that it can be read by the RooFit root library. 
+In order to run this code, use this command to simplify the data so that it can be read by the RooFit root library.
 
 ```sh
 root simplify_data.cpp 
 ```
 
-This will create a "TagAndProbe_Jpsi_Run2011.root" file, this process may take a few minutes. move the file to the DATA folder. 
+This will create a "TagAndProbe_Jpsi_Run2011.root" file, this process may take a few minutes. move the file to the DATA folder.
 
 ## Generating uncertanties
 
@@ -73,7 +74,7 @@ string quantity = "Pt";     double bins[] = {0., 3.0, 3.6, 4.0, 4.4, 4.7, 5.0, 5
 
 ## Systematic efficiency overplot
 
-In order to better understand the results of the last part, this code will put all the different plots created previously in a image. 
+In order to better understand the results of the last part, this code will put all the different plots created previously in a image.
 
 ```cpp
 root overplot_efficiencies.cpp
