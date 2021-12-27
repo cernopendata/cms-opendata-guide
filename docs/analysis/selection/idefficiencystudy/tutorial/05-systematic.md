@@ -28,7 +28,7 @@ This will create a "TagAndProbe_Jpsi_Run2011.root" file, this process may take a
 
 ## Generating uncertanties
 
-To estimate the systematic error we will need first to get some uncertanties from the DATA. To do that run this code.
+To estimate the systematic error we will need first to get some uncertainties from the DATA. So, to do that, run the following code.
 
 ```sh
 root -l -b -q plot_sys_efficiency.cpp
@@ -74,7 +74,7 @@ string quantity = "Pt";     double bins[] = {0., 3.0, 3.6, 4.0, 4.4, 4.7, 5.0, 5
 
 ## Systematic efficiency overplot
 
-In order to better understand the results of the last part, this code will put all the different plots created previously in a image.
+To better understand the results of the last part, this code will put all the different plots created previously in an image.
 
 ```cpp
 root overplot_efficiencies.cpp
