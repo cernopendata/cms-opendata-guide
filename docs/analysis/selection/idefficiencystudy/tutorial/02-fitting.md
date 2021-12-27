@@ -1,3 +1,5 @@
+# Fitting
+
 ## Setting it up
 
 In order to run this exercise you do not really need to be in a CMSSW area.  It would be actually better if you worked outside your usual CMSSW_5_3_32 environment.  So, if, for instance, you are working with the Docker container, instead of working on `/home/cmsusr/CMSSW_5_3_32/src` you could work on any directory you can create at the `/home/cmsusr` level.  Alternatively, you could work directly on your own host machine if you managed to install ROOT on it.
@@ -6,25 +8,16 @@ For this example we assume you will be working in either the Docker container or
 
 Since we will be needing ROOT version greater than 6, then do not forget to set it up from LCG (as you learned in the ROOT pre-exercise) by doing:
 
-~~~sh
+```sh
 source /cvmfs/sft.cern.ch/lcg/views/LCG_95/x86_64-slc6-gcc8-opt/setup.sh
-~~~
+```
 
 Clone the repository and go to the fitting method tutorial:
 
-~~~sh
-git clone https://github.com/allanjales/TagAndProbe.git
-~~~
-~~~sh
-cd TagAndProbe
-~~~
-~~~sh
-git checkout systematic
-~~~
-~~~sh
-cd efficiency_tools/fitting
-~~~
-
+```sh
+git clone git://github.com/allanjales/TagAndProbe
+cd TagAndProbe/efficiency_tools/fitting
+```
 
 ## The Fitting Method
 
@@ -32,29 +25,29 @@ First, a brief explanation of the method we’ll be studying.
 
 It consists on fitting the invariant mass of the tag & probe pairs, in the two categories: passing probes, and all probes.  I.e., for the unbiased leg of the decay, one can apply a selection criteria (a set of cuts) and determine whether the object passes those criteria or not.
 
-The procedure is applied after splitting the data in bins of a kinematic variable of the probe object (e.g. the traverse momentum, p<sub>T</sub>); as such, the efficiency will be measured as a function of that quantity for each of the bins.
+The procedure is applied after splitting the data in bins of a kinematic variable of the probe object (e.g. the traverse momentum, pT); as such, the efficiency will be measured as a function of that quantity for each of the bins.
 
-So, in the picture below, on the left, let's imagine that the p<sub>T</sub> bin we are selecting is the one marked in red.  But, of course, in that bin (like in the rest) you will have true J/ψ; decays as well as muon pairs from other processes (maybe QCD, for instance).  The true decays would make up our *signal*, whereas the other events will be considered the *background*.
+So, in the picture below, on the left, let's imagine that the pT bin we are selecting is the one marked in red.  But, of course, in that bin (like in the rest) you will have true J/ψ; decays as well as muon pairs from other processes (maybe QCD, for instance).  The true decays would make up our *signal*, whereas the other events will be considered the *background*.
 
 The fit, which is made in a different space (the invariant mass space) allows to statistically discriminate between signal and background. To compute the efficiency we simply divide the signal yield from the fits to the `passing` category by the signal yield from the fit of the `inclusive` (All) category. This approach is depicted in the middle and right-hand plots of the image below.
 
 At the end of the day, then, you will have to make these fits for each bin in the range of interest.
 
-<img width="1200px" src="../../../../../images/analysis/cmsefficiency/fitting_method_large.png">
+![Fitting method scheme](../../../../../images/analysis/cmsefficiency/fitting_method_large.png)
 
 Let's start exploring our dataset. From the cloned directory, type:
 
-~~~sh
+```sh
 cd DATA
 root -l TagAndProbe_Jpsi_MC.root
-~~~
+```
 
 If everything's right, you should get something like:
 
-~~~
+```plaintext
 Attaching file TagAndProbe_Jpsi_MC.root as _file0...
 (TFile *) 0x563c69a68d90
-~~~
+```
 
 Of course, you can explore this file, if you want, using all the tools you learn in the ROOT pre-exercise.  This file contains ntuples that were obtained using procedures similar to the ones you have been learning in this workshop.
 
@@ -67,12 +60,11 @@ Now, before we start fitting the invariant mass it's important to look at it's s
 root [] tagandprobe->Draw("InvariantMass")
 ```
 
-
-<img width="900px" src="../../../../../images/analysis/cmsefficiency/tutorial/02/InvariantMassJpsi.png">
+![Invariant Mass histogram from the data analysed](../../../../../images/analysis/cmsefficiency/tutorial/02/InvariantMassJpsi.png)
 
 If you got the previous result, we're ready to go.
 
-The dataset used in this exercise has been collected by the CMS experiment, in proton-proton collisions at the LHC. It contains 1572153 entries (muon pair candidates) with an associated invariant mass. For each candidate, the transverse momentum (p<sub>T</sub>), rapidity(&eta;) and azimuthal angle (&phi;) are stored, along with a binary flag `PassingProbeTrackingMuon`, which is 1 in case the corresponding probe satisfied the tracker muon selection criteria and 0 in case it doesn't.
+The dataset used in this exercise has been collected by the CMS experiment, in proton-proton collisions at the LHC. It contains 1572153 entries (muon pair candidates) with an associated invariant mass. For each candidate, the transverse momentum (pT), rapidity(&eta;) and azimuthal angle (&phi;) are stored, along with a binary flag `PassingProbeTrackingMuon`, which is 1 in case the corresponding probe satisfied the tracker muon selection criteria and 0 in case it doesn't.
 
 !!! Note
     Note that it does not really matter what kind of selection criteria these ntuples were created with.  The procedure would be the same.  You can create your own, similar ntuples with the criteria that you need to study.
@@ -87,13 +79,13 @@ As you may have seen, after exploring the content of the root file, the tagandpr
 | PassingProbeStandAloneMuon |
 | PassingProbeGlobalMuon |
 
-We'll start by calculating the efficiency as a function of p<sub>T</sub>.  It is useful to have an idea of the distribution of the quantity we want to study. In order to do this, we’ll repeat the steps previously used to plot the invariant mass, but now for the `ProbeMuon_Pt` variable.
+We'll start by calculating the efficiency as a function of pT.  It is useful to have an idea of the distribution of the quantity we want to study. In order to do this, we’ll repeat the steps previously used to plot the invariant mass, but now for the `ProbeMuon_Pt` variable.
 
 ```cpp
 root [] tagandprobe->Draw("ProbeMuon_Pt")
 ```
 
-<img width="500px" src="../../../../../images/analysis/cmsefficiency/tutorial/02/ProbeMuonPt.png">
+![pT plot of data in linear scale](../../../../../images/analysis/cmsefficiency/tutorial/02/ProbeMuonPt.png)
 
 Hmm.. seems like our domain is larger than we need it to be. To fix this, we can apply a constraint to our plot. Try:
 
@@ -101,7 +93,7 @@ Hmm.. seems like our domain is larger than we need it to be. To fix this, we can
 root [] tagandprobe->Draw("ProbeMuon_Pt", "ProbeMuon_Pt < 20")
 ```
 
-<img width="1000px" src="../../../../../images/analysis/cmsefficiency/tutorial/02/ProbeMuonPtCortes.png">
+![pT plot of data in log scale](../../../../../images/analysis/cmsefficiency/tutorial/02/ProbeMuonPtCortes.png)
 
 Exit ROOT and get back to the main area:
 
@@ -115,13 +107,12 @@ You'll have to make some small adjustments to the code in this section:
 
 We'll start by choosing the desired bins for the transverse momentum, so the only quantity that shouldnt be commented is the first Pt as shown bellow.
 
-~~~cpp
+```cpp
 //Which quantity do you want to use?
 string quantity = "Pt";     double bins[] = {0., 2.0, 3.4, 4.0, 4.4, 4.7, 5.0, 5.6, 5.8, 6.0, 6.2, 6.4, 6.6, 6.8, 7.3, 9.5, 13.0, 17.0, 40.};
 //string quantity = "Eta";    double bins[] = {-2.4, -1.8, -1.4, -1.2, -1.0, -0.8, -0.5, -0.2, 0, 0.2, 0.5, 0.8, 1.0, 1.2, 1.4, 1.8, 2.4};
 //string quantity = "Phi";    double bins[] = {-3.0, -1.8, -1.6, -1.2, -1.0, -0.7, -0.4, -0.2, 0, 0.2, 0.4, 0.7, 1.0, 1.2, 1.6, 1.8, 3.0};
-//string quantity = "Pt";     double bins[] = {0., 40.};
-~~~
+```
 
 ## The Fit
 
@@ -129,7 +120,7 @@ We execute a simultaneous fit using a Gaussian curve and a Crystall Ball functio
 
 The fitting and storing of the fit output of each bin is achieved by the following loop in the `efficiency.cpp` code.
 
-~~~cpp
+```cpp
 int nbins = sizeof(bins)/sizeof(*bins) - 1;
 	double** yields_n_errs = new double*[nbins];
 	for (int i = 0; i < nbins; i++)
@@ -141,7 +132,7 @@ int nbins = sizeof(bins)/sizeof(*bins) - 1;
 		//Stores [yield_all, yield_pass, err_all, err_pass]
 		yields_n_errs[i] = doFit(conditions, MuonId, path_bins_fit_folder);
 	}
-~~~
+```
 
 To get the efficiency plot, we used the [TEfficiency](https://root.cern.ch/doc/master/classTEfficiency.html) class from ROOT.
 You'll see that in order to create a ``TEfficiency`` object, one of the [constructors](https://root.cern.ch/doc/master/classTEfficiency.html#aa0e99b4161745fd3bee0ae5c0f58880e) requires two `TH1` objects, i.e., two histograms. One with _all_ the probes and one with the _passing_ probes.
@@ -149,7 +140,8 @@ You'll see that in order to create a ``TEfficiency`` object, one of the [constru
 The creation of these `TH1` objects is taken care of by the ``src/make_TH1D.h`` code.
 
 ??? Example "Check out `src/make_TH1D.h`"
-    ~~~cpp
+
+    ```cpp
     TH1D* make_TH1D(string name, double** values, int index, double* bins, int 	nbins, string quantity = "", bool draw = false)
 	{
 	//AddBinContent
@@ -175,18 +167,17 @@ The creation of these `TH1` objects is taken care of by the ``src/make_TH1D.h`` 
 		xperiment->cd();
 		hist->Draw();
 	}
-	
+
 	return hist;
 	}
     }   
-    
-    ~~~
+    ```
 
 To plot the efficiency we used the ``src/get_efficiency.h`` function.
 
 ??? Example "Check out `get_efficiency.h`"
-    ~~~cpp
-    
+
+    ```cpp
 	TEfficiency* get_efficiency(TH1D* all, TH1D* pass, string quantity, 		string MuonId, string prefix_name = "", bool shouldWrite = false)
 	{
 	//Copy histograms to change axis titles later
@@ -235,32 +226,38 @@ To plot the efficiency we used the ``src/get_efficiency.h`` function.
 	
 	return pEff;
 	}
-    ~~~
+    ```
 
 Note that we load all these functions in the `src` area directly in header of the `efficiency.cpp` code.
 
 Before we run the code you have first to uncomment this line in the `efficiency.cpp` code so it looks like this.
-~~~cpp
+
+```cpp
 	//Create efficiencies
 	generatedFile->   cd("/");
 	get_efficiency(yield_all, yield_pass, quantity, MuonId, "", true);
-~~~
+```
 
 Now that you understand what the ``efficiency.cpp`` macro does, run your code without flashing the scream('-l'), with a batch mode (`-b`) and with a quit-when-done switch (`-q`):
 
-~~~sh
+```sh
 root -l -b -q efficiency.cpp
-~~~
+```
+
 If everything went correctly you should have a 'Pt_globalMuon.root' in the path below.
-~~~sh
+
+```sh
 cd results/efficiencies/efficiency/Jpsi_Run_2011/
-~~~
+```
 We will need to run the code again with a few changes so go back to the main file.
-~~~sh
+
+```sh
 cd ../../../..
-~~~
+```
+
 Now we need to create the Monte Carlo(MC) data to compare with the real one, in order to do that we will need to change the ´efficiency.cpp´ code, you will have to include the ´#include "src/dofits/DoFit_Jpsi_MC.h"´ and comment the ´#include "src/dofits/DoFit_Jpsi_Run.h"´ part, your code should look like this:
-~~~cpp
+
+```cpp
 //Change if you need
 //#include "src/dofits/DoFit_Jpsi_Run.h"
 #include "src/dofits/DoFit_Jpsi_MC.h"
@@ -279,15 +276,19 @@ string quantity = "Pt";     double bins[] = {0., 2.0, 3.4, 4.0, 4.4, 4.7, 5.0, 5
 //string quantity = "Phi";    double bins[] = {-3.0, -1.8, -1.6, -1.2, -1.0, -0.7, -0.4, -0.2, 0, 0.2, 0.4, 0.7, 1.0, 1.2, 1.6, 1.8, 3.0};
 //string quantity = "Pt";     double bins[] = {0., 40.};
 
-~~~
+```
+
 Run the efficiency.cpp again and you will have 2 new folders at results/efficiencies/efficiency one "Jpsi_MC_2020" and other "Jpsi_Run_2011".If you want to see each individual efficiency you can use the TBrowser to open the globalMuon_Pt_efficiency file.
 
 Now, in order to make the comparison between real and MC data we will need to change the efficiency.cpp once more, to do this you must include #include the "compare_efficiency.h" and put the code below in the efficiency.cpp file.
-~~~sh
+
+```sh
 compare_efficiency(quantity, "results/efficiencies/efficiency/Jpsi_Run_2011/Pt_globalMuon.root", "results/efficiencies/efficiency/Jpsi_MC_2020/Pt_globalMuon.root");
-~~~
+```
+
 So your code should look like this.
-~~~cpp
+
+```cpp
 
 //Change if you need
 //#include "src/dofits/DoFit_Jpsi_Run.h"
@@ -316,14 +317,12 @@ void efficiency()
 	//Path where is going to save results png for every bin 
 	const char* path_bins_fit_folder = "results/bins_fit/efficiency/";
 	create_folder(path_bins_fit_folder, true);
-~~~
+```
 
 If you want you can comment everything below the compare_efficiency(be cafefull not to comment the last "}")
 
 Now you should have a new folder called "Comparison Run2011 vs MC" in it is the comparison that you just made.
 
-
-<img width="1000px" src="../../../../../images/analysis/cmsefficiency/tutorial/02/globalMuon_Pt_Efficiency.png">
+![GlobalMuon Pt Efficiency](../../../../../images/analysis/cmsefficiency/tutorial/02/globalMuon_Pt_Efficiency.png)
 
 If everything went well and you still have time to go, repeat this process for the two other variables, &eta; and &phi;!
-

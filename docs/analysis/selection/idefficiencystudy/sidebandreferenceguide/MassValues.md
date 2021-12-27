@@ -2,7 +2,7 @@
 
 Holds informations about passing or all particles fit.
 
-### Public variable details
+## Public variable details
 
 Summary
 
@@ -20,16 +20,14 @@ Summary
 | double        | sidebandRegion2_x2   | 0.            |
 | TFitResultPtr | fitResult            | 0             |
 
-<br>
+## Public Functions details
 
-### Public Functions details
-
-#### createTBox(...)
+### createTBox(...)
 
 ```cpp
 TBox* createTBox(double Ymax,
-				int index = 0,
-				double Ymin = 0.)
+                int index = 0,
+                double Ymin = 0.)
 ```
 
 Return TBox of sideband or signal region.
@@ -38,7 +36,7 @@ Return TBox of sideband or signal region.
 * if  `index =  0` return TBox representing signal region.
 * if  `index =  1` return TBox representing right sideband region.
 
-#### doFitJpsi()
+### doFitJpsi()
 
 ```cpp
 void doFitJpsi()
@@ -46,7 +44,7 @@ void doFitJpsi()
 
 Do fit for J/psi resonance.
 
-#### doFitUpsilon()
+### doFitUpsilon()
 
 ```cpp
 void doFitUpsilon()
@@ -54,7 +52,7 @@ void doFitUpsilon()
 
 Do fit for Upsilon resonance with 3 resonances peaks (1S, 2S, 3S).
 
-#### doFitUpsilon1S()
+### doFitUpsilon1S()
 
 ```cpp
 void doFitUpsilon1S()
@@ -62,7 +60,7 @@ void doFitUpsilon1S()
 
 Do fit for Upsilon (1S) resonance.
 
-#### isInSidebandRegion(...)
+### isInSidebandRegion(...)
 
 ```cpp
 bool isInSidebandRegion(double InvariantMass)
@@ -70,7 +68,7 @@ bool isInSidebandRegion(double InvariantMass)
 
 Check if InvariantMass is in sideband region.
 
-#### isInSignalRegion(...)
+### isInSignalRegion(...)
 
 ```cpp
 bool isInSignalRegion(double InvariantMass)
@@ -78,7 +76,7 @@ bool isInSignalRegion(double InvariantMass)
 
 Check if InvariantMass is in signal region.
 
-#### subtractionFactor()
+### subtractionFactor()
 
 ```cpp
 double subtractionFactor()

@@ -2,13 +2,11 @@
 
 This class hold all fit functions for histograms.
 
-
-
 ## class FitFunctions::Primary
 
 This class is holding primary fit functions for histograms.
 
-### Content list
+**Content list**
 
 * double [Gaus(...)](#gaus)
 
@@ -18,9 +16,9 @@ This class is holding primary fit functions for histograms.
 
 * double [CrystalBall(...)](#crystalball)
 
-### Functions details
+**Functions details**
 
-#### Gaus(...)
+### Gaus(...)
 
 ```cpp
 static double Gaus(double *x, double *par)
@@ -28,12 +26,11 @@ static double Gaus(double *x, double *par)
 
 Parameters:
 
-
 ```cpp
 par = [height, position, sigma]
 ```
 
-#### Pol1(...)
+### Pol1(...)
 
 ```cpp
 static double Pol1(double *x, double *par)
@@ -41,12 +38,11 @@ static double Pol1(double *x, double *par)
 
 Parameters:
 
-
 ```cpp
 par = [b, a]
 ```
 
-#### Pol3(...)
+### Pol3(...)
 
 ```cpp
 static double Pol3(double *x, double *par)
@@ -54,12 +50,11 @@ static double Pol3(double *x, double *par)
 
 Parameters:
 
-
 ```cpp
 par = [d, c, b, a]
 ```
 
-#### Exp(...)
+### Exp(...)
 
 ```cpp
 static double Exp(double *x, double *par)
@@ -67,12 +62,11 @@ static double Exp(double *x, double *par)
 
 Parameters:
 
-
 ```cpp
 par = [height, width]
 ```
 
-#### CrystalBall(...)
+### CrystalBall(...)
 
 ```cpp
 static double CrystalBall(double *x, double *par)
@@ -84,14 +78,11 @@ Parameters:
 par = [alpha, n, mean, sigma, yield]
 ```
 
-
-
-
 ## class FitFunctions::Merged
 
 This class holds merged fit functions for histograms.
 
-### Content list
+**Content list**
 
 * double [Jpsi::Signal_InvariantMass()](#jpsisignal_invariantmass)
 
@@ -105,9 +96,9 @@ This class holds merged fit functions for histograms.
 
 * double [Upsilon::InvariantMass()](#upsiloninvariantmass)
 
-### Functions details
+**Functions details**
 
-#### Jpsi::Signal_InvariantMass(...)
+### Jpsi::Signal_InvariantMass(...)
 
 ```cpp
 static double Signal_InvariantMass(double *x, double *par)
@@ -125,7 +116,7 @@ Parameters:
 par = [height, position, sigma, alpha, n, mean, sigma, yield]
 ```
 
-#### Jpsi::Background_InvariantMass(...)
+### Jpsi::Background_InvariantMass(...)
 
 ```cpp
 static double Background_InvariantMass(double *x, double *par)
@@ -141,7 +132,7 @@ Parameters:
 par = [b, a]
 ```
 
-#### Jpsi::InvariantMass(...)
+### Jpsi::InvariantMass(...)
 
 ```cpp
 static double Signal_InvariantMass(double *x, double *par) + Background_InvariantMass(double *x, double *par)
@@ -161,7 +152,7 @@ Parameters:
 par = [height1, position1, sigma1, alpha2, n2, mean2, sigma2, yield2, b, a]
 ```
 
-#### Upsilon::Signal_InvariantMass(...)
+### Upsilon::Signal_InvariantMass(...)
 
 ```cpp
 static double Signal_InvariantMass(double *x, double *par)
@@ -181,7 +172,7 @@ Parameters:
 par = [alpha1, n1, mean1, sigma1, yield1, height2, position2, sigma2, height3, position3, sigma3]
 ```
 
-#### Upsilon::Background_InvariantMass(...)
+### Upsilon::Background_InvariantMass(...)
 
 ```cpp
 static double Background_InvariantMass(double *x, double *par)
@@ -197,7 +188,7 @@ Parameters:
 par = [d, c, b, a]
 ```
 
-#### Upsilon::InvariantMass(...)
+### Upsilon::InvariantMass(...)
 
 ```cpp
 static double Signal_InvariantMass(double *x, double *par) + Background_InvariantMass(double *x, double *par)

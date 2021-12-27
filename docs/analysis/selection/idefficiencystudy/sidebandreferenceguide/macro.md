@@ -13,20 +13,20 @@ There are some classes in Sideband Subtraction Tag And Probe project and they ar
 **Static functions**:
 
 * [FitFunctions](FitFunctions.md)
-	* [Primary](FitFunctions.md#primary)
-	* [Merged](FitFunctions.md#merged)
-		* Jpsi
-		* Upsilon
+    * [Primary](FitFunctions.md#primary)
+    * [Merged](FitFunctions.md#merged)
+        * Jpsi
+        * Upsilon
 
 **Classes and struct**:
 
 * [SidebandSubtraction](SidebandSubtraction.md)
-	* [Type](Type.md)
-		* [InvariantMass](InvariantMass.md)
-			* [MassValues](MassValues.md)
-		* [TagProbe](TagProbe.md)
-			* [PtEtaPhi](PtEtaPhi.md)
-				* [PassingFailing](PassingFailing.md)
+    * [Type](Type.md)
+        * [InvariantMass](InvariantMass.md)
+            * [MassValues](MassValues.md)
+        * [TagProbe](TagProbe.md)
+            * [PtEtaPhi](PtEtaPhi.md)
+                * [PassingFailing](PassingFailing.md)
 
 This format shows what nested classes. Classes or structs below slided at right represents they are nested with the class above it.
 
@@ -52,29 +52,29 @@ There are some files in folder `config` aside of `macro.ccp`. The sections below
 
 This is it content:
 
-```cpp	
+```cpp
 //This files holds some functions used in macro.cpp for particle selection
 
 //Return if is a accepted particle or no
 bool applyCuts(double** quantities, int** types)
 {
-	//Assign variables for easy visualization
-	double &ProbeMuon_Pt            = *quantities[0];
-	double &ProbeMuon_Eta           = *quantities[1];
-	double &ProbeMuon_Phi           = *quantities[2];
-	double &TagMuon_Pt              = *quantities[3];
-	double &TagMuon_Eta             = *quantities[4];
-	double &TagMuon_Phi             = *quantities[5];
-	double &InvariantMass           = *quantities[6];
-	int &PassingProbeTrackingMuon   = *types[0];
-	int &PassingProbeStandAloneMuon = *types[1];
-	int &PassingProbeGlobalMuon     = *types[2];
+    //Assign variables for easy visualization
+    double &ProbeMuon_Pt            = *quantities[0];
+    double &ProbeMuon_Eta           = *quantities[1];
+    double &ProbeMuon_Phi           = *quantities[2];
+    double &TagMuon_Pt              = *quantities[3];
+    double &TagMuon_Eta             = *quantities[4];
+    double &TagMuon_Phi             = *quantities[5];
+    double &InvariantMass           = *quantities[6];
+    int &PassingProbeTrackingMuon   = *types[0];
+    int &PassingProbeStandAloneMuon = *types[1];
+    int &PassingProbeGlobalMuon     = *types[2];
 
-	//Apply cuts
-	if (TagMuon_Pt >= 7.0 && fabs(TagMuon_Eta) <= 2.4)
-		return true;
+    //Apply cuts
+    if (TagMuon_Pt >= 7.0 && fabs(TagMuon_Eta) <= 2.4)
+        return true;
 
-	return false;
+    return false;
 }
 ```
 
@@ -91,54 +91,54 @@ This file is called in PassingFailing.cpp and set quantity histograms bins and c
 ```cpp
 void createHistogram(TH1D* &histo, const char* histoName)
 {
-	//Set parameters
-	string hName 		  = string(particleType) + string(passingOrFailing) + string(tagOrProbe) + string(particleName) + "_" + string(quantityName) + string(histoName);
-	string hTitle 		  = string(passingOrFailing) + " in " + string(particleType) + " " + string(tagOrProbe);
-	string xAxisTitle 	  = string(xAxisName);
-	string yAxisTitleForm = "Events";
+    //Set parameters
+    string hName          = string(particleType) + string(passingOrFailing) + string(tagOrProbe) + string(particleName) + "_" + string(quantityName) + string(histoName);
+    string hTitle         = string(passingOrFailing) + " in " + string(particleType) + " " + string(tagOrProbe);
+    string xAxisTitle     = string(xAxisName);
+    string yAxisTitleForm = "Events";
 
-	//Add unit if has
-	if (strcmp(quantityUnit, "") != 0)
-		xAxisTitle += " [" + string(quantityUnit) + "]";
+    //Add unit if has
+    if (strcmp(quantityUnit, "") != 0)
+        xAxisTitle += " [" + string(quantityUnit) + "]";
 
-	//Change title is passing
-	if (strcmp(passingOrFailing, "Passing") == 0)
-		hTitle = string(particleType) + " " + string(particleName) + " " + string(tagOrProbe);
+    //Change title is passing
+    if (strcmp(passingOrFailing, "Passing") == 0)
+        hTitle = string(particleType) + " " + string(particleName) + " " + string(tagOrProbe);
 
-	if (strcmp(passingOrFailing, "All") == 0)
-		hTitle = "All " + string(particleName) + " " + string(tagOrProbe);
+    if (strcmp(passingOrFailing, "All") == 0)
+        hTitle = "All " + string(particleName) + " " + string(tagOrProbe);
 
 
-	//Variable bin for pT
-	if (strcmp(quantityName, "Pt") == 0)
-	{
-		double xbins[] = {0., 2.0, 3.4, 4.0, 4.4, 4.7, 5.0, 5.6, 5.8, 6.0, 6.2, 6.4, 6.6, 6.8, 7.3, 9.5, 13.0, 17.0, 40.};
-		
-		int nbins = sizeof(xbins)/sizeof(*xbins) - 1;
-		histo = new TH1D(hName.data(), hTitle.data(), nbins, xbins);
-	}
+    //Variable bin for pT
+    if (strcmp(quantityName, "Pt") == 0)
+    {
+        double xbins[] = {0., 2.0, 3.4, 4.0, 4.4, 4.7, 5.0, 5.6, 5.8, 6.0, 6.2, 6.4, 6.6, 6.8, 7.3, 9.5, 13.0, 17.0, 40.};
+        
+        int nbins = sizeof(xbins)/sizeof(*xbins) - 1;
+        histo = new TH1D(hName.data(), hTitle.data(), nbins, xbins);
+    }
 
-	//Variable bin for eta
-	else if (strcmp(quantityName, "Eta") == 0)
-	{
-		double xbins[] = {-2.4, -1.8, -1.4, -1.2, -1.0, -0.8, -0.5, -0.2, 0, 0.2, 0.5, 0.8, 1.0, 1.2, 1.4, 1.8, 2.4};
-		
-		int nbins = sizeof(xbins)/sizeof(*xbins) - 1;
-		histo = new TH1D(hName.data(), hTitle.data(), nbins, xbins);
-	}
+    //Variable bin for eta
+    else if (strcmp(quantityName, "Eta") == 0)
+    {
+        double xbins[] = {-2.4, -1.8, -1.4, -1.2, -1.0, -0.8, -0.5, -0.2, 0, 0.2, 0.5, 0.8, 1.0, 1.2, 1.4, 1.8, 2.4};
+        
+        int nbins = sizeof(xbins)/sizeof(*xbins) - 1;
+        histo = new TH1D(hName.data(), hTitle.data(), nbins, xbins);
+    }
 
-	//Bins for phi 
-	else
-	{
-		double xbins[] = {-3.0, -1.8, -1.6, -1.2, -1.0, -0.7, -0.4, -0.2, 0, 0.2, 0.4, 0.7, 1.0, 1.2, 1.6, 1.8, 3.0};
- 		
-		int nbins = sizeof(xbins)/sizeof(*xbins) - 1;
-		histo = new TH1D(hName.data(), hTitle.data(), nbins, xbins);
-	}
+    //Bins for phi 
+    else
+    {
+        double xbins[] = {-3.0, -1.8, -1.6, -1.2, -1.0, -0.7, -0.4, -0.2, 0, 0.2, 0.4, 0.7, 1.0, 1.2, 1.6, 1.8, 3.0};
+        
+        int nbins = sizeof(xbins)/sizeof(*xbins) - 1;
+        histo = new TH1D(hName.data(), hTitle.data(), nbins, xbins);
+    }
 
-	//Edit histogram axis
-	histo->GetYaxis()->SetTitle(Form(yAxisTitleForm.data(), histo->GetBinWidth(0)));
-	histo->GetXaxis()->SetTitle(xAxisTitle.data());
+    //Edit histogram axis
+    histo->GetYaxis()->SetTitle(Form(yAxisTitleForm.data(), histo->GetBinWidth(0)));
+    histo->GetXaxis()->SetTitle(xAxisTitle.data());
 }
 ```
 
@@ -153,16 +153,16 @@ It stores many configurations used in `macro.cpp`:
 ```cpp
 //List of files
 const char *files[] = {"../data_histoall.root",
-						"../Run2011AMuOnia_mergeNtuple.root",
-						"../JPsiToMuMu_mergeMCNtuple.root",
-						"../Run2011A_MuOnia_Upsilon.root",
-						"../Upsilon1SToMuMu_MC_full.root"};
+                        "../Run2011AMuOnia_mergeNtuple.root",
+                        "../JPsiToMuMu_mergeMCNtuple.root",
+                        "../Run2011A_MuOnia_Upsilon.root",
+                        "../Upsilon1SToMuMu_MC_full.root"};
 
 const char* directoriesToSave[] = {"../results/result/",
-									"../results/Jpsi_Run_2011/",
-									"../results/Jpsi_MC_2020_sbs/",
-									"../results/Upsilon_Run_2011/",
-									"../results/Upsilon_MC_2020_sbs/"};
+                                    "../results/Jpsi_Run_2011/",
+                                    "../results/Jpsi_MC_2020_sbs/",
+                                    "../results/Upsilon_Run_2011/",
+                                    "../results/Upsilon_MC_2020_sbs/"};
 
 //MAIN OPTIONS
 
@@ -180,10 +180,10 @@ const char* directoryToSave = directoriesToSave[useFile];
 long long limitData = 0; //0 -> do not limit
 
 //Canvas drawing
-bool shouldDrawInvariantMassCanvas 			= true;
-bool shouldDrawInvariantMassCanvasRegion 	= true;
-bool shouldDrawQuantitiesCanvas 			= true;
-bool shouldDrawEfficiencyCanvas 			= true;
+bool shouldDrawInvariantMassCanvas          = true;
+bool shouldDrawInvariantMassCanvasRegion    = true;
+bool shouldDrawQuantitiesCanvas             = true;
+bool shouldDrawEfficiencyCanvas             = true;
 
 //Muon id anlyse
 bool doTracker    = true;
@@ -205,15 +205,15 @@ And then there are more automatically set options:
 //Auto detect resonance due file index
 const char* resonance = "Jpsi";
 if (useFile > 2)
-	resonance = "Upsilon";
+    resonance = "Upsilon";
 if (useFile == 4)
-	resonance = "Upsilon1S";
+    resonance = "Upsilon1S";
 
 
 
 //Auto detect limit of data
 if (limitData > 0)
-	directoryToSave = "../partial_result/";
+    directoryToSave = "../partial_result/";
 
 
 
@@ -221,7 +221,7 @@ if (limitData > 0)
 bool needsRetroCompatibility = false;
 
 if (useFile == 0)
-	needsRetroCompatibility = true;
+    needsRetroCompatibility = true;
 ```
 
 ---
@@ -241,31 +241,31 @@ It imports configurations about macro.cpp
 
 ---
 
-```cpp	
+```cpp
 //Check if the name of dir is ok
 if (string(directoryToSave).back() != string("/"))
 {
-	cerr << "To avoid errors, please end the result directory with a \"/\"" << endl;
-	abort();
+    cerr << "To avoid errors, please end the result directory with a \"/\"" << endl;
+    abort();
 }
 
 //Check if dir exists and create
 if (gSystem->AccessPathName(directoryToSave))
 {
-	if (gSystem->mkdir(directoryToSave, true))
-	{
-		cerr << "\"" << directoryToSave << "\" path could not be found and could not be created ERROR" << endl;
-		cerr << "Try to create manually this folder path" << endl;
-		abort();
-	}
-	else
-	{
-		cout << "\"" << directoryToSave << "\" directory created OK" << endl;
-	}
+    if (gSystem->mkdir(directoryToSave, true))
+    {
+        cerr << "\"" << directoryToSave << "\" path could not be found and could not be created ERROR" << endl;
+        cerr << "Try to create manually this folder path" << endl;
+        abort();
+    }
+    else
+    {
+        cout << "\"" << directoryToSave << "\" directory created OK" << endl;
+    }
 }
 else
 {
-	cout << "\"" << directoryToSave << "\" directory OK" << endl;
+    cout << "\"" << directoryToSave << "\" directory OK" << endl;
 }
 ```
 
@@ -277,7 +277,7 @@ Check if the `directoryToSave` (setted in settings.cpp) has a valid name and if 
 //Compatibility adjusts on file read (for data_histoall ntupples)
 string folderName = "tagandprobe/";
 if (needsRetroCompatibility)
-	folderName = "demo/";
+    folderName = "demo/";
 
 //Open and read files
 TFile *file0  = TFile::Open(files[useFile]);
@@ -289,7 +289,7 @@ cout << "Using \"" << files[useFile] << "\" ntupple" << endl;
 This part is responsible to open the file and do conversions. The first one file is a bit different of the other ones, so it needs compatibiliy besides its not important anymore and is a obsolete file.
 
 ---
-	
+
 ```cpp
 //Create variables
 double ProbeMuon_Pt;
@@ -304,33 +304,33 @@ int PassingProbeStandAloneMuon;
 int PassingProbeGlobalMuon;
 
 //Assign variables
-TreePC->SetBranchAddress("ProbeMuon_Pt",				&ProbeMuon_Pt);
-TreePC->SetBranchAddress("ProbeMuon_Eta",				&ProbeMuon_Eta);
-TreePC->SetBranchAddress("ProbeMuon_Phi",				&ProbeMuon_Phi);
-TreePC->SetBranchAddress("TagMuon_Pt",					&TagMuon_Pt);
-TreePC->SetBranchAddress("TagMuon_Eta",					&TagMuon_Eta);
-TreePC->SetBranchAddress("TagMuon_Phi",					&TagMuon_Phi);
+TreePC->SetBranchAddress("ProbeMuon_Pt",                &ProbeMuon_Pt);
+TreePC->SetBranchAddress("ProbeMuon_Eta",               &ProbeMuon_Eta);
+TreePC->SetBranchAddress("ProbeMuon_Phi",               &ProbeMuon_Phi);
+TreePC->SetBranchAddress("TagMuon_Pt",                  &TagMuon_Pt);
+TreePC->SetBranchAddress("TagMuon_Eta",                 &TagMuon_Eta);
+TreePC->SetBranchAddress("TagMuon_Phi",                 &TagMuon_Phi);
 if (needsRetroCompatibility)
-TreePC->SetBranchAddress("InvariantMass",				&InvariantMass);
+TreePC->SetBranchAddress("InvariantMass",               &InvariantMass);
 else
-TreeAT->SetBranchAddress("InvariantMass",				&InvariantMass);
-TreeAT->SetBranchAddress("PassingProbeTrackingMuon",	&PassingProbeTrackingMuon);
-TreeAT->SetBranchAddress("PassingProbeStandAloneMuon",	&PassingProbeStandAloneMuon);
-TreeAT->SetBranchAddress("PassingProbeGlobalMuon",		&PassingProbeGlobalMuon);
+TreeAT->SetBranchAddress("InvariantMass",               &InvariantMass);
+TreeAT->SetBranchAddress("PassingProbeTrackingMuon",    &PassingProbeTrackingMuon);
+TreeAT->SetBranchAddress("PassingProbeStandAloneMuon",  &PassingProbeStandAloneMuon);
+TreeAT->SetBranchAddress("PassingProbeGlobalMuon",      &PassingProbeGlobalMuon);
 
 double* quantities[] = {&ProbeMuon_Pt,
-						&ProbeMuon_Eta,
-						&ProbeMuon_Phi,
-						&TagMuon_Pt,
-						&TagMuon_Eta,
-						&TagMuon_Phi,
-						&InvariantMass,
-	};
+                        &ProbeMuon_Eta,
+                        &ProbeMuon_Phi,
+                        &TagMuon_Pt,
+                        &TagMuon_Eta,
+                        &TagMuon_Phi,
+                        &InvariantMass,
+    };
 
 int* types[] = {&PassingProbeTrackingMuon,
-				&PassingProbeStandAloneMuon,
-				&PassingProbeGlobalMuon
-	};
+                &PassingProbeStandAloneMuon,
+                &PassingProbeGlobalMuon
+    };
 ```
 
 Now variables are created and linked to branches in ntupple. Then a array of these variables are set.
@@ -340,7 +340,7 @@ Now variables are created and linked to branches in ntupple. Then a array of the
 ```cpp
 //Create a object and set configs
 SidebandSubtraction SdS{resonance};
-SdS.canvasWatermark	= canvasWatermark;
+SdS.canvasWatermark = canvasWatermark;
 SdS.directoryToSave = directoryToSave;
 SdS.doTracker       = doTracker;
 SdS.doStandalone    = doStandalone;
@@ -360,7 +360,7 @@ The macro.cpp now creates the SdS object and assign variables setted in settings
 //Get data size and set data limit if has
 long long numberEntries = TreePC->GetEntries();
 if (limitData > 0 && limitData < numberEntries)
-	numberEntries = limitData;
+    numberEntries = limitData;
 printf("Data analysed = %lld of %lld\n", numberEntries, TreePC->GetEntries());
 
 //Prepare for showing progress
@@ -379,22 +379,22 @@ cout << "\nFilling Invariant Mass Histograms..... (1/2)\n";
 //Loop between the components
 for (long long i = 0; i < numberEntries; i++)
 {
-	//Select particle pair
-	TreePC->GetEntry(i);
-	TreeAT->GetEntry(i);
+    //Select particle pair
+    TreePC->GetEntry(i);
+    TreeAT->GetEntry(i);
 
-	//Show progress on screen
-	if (chrono::duration_cast<chrono::milliseconds>(chrono::steady_clock::now() - lastTime).count() >= 1000 || i == numberEntries - 1)
-	{
-		printf(progressFormat.data(), (float)(i+1)/(float)numberEntries*100, i+1, numberEntries);
-		lastTime = chrono::steady_clock::now();
-	}
+    //Show progress on screen
+    if (chrono::duration_cast<chrono::milliseconds>(chrono::steady_clock::now() - lastTime).count() >= 1000 || i == numberEntries - 1)
+    {
+        printf(progressFormat.data(), (float)(i+1)/(float)numberEntries*100, i+1, numberEntries);
+        lastTime = chrono::steady_clock::now();
+    }
 
-	//Fill histograms
-	if (applyCuts(quantities, types))
-	{
-		SdS.fillMassHistograms(quantities, types);
-	}
+    //Fill histograms
+    if (applyCuts(quantities, types))
+    {
+        SdS.fillMassHistograms(quantities, types);
+    }
 }
 
 cout << "\nTook " << chrono::duration_cast<chrono::milliseconds>(chrono::steady_clock::now() - start).count() << " ms\n";
@@ -431,20 +431,20 @@ generatedFile->   cd("canvas/");
 
 if (shouldDrawInvariantMassCanvas)
 {
-	bool drawRegions 	= false;
-	bool shouldWrite 	= true;
-	bool shouldSavePNG 	= true;
+    bool drawRegions    = false;
+    bool shouldWrite    = true;
+    bool shouldSavePNG  = true;
 
-	SdS.createMassCanvas(drawRegions, shouldWrite, shouldSavePNG);
+    SdS.createMassCanvas(drawRegions, shouldWrite, shouldSavePNG);
 }
 
 if (shouldDrawInvariantMassCanvasRegion && !isMC)
 {
-	bool drawRegions 	= true;
-	bool shouldWrite 	= true;
-	bool shouldSavePNG 	= true;
+    bool drawRegions    = true;
+    bool shouldWrite    = true;
+    bool shouldSavePNG  = true;
 
-	SdS.createMassCanvas(drawRegions, shouldWrite, shouldSavePNG);
+    SdS.createMassCanvas(drawRegions, shouldWrite, shouldSavePNG);
 }
 ```
 
@@ -462,22 +462,22 @@ cout << "\nFilling Quantities Histograms..... (2/2)\n";
 //Loop between the components again
 for (long long i = 0; i < numberEntries; i++)
 {
-	//Select particle pair
-	TreePC->GetEntry(i);
-	TreeAT->GetEntry(i);
+    //Select particle pair
+    TreePC->GetEntry(i);
+    TreeAT->GetEntry(i);
 
-	//Show progress on screen
-	if (chrono::duration_cast<chrono::milliseconds>(chrono::steady_clock::now() - lastTime).count() >= 1000 || i == numberEntries - 1)
-	{
-		printf(progressFormat.data(), (float)(i+1)/(float)numberEntries*100, i+1, numberEntries);
-		lastTime = chrono::steady_clock::now();
-	}
+    //Show progress on screen
+    if (chrono::duration_cast<chrono::milliseconds>(chrono::steady_clock::now() - lastTime).count() >= 1000 || i == numberEntries - 1)
+    {
+        printf(progressFormat.data(), (float)(i+1)/(float)numberEntries*100, i+1, numberEntries);
+        lastTime = chrono::steady_clock::now();
+    }
 
-	//Fill histograms
-	if (applyCuts(quantities, types))
-	{	
-		SdS.fillQuantitiesHistograms(quantities, types);
-	}
+    //Fill histograms
+    if (applyCuts(quantities, types))
+    {   
+        SdS.fillQuantitiesHistograms(quantities, types);
+    }
 }
 cout << "\nTook " << chrono::duration_cast<chrono::milliseconds>(chrono::steady_clock::now() - start).count() << " ms\n";
 ```
@@ -489,7 +489,7 @@ At this point of the code, this will separate all histogram in signal + backgrou
 ```cpp
 //Normalize Histograms for variable binning
 cout << "\n";
-SdS.normalizeHistograms();	
+SdS.normalizeHistograms();  
 ```
 
 After folling histograms, as some of them has variable bins, it needs to be normalized. This function does this.
@@ -508,11 +508,11 @@ Subtract `background` from `signal + background` histogram to create signal hist
 ```cpp
 if (shouldDrawQuantitiesCanvas)
 {
-	bool shouldWrite 	= true;
-	bool shouldSavePNG 	= true;
+    bool shouldWrite    = true;
+    bool shouldSavePNG  = true;
 
-	cout << endl;
-	SdS.createQuantitiesCanvas(shouldWrite, shouldSavePNG);
+    cout << endl;
+    SdS.createQuantitiesCanvas(shouldWrite, shouldSavePNG);
 }
 ```
 
@@ -536,19 +536,19 @@ generatedFile->   cd("histograms/");
 
 //Write quantities histograms on file
 {
-	bool writehSigBack 	= true;
-	bool writehSig 		= true;
-	bool writehBack 	= true;
+    bool writehSigBack  = true;
+    bool writehSig      = true;
+    bool writehBack     = true;
 
-	SdS.writeQuantitiesHistogramsOnFile(writehSigBack, writehSig, writehBack);
+    SdS.writeQuantitiesHistogramsOnFile(writehSigBack, writehSig, writehBack);
 }
 
 //Write mass histograms on file
 {
-	bool writehPass = true;
-	bool writehAll 	= true;
+    bool writehPass = true;
+    bool writehAll  = true;
 
-	SdS.writeMassHistogramsOnFile(writehPass, writehAll);
+    SdS.writeMassHistogramsOnFile(writehPass, writehAll);
 }
 ```
 
@@ -563,9 +563,9 @@ generatedFile->cd("efficiency/plots/");
 
 //Creates efficiency plots
 {
-	bool shouldWrite 	= true;
+    bool shouldWrite    = true;
 
-	SdS.createEfficiencyPlot(shouldWrite);
+    SdS.createEfficiencyPlot(shouldWrite);
 }
 ```
 
@@ -580,11 +580,11 @@ generatedFile->cd("efficiency/canvas/");
 
 if (shouldDrawEfficiencyCanvas)
 {
-	bool shouldWrite 	= true;
-	bool shouldSavePNG 	= true;
+    bool shouldWrite    = true;
+    bool shouldSavePNG  = true;
 
-	cout << "\n";
-	SdS.createEfficiencyCanvas(shouldWrite, shouldSavePNG);
+    cout << "\n";
+    SdS.createEfficiencyCanvas(shouldWrite, shouldSavePNG);
 }
 
 //Close files
