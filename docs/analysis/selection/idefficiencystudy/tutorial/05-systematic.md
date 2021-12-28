@@ -2,7 +2,7 @@
 
 ## Setting it up
 
-If you have done the fitting tutorial you already have done this part so you may go directly to "Generating uncertanties"
+If you have done the fitting tutorial you already have done this part so you may go directly to "Generating uncertainties"
 Clone this repository and go to the fitting folder.
 
 ```sh
@@ -26,7 +26,7 @@ root simplify_data.cpp
 
 This will create a "TagAndProbe_Jpsi_Run2011.root" file, this process may take a few minutes. move the file to the DATA folder.
 
-## Generating uncertanties
+## Generating uncertainties
 
 To estimate the systematic error we will need first to get some uncertainties from the DATA. So, to do that, run the following code.
 
