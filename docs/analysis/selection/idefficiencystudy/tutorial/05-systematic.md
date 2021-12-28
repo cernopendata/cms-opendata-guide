@@ -82,7 +82,7 @@ root overplot_efficiencies.cpp
 
 You should get a result like this:
 
-![Efficiency Systematic Overplot](../../../../../images/analysis/cmsefficiency/Sys_Efficiency_overplot1d.png)
+![Efficiency Systematic Overplot 1D](../../../../../images/analysis/cmsefficiency/Sys_Efficiency_overplot1d.png)
 
 ## 2D Systematic efficiency overplot
 
