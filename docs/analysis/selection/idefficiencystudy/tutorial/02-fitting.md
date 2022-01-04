@@ -281,7 +281,7 @@ string quantity = "Pt";     double bins[] = {0., 2.0, 3.4, 4.0, 4.4, 4.7, 5.0, 5
 
 Run the efficiency.cpp again and you will have 2 new folders at results/efficiencies/efficiency one "Jpsi_MC_2020" and other "Jpsi_Run_2011".If you want to see each individual efficiency you can use the TBrowser to open the globalMuon_Pt_efficiency file.
 
-Now, in order to make the comparison between real and MC data we will need to change the efficiency.cpp once more, to do this you must include #include the "compare_efficiency.h" and put the code below in the efficiency.cpp file.
+Now, in order to make the comparison between real and MC data we will need to change the efficiency.cpp once more, to do this you must include #include the "compare_efficiency.cpp" and put the code below in the efficiency.cpp file.
 
 ```sh
 compare_efficiency(quantity, "results/efficiencies/efficiency/Jpsi_Run_2011/Pt_globalMuon.root", "results/efficiencies/efficiency/Jpsi_MC_2020/Pt_globalMuon.root");
@@ -296,7 +296,7 @@ So your code should look like this.
 #include "src/create_folder.h"
 #include "src/get_efficiency.h"
 #include "src/make_TH1D.h"
-#include "src/compare_efficiency.h"
+#include "tests/compare_efficiency.cpp"
 
 //Which Muon Id do you want to study?
 //string MuonId   = "trackerMuon";
