@@ -19,6 +19,20 @@ git clone git://github.com/allanjales/TagAndProbe
 cd TagAndProbe/efficiency_tools/fitting
 ```
 
+You will also need to download the Run2011AMuOnia_mergeNtuple.root file using this link.
+
+```sh
+https://cernbox.cern.ch/index.php/s/lqHEasYWJpOZsfq
+```
+
+## Data simplifying
+
+In order to run this code, use this command to simplify the data so that it can be read by the RooFit root library.
+
+```sh
+root simplify_data.cpp 
+```
+
 ## The Fitting Method
 
 First, a brief explanation of the method we’ll be studying.
