@@ -57,7 +57,7 @@ Of course, you can explore this file, if you want, using all the tools you learn
 Now, before we start fitting the invariant mass it's important to look at it's shape first. To visualize our data's invariant mass, do (within ROOT):
 
 ```cpp
-root [] tagandprobe->Draw("InvariantMass")
+tagandprobe->Draw("InvariantMass")
 ```
 
 ![Invariant Mass histogram from the data analysed](../../../../../images/analysis/cmsefficiency/tutorial/02/InvariantMassJpsi.png)
@@ -82,7 +82,7 @@ As you may have seen, after exploring the content of the root file, the tagandpr
 We'll start by calculating the efficiency as a function of pT.  It is useful to have an idea of the distribution of the quantity we want to study. In order to do this, we’ll repeat the steps previously used to plot the invariant mass, but now for the `ProbeMuon_Pt` variable.
 
 ```cpp
-root [] tagandprobe->Draw("ProbeMuon_Pt")
+tagandprobe->Draw("ProbeMuon_Pt")
 ```
 
 ![pT plot of data in linear scale](../../../../../images/analysis/cmsefficiency/tutorial/02/ProbeMuonPt.png)
@@ -90,7 +90,7 @@ root [] tagandprobe->Draw("ProbeMuon_Pt")
 Hmm.. seems like our domain is larger than we need it to be. To fix this, we can apply a constraint to our plot. Try:
 
 ```cpp
-root [] tagandprobe->Draw("ProbeMuon_Pt", "ProbeMuon_Pt < 20")
+tagandprobe->Draw("ProbeMuon_Pt", "ProbeMuon_Pt < 20")
 ```
 
 ![pT plot of data in log scale](../../../../../images/analysis/cmsefficiency/tutorial/02/ProbeMuonPtCortes.png)
@@ -98,7 +98,7 @@ root [] tagandprobe->Draw("ProbeMuon_Pt", "ProbeMuon_Pt < 20")
 Exit ROOT and get back to the main area:
 
 ```bash
-root [] .q
+.q
 cd ..
 ```
 
