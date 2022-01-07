@@ -10,14 +10,14 @@
       
       
       
-        <link rel="canonical" href="https://cms-opendata-guide.web.cern.ch/analysis/selection/idefficiencystudy/fittingreferenceguide/src_files/">
+        <link rel="canonical" href="https://cms-opendata-guide.web.cern.ch/analysis/selection/idefficiencystudy/tutorial/05-systematic/">
       
       <link rel="icon" href="../../../../../images/favicon.ico">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.3">
     
     
       
-        <title>Src files - CMS Open Data Guide</title>
+        <title>Systematic - CMS Open Data Guide</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#src-files" class="md-skip">
+        <a href="#systematic" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Src files
+              Systematic
             
           </span>
         </div>
@@ -818,12 +818,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_5_3" type="checkbox" id="__nav_4_2_5_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_5_3" type="checkbox" id="__nav_4_2_5_3" checked>
       
       
       
@@ -846,7 +848,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/01-introduction/" class="md-nav__link">
+      <a href="../01-introduction/" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -860,7 +862,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/02-fitting/" class="md-nav__link">
+      <a href="../02-fitting/" class="md-nav__link">
         Fitting
       </a>
     </li>
@@ -874,7 +876,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/03-sidebandsubtraction/" class="md-nav__link">
+      <a href="../03-sidebandsubtraction/" class="md-nav__link">
         Sideband Subtraction
       </a>
     </li>
@@ -888,7 +890,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/04-comparison/" class="md-nav__link">
+      <a href="../04-comparison/" class="md-nav__link">
         Comparison
       </a>
     </li>
@@ -900,11 +902,80 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../tutorial/05-systematic/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Systematic
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Systematic
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setting-it-up" class="md-nav__link">
+    Setting it up
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-simplifying" class="md-nav__link">
+    Data simplifying
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-uncertainties" class="md-nav__link">
+    Generating uncertainties
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#systematic-efficiency-overplot" class="md-nav__link">
+    Systematic efficiency overplot
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2d-systematic-efficiency-overplot" class="md-nav__link">
+    2D Systematic efficiency overplot
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1080,14 +1151,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_5_5" type="checkbox" id="__nav_4_2_5_5" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2_5_5" type="checkbox" id="__nav_4_2_5_5" >
       
       
       
@@ -1110,7 +1179,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../overview/" class="md-nav__link">
+      <a href="../../fittingreferenceguide/overview/" class="md-nav__link">
         Overview
       </a>
     </li>
@@ -1122,101 +1191,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Src files
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../fittingreferenceguide/src_files/" class="md-nav__link">
         Src files
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#create_th2dh" class="md-nav__link">
-    📄 create_TH2D.h
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create_folderh" class="md-nav__link">
-    📄 create_folder.h
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#get_efficiencyh" class="md-nav__link">
-    📄 get_efficiency.h
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#get_efficiency_2dh" class="md-nav__link">
-    📄 get_efficiency_2D.h
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#get_efficiency_th2dh" class="md-nav__link">
-    📄 get_efficiency_TH2D.h
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#make_th1dh" class="md-nav__link">
-    📄 make_TH1D.h
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#yields_n_errs_to_th2ds_binh" class="md-nav__link">
-    📄 yields_n_errs_to_TH2Ds_bin.h
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dofits" class="md-nav__link">
-    📂 dofits
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1625,57 +1604,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#create_th2dh" class="md-nav__link">
-    📄 create_TH2D.h
+  <a href="#setting-it-up" class="md-nav__link">
+    Setting it up
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#create_folderh" class="md-nav__link">
-    📄 create_folder.h
+  <a href="#data-simplifying" class="md-nav__link">
+    Data simplifying
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#get_efficiencyh" class="md-nav__link">
-    📄 get_efficiency.h
+  <a href="#generating-uncertainties" class="md-nav__link">
+    Generating uncertainties
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#get_efficiency_2dh" class="md-nav__link">
-    📄 get_efficiency_2D.h
+  <a href="#systematic-efficiency-overplot" class="md-nav__link">
+    Systematic efficiency overplot
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#get_efficiency_th2dh" class="md-nav__link">
-    📄 get_efficiency_TH2D.h
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#make_th1dh" class="md-nav__link">
-    📄 make_TH1D.h
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#yields_n_errs_to_th2ds_binh" class="md-nav__link">
-    📄 yields_n_errs_to_TH2Ds_bin.h
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dofits" class="md-nav__link">
-    📂 dofits
+  <a href="#2d-systematic-efficiency-overplot" class="md-nav__link">
+    2D Systematic efficiency overplot
   </a>
   
 </li>
@@ -1692,61 +1650,72 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/cernopendata/cms-opendata-guide/edit/master/docs/analysis/selection/idefficiencystudy/fittingreferenceguide/src_files.md" title="Edit this page" class="md-content__button md-icon">
+<a href="https://github.com/cernopendata/cms-opendata-guide/edit/master/docs/analysis/selection/idefficiencystudy/tutorial/05-systematic.md" title="Edit this page" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
-<h1 id="src-files">Src files<a class="headerlink" href="#src-files" title="Permanent link">&para;</a></h1>
-<p>In this section there is a brief explanation for each file in <code>src/</code> folder. In general, this files are headers called by main files defined on the section <a href="../overview/">Overview</a>.</p>
-<h2 id="create_th2dh">📄 create_TH2D.h<a class="headerlink" href="#create_th2dh" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="n">TH2D</span><span class="o">*</span><span class="w"> </span><span class="n">create_TH2D</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">xquantity</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">yquantity</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nbinsx</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nbinsy</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="kt">double</span><span class="o">*</span><span class="w"> </span><span class="n">xbins</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">*</span><span class="w"> </span><span class="n">ybins</span><span class="p">)</span><span class="w"></span>
+<h1 id="systematic">Systematic<a class="headerlink" href="#systematic" title="Permanent link">&para;</a></h1>
+<h2 id="setting-it-up">Setting it up<a class="headerlink" href="#setting-it-up" title="Permanent link">&para;</a></h2>
+<p>If you have done the fitting tutorial you already have done this part so you may go directly to "Generating uncertainties"
+Clone this repository and go to the fitting folder.</p>
+<div class="highlight"><pre><span></span><code>git clone git://github.com/allanjales/TagAndProbe
+<span class="nb">cd</span> TagAndProbe/efficiency_tools/fitting
 </code></pre></div>
-<p>Create a empty TH2D histogram according <code>xquantity</code> and <code>yquantity</code> variables. these varibles supports <code>"Pt"</code>, <code>"Eta"</code> and <code>"Phi"</code> values.</p>
-<h2 id="create_folderh">📄 create_folder.h<a class="headerlink" href="#create_folderh" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">create_folder</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">folderPath</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">deleteOld</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span><span class="w"></span>
+<p>You will also need to download the Run2011AMuOnia_mergeNtuple.root file using this link.</p>
+<div class="highlight"><pre><span></span><code>https://cernbox.cern.ch/index.php/s/lqHEasYWJpOZsfq
 </code></pre></div>
-<p>This function creates folder path recursively. If <code>deleteOld</code> is true, it deleted the old folder if the path already exists.</p>
-<h2 id="get_efficiencyh">📄 get_efficiency.h<a class="headerlink" href="#get_efficiencyh" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="n">TEfficiency</span><span class="o">*</span><span class="w"> </span><span class="n">get_efficiency</span><span class="p">(</span><span class="n">TH1D</span><span class="o">*</span><span class="w"> </span><span class="n">all</span><span class="p">,</span><span class="w"> </span><span class="n">TH1D</span><span class="o">*</span><span class="w"> </span><span class="n">pass</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">quantity</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">MuonId</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">prefix_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">shouldWrite</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span><span class="w"></span>
+<h2 id="data-simplifying">Data simplifying<a class="headerlink" href="#data-simplifying" title="Permanent link">&para;</a></h2>
+<p>In order to run this code, use this command to simplify the data so that it can be read by the RooFit root library.</p>
+<div class="highlight"><pre><span></span><code>root simplify_data.cpp 
 </code></pre></div>
-<p>Function used to calculate the efficiency. The <code>MuonId</code>, <code>quantity</code> and <code>prefix_name</code> are used to set the name and title of <code>TEfficiency*</code>. If <code>shouldWrite</code> is true, it writes the result in any root file opened.</p>
-<h2 id="get_efficiency_2dh">📄 get_efficiency_2D.h<a class="headerlink" href="#get_efficiency_2dh" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="n">TEfficiency</span><span class="o">*</span><span class="w"> </span><span class="n">get_efficiency_2D</span><span class="p">(</span><span class="n">TH2D</span><span class="o">*</span><span class="w"> </span><span class="n">all</span><span class="p">,</span><span class="w"> </span><span class="n">TH2D</span><span class="o">*</span><span class="w"> </span><span class="n">pass</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">xquantity</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">yquantity</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">MuonId</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">prefix_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">shouldWrite</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span><span class="w"></span>
+<p>This will create a "TagAndProbe_Jpsi_Run2011.root" file, this process may take a few minutes. move the file to the DATA folder.</p>
+<h2 id="generating-uncertainties">Generating uncertainties<a class="headerlink" href="#generating-uncertainties" title="Permanent link">&para;</a></h2>
+<p>To estimate the systematic error we will need first to get some uncertainties from the DATA. So, to do that, run the following code.</p>
+<div class="highlight"><pre><span></span><code>root -l -b -q plot_sys_efficiency.cpp
 </code></pre></div>
-<p>Function used to calculate the 2D efficiency. The <code>MuonId</code>, <code>xquantity</code>, <code>yquantity</code> and <code>prefix_name</code> are used to set the name and title of <code>TEfficiency*</code>. If <code>shouldWrite</code> is true, it writes the result in any root file opened.</p>
-<h2 id="get_efficiency_th2dh">📄 get_efficiency_TH2D.h<a class="headerlink" href="#get_efficiency_th2dh" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="n">TH2D</span><span class="o">*</span><span class="w"> </span><span class="n">get_efficiency_TH2D</span><span class="p">(</span><span class="n">TH2D</span><span class="o">*</span><span class="w"> </span><span class="n">hall</span><span class="p">,</span><span class="w"> </span><span class="n">TH2D</span><span class="o">*</span><span class="w"> </span><span class="n">hpass</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">xquantity</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">yquantity</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">MuonId</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">prefix_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">)</span><span class="w"></span>
+<p>By default this code will calculate the efficiency for the global muon Eta, this can be altered by opening the "plot_sys_efficiency.cpp" and choosing to comment and uncoment the Muon ID and quantity you desire. This process may take several minutes to complete.</p>
+<p>The systematic error will be estimated by making small changes in the fit, in this case the changes were: "2x gaus" witch means fitting with two gaussians, "Mass Up" witch means making the mass window bigger, "Mass Down" witch means making the mass window smaller, "Bin up" witch means making the fit with more bins and "Bin down" witch means making the fit with less bins.</p>
+<p>In order to do the next step you will have to run the "plot_sys_efficiency.cpp" for the Pt of both global and tracker Muons, so to get the Pt for the traker Muons the code should look like this.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//Which Muon Id do you want to study?</span>
+<span class="n">string</span><span class="w"> </span><span class="n">MuonId</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;trackerMuon&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="c1">//string MuonId   = &quot;standaloneMuon&quot;;</span>
+<span class="c1">//string MuonId   = &quot;globalMuon&quot;;</span>
+
+<span class="c1">//Which quantity do you want to use?</span>
+<span class="n">string</span><span class="w"> </span><span class="n">quantity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Pt&quot;</span><span class="p">;</span><span class="w">     </span><span class="kt">double</span><span class="w"> </span><span class="n">bins</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">0.</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.6</span><span class="p">,</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span><span class="w"> </span><span class="mf">4.4</span><span class="p">,</span><span class="w"> </span><span class="mf">4.7</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w"> </span><span class="mf">5.6</span><span class="p">,</span><span class="w"> </span><span class="mf">5.8</span><span class="p">,</span><span class="w"> </span><span class="mf">6.0</span><span class="p">,</span><span class="w"> </span><span class="mf">6.2</span><span class="p">,</span><span class="w"> </span><span class="mf">6.4</span><span class="p">,</span><span class="w"> </span><span class="mf">6.6</span><span class="p">,</span><span class="w"> </span><span class="mf">6.8</span><span class="p">,</span><span class="w"> </span><span class="mf">7.3</span><span class="p">,</span><span class="w"> </span><span class="mf">9.5</span><span class="p">,</span><span class="w"> </span><span class="mf">13.0</span><span class="p">,</span><span class="w"> </span><span class="mf">17.0</span><span class="p">,</span><span class="w"> </span><span class="mf">40.</span><span class="p">};</span><span class="w"></span>
+<span class="c1">//string quantity = &quot;Eta&quot;;    double bins[] = {-2.4, -1.4, -1.2, -1.0, -0.8, -0.5, -0.2, 0, 0.2, 0.5, 0.8, 1.0, 1.2, 1.4, 2.4};</span>
+<span class="c1">//string quantity = &quot;Phi&quot;;    double bins[] = {-3.0, -1.8, -1.6, -1.2, -1.0, -0.7, -0.4, -0.2, 0, 0.2, 0.4, 0.7, 1.0, 1.2, 1.6, 1.8, 3.0};</span>
+
+<span class="c1">//string quantity = &quot;Pt&quot;;     double bins[] = {0.0, 2.0, 3.4, 4.0, 5.0, 6.0, 8.0, 10.0, 40.};</span>
+<span class="c1">//string quantity = &quot;Eta&quot;;    double bins[] = {0.0, 0.4, 0.6, 0.95, 1.2, 1.4, 1.6, 1.8, 2.4};</span>
 </code></pre></div>
-<p>Function used to calculate the 2D efficiency. The <code>MuonId</code>, <code>xquantity</code>, <code>yquantity</code> and <code>prefix_name</code> are used to set the name and title of <code>TEfficiency*</code>. If <code>shouldWrite</code> is true, it writes the result in any root file opened.</p>
-<p>Same function idea as <code>TEfficiency* get_efficiency_2D(...)</code>, but it creates a <code>TH2D</code> objects instead which allows better control of uncertainty calculus.</p>
-<h2 id="make_th1dh">📄 make_TH1D.h<a class="headerlink" href="#make_th1dh" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="n">TH1D</span><span class="o">*</span><span class="w"> </span><span class="n">make_TH1D</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">**</span><span class="w"> </span><span class="n">values</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">*</span><span class="w"> </span><span class="n">bins</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nbins</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">quantity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">draw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span><span class="w"></span>
+<p>and like this to the global Muons.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//Which Muon Id do you want to study?</span>
+<span class="c1">//string MuonId   = &quot;trackerMuon&quot;;</span>
+<span class="c1">//string MuonId   = &quot;standaloneMuon&quot;;</span>
+<span class="n">string</span><span class="w"> </span><span class="n">MuonId</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;globalMuon&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">//Which quantity do you want to use?</span>
+<span class="n">string</span><span class="w"> </span><span class="n">quantity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Pt&quot;</span><span class="p">;</span><span class="w">     </span><span class="kt">double</span><span class="w"> </span><span class="n">bins</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">0.</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.6</span><span class="p">,</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span><span class="w"> </span><span class="mf">4.4</span><span class="p">,</span><span class="w"> </span><span class="mf">4.7</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w"> </span><span class="mf">5.6</span><span class="p">,</span><span class="w"> </span><span class="mf">5.8</span><span class="p">,</span><span class="w"> </span><span class="mf">6.0</span><span class="p">,</span><span class="w"> </span><span class="mf">6.2</span><span class="p">,</span><span class="w"> </span><span class="mf">6.4</span><span class="p">,</span><span class="w"> </span><span class="mf">6.6</span><span class="p">,</span><span class="w"> </span><span class="mf">6.8</span><span class="p">,</span><span class="w"> </span><span class="mf">7.3</span><span class="p">,</span><span class="w"> </span><span class="mf">9.5</span><span class="p">,</span><span class="w"> </span><span class="mf">13.0</span><span class="p">,</span><span class="w"> </span><span class="mf">17.0</span><span class="p">,</span><span class="w"> </span><span class="mf">40.</span><span class="p">};</span><span class="w"></span>
+<span class="c1">//string quantity = &quot;Eta&quot;;    double bins[] = {-2.4, -1.4, -1.2, -1.0, -0.8, -0.5, -0.2, 0, 0.2, 0.5, 0.8, 1.0, 1.2, 1.4, 2.4};</span>
+<span class="c1">//string quantity = &quot;Phi&quot;;    double bins[] = {-3.0, -1.8, -1.6, -1.2, -1.0, -0.7, -0.4, -0.2, 0, 0.2, 0.4, 0.7, 1.0, 1.2, 1.6, 1.8, 3.0};</span>
+
+<span class="c1">//string quantity = &quot;Pt&quot;;     double bins[] = {0.0, 2.0, 3.4, 4.0, 5.0, 6.0, 8.0, 10.0, 40.};</span>
+<span class="c1">//string quantity = &quot;Eta&quot;;    double bins[] = {0.0, 0.4, 0.6, 0.95, 1.2, 1.4, 1.6, 1.8, 2.4};</span>
 </code></pre></div>
-<p>Creates <strong>TH1D</strong>* histogram direclty from <code>values</code> which stores <code>doFit</code>'s outputs.</p>
-<ul>
-<li><code>int index</code> is related with the information above: <code>0</code> means all histogram and <code>1</code> means pass histogram. Choose the number due the histogram you are looking to make.</li>
-<li><code>double* bins</code> is used to set histogram bins limits.</li>
-<li><code>int nbins</code> represents the number of bins in <code>double* bins</code>.</li>
-<li><code>string quantity</code> supports <code>"Pt"</code>, <code>"Eta"</code> and <code>"Phi"</code> values.</li>
-<li>If <code>bool draw</code> it draws the plot on screen.</li>
-</ul>
-<h2 id="yields_n_errs_to_th2ds_binh">📄 yields_n_errs_to_TH2Ds_bin.h<a class="headerlink" href="#yields_n_errs_to_th2ds_binh" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">yields_n_errs_to_TH2Ds_bin</span><span class="p">(</span><span class="n">TH2D</span><span class="o">*</span><span class="w"> </span><span class="n">hist2d_all</span><span class="p">,</span><span class="w"> </span><span class="n">TH2D</span><span class="o">*</span><span class="w"> </span><span class="n">hist2d_pass</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">*</span><span class="w"> </span><span class="n">yields_n_errs</span><span class="p">)</span><span class="w"></span>
+<h2 id="systematic-efficiency-overplot">Systematic efficiency overplot<a class="headerlink" href="#systematic-efficiency-overplot" title="Permanent link">&para;</a></h2>
+<p>To better understand the results of the last part, this code will put all the different plots created previously in an image.</p>
+<div class="highlight"><pre><span></span><code><span class="n">root</span><span class="w"> </span><span class="n">overplot_efficiencies</span><span class="p">.</span><span class="n">cpp</span><span class="w"></span>
 </code></pre></div>
-<p>This function fills <code>hist2d_all</code> and <code>hist2d_pass</code> histogram in cell (x,y) with <code>yields_n_errs</code> which is a output from <code>doFit</code> functions.</p>
-<h2 id="dofits">📂 dofits<a class="headerlink" href="#dofits" title="Permanent link">&para;</a></h2>
-<p>Here is stored functions that measures the yields and errors from each bin fit.</p>
-<p>The return from each function follows this structure: <code>[yield_all, yield_pass, error_all, error_pass]</code>.</p>
-<p>Functions in this files are defined by:</p>
-<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="o">*</span><span class="w"> </span><span class="n">doFit</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">condition</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">MuonId</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">savePath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"></span>
+<p>You should get a result like this:</p>
+<p><img alt="Efficiency Systematic Overplot 1D" src="../../../../../images/analysis/cmsefficiency/Sys_Efficiency_overplot1d.png" /></p>
+<h2 id="2d-systematic-efficiency-overplot">2D Systematic efficiency overplot<a class="headerlink" href="#2d-systematic-efficiency-overplot" title="Permanent link">&para;</a></h2>
+<p>This code generates a 2D systematic efficiency overplot, it outputs a .root that contains the efficiency histograms that can be visualised by the root TBrowser.</p>
+<div class="highlight"><pre><span></span><code>root -l -b -q plot_sys_efficiency_2d.cpp 
 </code></pre></div>
-<ul>
-<li><code>string condition</code> selects the bin conditions.</li>
-<li><code>string MuonId</code> supports <code>"trackerMuon"</code>, <code>"standaloneMuon"</code> and <code>"globalMuon"</code> values.</li>
-<li><code>const char* savePath</code> where the fit output file from the fit will be saved for further checks.</li>
-</ul>
+<p>This is one of the graphs that will be generated.</p>
+<p><img alt="Efficiency Systematic Overplot 2D" src="../../../../../images/analysis/cmsefficiency/Sys_Efficiency_overplot2d.png" /></p>
 
               
             </article>
@@ -1760,7 +1729,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../overview/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview" rel="prev">
+        <a href="../04-comparison/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Comparison" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1769,20 +1738,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Overview
+              Comparison
             </div>
           </div>
         </a>
       
       
         
-        <a href="../../../../luminosity/lumi/" class="md-footer__link md-footer__link--next" aria-label="Next: Luminosity" rel="next">
+        <a href="../../sidebandreferenceguide/macro/" class="md-footer__link md-footer__link--next" aria-label="Next: The Macro" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Luminosity
+              The Macro
             </div>
           </div>
           <div class="md-footer__button md-icon">
