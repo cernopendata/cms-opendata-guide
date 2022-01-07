@@ -1,6 +1,6 @@
 # Overview of fitting method
 
-The fitting method folder is structured in folders and main files. Main files are those ones that are used to run the most important codes. Below is a list of folders presented in this method and the files encontered here.
+The fitting method folder is structured in folders and main files. Main files are those ones that are used to run the most important codes. Below is a list of folders presented in this method and the files encontered here. It is important to note that this code has been tested on root 6.22/00.
 
 ## Fitting method folder structure
 

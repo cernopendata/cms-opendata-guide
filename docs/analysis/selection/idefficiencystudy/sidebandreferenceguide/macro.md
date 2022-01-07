@@ -1,6 +1,6 @@
 # The Macro
 
-A macro is a code file create to be interpreted by a program. In this case, ROOT program will interpret it. The main code of this tool is in the file `macro.ccp`. In this section what compose this file is explained in details.
+A macro is a code file create to be interpreted by a program. In this case, ROOT program will interpret it. The main code of this tool is in the file `macro.ccp`. In this section what compose this file is explained in details. It is important to note that this code has been tested on root 6.22/00.
 
 ## About the code
 

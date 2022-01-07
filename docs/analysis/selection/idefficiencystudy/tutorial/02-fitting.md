@@ -6,10 +6,10 @@ In order to run this exercise you do not really need to be in a CMSSW area.  It 
 
 For this example we assume you will be working in either the Docker container or the virtual machine.
 
-Since we will be needing ROOT version greater than 6, then do not forget to set it up from LCG (as you learned in the ROOT pre-exercise) by doing:
+Since we will be needing ROOT version greater than 6 and this code has been tested in root version 6.22/00, do not forget to set it up from LCG (as you learned in the ROOT pre-exercise) by doing:
 
 ```sh
-source /cvmfs/sft.cern.ch/lcg/views/LCG_95/x86_64-slc6-gcc8-opt/setup.sh
+source /cvmfs/sft.cern.ch/lcg/views/LCG_98/x86_64-slc6-gcc8-opt/setup.sh
 ```
 
 Clone the repository and go to the fitting method tutorial:
