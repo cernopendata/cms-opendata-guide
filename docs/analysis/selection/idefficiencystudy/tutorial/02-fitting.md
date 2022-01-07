@@ -19,19 +19,9 @@ git clone git://github.com/allanjales/TagAndProbe
 cd TagAndProbe/efficiency_tools/fitting
 ```
 
-You will also need to download the Run2011AMuOnia_mergeNtuple.root file using this link.
+You will also need to download the simplified TagAndProbe_Jpsi_Run2011.root data set using [this link](https://cernbox.cern.ch/index.php/s/lqHEasYWJpOZsfq) and put it on the `DATA` folder.
 
-```sh
-https://cernbox.cern.ch/index.php/s/lqHEasYWJpOZsfq
-```
-
-## Data simplifying
-
-In order to run this code, use this command to simplify the data so that it can be read by the RooFit root library.
-
-```sh
-root simplify_data.cpp 
-```
+If you are trying to use other ntuple and it does not have the simplied version of that, it should be simplied with `simplify_data.cpp` in order to run the fitting method over it. Details about this process can be found in [Overview page of reference guide for fitting method](../../fittingreferenceguide/overview#simplify_datacpp).
 
 ## The Fitting Method
 

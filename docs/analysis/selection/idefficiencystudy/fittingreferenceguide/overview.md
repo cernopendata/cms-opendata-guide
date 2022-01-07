@@ -34,7 +34,9 @@ TFile *file0  = TFile::Open("INPUT_FILE_PATH.root");
 TFile *fileIO = TFile::Open("OUTPUT_FILE_PATH.root","RECREATE");
 ```
 
-Every user should run this code firstly to simplify `.root` files on fitting method.
+Every user should run this code firstly to simplify `.root` files in order to use it in fitting method.
+
+The input files here are provenient from the main Tag and Probe tool in this repository. If you want to get a new ntuple, you should run it.
 
 ### 📄 efficiency.cpp
 

@@ -6,6 +6,9 @@ A macro is a code file create to be interpreted by a program. In this case, ROOT
 
 `macro.cpp` is a example how to use Sideband Subtraction to get reconstruction efficiencies for a *Tag & Probe* ntupple. It analyzes **J/psi** and **Upsilon** reconstruction efficiency for **tracker**, **standalone** and **global** muons. The file is encountered in folder `main`. Now, I going to talk about what this function do and how it does in the text below.
 
+!!! Dataset used
+    The datasets used in this code are obtained with the main code of this Tag an Probe tool.
+
 ## Classes list
 
 There are some classes in Sideband Subtraction Tag And Probe project and they are distributed in these files with same name:
