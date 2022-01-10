@@ -38,8 +38,8 @@ cd TagAndProbe/efficiency_tools/fitting
 You will also need to download the file `TagAndProbe_Jpsi_Run2011.root` from folder `simplified_datasets_for_fitting_method` using [this link](https://cernbox.cern.ch/index.php/s/lqHEasYWJpOZsfq) and put it on the `DATA` folder in your local area. To do so, just run commands below:
 
 ```sh
-scp alland@lxplus.cern.ch:/eos/user/a/alland/TagProbe/simplified_datasets_for_fitting_method/TagAndProbe_Jpsi_Run2011.root DATA
-scp alland@lxplus.cern.ch:/eos/user/a/alland/TagProbe/simplified_datasets_for_fitting_method/TagAndProbe_Jpsi_MC.root DATA
+wget -O DATA/TagAndProbe_Jpsi_Run2011.root "https://cernbox.cern.ch/index.php/s/lqHEasYWJpOZsfq/download?path=%2Fsimplified_datasets_for_fitting_method&files=TagAndProbe_Jpsi_Run2011.root" DATA
+wget -O DATA/TagAndProbe_Jpsi_MC.root "https://cernbox.cern.ch/index.php/s/lqHEasYWJpOZsfq/download?path=%2Fsimplified_datasets_for_fitting_method&files=TagAndProbe_Jpsi_MC.root" DATA
 ```
 
 If you are trying to use other ntuple and it does not have the simplified version of that, it should be simplified with `simplify_data.cpp` in order to run the fitting method over it. Details about this process can be found at [overview page of reference guide for fitting method](../../fittingreferenceguide/overview#simplify_datacpp).
@@ -58,7 +58,7 @@ The fit, which is made in a different space (the invariant mass space) allows to
 
 At the end of the day, then, you will have to make these fits for each bin in the range of interest.
 
-![Fitting method scheme](../../../../../images/analysis/selection/idefficiencystudy/tutorial/fitting_method_large.png)
+![Fitting method scheme](../../../../../images/analysis/selection/idefficiencystudy/tutorial/02/fitting_method_large.png)
 
 Let's start exploring our dataset. From the cloned directory, type:
 
@@ -338,8 +338,9 @@ Now you should have a new folder called "Comparison Run2011 vs MC" in it is the 
 
 If everything went well and you still have time to go, repeat this process for the two other variables, &eta; and &phi;!
 
-If you are stucked on root enviroment, do not forget about typing this command to exit it:
+!!! Note
+    If you are stucked on root enviroment, do not forget about typing this command to exit it:
 
-```sh
-.q
-```
+    ```sh
+    .q
+    ```
