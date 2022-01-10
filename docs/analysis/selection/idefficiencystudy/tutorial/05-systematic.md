@@ -1,4 +1,4 @@
-# Systematic
+# Procedures and strategy for estimating the systematics uncertainties
 
 ## Setting it up
 
@@ -26,7 +26,7 @@ root simplify_data.cpp
 
 This will create a "TagAndProbe_Jpsi_Run2011.root" file, this process may take a few minutes. move the file to the DATA folder.
 
-## Generating uncertainties
+## Estimations of systematics uncertainty sources
 
 To estimate the systematic error we will need first to get some uncertainties from the DATA. So, to do that, run the following code.
 
@@ -34,11 +34,11 @@ To estimate the systematic error we will need first to get some uncertainties fr
 root -l -b -q plot_sys_efficiency.cpp
 ```
 
-By default this code will calculate the efficiency for the global muon Eta, this can be altered by opening the "plot_sys_efficiency.cpp" and choosing to comment and uncoment the Muon ID and quantity you desire. This process may take several minutes to complete.
+By default, this code will estimate the Muon ID efficiency for the Global Muon ID for |&eta;| distribution, this can be changed by opening the "plot_sys_efficiency.cpp" and commenting and uncommenting the **Muon ID** and **quantity** of your desire. This process may take several minutes to complete.
 
-The systematic error will be estimated by making small changes in the fit, in this case the changes were: "2x gaus" witch means fitting with two gaussians, "Mass Up" witch means making the mass window bigger, "Mass Down" witch means making the mass window smaller, "Bin up" witch means making the fit with more bins and "Bin down" witch means making the fit with less bins.
+The systematics uncertainties will be evaluate by making small changes in the fit on the invariant mass distribution of the resonance. For example, the J/ψ decaying in dimuons, in this case the changes were: 2x Gaussians ("2x gaus" as in the code) which means fitting with two gaussians. The other sources are the upper and under limits of invariant mass distribution and so "Mass Up" which means making the mass window bigger, "Mass Down" which means making the mass window smaller. Last source you can modify the bin size of the same distribution. "Bin up" means making the fit with more bins and "Bin down" means making the fit with less bins.
 
-In order to do the next step you will have to run the "plot_sys_efficiency.cpp" for the Pt of both global and tracker Muons, so to get the Pt for the traker Muons the code should look like this.
+In order to do the next step you will have to run the "plot_sys_efficiency.cpp" for the Pt of both global and tracker Muon. To get the Pt for the traker Muons the code should look like this.
 
 ```cpp
 //Which Muon Id do you want to study?
@@ -84,7 +84,7 @@ You should get a result like this:
 
 ![Efficiency Systematic Overplot 1D](../../../../../images/analysis/cmsefficiency/Sys_Efficiency_overplot1d.png)
 
-## 2D Systematic efficiency overplot
+## 2D Efficiency Map
 
 This code generates a 2D systematic efficiency overplot, it outputs a .root that contains the efficiency histograms that can be visualised by the root TBrowser.
 
@@ -95,3 +95,5 @@ root -l -b -q plot_sys_efficiency_2d.cpp
 This is one of the graphs that will be generated.
 
 ![Efficiency Systematic Overplot 2D](../../../../../images/analysis/cmsefficiency/Sys_Efficiency_overplot2d.png)
+
+It is noteworthy that the uncertainties presented above in the 2d map are already the quadrature sum of systematics and statistical uncertainties.

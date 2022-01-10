@@ -1,4 +1,4 @@
-# Comparison
+# How to make a comparison between two previous methods of signal extraction
 
 ## How sideband subtraction method code stores its files
 

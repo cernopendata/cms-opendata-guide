@@ -12,16 +12,38 @@ Since we will be needing ROOT version greater than 6 and this code has been test
 source /cvmfs/sft.cern.ch/lcg/views/LCG_98/x86_64-slc6-gcc8-opt/setup.sh
 ```
 
-Clone the repository and go to the fitting method tutorial:
+It is important to metion that codes used in this tutorial uses ROOT batch. So, if you are connecting to a remote compute, do not forget about using `-X` parameter like so:
+
+```sh
+ssh -X your@remote.computer
+```
+
+To get sure if everything will run alright, you might want to try this command:
+
+
+```sh
+root
+gROOT->IsBatch()
+.q
+```
+
+If the output has the `true` value, everything was setted up.
+
+Now, clone the repository and go to the fitting method tutorial:
 
 ```sh
 git clone git://github.com/allanjales/TagAndProbe
 cd TagAndProbe/efficiency_tools/fitting
 ```
 
-You will also need to download the simplified TagAndProbe_Jpsi_Run2011.root data set using [this link](https://cernbox.cern.ch/index.php/s/lqHEasYWJpOZsfq) and put it on the `DATA` folder.
+You will also need to download the file `TagAndProbe_Jpsi_Run2011.root` from folder `simplified_datasets_for_fitting_method` using [this link](https://cernbox.cern.ch/index.php/s/lqHEasYWJpOZsfq) and put it on the `DATA` folder in your local area. To do so, just run commands below:
 
-If you are trying to use other ntuple and it does not have the simplied version of that, it should be simplied with `simplify_data.cpp` in order to run the fitting method over it. Details about this process can be found in [Overview page of reference guide for fitting method](../../fittingreferenceguide/overview#simplify_datacpp).
+```sh
+scp alland@lxplus.cern.ch:/eos/user/a/alland/TagProbe/simplified_datasets_for_fitting_method/TagAndProbe_Jpsi_Run2011.root DATA
+scp alland@lxplus.cern.ch:/eos/user/a/alland/TagProbe/simplified_datasets_for_fitting_method/TagAndProbe_Jpsi_MC.root DATA
+```
+
+If you are trying to use other ntuple and it does not have the simplified version of that, it should be simplified with `simplify_data.cpp` in order to run the fitting method over it. Details about this process can be found at [overview page of reference guide for fitting method](../../fittingreferenceguide/overview#simplify_datacpp).
 
 ## The Fitting Method
 
@@ -53,7 +75,7 @@ Attaching file TagAndProbe_Jpsi_MC.root as _file0...
 (TFile *) 0x563c69a68d90
 ```
 
-Of course, you can explore this file, if you want, using all the tools you learn in the ROOT pre-exercise.  This file contains ntuples that were obtained using procedures similar to the ones you have been learning in this workshop.
+Of course, you can explore this file if you want using all the tools you learn in the ROOT. This file contains datas that were obtained using procedures the main tag and probe code.
 
 !!! Note
     In the following plots, remember that the units of the x axis are in GeV/c.
@@ -83,7 +105,7 @@ As you may have seen, after exploring the content of the root file, the tagandpr
 | PassingProbeStandAloneMuon |
 | PassingProbeGlobalMuon |
 
-We'll start by calculating the efficiency as a function of pT.  It is useful to have an idea of the distribution of the quantity we want to study. In order to do this, we’ll repeat the steps previously used to plot the invariant mass, but now for the `ProbeMuon_Pt` variable.
+We'll start by calculating the efficiency as a function of pT. It is useful to have an idea of the distribution of the quantity we want to study. In order to do this, we’ll repeat the steps previously used to plot the invariant mass, but now for the `ProbeMuon_Pt` variable.
 
 ```cpp
 tagandprobe->Draw("ProbeMuon_Pt")
@@ -91,7 +113,7 @@ tagandprobe->Draw("ProbeMuon_Pt")
 
 ![pT plot of data in linear scale](../../../../../images/analysis/cmsefficiency/tutorial/02/ProbeMuonPt.png)
 
-Hmm.. seems like our domain is larger than we need it to be. To fix this, we can apply a constraint to our plot. Try:
+Hmm... seems like our domain is larger than we need it to be. To fix this, we can apply a constraint to our plot. Try:
 
 ```cpp
 tagandprobe->Draw("ProbeMuon_Pt", "ProbeMuon_Pt < 20")
@@ -106,19 +128,23 @@ Exit ROOT and get back to the main area:
 cd ..
 ```
 
-Now that you're acquainted with the data, open the  `efficiency.cpp` file.
-You'll have to make some small adjustments to the code in this section:
+Now that you're acquainted with the data, open the  `efficiency.cpp` file and make some small adjustments to the code in this section:
 
-We'll start by choosing the desired bins for the transverse momentum, so the only quantity that shouldnt be commented is the first Pt as shown bellow.
+We'll start by choosing the desired muon id and bins for it the transverse momentum, so the lines that shouldn't be commented are the "trackerMuon" and the first "Pt" as shown below. All other lines in this section should be commented.
 
 ```cpp
+//Which Muon Id do you want to study?
+string MuonId   = "trackerMuon";
+//string MuonId   = "standaloneMuon";
+//string MuonId   = "globalMuon";
+
 //Which quantity do you want to use?
 string quantity = "Pt";     double bins[] = {0., 2.0, 3.4, 4.0, 4.4, 4.7, 5.0, 5.6, 5.8, 6.0, 6.2, 6.4, 6.6, 6.8, 7.3, 9.5, 13.0, 17.0, 40.};
 //string quantity = "Eta";    double bins[] = {-2.4, -1.8, -1.4, -1.2, -1.0, -0.8, -0.5, -0.2, 0, 0.2, 0.5, 0.8, 1.0, 1.2, 1.4, 1.8, 2.4};
 //string quantity = "Phi";    double bins[] = {-3.0, -1.8, -1.6, -1.2, -1.0, -0.7, -0.4, -0.2, 0, 0.2, 0.4, 0.7, 1.0, 1.2, 1.6, 1.8, 3.0};
 ```
 
-## The Fit
+## The Probability Density Function used for modeling signal and background
 
 We execute a simultaneous fit using a Gaussian curve and a Crystall Ball function. For the background we use a Exponential. The function used, `doFit_Jpsi_Run_h()`, is implemented in the source file `src/dofits/doFit_Jpsi_Run.h`.
 
@@ -248,7 +274,12 @@ Now that you understand what the ``efficiency.cpp`` macro does, run your code wi
 root -l -b -q efficiency.cpp
 ```
 
-If everything went correctly you should have a 'Pt_globalMuon.root' in the path below.
+!!! Note
+    Some `[#1] INFO` messages will pop up on the terminal. They are expected. Do not worry about it.
+
+    There is some `[#0] WARNING:` that should pop up too. They say about ignoring some events. They appear due cuts we are making directly on variables limits. It is ok, just ignore it.
+
+If everything went correctly you should have a 'Pt_tracekrMuon.root' in the path below.
 
 ```sh
 cd results/efficiencies/efficiency/Jpsi_Run_2011/
@@ -260,7 +291,9 @@ We will need to run the code again with a few changes so go back to the main fil
 cd ../../../..
 ```
 
-Now we need to create the Monte Carlo(MC) data to compare with the real one, in order to do that we will need to change the ´efficiency.cpp´ code, you will have to include the ´#include "src/dofits/DoFit_Jpsi_MC.h"´ and comment the ´#include "src/dofits/DoFit_Jpsi_Run.h"´ part, your code should look like this:
+## Efficiency evaluation between real data and Monte Carlo simulations
+
+Now we need to create the Monte Carlo (MC) data to compare with the real one, in order to do that we will need to change the ´efficiency.cpp´ code, you will have to include the ´#include "src/dofits/DoFit_Jpsi_MC.h"´ and comment the ´#include "src/dofits/DoFit_Jpsi_Run.h"´ part, your code should look like this:
 
 ```cpp
 //Change if you need
@@ -271,9 +304,9 @@ Now we need to create the Monte Carlo(MC) data to compare with the real one, in 
 #include "src/make_TH1D.h"
 
 //Which Muon Id do you want to study?
-//string MuonId   = "trackerMuon";
+string MuonId   = "trackerMuon";
 //string MuonId   = "standaloneMuon";
-string MuonId   = "globalMuon";
+//string MuonId   = "globalMuon";
 
 //Which quantity do you want to use?
 string quantity = "Pt";     double bins[] = {0., 2.0, 3.4, 4.0, 4.4, 4.7, 5.0, 5.6, 5.8, 6.0, 6.2, 6.4, 6.6, 6.8, 7.3, 9.5, 13.0, 17.0, 40.};
@@ -283,50 +316,31 @@ string quantity = "Pt";     double bins[] = {0., 2.0, 3.4, 4.0, 4.4, 4.7, 5.0, 5
 
 ```
 
-Run the efficiency.cpp again and you will have 2 new folders at results/efficiencies/efficiency one "Jpsi_MC_2020" and other "Jpsi_Run_2011".If you want to see each individual efficiency you can use the TBrowser to open the globalMuon_Pt_efficiency file.
+Run the `efficiency.cpp` again and you will have 2 new folders at `results/efficiencies/efficiency/` one `Jpsi_MC_2020` and other `Jpsi_Run_2011`. If you want to see each individual efficiency, you can use the `new TBrowser` command to open the `trackerMuon_Pt_efficiency.root` file.
 
-Now, in order to make the comparison between real and MC data we will need to change the efficiency.cpp once more, to do this you must include #include the "compare_efficiency.cpp" and put the code below in the efficiency.cpp file.
+Now, in order to make the comparison between real and MC data we will need to run a code in folder `tests` named `compare_efficiency.cpp`. To run this command from where you are, first load this file on ROOT with the command below:
 
 ```sh
-compare_efficiency(quantity, "results/efficiencies/efficiency/Jpsi_Run_2011/Pt_globalMuon.root", "results/efficiencies/efficiency/Jpsi_MC_2020/Pt_globalMuon.root");
+root -l 
+.L tests/compare_efficiency.cpp
 ```
 
-So your code should look like this.
+Now you have the function `compare_efficiency(...)` we made loaded on your root. This function have three arguments. The first one should be the quatity that we are analysing (in this case "Pt", but could be "Eta" and "Phi"). The second and third parameter are paths which points to .root folders created previously in this page.
 
-```cpp
-//Change if you need
-//#include "src/dofits/DoFit_Jpsi_Run.h"
-#include "src/dofits/DoFit_Jpsi_MC.h"
-#include "src/create_folder.h"
-#include "src/get_efficiency.h"
-#include "src/make_TH1D.h"
-#include "tests/compare_efficiency.cpp"
+So now, in order to make the comparison between real and MC data on pT, you should run this command to get your result:
 
-//Which Muon Id do you want to study?
-//string MuonId   = "trackerMuon";
-//string MuonId   = "standaloneMuon";
-string MuonId   = "globalMuon";
-
-//Which quantity do you want to use?
-string quantity = "Pt";     double bins[] = {0., 2.0, 3.4, 4.0, 4.4, 4.7, 5.0, 5.6, 5.8, 6.0, 6.2, 6.4, 6.6, 6.8, 7.3, 9.5, 13.0, 17.0, 40.};
-//string quantity = "Eta";    double bins[] = {-2.4, -1.8, -1.4, -1.2, -1.0, -0.8, -0.5, -0.2, 0, 0.2, 0.5, 0.8, 1.0, 1.2, 1.4, 1.8, 2.4};
-//string quantity = "Phi";    double bins[] = {-3.0, -1.8, -1.6, -1.2, -1.0, -0.7, -0.4, -0.2, 0, 0.2, 0.4, 0.7, 1.0, 1.2, 1.6, 1.8, 3.0};
-//string quantity = "Pt";     double bins[] = {0., 40.};
-
-void efficiency()
-{
-
-    compare_efficiency(quantity, "results/efficiencies/efficiency/Jpsi_Run_2011/Pt_globalMuon.root", "results/efficiencies/efficiency/Jpsi_MC_2020/Pt_globalMuon.root");
-
-    //Path where is going to save results png for every bin
-    const char* path_bins_fit_folder = "results/bins_fit/efficiency/";
-    create_folder(path_bins_fit_folder, true);
+```sh
+compare_efficiency("Pt", "results/efficiencies/efficiency/Jpsi_Run_2011/Pt_trackerMuon.root", "results/efficiencies/efficiency/Jpsi_MC_2020/Pt_trackerMuon.root");
 ```
-
-If you want you can comment everything below the compare_efficiency(be cafefull not to comment the last "}")
 
 Now you should have a new folder called "Comparison Run2011 vs MC" in it is the comparison that you just made.
 
-![GlobalMuon Pt Efficiency](../../../../../images/analysis/cmsefficiency/tutorial/02/globalMuon_Pt_Efficiency.png)
+![Tracker Muon Pt Efficiency](../../../../../images/analysis/cmsefficiency/tutorial/02/globalMuon_Pt_Efficiency.png)
 
 If everything went well and you still have time to go, repeat this process for the two other variables, &eta; and &phi;!
+
+If you are stucked on root enviroment, do not forget about typing this command to exit it:
+
+```sh
+.q
+```
