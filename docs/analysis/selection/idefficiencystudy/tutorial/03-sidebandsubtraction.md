@@ -6,21 +6,18 @@ The reconstruction efficiency is calculated using **only signal muons**. In orde
 
 This method consists in choosing sideband and signal regions in invariant mass distribution. The sideband regions (shaded in red in the figure) have background particles and the signal region (shared in green in the figure) has background and signal particles.
 
-![Invariant Mass histogram](../../../../../images/analysis/selection/idefficiencystudy/tutorial/03/InvariantMass_Tracker_region.png)
+![Invariant Mass histogram](../../../../../images/analysis/selection/idefficiencystudy/tutorial/03/InvariantMass_Tracker_region.svg)
 
 !!! Note
     The background corresponds to candidates that do not correspond to the decay of a genuine resonance; for example, the pair is formed by the tag muon associated to an uncorrelated track produced elsewhere in the collision; the corresponding invariant mass has thus a smooth continuous shape, that is extrapolated from the signal regions into the sideband region.
-
-!!! Note
-    We choose only the ϒ (1S) signal for selecting the signal region; simulation information is further available for this resonance, allowing in the end for a comparison of results, between data and simulation.
 
 For each event category (i.e. Pass and All), and for a given variable of interest (e.g., the probe pT), two distributions are obtained, one for each region (Signal and Sideband). In order to obtain the variable distribution for the signal only, we proceed by subtracting the Background distribution (Sideband region) from the Signal+Background one (Signal region):
 
 ![Sideband Subtraction equation](../../../../../images/analysis/selection/idefficiencystudy/tutorial/03/subtraction.svg)
 
-Where the normalization α factor quantifies the quantity of background present in the signal region>
+Where the normalization α factor quantifies the quantity of background present in the signal region:
 
-![Alpha factor equation](../../../../../images/analysis/selection/idefficiencystudy/tutorial/03/alpha.svg")
+![Alpha factor equation](../../../../../images/analysis/selection/idefficiencystudy/tutorial/03/alpha.svg)
 
 And for the uncertainty:
 
@@ -28,7 +25,7 @@ And for the uncertainty:
 
 Applying those equations we get histograms like this:
 
-![Tracker_Probe_Pt_Passing histogram](../../../../../images/analysis/selection/idefficiencystudy/tutorial/03/Tracker_Probe_Pt_Passing.png)
+![Tracker_Probe_Pt_Passing histogram](../../../../../images/analysis/selection/idefficiencystudy/tutorial/03/Tracker_Probe_Pt_Passing.svg)
 
 * Solid blue line (Total) = particles in signal region;
 * Dashed blue line (Background) = particles in sideband regions;
@@ -37,28 +34,26 @@ Applying those equations we get histograms like this:
 You will see this histogram on this exercise.
 
 !!! Note "About this code"
-    More info about this code can be [found here](http://tagandprobe-documentation.web.cern.ch/tagandprobe-documentation/).
+    More info about this code can be found in the [reference guide](../../sidebandreferenceguide/macro/).
 
 ## Preparing files
 
-First, from the root folder of our downloades repository, we need to go sideband subtraction method tutorial:
+First, from the root folder of our downloaded repository, we need to go sideband subtraction method tutorial:
 
 ```sh
 cd efficiency_tools/sideband_subtraction
 ```
 
-To copy the ϒ dataset from real data file to your machine (requires 441 MB), type:
+To copy the J/&psi; dataset of real data file to your machine (requires 3,3 GB), type:
 
 ```sh
-wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1Fj-rrKts8jSSMdwvOnvux68ydZcKB521' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1Fj-rrKts8jSSMdwvOnvux68ydZcKB521" -O Run2011A_MuOnia_Upsilon.root && rm -rf /tmp/cookies.txt
+wget -O Run2011AMuOnia_mergeNtuple.root "https://cernbox.cern.ch/index.php/s/lqHEasYWJpOZsfq/download?files=Run2011AMuOnia_mergeNtuple.root"
 ```
 
-This code downloads the file directly from Google Drive.
-
-Run this code to download the simulation ntuple for ϒ (requires 66 MB):
+Run this code to download the simulation dataset for J/&psi; (requires 492 MB):
 
 ```sh
-wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1ZzAOOLCKmCz0Q6pVi3AAiYFGKEpP2efM' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1ZzAOOLCKmCz0Q6pVi3AAiYFGKEpP2efM" -O Upsilon1SToMuMu_MC_full.root && rm -rf /tmp/cookies.txt
+wget -O JPsiToMuMu_mergeMCNtuple.root "https://cernbox.cern.ch/index.php/s/lqHEasYWJpOZsfq/download?files=JPsiToMuMu_mergeMCNtuple.root"
 ```
 
 Now, check if everything is ok:
@@ -68,17 +63,17 @@ ls
 ```
 
 ```plaintext
-main  README.md  Run2011A_MuOnia_Upsilon.root  Upsilon1SToMuMu_MC_full.root
+JPsiToMuMu_mergeMCNtuple.root  main  README.md  Run2011AMuOnia_mergeNtuple.root
 ```
 
-Your `efficiency_tagandprobe` folder should have these files:
+Your `sideband_subtraction` folder should have these files:
 
-![Files in efficiency_tagandprobe folder](../../../../../images/analysis/selection/idefficiencystudy/tutorial/03/files_sideband.png)
+![Files in sideband_subtraction folder](../../../../../images/analysis/selection/idefficiencystudy/tutorial/03/files_sideband.png)
 
 ## Preparing code for Data
 
 !!! Note
-    I will teach you to manage the files on the terminal, but you can use a graphical file explorer.
+    This tutorial will teach you to manage the files on the terminal, but you can use a graphical file explorer or any other way you are used to.
 
 We need to edit some settings. Open **settings.cpp**:
 
@@ -88,7 +83,7 @@ ls
 ```
 
 ```plaintext
-cuts.h  settings.cpp
+createHistogram.h  cuts.h  settings.cpp
 ```
 
 There are different ways to open this file. You can try to run:
@@ -123,9 +118,14 @@ bool shouldDrawEfficiencyCanvas          = true;
 bool doTracker    = true;
 bool doStandalone = false;
 bool doGlobal     = false;
+
+//quantity analyse
+bool doPt  = true;
+bool doEta = true;
+bool doPhi = true;
 ```
 
-We want to calculate the efficiency using specific files that we downloaded. They name are `Run2011A_MuOnia_Upsilon.root` and `Upsilon1SToMuMu_MC_full.root` and are listed in `const char *files[]`. While **settings.cpp** is open, try to use the variable `int useFile` to run `Run2011A_MuOnia_Upsilon.root`.
+We want to calculate the efficiency using specific files that we downloaded. They name are `Run2011AMuOnia_mergeNtuple.root` and `JPsiToMuMu_mergeMCNtuple.root` and are listed in `const char *files[]`. While **settings.cpp** is open, try to use the variable `int useFile` to run `Run2011AMuOnia_mergeNtuple.root`.
 
 ??? Example "How to do this"
     Make sure `useFile` is correct:
@@ -148,7 +148,7 @@ We want to calculate the efficiency using specific files that we downloaded. The
     //MAIN OPTIONS
     
     //Which file of files (variable above) should use
-    int useFile = 3;
+    int useFile = 1;
     ```
    
     It will tell which configuration the program will use. So, the macro will run with the ntuple in `files[useFile]` and the results will be stored in `directoriesToSave[useFile]`.
@@ -156,26 +156,14 @@ We want to calculate the efficiency using specific files that we downloaded. The
     the first three files won't be used in this execise.
 
 !!! Note "About code"
-    Normally we need to set the variables `bool isMC` and `const char* resonance`, but at this time it is already done and set automatically for these ntuples' names.
+    Normally we need to set the variable `const char* resonance`, but at this time it is already done and set automatically for these ntuples' names.
 
 ## Editting bins
 
-The code allows to define the binning of the kinematic variable, to ensure each bin is sufficiently populated, for increased robustness. To change the binning, locate **PassingFailing.h**
+The code allows to define the binning of the kinematic variable, to ensure each bin is sufficiently populated, for increased robustness. To change the binning, open **createHistogram.h** that is on same folder that **settings.cpp**:
 
 ```sh
-cd ../classes
-ls
-```
-
-```plaintext
-FitFunctions.h   MassValues.h      PtEtaPhi.h             TagProbe.h
-InvariantMass.h  PassingFailing.h  SidebandSubtraction.h  Type.h
-```
-
-And then Open **PassingFailing.h**
-
-```sh
-gedit PassingFailing.h
+gedit createHistogram.h
 ```
 
 Search for the `createEfficiencyPlot(...)` function. You'll find something like this:
@@ -245,7 +233,7 @@ else
 
 The code that creates the histogram bins is located inside the conditionals and is commented. You can edit this code and uncomment to create histogram bins however you want. Instead of using a function to generate the bins, we can also define them manually.
 
-As we intend to compare the results between data and simulation, but also between the sideband and fitting methods. You are advised to employ the same bin choice. Garantee your the code uses same bin as the previus this:
+As we intend to compare the results between data and simulation, but also between the sideband and fitting methods. You are advised to employ the same bin choice. Garantee your the code uses same bin as the previous here:
 
 ```cpp
     //Variable bin for pT
@@ -296,17 +284,20 @@ root -l -b -q macro.cpp
 ```
 
 ```plaintext
-"../results/Upsilon Run 2011/" directory created OK
-Using "../Run2011A_MuOnia_Upsilon.root" ntuple
-resonance: Upsilon
-Using method 2
-Data analysed = 986100 of 986100
+"../results/Jpsi_Run_2011/" directory created OK
+Using "../Run2011AMuOnia_mergeNtuple.root" ntupple
+resonance: Jpsi
+Using subtraction factor as integral of background fit
+Data analysed = 5950253 of 5950253
 ```
 
-In this process, more informations will be printed in terminal while plots will be created on specified (these plots are been saved in a folder). The message below tells you that code has finished running:
+!!! Note
+    As this dataset is larger, the code will run slowly. It can take several minutes to be completed depending where the code is been running. 
+
+In this process, more informations will be printed in terminal while plots will be created on a specified folder. The message below tells you that code has finished running:
 
 ```plaintext
-Done. All result files can be found at "../results/Upsilon_Run_2011/"
+Done. All result files can be found at "../results/Jpsi_Run_2011/"
 
 ```
 
@@ -331,15 +322,15 @@ If all went well, your results are going to be like these:
 
 ## Preparing and running the code for simulation
 
-??? Example "Challenge"
-    Try to run the same code on the `Upsilon1SToMuMu_MC_full.root` file we downloaded.
+!!! Tip "Challenge"
+    Try to run the same code on the `JPsiToMuMu_mergeMCNtuple.root` file we downloaded.
 
-    !!! Tip
+    ??? Example "Tip"
 
-        You will need the redo the steps above, setting:
+        You will need the redo the steps above, but setting:
         
         ```cpp
-        int useFile = 4;
+        int useFile = 2;
         ```
 
         in `main/config/settings.cpp` file.
@@ -350,18 +341,16 @@ If all went well, your results are going to be like these:
 ---
 
 !!! Tip "Extra challenge"
-    If you are looking for an extra exercise, you can try to apply the same logic, changing some variables you saw, in order to get results for the J/ψ nutpple.
+    If you are looking for an extra exercise, you can try to apply the same logic, changing some variables you saw, in order to get results for the &Upsilon; nutpple.
 
-    To download the J/ψ real data ntupple (requires 3.3 GB):
-
-    ```sh
-    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=16OqVrHIB4wn_5X8GEZ3NxnAycZ2ItemZ' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=16OqVrHIB4wn_5X8GEZ3NxnAycZ2ItemZ" -O Run2011AMuOnia_mergeNtuple.root && rm -rf /tmp/cookies.txt
-    ```
-
-    To download the J/ψ simulated data ntuple (requires 515 MB):
+    To download the &Upsilon; real data ntupple (requires 442 MB):
 
     ```sh
-    wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1dKLJ5RIGrBp5aIJrvOQw5lWLQSHUgEnf' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1dKLJ5RIGrBp5aIJrvOQw5lWLQSHUgEnf" -O JPsiToMuMu_mergeMCNtuple.root && rm -rf /tmp/cookies.txt
+    wget -O Run2011A_MuOnia_Upsilon.root "https://cernbox.cern.ch/index.php/s/lqHEasYWJpOZsfq/download?files=Run2011A_MuOnia_Upsilon.root"
     ```
 
-    As this dataset is larger, the code will run slowly. It can take several minutes to be completed depending where the code is been running
+    Run this code to download the simulation dataset for &Upsilon; (requires 67 MB):
+
+    ```sh
+    wget -O Upsilon1SToMuMu_MC_full.root "https://cernbox.cern.ch/index.php/s/lqHEasYWJpOZsfq/download?files=Upsilon1SToMuMu_MC_full.root"
+    ```

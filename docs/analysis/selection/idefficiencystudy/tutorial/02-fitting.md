@@ -35,11 +35,11 @@ git clone git://github.com/allanjales/TagAndProbe
 cd TagAndProbe/efficiency_tools/fitting
 ```
 
-You will also need to download the file `TagAndProbe_Jpsi_Run2011.root` from folder `simplified_datasets_for_fitting_method` using [this link](https://cernbox.cern.ch/index.php/s/lqHEasYWJpOZsfq) and put it on the `DATA` folder in your local area. To do so, just run commands below:
+You will also need to download the file `TagAndProbe_Jpsi_Run2011.root` from folder `simplified_datasets_for_fitting_method` using [this link](https://cernbox.cern.ch/index.php/s/lqHEasYWJpOZsfq) and put it on the `DATA` folder in your local area. To do so, just run commands below. These files requires 204 MB and 33 MB respectively:
 
 ```sh
-wget -O DATA/TagAndProbe_Jpsi_Run2011.root "https://cernbox.cern.ch/index.php/s/lqHEasYWJpOZsfq/download?path=%2Fsimplified_datasets_for_fitting_method&files=TagAndProbe_Jpsi_Run2011.root" DATA
-wget -O DATA/TagAndProbe_Jpsi_MC.root "https://cernbox.cern.ch/index.php/s/lqHEasYWJpOZsfq/download?path=%2Fsimplified_datasets_for_fitting_method&files=TagAndProbe_Jpsi_MC.root" DATA
+wget -O DATA/TagAndProbe_Jpsi_Run2011.root "https://cernbox.cern.ch/index.php/s/lqHEasYWJpOZsfq/download?path=%2Fsimplified_datasets_for_fitting_method&files=TagAndProbe_Jpsi_Run2011.root"
+wget -O DATA/TagAndProbe_Jpsi_MC.root "https://cernbox.cern.ch/index.php/s/lqHEasYWJpOZsfq/download?path=%2Fsimplified_datasets_for_fitting_method&files=TagAndProbe_Jpsi_MC.root"
 ```
 
 If you are trying to use other ntuple and it does not have the simplified version of that, it should be simplified with `simplify_data.cpp` in order to run the fitting method over it. Details about this process can be found at [overview page of reference guide for fitting method](../../fittingreferenceguide/overview#simplify_datacpp).
@@ -52,7 +52,7 @@ It consists on fitting the invariant mass of the tag & probe pairs, in the two c
 
 The procedure is applied after splitting the data in bins of a kinematic variable of the probe object (e.g. the traverse momentum, pT); as such, the efficiency will be measured as a function of that quantity for each of the bins.
 
-So, in the picture below, on the left, let's imagine that the pT bin we are selecting is the one marked in red.  But, of course, in that bin (like in the rest) you will have true J/ψ; decays as well as muon pairs from other processes (maybe QCD, for instance).  The true decays would make up our *signal*, whereas the other events will be considered the *background*.
+So, in the picture below, on the left, let's imagine that the pT bin we are selecting is the one marked in red.  But, of course, in that bin (like in the rest) you will have true J/&psi;; decays as well as muon pairs from other processes (maybe QCD, for instance).  The true decays would make up our *signal*, whereas the other events will be considered the *background*.
 
 The fit, which is made in a different space (the invariant mass space) allows to statistically discriminate between signal and background. To compute the efficiency we simply divide the signal yield from the fits to the `passing` category by the signal yield from the fit of the `inclusive` (All) category. This approach is depicted in the middle and right-hand plots of the image below.
 
@@ -96,13 +96,15 @@ The dataset used in this exercise has been collected by the CMS experiment, in p
 
 As you may have seen, after exploring the content of the root file, the tagandprobe tree has these variables:
 
-| InvarianMass |
-| ProbeMuon_Pt |
-| ProbeMuon_Eta |
-| ProbeMuon_Phi|
-| PassingProbeTrackingMuon |
-| PassingProbeStandAloneMuon |
-| PassingProbeGlobalMuon |
+| Type   | Name |
+|--------|--------------|
+| double | InvarianMass |
+| double | ProbeMuon_Pt |
+| double | ProbeMuon_Eta |
+| double | ProbeMuon_Phi |
+| int    | PassingProbeTrackingMuon |
+| int    | PassingProbeStandAloneMuon |
+| int    | PassingProbeGlobalMuon |
 
 We'll start by calculating the efficiency as a function of pT. It is useful to have an idea of the distribution of the quantity we want to study. In order to do this, we’ll repeat the steps previously used to plot the invariant mass, but now for the `ProbeMuon_Pt` variable.
 
