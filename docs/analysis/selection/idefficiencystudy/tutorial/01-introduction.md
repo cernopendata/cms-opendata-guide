@@ -17,7 +17,9 @@ The resonance, used to calculate the efficiencies, decays to a pair of particles
 
 The efficiency is given by the fraction of probe muons that pass a given criteria (in this case, the **Muon ID** which we explain [below](#cms-muon-identification-reconstruction)):
 
-![Efficiency equation](../../../../../images/analysis/cmsefficiency/efficiency.svg)
+AAAA
+
+![Efficiency equation](../../../../../images/analysis/selection/idefficiencystudy/tutorial/efficiency.svg)
 
 The denominator corresponds to the number of resonance candidates (tag+probe pairs) reconstructed in the dataset. The numerator corresponds to the subset for which the probe passes the criteria.
 
