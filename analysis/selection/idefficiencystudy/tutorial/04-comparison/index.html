@@ -1658,33 +1658,29 @@
 <h1 id="how-to-make-a-comparison-between-two-previous-methods-of-signal-extraction">How to make a comparison between two previous methods of signal extraction<a class="headerlink" href="#how-to-make-a-comparison-between-two-previous-methods-of-signal-extraction" title="Permanent link">&para;</a></h1>
 <h2 id="how-sideband-subtraction-method-code-stores-its-files">How sideband subtraction method code stores its files<a class="headerlink" href="#how-sideband-subtraction-method-code-stores-its-files" title="Permanent link">&para;</a></h2>
 <p>the Sideband subtraction code saves every efficiency plot in <code>efficiency/plots/</code> folder inside a single <code>generated_hist.root</code> file. Lets check it!</p>
-<p>You're probably on the <code>main</code> directory. Lets go back a directory.</p>
+<p>You're probably on the <code>main</code> directory. Lets go back one directory.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span> ..
 ls
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>main  README.md  results  Run2011A_MuOnia_Upsilon.root  Upsilon1SToMuMu_MC_full.root
+<div class="highlight"><pre><span></span><code>JPsiToMuMu_mergeMCNtuple.root  README.md  Run2011AMuOnia_mergeNtuple.root
+main                           results
 </code></pre></div>
 <p>A folder named <code>results</code> showed up on this folder. Lets go check its content.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span> results
 ls
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>Comparison_Upsilon_Sideband_Run_vs_MC  Upsilon_MC_2020  Upsilon_Run_2011
+<div class="highlight"><pre><span></span><code>Jpsi_MC_2020  Jpsi_Run_2011
 </code></pre></div>
 <p>If you did every step of the sideband subtraction on this page lesson, these results should match with the results on your pc. Access one of those folders (except comparison).</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> Upsilon_Run_2011
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> Jpsi_Run_2011
 ls
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>Efficiency_Tracker_Probe_Eta.png  Tracker_Probe_Phi_All.png
-Efficiency_Tracker_Probe_Phi.png  Tracker_Probe_Phi_Passing.png
-Efficiency_Tracker_Probe_Pt.png   Tracker_Probe_Pt_All.png
-Efficiency_Tracker_Tag_Eta.png    Tracker_Probe_Pt_Passing.png
-Efficiency_Tracker_Tag_Phi.png    Tracker_Tag_Eta_All.png
-Efficiency_Tracker_Tag_Pt.png     Tracker_Tag_Eta_Passing.png
-generated_hist.root               Tracker_Tag_Phi_All.png
-InvariantMass_Tracker.png         Tracker_Tag_Phi_Passing.png
-InvariantMass_Tracker_region.png  Tracker_Tag_Pt_All.png
-Tracker_Probe_Eta_All.png         Tracker_Tag_Pt_Passing.png
-Tracker_Probe_Eta_Passing.png
+<div class="highlight"><pre><span></span><code>Efficiency_Tracker_Probe_Eta.png  Tracker_Probe_Eta_All.png
+Efficiency_Tracker_Probe_Phi.png  Tracker_Probe_Eta_Passing.png
+Efficiency_Tracker_Probe_Pt.png   Tracker_Probe_Phi_All.png
+generated_hist.root               Tracker_Probe_Phi_Passing.png
+InvariantMass_Tracker.png         Tracker_Probe_Pt_All.png
+InvariantMass_Tracker_region.png  Tracker_Probe_Pt_Passing.png
 </code></pre></div>
 <p>Here, all the output plots you saw when running the sideband subtraction method are stored as a <code>.png</code>. Aside from them, there's a <code>generated_hist.root</code> that stores the efficiency in a way that we can manipulate it after. This file is needed to run the comparison between efficiencies for the sideband subtraction method. Lets look inside of this file.</p>
 <p>Run this command to open <code>generated_hist.root</code> with ROOT:</p>
@@ -1701,9 +1697,9 @@ root [1]
 <p>You should see something like this:</p>
 <p><img alt="TBrowser" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/04/prints/tbrowser0.png" /></p>
 <p>This is a visual navigator of a <code>.root</code> file. Here you can see the struture of <code>generated_hist.root</code>. Double click the folders to open them and see their content. The Efficiency plots we see are stored in <code>efficiency/plots/</code> folder:</p>
-<p><img alt="TBrowser showing plots folder" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/04/prints/tbrowser2.png" /></p>
+<p><img alt="TBrowser showing plots folder" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/04/prints/tbrowser1.png" /></p>
 <p>You can double click each plot to see its content:</p>
-<p><img alt="TBrowser showing efficiency plot for sideband subtraction method" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/04/prints/tbrowser3.png" /></p>
+<p><img alt="TBrowser showing efficiency plot for sideband subtraction method" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/04/prints/tbrowser2.png" /></p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>To close this window, click on terminal and press <code>Ctrl</code> + <code>C</code>. This command stops any processes happening in the terminal.</p>
@@ -1711,17 +1707,17 @@ root [1]
 <div class="admonition info">
 <p class="admonition-title">Key Point</p>
 <ul>
-<li>As you see, the <code>.root</code> file has a path inside and the efficiencies plots have paths inside them as well!</li>
+<li>As you see, the <code>.root</code> file has paths inside of it and the efficiencies plots have a self path inside them as well!</li>
 </ul>
 </div>
 <h2 id="comparison-results-between-real-data-and-simulations-for-sideband-method">Comparison results between real data and simulations for sideband method<a class="headerlink" href="#comparison-results-between-real-data-and-simulations-for-sideband-method" title="Permanent link">&para;</a></h2>
 <p>After runinng the sideband subtraction code, we get a <code>.root</code> with all the efficiencies plots inside it in two different folders:</p>
 <ul>
-<li><code>../results/Upsilon_Run_2011/generated_hist.root</code></li>
-<li><code>../results/Upsilon_MC_2020/generated_hist.root</code></li>
+<li><code>../results/Jpsi_Run_2011/generated_hist.root</code></li>
+<li><code>../results/Jpsi_MC_2020/generated_hist.root</code></li>
 </ul>
 <p>We'll get back to this on the discussion below.</p>
-<p>Head back to the <code>main</code> folder. Inside of it there is a code for the efficiency plot comparison. Lets check it out.</p>
+<p>Head back to the <code>main</code> folder. Inside of it there is a code for the efficiency plot comparison. Lets check it out. From the <code>sideband_subtraction</code> folder, type:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span> main
 ls
 </code></pre></div>
@@ -1741,10 +1737,15 @@ ls
 <span class="c1">//Upsilon Fitting  Run vs Upsilon Fitting  MC</span>
 <span class="c1">//Upsilon Sideband Run vs Upsilon Fitting  Run</span>
 
-<span class="c1">//Muon id analyze</span>
+<span class="c1">//Muon id analyse</span>
 <span class="kt">bool</span><span class="w"> </span><span class="n">doTracker</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
 <span class="kt">bool</span><span class="w"> </span><span class="n">doStandalone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
 <span class="kt">bool</span><span class="w"> </span><span class="n">doGlobal</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">//quantity analyse</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">doPt</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">doEta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">doPhi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1754,14 +1755,17 @@ ls
 <li><code>bool doTracker</code> is a variable that allow plots for tracker muons.</li>
 <li><code>bool doStandalone</code> is a variable that allow plots for standalone muons.</li>
 <li><code>bool doGlobal</code> is a variable that allow plots for global muons.</li>
+<li><code>bool doPt</code> is a variable that allow plots for muon pT.</li>
+<li><code>bool doEta</code> is a variable that allow plots for muon &eta;.</li>
+<li><code>bool doPhi</code> is a variable that allow plots for muon &phi;.</li>
 </ul>
 </div>
 <p>Everything is up to date to compare sideband subtraction's results between real data and simulations, except it is comparing standalone and global muons. As we are  looking for tracker muons efficiencies only, you should <strong>switch to false variables for Standalone and Global</strong>.</p>
-<p>Also, you will need to change the <code>useScheme</code> variable to plot what you want to plot. As we want to plot <strong>efficiency of real data and simulated data</strong>, the value has to be 3.</p>
+<p>Also, you will need to change the <code>useScheme</code> variable to plot what you want to plot. As we want to plot <strong>efficiency of real data and simulated data</strong>, the value has to be 0.</p>
 <details class="example"><summary>See result scructure</summary><p>If you deleted the right lines, your code now should be like this:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">//CONFIGS</span>
 
-<span class="kt">int</span><span class="w"> </span><span class="n">useScheme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">useScheme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="c1">//Jpsi    Sideband Run vs Jpsi    Sideband MC</span>
 <span class="c1">//Jpsi    Fitting  Run vs Jpsi    Fitting  MC</span>
 <span class="c1">//Jpsi    Sideband Run vs Jpsi    Fitting  Run</span>
@@ -1769,10 +1773,15 @@ ls
 <span class="c1">//Upsilon Fitting  Run vs Upsilon Fitting  MC</span>
 <span class="c1">//Upsilon Sideband Run vs Upsilon Fitting  Run</span>
 
-<span class="c1">//Muon id analyze</span>
+<span class="c1">//Muon id analyse</span>
 <span class="kt">bool</span><span class="w"> </span><span class="n">doTracker</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
 <span class="kt">bool</span><span class="w"> </span><span class="n">doStandalone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
 <span class="kt">bool</span><span class="w"> </span><span class="n">doGlobal</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">//quantity analyse</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">doPt</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">doEta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">doPhi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <p>Let your variables like this.</p>
 </details>
@@ -1780,7 +1789,7 @@ ls
 <div class="highlight"><pre><span></span><code>root -l compare_efficiency.cpp
 </code></pre></div>
 <p>If everything went well, the message you'll see in terminal at end of the process is:</p>
-<div class="highlight"><pre><span></span><code>Use Scheme: 3
+<div class="highlight"><pre><span></span><code>Use Scheme: 0
 Done. All result files can be found at &quot;../results/Comparison_Upsilon_Sideband_Run_vs_MC/&quot;
 </code></pre></div>
 <div class="admonition note">
@@ -1789,37 +1798,52 @@ Done. All result files can be found at &quot;../results/Comparison_Upsilon_Sideb
 <div class="highlight"><pre><span></span><code><span class="n">root</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"> </span><span class="o">-</span><span class="n">b</span><span class="w"> </span><span class="o">-</span><span class="n">q</span><span class="w"> </span><span class="n">compare_efficiency</span><span class="p">.</span><span class="n">cpp</span><span class="w"></span>
 </code></pre></div>
 <p>In this case, to check it results you are going to need go for result folder (printed on code run) and check images there by yourself.
-You can try to run TBrowser again:</p>
+You can try to run <code>new TBrowser</code> again:</p>
 <div class="highlight"><pre><span></span><code><span class="n">cd</span><span class="w"> </span><span class="p">[</span><span class="n">FOLDER_PATH</span><span class="p">]</span><span class="w"></span>
 <span class="n">root</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="w"></span>
 <span class="k">new</span><span class="w"> </span><span class="n">TBrowser</span><span class="w"></span>
 </code></pre></div>
 </div>
 <p>And as output plots comparsion, you get:</p>
-<p><img alt="Muon_Pt_Tracker_Probe_Efficiency " src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/04/Comparison_Upsilon_Sideband_Run_vs_MC/Muon_Pt_Tracker_Probe_Efficiency.png" />
-<img alt="Muon_Eta_Tracker_Probe_Efficiency" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/04/Comparison_Upsilon_Sideband_Run_vs_MC/Muon_Eta_Tracker_Probe_Efficiency.png" />
-<img alt="Muon_Phi_Tracker_Probe_Efficiency" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/04/Comparison_Upsilon_Sideband_Run_vs_MC/Muon_Phi_Tracker_Probe_Efficiency.png" /></p>
+<p><img alt="Muon_Pt_Tracker_Probe_Efficiency " src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/04/Comparison_Jpsi_Sideband_Run_vs_MC/Muon_Pt_Tracker_Probe_Efficiency.png" />
+<img alt="Muon_Eta_Tracker_Probe_Efficiency" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/04/Comparison_Jpsi_Sideband_Run_vs_MC/Muon_Eta_Tracker_Probe_Efficiency.png" />
+<img alt="Muon_Phi_Tracker_Probe_Efficiency" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/04/Comparison_Jpsi_Sideband_Run_vs_MC/Muon_Phi_Tracker_Probe_Efficiency.png" /></p>
 <p>Now you can type the command below to <strong>quit root</strong> and close all created windows:</p>
 <div class="highlight"><pre><span></span><code>.q
 </code></pre></div>
 <h2 id="how-fitting-method-code-stores-its-files">How fitting method code stores its files<a class="headerlink" href="#how-fitting-method-code-stores-its-files" title="Permanent link">&para;</a></h2>
-<p>To do the next part, first you need to understand how the fitting method code saves its files in a different way to the sideband subtraction method code. Lets look at how they are saved.</p>
-<p>If you look inside <code>CMS-tutorial\Efficiency Result</code> folder, where is stored fitting method results, you will see another folder named <code>trackerMuon</code>. Inside of it you'll see:</p>
-<p><img alt="Fitting folder" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/04/prints/fitting_tracker.png" /></p>
-<p>Inside of them, there are two files:</p>
-<p><img alt=".ROOT files" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/04/prints/fitting_root.png" /></p>
-<p>If you go with your terminal to this folder and run this command, you'll see that the result files only have one plot.\</p>
-<div class="highlight"><pre><span></span><code>root -l Efficiency_Run2011.root
+<p>To do the next part, first you need to understand how the fitting method code saves. It is not so different than sideband subtraction method. Lets look at how they are saved.</p>
+<p>If you look inside <code>fitting\results'</code> folder, where is stored fitting method results, you will see another folder named <code>efficiencies</code>. lets go there by terminal from <code>fitting</code> folder:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> results/efficiencies
+ls
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>efficiency
+</code></pre></div>
+<p>Inside of it there is a unique folder named efficiency. It is necessary because later on, we will work in efficiencies in 2 dimentions. The efficiency folder means it is one-dimensional, which we worked here so on.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> efficiency
+ls
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Comparison_Run2011_vs_MC  Jpsi_MC_2020  Jpsi_Run_2011
+</code></pre></div>
+<p>Let's go inside one of them:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> Jpsi_Run_2011
+ls
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Pt_trackerMuon.root
+</code></pre></div>
+<p>For every configuration for a specific dataset, they will create <code>.root</code> files inside its respectively folder. For example, this one folder that we choose will have all calculations for the J/&psi; real data dataset.</p>
+<p>If you go with your terminal to this folder and run this command, you'll see that the result files only have one plot on main folder.</p>
+<div class="highlight"><pre><span></span><code>root -l Pt_trackerMuon.root 
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>root [0] 
-Attaching file Efficiency_Run2011.root as _file0...
-(TFile *) 0x55f7152a8970
+Attaching file Pt_trackerMuon.root as _file0...
+(TFile *) 0x55efb5f44930
 root [1]
 </code></pre></div>
 <p>Now lets look at its content. Type on terminal:</p>
 <div class="highlight"><pre><span></span><code><span class="k">new</span><span class="w"> </span><span class="n">TBrowser</span><span class="w"></span>
 </code></pre></div>
-<p>It has only one plot, because the others are in different files.</p>
+<p>It has only one plot, because the others are in different files. Inside the folder <code>histograms</code>, you can find the histograms that created this efficiency result.</p>
 <p><img alt="TBrowser showing efficiency plot for fitting method" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/04/prints/fitting_tbrowser.png" /></p>
 <div class="admonition info">
 <p class="admonition-title">Key Point</p>
@@ -1828,7 +1852,7 @@ root [1]
 </ul>
 </div>
 <h2 id="comparison-results-between-real-data-and-simulations-for-fitting-method">Comparison results between real data and simulations for fitting method<a class="headerlink" href="#comparison-results-between-real-data-and-simulations-for-fitting-method" title="Permanent link">&para;</a></h2>
-<p>Go back to the <code>main</code> folder.</p>
+<p>Go back to the <code>main</code> folder on <code>sideband_subtraction</code> folder.</p>
 <div class="highlight"><pre><span></span><code><span class="n">cd</span><span class="w"> </span><span class="n">main</span><span class="w"></span>
 <span class="n">ls</span><span class="w"></span>
 </code></pre></div>
@@ -1840,7 +1864,7 @@ root [1]
 <p>This is how your code should look like now:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">//CONFIGS</span>
 
-<span class="kt">int</span><span class="w"> </span><span class="n">useScheme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">useScheme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 <span class="c1">//Jpsi    Sideband Run vs Jpsi    Sideband MC</span>
 <span class="c1">//Jpsi    Fitting  Run vs Jpsi    Fitting  MC</span>
 <span class="c1">//Jpsi    Sideband Run vs Jpsi    Fitting  Run</span>
@@ -1848,49 +1872,29 @@ root [1]
 <span class="c1">//Upsilon Fitting  Run vs Upsilon Fitting  MC</span>
 <span class="c1">//Upsilon Sideband Run vs Upsilon Fitting  Run</span>
 
-<span class="c1">//Muon id analyze</span>
+<span class="c1">//Muon id analyse</span>
 <span class="kt">bool</span><span class="w"> </span><span class="n">doTracker</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
 <span class="kt">bool</span><span class="w"> </span><span class="n">doStandalone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
 <span class="kt">bool</span><span class="w"> </span><span class="n">doGlobal</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">fit_run_upsilon</span><span class="p">[][</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Tracker/Pt/Efficiency_Run2011.root&quot;</span><span class="p">,</span><span class="w">     </span><span class="s">&quot;Efficiency&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Tracker/Eta/Efficiency_Run2011.root&quot;</span><span class="p">,</span><span class="w">    </span><span class="s">&quot;Efficiency&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Tracker/Phi/Efficiency_Run2011.root&quot;</span><span class="p">,</span><span class="w">    </span><span class="s">&quot;Efficiency&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Standalone/Pt/Efficiency_Run2011.root&quot;</span><span class="p">,</span><span class="w">  </span><span class="s">&quot;Efficiency&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Standalone/Eta/Efficiency_Run2011.root&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Efficiency&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Standalone/Phi/Efficiency_Run2011.root&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Efficiency&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Global/Pt/Efficiency_Run2011.root&quot;</span><span class="p">,</span><span class="w">      </span><span class="s">&quot;Efficiency&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Global/Eta/Efficiency_Run2011.root&quot;</span><span class="p">,</span><span class="w">     </span><span class="s">&quot;Efficiency&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Global/Phi/Efficiency_Run2011.root&quot;</span><span class="p">,</span><span class="w">     </span><span class="s">&quot;Efficiency&quot;</span><span class="p">}</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
-
-<span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">fit_mc_upsilon</span><span class="p">[][</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Tracker/Pt/Efficiency_MC.root&quot;</span><span class="p">,</span><span class="w">     </span><span class="s">&quot;Efficiency&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Tracker/Eta/Efficiency_MC.root&quot;</span><span class="p">,</span><span class="w">    </span><span class="s">&quot;Efficiency&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Tracker/Phi/Efficiency_MC.root&quot;</span><span class="p">,</span><span class="w">    </span><span class="s">&quot;Efficiency&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Standalone/Pt/Efficiency_MC.root&quot;</span><span class="p">,</span><span class="w">  </span><span class="s">&quot;Efficiency&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Standalone/Eta/Efficiency_MC.root&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Efficiency&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Standalone/Phi/Efficiency_MC.root&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Efficiency&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Global/Pt/Efficiency_MC.root&quot;</span><span class="p">,</span><span class="w">      </span><span class="s">&quot;Efficiency&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Global/Eta/Efficiency_MC.root&quot;</span><span class="p">,</span><span class="w">     </span><span class="s">&quot;Efficiency&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Global/Phi/Efficiency_MC.root&quot;</span><span class="p">,</span><span class="w">     </span><span class="s">&quot;Efficiency&quot;</span><span class="p">}</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
+<span class="c1">//quantity analyse</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">doPt</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">doEta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">doPhi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
-<p>You have to do two things:</p>
+<p>You have to do just two things:</p>
 <ol>
 <li>
-<p>Edit <code>int useScheme</code> value to current analysis.</p>
+<p>edit <code>int useScheme</code> value to current analysis.</p>
 </li>
 <li>
-<p>Delete all <code>Tracker/</code> of folder from paths in <code>const char* fit_run_upsilon[][2]</code> and <code>const char* fit_mc_upsilon[][2]</code>.</p>
+<p>Put others quantities expect <code>pT</code> to false, we did not obtained &eta; nor &phi; results on previous page.</p>
 </li>
 </ol>
-<p>We need to delete the path <code>Tracker/</code> because the fitting code does not separate in Tracker, Standalone and Global Folder atuomatically. So, as we will not do this manually, just remove the folder from path which we will analyze.</p>
-<p>In the end of task, your code should be something like this:</p>
+<details class="example"><summary>After making those edits</summary><p>Your code should look like this:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">//CONFIGS</span>
 
-<span class="kt">int</span><span class="w"> </span><span class="n">useScheme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">useScheme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
 <span class="c1">//Jpsi    Sideband Run vs Jpsi    Sideband MC</span>
 <span class="c1">//Jpsi    Fitting  Run vs Jpsi    Fitting  MC</span>
 <span class="c1">//Jpsi    Sideband Run vs Jpsi    Fitting  Run</span>
@@ -1898,49 +1902,35 @@ root [1]
 <span class="c1">//Upsilon Fitting  Run vs Upsilon Fitting  MC</span>
 <span class="c1">//Upsilon Sideband Run vs Upsilon Fitting  Run</span>
 
-<span class="c1">//Muon id analyze</span>
+<span class="c1">//Muon id analyse</span>
 <span class="kt">bool</span><span class="w"> </span><span class="n">doTracker</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
 <span class="kt">bool</span><span class="w"> </span><span class="n">doStandalone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
 <span class="kt">bool</span><span class="w"> </span><span class="n">doGlobal</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">fit_run_upsilon</span><span class="p">[][</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Pt/Efficiency_Run2011.root&quot;</span><span class="p">,</span><span class="w">     </span><span class="s">&quot;Efficiency&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Eta/Efficiency_Run2011.root&quot;</span><span class="p">,</span><span class="w">    </span><span class="s">&quot;Efficiency&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Phi/Efficiency_Run2011.root&quot;</span><span class="p">,</span><span class="w">    </span><span class="s">&quot;Efficiency&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Standalone/Pt/Efficiency_Run2011.root&quot;</span><span class="p">,</span><span class="w">  </span><span class="s">&quot;Efficiency&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Standalone/Eta/Efficiency_Run2011.root&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Efficiency&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Standalone/Phi/Efficiency_Run2011.root&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Efficiency&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Global/Pt/Efficiency_Run2011.root&quot;</span><span class="p">,</span><span class="w">      </span><span class="s">&quot;Efficiency&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Global/Eta/Efficiency_Run2011.root&quot;</span><span class="p">,</span><span class="w">     </span><span class="s">&quot;Efficiency&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Global/Phi/Efficiency_Run2011.root&quot;</span><span class="p">,</span><span class="w">     </span><span class="s">&quot;Efficiency&quot;</span><span class="p">}</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
-
-<span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">fit_mc_upsilon</span><span class="p">[][</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Pt/Efficiency_MC.root&quot;</span><span class="p">,</span><span class="w">     </span><span class="s">&quot;Efficiency&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Eta/Efficiency_MC.root&quot;</span><span class="p">,</span><span class="w">    </span><span class="s">&quot;Efficiency&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Phi/Efficiency_MC.root&quot;</span><span class="p">,</span><span class="w">    </span><span class="s">&quot;Efficiency&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Standalone/Pt/Efficiency_MC.root&quot;</span><span class="p">,</span><span class="w">  </span><span class="s">&quot;Efficiency&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Standalone/Eta/Efficiency_MC.root&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Efficiency&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Standalone/Phi/Efficiency_MC.root&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Efficiency&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Global/Pt/Efficiency_MC.root&quot;</span><span class="p">,</span><span class="w">      </span><span class="s">&quot;Efficiency&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Global/Eta/Efficiency_MC.root&quot;</span><span class="p">,</span><span class="w">     </span><span class="s">&quot;Efficiency&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="s">&quot;../../fitting/Efficiency Result/Global/Phi/Efficiency_MC.root&quot;</span><span class="p">,</span><span class="w">     </span><span class="s">&quot;Efficiency&quot;</span><span class="p">}</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
+<span class="c1">//quantity analyse</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">doPt</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">doEta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">doPhi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
+</details>
 <p>Doing this and running the program with:</p>
 <div class="highlight"><pre><span></span><code>root -l compare_efficiency.cpp
 </code></pre></div>
 <p>Should get you these results:</p>
-<p><img alt="Muon_Pt_Tracker_Probe_Efficiency " src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/04/Comparison_Upsilon_Fitting_Run_vs_MC/Muon_Pt_Tracker_Probe_Efficiency.png" />
-<img alt="Muon_Eta_Tracker_Probe_Efficiency" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/04/Comparison_Upsilon_Fitting_Run_vs_MC/Muon_Eta_Tracker_Probe_Efficiency.png" />
-<img alt="Muon_Phi_Tracker_Probe_Efficiency" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/04/Comparison_Upsilon_Fitting_Run_vs_MC/Muon_Phi_Tracker_Probe_Efficiency.png" /></p>
+<p><img alt="Muon_Pt_Tracker_Probe_Efficiency " src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/04/Comparison_Jpsi_Fitting_Run_vs_MC/Muon_Pt_Tracker_Probe_Efficiency.png" />
+<img alt="Muon_Eta_Tracker_Probe_Efficiency" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/04/Comparison_Jpsi_Fitting_Run_vs_MC/Muon_Eta_Tracker_Probe_Efficiency.png" />
+<img alt="Muon_Phi_Tracker_Probe_Efficiency" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/04/Comparison_Jpsi_Fitting_Run_vs_MC/Muon_Phi_Tracker_Probe_Efficiency.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Challenge</p>
+<p>As you notice here we presented comparison for &eta; and &phi;. Try to go back to fitting method tutorial and redo commands to get efficiencies for these quantities in order to compare with sideband subctraction method. Do not forget to turn <code>bool doEta</code> and <code>bool doPhi</code> true.</p>
+</div>
 <p>Now you can type the command below to <strong>quit root</strong> and close all created windows:</p>
 <div class="highlight"><pre><span></span><code>.q
 </code></pre></div>
 <h2 id="comparison-results-between-data-from-the-sideband-and-data-from-the-fitting-method">Comparison results between data from the sideband and data from the fitting method<a class="headerlink" href="#comparison-results-between-data-from-the-sideband-and-data-from-the-fitting-method" title="Permanent link">&para;</a></h2>
 <div class="admonition tip">
 <p class="admonition-title">Challenge</p>
-<p>Using what you did before, try to mix them and plot a comparison <strong>between real data for sideband method and real data</strong> for sthe fitting method and get an analysis.
+<p>Using what you did before, try to mix them and plot a comparison <strong>between real data for sideband method and real data for sthe fitting method</strong> and get an analysis.
 Notice that:</p>
 <ul>
 <li>Real data = Run 2011</li>
@@ -1951,18 +1941,8 @@ Notice that:</p>
 <hr />
 <div class="admonition tip">
 <p class="admonition-title">Extra challenge</p>
-<p>As you did with the last 2 extras challenges, try to redo this exercise comparing results between challenges.</p>
+<p>As you did with the last 2 extras challenges, try to redo this exercise comparing results between &Upsilon; datas.</p>
 </div>
-<hr />
-<details class="example"><summary>Extra - recreate ntuples</summary><p>If you are looking go far than this workshop, you can try to recreate those ntuples we used here. Try to get results from a J/ψ decaying in dimuons ntuple @7 TeV. The code used to create them can be <a href="https://github.com/sandrofonseca/TagAndProbe">found here</a>.</p>
-<p>Concerning the datasets used to produce these extra exercises, you can find them in these links below:</p>
-<ul>
-<li><a href="http://opendata.cern.ch/record/27">Real data (2011 legacy)</a></li>
-<li><a href="http://opendata.cern.ch/record/1522">ϒ Monte Carlo simulations</a></li>
-<li><a href="http://opendata.cern.ch/record/1335">J/ψ Monte Carlo simulations</a></li>
-</ul>
-<p>This is work in progress adapted from CMS official code to create CMS Open Data Tag and Probe ntuples.</p>
-</details>
 
               
             </article>

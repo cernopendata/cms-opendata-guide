@@ -1687,23 +1687,19 @@
 <h2 id="signal-extraction-sideband-subtraction-method">Signal extraction: sideband subtraction method<a class="headerlink" href="#signal-extraction-sideband-subtraction-method" title="Permanent link">&para;</a></h2>
 <p>The reconstruction efficiency is calculated using <strong>only signal muons</strong>. In order to measure the efficiency, we need a way to extract signal from the dataset. You've used the fitting method and now you'll meet the sideband subtraction method.</p>
 <p>This method consists in choosing sideband and signal regions in invariant mass distribution. The sideband regions (shaded in red in the figure) have background particles and the signal region (shared in green in the figure) has background and signal particles.</p>
-<p><img alt="Invariant Mass histogram" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/03/InvariantMass_Tracker_region.png" /></p>
+<p><img alt="Invariant Mass histogram" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/03/InvariantMass_Tracker_region.svg" /></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The background corresponds to candidates that do not correspond to the decay of a genuine resonance; for example, the pair is formed by the tag muon associated to an uncorrelated track produced elsewhere in the collision; the corresponding invariant mass has thus a smooth continuous shape, that is extrapolated from the signal regions into the sideband region.</p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>We choose only the ϒ (1S) signal for selecting the signal region; simulation information is further available for this resonance, allowing in the end for a comparison of results, between data and simulation.</p>
-</div>
 <p>For each event category (i.e. Pass and All), and for a given variable of interest (e.g., the probe pT), two distributions are obtained, one for each region (Signal and Sideband). In order to obtain the variable distribution for the signal only, we proceed by subtracting the Background distribution (Sideband region) from the Signal+Background one (Signal region):</p>
 <p><img alt="Sideband Subtraction equation" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/03/subtraction.svg" /></p>
-<p>Where the normalization α factor quantifies the quantity of background present in the signal region&gt;</p>
-<p><img alt="Alpha factor equation" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/03/alpha.svg&quot;" /></p>
+<p>Where the normalization α factor quantifies the quantity of background present in the signal region:</p>
+<p><img alt="Alpha factor equation" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/03/alpha.svg" /></p>
 <p>And for the uncertainty:</p>
 <p><img alt="Sideband Subtraction errors equation" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/03/subtraction_error.svg" /></p>
 <p>Applying those equations we get histograms like this:</p>
-<p><img alt="Tracker_Probe_Pt_Passing histogram" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/03/Tracker_Probe_Pt_Passing.png" /></p>
+<p><img alt="Tracker_Probe_Pt_Passing histogram" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/03/Tracker_Probe_Pt_Passing.svg" /></p>
 <ul>
 <li>Solid blue line (Total) = particles in signal region;</li>
 <li>Dashed blue line (Background) = particles in sideband regions;</li>
@@ -1712,36 +1708,35 @@
 <p>You will see this histogram on this exercise.</p>
 <div class="admonition note">
 <p class="admonition-title">About this code</p>
-<p>More info about this code can be <a href="http://tagandprobe-documentation.web.cern.ch/tagandprobe-documentation/">found here</a>.</p>
+<p>More info about this code can be found in the <a href="../../sidebandreferenceguide/macro/">reference guide</a>.</p>
 </div>
 <h2 id="preparing-files">Preparing files<a class="headerlink" href="#preparing-files" title="Permanent link">&para;</a></h2>
-<p>First, from the root folder of our downloades repository, we need to go sideband subtraction method tutorial:</p>
+<p>First, from the root folder of our downloaded repository, we need to go sideband subtraction method tutorial:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span> efficiency_tools/sideband_subtraction
 </code></pre></div>
-<p>To copy the ϒ dataset from real data file to your machine (requires 441 MB), type:</p>
-<div class="highlight"><pre><span></span><code>wget --load-cookies /tmp/cookies.txt <span class="s2">&quot;https://docs.google.com/uc?export=download&amp;confirm=</span><span class="k">$(</span>wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate <span class="s1">&#39;https://docs.google.com/uc?export=download&amp;id=1Fj-rrKts8jSSMdwvOnvux68ydZcKB521&#39;</span> -O- <span class="p">|</span> sed -rn <span class="s1">&#39;s/.*confirm=([0-9A-Za-z_]+).*/\1\n/p&#39;</span><span class="k">)</span><span class="s2">&amp;id=1Fj-rrKts8jSSMdwvOnvux68ydZcKB521&quot;</span> -O Run2011A_MuOnia_Upsilon.root <span class="o">&amp;&amp;</span> rm -rf /tmp/cookies.txt
+<p>To copy the J/&psi; dataset of real data file to your machine (requires 3,3 GB), type:</p>
+<div class="highlight"><pre><span></span><code>wget -O Run2011AMuOnia_mergeNtuple.root <span class="s2">&quot;https://cernbox.cern.ch/index.php/s/lqHEasYWJpOZsfq/download?files=Run2011AMuOnia_mergeNtuple.root&quot;</span>
 </code></pre></div>
-<p>This code downloads the file directly from Google Drive.</p>
-<p>Run this code to download the simulation ntuple for ϒ (requires 66 MB):</p>
-<div class="highlight"><pre><span></span><code>wget --load-cookies /tmp/cookies.txt <span class="s2">&quot;https://docs.google.com/uc?export=download&amp;confirm=</span><span class="k">$(</span>wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate <span class="s1">&#39;https://docs.google.com/uc?export=download&amp;id=1ZzAOOLCKmCz0Q6pVi3AAiYFGKEpP2efM&#39;</span> -O- <span class="p">|</span> sed -rn <span class="s1">&#39;s/.*confirm=([0-9A-Za-z_]+).*/\1\n/p&#39;</span><span class="k">)</span><span class="s2">&amp;id=1ZzAOOLCKmCz0Q6pVi3AAiYFGKEpP2efM&quot;</span> -O Upsilon1SToMuMu_MC_full.root <span class="o">&amp;&amp;</span> rm -rf /tmp/cookies.txt
+<p>Run this code to download the simulation dataset for J/&psi; (requires 492 MB):</p>
+<div class="highlight"><pre><span></span><code>wget -O JPsiToMuMu_mergeMCNtuple.root <span class="s2">&quot;https://cernbox.cern.ch/index.php/s/lqHEasYWJpOZsfq/download?files=JPsiToMuMu_mergeMCNtuple.root&quot;</span>
 </code></pre></div>
 <p>Now, check if everything is ok:</p>
 <div class="highlight"><pre><span></span><code>ls
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>main  README.md  Run2011A_MuOnia_Upsilon.root  Upsilon1SToMuMu_MC_full.root
+<div class="highlight"><pre><span></span><code>JPsiToMuMu_mergeMCNtuple.root  main  README.md  Run2011AMuOnia_mergeNtuple.root
 </code></pre></div>
-<p>Your <code>efficiency_tagandprobe</code> folder should have these files:</p>
-<p><img alt="Files in efficiency_tagandprobe folder" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/03/files_sideband.png" /></p>
+<p>Your <code>sideband_subtraction</code> folder should have these files:</p>
+<p><img alt="Files in sideband_subtraction folder" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/03/files_sideband.png" /></p>
 <h2 id="preparing-code-for-data">Preparing code for Data<a class="headerlink" href="#preparing-code-for-data" title="Permanent link">&para;</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>I will teach you to manage the files on the terminal, but you can use a graphical file explorer.</p>
+<p>This tutorial will teach you to manage the files on the terminal, but you can use a graphical file explorer or any other way you are used to.</p>
 </div>
 <p>We need to edit some settings. Open <strong>settings.cpp</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span> main/config
 ls
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>cuts.h  settings.cpp
+<div class="highlight"><pre><span></span><code>createHistogram.h  cuts.h  settings.cpp
 </code></pre></div>
 <p>There are different ways to open this file. You can try to run:</p>
 <div class="highlight"><pre><span></span><code>gedit settings.cpp
@@ -1769,8 +1764,13 @@ ls
 <span class="kt">bool</span><span class="w"> </span><span class="n">doTracker</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
 <span class="kt">bool</span><span class="w"> </span><span class="n">doStandalone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
 <span class="kt">bool</span><span class="w"> </span><span class="n">doGlobal</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">//quantity analyse</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">doPt</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">doEta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">doPhi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
-<p>We want to calculate the efficiency using specific files that we downloaded. They name are <code>Run2011A_MuOnia_Upsilon.root</code> and <code>Upsilon1SToMuMu_MC_full.root</code> and are listed in <code>const char *files[]</code>. While <strong>settings.cpp</strong> is open, try to use the variable <code>int useFile</code> to run <code>Run2011A_MuOnia_Upsilon.root</code>.</p>
+<p>We want to calculate the efficiency using specific files that we downloaded. They name are <code>Run2011AMuOnia_mergeNtuple.root</code> and <code>JPsiToMuMu_mergeMCNtuple.root</code> and are listed in <code>const char *files[]</code>. While <strong>settings.cpp</strong> is open, try to use the variable <code>int useFile</code> to run <code>Run2011AMuOnia_mergeNtuple.root</code>.</p>
 <details class="example"><summary>How to do this</summary><p>Make sure <code>useFile</code> is correct:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">//List of files</span>
 <span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">files</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;../data_histoall.root&quot;</span><span class="p">,</span><span class="w"></span>
@@ -1789,25 +1789,18 @@ ls
 <span class="c1">//MAIN OPTIONS</span>
 
 <span class="c1">//Which file of files (variable above) should use</span>
-<span class="kt">int</span><span class="w"> </span><span class="n">useFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">useFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <p>It will tell which configuration the program will use. So, the macro will run with the ntuple in <code>files[useFile]</code> and the results will be stored in <code>directoriesToSave[useFile]</code>.</p>
 <p>the first three files won't be used in this execise.</p>
 </details>
 <div class="admonition note">
 <p class="admonition-title">About code</p>
-<p>Normally we need to set the variables <code>bool isMC</code> and <code>const char* resonance</code>, but at this time it is already done and set automatically for these ntuples' names.</p>
+<p>Normally we need to set the variable <code>const char* resonance</code>, but at this time it is already done and set automatically for these ntuples' names.</p>
 </div>
 <h2 id="editting-bins">Editting bins<a class="headerlink" href="#editting-bins" title="Permanent link">&para;</a></h2>
-<p>The code allows to define the binning of the kinematic variable, to ensure each bin is sufficiently populated, for increased robustness. To change the binning, locate <strong>PassingFailing.h</strong></p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ../classes
-ls
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>FitFunctions.h   MassValues.h      PtEtaPhi.h             TagProbe.h
-InvariantMass.h  PassingFailing.h  SidebandSubtraction.h  Type.h
-</code></pre></div>
-<p>And then Open <strong>PassingFailing.h</strong></p>
-<div class="highlight"><pre><span></span><code>gedit PassingFailing.h
+<p>The code allows to define the binning of the kinematic variable, to ensure each bin is sufficiently populated, for increased robustness. To change the binning, open <strong>createHistogram.h</strong> that is on same folder that <strong>settings.cpp</strong>:</p>
+<div class="highlight"><pre><span></span><code>gedit createHistogram.h
 </code></pre></div>
 <p>Search for the <code>createEfficiencyPlot(...)</code> function. You'll find something like this:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">createHistogram</span><span class="p">(</span><span class="n">TH1D</span><span class="o">*</span><span class="w"> </span><span class="o">&amp;</span><span class="n">histo</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">histoName</span><span class="p">)</span><span class="w"></span>
@@ -1866,7 +1859,7 @@ InvariantMass.h  PassingFailing.h  SidebandSubtraction.h  Type.h
 </code></pre></div>
 </details>
 <p>The code that creates the histogram bins is located inside the conditionals and is commented. You can edit this code and uncomment to create histogram bins however you want. Instead of using a function to generate the bins, we can also define them manually.</p>
-<p>As we intend to compare the results between data and simulation, but also between the sideband and fitting methods. You are advised to employ the same bin choice. Garantee your the code uses same bin as the previus this:</p>
+<p>As we intend to compare the results between data and simulation, but also between the sideband and fitting methods. You are advised to employ the same bin choice. Garantee your the code uses same bin as the previous here:</p>
 <div class="highlight"><pre><span></span><code><span class="w">    </span><span class="c1">//Variable bin for pT</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">quantityName</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Pt&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
 <span class="w">    </span><span class="p">{</span><span class="w"></span>
@@ -1904,14 +1897,18 @@ ls
 <p>Run the macro.cpp:</p>
 <div class="highlight"><pre><span></span><code>root -l -b -q macro.cpp
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&quot;../results/Upsilon Run 2011/&quot; directory created OK
-Using &quot;../Run2011A_MuOnia_Upsilon.root&quot; ntuple
-resonance: Upsilon
-Using method 2
-Data analysed = 986100 of 986100
+<div class="highlight"><pre><span></span><code>&quot;../results/Jpsi_Run_2011/&quot; directory created OK
+Using &quot;../Run2011AMuOnia_mergeNtuple.root&quot; ntupple
+resonance: Jpsi
+Using subtraction factor as integral of background fit
+Data analysed = 5950253 of 5950253
 </code></pre></div>
-<p>In this process, more informations will be printed in terminal while plots will be created on specified (these plots are been saved in a folder). The message below tells you that code has finished running:</p>
-<div class="highlight"><pre><span></span><code>Done. All result files can be found at &quot;../results/Upsilon_Run_2011/&quot;
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As this dataset is larger, the code will run slowly. It can take several minutes to be completed depending where the code is been running. </p>
+</div>
+<p>In this process, more informations will be printed in terminal while plots will be created on a specified folder. The message below tells you that code has finished running:</p>
+<div class="highlight"><pre><span></span><code>Done. All result files can be found at &quot;../results/Jpsi_Run_2011/&quot;
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Common errors</p>
@@ -1927,15 +1924,15 @@ Data analysed = 986100 of 986100
 <img alt="Efficiency_Tracker_Probe_Eta" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/03/sideband_run2011/Efficiency_Tracker_Probe_Eta.png" />
 <img alt="Efficiency_Tracker_Probe_Phi" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/03/sideband_run2011/Efficiency_Tracker_Probe_Phi.png" /></p>
 <h2 id="preparing-and-running-the-code-for-simulation">Preparing and running the code for simulation<a class="headerlink" href="#preparing-and-running-the-code-for-simulation" title="Permanent link">&para;</a></h2>
-<details class="example"><summary>Challenge</summary><p>Try to run the same code on the <code>Upsilon1SToMuMu_MC_full.root</code> file we downloaded.</p>
 <div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>You will need the redo the steps above, setting:</p>
-<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">useFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"></span>
+<p class="admonition-title">Challenge</p>
+<p>Try to run the same code on the <code>JPsiToMuMu_mergeMCNtuple.root</code> file we downloaded.</p>
+<details class="example"><summary>Tip</summary><p>You will need the redo the steps above, but setting:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">useFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <p>in <code>main/config/settings.cpp</code> file.</p>
-</div>
 </details>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Comparison between real data and simulation</p>
 <p>We'll do this in the last section of this exercise. So the challenge above is mandatory.</p>
@@ -1943,14 +1940,13 @@ Data analysed = 986100 of 986100
 <hr />
 <div class="admonition tip">
 <p class="admonition-title">Extra challenge</p>
-<p>If you are looking for an extra exercise, you can try to apply the same logic, changing some variables you saw, in order to get results for the J/ψ nutpple.</p>
-<p>To download the J/ψ real data ntupple (requires 3.3 GB):</p>
-<div class="highlight"><pre><span></span><code>wget --load-cookies /tmp/cookies.txt <span class="s2">&quot;https://docs.google.com/uc?export=download&amp;confirm=</span><span class="k">$(</span>wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate <span class="s1">&#39;https://docs.google.com/uc?export=download&amp;id=16OqVrHIB4wn_5X8GEZ3NxnAycZ2ItemZ&#39;</span> -O- <span class="p">|</span> sed -rn <span class="s1">&#39;s/.*confirm=([0-9A-Za-z_]+).*/\1\n/p&#39;</span><span class="k">)</span><span class="s2">&amp;id=16OqVrHIB4wn_5X8GEZ3NxnAycZ2ItemZ&quot;</span> -O Run2011AMuOnia_mergeNtuple.root <span class="o">&amp;&amp;</span> rm -rf /tmp/cookies.txt
+<p>If you are looking for an extra exercise, you can try to apply the same logic, changing some variables you saw, in order to get results for the &Upsilon; nutpple.</p>
+<p>To download the &Upsilon; real data ntupple (requires 442 MB):</p>
+<div class="highlight"><pre><span></span><code>wget -O Run2011A_MuOnia_Upsilon.root <span class="s2">&quot;https://cernbox.cern.ch/index.php/s/lqHEasYWJpOZsfq/download?files=Run2011A_MuOnia_Upsilon.root&quot;</span>
 </code></pre></div>
-<p>To download the J/ψ simulated data ntuple (requires 515 MB):</p>
-<div class="highlight"><pre><span></span><code>wget --load-cookies /tmp/cookies.txt <span class="s2">&quot;https://docs.google.com/uc?export=download&amp;confirm=</span><span class="k">$(</span>wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate <span class="s1">&#39;https://docs.google.com/uc?export=download&amp;id=1dKLJ5RIGrBp5aIJrvOQw5lWLQSHUgEnf&#39;</span> -O- <span class="p">|</span> sed -rn <span class="s1">&#39;s/.*confirm=([0-9A-Za-z_]+).*/\1\n/p&#39;</span><span class="k">)</span><span class="s2">&amp;id=1dKLJ5RIGrBp5aIJrvOQw5lWLQSHUgEnf&quot;</span> -O JPsiToMuMu_mergeMCNtuple.root <span class="o">&amp;&amp;</span> rm -rf /tmp/cookies.txt
+<p>Run this code to download the simulation dataset for &Upsilon; (requires 67 MB):</p>
+<div class="highlight"><pre><span></span><code>wget -O Upsilon1SToMuMu_MC_full.root <span class="s2">&quot;https://cernbox.cern.ch/index.php/s/lqHEasYWJpOZsfq/download?files=Upsilon1SToMuMu_MC_full.root&quot;</span>
 </code></pre></div>
-<p>As this dataset is larger, the code will run slowly. It can take several minutes to be completed depending where the code is been running</p>
 </div>
 
               
