@@ -82,7 +82,7 @@ root overplot_efficiencies.cpp
 
 You should get a result like this:
 
-![Efficiency Systematic Overplot 1D](../../../../../images/analysis/cmsefficiency/Sys_Efficiency_overplot1d.png)
+![Efficiency Systematic Overplot 1D](../../../../../images/analysis/selection/idefficiencystudy/tutorial/05/Sys_Efficiency_overplot1d.png)
 
 ## 2D Efficiency Map
 
@@ -94,6 +94,6 @@ root -l -b -q plot_sys_efficiency_2d.cpp
 
 This is one of the graphs that will be generated.
 
-![Efficiency Systematic Overplot 2D](../../../../../images/analysis/cmsefficiency/Sys_Efficiency_overplot2d.png)
+![Efficiency Systematic Overplot 2D](../../../../../images/analysis/selection/idefficiencystudy/tutorial/05/Sys_Efficiency_overplot2d.png)
 
 It is noteworthy that the uncertainties presented above in the 2d map are already the quadrature sum of systematics and statistical uncertainties.

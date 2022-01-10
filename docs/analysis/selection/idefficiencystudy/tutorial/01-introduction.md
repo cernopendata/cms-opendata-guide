@@ -17,7 +17,7 @@ The resonance, used to calculate the efficiencies, decays to a pair of particles
 
 The efficiency is given by the fraction of probe muons that pass a given criteria (in this case, the **Muon ID** which we explain [below](#cms-muon-identification-reconstruction)):
 
-![Efficiency equation](../../../../../images/analysis/cmsefficiency/efficiency.svg)
+![Efficiency equation](../../../../../images/analysis/selection/idefficiencystudy/tutorial/01/efficiency.svg)
 
 The denominator corresponds to the number of resonance candidates (tag+probe pairs) reconstructed in the dataset. The numerator corresponds to the subset for which the probe passes the criteria.
 
@@ -27,13 +27,13 @@ The tag+probe invariant mass distribution is used to select only signal, that is
 
 The final objective in this lesson is to measure the efficiency for identifying reconstructed **tracker muons**.  We present here a short description of the muon identification and reconstruction employed in the CMS experiment at the LHC.
 
-![CMS muon id](../../../../../images/analysis/cmsefficiency/muons_id.png)
+![CMS muon id](../../../../../images/analysis/selection/idefficiencystudy/tutorial/01/muons_id.png)
 
 In the standard CMS reconstruction for proton-proton collisions, tracks are first reconstructed independently in the inner tracker and in the muon system. Based on these objects, two reconstruction approaches are used:
 
 * Tracker Muon reconstruction (red line): In this approach, all tracker tracks with pT > 0.5 GeV/c and total momentum p > 2.5 GeV/c are considered as possible muon candidates and are extrapolated to the muon system taking into account the magnetic field;
 
-* Standalone Muon reconstruction (green line): they are all tracks of the segments reconstructed in the muon chambers (performed using segments and hits from Drift Tubes - DTs in the barrel region, Cathode strip chambers - CSCs in the endcaps and Resistive Plates Chambers - RPCs for all muon system) are used to generate "seeds" consisting of position and direction vectors and an estimate of the muon transverse momentum;
+* Standalone Muon reconstruction (green line): they are all tracks of the segments reconstructed in the muon chambers (performed using segments and hits from Drift Tubes - DTs in the barrel region, Cathode strip chambers - CSCs in the endcaps and Resistive Plates Chambers - RPCs for all muon system) are used to generate "seeds" consisting of position and direction vec01/tors and an estimate of the muon transverse momentum;
 
 * Global Muon reconstruction (blue line): For each standalone-muon track, a matching tracker track is found by comparing parameters of the two tracks propagated onto a common surface.
 

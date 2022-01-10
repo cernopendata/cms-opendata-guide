@@ -37,11 +37,11 @@ This format shows what nested classes. Classes or structs below slided at right 
 
 The diagram below represents the structure of objects in code. At left we have the structure of objects name. At right we have the correspondent class name of objects in these line.
 
-![Main class structure](../../../../images/analysis/cmsefficiency/main_structure.png)
+![Main class structure](../../../../images/analysis/selection/idefficiencystudy/sidebandreferenceguide/main_structure.png)
 
 Also in Mass object we have:
 
-![Mass class structure](../../../../images/analysis/cmsefficiency/mass_structure.png)
+![Mass class structure](../../../../images/analysis/selection/idefficiencystudy/sidebandreferenceguide/mass_structure.png)
 
 Notice that all objects in same line shares the same structure.
 
