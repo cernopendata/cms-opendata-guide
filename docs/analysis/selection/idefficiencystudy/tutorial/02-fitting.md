@@ -85,7 +85,7 @@ Now, before we start fitting the invariant mass it's important to look at it's s
 tagandprobe->Draw("InvariantMass")
 ```
 
-![Invariant Mass histogram from the data analysed](../../../../../images/analysis/selection/idefficiencystudy/tutorial/02/InvariantMassJpsi.png)
+![Invariant Mass histogram from the data analysed](../../../../../images/analysis/selection/idefficiencystudy/tutorial/02/InvariantMass.png)
 
 If you got the previous result, we're ready to go.
 
@@ -118,7 +118,7 @@ Hmm... seems like our domain is larger than we need it to be. To fix this, we ca
 tagandprobe->Draw("ProbeMuon_Pt", "ProbeMuon_Pt < 20")
 ```
 
-![pT plot of data in log scale](../../../../../images/analysis/selection/idefficiencystudy/tutorial/02/ProbeMuonPtCortes.png)
+![pT plot of data in log scale](../../../../../images/analysis/selection/idefficiencystudy/tutorial/02/ProbeMuonPtCuts.png)
 
 Exit ROOT and get back to the main area:
 
@@ -129,7 +129,7 @@ cd ..
 
 Now that you're acquainted with the data, open the  `efficiency.cpp` file and make some small adjustments to the code in this section:
 
-We'll start by choosing the desired muon id and bins for it the transverse momentum, so the lines that shouldn't be commented are the "trackerMuon" and the first "Pt" as shown below. All other lines in this section should be commented.
+We'll start by choosing the desired muon id and bins for it the transverse momentum, so the lines that shouldn't be commented are the "trackerMuon" and the first "Pt" as shown below. All other lines in this section should be commented as shown below:
 
 ```cpp
 //Which Muon Id do you want to study?
@@ -142,6 +142,8 @@ string quantity = "Pt";     double bins[] = {0., 2.0, 3.4, 4.0, 4.4, 4.7, 5.0, 5
 //string quantity = "Eta";    double bins[] = {-2.4, -1.8, -1.4, -1.2, -1.0, -0.8, -0.5, -0.2, 0, 0.2, 0.5, 0.8, 1.0, 1.2, 1.4, 1.8, 2.4};
 //string quantity = "Phi";    double bins[] = {-3.0, -1.8, -1.6, -1.2, -1.0, -0.7, -0.4, -0.2, 0, 0.2, 0.4, 0.7, 1.0, 1.2, 1.6, 1.8, 3.0};
 ```
+
+In lines above, `quantity` express which quantity we are looking to measure. The array found at its side named `double bins[]` express the bins we are making in this process. For example, on the pT histogram, the firsts three bins will be: [0.0,2.0), [2.0,3.4) and [4.0, 4.4). Change it if you want to have fun but maybe a unexpected result. Our choosen bin were already tested to get us a good result.
 
 ## The Probability Density Function used for modeling signal and background
 
@@ -163,8 +165,8 @@ int nbins = sizeof(bins)/sizeof(*bins) - 1;
     }
 ```
 
-To get the efficiency plot, we used the [TEfficiency](https://root.cern.ch/doc/master/classTEfficiency.html) class from ROOT.
-You'll see that in order to create a ``TEfficiency`` object, one of the [constructors](https://root.cern.ch/doc/master/classTEfficiency.html#aa0e99b4161745fd3bee0ae5c0f58880e) requires two `TH1` objects, i.e., two histograms. One with _all_ the probes and one with the _passing_ probes.
+To get the efficiency plot, we use the [TEfficiency](https://root.cern.ch/doc/master/classTEfficiency.html) class from ROOT.
+You'll see that in order to create a ``TEfficiency`` object, one of the [constructors](https://root.cern.ch/doc/master/classTEfficiency.html#aa0e99b4161745fd3bee0ae5c0f58880e) requires two `TH1` objects (two one-dimensional histograms). One with *all* the probes and one with only the *passing* probes.
 
 The creation of these `TH1` objects is taken care of by the ``src/make_TH1D.h`` code.
 
@@ -257,17 +259,9 @@ To plot the efficiency we used the ``src/get_efficiency.h`` function.
     }
     ```
 
-Note that we load all these functions in the `src` area directly in header of the `efficiency.cpp` code.
+Note that we load part of these functions in the `src` area directly in header of the `efficiency.cpp` code.
 
-Before we run the code you have first to uncomment this line in the `efficiency.cpp` code so it looks like this.
-
-```cpp
-    //Create efficiencies
-    generatedFile->   cd("/");
-    get_efficiency(yield_all, yield_pass, quantity, MuonId, "", true);
-```
-
-Now that you understand what the ``efficiency.cpp`` macro does, run your code without flashing the scream('-l'), with a batch mode (`-b`) and with a quit-when-done switch (`-q`):
+Now that you understand what the ``efficiency.cpp`` macro does, run your code without flashing the scream (`-l`), with a batch mode (`-b`) and with a quit-when-done switch (`-q`):
 
 ```sh
 root -l -b -q efficiency.cpp
@@ -278,7 +272,7 @@ root -l -b -q efficiency.cpp
 
     There is some `[#0] WARNING:` that should pop up too. They say about ignoring some events. They appear due cuts we are making directly on variables limits. It is ok, just ignore it.
 
-If everything went correctly you should have a 'Pt_tracekrMuon.root' in the path below.
+If everything went correctly you should have a `Pt_tracekrMuon.root` in the path below.
 
 ```sh
 cd results/efficiencies/efficiency/Jpsi_Run_2011/
@@ -292,7 +286,7 @@ cd ../../../..
 
 ## Efficiency evaluation between real data and Monte Carlo simulations
 
-Now we need to create the Monte Carlo (MC) data to compare with the real one, in order to do that we will need to change the ´efficiency.cpp´ code, you will have to include the ´#include "src/dofits/DoFit_Jpsi_MC.h"´ and comment the ´#include "src/dofits/DoFit_Jpsi_Run.h"´ part, your code should look like this:
+Now we need to create the Monte Carlo (MC) data to compare with the real one, in order to do that we will need to change the `efficiency.cpp` code, you will have to include the `#include "src/dofits/DoFit_Jpsi_MC.h"` and comment the `#include "src/dofits/DoFit_Jpsi_Run.h"` line. At the end, your code should look like this:
 
 ```cpp
 //Change if you need
@@ -320,21 +314,21 @@ Run the `efficiency.cpp` again and you will have 2 new folders at `results/effic
 Now, in order to make the comparison between real and MC data we will need to run a code in folder `tests` named `compare_efficiency.cpp`. To run this command from where you are, first load this file on ROOT with the command below:
 
 ```sh
-root -l 
+root -l -b
 .L tests/compare_efficiency.cpp
 ```
 
-Now you have the function `compare_efficiency(...)` we made loaded on your root. This function have three arguments. The first one should be the quatity that we are analysing (in this case "Pt", but could be "Eta" and "Phi"). The second and third parameter are paths which points to .root folders created previously in this page.
+Now you have the function `compare_efficiency(...)` we made loaded on your root. This function have four arguments. The first one should be the muon identification we are looking for such as `trackerMuon`, `standaloneMuon` and `globalMuon`. THe second one refers to the quatity that we are analysing. In our case we are looking for "Pt", but could be "Eta" and "Phi". The third and forth parameter are paths which points to `.root` files created previously in this tutorial.
 
-So now, in order to make the comparison between real and MC data on pT, you should run this command to get your result:
+So now, in order to make the comparison between real and MC data on tracker muon pT, you should run this command to get your result:
 
 ```sh
-compare_efficiency("Pt", "results/efficiencies/efficiency/Jpsi_Run_2011/Pt_trackerMuon.root", "results/efficiencies/efficiency/Jpsi_MC_2020/Pt_trackerMuon.root");
+compare_efficiency("trackerMuon", "Pt", "results/efficiencies/efficiency/Jpsi_Run_2011/Pt_trackerMuon.root", "results/efficiencies/efficiency/Jpsi_MC_2020/Pt_trackerMuon.root");
 ```
 
-Now you should have a new folder called "Comparison Run2011 vs MC" in it is the comparison that you just made.
+Now you should have a new folder called `Comparison Run2011 vs MC` in your `results/efficiencies/efficiency/` and inside it are the comparisons that you just made.
 
-![Tracker Muon Pt Efficiency](../../../../../images/analysis/selection/idefficiencystudy/tutorial/02/globalMuon_Pt_Efficiency.png)
+![Tracker Muon Pt Efficiency](../../../../../images/analysis/selection/idefficiencystudy/tutorial/02/trackerMuon_Pt_Efficiency.png)
 
 If everything went well and you still have time to go, repeat this process for the two other variables, &eta; and &phi;!
 
