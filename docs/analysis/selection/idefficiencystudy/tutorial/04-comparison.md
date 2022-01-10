@@ -254,7 +254,6 @@ Pt_trackerMuon.root
 
 For every configuration for a specific dataset, they will create `.root` files inside its respectively folder. For example, this one folder that we choose will have all calculations for the J/&psi; real data dataset.
 
-
 If you go with your terminal to this folder and run this command, you'll see that the result files only have one plot on main folder.
 
 ```sh

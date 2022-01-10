@@ -292,7 +292,7 @@ Data analysed = 5950253 of 5950253
 ```
 
 !!! Note
-    As this dataset is larger, the code will run slowly. It can take several minutes to be completed depending where the code is been running. 
+    As this dataset is larger, the code will run slowly. It can take several minutes to be completed depending where the code is been running.
 
 In this process, more informations will be printed in terminal while plots will be created on a specified folder. The message below tells you that code has finished running:
 
