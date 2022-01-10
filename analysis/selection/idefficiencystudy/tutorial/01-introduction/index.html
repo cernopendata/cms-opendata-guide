@@ -1653,20 +1653,19 @@
 </ul>
 <h2 id="how-do-we-calculate-the-efficiency">How do we calculate the efficiency?<a class="headerlink" href="#how-do-we-calculate-the-efficiency" title="Permanent link">&para;</a></h2>
 <p>The efficiency is given by the fraction of probe muons that pass a given criteria (in this case, the <strong>Muon ID</strong> which we explain <a href="#cms-muon-identification-reconstruction">below</a>):</p>
-<p>AAAA</p>
-<p><img alt="Efficiency equation" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/efficiency.svg" /></p>
+<p><img alt="Efficiency equation" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/01/efficiency.svg" /></p>
 <p>The denominator corresponds to the number of resonance candidates (tag+probe pairs) reconstructed in the dataset. The numerator corresponds to the subset for which the probe passes the criteria.</p>
 <p>The tag+probe invariant mass distribution is used to select only signal, that is, only true J/ψ candidates decaying to dimuons. This is achieved in this exercise by the usage of two methods: <strong>fitting</strong> and <strong>side-band-subtraction</strong>.</p>
 <h2 id="cms-muon-identification-and-reconstruction">CMS Muon identification and reconstruction<a class="headerlink" href="#cms-muon-identification-and-reconstruction" title="Permanent link">&para;</a></h2>
 <p>The final objective in this lesson is to measure the efficiency for identifying reconstructed <strong>tracker muons</strong>.  We present here a short description of the muon identification and reconstruction employed in the CMS experiment at the LHC.</p>
-<p><img alt="CMS muon id" src="../../../../../images/analysis/cmsefficiency/muons_id.png" /></p>
+<p><img alt="CMS muon id" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/01/muons_id.png" /></p>
 <p>In the standard CMS reconstruction for proton-proton collisions, tracks are first reconstructed independently in the inner tracker and in the muon system. Based on these objects, two reconstruction approaches are used:</p>
 <ul>
 <li>
 <p>Tracker Muon reconstruction (red line): In this approach, all tracker tracks with pT &gt; 0.5 GeV/c and total momentum p &gt; 2.5 GeV/c are considered as possible muon candidates and are extrapolated to the muon system taking into account the magnetic field;</p>
 </li>
 <li>
-<p>Standalone Muon reconstruction (green line): they are all tracks of the segments reconstructed in the muon chambers (performed using segments and hits from Drift Tubes - DTs in the barrel region, Cathode strip chambers - CSCs in the endcaps and Resistive Plates Chambers - RPCs for all muon system) are used to generate "seeds" consisting of position and direction vectors and an estimate of the muon transverse momentum;</p>
+<p>Standalone Muon reconstruction (green line): they are all tracks of the segments reconstructed in the muon chambers (performed using segments and hits from Drift Tubes - DTs in the barrel region, Cathode strip chambers - CSCs in the endcaps and Resistive Plates Chambers - RPCs for all muon system) are used to generate "seeds" consisting of position and direction vec01/tors and an estimate of the muon transverse momentum;</p>
 </li>
 <li>
 <p>Global Muon reconstruction (blue line): For each standalone-muon track, a matching tracker track is found by comparing parameters of the two tracks propagated onto a common surface.</p>

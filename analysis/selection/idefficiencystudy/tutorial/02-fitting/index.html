@@ -1673,7 +1673,7 @@ scp alland@lxplus.cern.ch:/eos/user/a/alland/TagProbe/simplified_datasets_for_fi
 <p>So, in the picture below, on the left, let's imagine that the pT bin we are selecting is the one marked in red.  But, of course, in that bin (like in the rest) you will have true J/ψ; decays as well as muon pairs from other processes (maybe QCD, for instance).  The true decays would make up our <em>signal</em>, whereas the other events will be considered the <em>background</em>.</p>
 <p>The fit, which is made in a different space (the invariant mass space) allows to statistically discriminate between signal and background. To compute the efficiency we simply divide the signal yield from the fits to the <code>passing</code> category by the signal yield from the fit of the <code>inclusive</code> (All) category. This approach is depicted in the middle and right-hand plots of the image below.</p>
 <p>At the end of the day, then, you will have to make these fits for each bin in the range of interest.</p>
-<p><img alt="Fitting method scheme" src="../../../../../images/analysis/cmsefficiency/fitting_method_large.png" /></p>
+<p><img alt="Fitting method scheme" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/fitting_method_large.png" /></p>
 <p>Let's start exploring our dataset. From the cloned directory, type:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span> DATA
 root -l TagAndProbe_Jpsi_MC.root
@@ -1690,7 +1690,7 @@ root -l TagAndProbe_Jpsi_MC.root
 <p>Now, before we start fitting the invariant mass it's important to look at it's shape first. To visualize our data's invariant mass, do (within ROOT):</p>
 <div class="highlight"><pre><span></span><code><span class="n">tagandprobe</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;InvariantMass&quot;</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<p><img alt="Invariant Mass histogram from the data analysed" src="../../../../../images/analysis/cmsefficiency/tutorial/02/InvariantMassJpsi.png" /></p>
+<p><img alt="Invariant Mass histogram from the data analysed" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/02/InvariantMassJpsi.png" /></p>
 <p>If you got the previous result, we're ready to go.</p>
 <p>The dataset used in this exercise has been collected by the CMS experiment, in proton-proton collisions at the LHC. It contains 1572153 entries (muon pair candidates) with an associated invariant mass. For each candidate, the transverse momentum (pT), rapidity(&eta;) and azimuthal angle (&phi;) are stored, along with a binary flag <code>PassingProbeTrackingMuon</code>, which is 1 in case the corresponding probe satisfied the tracker muon selection criteria and 0 in case it doesn't.</p>
 <div class="admonition note">
@@ -1708,11 +1708,11 @@ root -l TagAndProbe_Jpsi_MC.root
 <p>We'll start by calculating the efficiency as a function of pT. It is useful to have an idea of the distribution of the quantity we want to study. In order to do this, we’ll repeat the steps previously used to plot the invariant mass, but now for the <code>ProbeMuon_Pt</code> variable.</p>
 <div class="highlight"><pre><span></span><code><span class="n">tagandprobe</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;ProbeMuon_Pt&quot;</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<p><img alt="pT plot of data in linear scale" src="../../../../../images/analysis/cmsefficiency/tutorial/02/ProbeMuonPt.png" /></p>
+<p><img alt="pT plot of data in linear scale" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/02/ProbeMuonPt.png" /></p>
 <p>Hmm... seems like our domain is larger than we need it to be. To fix this, we can apply a constraint to our plot. Try:</p>
 <div class="highlight"><pre><span></span><code><span class="n">tagandprobe</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;ProbeMuon_Pt&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ProbeMuon_Pt &lt; 20&quot;</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<p><img alt="pT plot of data in log scale" src="../../../../../images/analysis/cmsefficiency/tutorial/02/ProbeMuonPtCortes.png" /></p>
+<p><img alt="pT plot of data in log scale" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/02/ProbeMuonPtCortes.png" /></p>
 <p>Exit ROOT and get back to the main area:</p>
 <div class="highlight"><pre><span></span><code>.q
 <span class="nb">cd</span> ..
@@ -1879,7 +1879,7 @@ You'll see that in order to create a <code>TEfficiency</code> object, one of the
 <div class="highlight"><pre><span></span><code>compare_efficiency<span class="o">(</span><span class="s2">&quot;Pt&quot;</span>, <span class="s2">&quot;results/efficiencies/efficiency/Jpsi_Run_2011/Pt_trackerMuon.root&quot;</span>, <span class="s2">&quot;results/efficiencies/efficiency/Jpsi_MC_2020/Pt_trackerMuon.root&quot;</span><span class="o">)</span><span class="p">;</span>
 </code></pre></div>
 <p>Now you should have a new folder called "Comparison Run2011 vs MC" in it is the comparison that you just made.</p>
-<p><img alt="Tracker Muon Pt Efficiency" src="../../../../../images/analysis/cmsefficiency/tutorial/02/globalMuon_Pt_Efficiency.png" /></p>
+<p><img alt="Tracker Muon Pt Efficiency" src="../../../../../images/analysis/selection/idefficiencystudy/tutorial/02/globalMuon_Pt_Efficiency.png" /></p>
 <p>If everything went well and you still have time to go, repeat this process for the two other variables, &eta; and &phi;!</p>
 <p>If you are stucked on root enviroment, do not forget about typing this command to exit it:</p>
 <div class="highlight"><pre><span></span><code>.q
