@@ -910,8 +910,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-fit" class="md-nav__link">
-    The Fit
+  <a href="#the-probability-density-function-used-for-modeling-signal-and-background" class="md-nav__link">
+    The Probability Density Function used for modeling signal and background
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#efficiency-evaluation-between-real-data-and-monte-carlo-simulations" class="md-nav__link">
+    Efficiency evaluation between real data and Monte Carlo simulations
   </a>
   
 </li>
@@ -1604,8 +1611,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-fit" class="md-nav__link">
-    The Fit
+  <a href="#the-probability-density-function-used-for-modeling-signal-and-background" class="md-nav__link">
+    The Probability Density Function used for modeling signal and background
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#efficiency-evaluation-between-real-data-and-monte-carlo-simulations" class="md-nav__link">
+    Efficiency evaluation between real data and Monte Carlo simulations
   </a>
   
 </li>
@@ -1634,12 +1648,24 @@
 <p>Since we will be needing ROOT version greater than 6 and this code has been tested in root version 6.22/00, do not forget to set it up from LCG (as you learned in the ROOT pre-exercise) by doing:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">source</span> /cvmfs/sft.cern.ch/lcg/views/LCG_98/x86_64-slc6-gcc8-opt/setup.sh
 </code></pre></div>
-<p>Clone the repository and go to the fitting method tutorial:</p>
+<p>It is important to metion that codes used in this tutorial uses ROOT batch. So, if you are connecting to a remote compute, do not forget about using <code>-X</code> parameter like so:</p>
+<div class="highlight"><pre><span></span><code>ssh -X your@remote.computer
+</code></pre></div>
+<p>To get sure if everything will run alright, you might want to try this command:</p>
+<div class="highlight"><pre><span></span><code>root
+gROOT-&gt;IsBatch<span class="o">()</span>
+.q
+</code></pre></div>
+<p>If the output has the <code>true</code> value, everything was setted up.</p>
+<p>Now, clone the repository and go to the fitting method tutorial:</p>
 <div class="highlight"><pre><span></span><code>git clone git://github.com/allanjales/TagAndProbe
 <span class="nb">cd</span> TagAndProbe/efficiency_tools/fitting
 </code></pre></div>
-<p>You will also need to download the simplified TagAndProbe_Jpsi_Run2011.root data set using <a href="https://cernbox.cern.ch/index.php/s/lqHEasYWJpOZsfq">this link</a> and put it on the <code>DATA</code> folder.</p>
-<p>If you are trying to use other ntuple and it does not have the simplied version of that, it should be simplied with <code>simplify_data.cpp</code> in order to run the fitting method over it. Details about this process can be found in <a href="../../fittingreferenceguide/overview#simplify_datacpp">Overview page of reference guide for fitting method</a>.</p>
+<p>You will also need to download the file <code>TagAndProbe_Jpsi_Run2011.root</code> from folder <code>simplified_datasets_for_fitting_method</code> using <a href="https://cernbox.cern.ch/index.php/s/lqHEasYWJpOZsfq">this link</a> and put it on the <code>DATA</code> folder in your local area. To do so, just run commands below:</p>
+<div class="highlight"><pre><span></span><code>scp alland@lxplus.cern.ch:/eos/user/a/alland/TagProbe/simplified_datasets_for_fitting_method/TagAndProbe_Jpsi_Run2011.root DATA
+scp alland@lxplus.cern.ch:/eos/user/a/alland/TagProbe/simplified_datasets_for_fitting_method/TagAndProbe_Jpsi_MC.root DATA
+</code></pre></div>
+<p>If you are trying to use other ntuple and it does not have the simplified version of that, it should be simplified with <code>simplify_data.cpp</code> in order to run the fitting method over it. Details about this process can be found at <a href="../../fittingreferenceguide/overview#simplify_datacpp">overview page of reference guide for fitting method</a>.</p>
 <h2 id="the-fitting-method">The Fitting Method<a class="headerlink" href="#the-fitting-method" title="Permanent link">&para;</a></h2>
 <p>First, a brief explanation of the method we’ll be studying.</p>
 <p>It consists on fitting the invariant mass of the tag &amp; probe pairs, in the two categories: passing probes, and all probes.  I.e., for the unbiased leg of the decay, one can apply a selection criteria (a set of cuts) and determine whether the object passes those criteria or not.</p>
@@ -1656,7 +1682,7 @@ root -l TagAndProbe_Jpsi_MC.root
 <div class="highlight"><pre><span></span><code>Attaching file TagAndProbe_Jpsi_MC.root as _file0...
 (TFile *) 0x563c69a68d90
 </code></pre></div>
-<p>Of course, you can explore this file, if you want, using all the tools you learn in the ROOT pre-exercise.  This file contains ntuples that were obtained using procedures similar to the ones you have been learning in this workshop.</p>
+<p>Of course, you can explore this file if you want using all the tools you learn in the ROOT. This file contains datas that were obtained using procedures the main tag and probe code.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>In the following plots, remember that the units of the x axis are in GeV/c.</p>
@@ -1679,11 +1705,11 @@ root -l TagAndProbe_Jpsi_MC.root
 | PassingProbeTrackingMuon |
 | PassingProbeStandAloneMuon |
 | PassingProbeGlobalMuon |</p>
-<p>We'll start by calculating the efficiency as a function of pT.  It is useful to have an idea of the distribution of the quantity we want to study. In order to do this, we’ll repeat the steps previously used to plot the invariant mass, but now for the <code>ProbeMuon_Pt</code> variable.</p>
+<p>We'll start by calculating the efficiency as a function of pT. It is useful to have an idea of the distribution of the quantity we want to study. In order to do this, we’ll repeat the steps previously used to plot the invariant mass, but now for the <code>ProbeMuon_Pt</code> variable.</p>
 <div class="highlight"><pre><span></span><code><span class="n">tagandprobe</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;ProbeMuon_Pt&quot;</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p><img alt="pT plot of data in linear scale" src="../../../../../images/analysis/cmsefficiency/tutorial/02/ProbeMuonPt.png" /></p>
-<p>Hmm.. seems like our domain is larger than we need it to be. To fix this, we can apply a constraint to our plot. Try:</p>
+<p>Hmm... seems like our domain is larger than we need it to be. To fix this, we can apply a constraint to our plot. Try:</p>
 <div class="highlight"><pre><span></span><code><span class="n">tagandprobe</span><span class="o">-&gt;</span><span class="n">Draw</span><span class="p">(</span><span class="s">&quot;ProbeMuon_Pt&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ProbeMuon_Pt &lt; 20&quot;</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p><img alt="pT plot of data in log scale" src="../../../../../images/analysis/cmsefficiency/tutorial/02/ProbeMuonPtCortes.png" /></p>
@@ -1691,15 +1717,19 @@ root -l TagAndProbe_Jpsi_MC.root
 <div class="highlight"><pre><span></span><code>.q
 <span class="nb">cd</span> ..
 </code></pre></div>
-<p>Now that you're acquainted with the data, open the  <code>efficiency.cpp</code> file.
-You'll have to make some small adjustments to the code in this section:</p>
-<p>We'll start by choosing the desired bins for the transverse momentum, so the only quantity that shouldnt be commented is the first Pt as shown bellow.</p>
-<div class="highlight"><pre><span></span><code><span class="c1">//Which quantity do you want to use?</span>
+<p>Now that you're acquainted with the data, open the  <code>efficiency.cpp</code> file and make some small adjustments to the code in this section:</p>
+<p>We'll start by choosing the desired muon id and bins for it the transverse momentum, so the lines that shouldn't be commented are the "trackerMuon" and the first "Pt" as shown below. All other lines in this section should be commented.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//Which Muon Id do you want to study?</span>
+<span class="n">string</span><span class="w"> </span><span class="n">MuonId</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;trackerMuon&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="c1">//string MuonId   = &quot;standaloneMuon&quot;;</span>
+<span class="c1">//string MuonId   = &quot;globalMuon&quot;;</span>
+
+<span class="c1">//Which quantity do you want to use?</span>
 <span class="n">string</span><span class="w"> </span><span class="n">quantity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Pt&quot;</span><span class="p">;</span><span class="w">     </span><span class="kt">double</span><span class="w"> </span><span class="n">bins</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">0.</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.4</span><span class="p">,</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span><span class="w"> </span><span class="mf">4.4</span><span class="p">,</span><span class="w"> </span><span class="mf">4.7</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w"> </span><span class="mf">5.6</span><span class="p">,</span><span class="w"> </span><span class="mf">5.8</span><span class="p">,</span><span class="w"> </span><span class="mf">6.0</span><span class="p">,</span><span class="w"> </span><span class="mf">6.2</span><span class="p">,</span><span class="w"> </span><span class="mf">6.4</span><span class="p">,</span><span class="w"> </span><span class="mf">6.6</span><span class="p">,</span><span class="w"> </span><span class="mf">6.8</span><span class="p">,</span><span class="w"> </span><span class="mf">7.3</span><span class="p">,</span><span class="w"> </span><span class="mf">9.5</span><span class="p">,</span><span class="w"> </span><span class="mf">13.0</span><span class="p">,</span><span class="w"> </span><span class="mf">17.0</span><span class="p">,</span><span class="w"> </span><span class="mf">40.</span><span class="p">};</span><span class="w"></span>
 <span class="c1">//string quantity = &quot;Eta&quot;;    double bins[] = {-2.4, -1.8, -1.4, -1.2, -1.0, -0.8, -0.5, -0.2, 0, 0.2, 0.5, 0.8, 1.0, 1.2, 1.4, 1.8, 2.4};</span>
 <span class="c1">//string quantity = &quot;Phi&quot;;    double bins[] = {-3.0, -1.8, -1.6, -1.2, -1.0, -0.7, -0.4, -0.2, 0, 0.2, 0.4, 0.7, 1.0, 1.2, 1.6, 1.8, 3.0};</span>
 </code></pre></div>
-<h2 id="the-fit">The Fit<a class="headerlink" href="#the-fit" title="Permanent link">&para;</a></h2>
+<h2 id="the-probability-density-function-used-for-modeling-signal-and-background">The Probability Density Function used for modeling signal and background<a class="headerlink" href="#the-probability-density-function-used-for-modeling-signal-and-background" title="Permanent link">&para;</a></h2>
 <p>We execute a simultaneous fit using a Gaussian curve and a Crystall Ball function. For the background we use a Exponential. The function used, <code>doFit_Jpsi_Run_h()</code>, is implemented in the source file <code>src/dofits/doFit_Jpsi_Run.h</code>.</p>
 <p>The fitting and storing of the fit output of each bin is achieved by the following loop in the <code>efficiency.cpp</code> code.</p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">nbins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">bins</span><span class="p">)</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">bins</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
@@ -1808,13 +1838,19 @@ You'll see that in order to create a <code>TEfficiency</code> object, one of the
 <p>Now that you understand what the <code>efficiency.cpp</code> macro does, run your code without flashing the scream('-l'), with a batch mode (<code>-b</code>) and with a quit-when-done switch (<code>-q</code>):</p>
 <div class="highlight"><pre><span></span><code>root -l -b -q efficiency.cpp
 </code></pre></div>
-<p>If everything went correctly you should have a 'Pt_globalMuon.root' in the path below.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some <code>[#1] INFO</code> messages will pop up on the terminal. They are expected. Do not worry about it.</p>
+<p>There is some <code>[#0] WARNING:</code> that should pop up too. They say about ignoring some events. They appear due cuts we are making directly on variables limits. It is ok, just ignore it.</p>
+</div>
+<p>If everything went correctly you should have a 'Pt_tracekrMuon.root' in the path below.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span> results/efficiencies/efficiency/Jpsi_Run_2011/
 </code></pre></div>
 <p>We will need to run the code again with a few changes so go back to the main file.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span> ../../../..
 </code></pre></div>
-<p>Now we need to create the Monte Carlo(MC) data to compare with the real one, in order to do that we will need to change the ´efficiency.cpp´ code, you will have to include the ´#include "src/dofits/DoFit_Jpsi_MC.h"´ and comment the ´#include "src/dofits/DoFit_Jpsi_Run.h"´ part, your code should look like this:</p>
+<h2 id="efficiency-evaluation-between-real-data-and-monte-carlo-simulations">Efficiency evaluation between real data and Monte Carlo simulations<a class="headerlink" href="#efficiency-evaluation-between-real-data-and-monte-carlo-simulations" title="Permanent link">&para;</a></h2>
+<p>Now we need to create the Monte Carlo (MC) data to compare with the real one, in order to do that we will need to change the ´efficiency.cpp´ code, you will have to include the ´#include "src/dofits/DoFit_Jpsi_MC.h"´ and comment the ´#include "src/dofits/DoFit_Jpsi_Run.h"´ part, your code should look like this:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">//Change if you need</span>
 <span class="c1">//#include &quot;src/dofits/DoFit_Jpsi_Run.h&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;src/dofits/DoFit_Jpsi_MC.h&quot;</span><span class="cp"></span>
@@ -1823,9 +1859,9 @@ You'll see that in order to create a <code>TEfficiency</code> object, one of the
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;src/make_TH1D.h&quot;</span><span class="cp"></span>
 
 <span class="c1">//Which Muon Id do you want to study?</span>
-<span class="c1">//string MuonId   = &quot;trackerMuon&quot;;</span>
+<span class="n">string</span><span class="w"> </span><span class="n">MuonId</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;trackerMuon&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="c1">//string MuonId   = &quot;standaloneMuon&quot;;</span>
-<span class="n">string</span><span class="w"> </span><span class="n">MuonId</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;globalMuon&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="c1">//string MuonId   = &quot;globalMuon&quot;;</span>
 
 <span class="c1">//Which quantity do you want to use?</span>
 <span class="n">string</span><span class="w"> </span><span class="n">quantity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Pt&quot;</span><span class="p">;</span><span class="w">     </span><span class="kt">double</span><span class="w"> </span><span class="n">bins</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">0.</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.4</span><span class="p">,</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span><span class="w"> </span><span class="mf">4.4</span><span class="p">,</span><span class="w"> </span><span class="mf">4.7</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w"> </span><span class="mf">5.6</span><span class="p">,</span><span class="w"> </span><span class="mf">5.8</span><span class="p">,</span><span class="w"> </span><span class="mf">6.0</span><span class="p">,</span><span class="w"> </span><span class="mf">6.2</span><span class="p">,</span><span class="w"> </span><span class="mf">6.4</span><span class="p">,</span><span class="w"> </span><span class="mf">6.6</span><span class="p">,</span><span class="w"> </span><span class="mf">6.8</span><span class="p">,</span><span class="w"> </span><span class="mf">7.3</span><span class="p">,</span><span class="w"> </span><span class="mf">9.5</span><span class="p">,</span><span class="w"> </span><span class="mf">13.0</span><span class="p">,</span><span class="w"> </span><span class="mf">17.0</span><span class="p">,</span><span class="w"> </span><span class="mf">40.</span><span class="p">};</span><span class="w"></span>
@@ -1833,43 +1869,21 @@ You'll see that in order to create a <code>TEfficiency</code> object, one of the
 <span class="c1">//string quantity = &quot;Phi&quot;;    double bins[] = {-3.0, -1.8, -1.6, -1.2, -1.0, -0.7, -0.4, -0.2, 0, 0.2, 0.4, 0.7, 1.0, 1.2, 1.6, 1.8, 3.0};</span>
 <span class="c1">//string quantity = &quot;Pt&quot;;     double bins[] = {0., 40.};</span>
 </code></pre></div>
-<p>Run the efficiency.cpp again and you will have 2 new folders at results/efficiencies/efficiency one "Jpsi_MC_2020" and other "Jpsi_Run_2011".If you want to see each individual efficiency you can use the TBrowser to open the globalMuon_Pt_efficiency file.</p>
-<p>Now, in order to make the comparison between real and MC data we will need to change the efficiency.cpp once more, to do this you must include #include the "compare_efficiency.cpp" and put the code below in the efficiency.cpp file.</p>
-<div class="highlight"><pre><span></span><code>compare_efficiency<span class="o">(</span>quantity, <span class="s2">&quot;results/efficiencies/efficiency/Jpsi_Run_2011/Pt_globalMuon.root&quot;</span>, <span class="s2">&quot;results/efficiencies/efficiency/Jpsi_MC_2020/Pt_globalMuon.root&quot;</span><span class="o">)</span><span class="p">;</span>
+<p>Run the <code>efficiency.cpp</code> again and you will have 2 new folders at <code>results/efficiencies/efficiency/</code> one <code>Jpsi_MC_2020</code> and other <code>Jpsi_Run_2011</code>. If you want to see each individual efficiency, you can use the <code>new TBrowser</code> command to open the <code>trackerMuon_Pt_efficiency.root</code> file.</p>
+<p>Now, in order to make the comparison between real and MC data we will need to run a code in folder <code>tests</code> named <code>compare_efficiency.cpp</code>. To run this command from where you are, first load this file on ROOT with the command below:</p>
+<div class="highlight"><pre><span></span><code>root -l 
+.L tests/compare_efficiency.cpp
 </code></pre></div>
-<p>So your code should look like this.</p>
-<div class="highlight"><pre><span></span><code><span class="c1">//Change if you need</span>
-<span class="c1">//#include &quot;src/dofits/DoFit_Jpsi_Run.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;src/dofits/DoFit_Jpsi_MC.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;src/create_folder.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;src/get_efficiency.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;src/make_TH1D.h&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;tests/compare_efficiency.cpp&quot;</span><span class="cp"></span>
-
-<span class="c1">//Which Muon Id do you want to study?</span>
-<span class="c1">//string MuonId   = &quot;trackerMuon&quot;;</span>
-<span class="c1">//string MuonId   = &quot;standaloneMuon&quot;;</span>
-<span class="n">string</span><span class="w"> </span><span class="n">MuonId</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;globalMuon&quot;</span><span class="p">;</span><span class="w"></span>
-
-<span class="c1">//Which quantity do you want to use?</span>
-<span class="n">string</span><span class="w"> </span><span class="n">quantity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Pt&quot;</span><span class="p">;</span><span class="w">     </span><span class="kt">double</span><span class="w"> </span><span class="n">bins</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">0.</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.4</span><span class="p">,</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span><span class="w"> </span><span class="mf">4.4</span><span class="p">,</span><span class="w"> </span><span class="mf">4.7</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w"> </span><span class="mf">5.6</span><span class="p">,</span><span class="w"> </span><span class="mf">5.8</span><span class="p">,</span><span class="w"> </span><span class="mf">6.0</span><span class="p">,</span><span class="w"> </span><span class="mf">6.2</span><span class="p">,</span><span class="w"> </span><span class="mf">6.4</span><span class="p">,</span><span class="w"> </span><span class="mf">6.6</span><span class="p">,</span><span class="w"> </span><span class="mf">6.8</span><span class="p">,</span><span class="w"> </span><span class="mf">7.3</span><span class="p">,</span><span class="w"> </span><span class="mf">9.5</span><span class="p">,</span><span class="w"> </span><span class="mf">13.0</span><span class="p">,</span><span class="w"> </span><span class="mf">17.0</span><span class="p">,</span><span class="w"> </span><span class="mf">40.</span><span class="p">};</span><span class="w"></span>
-<span class="c1">//string quantity = &quot;Eta&quot;;    double bins[] = {-2.4, -1.8, -1.4, -1.2, -1.0, -0.8, -0.5, -0.2, 0, 0.2, 0.5, 0.8, 1.0, 1.2, 1.4, 1.8, 2.4};</span>
-<span class="c1">//string quantity = &quot;Phi&quot;;    double bins[] = {-3.0, -1.8, -1.6, -1.2, -1.0, -0.7, -0.4, -0.2, 0, 0.2, 0.4, 0.7, 1.0, 1.2, 1.6, 1.8, 3.0};</span>
-<span class="c1">//string quantity = &quot;Pt&quot;;     double bins[] = {0., 40.};</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">efficiency</span><span class="p">()</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">compare_efficiency</span><span class="p">(</span><span class="n">quantity</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;results/efficiencies/efficiency/Jpsi_Run_2011/Pt_globalMuon.root&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;results/efficiencies/efficiency/Jpsi_MC_2020/Pt_globalMuon.root&quot;</span><span class="p">);</span><span class="w"></span>
-
-<span class="w">    </span><span class="c1">//Path where is going to save results png for every bin</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">path_bins_fit_folder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;results/bins_fit/efficiency/&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">create_folder</span><span class="p">(</span><span class="n">path_bins_fit_folder</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
+<p>Now you have the function <code>compare_efficiency(...)</code> we made loaded on your root. This function have three arguments. The first one should be the quatity that we are analysing (in this case "Pt", but could be "Eta" and "Phi"). The second and third parameter are paths which points to .root folders created previously in this page.</p>
+<p>So now, in order to make the comparison between real and MC data on pT, you should run this command to get your result:</p>
+<div class="highlight"><pre><span></span><code>compare_efficiency<span class="o">(</span><span class="s2">&quot;Pt&quot;</span>, <span class="s2">&quot;results/efficiencies/efficiency/Jpsi_Run_2011/Pt_trackerMuon.root&quot;</span>, <span class="s2">&quot;results/efficiencies/efficiency/Jpsi_MC_2020/Pt_trackerMuon.root&quot;</span><span class="o">)</span><span class="p">;</span>
 </code></pre></div>
-<p>If you want you can comment everything below the compare_efficiency(be cafefull not to comment the last "}")</p>
 <p>Now you should have a new folder called "Comparison Run2011 vs MC" in it is the comparison that you just made.</p>
-<p><img alt="GlobalMuon Pt Efficiency" src="../../../../../images/analysis/cmsefficiency/tutorial/02/globalMuon_Pt_Efficiency.png" /></p>
+<p><img alt="Tracker Muon Pt Efficiency" src="../../../../../images/analysis/cmsefficiency/tutorial/02/globalMuon_Pt_Efficiency.png" /></p>
 <p>If everything went well and you still have time to go, repeat this process for the two other variables, &eta; and &phi;!</p>
+<p>If you are stucked on root enviroment, do not forget about typing this command to exit it:</p>
+<div class="highlight"><pre><span></span><code>.q
+</code></pre></div>
 
               
             </article>
