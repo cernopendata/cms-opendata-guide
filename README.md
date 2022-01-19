@@ -73,10 +73,9 @@ $ pip install -r requirements.txt
 $ mkdocs serve
 $ firefox http://127.0.0.1:8000
 ```
-
-You can run local tests by `./run-tests.sh`. Testing requires [a ruby installation](https://www.ruby-lang.org/en/documentation/installation/). You will also need to install the ruby gem awesome_bot by `gem install awesome_bot` and make sure that gem in accessible on your path.
-
 You can exit from the virtual environment with `deactivate`.
+
+You can run local tests executing `./run-tests.sh`. Testing requires [a ruby installation](https://www.ruby-lang.org/en/documentation/installation/). You will also need to install the ruby gem `awesome_bot` by issuing `gem install awesome_bot` and make sure that gem in accessible on your path.  In addition, `npx` is also required by the test script.  For this one should install `nodejs` and `npm`, and install it using the node package manager (npm) as `npm i npx`.
 
 ### Note on markdown
 
