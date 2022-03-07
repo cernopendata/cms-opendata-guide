@@ -10,10 +10,11 @@ repo_url: 'https://github.com/cernopendata/cms-opendata-guide'
 # Structure
 nav:
     - Home: index.md
+    - 'CMS Open Data':
+        - 'CERN Open Data Portal': cmsOpenData/cernportal.md
+        - 'CMS Open Data': cmsOpenData/cmsopendata.md
+        - 'Finding Data': cmsOpenData/findingData.md
     - 'Computing Tools':
-        - 'CERN Open Data Portal': tools/cernportal.md
-        - 'CMS Open Data': tools/cmsopendata.md
-        - 'CMS Twiki': tools/cmstwiki.md
         - 'UNIX': tools/unix.md
         - 'ROOT': tools/root.md
         - 'C++ and Python': tools/cppandpython.md
@@ -37,9 +38,11 @@ nav:
             - 'Specific Physics Objects':
                 - 'Common Tools': analysis/selection/objects/tools.md
                 - 'Muons': analysis/selection/objects/muons.md
-                - 'Electrons and Photons': analysis/selection/objects/egamma.md
+                - 'Electrons': analysis/selection/objects/electrons.md
+                - 'Photons': analysis/selection/objects/photons.md
                 - 'Jets': analysis/selection/objects/jets.md
                 - 'Missing ET': analysis/selection/objects/met.md
+                - 'Taus': analysis/selection/objects/taus.md
             - 'Physics Object ID': analysis/selection/objectid.md
         - 'Luminosity':
             - 'Luminosity': analysis/luminosity/lumi.md
