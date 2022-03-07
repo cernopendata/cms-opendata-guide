@@ -13,7 +13,7 @@ nav:
     - 'CMS Open Data':
         - 'CERN Open Data Portal': cmsOpenData/cernportal.md
         - 'CMS Open Data': cmsOpenData/cmsopendata.md
-        - 'CMS Twiki': cmsOpenData/cmstwiki.md
+        - 'Finding Data': cmsOpenData/findingData.md
     - 'Computing Tools':
         - 'UNIX': tools/unix.md
         - 'ROOT': tools/root.md
