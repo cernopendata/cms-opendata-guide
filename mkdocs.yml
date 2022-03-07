@@ -35,6 +35,7 @@ nav:
         - 'Selection':
             - 'Triggers': analysis/selection/triggers.md
             - 'Physics Objects': analysis/selection/objects.md
+            - 'Validated Runs': analysis/selection/validatedRuns.md
             - 'Specific Physics Objects':
                 - 'Common Tools': analysis/selection/objects/tools.md
                 - 'Muons': analysis/selection/objects/muons.md
