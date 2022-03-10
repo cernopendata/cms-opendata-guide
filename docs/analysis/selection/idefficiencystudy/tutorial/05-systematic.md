@@ -6,7 +6,7 @@ If you have done the fitting tutorial you already have done this part so you may
 Clone this repository and go to the fitting folder.
 
 ```sh
-git clone git://github.com/allanjales/TagAndProbe
+git clone git://github.com/cms-legacydata-analyses/TagAndProbeTool
 cd TagAndProbe/efficiency_tools/fitting
 ```
 

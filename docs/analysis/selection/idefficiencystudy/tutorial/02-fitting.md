@@ -31,7 +31,7 @@ If the output has the `true` value, everything was setted up.
 Now, clone the repository and go to the fitting method tutorial:
 
 ```sh
-git clone git://github.com/allanjales/TagAndProbe
+git clone git://github.com/cms-legacydata-analyses/TagAndProbeTool
 cd TagAndProbe/efficiency_tools/fitting
 ```
 
@@ -40,6 +40,13 @@ You will also need to download the file `TagAndProbe_Jpsi_Run2011.root` from fol
 ```sh
 wget -O DATA/TagAndProbe_Jpsi_Run2011.root "https://cernbox.cern.ch/index.php/s/lqHEasYWJpOZsfq/download?path=%2Fsimplified_datasets_for_fitting_method&files=TagAndProbe_Jpsi_Run2011.root"
 wget -O DATA/TagAndProbe_Jpsi_MC.root "https://cernbox.cern.ch/index.php/s/lqHEasYWJpOZsfq/download?path=%2Fsimplified_datasets_for_fitting_method&files=TagAndProbe_Jpsi_MC.root"
+```
+
+If that does not work, try run:
+
+```sh
+curl "https://cernbox.cern.ch/index.php/s/lqHEasYWJpOZsfq/download?path=%2Fsimplified_datasets_for_fitting_method&files=TagAndProbe_Jpsi_Run2011.root" -o "DATA/TagAndProbe_Jpsi_Run2011.root"
+curl "https://cernbox.cern.ch/index.php/s/lqHEasYWJpOZsfq/download?path=%2Fsimplified_datasets_for_fitting_method&files=TagAndProbe_Jpsi_MC.root" -o "DATA/TagAndProbe_Jpsi_MC.root"
 ```
 
 If you are trying to use other ntuple and it does not have the simplified version of that, it should be simplified with `simplify_data.cpp` in order to run the fitting method over it. Details about this process can be found at [overview page of reference guide for fitting method](../../fittingreferenceguide/overview#simplify_datacpp).
