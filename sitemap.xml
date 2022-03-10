@@ -2,292 +2,292 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/about/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/faq/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/backgrounds/qcdestimation/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/backgrounds/techniques/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/datasim/collisiondata/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/datasim/eventgeneration/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/datasim/mcsimulations/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/interpretation/limits/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/interpretation/stats/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/luminosity/lumi/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/selection/objectid/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/selection/triggers/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/selection/idefficiencystudy/signalextraction/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/selection/idefficiencystudy/tagandprobe/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/selection/idefficiencystudy/fittingreferenceguide/overview/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/selection/idefficiencystudy/fittingreferenceguide/src_files/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/selection/idefficiencystudy/sidebandreferenceguide/FitFunctions/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/selection/idefficiencystudy/sidebandreferenceguide/InvariantMass/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/selection/idefficiencystudy/sidebandreferenceguide/MassValues/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/selection/idefficiencystudy/sidebandreferenceguide/PassingFailing/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/selection/idefficiencystudy/sidebandreferenceguide/PtEtaPhi/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/selection/idefficiencystudy/sidebandreferenceguide/SidebandSubtraction/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/selection/idefficiencystudy/sidebandreferenceguide/TagProbe/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/selection/idefficiencystudy/sidebandreferenceguide/Type/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/selection/idefficiencystudy/sidebandreferenceguide/macro/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/selection/idefficiencystudy/tutorial/01-introduction/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/selection/idefficiencystudy/tutorial/02-fitting/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/selection/idefficiencystudy/tutorial/03-sidebandsubtraction/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/selection/idefficiencystudy/tutorial/04-comparison/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/selection/idefficiencystudy/tutorial/05-systematic/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/egamma/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/jets/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/met/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/muons/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/tools/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/systematics/lumiuncertain/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/systematics/mcuncertain/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/systematics/objectsuncertain/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/systematics/pileupuncertain/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/systematics/objectsuncertain/btaguncertain/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/systematics/objectsuncertain/jetmetuncertain/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/analysis/systematics/objectsuncertain/leptonuncertain/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/cmssw/cmsswanalyzers/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/cmssw/cmsswconditions/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/cmssw/cmsswconfigure/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/cmssw/cmsswdatamodel/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/cmssw/cmsswoverview/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/tools/cernportal/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/tools/cmsopendata/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/tools/cmstwiki/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/tools/cppandpython/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/tools/docker/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/tools/git/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/tools/root/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/tools/unix/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://cms-opendata-guide.web.cern.ch/tools/virtualmachines/</loc>
-         <lastmod>2022-01-10</lastmod>
+         <lastmod>2022-03-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
