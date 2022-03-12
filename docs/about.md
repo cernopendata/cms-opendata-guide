@@ -11,6 +11,7 @@ This guide is brought to you by the CMS open data group, on a best-effort basis.
 - Tibor Šimko
 - Marco Vidal García
 - Audrius Mecionis
+- Allan Jales
 
 ## Contact
 
