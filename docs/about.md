@@ -12,6 +12,8 @@ This guide is brought to you by the CMS open data group, on a best-effort basis.
 - Marco Vidal García
 - Audrius Mecionis
 - Anniina Kinnunen
+- Allan Jales
+
 
 ## Contact
 

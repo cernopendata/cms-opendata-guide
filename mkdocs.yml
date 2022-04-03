@@ -45,6 +45,28 @@ nav:
                 - 'Missing ET': analysis/selection/objects/met.md
                 - 'Taus': analysis/selection/objects/taus.md
             - 'Physics Object ID': analysis/selection/objectid.md
+            - 'ID Efficiency study':
+                - 'Tag and Probe': analysis/selection/idefficiencystudy/tagandprobe.md
+                - 'Signal extraction': analysis/selection/idefficiencystudy/signalextraction.md
+                - 'Tutorial':
+                    - 'Introduction':            analysis/selection/idefficiencystudy/tutorial/01-introduction.md
+                    - 'Fitting':                 analysis/selection/idefficiencystudy/tutorial/02-fitting.md
+                    - 'Sideband Subtraction':    analysis/selection/idefficiencystudy/tutorial/03-sidebandsubtraction.md
+                    - 'Comparison':              analysis/selection/idefficiencystudy/tutorial/04-comparison.md
+                    - 'Systematic':              analysis/selection/idefficiencystudy/tutorial/05-systematic.md
+                - 'Reference Guide (SB)':
+                    - 'The Macro':                 analysis/selection/idefficiencystudy/sidebandreferenceguide/macro.md
+                    - 'FitFunction class':         analysis/selection/idefficiencystudy/sidebandreferenceguide/FitFunctions.md
+                    - 'SidebandSubtraction class': analysis/selection/idefficiencystudy/sidebandreferenceguide/SidebandSubtraction.md
+                    - 'InvariantMass class':       analysis/selection/idefficiencystudy/sidebandreferenceguide/InvariantMass.md
+                    - 'MassValues struct':         analysis/selection/idefficiencystudy/sidebandreferenceguide/MassValues.md
+                    - 'Type class':                analysis/selection/idefficiencystudy/sidebandreferenceguide/Type.md
+                    - 'TagProbe class':            analysis/selection/idefficiencystudy/sidebandreferenceguide/TagProbe.md
+                    - 'PtEtaPhi class':            analysis/selection/idefficiencystudy/sidebandreferenceguide/PtEtaPhi.md
+                    - 'PassingFailing class':      analysis/selection/idefficiencystudy/sidebandreferenceguide/PassingFailing.md
+                - 'Reference Guide (Fit)':
+                    - 'Overview':                  analysis/selection/idefficiencystudy/fittingreferenceguide/overview.md
+                    - 'Src files':                 analysis/selection/idefficiencystudy/fittingreferenceguide/src_files.md
         - 'Luminosity':
             - 'Luminosity': analysis/luminosity/lumi.md
         - 'Backgrounds':
@@ -86,6 +108,8 @@ extra_css:
 # Extensions
 markdown_extensions:
     - admonition
+    - pymdownx.details
+    - pymdownx.superfences
     - codehilite:
         guess_lang: false
     - toc:
