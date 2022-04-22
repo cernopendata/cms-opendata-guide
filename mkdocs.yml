@@ -83,6 +83,7 @@ nav:
             - 'Pileup Uncertainty': analysis/systematics/pileupuncertain.md
         - 'Interpretation':
             - 'Statistics': analysis/interpretation/stats.md
+            - 'Cross Sections': analysis/interpretation/crossSections.md
             - 'Upper-limit Calculations': analysis/interpretation/limits.md
     - FAQ: faq.md
     - About: about.md

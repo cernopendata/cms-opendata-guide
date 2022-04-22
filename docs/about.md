@@ -14,7 +14,6 @@ This guide is brought to you by the CMS open data group, on a best-effort basis.
 - Anniina Kinnunen
 - Allan Jales
 
-
 ## Contact
 
 Please contact us [here][email].
