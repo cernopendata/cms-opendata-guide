@@ -145,4 +145,6 @@ In the [Event methods for data access](https://twiki.cern.ch/twiki/bin/view/CMSP
 
 ## Additional information for accessing CMS physics objects
 
-In Chapter 7 of the [CMS Workbook](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookIntroHiLevelReco) one can find *Analysis* pages that provide additional information, which can be useful to check on top of the general strategy for accessing objects that was discussed above.
+This guide provides further details on how to access CMS physics objects under section Specific Physics Objects starting with [Common Tools](objects/tools.md).
+
+In addition, in Chapter 7 of the [CMS Workbook](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookIntroHiLevelReco) one can find *Analysis* pages that provide additional information, which can be useful to check on top of the general strategy for accessing objects that was discussed above.
