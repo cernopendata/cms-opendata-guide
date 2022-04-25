@@ -1,6 +1,5 @@
 # Common tools for physics objects
 
-
 !!! Warning
     The guide lacks a proper explanation of the CMSSW EDAnalyzer structure.
     An introduction is available as [a tutorial lesson](https://cms-opendata-workshop.github.io/workshop2021-lesson-cmssw/).
@@ -232,4 +231,3 @@ The structure for this matching exercise is identical to the muon matching segme
 >>}
 
 ``` -->
-
