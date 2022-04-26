@@ -1,9 +1,7 @@
 # Common tools for physics objects
 
 !!! Warning
-    The guide lacks a proper explanation of the CMSSW EDAnalyzer structure.
-    An introduction is available as [a tutorial lesson](https://cms-opendata-workshop.github.io/workshop2021-lesson-cmssw/).
-    The code snippets below can be added to `DemoAnalyzer.cc` that is built in that tutorial. This page should also link to the relevant parts in [POET code](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2012/PhysObjectExtractor/src).
+    This page covers the access to objects from Run-1 AOD format. Run-2 formats are to be added. The code snippet need to be updated to correspond the example code in [POET](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/src/MuonAnalyzer.cc). Work in progress.
 
 All CMS physics objects allow you to access important kinematic quantities in a
 common way. All objects have associated energy-momentum vectors, typically
@@ -12,7 +10,7 @@ mass or energy**.
 
 ## 4-vector access functions
 
-The [Physics Objects page](../objects.md) shows how to access a collection of muons in an EDAnalyzer.
+The previous page shows how to access a collection of muons in an EDAnalyzer.
 The following member functions are available for muons, electrons, photons, tau leptons, and jets.
 We will use the example of a loop over the muon collection shown previously:
 
