@@ -44,6 +44,8 @@ introductory [About CMS](http://opendata.cern.ch/docs/about-cms) under "*Primary
 
 Cross sections can be calculated for MC samples.
 
+Caveat: The cross-sections found with this tool are those predicted by the respective generators. There may be better estimates, coming from dedicated task forces, theory papers etc.
+
 To account for the different running conditions in Run 1 vs Run 2, click the appropriate tab below for Run 1 vs Run 2 data.
 
 === "Run 1 Data"
