@@ -1,5 +1,8 @@
 # Common tools for physics objects
 
+!!! Warning
+    This page covers the access to objects from Run-1 AOD format. Run-2 formats are to be added. The code snippet need to be updated to correspond the example code in [POET](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/src/MuonAnalyzer.cc). Work in progress.
+
 All CMS physics objects allow you to access important kinematic quantities in a
 common way. All objects have associated energy-momentum vectors, typically
 constructed using **transverse momentum, pseudorapdity, azimuthal angle, and
@@ -7,7 +10,7 @@ mass or energy**.
 
 ## 4-vector access functions
 
-The Physics Objects page shows how to access a collection of muons in an EDAnalyzer.
+The previous page shows how to access a collection of muons in an EDAnalyzer.
 The following member functions are available for muons, electrons, photons, tau leptons, and jets.
 We will use the example of a loop over the muon collection shown previously:
 
@@ -37,12 +40,14 @@ for (auto mu = mymuons->begin(); mu != mymuons->end(); mu++) {
 }
 ```
 
-These and other basic kinematic methods are [define here in CMSSW](https://github.com/cms-sw/cmssw/blob/CMSSW_5_3_X/DataFormats/Candidate/interface/LeafCandidate.h).
+These and other basic kinematic methods are [defined here in CMSSW](https://github.com/cms-sw/cmssw/blob/CMSSW_5_3_X/DataFormats/Candidate/interface/LeafCandidate.h).
 
 ## Track access functions
 
 Many objects are also connected to tracks from the CMS tracking detectors. Information from
 tracks provides other kinematic quantities that are common to multiple types of objects.
+
+### Muon tracks
 
 From a muon object, we can access the associated track while looping over muons via the `globalTrack` method:
 
@@ -66,17 +71,15 @@ if (trk.isNonnull()) {
 }
 ```
 
-## Challenge: electron track properties
+### Electron tracks
 
-Access and store the electron's charge and track impact parameter values, following the examples set for muons. Electron tracks are found using the Gaussian-sum filter method, which influences the member function name to access the track:
+Electron's charge and track impact parameter values can be accessed and stored following the examples set for muons. Electron tracks are found using the Gaussian-sum filter method `gsfTrack`:
 
 ``` cpp
 auto trk = it->gsfTrack(); // electron track
 ```
 
-## Solution:
-
-Again, add information in three places:
+To access and store the values, code needs to be added in three places:
 
 Declarations:
 
@@ -92,9 +95,15 @@ tree->Branch("Electron_dxy", value_el_dxy, "Electron_dxy[nElectron]/F");
 tree->Branch("Electron_dxyErr", value_el_dxyErr, "Electron_dxyErr[nElectron]/F");
 tree->Branch("Electron_dz", value_el_dz, "Electron_dz[nElectron]/F");
 tree->Branch("Electron_dzErr", value_el_dzErr, "Electron_dzErr[nElectron]/F");
+```
+
+!!! Warning
+    The snippet above with lines starting with `tree` expects that variable are written out in a root file.
+    A link to a minimal example is needed.
 
 And access values in the electron loop. The format is identical to the muon loop!
 
+``` cpp
 value_el_charge[value_el_n] = it->charge();
 
 auto trk = it->gsfTrack();
@@ -110,7 +119,7 @@ Simulated files also contain information about the generator-level particles tha
 were propagated into the showering and detector simulations. Physics objects can
 be matched to these generated particles spatially.
 
-The AOD2NanoAOD tool sets up several utility functions for matching: `findBestMatch`,
+The [AOD2NanoAOD tool](https://github.com/cms-opendata-analyses/AOD2NanoAODOutreachTool/tree/2012) is an example code extracting objects from AOD file and storing them in an output file. In its [analyzer code](https://github.com/cms-opendata-analyses/AOD2NanoAODOutreachTool/blob/2012/src/AOD2NanoAOD.cc), it sets up several utility functions for matching: `findBestMatch`,
 `findBestVisibleMatch`, and `subtractInvisible`. The `findBestMatch` function takes
 generated particles (with an automated type `T`) and the 4-vector of a physics
 object. It uses angular separation to find the closest generated particle to the
@@ -128,7 +137,7 @@ int findBestMatch(T& gens, reco::Candidate::LorentzVector& p4) {
   for (auto g = gens.begin(); g != gens.end(); g++) {
     const auto tmp = deltaR(g->p4(), p4);
 
-    # if it's closer, overwrite the definition of "closest"
+    # if it is closer, overwrite the definition of closest
     if (tmp < minDeltaR) {
       minDeltaR = tmp;
       idx = g - gens.begin();
@@ -179,7 +188,7 @@ if (!isData){
 }
 ```
 
-## Challenge: electron matching
+<!-- ## Challenge: electron matching
 
 Match selected electrons to the interesting generated particles.
 Compile your code and run over the simulation test file. Using the
@@ -219,7 +228,4 @@ The structure for this matching exercise is identical to the muon matching segme
 >>  value_el_jetidx[p - selectedElectrons.begin()] = findBestMatch(selectedJets, p4);
 >>}
 
-```
-
-!!! Warning
-    This page is under construction
+``` -->

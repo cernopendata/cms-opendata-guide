@@ -33,10 +33,10 @@ nav:
             - 'MC Simulations': analysis/datasim/mcsimulations.md
             - 'Event Generation': analysis/datasim/eventgeneration.md
         - 'Selection':
-            - 'Triggers': analysis/selection/triggers.md
-            - 'Physics Objects': analysis/selection/objects.md
             - 'Validated Runs': analysis/selection/validatedRuns.md
-            - 'Specific Physics Objects':
+            - 'Triggers': analysis/selection/triggers.md
+            - 'Physics Objects':
+                - 'Physics Objects': analysis/selection/objects/objects.md
                 - 'Common Tools': analysis/selection/objects/tools.md
                 - 'Muons': analysis/selection/objects/muons.md
                 - 'Electrons': analysis/selection/objects/electrons.md

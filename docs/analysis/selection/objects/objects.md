@@ -7,9 +7,9 @@
 
 The CMS is a giant detector that acts like a camera that "photographs" particle collisions, allowing us to interpret their nature.
 
-Certainly we cannot directly observe all the particles created in the collisions because some of them decay very quickly or simply do not interact with our detector.  However, we can infer their presence.  If they decay to other stable particles and interact with the apparatus, they leave signals in the CMS subdetectors. These signals are used to *reconstruct* the decay products or infer their presence; we call these **physics objects**.  These objects could be electrons, muons, jets, missing energy, etc., but also lower level objects like tracks.  For the current releases of open data, we store them in ROOT files following the EDM data model in AOD format.
+Certainly we cannot directly observe all the particles created in the collisions because some of them decay very quickly or simply do not interact with our detector.  However, we can infer their presence.  If they decay to other stable particles and interact with the apparatus, they leave signals in the CMS subdetectors. These signals are used to *reconstruct* the decay products or infer their presence; we call these **physics objects**. These objects could be electrons, muons, jets, missing energy, etc., but also lower level objects like tracks.  For the current releases of open data, we store them in ROOT files following the EDM data model in AOD format.
 
-In the [CERN Open Portal](../../../tools/cernportal/) site one can find a description of these physical objects and a list of them corresponding to [2010](http://opendata.cern.ch/docs/cms-physics-objects-2010) and [2011/2012](http://opendata.cern.ch/docs/cms-physics-objects-2011) releases of open data. For Run 2 data from 2015, a detailed [listing](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookMiniAOD2015#High_level_physics_objects) is available in the CMS WorkBook.
+In the CERN Open Portal site one can find a description of these physical objects and a list of them corresponding to [2010](http://opendata.cern.ch/docs/cms-physics-objects-2010) and [2011/2012](http://opendata.cern.ch/docs/cms-physics-objects-2011) releases of open data. For Run 2 data from 2015, a detailed [listing](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookMiniAOD2015#High_level_physics_objects) is available in the CMS WorkBook.
 
 ## DataFormats
 
@@ -26,13 +26,15 @@ In the [CERN Open Portal](../../../tools/cernportal/) site one can find a descri
 
     In addition to this base class, sometimes it is necessary to invoke other auxiliary classes.  For instance, [DataFormats/MuonReco/interface/MuonFwd.h](https://github.com/cms-sw/cmssw/blob/master/DataFormats/MuonReco/interface/MuonFwd.h), which can be found in the same interface area.
 
-    So, in the context of this example, in order to support muons information, at the top of your [EDAnalyzer](../../../cmssw/cmsswanalyzers/) you should include the following lines:
+    So, in the context of this example, in order to support muons information, at the top of your [EDAnalyzer](../../../cmssw/cmsswanalyzers.md) you should include the following lines:
 
     ~~~ c++
     //classes to extract Muon information
     #include "DataFormats/MuonReco/interface/Muon.h"
     #include "DataFormats/MuonReco/interface/MuonFwd.h"
     ~~~
+
+    See an example of an EDAnalyzer accessing muon information in the [MuonAnalyzer](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/src/MuonAnalyzer.cc) of the Physics Object Extractor Tool (POET).
 
 === "Run 2 Data"
 
@@ -42,12 +44,14 @@ In the [CERN Open Portal](../../../tools/cernportal/) site one can find a descri
 
     The MINIAOD data format classes live under the [DataFormats/PatCandidates/interface](https://github.com/cms-sw/cmssw/tree/CMSSW_7_6_X/DataFormats/PatCandidates/interface) directory in CMSSW.  Here we find the [DataFormats/PatCandidates/interface/Muon.h](https://github.com/cms-sw/cmssw/blob/CMSSW_7_6_X/PatCandidates/interface/Muon.h) class header, which is the one we would need to incorporate in our analyzer.
 
-    So, in the context of this example, in order to support muons information, at the top of your [EDAnalyzer](../../../cmssw/cmsswanalyzers/) you should include the following line:
+    So, in the context of this example, in order to support muons information, at the top of your [EDAnalyzer](../../../cmssw/cmsswanalyzers.md) you should include the following line:
 
     ~~~ c++
     //classes to extract Muon information
     #include "DataFormats/MuonReco/interface/Muon.h"
     ~~~
+
+    See an example of an EDAnalyzer accessing muon information in the [MuonAnalyzer](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2015MiniAOD/PhysObjectExtractor/src/MuonAnalyzer.cc) of the Physics Object Extractor Tool (POET).
 
 ## Access methods
 
@@ -62,21 +66,21 @@ In the [Event methods for data access](https://twiki.cern.ch/twiki/bin/view/CMSP
 
     ![InputTags](../../../images/inputtags.png)
 
-    Therefore, in the context of this muon example, in the `analyze` method of your [EDAnalyzer](../../../cmssw/cmsswanalyzers/) you should include the following lines:
+    Therefore, when accessing muon information, in the [`analyze` method](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/src/MuonAnalyzer.cc#L155) of the EDAnalyzer would include the following lines:
 
     ~~~ c++
     Handle<reco::MuonCollection> mymuons;
     iEvent.getByLabel("muons", mymuons);
     ~~~
 
-    If you required *cosmic* muons, for some reason, you would need instead:
+    If you required *cosmic* muons, you would need instead:
 
     ~~~ c++
     Handle<reco::MuonCollection> mymuons;
     iEvent.getByLabel("muonsFromCosmics", mymuons);
     ~~~
 
-    Alternatively, it would be also possible to retrieve the InputTag name from [configuration](../../../cmssw/cmsswconfigure).  In that case, in your configuration file you would need something like:
+    Alternatively, as done in the POET MuonAnalyzer, it is also possible to retrieve the InputTag name from [configuration](../../../cmssw/cmsswconfigure.md).  In that case, the [configuration file](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/python/poet_cfg.py#L112) has:
 
     ~~~ python
     process.demo = cms.EDAnalyzer('MuonAnalyzer',
@@ -84,14 +88,14 @@ In the [Event methods for data access](https://twiki.cern.ch/twiki/bin/view/CMSP
     )
     ~~~
 
-    In this case, you would need to declare the appropriate input tag in your [EDAnalyzer](../../../cmssw/cmsswanalyzers/) class:
+    In this case, the appropriate input tag needs to be defined in the EDAnalyzer class as done in the [MuonAnalyzer example class](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/src/MuonAnalyzer.cc#L53):
 
     ~~~ c++
     //declare the input tag for MuonCollection
         edm::InputTag muonInput;
     ~~~
 
-    Extract it from the ParameterSet in the constructor
+    It is extracted from the ParameterSet in the [constructor](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/src/MuonAnalyzer.cc#L96)
 
     ~~~ c++
     MuonAnalyzer::MuonAnalyzer(const edm::ParameterSet& iConfig)
@@ -101,7 +105,7 @@ In the [Event methods for data access](https://twiki.cern.ch/twiki/bin/view/CMSP
     }
     ~~~
 
-    and use in the `analyze` routine:
+    and used in the [`analyze` method](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/src/MuonAnalyzer.cc#L160):
 
     ~~~ c++
     Handle<reco::MuonCollection> mymuons;
@@ -112,7 +116,7 @@ In the [Event methods for data access](https://twiki.cern.ch/twiki/bin/view/CMSP
 
     As indicated in that page, all Event data access methods use the `edm::Handle<T>`, where `T` is the C++ type of the requested object, to hold the result of an access.  For Run 2 data, the method is `getByToken`.  This method needs a "token" and an `InputTag`, which will pass the name of the collection to the analyzed. This name is indicated as "Label" [the MINIAOD table](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookMiniAOD2015#High_level_physics_objects), `slimmedMuons` for muons.
 
-    The InputTag name is defined in the [configuration](../../../cmssw/cmsswconfigure).  Your configuration file would have:
+    The InputTag name is defined in the [configuration](../../../cmssw/cmsswconfigure.md). In that case, the [configuration file](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2015MiniAOD/PhysObjectExtractor/python/poet_cfg.py) has:
 
     ~~~ python
     process.mymuons = cms.EDAnalyzer('MuonAnalyzer', 
@@ -120,7 +124,7 @@ In the [Event methods for data access](https://twiki.cern.ch/twiki/bin/view/CMSP
     )
     ~~~
 
-    In this case, you would need to declare the appropriate token in your [EDAnalyzer](../../../cmssw/cmsswanalyzers/) class:
+    The appropriate token in the EDAnalyzer class as done in the [MuonAnalyzer example class](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2015MiniAOD/PhysObjectExtractor/src/MuonAnalyzer.cc):
 
     ~~~ c++
     //declare the token for MuonCollection
@@ -136,7 +140,7 @@ In the [Event methods for data access](https://twiki.cern.ch/twiki/bin/view/CMSP
     //now do what ever initialization is needed
     ~~~
 
-    and used in the `analyze` routine:
+    and used in the `analyze` method:
 
     ~~~ c++
     Handle<pat::MuonCollection> muons;
@@ -145,4 +149,6 @@ In the [Event methods for data access](https://twiki.cern.ch/twiki/bin/view/CMSP
 
 ## Additional information for accessing CMS physics objects
 
-In Chapter 7 of the [CMS Workbook](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookIntroHiLevelReco) one can find *Analysis* pages that provide additional information, which can be useful to check on top of the general strategy for accessing objects that was discussed above.
+The next pages in this guide provide further details on how to access CMS physics objects.
+
+In addition, in Chapter 7 of the [CMS Workbook](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookIntroHiLevelReco) one can find *Analysis* pages that provide additional information, which can be useful to check on top of the general strategy for accessing objects that was discussed above.
