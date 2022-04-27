@@ -70,7 +70,7 @@ To account for the different running conditions in Run 1 vs Run 2, click the app
 
     * Caveat: in the above method, you directly access the file from your container. If instead your files are on your local system and you plan to copy them to your container to use them, note that you must modify the syntax to: `cmsRun ana.py inputFiles="file:xxxx.root" maxEvents=-1` You must use the syntax "file:" before your root file name. For example, if your root file is called ttbar.root, you would type `cmsRun ana.py inputFiles="file:ttbar.root" maxEvents=-1`
 
-    * After running the above commands, you will get a log file. As sample printout is: ![cross-section](https://github.com/jieunyoo/cms-opendata-guide/blob/master/docs/images/crossSectionLog.png)
+    * After running the above commands, you will get a log file. As sample printout is: ![cross-section](https://github.com/cernopendata/cms-opendata-guide/blob/master/docs/images/crossSectionLog.png)
 
     * A cross-section summary will be printed out. The definition of each quantity is:
 
