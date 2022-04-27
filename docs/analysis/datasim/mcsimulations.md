@@ -54,25 +54,23 @@ To account for the different running conditions in Run 1 vs Run 2, click the app
 
 === "Run 2 Data"
 
-    * You can calculate a cross section using the GenXSecAnalyzer. To use it, you will need the file ana.py, which you can get by `curl https://raw.githubusercontent.com/cms-sw/genproductions/master/Utilities/calculateXSectionAndFilterEfficiency/genXsec_cfg.py -o ana.py `
-
-    * Next, fetch a CMSSW image and start a container. You can find a list of Docker container images available for CMS open data in the [guide page for CMS open data containers](http://opendata.cern.ch/docs/cms-guide-docker). A tutorial on working with docker is at [CMS open data containers](https://cms-opendata-workshop.github.io/workshop2022-lesson-docker/). If you named your container my_ord, you can fetch and start it by
+    * First, fetch a CMSSW image and start a container. You can find a list of Docker container images available for CMS open data in the [guide page for CMS open data containers](http://opendata.cern.ch/docs/cms-guide-docker). A tutorial on working with docker is at [CMS open data containers](https://cms-opendata-workshop.github.io/workshop2022-lesson-docker/). After you start your container, you will need the file ana.py, which you can access by curl
 
     ``` bash
-
-    docker run --name my_od -P -p 5901:5901 -it cmsopendata/cmssw_7_6_7-slc6_amd64_gcc493 /bin/bash
-
-    cd CMSSW_7_6_7/src
-
-    cmsenv
-
+    curl https://raw.githubusercontent.com/cms-sw/genproductions/master/Utilities/calculateXSectionAndFilterEfficiency/genXsec_cfg.py -o ana.py
     ```
 
-    * Then, copy the file ana.py to your container. You would also copy any root file/s you need to your container.
+    * Next, you'll calculate a cross-section for a root file. You can identify the address of your root file by navigating to the CERN open data record. When you click the Download button at the bottom of the page, you'll get a printout of the path to your file. For example, a simulated dataset is available at [Simulated dataset TGJets_TuneCUETP8M1_13TeV_amcatnlo_madspin_pythia8 in MINIAODSIM format for 2015 collision data](http://opendata.cern.ch/record/19924). After clicking the Download button at the button of the page, you will be brought [here](http://opendata.cern.ch/record/19924/files/CMS_mc_RunIIFall15MiniAODv2_TGJets_TuneCUETP8M1_13TeV_amcatnlo_madspin_pythia8_MINIAODSIM_PU25nsData2015v1_76X_mcRun2_asymptotic_v12-v1_00000_file_index.txt), and you can copy the path of your file/files of interest to use to compute your cross-section.
 
-    * Finally, to compute the cross-section, type `cmsRun ana.py inputFiles="file:xxxx.root" maxEvents=-1` Note that you must use the syntax "file:" before your root file name. For example, if your root file is called ttbar.root, you would type `cmsRun ana.py inputFiles="file:ttbar.root" maxEvents=-1`
+    * To compute a cross-section using one of the above files, type
 
-    * After running the above commands, you will get a log file.
+    ```bash
+    cmsRun ana.py inputFiles="root://eospublic.cern.ch//eos/opendata/cms/mc/RunIIFall15MiniAODv2/TGJets_TuneCUETP8M1_13TeV_amcatnlo_madspin_pythia8/MINIAODSIM/PU25nsData2015v1_76X_mcRun2_asymptotic_v12-v1/00000/1A454199-F8B8-E511-A55D-7845C4FC374C.root" maxEvents=-1
+    ```
+
+    * Caveat: in the above method, you directly access the file from your container. If instead your files are on your local system and you plan to copy them to your container to use them, note that you must modify the syntax to: `cmsRun ana.py inputFiles="file:xxxx.root" maxEvents=-1` You must use the syntax "file:" before your root file name. For example, if your root file is called ttbar.root, you would type `cmsRun ana.py inputFiles="file:ttbar.root" maxEvents=-1`
+
+    * After running the above commands, you will get a log file. As sample printout is: ![cross-section](https://github.com/jieunyoo/cms-opendata-guide/blob/master/docs/images/crossSectionLog.png)
 
     * A cross-section summary will be printed out. The definition of each quantity is:
 
@@ -80,5 +78,3 @@ To account for the different running conditions in Run 1 vs Run 2, click the app
         * After matching: the cross section after jet matching BUT before any filter
         * Filter efficiency: the efficiency of the any filter.
         * After filter: the cross section after jet matching and additional filter are applied. This is your final cross section.
-
-    * A file you can use for testing is 1A454199-F8B8-E511-A55D-7845C4FC374C.root from [Simulated dataset TGJets_TuneCUETP8M1_13TeV_amcatnlo_madspin_pythia8 in MINIAODSIM format for 2015 collision data](http://opendata.cern.ch/record/19924).
