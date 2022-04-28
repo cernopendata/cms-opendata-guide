@@ -20,5 +20,14 @@ In order to generate above modules:
 
 More generators are available and you can find them [here](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideSkeletonCodeGenerator)
 
-!!! Warning
-    This page is under construction
+<!-- To be decided: should we bring the tutorial material to the guide? In this case, giving brief introduction here and pointing to the workshop tutorial for further information seems to be a good choice -->
+The code examples provided with the CMS open data are mostly EDAnalyzers. A hands-on tutorial to learn more on CMSSW and EDAnalyzers is available in the [CMS open data workshop material](https://cms-opendata-workshop.github.io/workshop2021-lesson-cmssw/). For examples, this guide mainly refers to:
+
+=== "Run 1 Data"
+
+    - [Physics Objects Extractor Tool (POET)](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2012): shows how to extract physics (objects) information and gives examples of methods or tools needed for processing them. For the sake of clarity, [EDAnalyzer modules](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2012/PhysObjectExtractor/src) are provided separately for each object.
+    - [AOD2NanoAODOutreachTool](https://github.com/cms-opendata-analyses/AOD2NanoAODOutreachTool/tree/2012): reads events from CMS AOD files and convert them to a reduced data format. This example provides a single [EdAnalyzer module](https://github.com/cms-opendata-analyses/AOD2NanoAODOutreachTool/blob/2012/src/AOD2NanoAOD.cc) handling all types of physics objects.
+
+=== "Run 2 Data"
+
+    - [Physics Objects Extractor Tool (POET)](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2015MiniAOD): shows how to extract physics (objects) information and gives examples of methods or tools needed for processing them. For the sake of clarity, [EDAnalyzer modules](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2015MiniAOD/PhysObjectExtractor/src) are provided separately for each object.
