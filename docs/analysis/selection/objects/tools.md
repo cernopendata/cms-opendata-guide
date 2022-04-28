@@ -1,53 +1,38 @@
 # Common tools for physics objects
 
 !!! Warning
-    This page covers the access to objects from Run-1 AOD format. Run-2 formats are to be added. The code snippet need to be updated to correspond the example code in [POET](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/src/MuonAnalyzer.cc). Work in progress.
+    This page covers the access to objects from Run-1 AOD format. Run-2 formats are to be added.
 
-All CMS physics objects allow you to access important kinematic quantities in a
-common way. All objects have associated energy-momentum vectors, typically
-constructed using **transverse momentum, pseudorapdity, azimuthal angle, and
-mass or energy**.
+Many of the most important kinematic quantities defining a physics object are accessed in a common way across all the objects. All objects have associated energy-momentum vectors, typically constructed using **transverse momentum, pseudorapdity, azimuthal angle, and mass or energy**.
 
 ## 4-vector access functions
 
-The previous page shows how to access a collection of muons in an EDAnalyzer.
-The following member functions are available for muons, electrons, photons, tau leptons, and jets.
-We will use the example of a loop over the muon collection shown previously:
+In [MuonAnalyzer.cc](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/src/MuonAnalyzer.cc), the muon four-vector elements are accessed as shown below. The values for each muon are stored into an array, which will become a branch in a ROOT TTree.
 
 ```cpp
-for (auto mu = mymuons->begin(); mu != mymuons->end(); mu++) {
+for (reco::MuonCollection::const_iterator itmuon=mymuons->begin(); itmuon!=mymuons->end(); ++itmuon){
+  if (itmuon->pt() > mu_min_pt) {
 
-    // minimal set to build a ROOT TLorentzVector
-    double tranvserve_momentum = mu->pt();
-    double pseudorapidity = mu->eta();
-    double azimuthal_angle = mu->phi();
-    double mass = mu->mass();
+    muon_e.push_back(itmuon->energy());
+    muon_pt.push_back(itmuon->pt());
+    muon_eta.push_back(itmuon->eta());
+    muon_phi.push_back(itmuon->phi());
 
-    // electric charge
-    double charge = mu->charge();
+    muon_px.push_back(itmuon->px());
+    muon_py.push_back(itmuon->py());
+    muon_pz.push_back(itmuon->pz());
 
-    // direct 4-vector access
-    math::XYZLorentzVector four_momentum = mu->p4();
-
-    // some additional methods
-    double energy = mu->energy();
-    double transverse_mass = mu->mt();
-    double transverse_energy = mu->et();
-    double polar_angle = mu->theta();
-    double rapidity = mu->y(); // or mu->rapidity()
-    double x_momentum = mu->px(); // similar for y, z.    
+    muon_mass.push_back(itmuon->mass());
 
 }
 ```
 
-These and other basic kinematic methods are [defined here in CMSSW](https://github.com/cms-sw/cmssw/blob/CMSSW_5_3_X/DataFormats/Candidate/interface/LeafCandidate.h).
+ The same type of kinematic member functions are used in all the different analyzers in the [src/ directory of the POET example code](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2012/PhysObjectExtractor/src). These and other basic kinematic methods are defined in the [LeafCandidate class](https://github.com/cms-sw/cmssw/blob/CMSSW_5_3_X/DataFormats/Candidate/interface/LeafCandidate.h) of the CMSSW DataFormats package (rendered for maybe easier readability in the [CMSSW software documentation](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_5_3_30/doc/html/dc/d78/classreco_1_1LeafCandidate.html)).
 
 ## Track access functions
 
 Many objects are also connected to tracks from the CMS tracking detectors. Information from
 tracks provides other kinematic quantities that are common to multiple types of objects.
-
-### Muon tracks
 
 From a muon object, we can access the associated track while looping over muons via the `globalTrack` method:
 
@@ -59,58 +44,23 @@ Often, the most pertinent information about an object (such as a muon) to access
 associated track is its **impact parameter** with respect to the primary interaction vertex.
 Since muons can also be tracked through the muon detectors, we first check if the track is
 well-defined, and then access impact parameters in the xy-plane (`dxy` or `d0`) and along
-the beam axis (`dz`), as well as their respective uncertainties.
+the beam axis (`dz`), as well as their respective uncertainties. They can be accessed as shown
+in this code snippet from [MuonAnalyzer](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/src/MuonAnalyzer.cc):
 
 ``` cpp
-
-if (trk.isNonnull()) {
-   value_mu_dxy[value_mu_n] = trk->dxy(pv);
-   value_mu_dz[value_mu_n] = trk->dz(pv);
-   value_mu_dxyErr[value_mu_n] = trk->d0Error();
-   value_mu_dzErr[value_mu_n] = trk->dzError();
-}
+    auto trk = itmuon->globalTrack();
+    if (trk.isNonnull()) {
+      muon_dxy.push_back(trk->dxy(pv));
+      muon_dz.push_back(trk->dz(pv));
+      muon_dxyErr.push_back(trk->d0Error());
+      muon_dzErr.push_back(trk->dzError());
+    }
 ```
 
-### Electron tracks
-
-Electron's charge and track impact parameter values can be accessed and stored following the examples set for muons. Electron tracks are found using the Gaussian-sum filter method `gsfTrack`:
+Note that the tracking method depends on the object, the electron tracks are found using the Gaussian-sum filter method `gsfTrack`:
 
 ``` cpp
 auto trk = it->gsfTrack(); // electron track
-```
-
-To access and store the values, code needs to be added in three places:
-
-Declarations:
-
-``` cpp
-int value_el_charge[max_el];
-float value_el_dxy[max_el];
-float value_el_dxyErr[max_el];
-float value_el_dz[max_el];
-float value_el_dzErr[max_el];
-
-tree->Branch("Electron_charge", value_el_charge, "Electron_charge[nElectron]/I");
-tree->Branch("Electron_dxy", value_el_dxy, "Electron_dxy[nElectron]/F");
-tree->Branch("Electron_dxyErr", value_el_dxyErr, "Electron_dxyErr[nElectron]/F");
-tree->Branch("Electron_dz", value_el_dz, "Electron_dz[nElectron]/F");
-tree->Branch("Electron_dzErr", value_el_dzErr, "Electron_dzErr[nElectron]/F");
-```
-
-!!! Warning
-    The snippet above with lines starting with `tree` expects that variable are written out in a root file.
-    A link to a minimal example is needed.
-
-And access values in the electron loop. The format is identical to the muon loop!
-
-``` cpp
-value_el_charge[value_el_n] = it->charge();
-
-auto trk = it->gsfTrack();
-value_el_dxy[value_el_n] = trk->dxy(pv);
-value_el_dz[value_el_n] = trk->dz(pv);
-value_el_dxyErr[value_el_n] = trk->d0Error();
-value_el_dzErr[value_el_n] = trk->dzError();
 ```
 
 ## Matching to generated particles
