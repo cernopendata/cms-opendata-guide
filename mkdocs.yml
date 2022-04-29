@@ -44,7 +44,6 @@ nav:
                 - 'Jets': analysis/selection/objects/jets.md
                 - 'Missing ET': analysis/selection/objects/met.md
                 - 'Taus': analysis/selection/objects/taus.md
-            - 'Physics Object ID': analysis/selection/objectid.md
             - 'ID Efficiency study':
                 - 'Tag and Probe': analysis/selection/idefficiencystudy/tagandprobe.md
                 - 'Signal extraction': analysis/selection/idefficiencystudy/signalextraction.md

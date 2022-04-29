@@ -147,8 +147,18 @@ In the [Event methods for data access](https://twiki.cern.ch/twiki/bin/view/CMSP
     iEvent.getByToken(muonToken_, muons);
     ~~~
 
-## Additional information for accessing CMS physics objects
+## Detector information for identification
 
-The next pages in this guide provide further details on how to access CMS physics objects.
+The most signicant difference between a list of certain particles from a Monte Carlo generator and a list of the corresponding physics objects from CMS is likely the inherent uncertainty in the reconstruction. Selection of “a muon” or “an electron” for analysis requires algorithms designed to separate “real” objects from “fakes”. These are called identification algorithms, often abbreviated as ID.
+
+Other algorithms are designed to measure the amount of energy deposited near the object, to determine if it was likely produced near the primary interaction (typically little nearby energy), or from the decay of a longer-lived particle (typically a lot of nearby energy). These are called isolation algorithms. Many types of isolation algorithms exist to deal with unique physics cases.
+
+Both types of algorithms function using working points that are described on a spectrum from “loose” to “tight”. Working points that are “looser” tend to have a high efficiency for accepting real objects, but perhaps a poor rejection rate for “fake” objects. Working points that are “tighter” tend to have lower efficiencies for accepting real objects, but much better rejection rates for “fake” objects. The choice of working point is highly analysis dependent. Some analyses value efficiency over background rejection, and some analyses are the opposite.
+
+The “standard” identification and isolation algorithm results can be accessed from the physics object classes.
+
+## Additional information
+
+The next pages in this guide provide further details on how to access and identify CMS physics objects.
 
 In addition, in Chapter 7 of the [CMS Workbook](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookIntroHiLevelReco) one can find *Analysis* pages that provide additional information, which can be useful to check on top of the general strategy for accessing objects that was discussed above.

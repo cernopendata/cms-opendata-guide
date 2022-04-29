@@ -1,14 +1,44 @@
 # Muons
 
-The Physics Objects page shows you how to access muon collections in CMS, and which header files should be included in your C++ code in order to access all of their class information. On the Common Tools page you can find instructions to access all the basic kinematic information about any physics object.
+## Introduction
 
-## Muon detector information
+The muons are measured in the CMS experiment combining the information from the [inner tracker](https://cms.cern/index.php/detector/identifying-tracks) and the [muon system](https://cms.cern/detector/detecting-muons). The signals from these systems are processed with CMSSW through [subsequent steps](../../../cmssw/cmsswdatamodel.md) to form muon candidates which are then available in the muon collection of the data files.
 
-## MuonCorrectionsGuide
+The [Physics Objects page](objects.md) shows how to access muon collections, and which header files should be included in the C++ code in order to access all of their class information. The [Common Tools page](tools.md) gives instructions to access all the basic kinematic information about any physics object.
 
-There are misalignments in the CMS detector that make the reconstruction of muon momentum biased. The CMS reconstruction software does not fully correct these misalignments and additional corrections are needed to remove the bias. Correcting the misalignments is important when precision measurements are done using the muon momentum, because the bias in muon momentum will affect the results.
+This page explains how muon information is used to identify muon, i.e. to separate “real” objects from “fakes”.
 
-## The Muon Momentum Scale Corrections
+## Muon identification
+
+The muon object has member functions available which can directly be used to select muon with "loose" or "tight" selection criteria. These are the corresponding lines in [MuonAnalyzer](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/src/MuonAnalyzer.cc):
+
+``` cpp
+    muon_tightid.push_back(muon::isTightMuon(*itmuon, *vertices->begin()));
+    muon_softid.push_back(muon::isSoftMuon(*itmuon, *vertices->begin()));
+```
+
+These functions need the interaction vertex as an input (in addition to the muon properties) and this is provided through the first elemement of the vertex collection `vertices` which gives the best estimate of the interaction point.
+
+In the physics analysis, hard processes that produce large angles between the final state objects are of interest. The final object will be separated from the other objects in the event or be “isolated”. For instance, an isolated muon might be produced in the decay of a W boson. In contrast, a non-isolated muon can come from a weak decay inside a jet.
+
+Muon isolation is calculated from a combination of factors: energy from charged hadrons, energy from neutral hadrons, and energy from photons, all in a cone of radius dR < 0.3 or 0.4 around the muon. It is done as shown in this code snippet from [MuonAnalyzer](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/src/MuonAnalyzer.cc):
+
+``` cpp
+    if (itmuon->isPFMuon() && itmuon->isPFIsolationValid()) {
+      auto iso03 = itmuon->pfIsolationR03();
+      muon_pfreliso03all.push_back((iso03.sumChargedHadronPt + iso03.sumNeutralHadronEt + iso03.sumPhotonEt)/itmuon->pt());
+      auto iso04 = itmuon->pfIsolationR04();
+      muon_pfreliso04all.push_back((iso04.sumChargedHadronPt + iso04.sumNeutralHadronEt + iso04.sumPhotonEt)/itmuon->pt());
+    }
+```
+
+More details on the muon identification can be found in the [CMS SWGuide MuonID page](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideMuonId).
+
+## Further muon corrections
+
+There are misalignments in the CMS detector that make the reconstruction of muon momentum biased. The CMS reconstruction software does not fully correct these misalignments and additional corrections are needed to remove the bias. Correcting the misalignments is important when precision measurements are done using the muon momentum, because the bias in muon momentum will affect the results. However, if the measurement is not sensitive to the exact muon momentum, applying these corrections is not necessary.
+
+### The Muon Momentum Scale Corrections
 
 The Muon Momentum Scale Corrections, also known as the Rochester Corrections, are available in the [MuonCorrectionsTool](https://github.com/cms-legacydata-analyses/MuonCorrectionsTool). The correction parameters have been extracted in a two step method. In the first step, initial corrections are obtained in bins of the charge of the muon and the η and ϕ coordinates of the muon track. The reconstruction bias in muon momentum depends on these variables. In the second step, the corrections are fine tuned using the mass of the Z boson.
 
@@ -16,7 +46,10 @@ The corrections for data and Monte Carlo (MC) are different since the MC events 
 
 In the MuonCorrectionsTool, the Run1 Rochester Corrections are added to two datasets as an example: a 2012 dataset and a MC dataset. A plot is created to check that the corrections were applied correctly. Creating the plot requires selections and the produced dataset contains only a part of the initial dataset. These selections can be skipped when the plot is not needed and a corrected version of the whole dataset is wanted as a result. Below you can find instructions on how to run the example code, how to apply the corrections to a different dataset and how to apply the corrections when you don't want to create the plot/make the selections. The official code for the Rochester Corrections can be found in the `RochesterCorrections` directory. The example code for applying the corrections is in the `Test` directory.
 
-## Applying the corrections to data and MC
+!!! Warning
+    The following example does not need the CMSSW environment but it requires ROOT. This code was written using the ROOT version 6.22.08. If you are using an older version, you might get errors running the code. In this case, try using `rochcor2012wasym_old.h` instead of `rochcor2012wasym.h`. You can do this by changing the first line of `rochcor2012wasym.cc` to `#include "rochcor2012wasym_old.h"`.
+
+### Applying the corrections to data and MC
 
 In the `Test` directory you can find `Analysis.C`, which is the example code for adding the corrections. The main function of `Analysis.C` is simply used for calling the `applyCorrections` function which takes as a parameter the name of the ROOT-file (without the .root-part), path to the ROOT-file, the name of the TTree, a boolean value of whether the file contains data (`true`) or MC (`false`) and a boolean variable of whether you want to correct the whole dataset (`true`) or make the selections needed for the plot (`false`).
 
@@ -139,7 +172,7 @@ Finally, the new TTree is written to the output file.
   DataTreeCor->Write();
 ```
 
-## Running the code
+### Running the code
 
 1. Open ROOT in terminal
 
@@ -169,7 +202,7 @@ Finally, the new TTree is written to the output file.
    main()
    ```
 
-## Applying the corrections to a different dataset
+### Applying the corrections to a different dataset
 
 You can use the example code to apply the corrections to different datasets. However, a few changes needs to be made for the code to work correctly. The first thing that needs to be changed is of course the function call in the main function. Call `applyCorrections` using the parameters that correspond your dataset. Remember that for the first boolean parameter `true` means your ROOT file contains data and `false` means it contains MC. For the last parameter, `true` means you want to correct all muons without making selections and `false` means you want to make the selections needed for the MuonCorrectionsTool plot.
 
@@ -194,10 +227,6 @@ The second thing you need to do is check the names and data types of the branche
   DataTree->SetBranchAddress("Muon_pt", &Muon_pt);
 ```
 
-## Correcting the dataset without making selections
+### Correcting the dataset without making selections
 
 If you want to correct all muons without making the selections needed for the MuonCorrectionsTool plot, simply give `true` as the last parameter when calling `applyCorrections`. The code will then loop through the events, select events with muons and correct the muons.
-
-## Using an older version of ROOT
-
-This code was written using the ROOT version 6.22.08. If you are using an older version, you might get errors running the code. In this case, try using `rochcor2012wasym_old.h` instead of `rochcor2012wasym.h`. You can do this by changing the first line of `rochcor2012wasym.cc` to `#include "rochcor2012wasym_old.h"`.
