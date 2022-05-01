@@ -7,7 +7,7 @@ Welcome to the guide for CMS open data.  This guide is brought to you by the CMS
 
 ## How to use this site
 
-The lefthand tabs will help you navigate the site.  If you click on each tab, it will expand to show further subsections. The sections will guide you through the main topics you will need to become familiar with to conduct an analysis using CMS Open Data. You'll learn about the computing tools needed to deal with CMS open data and about **CMSSW**, which is the software used by CMS.  You'll also learn how to conduct a particle physics analysis. 
+The lefthand tabs will help you navigate the site.  If you click on each tab, it will expand to show further subsections.  The sections will guide you through the main topics you will need to become familiar with to conduct an analysis using CMS Open Data. You'll learn about the computing tools needed to deal with CMS open data and about **CMSSW**, which is the software used by CMS.  You'll also learn how to conduct a particle physics analysis. 
 
 ## The site's philosophy
 
