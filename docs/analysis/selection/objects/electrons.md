@@ -1,15 +1,12 @@
-# Objects
-
-!!! Warning
-    This page is under construction
+# Electrons
 
 ## Introduction
 
-Electrons are measured in the CMS experiment combining the information from the [inner tracker](https://cms.cern/index.php/detector/identifying-tracks) and the [electromagnetic calorimeter](https://cms.cern/detector/measuring-energy/energy-electrons-and-photons-ecal) as summarized on a CMS news page on [Finding electrons and photons](https://cms.cern/news/finding-electrons-and-photons-cms-detector). The signals from these systems are processed with CMSSW through [subsequent steps](../../../cmssw/cmsswdatamodel.md) to form electron candidates which are then available in the electron collection of the data files.
+Electrons are measured in the CMS experiment combining the information from the [inner tracker](https://cms.cern/index.php/detector/identifying-tracks) and the [electromagnetic calorimeter](https://cms.cern/detector/measuring-energy/energy-electrons-and-photons-ecal) as summarized on an introductory page on [Finding electrons and photons](https://cms.cern/news/finding-electrons-and-photons-cms-detector). The signals from these systems are processed with CMSSW through [subsequent steps](../../../cmssw/cmsswdatamodel.md) to form electron candidates which are then available in the electron collection of the data files.
 
 ## Electron 4-vector and track information
 
-An example of an EDAnalyzer accessing electron information in the [ElectronAnalyzer](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/src/ElectronAnalyzer.cc) of the Physics Object Extractor Tool (POET). The following header files needed for accessing electron information are included:
+An example of an EDAnalyzer accessing electron information is available in the [ElectronAnalyzer](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/src/ElectronAnalyzer.cc) of the Physics Object Extractor Tool (POET). The following header files needed for accessing electron information are included:
 
 ``` cpp
 //classes to extract electron information
@@ -77,13 +74,13 @@ for each electron in the electron loop, and the impact parameter information is 
 
 As explained in the [Physics Object page](../objects#detector-information-for-identification), a mandatory task in the physics analysis is to identify electrons, i.e. to separate “real” objects from “fakes”. The criteria depend on the type of analysis.
 
-The selection is based on cuts on a small number of variables. Different thresholds are used for electrons found in the ECAL barrel and the ECAL endcap. Electron selection variables may be categorized in three groups:
+The selection is based on cuts on a small number of variables. Different thresholds are used for electrons found in the ECAL barrel and the ECAL endcap. Selection variables may be categorized in three groups:
 
-- e-ID variables (shower shape, track cluster matching etc)
+- photon ID variables (shower shape, track cluster matching etc)
 - isolation variables
 - conversion rejection variables.
 
-The standard identification and isolation algorithm results can be accessed from the physics object classes and the recommended working points are documented in the the [public data page for electron for 2010 and 2011](https://twiki.cern.ch/twiki/bin/view/CMSPublic/EgammaPublicData). The values implemented in the example code [ElectronAnalyzer.cc](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/src/ElectronAnalyzer.cc) are those recommended for 2012.
+The standard identification and isolation algorithm results can be accessed from the [electron object class](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_5_3_30/doc/html/d0/d6d/classreco_1_1GsfElectron.html) and the recommended working points are documented in the the [public data page for electron for 2010 and 2011](https://twiki.cern.ch/twiki/bin/view/CMSPublic/EgammaPublicData). The values implemented in the example code [ElectronAnalyzer.cc](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/src/ElectronAnalyzer.cc) are those recommended for 2012.
 
 Three levels of identification criteria are defined
 
@@ -124,14 +121,14 @@ where
 - `deltaEta...` and `deltaPhi...` indicate how the electron's trajectory varies between the track and the ECAL cluster,
 with smaller variations preferred for the "tightest" quality levels.
 - `sigmaIetaIeta` describes the variance of the ECAL cluster in psuedorapidity ("ieta" is an integer index for this angle).
-- `hadronicOverEm` describes the ratio of HCAL to ECAL energy depositrs, which should be small for good quality electrons.
+- `hadronicOverEm` describes the ratio of HCAL to ECAL energy deposits, which should be small for good quality electrons.
 - The impact parameters `dxy` and `dz` should also be small for good quality electrons produced in the initial collision.
 - Missing hits are gaps in the trajectory through the inner tracker (shouldn't be any!)
 - The conversion veto is an algorithm that rejects electrons coming from photon conversions in the tracker, which should instead be reconstructed as part of the photon.
 - The criterion using `ecalEnergy` and `eSuperClusterOverP` compares the differences between the electron's energy and momentum measurements, which should be very similar to each other for good electrons.
 - `el_pfIso` represents how much energy, relative to the electron's, within a cone around the electron comes from other particle-flow candidates. If this value is small the electron is likely "isolated" in the local region.
 
-The electron identification criteria need information about isolation of the electron. Isolation, based on a cone size of 0.3 around the electron, is defined with
+The isolation variable `el_pfIso`, based on a cone size of 0.3 around the electron, is defined with
 
 ``` cpp
 if (itElec->passingPflowPreselection()) {
