@@ -32,7 +32,7 @@ Muon isolation is calculated from a combination of factors: energy from charged 
     }
 ```
 
-More details on the muon identification can be found in the [CMS SWGuide MuonID page](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideMuonId).
+More details on the muon identification can be found in the [CMS SWGuide MuonID page](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideMuonId). The full list of member function can be found in documentation of the [muon object class](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_5_3_30/doc/html/df/de3/classreco_1_1Muon.html).
 
 ## Further muon corrections
 
