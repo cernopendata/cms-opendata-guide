@@ -7,7 +7,7 @@ Many of the most important kinematic quantities defining a physics object are ac
 
 ## 4-vector access functions
 
-In [MuonAnalyzer.cc](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/src/MuonAnalyzer.cc), the muon four-vector elements are accessed as shown below. The values for each muon are stored into an array, which will become a branch in a ROOT TTree.
+In [MuonAnalyzer.cc](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/src/MuonAnalyzer.cc), the muon four-vector elements are accessed as shown below. In this example, the values for each muon are stored into an array, which will become a branch in a ROOT TTree.
 
 ```cpp
 for (reco::MuonCollection::const_iterator itmuon=mymuons->begin(); itmuon!=mymuons->end(); ++itmuon){

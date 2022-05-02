@@ -2,15 +2,15 @@
 
 ## Introduction
 
-The muons are measured in the CMS experiment combining the information from the [inner tracker](https://cms.cern/index.php/detector/identifying-tracks) and the [muon system](https://cms.cern/detector/detecting-muons). The signals from these systems are processed with CMSSW through [subsequent steps](../../../cmssw/cmsswdatamodel.md) to form muon candidates which are then available in the muon collection of the data files.
+Muons are measured in the CMS experiment combining the information from the [inner tracker](https://cms.cern/index.php/detector/identifying-tracks) and the [muon system](https://cms.cern/detector/detecting-muons). The signals from these systems are processed with CMSSW through [subsequent steps](../../../cmssw/cmsswdatamodel.md) to form muon candidates which are then available in the muon collection of the data files.
 
-The [Physics Objects page](objects.md) shows how to access muon collections, and which header files should be included in the C++ code in order to access all of their class information. The [Common Tools page](tools.md) gives instructions to access all the basic kinematic information about any physics object.
+## Access to muon information
 
-This page explains how muon information is used to identify muon, i.e. to separate “real” objects from “fakes”.
+The [Physics Objects page](./objects.md) shows how to access muon collections, and which header files should be included in the C++ code in order to access all of their class information. The [Common Tools page](./tools.md) gives instructions to access all the basic kinematic information about any physics object.
 
 ## Muon identification
 
-The muon object has member functions available which can directly be used to select muon with "loose" or "tight" selection criteria. These are the corresponding lines in [MuonAnalyzer](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/src/MuonAnalyzer.cc):
+As explained in the [Physics Object page](./objects#detector-information-for-identification), a mandatory task in the physics analysis is to identify muons, i.e. to separate “real” objects from “fakes”. The criteria depend on the type of analysis. The muon object has member functions available which can directly be used to select muon with "loose" or "tight" selection criteria. These are the corresponding lines in [MuonAnalyzer](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/src/MuonAnalyzer.cc):
 
 ``` cpp
     muon_tightid.push_back(muon::isTightMuon(*itmuon, *vertices->begin()));

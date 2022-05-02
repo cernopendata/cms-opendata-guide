@@ -149,13 +149,15 @@ In the [Event methods for data access](https://twiki.cern.ch/twiki/bin/view/CMSP
 
 ## Detector information for identification
 
-The most signicant difference between a list of certain particles from a Monte Carlo generator and a list of the corresponding physics objects from CMS is likely the inherent uncertainty in the reconstruction. Selection of “a muon” or “an electron” for analysis requires algorithms designed to separate “real” objects from “fakes”. These are called identification algorithms, often abbreviated as ID.
+The most signicant difference between a list of certain particles from a Monte Carlo generator and a list of the corresponding physics objects from CMS is likely the inherent uncertainty in the reconstruction. Selection of “a muon” or “an electron” for analysis requires algorithms designed to separate “real” objects from “fakes”. These are called **identification** algorithms, often abbreviated as ID.
 
-Other algorithms are designed to measure the amount of energy deposited near the object, to determine if it was likely produced near the primary interaction (typically little nearby energy), or from the decay of a longer-lived particle (typically a lot of nearby energy). These are called isolation algorithms. Many types of isolation algorithms exist to deal with unique physics cases.
+**Isolation** algorithms are designed to measure the amount of energy deposited near the object, to determine if it was likely produced near the primary interaction (typically little nearby energy), or from the decay of a longer-lived particle (typically a lot of nearby energy). Many types of isolation algorithms exist to deal with unique physics cases.
 
-Both types of algorithms function using working points that are described on a spectrum from “loose” to “tight”. Working points that are “looser” tend to have a high efficiency for accepting real objects, but perhaps a poor rejection rate for “fake” objects. Working points that are “tighter” tend to have lower efficiencies for accepting real objects, but much better rejection rates for “fake” objects. The choice of working point is highly analysis dependent. Some analyses value efficiency over background rejection, and some analyses are the opposite.
+Isolation is computed in similar ways for all physics objects: search for particles in a cone around the object of interest and sum up their energies, subtracting off the energy deposited by pileup particles. This sum divided by the object of interest’s transverse momentum is called relative isolation and is the most common way to determine whether an object was produced “promptly” in or following the proton-proton collision (ex: electrons from a Z boson decay, or photons from a Higgs boson decay). Relative isolation values will tend to be large for particles that emerged from weak decays of hadrons within jets, or other similar “nonprompt” processes.
 
-The “standard” identification and isolation algorithm results can be accessed from the physics object classes.
+Both types of algorithms function using working points that are described on a spectrum from “loose” to “tight”. Working points that are “looser” tend to have a high efficiency for accepting real objects, but perhaps a poor rejection rate for fake objects. Working points that are “tighter” tend to have lower efficiencies for accepting real objects, but much better rejection rates for fake objects. The choice of working point is highly analysis dependent. Some analyses value efficiency over background rejection, and some analyses are the opposite.
+
+The standard identification and isolation algorithm results can be accessed from the physics object classes.
 
 ## Additional information
 
