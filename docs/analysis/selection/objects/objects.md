@@ -1,21 +1,29 @@
 # Physics Objects
 
-!!! Warning
-    This page is under construction
-
 ## Description
 
 The CMS is a giant detector that acts like a camera that "photographs" particle collisions, allowing us to interpret their nature.
 
 Certainly we cannot directly observe all the particles created in the collisions because some of them decay very quickly or simply do not interact with our detector.  However, we can infer their presence.  If they decay to other stable particles and interact with the apparatus, they leave signals in the CMS subdetectors. These signals are used to *reconstruct* the decay products or infer their presence; we call these **physics objects**. These objects could be electrons, muons, jets, missing energy, etc., but also lower level objects like tracks.  For the current releases of open data, we store them in ROOT files following the EDM data model in AOD format.
 
-In the CERN Open Portal site one can find a description of these physical objects and a list of them corresponding to [2010](http://opendata.cern.ch/docs/cms-physics-objects-2010) and [2011/2012](http://opendata.cern.ch/docs/cms-physics-objects-2011) releases of open data. For Run 2 data from 2015, a detailed [listing](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookMiniAOD2015#High_level_physics_objects) is available in the CMS WorkBook.
+In the CERN Open Portal site one can find a description of these physical objects and a list of them corresponding to [2010](http://opendata.cern.ch/docs/cms-physics-objects-2010) and [2011/2012](http://opendata.cern.ch/docs/cms-physics-objects-2011) releases of open data. For Run 1 data, this guide has the most uptodate content with the corresponding code snippets. For Run 2 data from 2015, a detailed [listing](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookMiniAOD2015#High_level_physics_objects) is available in the CMS WorkBook.
+
+The code examples to which this guide mainly refers to are:
+
+=== "Run 1 Data"
+
+    - [Physics Objects Extractor Tool (POET)](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2012): shows how to extract physics (objects) information and gives examples of methods or tools needed for processing them. For the sake of clarity, [EDAnalyzer modules](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2012/PhysObjectExtractor/src) are provided separately for each object.
+    - [AOD2NanoAODOutreachTool](https://github.com/cms-opendata-analyses/AOD2NanoAODOutreachTool/tree/2012): reads events from CMS AOD files and convert them to a reduced data format. This example provides a single [EdAnalyzer module](https://github.com/cms-opendata-analyses/AOD2NanoAODOutreachTool/blob/2012/src/AOD2NanoAOD.cc) handling all types of physics objects.
+
+=== "Run 2 Data"
+
+    - [Physics Objects Extractor Tool (POET)](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2015MiniAOD): shows how to extract physics (objects) information and gives examples of methods or tools needed for processing them. For the sake of clarity, [EDAnalyzer modules](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2015MiniAOD/PhysObjectExtractor/src) are provided separately for each object.
 
 ## DataFormats
 
 === "Run 1 Data"
 
-    As one can see in those guides, these physical objects are usually stored in specific *collections*.  For instance, [muons](http://opendata.cern.ch/docs/cms-physics-objects-2011#muons) are most commonly obtained from the `reco::Muon` collection.  The [AOD Data Format Table](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideAodDataTable) gives a good description of the different collections (or data formats) for the AOD tier.  Unfortunately, the links for the *containers* column got broken after CMSSW was moved to Github.  Those links would have pointed us to the corresponding CMSSW C++ classes associated with those containers.  This is important because one needs to know which CMSSW class matches a given collection of objects to include the headers of those classes in the header of your analyzer code.  But let that not let us down.
+    The physical objects are usually stored in specific *collections*.  For instance, [muons](http://opendata.cern.ch/docs/cms-physics-objects-2011#muons) are most commonly obtained from the `reco::Muon` collection.  The [AOD Data Format Table](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideAodDataTable) gives a good description of the different collections (or data formats) for the AOD tier.  Unfortunately, the links for the *containers* column got broken after CMSSW was moved to Github.  Those links would have pointed us to the corresponding CMSSW C++ classes associated with those containers.  This is important because one needs to know which CMSSW class matches a given collection of objects to include the headers of those classes in the header of your analyzer code.  But let that not let us down.
 
     ![DataFormats](../../../images/collections.png)
 
@@ -38,7 +46,7 @@ In the CERN Open Portal site one can find a description of these physical object
 
 === "Run 2 Data"
 
-    As one can see in those guides, these physical objects are usually stored in specific *collections*.  For instance,  muons are obtained from the C++ class `std::vector<pat::Muon>` (most often called `pat::MuonCollection` using its definition in [the muon class](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_7_6_7/doc/html/dc/d3b/DataFormats_2PatCandidates_2interface_2Muon_8h_source.html)). The [MINIAOD physics objects table](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookMiniAOD2015#High_level_physics_objects) gives a good description of the different collections (or data formats) for the MINIAOD tier. This is the muon entry in that table:
+    The physical objects are usually stored in specific *collections*.  For instance,  muons are obtained from the C++ class `std::vector<pat::Muon>` (most often called `pat::MuonCollection` using its definition in [the muon class](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_7_6_7/doc/html/dc/d3b/DataFormats_2PatCandidates_2interface_2Muon_8h_source.html)). The [MINIAOD physics objects table](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookMiniAOD2015#High_level_physics_objects) gives a good description of the different collections (or data formats) for the MINIAOD tier. This is the muon entry in that table:
 
     ![DataFormats](../../../images/miniaodtable1.png)
 
