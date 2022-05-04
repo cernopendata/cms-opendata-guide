@@ -4,7 +4,7 @@
 
 ---
 
-Jets are spatially-grouped collections of long-lived particles that are produced when a quark or gluon hadronizes. The kinetmatic properties of jets resemble that of the initial partons that produced them. In the CMS language, jets are made up of many particles, with the following predictable energy composition:
+Jets are spatially-grouped collections of long-lived particles that are produced when a quark or gluon hadronizes. The kinematic properties of jets resemble that of the initial partons that produced them. In the CMS language, jets are made up of many particles, with the following predictable energy composition:
 
 - ~65% charged hadrons
 - ~25% photons (from neutral pions)
@@ -37,19 +37,54 @@ Inevitably, the list of particle flow candidates contains particles that did not
 
 ## Accessing Jets in CMS Software
 
-Jets software classes have the same basic 4-vector methods as the objects discussed in the previous lesson:
+Two examples of EDAnalyzers accessing jet information are available in the Physics Object Extractor Tool (POET):
+
+- [JetAnalyzer](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/src/JetAnalyzer.cc) accessing jets from the `PFJetCollection`
+- [PatJetAnalyzer](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/src/PatJetAnalyzer.cc) accessing jets from `std::vector<pat::Jet>` collection using "Physics Analysis Toolkit" (PAT) format in which jets are easier to work with.
+
+The following header files needed for accessing jet information are included:
+
+``` cpp
+//classes to extract PFJet information
+#include "DataFormats/JetReco/interface/PFJet.h"
+#include "DataFormats/JetReco/interface/PFJetCollection.h"
+#include "DataFormats/BTauReco/interface/JetTag.h"
+#include "CondFormats/JetMETObjects/interface/JetCorrectionUncertainty.h"
+#include "CondFormats/JetMETObjects/interface/FactorizedJetCorrector.h"
+#include "CondFormats/JetMETObjects/interface/JetCorrectorParameters.h"
+#include "CondFormats/JetMETObjects/interface/SimpleJetCorrector.h"
+#include "CondFormats/JetMETObjects/interface/SimpleJetCorrectionUncertainty.h"
+#include "DataFormats/VertexReco/interface/Vertex.h"
+#include "DataFormats/VertexReco/interface/VertexFwd.h"
+
+#include "DataFormats/JetReco/interface/Jet.h"
+#include "SimDataFormats/JetMatching/interface/JetFlavourInfo.h"
+#include "SimDataFormats/JetMatching/interface/JetFlavourInfoMatching.h"
+```
+
+Jets software classes have the same basic 4-vector methods as the objects discussed in the [Common Tools](./tools.md) page. In [JetAnalyzer.cc](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/src/JetAnalyzer.cc), the jet four-vector elements are accessed (with `jetInput` passed as `"ak5PFJets"` in the [configuration file](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/python/poet_cfg.py)) :
 
 ``` cpp
 
-Handle<PFJetCollection> myjets;
-iEvent.getByLabel(InputTag("ak5PFJets"), myjets);
+Handle<reco::PFJetCollection> myjets;
+iEvent.getByLabel(jetInput, myjets);
+
+[...]
 
 for (reco::PFJetCollection::const_iterator itjet=myjets->begin(); itjet!=myjets->end(); ++itjet){
-jet_e.push_back(itjet->energy());
-jet_pt.push_back(itjet->pt());
-jet_eta.push_back(itjet->eta());
-jet_phi.push_back(itjet->phi()); 
-jet_mass.push_back(itjet->mass());
+
+[...]
+
+    jet_e.push_back(itjet->energy());
+    jet_pt.push_back(itjet->pt());
+    jet_px.push_back(itjet->px());
+    jet_py.push_back(itjet->py());
+    jet_pz.push_back(itjet->pz());
+    jet_eta.push_back(itjet->eta());
+    jet_phi.push_back(itjet->phi());
+
+[...]
+
 }
 
 ```
@@ -62,7 +97,7 @@ Particle-flow jets are not immune to noise in the detector, and jets used in ana
 
 These criteria demonstrate how particle-flow jets combine information across subdetectors. Jets will typically have energy from electrons and photons, but those fractions of the total energy should be less than one. Similarly, jets should have some energy from charged hadrons if they overlap the inner tracker, and all the energy should not come from neutral hadrons. A mixture of energy sources is expected for genuine jets. All of these energy fractions (and more) can be accessed from the jet objects.
 
-You can use the [cms-sw github repository](https://github.com/cms-sw/cmssw/tree/CMSSW_5_3_X/DataFormats/JetReco/) to see what methods are available for PFJets. We can implement a jet ID to reject jets that do not pass so that these jets are not stored in any of the tree branches. This code show an implementation of Jet ID cuts while also applying a minimum momentum threshold.
+You can use the [PFJet class definition](https://github.com/cms-sw/cmssw/blob/CMSSW_5_3_X/DataFormats/JetReco/interface/PFJet.h) of the CMSSW DataFormats package to see what methods are available for PFJets. It is rendered for maybe easier readability in the [CMSSW software documentation](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_5_3_30/doc/html/d3/d08/classreco_1_1PFJet.html). We can implement a jet ID to reject jets that do not pass so that these jets are not stored in any of the tree branches. This code show an implementation of Jet ID cuts while also applying a minimum momentum threshold.
 
 ``` cpp
 for (reco::PFJetCollection::const_iterator itjet=jets->begin(); itjet!=jets->end(); ++itjet){
@@ -73,41 +108,56 @@ if (itjet->pt > jet_min_pt && itjet->chargedHadronEnergyFraction() > 0 && itjet-
 
 ```
 
+!!! Note "Note"
+    - The code snippet above is not part of the example analyzer.
+
+## Jet corrections
+
+!!! Note "To do"
+    Description of jet corrections needs to be added, see [the workshop tutorial](https://cms-opendata-workshop.github.io/workshop2021-lesson-advobjects/04-jecjer/index.html)
+
 ## B Tagging Algorithms
 
 Jet reconstruction and identification is an important part of the analyses at the LHC. A jet may contain the hadronization products of any quark or gluon, or possibly the decay products of more massive particles such as W or Higgs bosons. Several b tagging” algorithms exist to identify jets from the hadronization of b quarks, which have unique properties that distinguish them from light quark or gluon jets.
 
 Tagging algorithms first connect the jets with good quality tracks that are either associated with one of the jet’s particle flow candidates or within a nearby cone. Both tracks and “secondary vertices” (track vertices from the decays of b hadrons) can be used in track-based, vertex-based, or “combined” tagging algorithms. The specific details depend upon the algorithm use. However, they all exploit properties of b hadrons such as:
 
--long lifetime,
--large mass,
--high track multiplicity,
--large semiloptonic branching fraction,
--hard fragmentation function.
+- long lifetime
+- large mass
+- high track multiplicity
+- large semiloptonic branching fraction
+- hard fragmentation function.
 
 Tagging algorithms are Algorithms that are used for b-tagging:
 
--Track Counting: identifies a b jet if it contains at least N tracks with significantly non-zero impact parameters.
--Jet Probability: combines information from all selected tracks in the jet and uses probability density functions to assign a probability to each track.
--Soft Muon and Soft Electron: identifies b jets by searching for a lepton from a semi-leptonic b decay.
--Simple Secondary Vertex: reconstructs the b decay vertex and calculates a discriminator using related kinematic variables.
--**Combined Secondary Vertex:** exploits all known kinematic variables of the jets, information about track impact parameter significance and the secondary vertices to distinguish b jets. This tagger became the default CMS algorithm.
+- Track Counting: identifies a b jet if it contains at least N tracks with significantly non-zero impact parameters.
+- Jet Probability: combines information from all selected tracks in the jet and uses probability density functions to assign a probability to each track.
+- Soft Muon and Soft Electron: identifies b jets by searching for a lepton from a semi-leptonic b decay.
+- Simple Secondary Vertex: reconstructs the b decay vertex and calculates a discriminator using related kinematic variables.
+- **Combined Secondary Vertex:** exploits all known kinematic variables of the jets, information about track impact parameter significance and the secondary vertices to distinguish b jets. This tagger became the default CMS algorithm.
 
 These algorithms produce a single, real number (often the output of an MVA) called a b tagging “discriminator” for each jet. The more positive the discriminator value, the more likely it is that this jet contained b hadrons.
 
-## Accessing Tagging Information
+### Accessing Tagging Information
 
-In PatJetAnalyzer.cc we access the information from the Combined Secondary Vertex (CSV) b tagging algorithm and associate discriminator values with the jets. The CSV values are stored in a separate collection in the POET files called a JetTagCollection, which is effectively a vector of associations between jet references and float values (such as a b-tagging discriminator).
+In [PatJetAnalyzer.cc](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/src/PatJetAnalyzer.cc) we access the information from the Combined Secondary Vertex (CSV) b tagging algorithm and associate discriminator values with the jets. The CSV values are stored in a separate collection in the POET files called a JetTagCollection, which is effectively a vector of associations between jet references and float values (such as a b-tagging discriminator).
 
 ``` cpp
-
+#include "DataFormats/BTauReco/interface/JetTag.h"
 #include "DataFormats/PatCandidates/interface/Jet.h"
 
-Handle<PFJetCollection> myjets;
-iEvent.getByLabel(InputTag("ak5PFJets"), myjets);
+[...]
+
+Handle<std::vector<pat::Jet>> myjets;
+iEvent.getByLabel(jetInput, myjets);
+
+[...]
+
 //define b-tag discriminators handle and get the discriminators
 
  for (std::vector<pat::Jet>::const_iterator itjet=myjets->begin(); itjet!=myjets->end(); ++itjet){
+    
+    [...]
     // from the btag collection get the float (second) from the association to this jet.
     jet_btag.push_back(itjet->bDiscriminator("combinedSecondaryVertexBJetTags"));
 }
@@ -127,13 +177,13 @@ The distributions in ttbar events (excluding events with values of -9 where the 
 
 ![tagger_dist](https://cms-opendata-workshop.github.io/workshop-lesson-jetmet/assets/img/btagComp.png)
 
-## Working Points
+### Working Points
 
 A jet is considered "b tagged" if the discriminator value exceeds some threshold. Different thresholds will have different efficiencies for identifying true b quark jets and for mis-tagging light quark jets. As we saw for muons and other objects, a "loose" working point will allow the highest mis-tagging rate, while a "tight" working point will sacrifice some correct-tag efficiency to reduce mis-tagging. The [CSV algorithm has working points](https://twiki.cern.ch/twiki/bin/view/CMSPublic/BtagRecommendation2011OpenData) defined based on mis-tagging rate:
 
--Loose = ~10% mis-tagging = discriminator > 0.244
--Medium = ~1% mis-tagging = discriminator > 0.679
--Tight = ~0.1% mis-tagging = discriminator > 0.898
+- Loose = ~10% mis-tagging = discriminator > 0.244
+- Medium = ~1% mis-tagging = discriminator > 0.679
+- Tight = ~0.1% mis-tagging = discriminator > 0.898
 
 We can count the number  of "Medium CSV" b-tagged jets by summing up the number of jets with discriminant values greater than 0.679. After adding a variable declaration and branch we can sum up the counter:
 
@@ -152,11 +202,8 @@ We show distributions of the number CSV b jets at the medium working point in Dr
 
 ![CSV_dist](https://cms-opendata-workshop.github.io/workshop-lesson-jetmet/assets/img/btagCount.png)
 
-## Data and Simulation Differences
+### Data and Simulation Differences
 
-When training a tagging algorithm, it is highly probable that the efficiencies for tagging different quark flavors as b jets will vary between simulation and data. These differences must be measured and corrected for using "scale factors" constructed from ratios of the efficiencies from different sources. The figures below show examples of the b and light quark efficiencies and scale factors as a function of jet momentum [read more](https://twiki.cern.ch/twiki/bin/view/CMSPublic/PhysicsResultsBTV13001). Corrections must be applied to make the b-tagging performance match between data and simulation. Read more about these corrections and their uncertainties [on this page](https://cms-opendata-guide/docs/analysis/systematics/objectsuncertain/btaguncertain.md).
+When training a tagging algorithm, it is highly probable that the efficiencies for tagging different quark flavors as b jets will vary between simulation and data. These differences must be measured and corrected for using "scale factors" constructed from ratios of the efficiencies from different sources. The figures below show examples of the b and light quark efficiencies and scale factors as a function of jet momentum [read more](https://twiki.cern.ch/twiki/bin/view/CMSPublic/PhysicsResultsBTV13001). Corrections must be applied to make the b-tagging performance match between data and simulation. Read more about these corrections and their uncertainties [on this page](../../systematics/objectsuncertain/btaguncertain.md).
 
-When training a tagging algorithm, it is highly probable that the efficiencies for tagging different quark flavors as b jets will vary between simulation and data. These differences must be measured and corrected for using "scale factors" constructed from ratios of the efficiencies from different sources. The figures below show examples of the b and light quark efficiencies and scale factors as a function of jet momentum [read more](https://twiki.cern.ch/twiki/bin/view/CMSPublic/PhysicsResultsBTV13001)
-
-!!! Warning
-    This page is under construction
+When training a tagging algorithm, it is highly probable that the efficiencies for tagging different quark flavors as b jets will vary between simulation and data. These differences must be measured and corrected for using "scale factors" constructed from ratios of the efficiencies from different sources. The figures below show examples of the b and light quark efficiencies and scale factors as a function of jet momentum [read more](https://twiki.cern.ch/twiki/bin/view/CMSPublic/PhysicsResultsBTV13001).
