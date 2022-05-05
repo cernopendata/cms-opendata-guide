@@ -10,29 +10,68 @@ The [Physics Objects page](./objects.md) shows how to access muon collections, a
 
 ## Muon identification
 
-As explained in the [Physics Object page](./objects#detector-information-for-identification), a mandatory task in the physics analysis is to identify muons, i.e. to separate “real” objects from “fakes”. The criteria depend on the type of analysis. The muon object has member functions available which can directly be used to select muon with "loose" or "tight" selection criteria. These are the corresponding lines in [MuonAnalyzer](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/src/MuonAnalyzer.cc):
+=== "Run 1 Data"
 
-``` cpp
-    muon_tightid.push_back(muon::isTightMuon(*itmuon, *vertices->begin()));
-    muon_softid.push_back(muon::isSoftMuon(*itmuon, *vertices->begin()));
-```
+    As explained in the [Physics Object page](./objects#detector-information-for-identification), a mandatory task in the physics analysis is to identify muons, i.e. to separate “real” objects from “fakes”. The criteria depend on the type of analysis. The muon object has member functions available which can directly be used to select muon with "loose" or "tight" selection criteria. These are the corresponding lines in [MuonAnalyzer](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/src/MuonAnalyzer.cc):
 
-These functions need the interaction vertex as an input (in addition to the muon properties) and this is provided through the first elemement of the vertex collection `vertices` which gives the best estimate of the interaction point.
+    ``` cpp
+        muon_tightid.push_back(muon::isTightMuon(*itmuon, *vertices->begin()));
+        muon_softid.push_back(muon::isSoftMuon(*itmuon, *vertices->begin()));
+    ```
 
-In the physics analysis, hard processes that produce large angles between the final state objects are of interest. The final object will be separated from the other objects in the event or be “isolated”. For instance, an isolated muon might be produced in the decay of a W boson. In contrast, a non-isolated muon can come from a weak decay inside a jet.
+    These functions need the interaction vertex as an input (in addition to the muon properties) and this is provided through the first elemement of the vertex collection `vertices` which gives the best estimate of the interaction point. The vertex collection is accessed with:
 
-Muon isolation is calculated from a combination of factors: energy from charged hadrons, energy from neutral hadrons, and energy from photons, all in a cone of radius dR < 0.3 or 0.4 around the muon. It is done as shown in this code snippet from [MuonAnalyzer](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/src/MuonAnalyzer.cc):
+    ``` cpp
+      Handle<reco::VertexCollection> vertices;
+      iEvent.getByLabel(InputTag("offlinePrimaryVertices"), vertices);
+    ```
 
-``` cpp
-    if (itmuon->isPFMuon() && itmuon->isPFIsolationValid()) {
-      auto iso03 = itmuon->pfIsolationR03();
-      muon_pfreliso03all.push_back((iso03.sumChargedHadronPt + iso03.sumNeutralHadronEt + iso03.sumPhotonEt)/itmuon->pt());
-      auto iso04 = itmuon->pfIsolationR04();
-      muon_pfreliso04all.push_back((iso04.sumChargedHadronPt + iso04.sumNeutralHadronEt + iso04.sumPhotonEt)/itmuon->pt());
-    }
-```
+    In the physics analysis, hard processes that produce large angles between the final state objects are of interest. The final object will be separated from the other objects in the event or be “isolated”. For instance, an isolated muon might be produced in the decay of a W boson. In contrast, a non-isolated muon can come from a weak decay inside a jet.
 
-More details on the muon identification can be found in the [CMS SWGuide MuonID page](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideMuonId). The full list of member function can be found in documentation of the [muon object class](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_5_3_30/doc/html/df/de3/classreco_1_1Muon.html).
+    Muon isolation is calculated from a combination of factors: energy from charged hadrons, energy from neutral hadrons, and energy from photons, all in a cone of radius dR < 0.3 or 0.4 around the muon. It is done as shown in this code snippet from [MuonAnalyzer](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/src/MuonAnalyzer.cc):
+
+    ``` cpp
+        if (itmuon->isPFMuon() && itmuon->isPFIsolationValid()) {
+          auto iso03 = itmuon->pfIsolationR03();
+          muon_pfreliso03all.push_back((iso03.sumChargedHadronPt + iso03.sumNeutralHadronEt + iso03.sumPhotonEt)/itmuon->pt());
+          auto iso04 = itmuon->pfIsolationR04();
+          muon_pfreliso04all.push_back((iso04.sumChargedHadronPt + iso04.sumNeutralHadronEt + iso04.sumPhotonEt)/itmuon->pt());
+        }
+    ```
+
+    More details on the muon identification can be found in the [CMS SWGuide MuonID page](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideMuonId). The full list of member function can be found in documentation of the [muon object class](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_5_3_30/doc/html/df/de3/classreco_1_1Muon.html).
+
+=== "Run 2 Data"
+
+    As explained in the [Physics Object page](./objects#detector-information-for-identification), a mandatory task in the physics analysis is to identify muons, i.e. to separate “real” objects from “fakes”. The criteria depend on the type of analysis. The muon object has member functions available which can directly be used to select muon with "loose" or "tight" selection criteria. These are the corresponding lines in [MuonAnalyzer](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2015MiniAOD/PhysObjectExtractor/src/MuonAnalyzer.cc):
+
+    ``` cpp
+      muon_isSoft.push_back(mu.isSoftMuon(PV));
+      muon_isTight.push_back(mu.isTightMuon(PV));
+    ```
+
+    These functions need the interaction vertex as an input (in addition to the muon properties) and this is provided through the first elemement of the vertex collection `vertices` which gives the best estimate of the interaction point. The vertex collection is accessed with:
+
+    ``` cpp
+      Handle<reco::VertexCollection> vertices;
+      iEvent.getByToken(vtxToken_, vertices);
+      const reco::Vertex &PV = vertices->front();
+    ```
+
+    with `vtxToken_` defined as a member of the `MuonAnalyzer` class and its value read from the [configuration file](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2015MiniAOD/PhysObjectExtractor/python/poet_cfg.py) in a similar way as for the muon collection.
+
+    In the physics analysis, hard processes that produce large angles between the final state objects are of interest. The final object will be separated from the other objects in the event or be “isolated”. For instance, an isolated muon might be produced in the decay of a W boson. In contrast, a non-isolated muon can come from a weak decay inside a jet.
+
+    Muon isolation is calculated from a combination of factors: energy from charged hadrons, energy from neutral hadrons, and energy from photons, all in a cone of radius dR < 0.3 or 0.4 around the muon. It is done as shown in this code snippet from [MuonAnalyzer](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2015MiniAOD/PhysObjectExtractor/src/MuonAnalyzer.cc):
+
+    ``` cpp
+      auto iso03 = mu.pfIsolationR03();
+      muon_pfreliso03all.push_back((iso03.sumChargedHadronPt + iso03.sumNeutralHadronEt + iso03.sumPhotonEt)/mu.pt());
+      auto iso04 = mu.pfIsolationR04();
+      muon_pfreliso04all.push_back((iso04.sumChargedHadronPt + iso04.sumNeutralHadronEt + iso04.sumPhotonEt)/mu.pt());
+    ```
+
+    More details on the muon identification can be found in the [CMS SWGuide MuonID page](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideMuonId). The full list of member function can be found in documentation of the [PAT muon object class](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_7_6_7/doc/html/d6/d13/classpat_1_1Muon.html).
 
 ## Further muon corrections
 
