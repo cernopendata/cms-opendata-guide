@@ -46,11 +46,11 @@ The code examples to which this guide mainly refers to are:
 
 === "Run 2 Data"
 
-    The physical objects are usually stored in specific *collections*.  For instance,  muons are obtained from the C++ class `std::vector<pat::Muon>` (most often called `pat::MuonCollection` using its definition in [the muon class](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_7_6_7/doc/html/dc/d3b/DataFormats_2PatCandidates_2interface_2Muon_8h_source.html)). The [MINIAOD physics objects table](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookMiniAOD2015#High_level_physics_objects) gives a good description of the different collections (or data formats) for the MINIAOD tier. This is the muon entry in that table:
+    The physical objects are usually stored in specific *collections*.  For instance,  muons are obtained from the C++ class `std::vector<pat::Muon>` where `pat` stands for "Physics analysis tools" and is a namespace for miniAOD object classes. The collection is often called `pat::MuonCollection` using its definition in [the muon class](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_7_6_7/doc/html/dc/d3b/DataFormats_2PatCandidates_2interface_2Muon_8h_source.html)). The [MINIAOD physics objects table](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookMiniAOD2015#High_level_physics_objects) gives a good description of the different collections (or data formats) for the MINIAOD tier. This is the muon entry in that table:
 
     ![DataFormats](../../../images/miniaodtable1.png)
 
-    The MINIAOD data format classes live under the [DataFormats/PatCandidates/interface](https://github.com/cms-sw/cmssw/tree/CMSSW_7_6_X/DataFormats/PatCandidates/interface) directory in CMSSW.  Here we find the [DataFormats/PatCandidates/interface/Muon.h](https://github.com/cms-sw/cmssw/blob/CMSSW_7_6_X/PatCandidates/interface/Muon.h) class header, which is the one we would need to incorporate in our analyzer.
+    The MINIAOD data format classes live under the [DataFormats/PatCandidates/interface](https://github.com/cms-sw/cmssw/tree/CMSSW_7_6_X/DataFormats/PatCandidates/interface) directory in CMSSW. Here we find the [DataFormats/PatCandidates/interface/Muon.h](https://github.com/cms-sw/cmssw/blob/CMSSW_7_6_X/PatCandidates/interface/Muon.h) class header, which is the one we would need to incorporate in our analyzer. The other possible collection
 
     So, in the context of this example, in order to support muons information, at the top of your [EDAnalyzer](../../../cmssw/cmsswanalyzers.md) you should include the following line:
 
@@ -59,7 +59,7 @@ The code examples to which this guide mainly refers to are:
     #include "DataFormats/MuonReco/interface/Muon.h"
     ~~~
 
-    See an example of an EDAnalyzer accessing muon information in the [MuonAnalyzer](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2015MiniAOD/PhysObjectExtractor/src/MuonAnalyzer.cc) of the Physics Object Extractor Tool (POET).
+    See an example of an EDAnalyzer accessing muon information in the [MuonAnalyzer](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2015MiniAOD/PhysObjectExtractor/src/MuonAnalyzer.cc) of the Physics Object Extractor Tool (POET). The definitions of object classes used in miniAOD data format can be found in the [list of all classes](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_7_6_7/doc/html/d8/d06/namespacepat.html#nested-classes) of the `pat` namespace.
 
 ## Access methods
 
