@@ -6,43 +6,86 @@
 
 ## Accessing MET in CMS Software
 
-An example of an EDAnalyzer accessing MET information is available in the [MetAnalyzer](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/src/MetAnalyzer.cc) of the Physics Object Extractor Tool (POET). The following header files needed for accessing MET information are included:
+=== "Run 1 Data"
 
-``` cpp
-//classes to extract PFMET information
-#include "DataFormats/METReco/interface/PFMET.h"
-#include "DataFormats/METReco/interface/PFMETFwd.h"
-#include "DataFormats/PatCandidates/interface/MET.h"
-```
+    An example of an EDAnalyzer accessing MET information is available in the [MetAnalyzer](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/src/MetAnalyzer.cc) of the Physics Object Extractor Tool (POET). The following header files needed for accessing MET information are included:
 
-In [MetAnalyzer.cc](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/master/PhysObjectExtractor/src/MetAnalyzer.cc) we open the particle flow MET module (with `metInput` passed as `"pfMet"` in the [configuration file](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/python/poet_cfg.py)) and extract the magnitude and angle of the MET, the sum of all energy in the detector, and variables related to the “significance” of the MET. Note that MET quantities have a single value for the entire event, unlike the objects studied previously.
+    ``` cpp
+    //classes to extract PFMET information
+    #include "DataFormats/METReco/interface/PFMET.h"
+    #include "DataFormats/METReco/interface/PFMETFwd.h"
+    #include "DataFormats/PatCandidates/interface/MET.h"
+    ```
 
-``` cpp
-Handle<reco::PFMETCollection> mymets;
-iEvent.getByLabel(metInput, mymets);
+    In [MetAnalyzer.cc](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/src/MetAnalyzer.cc) we open the particle flow MET module (with `metInput` passed as `"pfMet"` in the [configuration file](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2012/PhysObjectExtractor/python/poet_cfg.py)) and extract the magnitude and angle of the MET, the sum of all energy in the detector, and variables related to the “significance” of the MET. Note that MET quantities have a single value for the entire event, unlike the objects studied previously.
 
-[...]
+    ``` cpp
+    Handle<reco::PFMETCollection> mymets;
+    iEvent.getByLabel(metInput, mymets);
 
-met_e = mymets->begin()->sumEt();
-met_pt = mymets->begin()->pt();
-met_px = mymets->begin()->px();
-met_py = mymets->begin()->py();
-met_phi = mymets->begin()->phi();
-met_significance = mymets->begin()->significance();
-```
+    [...]
 
-The MET significance matrix could be accessed with:
+    met_e = mymets->begin()->sumEt();
+    met_pt = mymets->begin()->pt();
+    met_px = mymets->begin()->px();
+    met_py = mymets->begin()->py();
+    met_phi = mymets->begin()->phi();
+    met_significance = mymets->begin()->significance();
+    ```
 
-``` cpp
-auto cov = mymets->begin()->getSignificanceMatrix();
-value_met_covxx = cov[0][0];
-value_met_covxy = cov[0][1];
-value_met_covyy = cov[1][1];
-```
+    The MET significance matrix could be accessed with:
 
-MET significance can be a useful tool: it describes the likelihood that the MET arose from noise or mismeasurement in the detector as opposed to a neutrino or similar non-interacting particle. The four-vectors of the other physics objects along with their uncertainties are required to compute the significance of the MET signature. MET that is directed nearly (anti)colinnear with a physics object is likely to arise from mismeasurement and should not have a large significance.
+    ``` cpp
+    auto cov = mymets->begin()->getSignificanceMatrix();
+    value_met_covxx = cov[0][0];
+    value_met_covxy = cov[0][1];
+    value_met_covyy = cov[1][1];
+    ```
 
-The difference between the Drell-Yan events with primarily fake MET and the top pair events with primarily genuine MET can be seen by drawing MET_pt or by drawing MET_significance. In both distributions the Drell-Yan events have smaller values than the top pair events.
+    MET significance can be a useful tool: it describes the likelihood that the MET arose from noise or mismeasurement in the detector as opposed to a neutrino or similar non-interacting particle. The four-vectors of the other physics objects along with their uncertainties are required to compute the significance of the MET signature. MET that is directed nearly (anti)colinnear with a physics object is likely to arise from mismeasurement and should not have a large significance.
+
+    The difference between the Drell-Yan events with primarily fake MET and the top pair events with primarily genuine MET can be seen by drawing `met_pt` or by drawing `met_significance`. In both distributions the Drell-Yan events have smaller values than the top pair events.
+
+=== "Run 2 Data"
+
+    An example of an EDAnalyzer accessing MET information is available in the [MetAnalyzer](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2015MiniAOD/PhysObjectExtractor/src/MetAnalyzer.cc) of the Physics Object Extractor Tool (POET). The following header file needed for accessing MET information is included:
+
+    ``` cpp
+    //class to extract MET information
+    #include "DataFormats/PatCandidates/interface/MET.h"
+    ```
+
+    In [MetAnalyzer.cc](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2015MiniAOD/PhysObjectExtractor/src/MetAnalyzer.cc) we open the particle flow MET module (with `metToken_` defined as a member of the `MetAnalyzer` class and its value read from the [configuration file](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2015MiniAOD/PhysObjectExtractor/python/poet_cfg.py)) and extract the magnitude and angle of the MET, the sum of all energy in the detector, and variables related to the “significance” of the MET. Note that MET quantities have a single value for the entire event, unlike the objects studied previously.
+
+    ``` cpp
+    Handle<pat::METCollection> mets;
+    iEvent.getByToken(metToken_, mets);
+
+    [...]
+
+    met_e = met.sumEt();
+    met_pt = met.pt();
+    met_px = met.px();
+    met_py = met.py();
+    met_phi = met.phi();
+    met_significance = met.significance();
+    ```
+
+    The MET significance matrix could be accessed with:
+
+    ``` cpp
+    auto cov = met_significance->getSignificanceMatrix();
+    value_met_covxx = cov[0][0];
+    value_met_covxy = cov[0][1];
+    value_met_covyy = cov[1][1];
+    ```
+
+    !!! Note "To do"
+        Verify this snippet for matrix, it is taken (and minimally modified) from the Run 1 Met tutorial
+
+    MET significance can be a useful tool: it describes the likelihood that the MET arose from noise or mismeasurement in the detector as opposed to a neutrino or similar non-interacting particle. The four-vectors of the other physics objects along with their uncertainties are required to compute the significance of the MET signature. MET that is directed nearly (anti)colinnear with a physics object is likely to arise from mismeasurement and should not have a large significance.
+
+    The difference between the Drell-Yan events with primarily fake MET and the top pair events with primarily genuine MET can be seen by drawing `met_pt` or by drawing `met_significance`. In both distributions the Drell-Yan events have smaller values than the top pair events.
 
 !!! Warning
     This page is under construction
