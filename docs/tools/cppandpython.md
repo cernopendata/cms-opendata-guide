@@ -1,6 +1,6 @@
 # C++ and python
 
-As you saw in the [ROOT](https://cms-opendata-guide.web.cern.ch/tools/root/) section, CMS primarily uses C++ and python to analyze data. Here are some computing tutorials.
+CMS primarily uses C++ and python to analyze data. Here are some computing tutorials.
 
 ## C++
 

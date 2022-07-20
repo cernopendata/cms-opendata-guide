@@ -52,7 +52,7 @@ root -l generated_hist.root
 ```
 
 ```plaintext
-root [0] 
+root [0]
 Attaching file generated_hist.root as _file0...
 (TFile *) 0x55dca0f04c50
 root [1]
@@ -66,15 +66,15 @@ new TBrowser
 
 You should see something like this:
 
-![TBrowser](../../../../../images/analysis/selection/idefficiencystudy/tutorial/04/prints/tbrowser0.png)
+![TBrowser](../../../../images/analysis/selection/idefficiencystudy/tutorial/04/prints/tbrowser0.png)
 
 This is a visual navigator of a `.root` file. Here you can see the struture of `generated_hist.root`. Double click the folders to open them and see their content. The Efficiency plots we see are stored in `efficiency/plots/` folder:
 
-![TBrowser showing plots folder](../../../../../images/analysis/selection/idefficiencystudy/tutorial/04/prints/tbrowser1.png)
+![TBrowser showing plots folder](../../../../images/analysis/selection/idefficiencystudy/tutorial/04/prints/tbrowser1.png)
 
 You can double click each plot to see its content:
 
-![TBrowser showing efficiency plot for sideband subtraction method](../../../../../images/analysis/selection/idefficiencystudy/tutorial/04/prints/tbrowser2.png)
+![TBrowser showing efficiency plot for sideband subtraction method](../../../../images/analysis/selection/idefficiencystudy/tutorial/04/prints/tbrowser2.png)
 
 !!! Tip
     To close this window, click on terminal and press `Ctrl` + `C`. This command stops any processes happening in the terminal.
@@ -193,21 +193,21 @@ Done. All result files can be found at "../results/Comparison_Upsilon_Sideband_R
     ```cpp
     root -l -b -q compare_efficiency.cpp
     ```
-   
+
     In this case, to check it results you are going to need go for result folder (printed on code run) and check images there by yourself.
     You can try to run `new TBrowser` again:
-   
+
     ```cpp
     cd [FOLDER_PATH]
     root -l
     new TBrowser
     ```
 
-And as output plots comparsion, you get:
+And as output plots comparison, you get:
 
-![Muon_Pt_Tracker_Probe_Efficiency ](../../../../../images/analysis/selection/idefficiencystudy/tutorial/04/Comparison_Jpsi_Sideband_Run_vs_MC/Muon_Pt_Tracker_Probe_Efficiency.png)
-![Muon_Eta_Tracker_Probe_Efficiency](../../../../../images/analysis/selection/idefficiencystudy/tutorial/04/Comparison_Jpsi_Sideband_Run_vs_MC/Muon_Eta_Tracker_Probe_Efficiency.png)
-![Muon_Phi_Tracker_Probe_Efficiency](../../../../../images/analysis/selection/idefficiencystudy/tutorial/04/Comparison_Jpsi_Sideband_Run_vs_MC/Muon_Phi_Tracker_Probe_Efficiency.png)
+![Muon_Pt_Tracker_Probe_Efficiency ](../../../../images/analysis/selection/idefficiencystudy/tutorial/04/Comparison_Jpsi_Sideband_Run_vs_MC/Muon_Pt_Tracker_Probe_Efficiency.png)
+![Muon_Eta_Tracker_Probe_Efficiency](../../../../images/analysis/selection/idefficiencystudy/tutorial/04/Comparison_Jpsi_Sideband_Run_vs_MC/Muon_Eta_Tracker_Probe_Efficiency.png)
+![Muon_Phi_Tracker_Probe_Efficiency](../../../../images/analysis/selection/idefficiencystudy/tutorial/04/Comparison_Jpsi_Sideband_Run_vs_MC/Muon_Phi_Tracker_Probe_Efficiency.png)
 
 Now you can type the command below to **quit root** and close all created windows:
 
@@ -257,11 +257,11 @@ For every configuration for a specific dataset, they will create `.root` files i
 If you go with your terminal to this folder and run this command, you'll see that the result files only have one plot on main folder.
 
 ```sh
-root -l Pt_trackerMuon.root 
+root -l Pt_trackerMuon.root
 ```
 
 ```plaintext
-root [0] 
+root [0]
 Attaching file Pt_trackerMuon.root as _file0...
 (TFile *) 0x55efb5f44930
 root [1]
@@ -275,7 +275,7 @@ new TBrowser
 
 It has only one plot, because the others are in different files. Inside the folder `histograms`, you can find the histograms that created this efficiency result.
 
-![TBrowser showing efficiency plot for fitting method](../../../../../images/analysis/selection/idefficiencystudy/tutorial/04/prints/fitting_tbrowser.png)
+![TBrowser showing efficiency plot for fitting method](../../../../images/analysis/selection/idefficiencystudy/tutorial/04/prints/fitting_tbrowser.png)
 
 !!! Info "Key Point"
     * There is a `.root` file for each efficiency plot created with the fitting method.
@@ -362,9 +362,9 @@ root -l compare_efficiency.cpp
 
 Should get you these results:
 
-![Muon_Pt_Tracker_Probe_Efficiency ](../../../../../images/analysis/selection/idefficiencystudy/tutorial/04/Comparison_Jpsi_Fitting_Run_vs_MC/Muon_Pt_Tracker_Probe_Efficiency.png)
-![Muon_Eta_Tracker_Probe_Efficiency](../../../../../images/analysis/selection/idefficiencystudy/tutorial/04/Comparison_Jpsi_Fitting_Run_vs_MC/Muon_Eta_Tracker_Probe_Efficiency.png)
-![Muon_Phi_Tracker_Probe_Efficiency](../../../../../images/analysis/selection/idefficiencystudy/tutorial/04/Comparison_Jpsi_Fitting_Run_vs_MC/Muon_Phi_Tracker_Probe_Efficiency.png)
+![Muon_Pt_Tracker_Probe_Efficiency ](../../../../images/analysis/selection/idefficiencystudy/tutorial/04/Comparison_Jpsi_Fitting_Run_vs_MC/Muon_Pt_Tracker_Probe_Efficiency.png)
+![Muon_Eta_Tracker_Probe_Efficiency](../../../../images/analysis/selection/idefficiencystudy/tutorial/04/Comparison_Jpsi_Fitting_Run_vs_MC/Muon_Eta_Tracker_Probe_Efficiency.png)
+![Muon_Phi_Tracker_Probe_Efficiency](../../../../images/analysis/selection/idefficiencystudy/tutorial/04/Comparison_Jpsi_Fitting_Run_vs_MC/Muon_Phi_Tracker_Probe_Efficiency.png)
 
 !!! Tip "Challenge"
     As you notice here we presented comparison for &eta; and &phi;. Try to go back to fitting method tutorial and redo commands to get efficiencies for these quantities in order to compare with sideband subctraction method. Do not forget to turn `bool doEta` and `bool doPhi` true.
@@ -383,7 +383,7 @@ Now you can type the command below to **quit root** and close all created window
 
     * Real data = Run 2011
     * Simulations = Monte Carlo = MC
-   
+
     Tip: you just need to change what you saw in this page to do this comparison.
 
 ---
