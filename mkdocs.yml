@@ -48,8 +48,6 @@ nav:
                 - 'Tag and Probe': analysis/selection/idefficiencystudy/tagandprobe.md
                 - 'Signal extraction': analysis/selection/idefficiencystudy/signalextraction.md
                 - 'Tutorial':
-                    - 'Introduction':            analysis/selection/idefficiencystudy/tutorial/01-introduction.md
-                    - 'Fitting':                 analysis/selection/idefficiencystudy/tutorial/02-fitting.md
                     - 'Sideband Subtraction':    analysis/selection/idefficiencystudy/tutorial/03-sidebandsubtraction.md
                     - 'Comparison':              analysis/selection/idefficiencystudy/tutorial/04-comparison.md
                     - 'Systematic':              analysis/selection/idefficiencystudy/tutorial/05-systematic.md
