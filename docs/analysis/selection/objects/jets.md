@@ -27,7 +27,7 @@ The result of the CMS Particle Flow algorithm is a list of particle candidates t
 
 ![cluster_im](https://cms-opendata-workshop.github.io/workshop-lesson-jetmet/assets/img/clustering.png)
 
-The momentum power (-2) used by the anti-kt algorithm means that higher-momentum particles are clustered first. This leads to jets with a round shape that tend to be centered on the hardest particle. In CMS software this clustering is implemented using the [fastjet](www.fastjet.fr) package.
+The momentum power (-2) used by the anti-kt algorithm means that higher-momentum particles are clustered first. This leads to jets with a round shape that tend to be centered on the hardest particle. In CMS software this clustering is implemented using the [fastjet](https://www.fastjet.fr) package.
 
 ![jet_depo](https://cms-opendata-workshop.github.io/workshop-lesson-jetmet/assets/img/antikt.png)
 
