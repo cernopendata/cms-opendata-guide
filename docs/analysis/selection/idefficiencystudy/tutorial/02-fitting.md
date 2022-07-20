@@ -65,7 +65,7 @@ The fit, which is made in a different space (the invariant mass space) allows to
 
 At the end of the day, then, you will have to make these fits for each bin in the range of interest.
 
-![Fitting method scheme](../../../../../images/analysis/selection/idefficiencystudy/tutorial/02/fitting_method_large.png)
+![Fitting method scheme](../../../../images/analysis/selection/idefficiencystudy/tutorial/02/fitting_method_large.png)
 
 Let's start exploring our dataset. From the cloned directory, type:
 
@@ -92,7 +92,7 @@ Now, before we start fitting the invariant mass it's important to look at it's s
 tagandprobe->Draw("InvariantMass")
 ```
 
-![Invariant Mass histogram from the data analysed](../../../../../images/analysis/selection/idefficiencystudy/tutorial/02/InvariantMass.png)
+![Invariant Mass histogram from the data analysed](../../../../images/analysis/selection/idefficiencystudy/tutorial/02/InvariantMass.png)
 
 If you got the previous result, we're ready to go.
 
@@ -119,7 +119,7 @@ We'll start by calculating the efficiency as a function of pT. It is useful to h
 tagandprobe->Draw("ProbeMuon_Pt")
 ```
 
-![pT plot of data in linear scale](../../../../../images/analysis/selection/idefficiencystudy/tutorial/02/ProbeMuonPt.png)
+![pT plot of data in linear scale](../../../../images/analysis/selection/idefficiencystudy/tutorial/02/ProbeMuonPt.png)
 
 Hmm... seems like our domain is larger than we need it to be. To fix this, we can apply a constraint to our plot. Try:
 
@@ -127,7 +127,7 @@ Hmm... seems like our domain is larger than we need it to be. To fix this, we ca
 tagandprobe->Draw("ProbeMuon_Pt", "ProbeMuon_Pt < 20")
 ```
 
-![pT plot of data in log scale](../../../../../images/analysis/selection/idefficiencystudy/tutorial/02/ProbeMuonPtCuts.png)
+![pT plot of data in log scale](../../../../images/analysis/selection/idefficiencystudy/tutorial/02/ProbeMuonPtCuts.png)
 
 Exit ROOT and get back to the main area:
 
@@ -337,7 +337,7 @@ compare_efficiency("trackerMuon", "Pt", "results/efficiencies/efficiency/Jpsi_Ru
 
 Now you should have a new folder called `Comparison Run2011 vs MC` in your `results/efficiencies/efficiency/` and inside it are the comparisons that you just made.
 
-![Tracker Muon Pt Efficiency](../../../../../images/analysis/selection/idefficiencystudy/tutorial/02/trackerMuon_Pt_Efficiency.png)
+![Tracker Muon Pt Efficiency](../../../../images/analysis/selection/idefficiencystudy/tutorial/02/trackerMuon_Pt_Efficiency.png)
 
 If everything went well and you still have time to go, repeat this process for the two other variables, &eta; and &phi;!
 

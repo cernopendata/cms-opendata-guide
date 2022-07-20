@@ -17,7 +17,7 @@ The resonance, used to calculate the efficiencies, decays to a pair of particles
 
 The efficiency is given by the fraction of probe muons that pass a given criteria (in this case, the **Muon ID** which we explain [below](#cms-muon-identification-reconstruction)):
 
-![Efficiency equation](../../../../../images/analysis/selection/idefficiencystudy/tutorial/01/efficiency.svg)
+![Efficiency equation](../../../../images/analysis/selection/idefficiencystudy/tutorial/01/efficiency.svg)
 
 The denominator corresponds to the number of resonance candidates (tag+probe pairs) reconstructed in the dataset. The numerator corresponds to the subset for which the probe passes the criteria.
 
@@ -27,7 +27,7 @@ The tag+probe invariant mass distribution is used to select only signal, that is
 
 The final objective in this lesson is to measure the efficiency for identifying reconstructed **tracker muons**.  We present here a short description of the muon identification and reconstruction employed in the CMS experiment at the LHC.
 
-![CMS muon id](../../../../../images/analysis/selection/idefficiencystudy/tutorial/01/muons_id.png)
+![CMS muon id](../../../../images/analysis/selection/idefficiencystudy/tutorial/01/muons_id.png)
 
 In the standard CMS reconstruction for proton-proton collisions, tracks are first reconstructed independently in the inner tracker and in the muon system. Based on these objects, two reconstruction approaches are used:
 

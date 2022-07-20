@@ -21,7 +21,7 @@ https://cernbox.cern.ch/index.php/s/lqHEasYWJpOZsfq
 In order to run this code, use this command to simplify the data so that it can be read by the RooFit root library.
 
 ```sh
-root simplify_data.cpp 
+root simplify_data.cpp
 ```
 
 This will create a "TagAndProbe_Jpsi_Run2011.root" file, this process may take a few minutes. move the file to the DATA folder.
@@ -82,18 +82,18 @@ root overplot_efficiencies.cpp
 
 You should get a result like this:
 
-![Efficiency Systematic Overplot 1D](../../../../../images/analysis/selection/idefficiencystudy/tutorial/05/Sys_Efficiency_overplot1d.png)
+![Efficiency Systematic Overplot 1D](../../../../images/analysis/selection/idefficiencystudy/tutorial/05/Sys_Efficiency_overplot1d.png)
 
 ## 2D Efficiency Map
 
 This code generates a 2D systematic efficiency overplot, it outputs a .root that contains the efficiency histograms that can be visualised by the root TBrowser.
 
 ```sh
-root -l -b -q plot_sys_efficiency_2d.cpp 
+root -l -b -q plot_sys_efficiency_2d.cpp
 ```
 
 This is one of the graphs that will be generated.
 
-![Efficiency Systematic Overplot 2D](../../../../../images/analysis/selection/idefficiencystudy/tutorial/05/Sys_Efficiency_overplot2d.png)
+![Efficiency Systematic Overplot 2D](../../../../images/analysis/selection/idefficiencystudy/tutorial/05/Sys_Efficiency_overplot2d.png)
 
 It is noteworthy that the uncertainties presented above in the 2d map are already the quadrature sum of systematics and statistical uncertainties.

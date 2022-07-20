@@ -15,7 +15,7 @@ Tag muon are employed to trigger the presence of a resonance decay while probe m
 
 The efficiency will be given by the fraction of probe muons that pass a given criteria (in this case, the [Muon ID](#cms-muon-identification-and-reconstruction) which is explained below):
 
-![Efficiency equation](../../../../images/analysis/selection/idefficiencystudy/tagandprobe/efficiency.svg)
+![Efficiency equation](../../../images/analysis/selection/idefficiencystudy/tagandprobe/efficiency.svg)
 
 The denominator corresponds to the number of resonance candidates (tag+probe pairs) reconstructed in the dataset. The numerator corresponds to the subset for which the probe passes the criteria.
 
@@ -31,7 +31,7 @@ In the standard CMS reconstruction for proton-proton collisions, tracks are firs
 
 These are illustrated below:
 
-![Muons identification](../../../../images/analysis/selection/idefficiencystudy/tagandprobe/muons_id.png)
+![Muons identification](../../../images/analysis/selection/idefficiencystudy/tagandprobe/muons_id.png)
 
 !!! Note
     You can find more details concerning CMS Muon Identification and reconstruction in this paper [JINST 7 (2012) P10002](https://doi.org/10.1088/1748-0221/7/10/P10002).
