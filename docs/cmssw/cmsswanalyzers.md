@@ -4,7 +4,7 @@ First, a few general words about analysis in the CMSSW framework. Physics analys
 
 When setting up code for the new EDM (such as creating a new EDProducer) there is a fair amount of 'boiler plate' code that you must write. To make writing such code easier CMS provides a series of scripts that will generate the necessary directory structure and files needed so that all you need to do is write your actual algorithms.
 
-CMSSW distiguishes the following [module types](https://twiki.cern.ch/twiki/bin/view/Main/CMSSWatFNALFramework#Module_types):
+CMSSW distiguishes the following [module types](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookCMSSWFramework#ComponentArch):
 
 - **EDAnalyzer:** takes input from the event and processes the input without writing information back to the event
 - **EDProducer:** takes input from the event and produces new output which is saved in the event
@@ -13,10 +13,10 @@ CMSSW distiguishes the following [module types](https://twiki.cern.ch/twiki/bin/
 
 In order to generate above modules:
 
-- **mkedanlzr :** makes a skeleton of a package containing an [EDAnalyzer](https://twiki.cern.ch/twiki/bin/view/Main/CMSSWatFNALFramework#Module_types)
-- **mkedprod :** makes a skeleton of a package containing an [EDProducer](https://twiki.cern.ch/twiki/bin/view/Main/CMSSWatFNALFramework#Module_types)
-- **mkedfltr :** makes a skeleton of a package containing an [EDFilter](https://twiki.cern.ch/twiki/bin/view/Main/CMSSWatFNALFramework#Module_types)
-- **mkrecord :** makes a complete implementation of a Record used by the [EventSetup](https://twiki.cern.ch/twiki/bin/view/Main/CMSSWatFNALFramework#Module_types)
+- **mkedanlzr :** makes a skeleton of a package containing an [EDAnalyzer](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookCMSSWFramework#ComponentArch)
+- **mkedprod :** makes a skeleton of a package containing an [EDProducer](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookCMSSWFramework#ComponentArch)
+- **mkedfltr :** makes a skeleton of a package containing an [EDFilter](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookCMSSWFramework#ComponentArch)
+- **mkrecord :** makes a complete implementation of a Record used by the [EventSetup](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookMoreOnCMSSWFramework#EventSetupLink)
 
 More generators are available and you can find them [here](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideSkeletonCodeGenerator)
 
