@@ -1,6 +1,6 @@
 # CMS Open Data workshops
 
-The CMS Open Data group organizes regular workshops to help users getting started with the CMS Open Data. 
+The CMS Open Data group organizes regular workshops to help users getting started with the CMS Open Data.
 
 The tutorials of these workshops are available in these links and free to use:
 
