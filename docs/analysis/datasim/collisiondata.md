@@ -38,12 +38,14 @@ it must be taken into account when combining events from different datasets in a
 
 One year of data taking is divided in several "eras" indicated as RunA, RunB, etc.
 According to the CMS data policy, 50% of data is published after the embargo period,
-completed with the full release within 10 years. Currently available are
+completed with the full release within 10 years. For proton-proton data, currently available are
 
 * Run2010A and Run2010B
 * Run2011A and Run2011B
-* Run2012B and Run2012C
+* Run2012A, Run2012B, Run2012C and Run2012D
 * Run2015D
+
+In addition, heavy-ion data from HIRun2010 and HIRun2011 are available.
 
 The data are reprocessed several times, and it is the last complete reprocessing available at the time of the release which is made public.
 
