@@ -20,7 +20,7 @@ To account for the different running conditions in Run 1 vs Run 2, click the app
 === "Run 1 Data"
 
     * You can find the list of Docker container images available for CMS open data in [the guide page for CMS open data containers](http://opendata.cern.ch/docs/cms-guide-docker)
-    * You can also jump right in with the most recent tutorial on [the CMS open data containers](https://cms-opendata-workshop.github.io/workshop2021-lesson-docker/).
+    * You can also jump right in with the most recent tutorial on [the CMS open data containers](https://cms-opendata-workshop.github.io/workshop2023-lesson-docker/). If the tutorial is for more recent data, make sure to change the container image to correspond to the Run 1 data you intend to analyse.
 
 === "Run 2 Data"
 
