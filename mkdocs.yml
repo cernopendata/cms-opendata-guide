@@ -10,10 +10,12 @@ repo_url: 'https://github.com/cernopendata/cms-opendata-guide'
 # Structure
 nav:
     - Home: index.md
+    - 'CMS Open Data':
+        - 'CERN Open Data Portal': cmsOpenData/cernportal.md
+        - 'CMS Open Data': cmsOpenData/cmsopendata.md
+        - 'Finding Data': cmsOpenData/findingData.md
+        - 'Workshops': cmsOpenData/workshops.md
     - 'Computing Tools':
-        - 'CERN Open Data Portal': tools/cernportal.md
-        - 'CMS Open Data': tools/cmsopendata.md
-        - 'CMS Twiki': tools/cmstwiki.md
         - 'UNIX': tools/unix.md
         - 'ROOT': tools/root.md
         - 'C++ and Python': tools/cppandpython.md
@@ -32,14 +34,37 @@ nav:
             - 'MC Simulations': analysis/datasim/mcsimulations.md
             - 'Event Generation': analysis/datasim/eventgeneration.md
         - 'Selection':
-	    - 'Triggers': analysis/selection/triggers.md
-            - 'Physics Objects': analysis/selection/objects.md
-		- 'Common Tools': analysis/selection/objects/tools.md
-		- 'Muons': analysis/selection/objects/muons.md
-		- 'Electrons and Photons': analysis/selection/objects/egamma.md
-		- 'Jets': analysis/selection/objects/jets.md
-		- 'Missing ET': analysis/selection/objects/met.md
-            - 'Physics Object ID': analysis/selection/objectid.md
+            - 'Validated Runs': analysis/selection/validatedRuns.md
+            - 'Triggers': analysis/selection/triggers.md
+            - 'Physics Objects':
+                - 'Physics Objects': analysis/selection/objects/objects.md
+                - 'Common Tools': analysis/selection/objects/tools.md
+                - 'Muons': analysis/selection/objects/muons.md
+                - 'Electrons': analysis/selection/objects/electrons.md
+                - 'Photons': analysis/selection/objects/photons.md
+                - 'Jets': analysis/selection/objects/jets.md
+                - 'Missing ET': analysis/selection/objects/met.md
+                - 'Taus': analysis/selection/objects/taus.md
+            - 'ID Efficiency study':
+                - 'Tag and Probe': analysis/selection/idefficiencystudy/tagandprobe.md
+                - 'Signal extraction': analysis/selection/idefficiencystudy/signalextraction.md
+                - 'Tutorial':
+                    - 'Sideband Subtraction':    analysis/selection/idefficiencystudy/tutorial/03-sidebandsubtraction.md
+                    - 'Comparison':              analysis/selection/idefficiencystudy/tutorial/04-comparison.md
+                    - 'Systematic':              analysis/selection/idefficiencystudy/tutorial/05-systematic.md
+                - 'Reference Guide (SB)':
+                    - 'The Macro':                 analysis/selection/idefficiencystudy/sidebandreferenceguide/macro.md
+                    - 'FitFunction class':         analysis/selection/idefficiencystudy/sidebandreferenceguide/FitFunctions.md
+                    - 'SidebandSubtraction class': analysis/selection/idefficiencystudy/sidebandreferenceguide/SidebandSubtraction.md
+                    - 'InvariantMass class':       analysis/selection/idefficiencystudy/sidebandreferenceguide/InvariantMass.md
+                    - 'MassValues struct':         analysis/selection/idefficiencystudy/sidebandreferenceguide/MassValues.md
+                    - 'Type class':                analysis/selection/idefficiencystudy/sidebandreferenceguide/Type.md
+                    - 'TagProbe class':            analysis/selection/idefficiencystudy/sidebandreferenceguide/TagProbe.md
+                    - 'PtEtaPhi class':            analysis/selection/idefficiencystudy/sidebandreferenceguide/PtEtaPhi.md
+                    - 'PassingFailing class':      analysis/selection/idefficiencystudy/sidebandreferenceguide/PassingFailing.md
+                - 'Reference Guide (Fit)':
+                    - 'Overview':                  analysis/selection/idefficiencystudy/fittingreferenceguide/overview.md
+                    - 'Src files':                 analysis/selection/idefficiencystudy/fittingreferenceguide/src_files.md
         - 'Luminosity':
             - 'Luminosity': analysis/luminosity/lumi.md
         - 'Backgrounds':
@@ -50,12 +75,12 @@ nav:
             - 'Luminosity Uncertainties': analysis/systematics/lumiuncertain.md
             - 'MC Uncertainty': analysis/systematics/mcuncertain.md
             - 'Physics Object Uncertainty':
-	      	 - 'Lepton/Photon uncertainties': analysis/systematics/objectsuncertain/leptonuncertain.md
-	      	 - 'Jet/MET uncertainties': analysis/systematics/objectsuncertain/jetmetuncertain.md
-	      	 - 'Tagging uncertainties': analysis/systematics/objectsuncertain/btaguncertain.md
+                 - 'Lepton/Photon uncertainties': analysis/systematics/objectsuncertain/leptonuncertain.md
+                 - 'Jet/MET uncertainties': analysis/systematics/objectsuncertain/jetmetuncertain.md
+                 - 'Tagging uncertainties': analysis/systematics/objectsuncertain/btaguncertain.md
             - 'Pileup Uncertainty': analysis/systematics/pileupuncertain.md
         - 'Interpretation':
-            - 'Statistics': analysis/interpretation/stats.md
+            - 'Statistics': analysis/interpretation/stats.md  
             - 'Upper-limit Calculations': analysis/interpretation/limits.md
     - FAQ: faq.md
     - About: about.md
@@ -81,10 +106,15 @@ extra_css:
 # Extensions
 markdown_extensions:
     - admonition
+    - pymdownx.details
+    - pymdownx.superfences
     - codehilite:
         guess_lang: false
     - toc:
         permalink: true
+    - pymdownx.superfences
+    - pymdownx.tabbed:
+        alternate_style: true
 
 # Plugins
 plugins:

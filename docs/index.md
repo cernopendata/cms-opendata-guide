@@ -1,13 +1,13 @@
 # CMS Open Data Guide
 
 !!! Warning
-    This page is under construction
+    This guide is under construction
 
 Welcome to the guide for CMS open data.  This guide is brought to you by the CMS open data group, on a best-effort basis. All software and instructions are provided "as is", without warranty of any kind. This is ongoing work and we appreciate your feedback and/or your help building this guide.
 
 ## How to use this site
 
-There are three main tabs to help you navigate the site.  It starts with the **Computing Tools** most likely needed to deal with CMS open data.  Then, there is a little review of **CMSSW**, which is the software used by CMS.  Finally the **Analysis** section guides you through the different steps (in the most general order) that you need to follow for performing a particle physics analysis with CMS open data.
+The lefthand tabs will help you navigate the site.  If you click on each tab, it will expand to show further subsections.  The sections will guide you through the main topics you will need to become familiar with to conduct an analysis using CMS Open Data.  You'll learn about the computing tools needed to deal with CMS open data and about **CMSSW**, which is the software used by CMS.  You'll also learn how to conduct a particle physics analysis.
 
 ## The site's philosophy
 
