@@ -41,4 +41,4 @@ and by adding these two lines after the `process.source` input file definition:
    process.source.lumisToProcess.extend(myLumis)
 ```
 
-This list should also be used as an input to the [luminosity calculation](../luminosity/lumi.md).
+This list should also be used as an input to the [luminosity calculation](../lumi.md).
