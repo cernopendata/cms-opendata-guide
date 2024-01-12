@@ -65,12 +65,8 @@ nav:
                 - 'Reference Guide (Fit)':
                     - 'Overview':                  analysis/selection/idefficiencystudy/fittingreferenceguide/overview.md
                     - 'Src files':                 analysis/selection/idefficiencystudy/fittingreferenceguide/src_files.md
-        - 'Luminosity':
-            - 'Luminosity': analysis/luminosity/lumi.md
-        - 'Backgrounds':
-            - 'Techniques': analysis/backgrounds/techniques.md
-            - 'QCD Estimation': analysis/backgrounds/qcdestimation.md
-
+        - 'Luminosity': analysis/lumi.md
+        - 'Background Modelling': analysis/backgrounds.md
         - 'Systematics':
             - 'Luminosity Uncertainties': analysis/systematics/lumiuncertain.md
             - 'MC Uncertainty': analysis/systematics/mcuncertain.md
@@ -79,9 +75,7 @@ nav:
                  - 'Jet/MET uncertainties': analysis/systematics/objectsuncertain/jetmetuncertain.md
                  - 'Tagging uncertainties': analysis/systematics/objectsuncertain/btaguncertain.md
             - 'Pileup Uncertainty': analysis/systematics/pileupuncertain.md
-        - 'Interpretation':
-            - 'Statistics': analysis/interpretation/stats.md  
-            - 'Upper-limit Calculations': analysis/interpretation/limits.md
+        - 'Statistical Interpretation': analysis/stats.md  
     - FAQ: faq.md
     - About: about.md
 
@@ -103,6 +97,11 @@ theme:
 extra_css:
   - stylesheets/extra.css
 
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  
 # Extensions
 markdown_extensions:
     - admonition
@@ -115,7 +114,9 @@ markdown_extensions:
     - pymdownx.superfences
     - pymdownx.tabbed:
         alternate_style: true
-
+    - pymdownx.arithmatex:
+        generic: true
+      
 # Plugins
 plugins:
   - search
