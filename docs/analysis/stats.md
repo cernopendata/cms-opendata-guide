@@ -25,7 +25,7 @@ of the Guide.
 
 Observed and expected limits on the signal ratio \(\mu\) are extracted by comparing the compatibility
 of the observed data with a background-only (\(\mu = 0\)) hypothesis as well as with a signal+background hypothesis.
-The most common statistical method within CMS is the **CLs** method ([Read, 2002](https://iopscience.iop.org/article/10.1088/0954-3899/28/10/313) and [Junk, 1999](https://www.sciencedirect.com/science/article/pii/S0168900299004982)),
+The most common statistical method within CMS is the **CLs** method ([Read, 2002](http://dx.doi.org/10.1088/0954-3899/28/10/313) and [Junk, 1999](https://www.arxiv.org/abs/hep-ex/9902006)),
 which can be used to obtain a limit at the 95% confidence level using the profile likelihood test statistic
 ([Cowan, 2010](https://arxiv.org/abs/1007.1727)) with the asymptotic limit approximation.
 
