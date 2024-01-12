@@ -36,21 +36,21 @@ for combining ATLAS and CMS Higgs boson measurements.
 
 ## Tutorials
 
-Many tutorials and lectures on statistical interpretation of LHC data are available online. Some selected highlights are listed here. 
+Many tutorials and lectures on statistical interpretation of LHC data are available online. Some selected highlights are listed here.
 
 - *Practical Statistics for LHC Physicists*, a set of three lectures by Prof. Harrison Prosper, 2015. Slides and videos are available for each lecture:
 
-    * [Descriptive Statistics, Probability and Likelihood](https://indico.cern.ch/event/358542/)
-    * [Frequentist Inference](https://indico.cern.ch/event/358543/)
-    * [Bayesian Inference](https://indico.cern.ch/event/358544/)
+    - [Descriptive Statistics, Probability and Likelihood](https://indico.cern.ch/event/358542/)
+    - [Frequentist Inference](https://indico.cern.ch/event/358543/)
+    - [Bayesian Inference](https://indico.cern.ch/event/358544/)
 
 - Higgs Combine [tutorial on the main features of Combine](https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/part5/longexercise/).
 
-    * [Solutions](https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/part5/longexerciseanswers/) are available
-    * Note: some links within this tutorial point to CMS internal resources.
+    - [Solutions](https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/part5/longexerciseanswers/) are available
+    - Note: some links within this tutorial point to CMS internal resources.
 
 - Open Data Workshop [*Simplified Run 2 Analysis* lesson](https://cms-opendata-workshop.github.io/workshopwhepp-lesson-ttbarljetsanalysis/)
 
-    * Lessons from the Open Data Workshop series use the docker container environment recommended for processing Open Data.
-    * The overall lesson offers tools for analysis of files in the NanoAOD or [PhysObjectExtractorTool](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool) format.
-    * Specifically, the final page of the lesson (*5: Systematics and Statistics*) offers a python-based tool for performing statistical inference.
+    - Lessons from the Open Data Workshop series use the docker container environment recommended for processing Open Data.
+    - The overall lesson offers tools for analysis of files in the NanoAOD or [PhysObjectExtractorTool](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool) format.
+    - Specifically, the final page of the lesson (*5: Systematics and Statistics*) introduces the python-based tool [pyhf](https://pyhf.readthedocs.io/en/v0.7.6/) for performing statistical inference without any ROOT software.
