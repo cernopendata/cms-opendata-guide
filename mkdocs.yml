@@ -75,9 +75,7 @@ nav:
                  - 'Jet/MET uncertainties': analysis/systematics/objectsuncertain/jetmetuncertain.md
                  - 'Tagging uncertainties': analysis/systematics/objectsuncertain/btaguncertain.md
             - 'Pileup Uncertainty': analysis/systematics/pileupuncertain.md
-        - 'Interpretation':
-            - 'Statistics': analysis/interpretation/stats.md  
-            - 'Upper-limit Calculations': analysis/interpretation/limits.md
+        - 'Statistical Interpretation': analysis/stats.md  
     - FAQ: faq.md
     - About: about.md
 
