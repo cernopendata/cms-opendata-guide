@@ -90,8 +90,8 @@ theme:
       text: 'Lato'
     icon:
       repo: 'fontawesome/brands/github'
-    logo: 'images/cmslogo.png'
-    favicon: 'images/favicon.ico'
+    logo: 'images/cms-od.png'
+    favicon: 'images/cms-od.png'
 
 # Customization
 extra_css:
