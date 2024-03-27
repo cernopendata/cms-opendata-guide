@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Runs shell script static analysis
         run: |
@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Ruby 2.6
         uses: ruby/setup-ruby@v1
@@ -31,9 +31,9 @@ jobs:
           python-version: 3.8
 
       - name: Setup node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
-          node-version: "14"
+          node-version: "20"
 
       - name: Install project dependences
         run: |
