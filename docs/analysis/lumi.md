@@ -10,6 +10,12 @@ In collider physics, discovery potential can be summarized with two pieces of in
 
 ## Calculating luminosity
 
+### Practicalities
+
+CMS uses a tool called `brilcalc` to compute luminosity. This tool is documented in the [CMS Guide on how to calculate luminosity](https://opendata.cern.ch/docs/cms-guide-luminosity-calculation), which contains software installation instructions and many example calculations.
+
+### Theory
+
 Luminosity can be measured for small moments in time (*instantaneous luminosity*) or integrated over a full data-taking period (*integrated luminosity*). CMS and the LHC use instantaneous luminosity information to understand the collision environment during data-taking. The integrated luminosity value is used by all analysts to measure cross sections of a process being studied, or to determine the number of events expected for physics processes with well-known cross sections. Luminosity is the ratio of the production rate, $R$, (or number of produced events, $N$) and the "cross section" for the considered process:
 
 $\mathcal{L}(t) = R(t)/\sigma,$
@@ -20,7 +26,7 @@ Cross section is measured in "barns", a unit of area relevant for nuclear-scale 
 
 Typical cross sections for particle physics interactions are much smaller than nuclear physics interactions, ranging from millibarns down to femtobarns. The integrated luminosities required to discover these interactions grows as the cross section shrinks. 
 
-## CMS Luminometers
+#### CMS Luminometers
 
 CMS has several subdetectors that serve as "luminometers":
 
@@ -35,7 +41,7 @@ The pixel detector contributes two measurements that are used for luminosity cal
 
 In the HF, a suite of FPGA readout electronics processes data at the full 40 MHz LHC collision rate. The record the number of channels in which above-threshold charge was deposited during the bunch crossing. The PLT looks for tracks from the collision point that hit all three sensors in one of the telescopes -- the fraction of events with no PLT coincidences can be used in the luminosity calculation. The BCM1F has readout that is optimized for time precision. This subdetector has a time resolution of just over 6 ns, so it can separate collision hits from beam-related background hits. The data from all of these luminometers can be used to converge on a precise, stable determination of the luminosity in CMS.
 
-## Luminosity calculation and calibration
+#### Luminosity calculation and calibration
 
 The true mean number of interations per LHC bunch crossing, $\mu$, is proportional to the instantaneous luminosity of the bunch crossing:
 
