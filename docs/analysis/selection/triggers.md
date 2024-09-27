@@ -9,14 +9,11 @@ When beginning a CMS analysis, there are three guiding principles to consider:
 2. What physics objects should NOT be present?
 3. What will cue CMS to store the types of events I want to analyze?
 
-### Choosing things to keep
-No physics object in CMS is reconstructed with absolute certainty. We always need to consider whether a reconstructed object is “genunine” or “fake”, and the pre-computed identification algorithms are designed to help analysts avoid considering “fake” objects that were caused by spurious information such as detector noise. Other considerations are whether objects are “prompt” or “nonprompt” (or “displaced”): muons from a Higgs boson 4-muon decay would be considered “prompt”; muons emerging from b-hadron decays within a jet would be considered “nonprompt”; and muons emerging far from the interaction point from the decay of some long-lived particle would be considered “displaced”. Identification and isolation algorithms can piece these differences apart, but each analysis will apply different choices. Jets carry information about the quark or boson that produced them, which is described as “tagging” in CMS. Analysts can choose to implement a jet tagging algorithm to select out jets with certain features.
+**Choosing things to keep**: No physics object in CMS is reconstructed with absolute certainty. We always need to consider whether a reconstructed object is “genunine” or “fake”, and the pre-computed identification algorithms are designed to help analysts avoid considering “fake” objects that were caused by spurious information such as detector noise. Other considerations are whether objects are “prompt” or “nonprompt” (or “displaced”): muons from a Higgs boson 4-muon decay would be considered “prompt”; muons emerging from b-hadron decays within a jet would be considered “nonprompt”; and muons emerging far from the interaction point from the decay of some long-lived particle would be considered “displaced”. Identification and isolation algorithms can piece these differences apart, but each analysis will apply different choices. Jets carry information about the quark or boson that produced them, which is described as “tagging” in CMS. Analysts can choose to implement a jet tagging algorithm to select out jets with certain features.
 
-### Choosing things to drop
-All measurements and searches must consider background processes: reducible backgrounds with different final states that may pass event selection criteria due to some mismeasurement or fluctuation, and irreducible backgrounds with the same final state physics objects. Clever selection choices can often drop the rate of background processes significantly without sacrificing too many signal events. One basic example is the practice of using high momentum thresholds in searches for massive new physics particles, since SM processes with the same final state will preferentially result in low-momentum physics objects. Any physics object that can be selected can also be vetoed, depending on the needs of the analysis. An important part of this process is identifying and studying SM background processes!
+**Choosing things to drop**: All measurements and searches must consider background processes: reducible backgrounds with different final states that may pass event selection criteria due to some mismeasurement or fluctuation, and irreducible backgrounds with the same final state physics objects. Clever selection choices can often drop the rate of background processes significantly without sacrificing too many signal events. One basic example is the practice of using high momentum thresholds in searches for massive new physics particles, since SM processes with the same final state will preferentially result in low-momentum physics objects. Any physics object that can be selected can also be vetoed, depending on the needs of the analysis. An important part of this process is identifying and studying SM background processes!
 
-### Choosing a set of triggers
-Triggers determine which collision events are kept or discarded by CMS, so it sounds like this criterion should be chosen first, but in practice it is typically chosen last. Armed with a set of physics object selection criteria, we can search for a “trigger” or set of triggers that should have passed any event that will also pass the analysis criteria.
+**Choosing a set of triggers**: Triggers determine which collision events are kept or discarded by CMS, so it sounds like this criterion should be chosen first, but in practice it is typically chosen last. Armed with a set of physics object selection criteria, we can search for a “trigger” or set of triggers that should have passed any event that will also pass the analysis criteria.
 
 ## The CMS Trigger System
 
@@ -58,9 +55,9 @@ After events are accepted by possibly more than one type of trigger, they are st
 
 Finally, it is worth mentioning that:
 
- * an event can be triggered by many trigger paths
- * trigger paths are unique to each dataset
- * the same event can arrive in two different datasets (this is speciall important if working with many datasets as event duplication can happen and one has to account for it)
+ - an event can be triggered by many trigger paths
+ - trigger paths are unique to each dataset
+ - the same event can arrive in two different datasets (this is speciall important if working with many datasets as event duplication can happen and one has to account for it)
 
 For example, you can expect that an event containing two top quarks, one of which decays to an electron and the other of which decays to a muon, could appear in several datasets: the single muon dataset, the single electron dataset, the "muon + electron" dataset, and perhaps the jet dataset since there will also be two b quark jets. For an analysis studying dileptonic top pair production, the "muon + electron" dataset is almost certainly the best choice.
 
@@ -177,9 +174,9 @@ The [Physics Object Extractor Tool for 2015](https://github.com/cms-opendata-ana
 For many physics analyses, one basic piece of trigger information is required: did this event pass or fail a certain path?
 NanoAOD stores this information for both L1 and HLT paths. Let's consider 3 example HLT paths:
 
- * HLT_Ele35_WPTight_Gsf
- * HLT_IsoMu27
- * HLT_IsoMu27_LooseChargedIsoPFTauHPS20_Trk1_eta2p1_SingleL1
+ - HLT_Ele35_WPTight_Gsf
+ - HLT_IsoMu27
+ - HLT_IsoMu27_LooseChargedIsoPFTauHPS20_Trk1_eta2p1_SingleL1
 
 The first element of the name indicates that these paths are part of the "High Level Trigger" mentioned in the introduction.
 The second element of the name shows the first physics object that was tested for this path -- the first example is an electron trigger, and the other two are muon triggers.
@@ -187,7 +184,7 @@ Following the short name "Ele" or "Mu" is a momentum/energy threshold for this o
 
 The final example shows a trigger with multiple objects -- after the "IsoMu27" label comes a label related to tau leptons: "LooseChargedIsoPFTauHPS20_Trk1_eta2p1_SingleL1".
 This is a complex label that would share with experts many details of how the tau passing this trigger appeared in the CMS calorimeters. The most important information is that
-this tau lepton decayed to hadrons (note the "HPS" label for "hadron plus strips), was loosely isolated from other charged hadrons, passed a 20 GeV threshold, and was found in the central region of the detector ($\eta < 2.1$). This trigger might be used for a $H \rightarrow \tau \tau$ analysis with one hadronic tau and one tau that decayed to a muon. 
+this tau lepton decayed to hadrons (note the "HPS" label for "hadron plus strips), was loosely isolated from other charged hadrons, passed a 20 GeV threshold, and was found in the central region of the detector ($\eta < 2.1$). This trigger might be used for a $H \rightarrow \tau \tau$ analysis with one hadronic tau and one tau that decayed to a muon.
 
 ### NanoAOD branch listings
 
@@ -195,10 +192,10 @@ Each dataset's record page contains a link to its variable listing, which will s
 
 Note:
 
- * No version number appears in the branch names! NanoAOD assumes you want all versions of a trigger
- * All the branches are type "bool", so they indicate pass (true) or fail (false) for the event
- * Some L1 paths relate to detector conditions, and some to energy thresholds
- * Many triggers of the same type exist with a variety of energy or momentum thresholds
+ - No version number appears in the branch names! NanoAOD assumes you want all versions of a trigger
+ - All the branches are type "bool", so they indicate pass (true) or fail (false) for the event
+ - Some L1 paths relate to detector conditions, and some to energy thresholds
+ - Many triggers of the same type exist with a variety of energy or momentum thresholds
 
 Table: L1 information in NanoAOD (truncated example)
 
@@ -248,9 +245,9 @@ Table: HLT information in NanoAOD (truncated example)
 
 ### L1 PreFiring corrections
 
-The 2016 NanoAOD files also contain a set of branches labeled "L1PreFiringWeight". In 2016 and 2017, the gradual timing shift of the ECAL was not properly propagated to the L1 trigger system, resulting in a significant fraction of high-$\eta$ "trigger primitives" being mistakenly associated to the previous bunch crossing. Since Level-1 rules forbid two consecutive bunch crossings from firing, an unpleasant consequence of this is that events can effectively "self veto" if a significant amount of ECAL energy is found in the region $2.0 < |\eta| < 3.0$. The effect is strongly $\eta$- and $p_{T}$-dependent and prefiring rates can be large for high-momentum jets in the forward regions of the detector. A similar effect is present in the muon system, where the bunch crossing assignment of the muon candidates can be wrong due to the limited time resolution of the muon detectors. This effect was most pronounced in 2016, and the magnitude varies between 0% and 3%. 
+The 2016 NanoAOD files also contain a set of branches labeled "L1PreFiringWeight". In 2016 and 2017, the gradual timing shift of the ECAL was not properly propagated to the L1 trigger system, resulting in a significant fraction of high-$\eta$ "trigger primitives" being mistakenly associated to the previous bunch crossing. Since Level-1 rules forbid two consecutive bunch crossings from firing, an unpleasant consequence of this is that events can effectively "self veto" if a significant amount of ECAL energy is found in the region $2.0 < |\eta| < 3.0$. The effect is strongly $\eta$- and $p_{T}$-dependent and prefiring rates can be large for high-momentum jets in the forward regions of the detector. A similar effect is present in the muon system, where the bunch crossing assignment of the muon candidates can be wrong due to the limited time resolution of the muon detectors. This effect was most pronounced in 2016, and the magnitude varies between 0% and 3%.
 
-The L1PreFiring table in NanoAOD provides weights that analysts can apply to simulation to correct for these effects, so that simulation better represents data. The weights carry associated uncertainties, represented in alternate branches. 
+The L1PreFiring table in NanoAOD provides weights that analysts can apply to simulation to correct for these effects, so that simulation better represents data. The weights carry associated uncertainties, represented in alternate branches.
 
 | Object property | Type | Description |
 | --------------- | ---- | ----------- |
@@ -265,17 +262,11 @@ The L1PreFiring table in NanoAOD provides weights that analysts can apply to sim
 | L1PreFiringWeight_Muon_SystUp | Float_t | Muon L1 pre-firing event correction weight (1-probability), up var. syst. |
 | L1PreFiringWeight_Nom | Float_t | L1 pre-firing event correction weight (1-probability) |
 | L1PreFiringWeight_Up | Float_t | L1 pre-firing event correction weight (1-probability), up var. |
- 
+
 ### What's missing from NanoAOD?
 
 NanoAOD does not contain information about trigger **prescales** or **objects**. A trigger object is a link to the electron, muon, jet, tau, etc, that specifically satisfied the criteria for a given trigger filter.
 
-Prescale information is fixed in the "trigger menu", so it can be accessed outside of NanoAOD. While it's common for prescale values to change from run to run, most
-analysts are only interested in determining whether or not a trigger is prescaled at all. If not, that trigger is a good candidate for analyses requiring the full 
-amount of data available. If so, the trigger is better suited to studies where statistics are not a limiting factor. Prescale values for any trigger can be accessed 
-from the `brilcalc` tool. To practice, follow the [trigger and luminosity exercise from an Open Data workshop](https://cms-opendata-workshop.github.io/workshop2024-lesson-triggers-lumi/instructor/05-challenge.html).
+Prescale information is fixed in the "trigger menu", so it can be accessed outside of NanoAOD. While it's common for prescale values to change from run to run, most analysts are only interested in determining whether or not a trigger is prescaled at all. If not, that trigger is a good candidate for analyses requiring the full amount of data available. If so, the trigger is better suited to studies where statistics are not a limiting factor. Prescale values for any trigger can be accessed from the `brilcalc` tool. To practice, follow the [trigger and luminosity exercise from an Open Data workshop](https://cms-opendata-workshop.github.io/workshop2024-lesson-triggers-lumi/instructor/05-challenge.html).
 
-Trigger object information is important if an analysis needs to know which specific objects passed a certain set of trigger filters. So for instance, if you needed
-to know which tau leptons satisfied `LooseChargedIsoPFTauHPS20_Trk1_eta2p1_SingleL1` in order to make correct analysis choices, then you would need access to trigger
-object details. Many analyses do not require this level of detail, since physics objects can usually be selected using the identification and isolation algorithms designed
-to be applied separately from the trigger system. Trigger objects can be accessed in MiniAOD.
+Trigger object information is important if an analysis needs to know which specific objects passed a certain set of trigger filters. So for instance, if you needed to know which tau leptons satisfied `LooseChargedIsoPFTauHPS20_Trk1_eta2p1_SingleL1` in order to make correct analysis choices, then you would need access to trigger object details. Many analyses do not require this level of detail, since physics objects can usually be selected using the identification and isolation algorithms designed to be applied separately from the trigger system. Trigger objects can be accessed in MiniAOD.
