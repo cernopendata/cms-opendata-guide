@@ -89,4 +89,3 @@ Read more:
  - [Luminosity Public Results](https://twiki.cern.ch/twiki/bin/view/CMSPublic/LumiPublicResults)
  - [Data Quality Public Results](https://twiki.cern.ch/twiki/bin/view/CMSPublic/DataQuality)
  - [Luminosity publications](https://twiki.cern.ch/twiki/bin/view/CMSPublic/PhysicsResultsLUM)
- 
