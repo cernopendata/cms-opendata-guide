@@ -17,15 +17,21 @@ calculations allows one to weight simulated events to reproduce predictions of d
 In final states with charged leptons, for which QCD multijet production is unlikely to be a significant background, simulation is a common choice.
 Additionally, the majority of searches utilize simulation to model the signal process under consideration.
 
-Simulated events are weighted so that the efficiencies of certain selections
+Simulated events should be weighted so that distributions of observables correspond to the amount of data being studied. Additionally, some generation programs provide weights that can be negative if the simulation is accurate to next-to-leading-order in QCD. The weight can be calculated as:
+
+$w = (\mathrm{Luminosity})(\mathrm{cross\,section}) / N_{\mathrm{generated}}$
+
+If negative weights exist in the sample, $N_{\mathrm{generated}} = N_{\mathrm{positive-weight}} - N_{\mathrm{negative-weight}}$.
+
+Simulated events are also weighted so that the efficiencies of certain selections
 in simulation match those observed in data. These corrections are referred to as ``scale factors''.
 Common scale factors in searches at the CMS experiment correct
 for differences in :
 
-- the number of pileup interactions
+- the number of [pileup interactions](systematics/pileupuncertain.md)
 - the efficiencies of trigger selections
-- the efficiencies of charged lepton identification and isolation selection criteria
-- the efficiencies of various jet identification selection criteria, such as heavy-flavor tagging.
+- the efficiencies of [charged lepton identification and isolation selection criteria](systematics/objectsuncertain/leptonuncertain.md)
+- the efficiencies of various jet identification selection criteria, such as [heavy-flavor tagging](systematics/objectsuncertain/btaguncertain.md).
 
 A detailed set of [corrections for the jet energy scale and resolution](systematics/objectsuncertain/jetmetuncertain.md) are computed for simulated events so that the
 response of the jet reconstruction algorithms is consistent between observed data and simulation. Searches may also develop
