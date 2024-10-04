@@ -30,10 +30,11 @@ which can be used to obtain a limit at the 95% confidence level using the profil
 ([Cowan, 2010](https://arxiv.org/abs/1007.1727)) with the asymptotic limit approximation.
 
 ## COMBINE software
+
 The ["Higgs Combine"](https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/latest/) software framework used by
 the CMS experiment to compute limits is built on the [RooFit](https://root.cern/manual/roofit/) and
 [RooStats](https://root.cern/doc/master/group__Roostats.html) packages and implements statistical procedures developed
-for combining ATLAS and CMS Higgs boson measurements. The software was [released in 2024](https://cms.cern/news/cms-commitment-open-science-takes-next-step) for public use, along with the [likelihood model](https://repository.cern/records/c2948-e8875) for the Higgs discovery. 
+for combining ATLAS and CMS Higgs boson measurements. The software was [released in 2024](https://cms.cern/news/cms-commitment-open-science-takes-next-step) for public use, along with the [likelihood model](https://repository.cern/records/c2948-e8875) for the Higgs discovery.
 
 ## Tutorials
 
