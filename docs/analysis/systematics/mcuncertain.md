@@ -118,7 +118,7 @@ for (headers_const_iterator iter=myLHERunInfoProduct.headers_begin(); iter!=myLH
 
 The printout will include segments like the following example, which shows the weight ID numbers for the LHAPDF set that uses numbers starting at 260001. The LHAPDF numbers would be found on the website linked above. The printout includes information about whether the PDF set used either "hessian" or "replicas" for the uncertainty. Events can be reweighted to use any PDF set included in the weights list.
 
-```
+``` output
 <weightgroup combine="hessian" name="PDF_variation">
 <weight id="2001"> PDF set = 260001 </weight>
 <weight id="2002"> PDF set = 260002 </weight>
@@ -129,6 +129,7 @@ The printout will include segments like the following example, which shows the w
 <weight id="2007"> PDF set = 260007 </weight>
 ...etc...
 ```
+
 === "NanoAOD files"
 
 NanoAOD files contain a branch called `LHEPdfWeight` in the `Events` tree, which is a vector of floating point values. For each event, the vector contains values of $w_{\mathrm{variation}}/w_{\mathrm{nominal}}$ for each variation in the PDF set. The NanoAOD variable listing for each dataset will indicate which LHAPDF set was stored. The documentation line for `LHEPdfWeight` will say: "LHE pdf variation weights (w_var / w_nominal) for LHA IDs 306000 - 306102" (where the numerical values may change based on the sample). The LHA ID numbers can be cross-referenced to the LHAPDF website linked above.
