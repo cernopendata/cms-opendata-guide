@@ -29,10 +29,12 @@ The most common statistical method within CMS is the **CLs** method ([Read, 2002
 which can be used to obtain a limit at the 95% confidence level using the profile likelihood test statistic
 ([Cowan, 2010](https://arxiv.org/abs/1007.1727)) with the asymptotic limit approximation.
 
-The ["Higgs Combine"](https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit) software framework used by
+## COMBINE software
+
+The ["Higgs Combine"](https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/latest/) software framework used by
 the CMS experiment to compute limits is built on the [RooFit](https://root.cern/manual/roofit/) and
 [RooStats](https://root.cern/doc/master/group__Roostats.html) packages and implements statistical procedures developed
-for combining ATLAS and CMS Higgs boson measurements.
+for combining ATLAS and CMS Higgs boson measurements. The software was [released in 2024](https://cms.cern/news/cms-commitment-open-science-takes-next-step) for public use, along with the [likelihood model](https://repository.cern/records/c2948-e8875) for the Higgs discovery.
 
 ## Tutorials
 
@@ -54,3 +56,5 @@ Many tutorials and lectures on statistical interpretation of LHC data are availa
     - Lessons from the Open Data Workshop series use the docker container environment recommended for processing Open Data.
     - The overall lesson offers tools for analysis of files in the NanoAOD or [PhysObjectExtractorTool](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool) format.
     - Specifically, the final page of the lesson (*5: Systematics and Statistics*) introduces the python-based tool [pyhf](https://pyhf.readthedocs.io/en/v0.7.6/) for performing statistical inference without any ROOT software.
+
+- Open Data workshop [*Statistical inference with COMBINE* lesson](https://cms-opendata-workshop.github.io/workshop2024-lesson-statistical-inference/instructor/index.html)

@@ -23,11 +23,9 @@ Not all collisions that happen at the LHC are interesting. We would like to keep
 
 Before we jump into the details for the trigger system, let’s agree on some terminology:
 
-Fill: Every time the LHC injects beams in the machine it marks the beginning of what is known as a Fill.
-
-Run: As collisions happen in the LHC, CMS (and the other detectors) decide whether they start recording data. Every time the start button is pushed, a new Run starts and it is given a unique number.
-
-Lumi section: while colliding, the LHC’s delivered instantaneous luminosity gets degraded (although during Run 3 it will be mainly levelled) due to different reasons. I.e., it is not constant over time. For practical reasons, CMS groups the events it collects in luminosity sections, where the luminosity values can be considered constant.
+- Fill: Every time the LHC injects beams in the machine it marks the beginning of what is known as a Fill.
+- Run: As collisions happen in the LHC, CMS (and the other detectors) decide whether they start recording data. Every time the start button is pushed, a new Run starts and it is given a unique number.
+- Lumi section: while colliding, the LHC’s delivered instantaneous luminosity gets degraded (although during Run 3 it will be mainly levelled) due to different reasons. I.e., it is not constant over time. For practical reasons, CMS groups the events it collects in luminosity sections, where the luminosity values can be considered constant.
 
 Deciding on which events to record is the main purpose of the trigger system. It is like determining which events to record by taking a quick picture of it and, even though a bit blurry, decide whether it is interesting to keep or not for a future, more thorough inspection.
 
@@ -65,11 +63,11 @@ For example, you can expect that an event containing two top quarks, one of whic
 
 On all CMS Open Data portal records for data samples, the list of trigger paths that feed into that dataset are listed on the webpage. For example, in [this 2012 data sample](https://opendata.cern.ch/record/6024) the trigger paths are lsited, and each are clickable links to [individual trigger records](https://opendata.cern.ch/record/6392) that provide more information about that path.
 
-=== AOD format (Run 1)
+=== "AOD format (Run 1)"
 
 For exercises exploring trigger information in Run 1, visit [this AOD trigger lesson](https://cms-opendata-workshop.github.io/workshop2021-lesson-introtrigger/) from an Open Data Workshop. A [`TriggerInfoTool`](https://opendata.cern.ch/record/5004) was prepared for extracting trigger information in Run 1 data. This tool is presented in the workshop lesson, and has detailed usage instructions in the source code repository.
 
-=== MiniAOD format (Run 2)
+=== "MiniAOD format (Run 2)"
 
 To follow this information as an exercise, visit [this MiniAOD trigger lesson](https://cms-opendata-workshop.github.io/workshop2023-lesson-selection/index.html) from an Open Data Workshop.
 
@@ -169,7 +167,7 @@ While it is true that one can get most of the trigger information needed directl
 
 The [Physics Object Extractor Tool for 2015](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2015MiniAOD/) features a [trigger EDanalyzer](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/blob/2015MiniAOD/PhysObjectExtractor/src/TriggObjectAnalyzer.cc). This analyzer stores a map with the names of interesting triggers and their acceptance and prescale information.
 
-=== NanoAOD format (Run 2, 2016 onward)
+=== "NanoAOD format (Run 2, 2016 onward)"
 
 For many physics analyses, one basic piece of trigger information is required: did this event pass or fail a certain path?
 NanoAOD stores this information for both L1 and HLT paths. Let's consider 3 example HLT paths:
