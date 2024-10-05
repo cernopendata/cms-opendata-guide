@@ -73,7 +73,7 @@ For exercises exploring trigger information in Run 1, visit [this AOD trigger le
 
 To follow this information as an exercise, visit [this MiniAOD trigger lesson](https://cms-opendata-workshop.github.io/workshop2023-lesson-selection/index.html) from an Open Data Workshop.
 
-### Trigger results stored in MiniAOD files
+**Trigger results stored in MiniAOD files**:
 
 Investigating MiniAOD files requires the CMSSW environment, described on the [MiniAOD getting started guide](https://opendata.cern.ch/docs/cms-getting-started-miniaod).
 
@@ -163,7 +163,7 @@ process.demo = cms.EDAnalyzer("MiniAODTriggerAnalyzer",
 process.p = cms.Path(process.demo)
 ```
 
-### The HLTConfigProvider and HLTPrescaleProvider
+**The HLTConfigProvider and HLTPrescaleProvider**:
 
 While it is true that one can get most of the trigger information needed directly from the miniAOD files, there are some cases when this information is not enough.  An example is the case of multi-object triggers.  If one needs to study a trigger in detail it is likely that the [HLTConfigProvider](https://github.com/cms-sw/cmssw/blob/CMSSW_7_6_X/HLTrigger/HLTcore/interface/HLTConfigProvider.h) and the [HLTPrescaleProvider](https://github.com/cms-sw/cmssw/blob/CMSSW_7_6_X/HLTrigger/HLTcore/interface/HLTPrescaleProvider.h) classes are needed. As you can check for yourself these clases have several methods to extract a lot of trigger-related information. Several of those, like the ones related to prescale extraction, need access to the **conditions database**.
 
@@ -186,7 +186,7 @@ The final example shows a trigger with multiple objects -- after the "IsoMu27" l
 This is a complex label that would share with experts many details of how the tau passing this trigger appeared in the CMS calorimeters. The most important information is that
 this tau lepton decayed to hadrons (note the "HPS" label for "hadron plus strips), was loosely isolated from other charged hadrons, passed a 20 GeV threshold, and was found in the central region of the detector ($\eta < 2.1$). This trigger might be used for a $H \rightarrow \tau \tau$ analysis with one hadronic tau and one tau that decayed to a muon.
 
-### NanoAOD branch listings
+**NanoAOD branch listings**:
 
 Each dataset's record page contains a link to its variable listing, which will show the full list of L1 and HLT paths available in that dataset. We will show short examples below.
 
@@ -243,7 +243,7 @@ Table: HLT information in NanoAOD (truncated example)
 | HLT_Mu50 | Bool_t | Trigger/flag bit (process: HLT) |
 | HLT_Mu50_IsoVVVL_PFHT450 | Bool_t | Trigger/flag bit (process: HLT) |
 
-### L1 PreFiring corrections
+**L1 PreFiring corrections**:
 
 The 2016 NanoAOD files also contain a set of branches labeled "L1PreFiringWeight". In 2016 and 2017, the gradual timing shift of the ECAL was not properly propagated to the L1 trigger system, resulting in a significant fraction of high-$\eta$ "trigger primitives" being mistakenly associated to the previous bunch crossing. Since Level-1 rules forbid two consecutive bunch crossings from firing, an unpleasant consequence of this is that events can effectively "self veto" if a significant amount of ECAL energy is found in the region $2.0 < |\eta| < 3.0$. The effect is strongly $\eta$- and $p_{T}$-dependent and prefiring rates can be large for high-momentum jets in the forward regions of the detector. A similar effect is present in the muon system, where the bunch crossing assignment of the muon candidates can be wrong due to the limited time resolution of the muon detectors. This effect was most pronounced in 2016, and the magnitude varies between 0% and 3%.
 
@@ -263,7 +263,7 @@ The L1PreFiring table in NanoAOD provides weights that analysts can apply to sim
 | L1PreFiringWeight_Nom | Float_t | L1 pre-firing event correction weight (1-probability) |
 | L1PreFiringWeight_Up | Float_t | L1 pre-firing event correction weight (1-probability), up var. |
 
-### What's missing from NanoAOD?
+**What's missing from NanoAOD?**:
 
 NanoAOD does not contain information about trigger **prescales** or **objects**. A trigger object is a link to the electron, muon, jet, tau, etc, that specifically satisfied the criteria for a given trigger filter.
 
