@@ -28,6 +28,7 @@ nav:
         - 'Analyzers': cmssw/cmsswanalyzers.md
         - 'Configuration': cmssw/cmsswconfigure.md
         - 'Conditions Data': cmssw/cmsswconditions.md
+        - 'NanoAOD Customisers': cmssw/cmsswcustomisers.md
     - 'Analysis':
         - 'Data and Simulation':
             - 'Collision Data': analysis/datasim/collisiondata.md
